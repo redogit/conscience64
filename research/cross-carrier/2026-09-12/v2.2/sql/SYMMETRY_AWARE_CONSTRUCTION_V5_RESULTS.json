@@ -12,17 +12,107 @@
     "requires_circuit_class_scan": false
   },
   "orbit_counts_n4": [
-    {"n":4,"weight":1,"pair_action_orbits":4,"representative_translation":1},
-    {"n":4,"weight":2,"pair_action_orbits":6,"representative_translation":3},
-    {"n":4,"weight":3,"pair_action_orbits":4,"representative_translation":7},
-    {"n":4,"weight":4,"pair_action_orbits":3,"representative_translation":15}
+    {
+      "n": 4,
+      "weight": 1,
+      "pair_action_orbits": 4,
+      "representative_translation": 1
+    },
+    {
+      "n": 4,
+      "weight": 2,
+      "pair_action_orbits": 6,
+      "representative_translation": 3
+    },
+    {
+      "n": 4,
+      "weight": 3,
+      "pair_action_orbits": 4,
+      "representative_translation": 7
+    },
+    {
+      "n": 4,
+      "weight": 4,
+      "pair_action_orbits": 3,
+      "representative_translation": 15
+    }
   ],
   "routes": [
-    {"route":"generic_symmetry_aware","translation":null,"weight":null,"observations":5,"candidate_scores":56,"bitset_word_ops":2912,"survivor_path":[3310,1371,417,90,1,0]},
-    {"route":"paired_t1","translation":1,"weight":1,"observations":10,"candidate_scores":30,"bitset_word_ops":3120,"survivor_path":[3310,790,160,45,10,0]},
-    {"route":"paired_t3","translation":3,"weight":2,"observations":6,"candidate_scores":30,"bitset_word_ops":3120,"survivor_path":[3310,582,32,0]},
-    {"route":"paired_t7","translation":7,"weight":3,"observations":6,"candidate_scores":22,"bitset_word_ops":2288,"survivor_path":[3310,500,21,0]},
-    {"route":"paired_t15","translation":15,"weight":4,"observations":8,"candidate_scores":20,"bitset_word_ops":2080,"survivor_path":[3310,548,78,7,0]}
+    {
+      "route": "generic_symmetry_aware",
+      "translation": null,
+      "weight": null,
+      "observations": 5,
+      "candidate_scores": 56,
+      "bitset_word_ops": 2912,
+      "survivor_path": [
+        3310,
+        1371,
+        417,
+        90,
+        1,
+        0
+      ]
+    },
+    {
+      "route": "paired_t1",
+      "translation": 1,
+      "weight": 1,
+      "observations": 10,
+      "candidate_scores": 30,
+      "bitset_word_ops": 3120,
+      "survivor_path": [
+        3310,
+        790,
+        160,
+        45,
+        10,
+        0
+      ]
+    },
+    {
+      "route": "paired_t3",
+      "translation": 3,
+      "weight": 2,
+      "observations": 6,
+      "candidate_scores": 30,
+      "bitset_word_ops": 3120,
+      "survivor_path": [
+        3310,
+        582,
+        32,
+        0
+      ]
+    },
+    {
+      "route": "paired_t7",
+      "translation": 7,
+      "weight": 3,
+      "observations": 6,
+      "candidate_scores": 22,
+      "bitset_word_ops": 2288,
+      "survivor_path": [
+        3310,
+        500,
+        21,
+        0
+      ]
+    },
+    {
+      "route": "paired_t15",
+      "translation": 15,
+      "weight": 4,
+      "observations": 8,
+      "candidate_scores": 20,
+      "bitset_word_ops": 2080,
+      "survivor_path": [
+        3310,
+        548,
+        78,
+        7,
+        0
+      ]
+    }
   ],
   "planning_result": {
     "generic_word_ops": 2912,
