@@ -1,0 +1,46 @@
+{
+  "status": "BOUNDED_FINITE_RESULT",
+  "p_vs_np": "OPEN",
+  "provenance": {
+    "layer_scanner_sha256": "02e26bf564a9fa70858559a67ad9cefc2257777ec793f76a74d544a077a41493",
+    "layer_log_sha256": "33dd75199d8a50dd99a97c993185cbeb11165aca52bb2c46237ed800059b0558",
+    "candidate_scanner_sha256": "a00a531b12f576d1af4dbc1a636f8bdfa541fee36c3fbde4e60270556c1c1162",
+    "candidate_log_sha256": "d722ef2ef418a92200fecd638d951b56c67774c496eb370bdc140ff1376b8e28",
+    "direct_dag": "Wolfram SAT: 7 gates UNSAT; 8 gates SAT",
+    "quotient_dag": "Wolfram SAT: gates 1..6 UNSAT; 7 SAT",
+    "quotient_transform": "Wolfram multi-output SAT: gates 4..7 UNSAT; 8 SAT"
+  },
+  "queries": {
+    "first_property_layers": [{
+      "first_hard_symmetry": 6,
+      "first_nonaffine_hard_symmetry": 8,
+      "first_fullrank_nonaffine_hard_symmetry": 10
+    }],
+    "layer_map": [
+      {"observation_count":4,"unique_translation_symmetric_partials":1120,"hard_outside_size6":0,"affine_consistent_hard":0,"nonaffine_hard":0,"nonaffine_rank3":0,"nonaffine_rank4":0,"has_hard_symmetry":0,"has_nonaffine_hard_symmetry":0,"has_fullrank_nonaffine_hard_symmetry":0},
+      {"observation_count":6,"unique_translation_symmetric_partials":6720,"hard_outside_size6":204,"affine_consistent_hard":204,"nonaffine_hard":0,"nonaffine_rank3":0,"nonaffine_rank4":0,"has_hard_symmetry":1,"has_nonaffine_hard_symmetry":0,"has_fullrank_nonaffine_hard_symmetry":0},
+      {"observation_count":8,"unique_translation_symmetric_partials":15600,"hard_outside_size6":2272,"affine_consistent_hard":1908,"nonaffine_hard":364,"nonaffine_rank3":364,"nonaffine_rank4":0,"has_hard_symmetry":1,"has_nonaffine_hard_symmetry":1,"has_fullrank_nonaffine_hard_symmetry":0},
+      {"observation_count":10,"unique_translation_symmetric_partials":26880,"hard_outside_size6":8332,"affine_consistent_hard":2930,"nonaffine_hard":5402,"nonaffine_rank3":0,"nonaffine_rank4":5402,"has_hard_symmetry":1,"has_nonaffine_hard_symmetry":1,"has_fullrank_nonaffine_hard_symmetry":1}
+    ],
+    "candidate": [{
+      "candidate_key":"K10-T7-M48579-V33090","observation_count":10,"mask":48579,"value":33090,"translation":7,
+      "coords_json":"[0, 1, 6, 7, 8, 10, 11, 12, 13, 15]","bits_json":"[0, 1, 1, 0, 1, 0, 0, 0, 0, 1]",
+      "affine_rank":4,"affine_extension_exists":0,"outside_nand_size_le_6":1,"formula_min":13,"dag_min":8,"dag_unsat_below":7,"formula_dag_gap":5
+    }],
+    "gates": [
+      {"gate_index":1,"left_source":"x1","right_source":"x3"},
+      {"gate_index":2,"left_source":"x0","right_source":"g1"},
+      {"gate_index":3,"left_source":"x3","right_source":"g1"},
+      {"gate_index":4,"left_source":"g2","right_source":"g3"},
+      {"gate_index":5,"left_source":"g4","right_source":"x2"},
+      {"gate_index":6,"left_source":"g4","right_source":"g5"},
+      {"gate_index":7,"left_source":"g5","right_source":"x2"},
+      {"gate_index":8,"left_source":"g6","right_source":"g7"}
+    ],
+    "route": [{
+      "candidate_key":"K10-T7-M48579-V33090","formula_min":13,"dag_min":8,"formula_dag_gap":5,
+      "quotient_dag_min":7,"transform_multioutput_dag_min":8,"staged_route_min":15,"direct_dag_min":8,"staged_penalty":7,
+      "explicit_quotient_verdict":"COST_MIGRATION"
+    }]
+  }
+}
