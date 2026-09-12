@@ -1,0 +1,334 @@
+[
+  {
+    "payload_id": "P00001",
+    "path": "CROSS_CARRIER_ECS_CLAIM_EVIDENCE_REGISTRY_2026-09-11.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 108753,
+    "pad_bytes": 3,
+    "float64_values": 18126,
+    "sha256": "5fbabe4c9a49518b161d6c2554086327f3cf0b7b74549b0ed6583283d4009da2",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00002",
+    "path": "CROSS_CARRIER_ECS_EMPIRICAL_EVIDENCE_MAP_2026-09-11.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 363910,
+    "pad_bytes": 2,
+    "float64_values": 60652,
+    "sha256": "eb9ce264c3b12955f8c3544f192280e0793d32075183ada8b5e6caa316374efc",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00003",
+    "path": "ALL_CATEGORIES_AND_BRANCHES_MAP_2026-09-11.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 9284,
+    "pad_bytes": 4,
+    "float64_values": 1548,
+    "sha256": "54d3d8d49b17ebfc6c86e0793706aa8d0590ac8df6ed87bf9388eecc33e5dd58",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00004",
+    "path": "ALL_CATEGORIES_AND_BRANCHES_MAP_2026-09-11.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 7401,
+    "pad_bytes": 3,
+    "float64_values": 1234,
+    "sha256": "21b395c7d62af3004ccda5a0381d5b663239346b8679a688e31366dca62c915b",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00005",
+    "path": "utf8_symbol_registry.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 34713,
+    "pad_bytes": 3,
+    "float64_values": 5786,
+    "sha256": "062e57567578c91c1ba0188c283bad18eed1a7a4413bc22964e7dfbacf1637f7",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00006",
+    "path": "UTF8_SYMBOL_DEFINITIONS.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 14278,
+    "pad_bytes": 2,
+    "float64_values": 2380,
+    "sha256": "972cd787297a900cefd4eb28bf3a563d785bde21c10e8a4a87c51bd38ec1f278",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00007",
+    "path": "MASTER_GENERAL_CLAIM_EVIDENCE_PROGRAM_2026-09-11.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 12759,
+    "pad_bytes": 3,
+    "float64_values": 2127,
+    "sha256": "d98e82995a9885174af67eb944ec3e834a6777f6e7645f04c393a25a924fd272",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00008",
+    "path": "MASTER_CLAIM_REGISTRY_2026-09-11.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 11311,
+    "pad_bytes": 5,
+    "float64_values": 1886,
+    "sha256": "1f06dd6877727837c17ffd3a8235c1fc28260029d22aa890a106aa0bc23eccef",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00009",
+    "path": "REROLL_RETROSPECTIVE_2026-09-11.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 31260,
+    "pad_bytes": 0,
+    "float64_values": 5210,
+    "sha256": "078e38a735b118e704b1e5721fbe0e0c15c3691e59f2f6c2afa1333334e20e27",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00010",
+    "path": "float64_coordinate_builder.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 13837,
+    "pad_bytes": 5,
+    "float64_values": 2307,
+    "sha256": "aadddcfee1d761e5a1af3390ca53e80bcd5194dcc6d75b5607d1e7922909a377",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00011",
+    "path": "pnp_push/CONDITIONAL_MINORITY_SHRINK_AND_SAMPLING_TRAP.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2310,
+    "pad_bytes": 0,
+    "float64_values": 385,
+    "sha256": "9c016180b60b64c680586a75813a07c42ed9769b9dc4cb7f7145ddf480f0f03e",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00012",
+    "path": "pnp_push/DEMORGAN_MUX1_GATE_ELIMINATION_CALIBRATION.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 889,
+    "pad_bytes": 5,
+    "float64_values": 149,
+    "sha256": "7e04c5b32299935c63d5c2d4fc081ae50a04354d0c3673c4228507f367b142a6",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00013",
+    "path": "pnp_push/DEMORGAN_N3_HARDEST_RESTRICTION_PROFILES.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 3044,
+    "pad_bytes": 4,
+    "float64_values": 508,
+    "sha256": "5d5363ce5f65f2ba99aa7e5999830eccc627bf5b9a1c8126a20c53161213efa7",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00014",
+    "path": "pnp_push/DEMORGAN_N3_OPTIMAL_XOR_WIDGET_STRUCTURE_CALIBRATION.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 4821,
+    "pad_bytes": 3,
+    "float64_values": 804,
+    "sha256": "67a42e53779ce807c889f593375fad50497982d86992319d12782a69ee51b30f",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00015",
+    "path": "pnp_push/DEMORGAN_N3_RESTRICTION_DROP_LANDSCAPE.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 43488,
+    "pad_bytes": 0,
+    "float64_values": 7248,
+    "sha256": "e5a329e999432cfb051b907c5af2090bfb3c8f3e887afcc81a0f20788d36e055",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00016",
+    "path": "pnp_push/DEMORGAN_N3_RESTRICTION_FAMILY_DISCOVERY.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 925,
+    "pad_bytes": 5,
+    "float64_values": 155,
+    "sha256": "b4b66d4e1477c7e071253cb2e8a6ea3000b4d32c57b0d14f8cb5cf39ffcc96f6",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00017",
+    "path": "pnp_push/DEMORGAN_PARITY_EXACT_MIN_GATE_CALIBRATION.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1468,
+    "pad_bytes": 2,
+    "float64_values": 245,
+    "sha256": "e7a79eee041e92676a84e092dc172ea2f9fa17ef4f4eb701b2016cfaf9370902",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00018",
+    "path": "pnp_push/DEMORGAN_PARITY_MIN_CIRCUIT_RESTRICTION_CALIBRATION.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 32306,
+    "pad_bytes": 4,
+    "float64_values": 5385,
+    "sha256": "92fd7d9816762d36e7dc4a5d17b5107ca08cc56ad55da987df68809d1ee80d2a",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00019",
+    "path": "pnp_push/FINITE_PARTIAL_HARD_SHATTERING_PROFILE_N4_S10.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 710,
+    "pad_bytes": 4,
+    "float64_values": 119,
+    "sha256": "604897e350ffd43d7629e5b20f40dfe56a308d3e9a14eb8615bc5ca93a62dc05",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00020",
+    "path": "pnp_push/FINITE_PARTIAL_HARD_SHATTERING_PROFILE_N4_S4_S9.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1934,
+    "pad_bytes": 4,
+    "float64_values": 323,
+    "sha256": "d99845f37aa968c5cee167ab06f803bde014a70afbec278efc5140e3abf2a817",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00021",
+    "path": "pnp_push/FINITE_PARTIAL_HARD_SHATTERING_S10_K6_K7.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 895,
+    "pad_bytes": 5,
+    "float64_values": 150,
+    "sha256": "bf898d0f5bce90f34634ad02bec1c4d68c0cdbf3b230c2af24b617e020686feb",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00022",
+    "path": "pnp_push/FORMULA_VS_DAG_SHARING_WITNESSES_S10.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 3082,
+    "pad_bytes": 2,
+    "float64_values": 514,
+    "sha256": "c3b79c5e0ddb62e5e76993e8cc7d0ac187c75e828a9805df4f7247ad6427f01b",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00023",
+    "path": "pnp_push/LOCAL_NOR_PARTIAL_HARD_SCALING_VERIFIED.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1395,
+    "pad_bytes": 3,
+    "float64_values": 233,
+    "sha256": "68ef8d0309e1b5731a41d9115090b6e25dbbcd3358fd72574b75b21b8a6cd0aa",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00024",
+    "path": "pnp_push/MCSP4_BEHAVIOR_QUOTIENT_CONSTANT_CORRECTION.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1435,
+    "pad_bytes": 5,
+    "float64_values": 240,
+    "sha256": "7a69d2635ec603302f471698d21c4af5e036235ec45cb4fc750cccc17e901171",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00025",
+    "path": "pnp_push/MCSP4_NAND_SIZE6_WALSH_FEATURE_ATTACK.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 4373,
+    "pad_bytes": 1,
+    "float64_values": 729,
+    "sha256": "a6f6cd2bbd6108ee95fcef60317623e0e827aa5a974a7b1cdd7e40bcfe38d81d",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00026",
+    "path": "pnp_push/MCSP4_SIZE6_CONSTANT_MODEL_SET_EQUALITY.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 568,
+    "pad_bytes": 2,
+    "float64_values": 95,
+    "sha256": "99b741b8bda3b6e3648a361f6e451cd415409d164bd25a2678c592034f5bf03f",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00027",
+    "path": "pnp_push/MCSP4_SIZE6_MAX_SENSITIVITY_WITNESSES.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 13551,
+    "pad_bytes": 3,
+    "float64_values": 2259,
+    "sha256": "4eea6ecf3e0530fb9e44d4069dd588a00afc3c53d316d57e5dea6ce0c90ae26a",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00028",
+    "path": "pnp_push/MCSP4_SIZE6_MINIMUM_PARTIAL_NO_CERTIFICATE.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1093,
+    "pad_bytes": 5,
+    "float64_values": 183,
+    "sha256": "5e86eb98a4f14fe42b0f70b1b2b025e854608793a39bc30cc90979a4d805b3d3",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00029",
+    "path": "pnp_push/NAND_PARITY_PARTIAL_VS_FULL_COMPLEXITY.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 989,
+    "pad_bytes": 1,
+    "float64_values": 165,
+    "sha256": "50c6ef516f7867cc507f3f0a4018935409662972314d71c5f7a7b8b736df06f8",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00030",
+    "path": "pnp_push/NECESSITY_DIRECTED_FORMULA_FIRST_MCSP_FILTER.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 30632,
+    "pad_bytes": 4,
+    "float64_values": 5106,
+    "sha256": "a7ad44cea73e2d3500b1276985c5fc76e2d7035bd9488159481cc13882a77fdf",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00031",
+    "path": "pnp_push/OBSERVATION_QUOTIENT_ANTIMATROID_THEOREM.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2821,
+    "pad_bytes": 5,
+    "float64_values": 471,
+    "sha256": "1f5dff1838932069373fb7cd2e48a319bc83479f71b7ef0936fe03c2ed3cb5fa",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00032",
+    "path": "pnp_push/OBSERVATION_QUOTIENT_IMPLICIT_ZDD_COUNTERPROBE.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 15574,
+    "pad_bytes": 2,
+    "float64_values": 2596,
+    "sha256": "388cdc59b60fb26949662f66170850c5ec39e75207231325eaf3c73c8d8473da",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00033",
+    "path": "pnp_push/OBSERVATION_QUOTIENT_PATH_VS_STATE_SYNTHESIS.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 41659,
+    "pad_bytes": 5,
+    "float64_values": 6944,
+    "sha256": "ccb0c64bc2b97520d8459fc13f0cf7e31c40a545b277d1c677cfbe78b4abf6e6",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00034",
+    "path": "pnp_
