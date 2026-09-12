@@ -1,0 +1,335 @@
+push/OBSERVATION_QUOTIENT_STATE_EXPLOSION_LEMMA.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1370,
+    "pad_bytes": 4,
+    "float64_values": 229,
+    "sha256": "106249b46d242ddc0b3e609754f4ed86a8b43844e822470c8088ebf948447239",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00035",
+    "path": "pnp_push/OBSERVATION_QUOTIENT_ZDD_ORDER_ATTACK.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2287,
+    "pad_bytes": 5,
+    "float64_values": 382,
+    "sha256": "dbc9d7835717c075855ce0295dded3d41e49ca4080077668bd2fc926d9876a72",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00036",
+    "path": "pnp_push/PARITY_RESTRICTION_SELF_SIMILARITY_THEOREM.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1437,
+    "pad_bytes": 3,
+    "float64_values": 240,
+    "sha256": "98d2ee6572190af87571448b4d65edba9c1477c9023e83160913c803e3596ff3",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00037",
+    "path": "pnp_push/PARTIAL_CERTIFICATE_THRESHOLD_PUSH.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 8298,
+    "pad_bytes": 0,
+    "float64_values": 1383,
+    "sha256": "8d2f9e5b14a652acbe23d778323da0833a69e4c1de278dd3e90aceeab89e8f32",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00038",
+    "path": "pnp_push/PARTIAL_OBSERVATION_NAND_QUOTIENT_GREEDY.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 7343,
+    "pad_bytes": 1,
+    "float64_values": 1224,
+    "sha256": "ce08053bef09a85ad6403a24ad1ab18ce4bf13001de1c90d8be0136a45aacb8a",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00039",
+    "path": "pnp_push/PARTIAL_PARITY_MINIMUM_HARD_CERTIFICATE_SIZE8.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1243,
+    "pad_bytes": 5,
+    "float64_values": 208,
+    "sha256": "e0ec41526c51dd4eeeea2c7737a0c4035d0f06ba2a8085a916ed5be869858836",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00040",
+    "path": "pnp_push/P_VS_NP_GATE_ELIMINATION_ECS_UPDATE.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2980,
+    "pad_bytes": 2,
+    "float64_values": 497,
+    "sha256": "5fd2b60b9d274b65f260193f28cf790443f83242b46f62096993adb234437411",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00041",
+    "path": "pnp_push/P_VS_NP_OBSERVATION_ACTION_NECESSITY_LEDGER_2026-09-12.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 6736,
+    "pad_bytes": 2,
+    "float64_values": 1123,
+    "sha256": "21c31c882a55e29a10e4f411235255d2d0eefc28615c8843681c6ee8d8ecfbf5",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00042",
+    "path": "pnp_push/P_VS_NP_STEP_GATHER_CONTINUATION_2026-09-12.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 6162,
+    "pad_bytes": 0,
+    "float64_values": 1027,
+    "sha256": "ca233429ed13c9a73e95190d8c10daa85311abfa9d3e310758da48f9b2276a25",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00043",
+    "path": "pnp_push/P_VS_NP_THREE_CARRIER_HARDNESS_PANEL.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 12431,
+    "pad_bytes": 1,
+    "float64_values": 2072,
+    "sha256": "6cd32c7ea466cbc758e06cfe0d5fa871212b58a0d66622ca5ff7059034ba2e24",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00044",
+    "path": "pnp_push/P_VS_NP_THREE_CARRIER_WITHIN_SIZE_ANALYSIS.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1434,
+    "pad_bytes": 0,
+    "float64_values": 239,
+    "sha256": "6eafca51be0eb0ff77c60a38dfd8f3b8759b909f492e5e36d10d48f1e589cd1e",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00045",
+    "path": "pnp_push/RESTRICTION_CARRIER_INDUCTION_LEMMA.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2570,
+    "pad_bytes": 4,
+    "float64_values": 429,
+    "sha256": "3303d064f0ffb49ab17e1fda3c0c725dabb413ce34fe3302a10f247649be5f3b",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00046",
+    "path": "pnp_push/SHOR_HSP_SEARCH_SPACE_PROJECTION.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 63576,
+    "pad_bytes": 0,
+    "float64_values": 10596,
+    "sha256": "9aff083013bf5474c417ea24ad998e574072921360af69987112c803e25c57bc",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00047",
+    "path": "pnp_push/boolean_nullstellensatz.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 4955,
+    "pad_bytes": 1,
+    "float64_values": 826,
+    "sha256": "837d0dbee18c2d642fd6ea93de0c409e7ed5421e4b322aa6bdb68b19f4003aa3",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00048",
+    "path": "pnp_push/carrier_field_sat_v0_2.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 32930,
+    "pad_bytes": 4,
+    "float64_values": 5489,
+    "sha256": "62ac25267308f38e283faf3cd970bbd8f5a365587d4a3691065cd6814c207c6e",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00049",
+    "path": "pnp_push/extract_sharing_witness.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2259,
+    "pad_bytes": 3,
+    "float64_values": 377,
+    "sha256": "4f8d303acc14c7020f4eade0f4ac1fd58da00edbd871d948b531c5d87d2e6581",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00050",
+    "path": "pnp_push/local_nor_scaling.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2050,
+    "pad_bytes": 2,
+    "float64_values": 342,
+    "sha256": "bef15eb91de3fc3b8c0aca04443a9e258e7e5bdf01f8212d75004c9a0d246072",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00051",
+    "path": "pnp_push/parity_partial_full_compare.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 1793,
+    "pad_bytes": 1,
+    "float64_values": 299,
+    "sha256": "e560fb92a9a7d4c5eddb25ea99baf79f3aacfe314d271e580ff0b488044c26b8",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00052",
+    "path": "pnp_push/shattering_k1_k5.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2139,
+    "pad_bytes": 3,
+    "float64_values": 357,
+    "sha256": "e84945c77d987cd385e5a0229fc98681605fc15f818a3882d5848fd4de1f4c89",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00053",
+    "path": "pnp_push/shattering_profile.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 4032,
+    "pad_bytes": 0,
+    "float64_values": 672,
+    "sha256": "de48c44475c7c0c4c454fc78c8468380d3b5b3daa054a0c95835cb20e37788f0",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00054",
+    "path": "pnp_push/shattering_s10.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2304,
+    "pad_bytes": 0,
+    "float64_values": 384,
+    "sha256": "0ee85e7bc4bc61fa1d0cef0a17697ec794a20594e5919b8f108c3b5c2d795bec",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00055",
+    "path": "pnp_push/shattering_s10_k6_k7.py",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 2335,
+    "pad_bytes": 5,
+    "float64_values": 390,
+    "sha256": "18bee67020963be4c6fad7e5f2db3ce16938773eb098a9feb90b0bb295da12b6",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00056",
+    "path": "Aggregate_Chebyshev_carrier_prediction.csv",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 156,
+    "pad_bytes": 0,
+    "float64_values": 26,
+    "sha256": "1cd5e13d26e39be9abdcb4f97a40c1621c86ebf27d06d0293ec8d7c44a8111c6",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00057",
+    "path": "Chebyshev_carrier_echoes_reveal_hidden_quartic_distortion.csv",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 644,
+    "pad_bytes": 4,
+    "float64_values": 108,
+    "sha256": "9581cea115dec805605a385efd9a2a4852e0e13fcafbc11fffd0c95ba2960292",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00058",
+    "path": "Exact_Independent_Set_after_discovered-boundary_composition.csv",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 674,
+    "pad_bytes": 4,
+    "float64_values": 113,
+    "sha256": "1c19641ac54f499e6b537a757b2724b6740c6bb65e199e784f85378306fe2885",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00059",
+    "path": "GCF_T06_EXACT_FOUR_CARRIER_ALIASING_COUNTEREXAMPLE.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 870,
+    "pad_bytes": 0,
+    "float64_values": 145,
+    "sha256": "426daff2c7f7a11cf362bcdea93b59383a07e79a8305e1fb5f3cd171d60f5a4c",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00060",
+    "path": "Held-out_prediction_of_remaining_profitable_recursion_depth.csv",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 648,
+    "pad_bytes": 0,
+    "float64_values": 108,
+    "sha256": "1b1299042fb22c1db3f834f496ae55f7df1004593adbfd2bca0693975d77b262",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00061",
+    "path": "pnp_push/SHOR_HSP_STABILIZER_FREE_VARIABLE_AUDIT.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 55319,
+    "pad_bytes": 1,
+    "float64_values": 9220,
+    "sha256": "1d09c828098f86b9747c6f32f020db9221149b2d4cb47aca53ea305ff5427847",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00062",
+    "path": "pnp_push/SHOR_HSP_PROMISE_DEFECT_AUDIT.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 58514,
+    "pad_bytes": 4,
+    "float64_values": 9753,
+    "sha256": "8afe151e3082d396ce0869a2cc70b2014f16318ae72d47ad3fe30c1f91d86de2",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00063",
+    "path": "pnp_push/FOURIER_CARRIER_VS_3SAT_SEARCH_COST.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 24676,
+    "pad_bytes": 2,
+    "float64_values": 4113,
+    "sha256": "2460ab80a64d3455d717a90539139b266899731fdec3086670ab3e345f680cd6",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00064",
+    "path": "pnp_push/BOOLEAN_MEMBERSHIP_HSP_BOUNDARY_AND_FOURIER_QUOTIENT.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 3371,
+    "pad_bytes": 1,
+    "float64_values": 562,
+    "sha256": "73153d92dd6e49ffba92e349056da83df98c1a655284dda0caf1817dafda474b",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00065",
+    "path": "pnp_push/SHOR_HSP_PNP_EVIDENCE_UPDATE.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 4824,
+    "pad_bytes": 0,
+    "float64_values": 804,
+    "sha256": "7a1a697938349a54ee9a7ebd951b4252fc1a573afa0dec77300649acec21275d",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00066",
+    "path": "whole_research_pnp_integration/ALL_RESEARCH_TO_P_VS_NP_ROLE_MATRIX.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 12650,
+    "pad_bytes": 4,
+    "float64_values": 2109,
+    "sha256": "4da9e3042d0c8beb0e588af5fbd3772013f5408628b546010168214d8e4fd87a",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00067",
+    "path": "whole_research_pnp_integration/ALL_RESEARCH_TO_P_VS_NP_ROLE_MATRIX.md",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 9164,
+    "pad_bytes": 4,
+    "float64_values": 1528,
