@@ -116,3 +116,20 @@ Current stronger search cell:
 `hard AND symmetry AND DAG-sharing AND quotient-benefit-after-transform-cost`
 
 The selected full-rank witness fails the final condition. P versus NP remains OPEN.
+
+## SQL frontier audit v3 — structural correction
+The v2 gate-count success criterion is superseded. Any exact staged transform/quotient construction is itself a legal direct NAND circuit, so it cannot have fewer gates than the exact direct optimum by definition. The useful question is whether a discovered quotient lowers **construction, discovery, planning, search, or verification cost** while preserving the exact target and DAG reuse.
+
+For the selected ten-point target, the quotient exact-SAT formulation is smaller than the direct formulation:
+- minimality UNSAT: 196 -> 120 Boolean symbols and 4,523 -> 2,213 expression leaves;
+- witness SAT: 232 -> 147 Boolean symbols and 5,743 -> 2,933 expression leaves.
+
+Single-run Wolfram timings also favored the quotient formulation, but those timings are environment-specific and are not asymptotic evidence.
+
+A new explicit-table stabilizer lemma shows that all nonzero translation stabilizers can be recovered from same-label pairwise XOR differences in `O(m^2)` pair operations for an explicitly listed `m`-point partial table. A 10,000-table deterministic countercheck matched brute force with zero disagreements. The same aggregate is exactly the XOR autocorrelation and has a squared-Walsh-spectrum representation.
+
+The corrected active target is therefore:
+
+`construct hard partial table + charge construction cost + discover useful aggregate/symmetry at bounded cost + lower matched search/verification burden after routing costs + preserve DAG reuse + scale`.
+
+This does not change the open status of P versus NP.
