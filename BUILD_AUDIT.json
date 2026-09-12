@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "spaceUoid": "uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599",
+  "recordCount": 734,
+  "uniqueUoids": 734,
+  "allUoidsUnique": true,
+  "allUoidsSha256Form": true,
+  "microdataCoverage": 734,
+  "visibleControls": 0,
+  "visibleSurface": [
+    "I",
+    "R",
+    "P",
+    "O"
+  ],
+  "apiMethods": [
+    "search.simple",
+    "search.advanced",
+    "get",
+    "relations",
+    "traverse",
+    "microdata",
+    "microdataHTML",
+    "irpo",
+    "history",
+    "stats",
+    "all",
+    "help"
+  ],
+  "postMessageBridge": true,
+  "researchGraphNodes": 218,
+  "researchGraphEdges": 508,
+  "worldFragments": 6,
+  "syntaxCheck": {
+    "ok": true,
+    "stderr": ""
+  },
+  "privacyBoundary": "Research, public/reference materials, methods, language/cultural carriers and technical history may be connected. Private personal/family/intimate/legal/medical/financial/location/contact/account data are excluded."
+}
