@@ -1,0 +1,50 @@
+{
+  "status": "BOUNDED_FINITE_RESULT_WITH_STRUCTURAL_SELECTOR",
+  "p_vs_np": "OPEN",
+  "oracle_functions": 3310,
+  "index_words": 52,
+  "route_metric": "64-bit survivor-mask AND+popcount word operations; paired score charges two mask intersections per word",
+  "structural_selector": {
+    "pair_action_orbit_formula": "R_n(w)=(floor(w/2)+1)(n-w+1)",
+    "proof_scope": "unordered pairs {x,x xor t} under the stabilizer S_w x S_(n-w) of a weight-w translation, before observations",
+    "global_minimum_for_n_ge_3": "w=n, the all-ones translation",
+    "selected_translation_n4": 15,
+    "requires_circuit_class_scan": false
+  },
+  "orbit_counts_n4": [
+    {"n":4,"weight":1,"pair_action_orbits":4,"representative_translation":1},
+    {"n":4,"weight":2,"pair_action_orbits":6,"representative_translation":3},
+    {"n":4,"weight":3,"pair_action_orbits":4,"representative_translation":7},
+    {"n":4,"weight":4,"pair_action_orbits":3,"representative_translation":15}
+  ],
+  "routes": [
+    {"route":"generic_symmetry_aware","translation":null,"weight":null,"observations":5,"candidate_scores":56,"bitset_word_ops":2912,"survivor_path":[3310,1371,417,90,1,0]},
+    {"route":"paired_t1","translation":1,"weight":1,"observations":10,"candidate_scores":30,"bitset_word_ops":3120,"survivor_path":[3310,790,160,45,10,0]},
+    {"route":"paired_t3","translation":3,"weight":2,"observations":6,"candidate_scores":30,"bitset_word_ops":3120,"survivor_path":[3310,582,32,0]},
+    {"route":"paired_t7","translation":7,"weight":3,"observations":6,"candidate_scores":22,"bitset_word_ops":2288,"survivor_path":[3310,500,21,0]},
+    {"route":"paired_t15","translation":15,"weight":4,"observations":8,"candidate_scores":20,"bitset_word_ops":2080,"survivor_path":[3310,548,78,7,0]}
+  ],
+  "planning_result": {
+    "generic_word_ops": 2912,
+    "selected_word_ops": 2080,
+    "word_op_reduction_fraction": 0.2857142857142857,
+    "generic_candidate_scores": 56,
+    "selected_candidate_scores": 20,
+    "candidate_score_reduction_fraction": 0.6428571428571428,
+    "generic_observations": 5,
+    "selected_observations": 8,
+    "extra_observations": 3
+  },
+  "lifecycle_tradeoff": {
+    "model": "planning_word_ops + lambda * observations",
+    "selected_route_wins_when_lambda_less_than": 277.3333333333333,
+    "units": "64-bit word-op equivalents per retained observation",
+    "boundary": "parametric accounting only; lambda is not empirically calibrated"
+  },
+  "counterprobe": {
+    "first_step_survivor_selector": "chooses t=7 because 500 is the smallest first-step survivor count",
+    "matched_word_op_optimum_fixed_route": "t=15 with 2080 word ops",
+    "consequence": "a predictor must target the actual charged cost metric; fastest initial survivor shrink is not the same as lowest full planning cost"
+  },
+  "claim_boundary": "Exact finite n=4 planning result. The structural orbit formula is general for the stated group action, but no claim is made that the all-ones translation yields hard certificates or lower total cost for growing unrestricted circuit classes."
+}
