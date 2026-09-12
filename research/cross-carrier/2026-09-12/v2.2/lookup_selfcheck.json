@@ -1,0 +1,32 @@
+[
+  {
+    "kind": "claim",
+    "query": "P versus NP",
+    "found": 2,
+    "direct_selfcheck": true
+  },
+  {
+    "kind": "math",
+    "query": "Omega",
+    "found": 4,
+    "direct_selfcheck": true
+  },
+  {
+    "kind": "claim",
+    "query": "Shor/HSP",
+    "found": 1,
+    "direct_selfcheck": true
+  },
+  {
+    "kind": "claim",
+    "query": "parity",
+    "found": 5,
+    "direct_selfcheck": true
+  },
+  {
+    "kind": "payload",
+    "payload_id": "P00001",
+    "decoded": true,
+    "direct_selfcheck": true
+  }
+]
