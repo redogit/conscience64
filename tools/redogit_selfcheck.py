@@ -11,6 +11,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 SURFACE = ROOT / "research" / "cross-carrier" / "2026-09-12" / "v2.2"
 REPOSITORY_MANIFEST = SURFACE / "repository_manifest.json"
+V5_RESULT = SURFACE / "sql" / "SYMMETRY_AWARE_CONSTRUCTION_V5_RESULTS.json"
 PYTHON_FILES = (
     ROOT / "tools" / "verify_research_manifest.py",
     SURFACE / "cross_carrier_float64_space_codec.py",
@@ -29,6 +30,7 @@ JSON_FILES = (
     SURFACE / "sql" / "PARTIAL_TRANSLATION_STABILIZER_LEMMA_CHECK.json",
     SURFACE / "sql" / "STABILIZER_AGGREGATE_WALSH_CHECK.json",
     SURFACE / "sql" / "CONSTRUCTION_COST_RESULTS_2026-09-12.json",
+    V5_RESULT,
 )
 
 
@@ -75,6 +77,27 @@ def main() -> int:
     except Exception as exc:
         failures += 1
         print(f"FAIL contract: {exc}", file=sys.stderr)
+
+    try:
+        v5 = parsed_json[V5_RESULT]
+        assert isinstance(v5, dict)
+        assert v5.get("status") == "BOUNDED_FINITE_RESULT_WITH_STRUCTURAL_SELECTOR"
+        assert v5.get("p_vs_np") == "OPEN"
+        assert v5.get("oracle_functions") == 3310
+        selector = v5.get("structural_selector")
+        assert isinstance(selector, dict)
+        assert selector.get("selected_translation_n4") == 15
+        assert selector.get("requires_circuit_class_scan") is False
+        planning = v5.get("planning_result")
+        assert isinstance(planning, dict)
+        assert planning.get("generic_word_ops") == 2912
+        assert planning.get("selected_word_ops") == 2080
+        assert planning.get("generic_observations") == 5
+        assert planning.get("selected_observations") == 8
+        print("PASS SQL v5 bounded-result invariants")
+    except Exception as exc:
+        failures += 1
+        print(f"FAIL SQL v5 invariants: {exc}", file=sys.stderr)
 
     try:
         repo_manifest = parsed_json[REPOSITORY_MANIFEST]
