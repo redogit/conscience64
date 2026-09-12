@@ -4,11 +4,10 @@
   "repository": "redogit/conscience64",
   "current": {
     "id": "conscience64-static-research-main",
-    "status": "current-with-external-blocker",
+    "status": "current",
     "path": ".",
     "build": null,
-    "verify": "python3 tools/redogit_selfcheck.py",
-    "external_blocker": "GitHub Actions runs for this repository have repeatedly terminated before job scheduling; local runner-independent self-check remains the current verification carrier."
+    "verify": "python3 tools/redogit_selfcheck.py && python3 tools/verify_research_manifest.py research/cross-carrier/2026-09-12/v2.2/repository_manifest.json research/cross-carrier/2026-09-12/v2.2"
   },
   "predecessors": [
     { "id": "partial-base64-research-transport", "path": null, "retained": true },
@@ -20,7 +19,20 @@
     "rewrite_history": false
   },
   "boundary": {
-    "owns": ["privacy-safe public research surface", "carrier provenance", "deterministic identifiers", "research manifests", "runner-independent integrity checks"],
+    "owns": ["privacy-safe public research surface", "carrier provenance", "deterministic identifiers", "research manifests", "runner-independent integrity checks", "direct-Git CI verification"],
     "does_not_own": ["personal or family information", "private legal information", "medical information", "financial information", "claims that byte identity proves semantic truth"]
+  },
+  "verification": {
+    "workflow": ".github/workflows/redogit-local.yml",
+    "last_verified_run": 34719575880,
+    "conclusion": "success",
+    "checks": ["exact commit materialization", "REDOGIT compact-surface self-check", "repository-surface byte counts", "repository-surface SHA-256 hashes"],
+    "transport": "public Git fetch of exact GITHUB_SHA; no external GitHub Action dependencies",
+    "diagnostic_lineage": {
+      "standalone_scheduler_probe_run": 34719467106,
+      "standalone_scheduler_probe_conclusion": "success",
+      "prior_checkout_or_reusable_workflow_behavior": "startup_failure before job scheduling",
+      "interpretation": "The repository scheduler is healthy. The current verified workflow avoids the external Action path that reproduced startup failures; the exact repository policy cause is not asserted because Actions administration settings were not available through the connector."
+    }
   }
 }
