@@ -19,9 +19,11 @@ Every searchable object has a deterministic `uoid:sha256:...` identifier and mic
 
 ## REDOGIT
 
-This repository now follows an explicit regenerate-and-verify successor rule: keep provenance, keep failed carriers in history, prefer inspectable source and manifests, and regenerate derived artifacts instead of treating archive dumps as the source of truth.
+This repository follows an explicit regenerate-and-verify successor rule: keep provenance, keep failed carriers in history, prefer inspectable source and manifests, and regenerate derived artifacts instead of treating archive dumps as the source of truth.
 
-See [`REDOGIT.md`](REDOGIT.md).
+The current contract is **verified**. `.github/workflows/redogit-local.yml` materializes the exact public `$GITHUB_SHA` with Git, runs the compact REDOGIT self-check, and verifies byte counts and SHA-256 identities for the directly committed research surface. This action-free transport is deliberate: external Action/reusable-workflow paths reproduced pre-job `startup_failure` in this repository, while the direct scheduler probe and direct-Git verification path both schedule normally.
+
+See [`REDOGIT.md`](REDOGIT.md) and [`redogit.json`](redogit.json).
 
 ## Recovery carriers
 
@@ -31,23 +33,33 @@ See [`RECOVERY_CARRIER_MODEL.md`](RECOVERY_CARRIER_MODEL.md) for the loss/eviden
 
 ## Generated research checkpoints
 
-Generated Cross-Carrier / Float64 research material is preserved under [`research/cross-carrier/`](research/cross-carrier/). The 2026-09-12 package index records exact SHA-256 identities for the original, v2.1, v2.2, and SAT64/MCR checkpoints, while the v2.2 directory exposes its governing README, coordinate schema, exact UTF-8/Float64 codec, search utility, validation result, and byte manifest.
+Generated Cross-Carrier / Float64 research material is preserved under [`research/cross-carrier/`](research/cross-carrier/). The 2026-09-12 package index records exact SHA-256 identities for the original, v2.1, v2.2, and SAT64/MCR checkpoints.
+
+The v2.2 checkpoint deliberately keeps two manifest meanings separate:
+
+- `manifest.json` — the original **full generated-package inventory** and its expected artifacts;
+- `repository_manifest.json` — the **compact surface actually committed directly** in the repository and verified byte-for-byte in CI.
+
+Transport shards under `v2.2/transports/` remain provenance/recovery evidence; they are not silently promoted to directly materialized package files.
 
 See [`research/cross-carrier/2026-09-12/PACKAGE_INDEX.md`](research/cross-carrier/2026-09-12/PACKAGE_INDEX.md).
 
 The integrity rule is unchanged: a byte hash establishes identity, not semantic truth, proof weight, or independent corroboration. In particular, the preserved v2.2 state explicitly keeps `P ?= NP` as `OPEN`.
 
-To verify a materialized checkpoint against its manifest:
+To verify the current committed v2.2 surface:
 
 ```bash
-python tools/verify_research_manifest.py path/to/manifest.json path/to/checkpoint-root
+python3 tools/redogit_selfcheck.py
+python3 tools/verify_research_manifest.py \
+  research/cross-carrier/2026-09-12/v2.2/repository_manifest.json \
+  research/cross-carrier/2026-09-12/v2.2
 ```
 
 ## Corpus transport
 
 The browser corpus is transported through ordered `data-NN.txt` shards. Shard boundaries have no semantic meaning and do not define object identity.
 
-See [`data-manifest.json`](data-manifest.json) for the current browser-transport state. This transport is separate from generated research checkpoints; incomplete research archive shards are not kept on the current branch.
+See [`data-manifest.json`](data-manifest.json) for the current browser-transport state. This transport is separate from generated research checkpoints; incomplete research archive shards are not treated as complete current artifacts.
 
 ## GitHub Pages
 
