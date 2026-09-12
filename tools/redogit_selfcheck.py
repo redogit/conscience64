@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the compact Conscience64 REDOGIT source surface without CI."""
+"""Check the compact Conscience64 REDOGIT source surface without external Actions."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ JSON_FILES = (
     SURFACE / "coordinate_schema.json",
     SURFACE / "lookup_selfcheck.json",
     SURFACE / "manifest.json",
+    SURFACE / "repository_manifest.json",
     SURFACE / "validation.json",
 )
 
@@ -58,6 +59,19 @@ def main() -> int:
     except Exception as exc:
         failures += 1
         print(f"FAIL contract: {exc}", file=sys.stderr)
+
+    try:
+        repo_manifest = parsed_json[SURFACE / "repository_manifest.json"]
+        assert isinstance(repo_manifest, dict)
+        assert repo_manifest.get("schema") == "conscience64/repository-surface-manifest/v1"
+        assert repo_manifest.get("scope") == "compact repository surface"
+        assert repo_manifest.get("source_package_manifest") == "manifest.json"
+        assert isinstance(repo_manifest.get("files"), list)
+        assert repo_manifest["files"]
+        print("PASS repository/source-package manifest separation")
+    except Exception as exc:
+        failures += 1
+        print(f"FAIL repository manifest: {exc}", file=sys.stderr)
 
     if failures:
         print(f"REDOGIT self-check failed: {failures} surface(s)", file=sys.stderr)
