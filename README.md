@@ -23,6 +23,14 @@ Historical/recovery material is modeled as a provenance-preserving carrier graph
 
 See [`RECOVERY_CARRIER_MODEL.md`](RECOVERY_CARRIER_MODEL.md) for the loss/evidence/lineage model and adaptive cross-carrier coordinate overlay.
 
+## Generated research checkpoints
+
+Generated Cross-Carrier / Float64 research material is preserved under [`research/cross-carrier/`](research/cross-carrier/). The 2026-09-12 package index records exact SHA-256 identities for the original, v2.1, v2.2, and SAT64/MCR checkpoints, while the v2.2 directory exposes its governing README, coordinate schema, exact UTF-8/Float64 codec, search utility, validation result, and byte manifest.
+
+See [`research/cross-carrier/2026-09-12/PACKAGE_INDEX.md`](research/cross-carrier/2026-09-12/PACKAGE_INDEX.md).
+
+The integrity rule is unchanged: a byte hash establishes identity, not semantic truth, proof weight, or independent corroboration. In particular, the preserved v2.2 state explicitly keeps `P ?= NP` as `OPEN`.
+
 ## Corpus transport
 
 The encoded corpus is transported through ordered `data-NN.txt` shards. Shard boundaries have no semantic meaning and do not define object identity.
