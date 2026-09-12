@@ -15,6 +15,7 @@ PYTHON_FILES = (
     ROOT / "tools" / "verify_research_manifest.py",
     SURFACE / "cross_carrier_float64_space_codec.py",
     SURFACE / "search_float64_space.py",
+    SURFACE / "sql" / "partial_translation_stabilizer.py",
 )
 JSON_FILES = (
     ROOT / "redogit.json",
@@ -23,6 +24,10 @@ JSON_FILES = (
     SURFACE / "manifest.json",
     REPOSITORY_MANIFEST,
     SURFACE / "validation.json",
+    SURFACE / "sql" / "SQL_V2_RESULTS_2026-09-12.json",
+    SURFACE / "sql" / "SQL_V3_COST_RESULTS_2026-09-12.json",
+    SURFACE / "sql" / "PARTIAL_TRANSLATION_STABILIZER_LEMMA_CHECK.json",
+    SURFACE / "sql" / "STABILIZER_AGGREGATE_WALSH_CHECK.json",
 )
 
 
