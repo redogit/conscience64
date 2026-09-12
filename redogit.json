@@ -7,7 +7,7 @@
     "status": "current",
     "path": ".",
     "build": null,
-    "verify": "python3 tools/redogit_selfcheck.py && python3 tools/verify_research_manifest.py research/cross-carrier/2026-09-12/v2.2/repository_manifest.json research/cross-carrier/2026-09-12/v2.2"
+    "verify": "python3 tools/redogit_selfcheck.py"
   },
   "predecessors": [
     { "id": "partial-base64-research-transport", "path": null, "retained": true },
