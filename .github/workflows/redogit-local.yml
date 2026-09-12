@@ -16,8 +16,7 @@ on:
       - '.github/workflows/redogit-local.yml'
   workflow_dispatch:
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: conscience64-redogit-${{ github.ref }}
@@ -27,7 +26,16 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - name: Materialize exact public commit without external Actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Check compact REDOGIT surface
         run: python3 tools/redogit_selfcheck.py
       - name: Verify current research manifest bytes and hashes
