@@ -17,4 +17,20 @@ Conscience64API.irpo({ I: "black hole", R: {}, P: { action: "search.simple" } })
 
 Every searchable object has a deterministic `uoid:sha256:...` identifier and microdata.
 
+## Recovery carriers
+
+Historical/recovery material is modeled as a provenance-preserving carrier graph rather than a flat quote or document corpus. Work, witness, edition, scan, transcription, translation, and reconstruction identities remain distinct; `UNKNOWN` is not treated as `ABSENT`.
+
+See [`RECOVERY_CARRIER_MODEL.md`](RECOVERY_CARRIER_MODEL.md) for the loss/evidence/lineage model and adaptive cross-carrier coordinate overlay.
+
+## Corpus transport
+
+The encoded corpus is transported through ordered `data-NN.txt` shards. Shard boundaries have no semantic meaning and do not define object identity.
+
+See [`data-manifest.json`](data-manifest.json) for the current transport state. The manifest currently distinguishes six payload shards from one reserved continuation shard so the recovery corpus can expand without inventing content for an empty slot.
+
+## GitHub Pages
+
+This repository is a static site and does not require a GitHub Actions deployment workflow. Configure GitHub Pages to publish from the **`main` branch / repository root**.
+
 The published corpus is privacy-safe; personal/family/private information is outside the site.
