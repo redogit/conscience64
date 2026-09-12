@@ -1,0 +1,49 @@
+name: Deploy Conscience64 to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'data-manifest.json'
+      - 'data-*.txt'
+      - 'API.md'
+      - 'BUILD_AUDIT.json'
+      - '.nojekyll'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: conscience64-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Build static publish surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir _site
+          cp index.html app.js data-manifest.json data-*.txt API.md BUILD_AUDIT.json .nojekyll _site/
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
