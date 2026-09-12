@@ -1,0 +1,55 @@
+{
+  "schema": "conscience64.research-ingress/v3",
+  "extends": "research/source-ingress/2026-09-12/INGRESS_MANIFEST_v2.json",
+  "forward_only": true,
+  "batch": "source-native-method-and-4d",
+  "admitted": [
+    {
+      "source_name": "R3 Scientific Method.md",
+      "library_file_id": "file_00000000834081f58f8d03cbd2c971c2",
+      "library_version": 1,
+      "source_bytes": 2275,
+      "source_sha256": "5cbb1d11a5c50f6bbb6ea37e2362aaeb0a482a534b378d8832b4ae5d3aa2ac26",
+      "transport": "gzip(level=9,mtime=0)",
+      "transport_bytes": 1211,
+      "transport_sha256": "d794cb2fd7fdde8fdc8b2b640532341ed6cb8689ea8d5945804b5f10ff107c72",
+      "git_blob_sha": "290cb76c931886942600088917c8eca60a92ef9b",
+      "destination": "research/source-ingress/2026-09-12/source-native/r3/R3 Scientific Method.md.gz",
+      "authority_boundary": "method/orchestration source; not evidence authority"
+    },
+    {
+      "source_name": "Tiny Babel.md",
+      "library_file_id": "file_00000000ad8881f5b4e2c322edff2be5",
+      "library_version": 1,
+      "source_bytes": 2920,
+      "source_sha256": "360b3d603f01d65acb753abb41d82fdad0c3d7beb4cb33205c3b81c2baa0c409",
+      "transport": "gzip(level=9,mtime=0)",
+      "transport_bytes": 1476,
+      "transport_sha256": "7cae6e74cb881db4acea3648f338404b1eff6b7f0f2a400372020abc23156be7",
+      "git_blob_sha": "776a1e8518a53b5c66f6c959df24a2ab337c4ce0",
+      "destination": "research/source-ingress/2026-09-12/source-native/tiny-babel/Tiny Babel.md.gz",
+      "authority_boundary": "historical predecessor/source-native evidence; not current Orbit authority"
+    }
+  ],
+  "pending_exact_transport": [
+    {
+      "source_name": "TBCL Context Language Lab.md",
+      "library_file_id": "file_00000000234081f5995e612c9e5fca46",
+      "source_bytes": 2769,
+      "source_sha256": "56f42e94678baa45d5b413ce5604806447fc797b3ed5374a2ad68bc0a7a4f92d",
+      "reason": "connector submission mutated a payload character; staging blobs intentionally unreferenced"
+    },
+    {
+      "source_name": "FOUR_D_CODEC_OBSERVER_RECOVERY_PACKET_v1.0.md",
+      "library_file_id": "file_0000000013dc81f5ba665dfe277a86cd",
+      "source_bytes": 13831,
+      "source_sha256": "5a8387a5e087b99a945e1dc9b08344913dac3658ec87a62b410b56a0ce14f07a",
+      "internal_revision_note": "file name says v1.0; content identifies Revision v1.1 — preserve both facts",
+      "reason": "held until a byte-exact transport path passes object-hash verification"
+    }
+  ],
+  "rejected_staging": [
+    {"git_blob_sha":"ad5779344c4855686a7be4c9c3145fe5be3337cd","source":"TBCL gzip binary attempt","state":"UNREFERENCED"},
+    {"git_blob_sha":"1adf1f1b6474011e2092b8c298d369d9ff28bc9b","source":"TBCL gzip-base64 text attempt","state":"UNREFERENCED"}
+  ]
+}
