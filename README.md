@@ -17,6 +17,12 @@ Conscience64API.irpo({ I: "black hole", R: {}, P: { action: "search.simple" } })
 
 Every searchable object has a deterministic `uoid:sha256:...` identifier and microdata.
 
+## REDOGIT
+
+This repository now follows an explicit regenerate-and-verify successor rule: keep provenance, keep failed carriers in history, prefer inspectable source and manifests, and regenerate derived artifacts instead of treating archive dumps as the source of truth.
+
+See [`REDOGIT.md`](REDOGIT.md).
+
 ## Recovery carriers
 
 Historical/recovery material is modeled as a provenance-preserving carrier graph rather than a flat quote or document corpus. Work, witness, edition, scan, transcription, translation, and reconstruction identities remain distinct; `UNKNOWN` is not treated as `ABSENT`.
@@ -31,11 +37,17 @@ See [`research/cross-carrier/2026-09-12/PACKAGE_INDEX.md`](research/cross-carrie
 
 The integrity rule is unchanged: a byte hash establishes identity, not semantic truth, proof weight, or independent corroboration. In particular, the preserved v2.2 state explicitly keeps `P ?= NP` as `OPEN`.
 
+To verify a materialized checkpoint against its manifest:
+
+```bash
+python tools/verify_research_manifest.py path/to/manifest.json path/to/checkpoint-root
+```
+
 ## Corpus transport
 
-The encoded corpus is transported through ordered `data-NN.txt` shards. Shard boundaries have no semantic meaning and do not define object identity.
+The browser corpus is transported through ordered `data-NN.txt` shards. Shard boundaries have no semantic meaning and do not define object identity.
 
-See [`data-manifest.json`](data-manifest.json) for the current transport state. The manifest currently distinguishes six payload shards from one reserved continuation shard so the recovery corpus can expand without inventing content for an empty slot.
+See [`data-manifest.json`](data-manifest.json) for the current browser-transport state. This transport is separate from generated research checkpoints; incomplete research archive shards are not kept on the current branch.
 
 ## GitHub Pages
 
