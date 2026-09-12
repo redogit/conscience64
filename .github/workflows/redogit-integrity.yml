@@ -1,0 +1,39 @@
+name: REDOGIT integrity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/**'
+      - 'research/cross-carrier/**'
+      - '.github/workflows/redogit-integrity.yml'
+  pull_request:
+    paths:
+      - 'tools/**'
+      - 'research/cross-carrier/**'
+      - '.github/workflows/redogit-integrity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify-source-surface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Compile Python tools
+        run: |
+          python3 -m py_compile tools/verify_research_manifest.py
+          python3 -m py_compile research/cross-carrier/2026-09-12/v2.2/cross_carrier_float64_space_codec.py
+          python3 -m py_compile research/cross-carrier/2026-09-12/v2.2/search_float64_space.py
+      - name: Parse committed JSON surfaces
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('research/cross-carrier/2026-09-12/v2.2')
+          for name in ['coordinate_schema.json', 'lookup_selfcheck.json', 'manifest.json', 'validation.json']:
+              with (root / name).open(encoding='utf-8') as stream:
+                  json.load(stream)
+              print('PASS', name)
+          PY
