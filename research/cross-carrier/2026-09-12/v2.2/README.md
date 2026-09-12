@@ -109,13 +109,7 @@ Exact finite checks:
 - exact partial NAND DAG minimum = 8 (7 gates UNSAT, 8 gates SAT);
 - formula-to-DAG reuse gain = 5 gates.
 
-The symmetry quotient reduces ten observations to five, but the explicit staged route does not pay for itself: quotient target minimum 7 + quotient-coordinate transform minimum 8 = 15 staged gates versus the direct 8-gate DAG. This is `COST_MIGRATION`, not a shortcut. The 15-gate number is only for the declared separated stages; it is not a general lower bound against circuits that share work across the boundary.
-
-Current stronger search cell:
-
-`hard AND symmetry AND DAG-sharing AND quotient-benefit-after-transform-cost`
-
-The selected full-rank witness fails the final condition. P versus NP remains OPEN.
+The symmetry quotient reduces ten observations to five. The separated transform-plus-quotient construction costs 15 gates versus the direct exact 8-gate DAG. This is useful as a cost-migration counterprobe, but not as a lower bound against circuits sharing work across the stage boundary.
 
 ## SQL frontier audit v3 — structural correction
 The v2 gate-count success criterion is superseded. Any exact staged transform/quotient construction is itself a legal direct NAND circuit, so it cannot have fewer gates than the exact direct optimum by definition. The useful question is whether a discovered quotient lowers **construction, discovery, planning, search, or verification cost** while preserving the exact target and DAG reuse.
@@ -128,8 +122,34 @@ Single-run Wolfram timings also favored the quotient formulation, but those timi
 
 A new explicit-table stabilizer lemma shows that all nonzero translation stabilizers can be recovered from same-label pairwise XOR differences in `O(m^2)` pair operations for an explicitly listed `m`-point partial table. A 10,000-table deterministic countercheck matched brute force with zero disagreements. The same aggregate is exactly the XOR autocorrelation and has a squared-Walsh-spectrum representation.
 
-The corrected active target is therefore:
+## SQL frontier audit v4 — construction cost
+A fixed translation can reduce greedy planning work, but exhaustive carrier selection can cost more than generic greedy. Input-permutation symmetry contracts nonzero translations from `2^n-1` candidates to `n` Hamming-weight orbit representatives, separating:
 
-`construct hard partial table + charge construction cost + discover useful aggregate/symmetry at bounded cost + lower matched search/verification burden after routing costs + preserve DAG reuse + scale`.
+`carrier use != carrier discovery != carrier selection`.
+
+The v4 exact repository evidence is verified by the REDOGIT local workflow.
+
+## SQL frontier audit v5 — matched planning representation
+v5 gives generic and paired planners the same 3,310-row bitset index and dynamic `S_4` orbit compression.
+
+For a translation of Hamming weight `w`, the number of unordered pair-action orbits before observations is
+
+`R_n(w)=(floor(w/2)+1)(n-w+1)`.
+
+For every `n>=3`, this is uniquely minimized by the all-ones translation. At `n=4`, the selector therefore chooses `t=15` without scanning the 3,310-function class.
+
+Measured exactly in the finite indexed planner:
+- symmetry-aware generic: 56 candidate scores, 2,912 charged 64-bit word operations, 5 observations;
+- paired `t=15`: 20 candidate scores, 2,080 word operations, 8 observations.
+
+The selected route reduces score count by 64.3% and declared planning word operations by 28.6%, while retaining three more observations. Under the parametric lifecycle cost `planning + lambda * observations`, it wins exactly when `lambda < 277.333...`; `lambda` is not empirically calibrated.
+
+A counterprobe rejects the wrong predictor: the best immediate survivor shrink chooses `t=7`, while the cheapest complete fixed paired route under the matched execution metric is `t=15`.
+
+Current distinction:
+
+`best immediate semantic shrink != cheapest complete execution plan`.
+
+The active obligation is to test whether this structural selector continues to yield hard, low-total-cost partial tables as variable count and circuit budget grow, while charging construction, representation, certificate length, verification, and DAG reuse.
 
 This does not change the open status of P versus NP.
