@@ -1,0 +1,114 @@
+{
+  "version": 2.0,
+  "boundary": "Coordinates are structured index/integrity carriers, not semantic embeddings and not proof weights.",
+  "spaces": {
+    "ENTITY64": {
+      "shape": [
+        2395,
+        64
+      ],
+      "dimensions": {
+        "0": "schema_version",
+        "1": "entity_type_code",
+        "2": "stable_entity_id_52",
+        "3": "branch_id_52",
+        "4": "status_code",
+        "5": "evidence_class_id_52",
+        "6": "provenance_id_52",
+        "7": "empirical",
+        "8": "bounded",
+        "9": "proof",
+        "10": "counterexample",
+        "11": "unresolved",
+        "12": "ordinal",
+        "13": "depth",
+        "14": "generation",
+        "15": "utf8_text_bytes",
+        "16": "support_count",
+        "17": "counter_count",
+        "18": "bound_count",
+        "19": "corroboration_count",
+        "20": "distinct_lineages",
+        "21": "relation_count",
+        "22": "artifact_bytes",
+        "23": "math_count",
+        "24..31": "sorted numeric metrics",
+        "32..39": "key fingerprint8",
+        "40..47": "content fingerprint8",
+        "48..55": "source fingerprint8",
+        "56..63": "full-record fingerprint8"
+      }
+    },
+    "RELATION64": {
+      "shape": [
+        2392,
+        64
+      ],
+      "dimensions": {
+        "0": "schema_version",
+        "1": "relation_type_code",
+        "2": "stable_relation_id_52",
+        "3": "source_entity_id_52",
+        "4": "target_entity_id_52",
+        "5": "ordinal",
+        "6": "weight",
+        "7": "empirical",
+        "8": "independent",
+        "9": "bounded",
+        "10..17": "source fingerprint",
+        "18..25": "target fingerprint",
+        "26..33": "relation fingerprint",
+        "34..41": "source/provenance fingerprint",
+        "56..63": "full-record fingerprint"
+      }
+    },
+    "MATH64": {
+      "shape": [
+        1822,
+        64
+      ],
+      "dimensions": {
+        "0": "schema_version",
+        "1": "math_type",
+        "2": "stable_math_id_52",
+        "3": "source_artifact_id_52",
+        "4": "ordinal",
+        "5": "source_line",
+        "6": "expression_utf8_bytes",
+        "7": "token_count",
+        "8": "proved_flag",
+        "9": "bounded_flag",
+        "10..17": "expression fingerprint",
+        "18..25": "context fingerprint",
+        "26..33": "artifact fingerprint",
+        "56..63": "full-record fingerprint"
+      }
+    },
+    "SEARCH64": {
+      "shape": [
+        15,
+        64
+      ],
+      "dimensions": {
+        "0": "schema_version",
+        "1": "phase_code",
+        "2": "stable_search_id_52",
+        "3": "ordinal",
+        "4": "depth",
+        "5": "survived",
+        "6": "failed",
+        "7": "unresolved",
+        "8..15": "observation fingerprint",
+        "16..23": "action fingerprint",
+        "24..31": "result fingerprint",
+        "32..39": "necessity fingerprint",
+        "40..47": "source fingerprint",
+        "56..63": "full-record fingerprint"
+      }
+    },
+    "EXACT_UTF8_F64": {
+      "packing": "6 UTF-8 bytes per Float64 as exact 48-bit unsigned integer",
+      "authority": "This layer preserves exact source text. Coordinate64 layers only index it."
+    }
+  }
+}
