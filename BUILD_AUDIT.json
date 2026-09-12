@@ -33,12 +33,30 @@
   "semanticIdentityIndependentOfShardBoundaries": true,
   "unknownDistinctFromAbsent": true,
   "sourceLineageMustSurviveTransforms": true,
+  "researchCheckpoint": {
+    "path": "research/cross-carrier/2026-09-12/v2.2",
+    "sourcePackageManifest": "research/cross-carrier/2026-09-12/v2.2/manifest.json",
+    "repositorySurfaceManifest": "research/cross-carrier/2026-09-12/v2.2/repository_manifest.json",
+    "manifestMeaningsSeparated": true,
+    "directSurfaceByteAndSha256Verification": true,
+    "pVsNpStatus": "OPEN"
+  },
+  "redogitVerification": {
+    "status": "PASS",
+    "workflow": ".github/workflows/redogit-local.yml",
+    "firstReconciledPassRun": 34719575880,
+    "promotedCurrentPassRun": 34719651062,
+    "externalActionDependencyRequired": false,
+    "exactPublicCommitMaterialization": true,
+    "schedulerProbeRun": 34719467106,
+    "schedulerProbeConclusion": "success"
+  },
   "pagesDeploymentMode": "branch-static",
   "pagesSourceRequired": "main branch / repository root",
   "pagesWorkflowRequired": false,
   "syntaxCheck": {
     "ok": true,
-    "basis": "prior browser API audit; index executable content unchanged except previously missing referenced continuation shard now exists"
+    "basis": "REDOGIT compact-surface self-check and repository-surface manifest verification pass in GitHub-hosted CI"
   },
   "privacyBoundary": "Research, public/reference materials, methods, language/cultural carriers and technical history may be connected. Private personal/family/intimate/legal/medical/financial/location/contact/account data are excluded."
 }
