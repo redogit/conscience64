@@ -4,6 +4,12 @@ Privacy-safe universal research space hosted as a static GitHub Pages applicatio
 
 Visible surface: **I / R / P / O**.
 
+## Research projects
+
+The research portfolio now has a compact project map that preserves both accomplishments and failures instead of presenting only successes.
+
+See [`research/projects/README.md`](research/projects/README.md) for the current highlights, lowlights, claim ceilings, and unresolved remainders across Cross-Carrier Wave, Orbit, Tiny Babel/TBCL, Operator Moonshot, model experiments, geometry/codecs, and historical recovery.
+
 Browser API: `window.Conscience64API`.
 
 Examples:
