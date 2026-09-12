@@ -5,7 +5,7 @@
   "source_package_manifest": "manifest.json",
   "interpretation": "manifest.json preserves the generated full-package inventory; this manifest describes byte artifacts committed directly to the compact v2.2 repository surface, including selected nested verification evidence.",
   "files": [
-    {"file":"README.md","bytes":5569,"sha256":"19700865233138f34fbc503c4dca213138d4379ecb44c8a90aa6c643fa0bbf48"},
+    {"file":"README.md","bytes":7145,"sha256":"9ecac0372e76f2df83f1d0dc52b993851af671419fa21febd58960c0f5a1104f"},
     {"file":"coordinate_schema.json","bytes":3176,"sha256":"387d1b10011bc79f388c0a639086a8d07574bbebab077ef6e820346b805114d3"},
     {"file":"cross_carrier_float64_space_codec.py","bytes":1970,"sha256":"89611be2ff396b580c77bb0d23cade18eb325cdce50ad53c8377921088dbe936"},
     {"file":"lookup_selfcheck.json","bytes":510,"sha256":"a7b218e73249f9b7e208f3274c75b44a189062a4ce09be4ee295d1546ac6f634"},
@@ -15,7 +15,15 @@
     {"file":"validation.json","bytes":216,"sha256":"a3fe7f90e91db5e58f30ccf06234161a07967017cf037a9b7ba9b2ea001eccad"},
     {"file":"sql/SQL_V2_FINDINGS_2026-09-12.md","bytes":1557,"sha256":"90ff0224eceaa6d0ff69a38a84ad102936ac6f30f9768bdb0634c6a924294f1e"},
     {"file":"sql/frontier_mutilation_v2_2026-09-12.sql","bytes":555,"sha256":"5f09ddbe9f1f97f3a68ddddb597d129aeef8d111a150a87562cf48c3ebe8fffd"},
-    {"file":"sql/SQL_V2_RESULTS_2026-09-12.json","bytes":3232,"sha256":"066ee519cbd59af0e8dedee65c5b97e7eff676087963389b0142b5714cc6e015"}
+    {"file":"sql/SQL_V2_RESULTS_2026-09-12.json","bytes":3232,"sha256":"066ee519cbd59af0e8dedee65c5b97e7eff676087963389b0142b5714cc6e015"},
+    {"file":"sql/SQL_V3_STRUCTURAL_CORRECTION_2026-09-12.md","bytes":2189,"sha256":"97bafa6a84e9f6a1f65e07a69e44bd2847ab9e479375fb37b57e23a15206ee88"},
+    {"file":"sql/frontier_mutilation_v3_cost.sql","bytes":403,"sha256":"5d942d9213dcb88838a529a2be433dcdb054083999d52865f143f1371f9e19f0"},
+    {"file":"sql/SQL_V3_COST_RESULTS_2026-09-12.json","bytes":2227,"sha256":"e1aec385b6d253ae54619d98e83a98c1978e8b5f46569affe6a39020a8ed545f"},
+    {"file":"sql/PARTIAL_TRANSLATION_STABILIZER_LEMMA.md","bytes":1910,"sha256":"7845e1e926b6ef0f2ac6ba3833d1bd21adf826ae3d365ae8cd768cba7478a72f"},
+    {"file":"sql/partial_translation_stabilizer.py","bytes":395,"sha256":"1d9b227922e9102e2d81111716c2894b298a6c22c71e11423dcf51f000db7dd9"},
+    {"file":"sql/PARTIAL_TRANSLATION_STABILIZER_LEMMA_CHECK.json","bytes":552,"sha256":"a860e05722cd96bc7d1413aad6a813767037073598b7e9e0132c118f9eec6bd0"},
+    {"file":"sql/STABILIZER_AGGREGATE_IDENTITY.md","bytes":1679,"sha256":"dec5c8cf50a796eb72bafca035ea76ecd379329f9b8fc53e1748c848125c9eb1"},
+    {"file":"sql/STABILIZER_AGGREGATE_WALSH_CHECK.json","bytes":884,"sha256":"46a5bcca7fca01d97626963aac043390a07e16d3532ddc5992b3941444c6467b"}
   ],
   "not_directly_materialized_from_source_package": [
     "COORDINATE_SPACE_FLOAT64.npz",
@@ -30,5 +38,5 @@
     "payload_catalog.json",
     "relations.jsonl"
   ],
-  "transport_note": "transports/ contains retained transport shards. They are provenance/recovery evidence and are not counted as directly materialized package files by this manifest. SQL v2 evidence is explicitly included above and verified byte-for-byte by the repository self-check."
+  "transport_note": "transports/ contains retained transport shards. They are provenance/recovery evidence and are not counted as directly materialized package files by this manifest. SQL v2/v3 evidence is explicitly included above and verified byte-for-byte by the repository self-check."
 }
