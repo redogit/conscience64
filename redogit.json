@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/redogit/redogit/main/REDOGIT.schema.json",
+  "schema": "redogit/v1",
+  "repository": "redogit/conscience64",
+  "current": {
+    "id": "conscience64-static-research-main",
+    "status": "current-with-external-blocker",
+    "path": ".",
+    "build": null,
+    "verify": "python3 tools/redogit_selfcheck.py",
+    "external_blocker": "GitHub Actions runs for this repository have repeatedly terminated before job scheduling; local runner-independent self-check remains the current verification carrier."
+  },
+  "predecessors": [
+    { "id": "partial-base64-research-transport", "path": null, "retained": true },
+    { "id": "cross-carrier-v2.2-checkpoint", "path": "research/cross-carrier/2026-09-12/v2.2", "retained": true }
+  ],
+  "history_policy": {
+    "preserve_predecessors": true,
+    "preserve_failures": true,
+    "rewrite_history": false
+  },
+  "boundary": {
+    "owns": ["privacy-safe public research surface", "carrier provenance", "deterministic identifiers", "research manifests", "runner-independent integrity checks"],
+    "does_not_own": ["personal or family information", "private legal information", "medical information", "financial information", "claims that byte identity proves semantic truth"]
+  }
+}
