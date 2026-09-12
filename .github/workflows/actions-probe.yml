@@ -1,0 +1,13 @@
+name: Actions Startup Probe
+
+on:
+  push:
+    paths:
+      - ".github/actions-probe.txt"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Runner started
+        run: echo "GitHub Actions runner started successfully"
