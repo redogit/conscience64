@@ -2,22 +2,25 @@
 
 Status: `USER_ATTESTED_CARRIER_NOT_YET_LOCATED`
 
+## Correction
+
+Fuzzball is an older code/research project and is **not related to black-hole/fuzzball physics**. Earlier recovery work incorrectly followed the black-hole meaning of the word. That interpretation is rejected and must not be propagated.
+
 ## What is established
 
-The user states that fuzzball research definitely existed in previous code.
+The user states that Fuzzball research definitely existed in previous code stored in the ChatGPT Library on this site.
 
-This record preserves that statement as a recovery obligation. It does **not** claim that any currently recovered artifact is the fuzzball implementation.
+This record preserves that statement as a recovery obligation. It does **not** claim that any currently recovered neighboring artifact is the Fuzzball implementation.
 
-## Search result as of 2026-09-12
+## Library search state — 2026-09-12
 
-No trustworthy direct `fuzzball`, `fuzz ball`, `fuzzy ball`, black-hole microstate, Mathur, D1-D5, horizonless-black-hole, or Hawking-information-paradox identifier was found in the currently indexed Library corpus or current `redogit/conscience64` code search.
+No current indexed filename contains `fuzzball`, `fuzz ball`, `fuzzy ball`, or `ball` in a way that resolves the project identity. Literal semantic search is noisy and therefore does not establish absence.
 
-The only literal `fuzz*` code currently identified elsewhere in the recovered corpus is differential fuzz testing for EDG components. That is explicitly **not** classified as the missing fuzzball research.
+Raw Library chronology is the primary recovery path.
 
-## Earliest surviving neighboring code lineage
+### Earliest surviving neighboring code lineage
 
-Library storage chronology exposes several older branches that were not fully represented by later simplified project indexes:
-
+- 2026-02-22 through 2026-02-26 — Pareidolia Guard family
 - 2026-02-27 — `sliding_window_spacy.py`
 - 2026-02-28 — `so3_sliding_window.py`
 - 2026-02-28 — `so3_2ring.py`
@@ -25,32 +28,59 @@ Library storage chronology exposes several older branches that were not fully re
 - 2026-03-08 — `equilibrium_multifractal_ssld.zip`
 - 2026-03-08 — `newton_fractal_scan.py`
 - 2026-03-08 — `run_experiment.py`
-- 2026-03 onward — fractal search / unrolling / mirror sensing / connected geometry families
+- 2026-03-17 through 2026-03-24 — PulseNet GP package lineage
+- 2026-03-27 — staged migration / point-transition / W1-divergence evidence family
+- 2026-03-27 — `unrolled_fractal.py`
+- 2026-03-28 — angled-wrapper, spinning-fractal, mirror-sensing family
+- 2026-03-31 — fractal axiom generator, connected-search 2D/3D, bidirectional fractal-tree family
+- 2026-04-23 — `Topographical Fractal3DSystem Backbone` / `fractal-backbone.zip`
 
-Direct inspection found:
+### April 23 integrated 3D branch
 
-- the SO(3) files are non-abelian sliding-window sequence models, not fuzzball physics;
-- the equilibrium multifractal SSLD archives are multiscale/equilibrium latent-model research and contain no identified fuzzball/black-hole vocabulary;
-- the surviving fractal/mirror family is geometrically adjacent but has not been proven to be the fuzzball project and must not be relabeled by resemblance.
+The April branch is explicitly named `Topographical Fractal3DSystem Backbone` in its README. It implements:
+
+- sparse JavaScript octree state;
+- symbolic topographical refinement;
+- branch/fold/cavity hints;
+- WebGL2 point-cloud rendering;
+- WebAssembly metric helpers;
+- a lightweight search/evaluation interface.
+
+A later `FRACTAL3D_RESEARCH_EXPORT.md` preserves this lineage as research on fractal axioms, computable fractals, 3D recursive generation, connectedness, branching/folding, divide-and-conquer generative grids, many-small-network architectures, and the JavaScript/WebAssembly/WebGL backbone.
+
+Neither the original April package nor the later export contains the literal name `Fuzzball`. Therefore this branch is a **candidate neighboring carrier only**, not an identity match.
+
+## Explicit non-equivalences
+
+Do not identify Fuzzball with any of the following solely by semantic resemblance:
+
+- black-hole physics;
+- SO(3) sliding-window work;
+- equilibrium multifractal SSLD;
+- Newton fractal scanning;
+- PulseNet;
+- fractal unroll / mirror sensing;
+- connected 3D fractal search;
+- Topographical Fractal3DSystem.
+
+Any relation to those branches must be independently recovered from source history, code comments, chat provenance, archive membership, or user confirmation.
 
 ## Recovery rule
 
-Do not substitute a neighboring project for the missing carrier.
-
 Identity preference:
 
-1. exact historical source/code artifact;
-2. exact archive member or source hash;
-3. direct historical pointer naming the artifact;
-4. user-attested relation plus independently matching code evidence;
+1. exact historical source/code artifact carrying the Fuzzball name or explicit project marker;
+2. exact archive member/source hash plus provenance tying it to Fuzzball;
+3. direct historical pointer/conversation naming the artifact;
+4. user-attested relation plus independently matching source evidence;
 5. otherwise remain `UNRESOLVED`.
 
 Semantic similarity alone is insufficient.
 
 ## Current bounded conclusion
 
-The fuzzball branch is presently a **known missing historical carrier**, not evidence of nonexistence.
+Fuzzball is presently a **known missing historical carrier in the Library recovery graph**, not evidence of nonexistence.
 
 `UNKNOWN != ABSENT`.
 
-When the source is recovered, append its path/hash/chronology and relationship to neighboring branches. Do not overwrite this gap record; preserve the transition from unresolved to recovered.
+When the source is recovered, append its exact Library file ID/path/hash/chronology and relationship to neighboring branches. Preserve this correction and transition history; do not silently rewrite the earlier error away.
