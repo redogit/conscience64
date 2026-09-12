@@ -1,0 +1,53 @@
+{
+  "status": "BOUNDED_FINITE_COMPUTATION_PLUS_STRUCTURAL_CORRECTION",
+  "p_vs_np": "OPEN",
+  "timing_boundary": "Single Wolfram kernel timings. Encoding symbol/leaf counts are exact for the declared formulation; timings are environment-specific.",
+  "results": {
+    "invariant": [
+      {
+        "invariant_id": "OPTIMAL_DIRECT_DOMINATES_STAGED",
+        "statement": "For any exact staged transform->quotient->target NAND circuit C_stage implementing partial target P, the exact direct circuit optimum C*(P) satisfies C*(P) <= size(C_stage).",
+        "consequence": "Do not judge a staged quotient route by whether it beats the exact direct optimum in output gate count. Judge discovery, planning, verification, or matched restricted-search cost while preserving exactness.",
+        "status": "PROVED_STRUCTURAL"
+      }
+    ],
+    "search_cost": [
+      {
+        "decision_role": "minimality_unsat",
+        "direct_symbols": 196,
+        "quotient_symbols": 120,
+        "symbol_ratio": 0.612245,
+        "direct_leaves": 4523,
+        "quotient_leaves": 2213,
+        "leaf_ratio": 0.489277,
+        "direct_seconds": 0.316046,
+        "quotient_seconds": 0.024222,
+        "observed_speedup": 13.048
+      },
+      {
+        "decision_role": "witness_sat",
+        "direct_symbols": 232,
+        "quotient_symbols": 147,
+        "symbol_ratio": 0.633621,
+        "direct_leaves": 5743,
+        "quotient_leaves": 2933,
+        "leaf_ratio": 0.510709,
+        "direct_seconds": 0.882281,
+        "quotient_seconds": 0.024084,
+        "observed_speedup": 36.633
+      }
+    ],
+    "stabilizer_discovery": [
+      {
+        "candidate_key": "K10-T7-M48579-V33090",
+        "explicit_table_size": 10,
+        "ambient_dimension": 4,
+        "stabilizer_json": "[7]",
+        "method": "same-label pairwise XOR-difference counting",
+        "pair_complexity": "O(m^2) pair operations; O(m^2 n) bit complexity",
+        "dense_fourier_complexity": "O(n 2^n) for dense Walsh-Hadamard evaluation over the full cube",
+        "claim_boundary": "Polynomial discovery is for explicitly listed partial tables. It neither constructs a hard table nor gives a generic shortcut on succinct exponential domains."
+      }
+    ]
+  }
+}
