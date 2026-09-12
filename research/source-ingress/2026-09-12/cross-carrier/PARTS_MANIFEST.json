@@ -1,0 +1,35 @@
+{
+  "schema": "conscience64.split-transport/v1",
+  "source_name": "Cross_Carrier_Field_Transform_Wave_01.md",
+  "library_file_id": "file_00000000a8d88230aba31b6f2804b5f8",
+  "library_version": 1,
+  "source_bytes": 43596,
+  "source_sha256": "a1966af16f94a8ed61ac597a5755e36a1ac98cef5381d0f9a1485ed1a76ecd1c",
+  "gzip": {
+    "method": "gzip(level=9,mtime=0)",
+    "bytes": 16290,
+    "sha256": "48e4e841a04abe00e8bc87ddb3715aadc97bedc68d6994b0c796b7a915c80181"
+  },
+  "base64": {
+    "bytes": 21720,
+    "sha256": "92b120dc4c0679ede398a51aab87b624871ff74ebf8e97013e11e62080744d28"
+  },
+  "parts": [
+    {"name":"part-000","bytes":4000,"sha256":"696cee05b09d0bf4e8a2af8d56401a4f6052d3222682cdf16331508a89f45009","git_blob_sha":"dce53f71ae521a65b2a669dc75517423b6d294cc"},
+    {"name":"part-001","bytes":4000,"sha256":"cc6cb7cdce4d3ec7e8b4552392e36a33ca1e2e817d8453736823ad3c4f85a5e0","git_blob_sha":"fef12006f9f23991f64ca27ff4bc5b0753a1c127"},
+    {"name":"part-002","bytes":4000,"sha256":"bd1f95289a3aed2551deaf05ab7f44bbff9bea6a9cd115e5e79b6acf54c43a0a","git_blob_sha":"3718ac0d85802df7433c7a390cc39fc4bfa903e4"},
+    {"name":"part-003","bytes":4000,"sha256":"9ed1d084d9876564e6dac65464986f7d0f766ab96f4a54e3cb0af74762fa3f57","git_blob_sha":"b41f5cb169029f8d450fce1d8f7866bf6d758065"},
+    {"name":"part-004","bytes":4000,"sha256":"daa07f59f28aaf8d88b76f472b11360989aaabf6c0fec2b7e5586c2338d42c1f","git_blob_sha":"6b111efef0baa6713a7e9062d1d7ff16050ad68c"},
+    {"name":"part-005","bytes":1720,"sha256":"78defce060be10cdecefe994c1ee70067fb76d668d87681a5b691fb6806d232a","git_blob_sha":"5380bc4597662d988fa3b718d29396cbd55b4461"}
+  ],
+  "order": ["part-000","part-001","part-002","part-003","part-004","part-005"],
+  "restore": [
+    "cat part-* > Cross_Carrier_Field_Transform_Wave_01.md.gz.b64",
+    "sha256sum Cross_Carrier_Field_Transform_Wave_01.md.gz.b64",
+    "base64 -d Cross_Carrier_Field_Transform_Wave_01.md.gz.b64 > Cross_Carrier_Field_Transform_Wave_01.md.gz",
+    "sha256sum Cross_Carrier_Field_Transform_Wave_01.md.gz",
+    "gzip -dc Cross_Carrier_Field_Transform_Wave_01.md.gz > Cross_Carrier_Field_Transform_Wave_01.md",
+    "sha256sum Cross_Carrier_Field_Transform_Wave_01.md"
+  ],
+  "related_not_replacement": "research/cross-carrier/2026-09-12/v2.2/"
+}

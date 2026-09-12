@@ -1,0 +1,28 @@
+{
+  "schema": "conscience64.research-ingress/v2",
+  "extends": "research/source-ingress/2026-09-12/INGRESS_MANIFEST.json",
+  "generated_at": "2026-09-12T21:32:00-04:00",
+  "forward_only": true,
+  "changes": [
+    {
+      "source_name": "Cross_Carrier_Field_Transform_Wave_01.md",
+      "prior_state": "PENDING_EXACT_PART_ADMISSION",
+      "state": "ADMITTED_SPLIT_BASE64_TRANSPORT",
+      "source_bytes": 43596,
+      "source_sha256": "a1966af16f94a8ed61ac597a5755e36a1ac98cef5381d0f9a1485ed1a76ecd1c",
+      "transport_directory": "research/source-ingress/2026-09-12/cross-carrier/Cross_Carrier_Field_Transform_Wave_01.md.gz.b64.parts/",
+      "transport_manifest": "research/source-ingress/2026-09-12/cross-carrier/PARTS_MANIFEST.json",
+      "transport_chain": "source UTF-8 -> deterministic gzip -> base64 text -> ordered parts",
+      "part_count": 6,
+      "verification": "Each part Git blob hash matched the locally predicted Git hash before tree admission.",
+      "related_existing_package": "research/cross-carrier/2026-09-12/v2.2/",
+      "relation": "RELATED_EVIDENCE_NOT_REPLACEMENT"
+    }
+  ],
+  "unchanged_policy": {
+    "privacy_class": "research_public_reference_only",
+    "unknown_not_absent": true,
+    "source_identity_separate_from_transport": true,
+    "failed_staging_blobs_unreferenced": true
+  }
+}
