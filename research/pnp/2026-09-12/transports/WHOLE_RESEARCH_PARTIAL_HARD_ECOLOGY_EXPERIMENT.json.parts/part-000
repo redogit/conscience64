@@ -1,0 +1,52 @@
+{
+  "experiment": "Whole-research bounded application to current Partial-Hard / P-vs-NP frontier",
+  "seed": 202609120915,
+  "population": {
+    "size_le_6_functions": 3310,
+    "build_seconds": 11.064376050000021,
+    "trace": [
+      {"depth":1,"new_states":10,"states_total":11,"functions":16},
+      {"depth":2,"new_states":87,"states_total":98,"functions":46},
+      {"depth":3,"new_states":759,"states_total":857,"functions":143},
+      {"depth":4,"new_states":7168,"states_total":8025,"functions":436},
+      {"depth":5,"new_states":73845,"states_total":81870,"functions":1243},
+      {"depth":6,"new_states":829558,"states_total":911428,"functions":3310}
+    ]
+  },
+  "roles": {
+    "R3": "method/evidence separation; bounded claims",
+    "One_Level_Up/AIRLOCK": "provenance and admission",
+    "Orbit": "selective retrieval and task-local active carrier",
+    "TBCL": "compile/cache repeated relation work; preserved slower verifier retained",
+    "SHADOW": "UNKNOWN for cap/timeout; do not convert incomplete search to miss",
+    "CSOL": "minimize reconstruction burden; preserve consequential distinctions",
+    "4D observer": "affine-rank/nullspace/observer counterprobe",
+    "Musilanguage": "representation proposal only; no proof authority",
+    "PulseNet/Multifactorial": "diverse candidate generation only",
+    "SPDM": "matched random baseline and explicit runtime/state accounting",
+    "Computer Mind": "frozen seed, lesion/comparison discipline",
+    "Knowledge Decay/history": "provenance/reconstruction discipline; not mathematical evidence",
+    "ethics/economics/human direction": "cost/benefit/reporting constraints; not proof evidence",
+    "Cross Carrier Wave": "route different probes; convergence never equals truth",
+    "Float64 coordinate builder": "identity/index/integrity only; not semantic proof"
+  },
+  "summary_by_generator": {
+    "diverse_mutation": {"unique_candidates":20,"certified_size6_avoiders":1,"exact_dag_verified":2,"max_exact_dag_min":7,"median_formula_min":3.0,"median_affine_rank":3.5,"median_partial_stabilizer":1.0,"unknown_exact_verifications":0},
+    "geometry_rank_minority": {"unique_candidates":9,"certified_size6_avoiders":3,"exact_dag_verified":3,"max_exact_dag_min":7,"median_formula_min":4,"median_affine_rank":4,"median_partial_stabilizer":1,"unknown_exact_verifications":0},
+    "hsp_periodic": {"unique_candidates":3,"certified_size6_avoiders":0,"exact_dag_verified":0,"max_exact_dag_min":null,"median_formula_min":0,"median_affine_rank":3,"median_partial_stabilizer":1,"unknown_exact_verifications":0},
+    "local_nor": {"unique_candidates":3,"certified_size6_avoiders":3,"exact_dag_verified":3,"max_exact_dag_min":10,"median_formula_min":10,"median_affine_rank":4,"median_partial_stabilizer":1,"unknown_exact_verifications":0},
+    "partial_hard_exact_minority": {"unique_candidates":2,"certified_size6_avoiders":1,"exact_dag_verified":2,"max_exact_dag_min":7,"median_formula_min":6.5,"median_affine_rank":3.0,"median_partial_stabilizer":1.0,"unknown_exact_verifications":0},
+    "random_baseline": {"unique_candidates":20,"certified_size6_avoiders":0,"exact_dag_verified":0,"max_exact_dag_min":null,"median_formula_min":1.0,"median_affine_rank":3.0,"median_partial_stabilizer":1.0,"unknown_exact_verifications":0},
+    "restriction_parity": {"unique_candidates":3,"certified_size6_avoiders":0,"exact_dag_verified":0,"max_exact_dag_min":null,"median_formula_min":2,"median_affine_rank":4,"median_partial_stabilizer":1,"unknown_exact_verifications":0}
+  },
+  "frontier": [
+    {"candidate_id":6,"coords":[0,1,2,4,8],"bits":[1,0,0,0,0],"k":5,"generators":[{"generator":"local_nor","role":"counterexample/calibration","lineage":"GateElimination"}],"formula_min":10,"small6_survivors":0,"affine_rank":4,"hamming1_edges":4,"walsh_entropy_zero_fill":4.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":10,"dag_states":1491,"harder_than_size6_certified":true,"hardness_per_observation":2.0,"scheduler_score":256.826522356547},
+    {"candidate_id":7,"coords":[0,1,2,4,8,3],"bits":[1,0,0,0,0,0],"k":6,"generators":[{"generator":"local_nor","role":"counterexample/calibration","lineage":"GateElimination"}],"formula_min":10,"small6_survivors":0,"affine_rank":4,"hamming1_edges":6,"walsh_entropy_zero_fill":4.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":10,"dag_states":76911,"harder_than_size6_certified":true,"hardness_per_observation":1.6666666666666667,"scheduler_score":252.11401154189352},
+    {"candidate_id":14,"coords":[0,1,6,10,12,15],"bits":[1,0,0,0,0,0],"k":6,"generators":[{"generator":"geometry_rank_minority","role":"observer","lineage":"4D"}],"formula_min":7,"small6_survivors":0,"affine_rank":4,"hamming1_edges":1,"walsh_entropy_zero_fill":4.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":7,"dag_states":45084,"harder_than_size6_certified":true,"hardness_per_observation":1.1666666666666667,"scheduler_score":229.845977558889},
+    {"candidate_id":16,"coords":[0,2,5,9,12,15],"bits":[1,0,0,0,0,0],"k":6,"generators":[{"generator":"geometry_rank_minority","role":"observer","lineage":"4D"}],"formula_min":7,"small6_survivors":0,"affine_rank":4,"hamming1_edges":1,"walsh_entropy_zero_fill":4.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":7,"dag_states":45084,"harder_than_size6_certified":true,"hardness_per_observation":1.1666666666666667,"scheduler_score":229.845977558889},
+    {"candidate_id":15,"coords":[0,1,7,11,13,14],"bits":[0,1,0,0,0,1],"k":6,"generators":[{"generator":"geometry_rank_minority","role":"observer","lineage":"4D"}],"formula_min":7,"small6_survivors":0,"affine_rank":4,"hamming1_edges":1,"walsh_entropy_zero_fill":3.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":7,"dag_states":119610,"harder_than_size6_certified":true,"hardness_per_observation":1.1666666666666667,"scheduler_score":229.42223250961794},
+    {"candidate_id":5,"coords":[0,1,2,4],"bits":[1,0,0,0],"k":4,"generators":[{"generator":"local_nor","role":"counterexample/calibration","lineage":"GateElimination"}],"formula_min":7,"small6_survivors":0,"affine_rank":3,"hamming1_edges":3,"walsh_entropy_zero_fill":4.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":7,"dag_states":48,"harder_than_size6_certified":true,"hardness_per_observation":1.75,"scheduler_score":225.8187587626244},
+    {"candidate_id":26,"coords":[0,2,3,6,12,14],"bits":[0,1,0,0,0,1],"k":6,"generators":[{"generator":"diverse_mutation","role":"proposal","lineage":"Multifactorial/PulseNet","mutation_mode":"parity"}],"formula_min":7,"small6_survivors":0,"affine_rank":4,"hamming1_edges":5,"walsh_entropy_zero_fill":3.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":7,"dag_states":22980,"harder_than_size6_certified":true,"hardness_per_observation":1.1666666666666667,"scheduler_score":224.13864997564772},
+    {"candidate_id":1,"coords":[0,1,2,4,3],"bits":[0,1,1,1,0],"k":5,"generators":[{"generator":"partial_hard_exact_minority","role":"selector","lineage":"RangeAvoidance"},{"generator":"partial_hard_exact_minority","role":"selector","lineage":"RangeAvoidance"}],"formula_min":7,"small6_survivors":0,"affine_rank":3,"hamming1_edges":5,"walsh_entropy_zero_fill":3.207518749639422,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":7,"dag_states":690,"harder_than_size6_certified":true,"hardness_per_observation":1.4,"scheduler_score":221.66115090926274},
+    {"candidate_id":31,"coords":[0,1,3,5,10,12],"bits":[0,1,0,0,0,0],"k":6,"generators":[{"generator":"diverse_mutation","role":"proposal","lineage":"Multifactorial/PulseNet","mutation_mode":"random"}],"formula_min":6,"small6_survivors":1,"affine_rank":4,"hamming1_edges":3,"walsh_entropy_zero_fill":4.0,"partial_translation_stabilizer_size":1,"dag_status":"EXACT","dag_min":6,"dag_states":5650,"harder_than_size6_certified":false,"hardness_per_observation":1.0,"scheduler_score":167.74795155218055},
+    {"candidate_id":0,"coords":[0,1,2,4],"bits":[0,1,1,1],"k":4,"generators":[{"generator":"partial_hard_exact_minority","role":"selector","lineage":"Range
