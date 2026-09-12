@@ -1,0 +1,35 @@
+{
+  "status": "BOUNDED_FINITE_RESULT",
+  "p_vs_np": "OPEN",
+  "oracle_functions": 3310,
+  "generic_greedy": {
+    "observations": 5,
+    "candidate_scores": 140,
+    "survivor_scans": 161090,
+    "literal_reads": 161090,
+    "survivor_path": [3310,1371,417,90,1,0]
+  },
+  "fixed_translation_best_measured": {
+    "translation": 7,
+    "hamming_weight": 3,
+    "observations": 6,
+    "candidate_scores": 42,
+    "survivor_scans": 60212,
+    "literal_reads": 90318,
+    "survivor_path": [3310,500,21,0]
+  },
+  "all_15_translation_routes": {
+    "candidate_scores": 712,
+    "survivor_scans": 937318,
+    "literal_reads": 1405977
+  },
+  "translation_orbit_representatives": {
+    "representatives": [1,3,7,15],
+    "orbit_key": "Hamming weight under S_4 input permutations",
+    "candidate_scores": 196,
+    "survivor_scans": 249812,
+    "literal_reads": 374718,
+    "candidate_score_reduction_vs_all_translations": 0.7247191011235955
+  },
+  "claim_boundary": "The orbit reduction is structural for relabeling-invariant objectives on input-permutation-invariant circuit classes. The measured greedy costs are finite implementation evidence. Generic greedy is not globally observation-optimal; a four-observation certificate exists in the exhaustive landscape."
+}
