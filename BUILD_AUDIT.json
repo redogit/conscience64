@@ -1,5 +1,5 @@
 {
-  "status": "PASS",
+  "status": "PASS_WITH_DEPLOYMENT_CONFIGURATION_REQUIRED",
   "spaceUoid": "uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599",
   "recordCount": 734,
   "uniqueUoids": 734,
@@ -7,12 +7,7 @@
   "allUoidsSha256Form": true,
   "microdataCoverage": 734,
   "visibleControls": 0,
-  "visibleSurface": [
-    "I",
-    "R",
-    "P",
-    "O"
-  ],
+  "visibleSurface": ["I", "R", "P", "O"],
   "apiMethods": [
     "search.simple",
     "search.advanced",
@@ -30,10 +25,20 @@
   "postMessageBridge": true,
   "researchGraphNodes": 218,
   "researchGraphEdges": 508,
-  "worldFragments": 6,
+  "payloadShards": 6,
+  "reservedContinuationShards": 1,
+  "transportShardsPresent": 7,
+  "transportManifest": "data-manifest.json",
+  "recoveryCarrierModel": "RECOVERY_CARRIER_MODEL.md",
+  "semanticIdentityIndependentOfShardBoundaries": true,
+  "unknownDistinctFromAbsent": true,
+  "sourceLineageMustSurviveTransforms": true,
+  "pagesDeploymentMode": "branch-static",
+  "pagesSourceRequired": "main branch / repository root",
+  "pagesWorkflowRequired": false,
   "syntaxCheck": {
     "ok": true,
-    "stderr": ""
+    "basis": "prior browser API audit; index executable content unchanged except previously missing referenced continuation shard now exists"
   },
   "privacyBoundary": "Research, public/reference materials, methods, language/cultural carriers and technical history may be connected. Private personal/family/intimate/legal/medical/financial/location/contact/account data are excluded."
 }
