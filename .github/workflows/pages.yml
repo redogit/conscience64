@@ -23,6 +23,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      # Repository Settings > Pages > Source must be set to GitHub Actions.
       - name: Configure Pages
         uses: actions/configure-pages@v6
       - name: Upload static site
