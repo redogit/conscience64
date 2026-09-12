@@ -1,0 +1,27 @@
+{
+  "schema": "conscience64.transport-manifest/v1",
+  "corpusUoid": "uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599",
+  "transportEncoding": "base64(gzip(utf8(json)))",
+  "semanticIdentityIndependentOfShardBoundaries": true,
+  "shards": [
+    {"path":"data-00.txt","bytes":20000,"gitBlobSha":"1f7e06378bd0d8054afaf844d026e0d332d77c5a","state":"PAYLOAD"},
+    {"path":"data-01.txt","bytes":19999,"gitBlobSha":"c2740aaa9d8bed54bb32dd02f10ad1898dc7d126","state":"PAYLOAD"},
+    {"path":"data-02.txt","bytes":10000,"gitBlobSha":"288c3e95612d1ce37dd23a05695b130d267454a5","state":"PAYLOAD"},
+    {"path":"data-03.txt","bytes":10000,"gitBlobSha":"4ed97e817a8eac8de29682c8c42bfd0fd3738886","state":"PAYLOAD"},
+    {"path":"data-04.txt","bytes":10000,"gitBlobSha":"37ed9e5ac2c32851994665099488ab28ff9cfdf2","state":"PAYLOAD"},
+    {"path":"data-05.txt","bytes":10000,"gitBlobSha":"5e421c1137807456346c46139b42036879b36a11","state":"PAYLOAD"},
+    {"path":"data-06.txt","bytes":0,"gitBlobSha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","state":"RESERVED_CONTINUATION"}
+  ],
+  "rules": {
+    "missingFutureShardMeansAbsent": false,
+    "reservedShardContainsRecoveredKnowledge": false,
+    "orderedConcatenationRequired": true,
+    "repackingMayChangeObjectIdentity": false,
+    "unknownMustRemainDistinctFromAbsent": true,
+    "sourceLineageMustSurviveTransforms": true
+  },
+  "next": {
+    "loader": "Read this manifest rather than hard-code shard filenames.",
+    "corpusGrowth": "Add verified recovery objects, recompute corpus identity/version, then regenerate transport shards and this manifest atomically."
+  }
+}
