@@ -16,6 +16,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Compile verification tools
-        run: python3 -m py_compile tools/verify_research_manifest.py research/cross-carrier/2026-09-12/v2.2/cross_carrier_float64_space_codec.py research/cross-carrier/2026-09-12/v2.2/search_float64_space.py
+        run: >-
+          python3 -m py_compile
+          tools/verify_research_manifest.py
+          research/cross-carrier/2026-09-12/v2.2/cross_carrier_float64_space_codec.py
+          research/cross-carrier/2026-09-12/v2.2/search_float64_space.py
       - name: Parse committed JSON surfaces
-        run: python3 -c "import json,pathlib; r=pathlib.Path('research/cross-carrier/2026-09-12/v2.2'); [json.loads((r/n).read_text(encoding='utf-8')) for n in ('coordinate_schema.json','lookup_selfcheck.json','manifest.json','validation.json')]; print('PASS: committed JSON surfaces parse')"
+        run: >-
+          python3 -c "import json,pathlib;
+          r=pathlib.Path('research/cross-carrier/2026-09-12/v2.2');
+          [json.loads((r/n).read_text(encoding='utf-8'))
+          for n in ('coordinate_schema.json','lookup_selfcheck.json','manifest.json','validation.json')];
+          print('PASS - committed JSON surfaces parse')"
