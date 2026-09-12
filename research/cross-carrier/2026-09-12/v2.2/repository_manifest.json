@@ -5,7 +5,7 @@
   "source_package_manifest": "manifest.json",
   "interpretation": "manifest.json preserves the generated full-package inventory; this manifest describes byte artifacts committed directly to the compact v2.2 repository surface, including selected nested verification evidence.",
   "files": [
-    {"file":"README.md","bytes":7145,"sha256":"9ecac0372e76f2df83f1d0dc52b993851af671419fa21febd58960c0f5a1104f"},
+    {"file":"README.md","bytes":8553,"sha256":"110db8f4323565162fcb1c1b9ebac0a64e5d4eeb5ba6af065ab09ac0d2b2b884"},
     {"file":"coordinate_schema.json","bytes":3176,"sha256":"387d1b10011bc79f388c0a639086a8d07574bbebab077ef6e820346b805114d3"},
     {"file":"cross_carrier_float64_space_codec.py","bytes":1970,"sha256":"89611be2ff396b580c77bb0d23cade18eb325cdce50ad53c8377921088dbe936"},
     {"file":"lookup_selfcheck.json","bytes":510,"sha256":"a7b218e73249f9b7e208f3274c75b44a189062a4ce09be4ee295d1546ac6f634"},
@@ -13,7 +13,7 @@
     {"file":"search_records.jsonl","bytes":11682,"sha256":"85225c85038a16446ffd9f22bf9291a2cb59507473ff9a2890b66cab121b60d5"},
     {"file":"source_availability.json","bytes":2945,"sha256":"b6b73b5c28ccfe998c099972725734cb32bf7266874237f811a8fbcc0e4a94bb"},
     {"file":"validation.json","bytes":216,"sha256":"a3fe7f90e91db5e58f30ccf06234161a07967017cf037a9b7ba9b2ea001eccad"},
-    {"file":"sql/README.md","bytes":2710,"sha256":"5a83b074fbc82ebec0e53c0257bcfa82bdbfbcfbb94548d160007a475e7eacfe"},
+    {"file":"sql/README.md","bytes":4176,"sha256":"18f02f89806f4f09a2540ff8cc759b5e2a34a51b677639acebf76ef756018a12"},
     {"file":"sql/SQL_V2_FINDINGS_2026-09-12.md","bytes":1557,"sha256":"90ff0224eceaa6d0ff69a38a84ad102936ac6f30f9768bdb0634c6a924294f1e"},
     {"file":"sql/frontier_mutilation_v2_2026-09-12.sql","bytes":555,"sha256":"5f09ddbe9f1f97f3a68ddddb597d129aeef8d111a150a87562cf48c3ebe8fffd"},
     {"file":"sql/SQL_V2_RESULTS_2026-09-12.json","bytes":3232,"sha256":"066ee519cbd59af0e8dedee65c5b97e7eff676087963389b0142b5714cc6e015"},
@@ -27,7 +27,11 @@
     {"file":"sql/STABILIZER_AGGREGATE_WALSH_CHECK.json","bytes":884,"sha256":"46a5bcca7fca01d97626963aac043390a07e16d3532ddc5992b3941444c6467b"},
     {"file":"sql/CONSTRUCTION_COST_TURN_2026-09-12.md","bytes":3346,"sha256":"875f1cea3dd6d42da30a9ebd344cc369e50edf1fb16364662bea35ff91b9dbd3"},
     {"file":"sql/CONSTRUCTION_COST_RESULTS_2026-09-12.json","bytes":1260,"sha256":"1c23616efc42023f939a51b6417e59283932697eb9e1ce1a4ca90782afad6589"},
-    {"file":"sql/frontier_mutilation_v4_construction.sql","bytes":335,"sha256":"8e0b213a94e81896cb6b3c101faec685bc92604308bc2c3d3aeaba350d095819"}
+    {"file":"sql/frontier_mutilation_v4_construction.sql","bytes":335,"sha256":"8e0b213a94e81896cb6b3c101faec685bc92604308bc2c3d3aeaba350d095819"},
+    {"file":"sql/SYMMETRY_AWARE_CONSTRUCTION_V5.md","bytes":3216,"sha256":"1eb1ad815a71e00a0f003a7da27f847671b92c2ce38be010954419becb5af614"},
+    {"file":"sql/SYMMETRY_AWARE_CONSTRUCTION_V5_RESULTS.json","bytes":3774,"sha256":"0e8faa8c09e09e2c2d4a000d856210c672e3fad65f1dbe7e0c7ebb5004fed7b4"},
+    {"file":"sql/frontier_mutilation_v5.sql","bytes":579,"sha256":"03e7529c0f8cc557b8982a363f50dfcfd5130c77b6b8349bb1730c32c29892c7"},
+    {"file":"sql/symmetry_aware_constructor_v5.cpp","bytes":7029,"sha256":"1d69504abca511d2290d70b7682ecfdb208f82a85e4709c89fb07b998195aa50"}
   ],
   "not_directly_materialized_from_source_package": [
     "COORDINATE_SPACE_FLOAT64.npz",
@@ -42,5 +46,5 @@
     "payload_catalog.json",
     "relations.jsonl"
   ],
-  "transport_note": "transports/ contains retained transport shards. They are provenance/recovery evidence and are not counted as directly materialized package files by this manifest. SQL v2-v4 evidence is explicitly included above and verified byte-for-byte by the repository self-check."
+  "transport_note": "transports/ contains retained transport shards. They are provenance/recovery evidence and are not counted as directly materialized package files by this manifest. SQL v2-v5 text/code/data evidence is explicitly included above and verified byte-for-byte by the repository self-check."
 }
