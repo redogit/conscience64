@@ -11,11 +11,13 @@ on:
       - 'API.md'
       - 'BUILD_AUDIT.json'
       - '.nojekyll'
+      - 'tools/pages_deploy.mjs'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -30,20 +32,57 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
+      - name: Materialize exact public commit without external Actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
       - name: Build static publish surface
         shell: bash
         run: |
           set -euo pipefail
+          rm -rf _site
           mkdir _site
-          cp index.html app.js data-manifest.json data-*.txt API.md BUILD_AUDIT.json .nojekyll _site/
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-      - name: Deploy
+          cp index.html app.js data-manifest.json API.md BUILD_AUDIT.json .nojekyll _site/
+          cp data-*.txt _site/
+
+      - name: Package Pages artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(find _site -type l -print -quit)"
+          tar \
+            --dereference --hard-dereference \
+            --directory _site \
+            -cvf "$RUNNER_TEMP/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            .
+
+      - name: Install pinned GitHub artifact runtime
+        shell: bash
+        env:
+          PAGES_RUNTIME_DIR: ${{ runner.temp }}/conscience64-pages-runtime
+        run: |
+          set -euo pipefail
+          mkdir -p "$PAGES_RUNTIME_DIR"
+          npm install \
+            --prefix "$PAGES_RUNTIME_DIR" \
+            --no-save \
+            --package-lock=false \
+            --ignore-scripts \
+            @actions/artifact@6.2.2
+
+      - name: Upload and deploy Pages artifact
         id: deployment
-        uses: actions/deploy-pages@v4
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PAGES_RUNTIME_DIR: ${{ runner.temp }}/conscience64-pages-runtime
+        run: node tools/pages_deploy.mjs
