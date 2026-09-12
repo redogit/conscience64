@@ -1,0 +1,22 @@
+{
+  "artifact": "Explicit Partial Translation Stabilizer Lemma finite countercheck",
+  "date": "2026-09-12",
+  "status": "PASS",
+  "tests": 10000,
+  "n_range": [
+    1,
+    8
+  ],
+  "max_random_partial_table_size": 20,
+  "seed": 20260912,
+  "mismatches": [],
+  "selected_candidate": {
+    "stabilizers_pair_difference": [
+      7
+    ],
+    "stabilizers_bruteforce": [
+      7
+    ]
+  },
+  "claim_boundary": "Random finite countercheck supports implementation only; the equivalence itself follows from the disjoint-pair proof in the companion note."
+}
