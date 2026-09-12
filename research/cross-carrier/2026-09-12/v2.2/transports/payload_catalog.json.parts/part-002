@@ -1,0 +1,24 @@
+    "sha256": "85b7bb1ff21dbce8987e8700d846a2a6bf284bcb4c47d56f49fdc29bd2103d80",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00068",
+    "path": "pnp_push/WHOLE_RESEARCH_PARTIAL_HARD_ECOLOGY_EXPERIMENT.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 60893,
+    "pad_bytes": 1,
+    "float64_values": 10149,
+    "sha256": "ff1a62b24e05f4e28297545d99c4334b3dea90336b499c77c56c5b40d3bc7569",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  },
+  {
+    "payload_id": "P00069",
+    "path": "pnp_push/WHOLE_RESEARCH_PARETO_ABLATION_ACTIVE_CARRIER.json",
+    "kind": "utf8_exact_float64",
+    "utf8_bytes": 11235,
+    "pad_bytes": 3,
+    "float64_values": 1873,
+    "sha256": "342a47b417b6ffa976713013efff639a38e9977d4fd48a5875178d57753a1e44",
+    "packing": "6 UTF-8 bytes -> one exact 48-bit integer -> Float64"
+  }
+]
