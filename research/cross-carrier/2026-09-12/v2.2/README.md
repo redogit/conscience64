@@ -64,18 +64,15 @@ The indexed space includes the mathematical path used in the current P-vs-NP sea
 
 ## Current P-vs-NP boundary
 `P ?= NP` remains `OPEN`.
-No coordinate, finite experiment, or codec entry upgrades that status.
+No coordinate, finite experiment, SQL query, symmetry, or codec entry upgrades that status.
 
 ## v2.1 quantum/Shor-HSP correction
 
-The coordinate space now explicitly distinguishes:
+The coordinate space explicitly distinguishes:
 
 `translation symmetry != ordinary HSP promise`
 
-For a nonconstant Boolean membership oracle, ordinary HSP occurs only when the
-marked set is one coset of an index-2 stabilizer. Generic SAT indicators merge
-many quotient cosets into only two Boolean labels, so the relevant object is a
-broader partition/hidden-symmetry problem.
+For a nonconstant Boolean membership oracle, ordinary HSP occurs only when the marked set is one coset of an index-2 stabilizer. Generic SAT indicators merge many quotient cosets into only two Boolean labels, so the relevant object is a broader partition/hidden-symmetry problem.
 
 Added exact/finite carriers:
 - free-variable-controlled XOR stabilizer audit;
@@ -85,20 +82,37 @@ Added exact/finite carriers:
 - Fourier annihilator/support theorem;
 - exact known-stabilizer quotient theorem.
 
-P versus NP remains OPEN.
-
 ## v2.2 whole-research routing
-All 46 surfaced branches receive an explicit P-vs-NP disposition. Dormant or human/normative branches are not converted into mathematical evidence. New whole-ecology Partial-Hard and Pareto-ablation artifacts are encoded as exact Float64 UTF-8 payloads. P versus NP remains OPEN.
+All 46 surfaced branches receive an explicit P-vs-NP disposition. Dormant or human/normative branches are not converted into mathematical evidence. New whole-ecology Partial-Hard and Pareto-ablation artifacts are encoded as exact Float64 UTF-8 payloads.
 
-## SQL frontier audit
-`sql/frontier_mutilation_2026-09-12.sql` relationalizes the current Partial-Hard ecology, exact DAG-sharing witnesses, minimum hard certificate, and HSP promise audit. `sql/SQL_FINDINGS_2026-09-12.md` records the bounded consequence.
+## SQL frontier audit v1
+`sql/frontier_mutilation_2026-09-12.sql` relationalizes the sampled Partial-Hard ecology, exact DAG-sharing witnesses, minimum hard certificate, and HSP promise audit. The sampled 60-candidate ecology had no hard+symmetry intersection. That was a bounded sample result, not a universe claim.
 
-Current finite intersection result:
-- 60 ecology candidates;
-- 8 certified size-6 avoiders;
-- 4 candidates with nontrivial partial translation stabilizer;
-- 0 candidates carrying both properties;
-- 10 exact-DAG-verified ecology candidates and 0 with a formula-to-DAG gap;
-- the independent sharing witnesses do have DAG reuse, but do not occur in the 60-candidate ecology.
+## SQL frontier audit v2 — exhaustive symmetry layers
+The follow-on exact finite scan reconstructs the complete four-input NAND/free-constant size<=6 class at **3,310 functions** before testing translation-symmetric partial functions.
 
-This is a bounded dataset result. It is not an asymptotic circuit lower bound and does not change the open status of P versus NP.
+Exact layer results:
+- 4 observations: 1,120 symmetric partials; 0 hard;
+- 6 observations: 6,720 symmetric partials; 204 hard, all affine-consistent;
+- 8 observations: 15,600 symmetric partials; 2,272 hard; 364 non-affine, all affine-rank 3;
+- 10 observations: 26,880 symmetric partials; 8,332 hard; 5,402 non-affine, all affine-rank 4.
+
+Selected first-layer full-rank target:
+`coords={0,1,6,7,8,10,11,12,13,15}`
+`bits={0,1,1,0,1,0,0,0,0,1}`
+with translation `t=7`.
+
+Exact finite checks:
+- no NAND circuit of size <=6 extends it;
+- no affine extension exists;
+- exact NAND formula minimum = 13;
+- exact partial NAND DAG minimum = 8 (7 gates UNSAT, 8 gates SAT);
+- formula-to-DAG reuse gain = 5 gates.
+
+The symmetry quotient reduces ten observations to five, but the explicit staged route does not pay for itself: quotient target minimum 7 + quotient-coordinate transform minimum 8 = 15 staged gates versus the direct 8-gate DAG. This is `COST_MIGRATION`, not a shortcut. The 15-gate number is only for the declared separated stages; it is not a general lower bound against circuits that share work across the boundary.
+
+Current stronger search cell:
+
+`hard AND symmetry AND DAG-sharing AND quotient-benefit-after-transform-cost`
+
+The selected full-rank witness fails the final condition. P versus NP remains OPEN.
