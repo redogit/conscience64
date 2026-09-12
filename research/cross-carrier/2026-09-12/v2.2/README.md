@@ -66,7 +66,6 @@ The indexed space includes the mathematical path used in the current P-vs-NP sea
 `P ?= NP` remains `OPEN`.
 No coordinate, finite experiment, or codec entry upgrades that status.
 
-
 ## v2.1 quantum/Shor-HSP correction
 
 The coordinate space now explicitly distinguishes:
@@ -88,6 +87,18 @@ Added exact/finite carriers:
 
 P versus NP remains OPEN.
 
-
 ## v2.2 whole-research routing
 All 46 surfaced branches receive an explicit P-vs-NP disposition. Dormant or human/normative branches are not converted into mathematical evidence. New whole-ecology Partial-Hard and Pareto-ablation artifacts are encoded as exact Float64 UTF-8 payloads. P versus NP remains OPEN.
+
+## SQL frontier audit
+`sql/frontier_mutilation_2026-09-12.sql` relationalizes the current Partial-Hard ecology, exact DAG-sharing witnesses, minimum hard certificate, and HSP promise audit. `sql/SQL_FINDINGS_2026-09-12.md` records the bounded consequence.
+
+Current finite intersection result:
+- 60 ecology candidates;
+- 8 certified size-6 avoiders;
+- 4 candidates with nontrivial partial translation stabilizer;
+- 0 candidates carrying both properties;
+- 10 exact-DAG-verified ecology candidates and 0 with a formula-to-DAG gap;
+- the independent sharing witnesses do have DAG reuse, but do not occur in the 60-candidate ecology.
+
+This is a bounded dataset result. It is not an asymptotic circuit lower bound and does not change the open status of P versus NP.
