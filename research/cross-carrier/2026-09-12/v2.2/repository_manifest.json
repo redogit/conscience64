@@ -26,7 +26,7 @@
     {"file":"sql/STABILIZER_AGGREGATE_IDENTITY.md","bytes":1679,"sha256":"dec5c8cf50a796eb72bafca035ea76ecd379329f9b8fc53e1748c848125c9eb1"},
     {"file":"sql/STABILIZER_AGGREGATE_WALSH_CHECK.json","bytes":884,"sha256":"46a5bcca7fca01d97626963aac043390a07e16d3532ddc5992b3941444c6467b"},
     {"file":"sql/CONSTRUCTION_COST_TURN_2026-09-12.md","bytes":3346,"sha256":"875f1cea3dd6d42da30a9ebd344cc369e50edf1fb16364662bea35ff91b9dbd3"},
-    {"file":"sql/CONSTRUCTION_COST_RESULTS_2026-09-12.json","bytes":1261,"sha256":"ea6a63378c9969299014d913b3320900f42b56db07c998ca7f436a4eeb747148"},
+    {"file":"sql/CONSTRUCTION_COST_RESULTS_2026-09-12.json","bytes":1260,"sha256":"1c23616efc42023f939a51b6417e59283932697eb9e1ce1a4ca90782afad6589"},
     {"file":"sql/frontier_mutilation_v4_construction.sql","bytes":335,"sha256":"8e0b213a94e81896cb6b3c101faec685bc92604308bc2c3d3aeaba350d095819"}
   ],
   "not_directly_materialized_from_source_package": [
