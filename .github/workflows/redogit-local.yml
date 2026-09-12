@@ -38,6 +38,17 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Check compact REDOGIT surface
         run: python3 tools/redogit_selfcheck.py
+      - name: Replay SQL v5 finite constructor
+        shell: bash
+        run: |
+          set -euo pipefail
+          src='research/cross-carrier/2026-09-12/v2.2/sql/symmetry_aware_constructor_v5.cpp'
+          g++ -std=c++20 -O2 "$src" -o /tmp/symmetry_aware_constructor_v5
+          /tmp/symmetry_aware_constructor_v5 | tee /tmp/symmetry_aware_constructor_v5.log
+          grep -F 'class=3310' /tmp/symmetry_aware_constructor_v5.log
+          grep -F 'generic_sym obs=5 scores=56 wordops=2912' /tmp/symmetry_aware_constructor_v5.log
+          grep -F 'paired_t15 obs=8 scores=20 wordops=2080' /tmp/symmetry_aware_constructor_v5.log
+          grep -F 'selected_t=7 first_survivors=500' /tmp/symmetry_aware_constructor_v5.log
       - name: Verify committed research surface bytes and hashes
         run: >-
           python3 tools/verify_research_manifest.py
