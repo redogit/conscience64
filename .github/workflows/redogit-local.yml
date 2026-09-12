@@ -1,0 +1,37 @@
+name: REDOGIT local verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'redogit.json'
+      - 'tools/**'
+      - 'research/cross-carrier/2026-09-12/v2.2/**'
+      - '.github/workflows/redogit-local.yml'
+  pull_request:
+    paths:
+      - 'redogit.json'
+      - 'tools/**'
+      - 'research/cross-carrier/2026-09-12/v2.2/**'
+      - '.github/workflows/redogit-local.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: conscience64-redogit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check compact REDOGIT surface
+        run: python3 tools/redogit_selfcheck.py
+      - name: Verify current research manifest bytes and hashes
+        run: >-
+          python3 tools/verify_research_manifest.py
+          research/cross-carrier/2026-09-12/v2.2/manifest.json
+          research/cross-carrier/2026-09-12/v2.2
