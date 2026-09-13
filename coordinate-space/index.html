@@ -7,9 +7,9 @@
 <title>Coordinate Space Workbench</title>
 <style>
 :root{font:18px/1.55 system-ui,sans-serif;color-scheme:light dark}*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#192537}main,header,footer{max-width:1050px;margin:auto;padding:1.5rem}header{padding-bottom:0}h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15}h2{font-size:1.3rem}section{background:#fff;border:1px solid #bac6d4;border-radius:10px;padding:1.25rem;margin:1rem 0}a{color:#074897}label{display:block;font-weight:650;margin:.7rem 0 .3rem}textarea,input,select{font:inherit;width:100%;max-width:100%;padding:.7rem;border:1px solid #75859b;border-radius:5px}textarea{min-height:9rem;resize:vertical}button{font:inherit;margin-block:.6rem .3rem;margin-inline:0 .4rem;padding:.6rem .9rem;cursor:pointer;border:1px solid #64748b;border-radius:5px}button:disabled{cursor:default;opacity:.65}:focus-visible{outline:3px solid #ae4b00;outline-offset:3px}pre,code{font-family:ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}pre{max-height:24rem;overflow:auto}p,li{overflow-wrap:anywhere}.notice{border-inline-start:4px solid #2d607e;padding-inline-start:1rem}.status{min-height:1.6rem;font-weight:600}.skip{position:absolute;inset-inline-start:0;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip:focus{inline-size:auto;block-size:auto;clip-path:none;white-space:normal;inset-inline-start:1rem;inset-block-start:1rem;padding:.5rem;background:#fff;color:#000;z-index:10}.grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.grid>*{min-width:0}@media(max-width:720px){.grid{grid-template-columns:1fr}main,header,footer{padding:1rem}}@media(prefers-color-scheme:dark){body{background:#101720;color:#e4edf8}section{background:#172332;border-color:#748398}a{color:#a8d1ff}:focus-visible{outline-color:#ffd08a}}@media(forced-colors:active){section,button,textarea{border:1px solid CanvasText}}
-
 select{min-width:0}button{max-inline-size:100%}h1,h2,summary,button{overflow-wrap:anywhere}pre#recovered{font-family:inherit;unicode-bidi:plaintext}.technical{font-size:.9rem}#source-lang,#packet,#digest,#details{direction:ltr}#details{color:inherit}.source-options{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.source-options>*{min-width:0}details{margin-block:1rem}summary{cursor:pointer}.language-note{font-size:.9rem}bdi{unicode-bidi:isolate}@media(max-width:500px){.source-options{grid-template-columns:1fr}}
 </style>
+<script src="../voice-anywhere.js" defer></script><script src="../research-song.js" defer></script>
 <script src="sha256.js" defer></script><script src="codec.js" defer></script>
 <script src="source_file.js" defer></script>
 <script src="locales.js" defer></script><script src="i18n.js" defer></script><script src="ui.js" defer></script>
@@ -43,7 +43,7 @@ select{min-width:0}button{max-inline-size:100%}h1,h2,summary,button{overflow-wra
 <section aria-labelledby="output-heading"><h2 id="output-heading" data-i18n="recovered">Recovered text</h2>
 <p id="status" class="status" role="status" aria-live="polite" data-state="idle">Enter text to begin.</p>
 <div id="summary" tabindex="0" aria-label="Byte count and integrity digest" lang="en"></div>
-<pre id="recovered" tabindex="0" dir="auto" lang="" aria-labelledby="output-heading"></pre>
+<pre id="recovered" data-voice-read tabindex="0" dir="auto" lang="" aria-labelledby="output-heading"></pre>
 <button id="saveText" type="button" disabled data-i18n="saveText">Save exact UTF-8</button>
 <pre id="details" lang="en" dir="ltr" hidden></pre></section>
 <section aria-labelledby="community-heading"><h2 id="community-heading" data-i18n="addLanguage">Import language pack</h2>
