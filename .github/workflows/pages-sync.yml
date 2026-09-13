@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - 'app.js'
+      - 'space-lens-qa.js'
       - 'data-manifest.json'
       - 'data-*.txt'
       - 'API.md'
@@ -16,6 +17,7 @@ on:
       - 'play/**'
       - 'coordinate-space/**'
       - 'tools/check_site.mjs'
+      - 'tools/check_space_lens_qa.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
@@ -44,6 +46,11 @@ jobs:
 
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
+
+      - name: Verify Space Lens human-readable answers before publishing
+        run: |
+          node --check space-lens-qa.js
+          node tools/check_space_lens_qa.mjs
 
       - name: Verify public playground projects before publishing
         run: node play/test.mjs
