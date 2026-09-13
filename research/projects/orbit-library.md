@@ -56,3 +56,11 @@ Orbit can provide a compact active history path without pretending it has indexe
 ## Claim ceiling
 
 Orbit is not a complete model of the Library and is not authority over older projects merely because it indexes or references them.
+
+## September 13, 2026 — scoped Human Expression / S1024 update
+
+See the [project-integration checkpoint](../updates/2026-09-13-human-expression-s1024.md).
+
+The local 91-record accession is linked through an incoming review checkpoint with exact compound record identities, source-byte ranges, rights/context fields, 13 qualified relations and ten explicit gaps. Its 81 source URLs are not a census of humanity; its nine collection gateways are not entire imported collections. The public registry receives a summary only, not the corpus.
+
+This is navigation and candidate intake, not runtime promotion. Existing Orbit authority, historical ingress gates, verification limits and accessibility release requirements remain unchanged. No archive record is admitted merely because Orbit references it. The distinct `redogit/orbit` game-engine fork is not this project and was not changed.
