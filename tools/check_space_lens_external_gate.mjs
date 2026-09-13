@@ -27,7 +27,7 @@ globalThis.SpaceLensMemory={teach:()=>{}};
 const code=await readFile(resolve(root,'space-lens-external-gate.js'));
 await import(`data:text/javascript;base64,${code.toString('base64')}`);
 const g=globalThis.SpaceLensExternalGate;
-assert.equal(g.version,'1.0.0');
+assert.equal(g.version,'1.0.1');
 
 assert.equal(g.assess({confidence:'strong project match',sources:[{}]}).needed,false);
 assert.equal(g.assess({confidence:'unresolved',sources:[]}).needed,true);
@@ -50,8 +50,8 @@ assert.match(composed,/accessible/);
 const refined=g.refineResults(await globalThis.SpaceLensWebSearch.search('x').then(x=>x.results),pattern);
 externalCalls=0;
 assert.equal(refined.length,2,'must and avoid attributes should filter the result set');
-assert.ok(refined.every(x=>/accessible/i.test(`${x.title} ${x.snippet}`)));
-assert.ok(refined.every(x=>!/game/i.test(`${x.title} ${x.snippet}`)));
+assert.ok(refined.every(x=>/\baccessible\b/i.test(`${x.title} ${x.snippet}`)));
+assert.ok(refined.every(x=>!/\bgame\b/i.test(`${x.title} ${x.snippet}`)));
 
 const out=await g.run('research interface',pattern);
 assert.equal(externalCalls,1,'external search should happen only on explicit run');
@@ -59,4 +59,4 @@ assert.match(out.externalQuery,/accessible/);
 assert.equal(out.total,2);
 assert.deepEqual(out.pattern.providers,['wikipedia','openalex','github']);
 
-console.log('PASS External Search Gate: real-need assessment, local attribute suggestions, user goal pattern, no premature external query, refined external results');
+console.log('PASS External Search Gate: real-need assessment, local attribute suggestions, user goal pattern, no premature external query, exact goal matching, refined external results');
