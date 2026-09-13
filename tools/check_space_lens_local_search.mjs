@@ -33,7 +33,7 @@ globalThis.Conscience64API={
 const code=await readFile(resolve(root,'space-lens-local-search.js'));
 await import(`data:text/javascript;base64,${code.toString('base64')}`);
 const s=globalThis.SpaceLensLocalSearch;
-assert.equal(s.version,'1.0.0');
+assert.equal(s.version,'1.0.1');
 
 let stats=s.stats();
 assert.equal(stats.counts.record,3);
@@ -74,5 +74,6 @@ stats=s.stats();
 assert.equal(stats.counts.learned,2);
 assert.match(s.search('new local idea',{type:'learned'}).results[0].snippet,/newly learned local-only concept/i);
 
+// Learned preference never manufactures a lexical match.
 assert.equal(s.search('zzzz-no-local-match-999').total,0);
-console.log('PASS Space Lens local search: ranking, filters, snippets, pagination, learned memory, refresh, and inspect');
+console.log('PASS Space Lens local search: ranking, filters, snippets, pagination, learned memory, refresh, inspect, and no fabricated matches');
