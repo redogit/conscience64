@@ -6,6 +6,7 @@ on:
     paths:
       - 'redogit.json'
       - 'app.js'
+      - 'space-lens-qa.js'
       - 'index.html'
       - 'data-manifest.json'
       - 'data-*.txt'
@@ -20,6 +21,7 @@ on:
     paths:
       - 'redogit.json'
       - 'app.js'
+      - 'space-lens-qa.js'
       - 'index.html'
       - 'data-manifest.json'
       - 'data-*.txt'
@@ -52,10 +54,14 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-      - name: Check browser API syntax
-        run: node --check app.js
+      - name: Check browser API and Space Lens syntax
+        run: |
+          node --check app.js
+          node --check space-lens-qa.js
       - name: Check site data and browser API startup
         run: node tools/check_site.mjs
+      - name: Check Space Lens human-readable answers
+        run: node tools/check_space_lens_qa.mjs
       - name: Check compact REDOGIT surface
         run: python3 tools/redogit_selfcheck.py
       - name: Replay SQL v5 finite constructor
