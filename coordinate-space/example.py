@@ -13,3 +13,7 @@ state = builder.build_state({'demo::input':1}, [('demo::input','carries','demo::
 for count in [9,11]:
     stack = builder.stack_states([state]*count)
     print(f'{count} aligned layers: {stack["symbols"].shape}; repeated layers are not independent evidence')
+
+# Independent replay of the complete, bounded scalar sweep.
+from unicode_crosscheck import run
+print(run())

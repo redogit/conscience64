@@ -1,20 +1,28 @@
-# Coordinate Space Workbench — Public Edition
+# Coordinate Space Workbench — culture and clock-independent public edition
 
-A separate Float64 / UTF-8 tool hosted alongside Conscience64. The browser interface encodes text into ordered, exact 48-bit integer payloads represented as Float64 numbers, then checks length, canonical padding, UTF-8 validity and SHA-256 while decoding. It does not upload inputs or persist them automatically.
+Open [the workbench](https://redogit.github.io/conscience64/coordinate-space/).
 
-Open [the public workbench](https://redogit.github.io/conscience64/coordinate-space/).
+Encode, inspect, import and recover exact Unicode text through the existing `exact-utf8-f64/v1` carrier. Processing stays on the device: no input uploads, accounts, analytics or automatic saving.
 
-## Release boundary
+## What changed
 
-This directory publishes reusable software and newly authored examples. It intentionally excludes the private research corpus, the 69 archived source payloads, historical archive capsules, original ZIP bundles and personal records. The public examples are not recovered research evidence. The full local workbench remains separate.
+16 interface-language drafts and an extensible local translation-pack loader; explicit RTL/LTR support; language and direction hints for source text independent of the interface; localized counts with invariant machine numbers; and no date-stamped interface or wall-clock dependency in content identity. Original dates, ordering and provenance are preserved, not erased.
 
-`coordinate_runtime.py` and `float64_coordinate_builder.py` are byte-for-byte copies of the audited September 13 local successor. Their hashes are recorded in `release_manifest.json`. The public browser adapter, interface and release-specific tests are new in this release; they do not inherit the original package's test counts.
+The bundled languages are English, Spanish, French, Portuguese, Arabic, Persian, Hebrew, Hindi, Bengali, Tamil, Simplified Chinese, Japanese, Korean, Swahili, Indonesian and Ukrainian. These are drafts, not native-speaker or community-certified translations. Technical documentation and diagnostic details remain English. No claim is made to represent every culture.
 
-The 13-entry `utf8_symbol_registry.json` is a synthetic compatibility fixture for the builder's executable example. Its names match that example; its definitions are explicitly synthetic, not substitutes for the research registry.
+To add or correct a language locally, select **Save language template**, edit the text values and locale metadata, then use **Import language pack**. Packs are session-local, validated and rendered as text, never executed. No developer account or remote service is needed. See [the culture and time contract](CULTURE_TIME_CONTRACT.md) for limits, trust boundaries, source-language behavior and the precise meaning of clock independence.
 
-## Run the Python machinery
+## Run locally
 
-Python 3.11 or newer is needed; the local release tests used Python 3.13.5 with NumPy 2.3.5.
+Keep every file in `coordinate-space/` together. A compatible browser can open `index.html` locally without a backend, or use a local server:
+
+```bash
+python -m http.server 8000 --bind 127.0.0.1
+```
+
+Open `http://127.0.0.1:8000/` when running that command inside this directory. No CDN, web font or external JavaScript is required. File-navigation policies vary by browser/environment; the current local test environment blocked navigation, so local browser evidence is DOM-only. GitHub's deployment gate tests actual HTTP delivery. This is not a perpetual-availability guarantee.
+
+Python 3.11 or newer is required. The local environment uses Python 3.13.5 and NumPy 2.3.5:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -22,28 +30,39 @@ python verify_release.py
 python test_public.py
 python example.py
 python float64_coordinate_builder.py
+node test_codec.mjs
 ```
 
-The last command produces a local example NPZ, using only the public synthetic registry. `example.py` verifies Unicode recovery and 9- and 11-layer stacks. Repeated layers are not independent corroboration.
-
-The exact-text codec works without a research dataset. To inspect your own compatible private dataset, use `CoordinateSpace('/absolute/path/to/data')`. No corpus is bundled in this public directory, so the reader's default `data/` path is intentionally absent. Do not commit private datasets merely to satisfy that default. The reader uses `allow_pickle=False`.
+Node 22 or newer is a JavaScript test harness only; it is not needed to use the browser or Python codec. `example.py` now also runs the independent Python Unicode sweep. The builder's executable example creates a local NPZ using the public 13-entry synthetic registry, not private research definitions. Repeated layers in the 9- and 11-layer examples are not independent evidence.
 
 ```python
 from coordinate_runtime import encode_utf8_exact, decode_utf8_exact
-values, meta = encode_utf8_exact('Hello / مرحبا / 你好 / 🌍')
-recovered = decode_utf8_exact(values, meta['utf8_bytes'], expected_sha256=meta['sha256'])
+values, meta = encode_utf8_exact('Hello / مرحبا / 你好')
+text = decode_utf8_exact(values, meta['utf8_bytes'], expected_sha256=meta['sha256'])
 ```
 
-The browser codec caps payloads at 1 MiB; the Python codec caps them at 64 MiB. Browser inputs must be valid Unicode; lone surrogates are rejected rather than silently replaced. A text field may normalize entered newlines. Importing an envelope and saving the recovered bytes preserves its UTF-8 payload, including BOM, NUL and CRLF.
+The typed reader can inspect a compatible dataset with `CoordinateSpace('/path/to/data')`. No dataset is bundled: the default `data/` path is intentionally absent. Do not publish private data to satisfy that default. `allow_pickle=False` remains enforced.
 
 ## Verification
 
-`node test_codec.mjs` runs 35 JavaScript assertions. Node is a test harness, not a browser or Python runtime dependency. `python test_public.py` runs 9 regression methods including 516 text round-trips, typed-reader fixtures, malformed payloads, identifier validation, state saving/reloading, empty registries and variable-count layers.
+The release verifies an explicit file allowlist and retains the unchanged audited Python module hashes. The browser `codec.js` and its v1 envelope contract also remain unchanged from commit `2bb57da9b7e1ada21af89a5b0e5ee789e67a080f`.
 
-For full browser checks, install `playwright==1.57.0` and a compatible Chromium/Chrome installation, then run `python browser_checks.py`. Set `CHROMIUM_PATH` when needed. The GitHub Pages source workflow runs these HTTP-served checks before publication. The local environment blocked navigation; the local run used `python browser_checks.py --dom-only` and passed 16 checks, including import/export, source-as-text handling, mobile layout and Clear winning a pending file import. DOM-only does not validate HTTP delivery or CSP enforcement. No screen-reader or accessibility-conformance certification is claimed.
+The suite passes 9 Python regression methods, 35 original JavaScript assertions, 367 added Unicode/locale/clock checks, and an independent Python replay of all 1,112,064 Unicode scalar values in bounded batches. These are not all possible Unicode strings. The browser suite has 144 checks across all 16 locales and both mobile and desktop layouts.
 
-## Integrity, interpretation and license
+```bash
+python -m pip install playwright==1.57.0
+# Install a compatible Chrome/Chromium or run: python -m playwright install chromium
+python browser_checks.py
+# Only for environments where navigation is blocked:
+python browser_checks.py --dom-only
+```
 
-Coordinates are typed carriers, not semantic embeddings. A SHA-256 hash checks byte identity against a supplied expectation; it is not a digital signature or proof of truth. Encoding is not compression, encryption or knowledge discovery. One number does not contain an arbitrary document. Missing or changed source dependencies remain unresolved rather than inheriting earlier PASS statuses.
+Set `CHROMIUM_PATH` when the browser executable cannot be discovered. DOM-only tests do not establish HTTP delivery or CSP enforcement. The existing action-free Pages workflow runs full HTTP browser checks before publication. Tests do not certify JAWS, NVDA, translation quality or accessibility conformance.
 
-Free use is provided under the MIT license in this directory. This scope does not relicense unrelated research, third-party works or the rest of the repository.
+## Public boundary and provenance
+
+This update extends the public software release, not the private research workbench. The private corpus, 69 archived source payloads, historical archive capsules and personal records remain excluded. The 13-entry symbol registry remains an authored compatibility fixture, not a recovered research registry. The culture/clock sweep includes generic code points and authored test strings, not a copied cultural corpus.
+
+Carrier identity is not meaning, proof of truth, encryption or compression. Source text is never normalized merely to make it match another spelling. One Float64 does not store an arbitrary document; the ordered sequence and metadata carry it. Unknown source context remains unknown, and release chronology is retained in Git and the manifest. No time-based expiry is introduced.
+
+Free use is provided under the [MIT license](LICENSE) scoped to this directory; unrelated research and third-party works are not relicensed.

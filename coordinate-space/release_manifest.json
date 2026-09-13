@@ -1,19 +1,24 @@
 {
-  "schema": "coordinate-space-public-release/v1",
+  "schema": "coordinate-space-public-release/v1.1",
   "date": "2026-09-13",
-  "edition": "PUBLIC_SOURCE_AND_AUTHORED_EXAMPLES",
+  "edition": "PUBLIC_MULTILINGUAL_CLOCK_INDEPENDENT",
+  "predecessor_commit": "2bb57da9b7e1ada21af89a5b0e5ee789e67a080f",
   "files": {
+    "CULTURE_TIME_CONTRACT.md": {
+      "bytes": 7666,
+      "sha256": "adf8492ee8fa5107be5582b9a962bcf2c1d3b0ea56cf92b433f255b07be75e16"
+    },
     "LICENSE": {
       "bytes": 1077,
       "sha256": "37ba7f81fe8880b9640b9e92218891acb1636525e61fc6ed67f59b971949a90b"
     },
     "README.md": {
-      "bytes": 4363,
-      "sha256": "3de8b099a5ce16173e5606402d02add6e240e87fc43d426575c3d8057b7d1bc4"
+      "bytes": 5430,
+      "sha256": "093f0212fe764a8957aa384bb200c4db4ca55cedb464d87044ba49d830dd24a8"
     },
     "browser_checks.py": {
-      "bytes": 5992,
-      "sha256": "642a859213de480f7a74c48135002a8cccbfe7affc53b1f1040768ca598ac7ea"
+      "bytes": 6130,
+      "sha256": "f6db713ca911d5c32fdf53f2e92d7eb46bd64da73f42ca715e1e9be851282ba5"
     },
     "codec.js": {
       "bytes": 2744,
@@ -23,17 +28,29 @@
       "bytes": 9808,
       "sha256": "137840583674a590aa2d471eaf45ae6cbe90bde5e71e486aa49592522f3cf3c3"
     },
+    "culture_browser_checks.py": {
+      "bytes": 7069,
+      "sha256": "0793e9a0c38c7e0b26accd1c997fbd60d1fe5c5b17d8ec1013a13a835e5c6e43"
+    },
     "example.py": {
-      "bytes": 953,
-      "sha256": "e784b931b69afab0ed38bf68e13f183a86bdba3951b585261d638493b443889d"
+      "bytes": 1062,
+      "sha256": "254218068cc59abd5b17d956f2269985c1922be983dbdd017806b4a3234b11de"
     },
     "float64_coordinate_builder.py": {
       "bytes": 22158,
       "sha256": "cabb18665bdad165b110b67453be7b04cc71d83fa5a91598276d768b98a8f41e"
     },
+    "i18n.js": {
+      "bytes": 3270,
+      "sha256": "a7f943edf358387dc23f2df1460ecf4adeb1dcc0712d86dbae59aa32e6c25fbd"
+    },
     "index.html": {
-      "bytes": 5863,
-      "sha256": "c80fbdad259dfc361286f4501953853ad632233e23efb2929e46a559c52d735b"
+      "bytes": 9475,
+      "sha256": "5431818cddafa470de3b8ab3a0eedba1dac544f68809edabea194fa930fa06af"
+    },
+    "locales.js": {
+      "bytes": 33292,
+      "sha256": "f80e9380bfee4308480b94661e419c6013698a55117e7201f8b331c7c23538ff"
     },
     "requirements.txt": {
       "bytes": 83,
@@ -44,16 +61,24 @@
       "sha256": "29179f0f61206751a89301ab28cb6ec618092fcb620b7c5509fc43c5be153390"
     },
     "test_codec.mjs": {
-      "bytes": 1710,
-      "sha256": "8e1614fb68c5747ea55f3afb6148d443c752c81826140c2d6c8584543e95f369"
+      "bytes": 1831,
+      "sha256": "f7c5b33ce0c80ec37fa6518850718bb4dd575dfab0ee3bb57ddcd3f894a61d27"
+    },
+    "test_culture.mjs": {
+      "bytes": 3444,
+      "sha256": "bd38fbb39eba704b21a5f61d87ed6dbef34819cf6c9fcb311d923b1c81b3829e"
     },
     "test_public.py": {
       "bytes": 6401,
       "sha256": "3b47acfe0187c377a4d8a72e56184db23cf7d669570d5e48f28ad5a12fcf6362"
     },
     "ui.js": {
-      "bytes": 2756,
-      "sha256": "a062ed3b82b778eddce86526c781a8d86cf9c5e9a6aa9f8fff9ff19815ee5a76"
+      "bytes": 6281,
+      "sha256": "4c11f16728d075d5635c2c60761cca806f84d5f8f52f4ab395feeab347e22657"
+    },
+    "unicode_crosscheck.py": {
+      "bytes": 1413,
+      "sha256": "ecd68a601c712271f86c337b58ce2ec37588c802ad8b404dc404290c40ae73ed"
     },
     "utf8_symbol_registry.json": {
       "bytes": 3562,
@@ -70,11 +95,27 @@
   },
   "private_corpus_included": false,
   "historical_archives_included": false,
+  "interface_locales": 16,
+  "messages_per_locale": 40,
+  "translation_review": "ASSISTANT_DRAFT_NOT_COMMUNITY_CERTIFIED",
+  "clock_contract": "Source bytes, order, schema and digest are authoritative. Wall clock, calendar and UI locale are not identity inputs.",
   "local_checks": {
     "python_methods": 9,
     "python_text_roundtrips": 516,
-    "javascript_assertions": 35,
-    "browser_dom_checks": 16
+    "javascript_original": 35,
+    "javascript_culture": 367,
+    "unicode_scalar_values": 1112064,
+    "unicode_batches": 136,
+    "unicode_transcript_bytes": 4382592,
+    "unicode_sha256": "e0a7693f7362e88827c15e772e55b3490bd983f90711df7f3ef36c2b1ef6847e",
+    "independent_python_unicode_sweep": "PASS",
+    "browser_dom_checks": 144,
+    "timezones": [
+      "UTC",
+      "America/New_York",
+      "Pacific/Kiritimati",
+      "Asia/Kolkata"
+    ]
   },
-  "local_browser_boundary": "Navigation blocked; DOM-only execution. HTTP and CSP await the GitHub browser check."
+  "local_browser_boundary": "HTTP navigation blocked by environment policy. 144 DOM checks passed. HTTP delivery is required by the GitHub Pages deployment gate; no accessibility or translation certification."
 }

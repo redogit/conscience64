@@ -18,3 +18,6 @@ for(const text of ['\ud800','\udc00','x'.repeat(1024*1024+1)]) {assert.throws(()
 const invalidBytes=new Uint8Array([255]);
 assert.throws(()=>C.decode({schema:C.schema,coordinates:[255*256**5],utf8_bytes:1,pad_bytes:5,sha256:createHash('sha256').update(invalidBytes).digest('hex')}));checks++;
 console.log(JSON.stringify({status:'PASS',checks,scope:'public JavaScript exact-codec fixtures; no private corpus'},null,2));
+
+// Culture/clock regression suite is also required by the existing deployment gate.
+await import("./test_culture.mjs");

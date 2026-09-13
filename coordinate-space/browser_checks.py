@@ -10,7 +10,7 @@ import re
 import sys
 import shutil
 import threading
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parent
 
@@ -45,7 +45,8 @@ def run(dom_only=False):
             page.set_content(re.sub(r'<script[^>]+src="[^"]+"[^>]*></script>', '', (ROOT/'index.html').read_text()))
             page.evaluate('() => {' + (ROOT/'sha256.js').read_text() + ';globalThis.sha256Bytes=sha256Bytes;globalThis.bytesToHex=bytesToHex;}')
             page.evaluate('() => {' + (ROOT/'codec.js').read_text() + '}')
-            page.evaluate('() => {' + (ROOT/'ui.js').read_text() + '}')
+            for name in ['locales.js','i18n.js','ui.js']:
+                page.evaluate('() => {' + (ROOT/name).read_text() + '}')
             check('DOM initialization', page.locator('#encode').count() == 1)
         else:
             response = page.goto(origin, wait_until='networkidle')
@@ -63,7 +64,7 @@ def run(dom_only=False):
         page.locator('#decode').click()
         check('invalid JSON fails closed', page.locator('#status').inner_text().startswith('FAIL'))
         page.locator('#load').set_input_files({'name':'example.json','mimeType':'application/json','buffer':json.dumps(packet).encode()})
-        page.wait_for_function("document.getElementById('status').textContent.startsWith('PASS')")
+        expect(page.locator("#status")).to_have_attribute("data-state", "passed")
         check('file import', page.locator('#recovered').inner_text() != '')
         malicious = '<img src=x onerror=alert(1)></script> مرحبا'
         page.locator('#text').fill(malicious); page.locator('#encode').click()
@@ -80,7 +81,9 @@ def run(dom_only=False):
         page.locator('#load').set_input_files({'name':'slow.json','mimeType':'application/json','buffer':b'{}'})
         page.locator('#clear').click(); page.evaluate('() => {window.finishImport(); File.prototype.text=window.savedText;}')
         page.wait_for_timeout(30)
-        check('clear wins pending file import', page.locator('#packet').input_value() == '' and page.locator('#status').inner_text().startswith('Cleared'))
+        check('clear wins pending file import', page.locator('#packet').input_value() == '' and page.locator('#status').get_attribute('data-state') == 'cleared')
+        from culture_browser_checks import exercise
+        exercise(page, check)
         check('no unexpected network requests', all(url.startswith(origin) for url in requests))
         check('no uncaught JS errors', not errors)
         version = browser.version
