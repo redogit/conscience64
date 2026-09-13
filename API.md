@@ -1,6 +1,6 @@
 # Conscience64 Universal Search Space API
 
-**API version:** `1.2.0`  
+**API version:** `1.3.0`  
 **Space UOID:** `uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599`  
 **Search-space objects:** 734  
 **Structured research projects:** 7  
@@ -153,7 +153,7 @@ projects.reflow
 projects.invariants
 ```
 
-`O` is produced by the selected action. IRPO history is append-only in browser memory:
+`O` is produced by the selected action unless the caller explicitly supplies `O`; supplied outputs are not independent companion findings. IRPO retains only the latest 512 records in browser memory, not a durable archive:
 
 ```js
 Conscience64API.history()
@@ -204,3 +204,23 @@ uoid:sha256:<64 hex digits>
 A byte hash establishes identity of bytes; it does not establish semantic truth or proof weight. Research nodes, relations, world fragments, manifests, structured project records, failed experiments, and unresolved recovery states retain distinct roles.
 
 Current policy is forward-only: new lessons update current registries, APIs, and verification without silently rewriting verified historical checkpoints.
+
+## Selected daily lessons (1.3.0)
+
+```js
+Conscience64API.projects.lessons({date: "2026-09-13"})
+Conscience64API.projects.lessons({projectId: "geometry-codecs", text: "de Bruijn"})
+Conscience64API.irpo({I: {date: "2026-09-13"}, P: {action: "projects.lessons"}})
+```
+
+The `projects.lessons` postMessage route accepts the same filter object. Supported filters are `date`, `projectId`, `evidenceClass` and `text`; all supplied values must be nonempty strings and unknown fields are rejected. Unknown project IDs raise `UNRESOLVED_PROJECT`. An unmatched date or search returns an empty result within this registry, not a statement about all research.
+
+Results include the registry version, source policy, assumptions, evidence class, claim ceiling and source digest references. These are curated records, not independent companion agreement. The 14 lessons in registry 1.1.0 form an interim September 13 selection. Source reports remain source-reported, and private source archives are not bundled. See [the update note](research/updates/2026-09-13.md).
+
+The seven prior project records and 734-object graph are unchanged. `search.simple` and `search.advanced` still search that graph, not the lesson registry. Use `projects.lessons` for the new records. `stats().projects.lessonCount` reports this separate count.
+
+## Endpoint filter repair (1.3.0)
+
+A supplied `from` or `to` must be a nonempty string resolving to a graph object. Malformed values raise `INVALID_REFERENCE`; unresolved values raise `UNRESOLVED_REFERENCE`. Omitted fields leave that endpoint unconstrained. In the postMessage bridge an error is returned as `ok:false`, `result:null`, with the error string. This replaces the 1.2.0 behavior in which an unresolved endpoint silently selected all graph relations. No caller may treat a rejected query as a measured zero.
+
+This remains a read-only browser corpus/registry API, apart from local IRPO history. There is no server-side chat, remote write endpoint or background autonomous session. Durable public updates use versioned repository source and normal deployment; do not put private data in the public registry. The wildcard postMessage bridge is for the public data surface, not an authenticated channel for secrets or privileged writes.

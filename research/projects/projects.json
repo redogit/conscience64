@@ -1,6 +1,6 @@
 {
   "schema": "conscience64/research-project-registry/v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "surface": "I/R/P/O",
   "forwardOnly": true,
   "learnedInvariants": [
@@ -16,7 +16,14 @@
     "CALIBRATION_RESULT != OPEN_PROBLEM_RESULT",
     "FINITE_VERIFICATION != UNIVERSALITY",
     "REPRESENTATION_CORRECTNESS != PHYSICAL_TRUTH",
-    "LOSS_ACKNOWLEDGED != LOSS_CONCEALED"
+    "LOSS_ACKNOWLEDGED != LOSS_CONCEALED",
+    "UNRESOLVED_REFERENCE != OMITTED_FILTER",
+    "CURRENT_OUTPUT != FUTURE_OUTPUT != SELECTED_LABEL_UPDATE",
+    "LOSSLESS_TRANSPORT != COMPRESSION",
+    "CODEBOOK != ADDRESS != CONSTRUCTION_STATE",
+    "COMPACT_SIZE != CHEAP_QUERY",
+    "EVALUATION_COMPLETE != PROMOTION_APPROVED",
+    "PERSON != RECORDED_MODEL"
   ],
   "transformStates": [
     "PRESERVED",
@@ -162,6 +169,300 @@
         "test": "Exact source, namespace, archive path, hash, chronology, and independent migration/provenance references.",
         "unknown": "The exact Fuzzball carrier, chronology, and relation to neighboring projects remain unresolved."
       }
+    }
+  ],
+  "lessonPolicy": {
+    "status": "INTERIM_SELECTED_UPDATE",
+    "date": "2026-09-13",
+    "sourceCutoffUtc": "2026-09-13T12:40:44Z",
+    "author": "GPT-6 Astra Pro",
+    "companion": "Conscience64",
+    "contribution": "Assistant-curated summaries; companion performs deterministic navigation, not independent scientific review.",
+    "scope": "Selected non-personal technical lessons and general design constraints. Private archives and personal records are not published.",
+    "evidenceRule": "Source-reported tests stay source-reported. API regression checks do not revalidate all underlying research.",
+    "predecessorCommit": "3f8889e17cecd7bd865e33f70201c703163df405",
+    "predecessorRegistryGitBlob": "5a473e46ac5b93cc053479c61e5009c492c93d76",
+    "historicalGraphChanged": false,
+    "originalProjectRecordsChanged": false,
+    "sources": {
+      "v6": {
+        "name": "CROSS_CARRIER_CONTINUATION_V6_REPORT.md",
+        "sha256": "32c4954a48b2cdc2ff70b23b1043a936185e85b6fd68ff6f795bd468653a57d7",
+        "availability": "SOURCE_RETAINED_IN_WORKING_ARCHIVE_NOT_BUNDLED",
+        "reexecutedForThisUpdate": false
+      },
+      "survivor": {
+        "name": "RECURSIVE_SURVIVOR_FRONTIER_2026-09-13.md",
+        "sha256": "2ddf803d19c5cf1bfa707f629ae3491e40adc877b2690968670529bb1c7665b7",
+        "availability": "SOURCE_RETAINED_IN_WORKING_ARCHIVE_NOT_BUNDLED",
+        "reexecutedForThisUpdate": false
+      },
+      "corollaries": {
+        "name": "COROLLARIES.json",
+        "sha256": "ad88bba94b888227ba3f60c6ae30e9be2a1079c7764a88a57a30974204d0f242",
+        "availability": "SOURCE_RETAINED_IN_WORKING_ARCHIVE_NOT_BUNDLED",
+        "reexecutedForThisUpdate": false
+      },
+      "debruijn": {
+        "name": "SERIALIZATION_CONTRACT.md",
+        "sha256": "2a02d08a3ded0f603ea8025eb917dedcbf7d437486e22abe93b14d975c1be3e2",
+        "availability": "SOURCE_RETAINED_IN_WORKING_ARCHIVE_NOT_BUNDLED",
+        "reexecutedForThisUpdate": false
+      },
+      "hunt": {
+        "name": "CLAIM_HUNT_REPORT.md",
+        "sha256": "211aa8332063c79d792d5af058cd4ad9a80e14ddd62ae4337b3e5c2e3fe9d5a4",
+        "availability": "SOURCE_RETAINED_IN_WORKING_ARCHIVE_NOT_BUNDLED",
+        "reexecutedForThisUpdate": false
+      },
+      "sprime": {
+        "name": "RESULTS_AND_PROOF.md",
+        "sha256": "be3ab391f9787a2463c4dd1d15f22aac8936140bd18178f5b5b3aeb2b21df685",
+        "availability": "SOURCE_RETAINED_IN_WORKING_ARCHIVE_NOT_BUNDLED",
+        "reexecutedForThisUpdate": false
+      }
+    }
+  },
+  "lessons": [
+    {
+      "id": "2026-09-13:continuation-correction",
+      "date": "2026-09-13",
+      "title": "Corrected continuation: 6,048 is not 12,096",
+      "projectIds": [
+        "cross-carrier-wave"
+      ],
+      "evidenceClass": "REPORTED_CORRECTED_FINITE_RESULT",
+      "statement": "Current answers, all future protected answers, and exact updating of selected internal labels are distinct guarantees.",
+      "assumptions": "Three states, two deterministic actions, binary output and binary carrier; 46,656 combinations.",
+      "evidence": "The corrected report records 6,048 current-safe/future-output failures, plus 6,048 future-output-safe cases that fail the chosen-label update rule. Their sum 12,096 counts current-safe label noncongruence.",
+      "claimCeiling": "Congruence plus current safety is sufficient, not necessary, for future-output preservation. Both v6 branches and the superseded interpretation remain traceable.",
+      "sourceIds": [
+        "v6",
+        "corollaries"
+      ]
+    },
+    {
+      "id": "2026-09-13:diagnostic-selector",
+      "date": "2026-09-13",
+      "title": "Choose the missing distinction, not the largest data volume",
+      "projectIds": [
+        "cross-carrier-wave",
+        "operator-moonshot"
+      ],
+      "evidenceClass": "REPORTED_FINITE_COMPUTATIONAL_CHECK",
+      "statement": "Diagnosis can stop when one action is acceptable in every remaining world; exact world identification is not always required.",
+      "assumptions": "Finite supplied worlds, acceptable-action sets, authorized passive queries, path budgets and worst-case query cost.",
+      "evidence": "8,192 configurations: 4,916 solvable and 3,276 unresolved; zero cost/status disagreements with a separate same-author enumerator; 19,664 solved world-path replays.",
+      "claimCeiling": "Whole-cell intersection, not pairwise overlap. Model acceptability is not independently established real-world safety, consent or complete world coverage.",
+      "sourceIds": [
+        "v6"
+      ]
+    },
+    {
+      "id": "2026-09-13:source-filter",
+      "date": "2026-09-13",
+      "title": "A missing source must not broaden an evidence query",
+      "projectIds": [
+        "orbit-library",
+        "historical-recovery"
+      ],
+      "evidenceClass": "REPRODUCED_API_BOUNDARY_FAILURE",
+      "statement": "An omitted endpoint filter and a supplied but unresolved endpoint are different states.",
+      "assumptions": "Conscience64 1.2.0 at the pinned predecessor commit; an explicit nonexistent from/to identifier.",
+      "evidence": "The claim hunt and this update baseline both found get(missing)=null while search.advanced({from:missing}) returned all 508 graph relations.",
+      "claimCeiling": "The successor must throw UNRESOLVED_REFERENCE; malformed supplied identifiers throw INVALID_REFERENCE. A rejected query is not a measured zero.",
+      "sourceIds": [
+        "hunt"
+      ]
+    },
+    {
+      "id": "2026-09-13:debruijn",
+      "date": "2026-09-13",
+      "title": "Bind de Bruijn addresses to the actual codebook",
+      "projectIds": [
+        "geometry-codecs",
+        "operator-moonshot"
+      ],
+      "evidenceClass": "TESTED_LOCAL_CANDIDATE_REPORTED",
+      "statement": "Serialize the oriented codebook, its word address, and an unfinished construction as separate objects.",
+      "assumptions": "Ordered exact tokens; fixed order, cycle, origin and direction; cyclic windows; explicit resource bounds.",
+      "evidence": "DBS1, DBA1 and DBW1 distinguish cycle, digest-bound address and replayable walk. Rotation rebases position by (p-r) mod L. A stuck append-only walk is not proof that no cycle exists.",
+      "claimCeiling": "The original education serializer was not recovered. This is a separate candidate, not a legacy migration, scalable implicit rank/unrank implementation or demonstrated learning outcome.",
+      "sourceIds": [
+        "debruijn"
+      ]
+    },
+    {
+      "id": "2026-09-13:utf8-capacity",
+      "date": "2026-09-13",
+      "title": "Two exact UTF-8 carriers, two different capacity contracts",
+      "projectIds": [
+        "geometry-codecs"
+      ],
+      "evidenceClass": "REPORTED_COUNTING_ARGUMENT_AND_TESTS",
+      "statement": "Six-byte integer chunks stored numerically as binary64 and ranked zero-to-eight-byte strings stored by raw bit mapping are different codecs.",
+      "assumptions": "Strict UTF-8, agreed codec/version, exact length and bit-preserving transport; no semantic interpretation of numerical distance.",
+      "evidence": "The chunk codec expands full chunks by 8/6. The ranking report counts 168,570,276,329,617,409 strings of zero through eight bytes, needing 58 distinguishing bits; its mapping avoids integer-to-float rounding.",
+      "claimCeiling": "Exactly nine-byte UTF-8 strings already exceed 2^64 possibilities. Neither codec stores an arbitrary library in one float or grants extra capacity to another interpretation.",
+      "sourceIds": [
+        "hunt",
+        "sprime"
+      ]
+    },
+    {
+      "id": "2026-09-13:nand-closure",
+      "date": "2026-09-13",
+      "title": "A closure certificate covers arbitrary finite grammar depth",
+      "projectIds": [
+        "operator-moonshot",
+        "cross-carrier-wave"
+      ],
+      "evidenceClass": "REPORTED_FINITE_CLOSURE_AND_MINIMUM_CERTIFICATE",
+      "statement": "For E ::= x | y | z | N E E, complete Boolean behavior on eight input rows yields exactly 256 classes.",
+      "assumptions": "N is NAND; tree expressions, one-byte symbols, no shared gates, free constants or implicit operators.",
+      "evidence": "All 65,536 ordered class compositions were checked; shortest witnesses attain recorded costs and satisfy every composition inequality. The largest minimum is 29 bytes; 34,491 literal expressions through 11 bytes were counterchecked.",
+      "claimCeiling": "This is a grammar-specific behavior/minimum certificate, not a circuit DAG lower bound, cognitive idea model, or proof about unrestricted programs.",
+      "sourceIds": [
+        "sprime"
+      ]
+    },
+    {
+      "id": "2026-09-13:symbolic-repair",
+      "date": "2026-09-13",
+      "title": "Exact symbolic repair without enumerating 2^64 tables",
+      "projectIds": [
+        "cross-carrier-wave",
+        "operator-moonshot"
+      ],
+      "evidenceClass": "REPORTED_SYMBOLIC_PROOF_WITH_SMALL_EXHAUSTIVE_CHECK",
+      "statement": "For baseline b, protected mask P, required mask R and target t, conflict is (b XOR t) AND P AND R. Without conflict, the unique minimum changed-row repair is (b AND NOT R) OR (t AND R).",
+      "assumptions": "Fixed width; complements masked to that width; pointwise constraints and unit Hamming cost per changed output row.",
+      "evidence": "The solution set has 2^(width-popcount(P OR R)) members. Widths 1-4 were checked over 69,904 constraint systems and 1,082,400 candidate membership checks.",
+      "claimCeiling": "The proof applies to this pointwise predicate, not arbitrary causal, linguistic or program-edit constraints; it resolves neither side of P versus NP.",
+      "sourceIds": [
+        "sprime"
+      ]
+    },
+    {
+      "id": "2026-09-13:maxcut28",
+      "date": "2026-09-13",
+      "title": "A small exact graph certificate, with the cycle claim corrected",
+      "projectIds": [
+        "operator-moonshot"
+      ],
+      "evidenceClass": "REPORTED_EXACT_CERTIFICATE_AND_ENUMERATION",
+      "statement": "The supplied 20-vertex, 30-edge graph has Max-Cut 28.",
+      "assumptions": "The exact graph and two deleted edges in the pinned repository certificate.",
+      "evidence": "Deleting two edges leaves a bipartite graph. Three odd cycles have empty common edge intersection, ruling out one-edge deletion. Enumeration checked 524,288 complement-reduced cuts and found optimum 28.",
+      "claimCeiling": "The three cycles are not pairwise edge-disjoint. This is one graph, not a general short-certificate theorem; the older certificate size was not independently remeasured.",
+      "sourceIds": [
+        "hunt"
+      ]
+    },
+    {
+      "id": "2026-09-13:stabilizer",
+      "date": "2026-09-13",
+      "title": "Use a same-label anchor, and specify the empty domain",
+      "projectIds": [
+        "operator-moonshot"
+      ],
+      "evidenceClass": "REPORTED_DERIVATION_AND_EXHAUSTIVE_SMALL_CHECK",
+      "statement": "For nonempty D, an anchor in a smallest nonempty label class of size k gives at most k-1 possible nonzero XOR translations; verify each against all m labelled points.",
+      "assumptions": "Explicit partial Boolean table over a declared n-bit ambient space; exact domain and label preservation.",
+      "evidence": "The pair criterion 2*N_t=m, direct preservation and Walsh autocorrelation agree in the reported small exhaustive panel. The adapter agrees on 6,651 tables; the stored target returns {7}.",
+      "claimCeiling": "Empty D is preserved by every translation and requires ambient n. The anchor bound m(k-1) does not establish a wall-time speedup or general asymptotic improvement. Multiple carriers of one statistic are not independent evidence.",
+      "sourceIds": [
+        "hunt"
+      ]
+    },
+    {
+      "id": "2026-09-13:strict-decoding",
+      "date": "2026-09-13",
+      "title": "Valid round trips are weaker than strict input admission",
+      "projectIds": [
+        "geometry-codecs"
+      ],
+      "evidenceClass": "REPORTED_BOUNDARY_COUNTEREXAMPLES_AND_ADAPTER",
+      "statement": "Validate declared length, exact payload count, integer domain, finite values, canonical padding, UTF-8 and any expected digest before accepting a numeric text carrier.",
+      "assumptions": "The six-byte chunk format and its declared metadata contract.",
+      "evidence": "The source decoder accepted impossible/negative lengths and ignored padding mutations. A strict candidate adapter rejected the recorded malformed cases while preserving tested valid encoder outputs.",
+      "claimCeiling": "These failures concern a stronger admission boundary, not the valid-input round-trip theorem. A colocated digest is not source authentication; missing NPY/NPZ reconstruction remains NOT_RUN.",
+      "sourceIds": [
+        "hunt"
+      ]
+    },
+    {
+      "id": "2026-09-13:survivor-cost",
+      "date": "2026-09-13",
+      "title": "Small survivors can still carry an expensive query",
+      "projectIds": [
+        "operator-moonshot",
+        "cross-carrier-wave"
+      ],
+      "evidenceClass": "REPORTED_REPRESENTATION_GAIN_AND_COUNTERPROBE",
+      "statement": "Account separately for exactness, build, size, query, composition, verification and recovery.",
+      "assumptions": "Task-local SAT boundary relations and separately defined circuit survivor sets.",
+      "evidence": "The selector family replaces m^2 explicit clauses with 2m-1 shared binary gates, but arbitrary shared circuits can retain a Circuit-SAT query. Matching, forests and balanced incidence offer distinct restricted structural routes.",
+      "claimCeiling": "No universal survivor compression or asymptotic lower bound follows. Reusing an interface does not transfer mathematical evidence between projects.",
+      "sourceIds": [
+        "survivor"
+      ]
+    },
+    {
+      "id": "2026-09-13:evidence-interface",
+      "date": "2026-09-13",
+      "title": "Carry uncertainty and evaluation status through the interface",
+      "projectIds": [
+        "orbit-library",
+        "model-experiments",
+        "historical-recovery"
+      ],
+      "evidenceClass": "ENGINEERING_IMPLICATION",
+      "statement": "Keep unknown, partial, failed, measured-zero, evaluation-complete and promotion-approved states distinct.",
+      "assumptions": "A declared task and downstream decisions that depend on those differences.",
+      "evidence": "The daily collation separates 20 mathematical/model-relative consequences from eight engineering/human implications and keeps their assumptions, dependencies and counterprobes.",
+      "claimCeiling": "Logging expected and actual values is not comparison. A completed negative evaluation need not qualify a release. Software checks do not establish human outcomes.",
+      "sourceIds": [
+        "corollaries"
+      ]
+    },
+    {
+      "id": "2026-09-13:human-boundary",
+      "date": "2026-09-13",
+      "title": "The person is not the recorded model",
+      "projectIds": [
+        "orbit-library",
+        "operator-moonshot"
+      ],
+      "evidenceClass": "GENERAL_DESIGN_CONSTRAINT",
+      "statement": "People, recorded human models, research materials, active working sets and assisting systems remain distinct; preserve necessary meaning before reducing interface effort.",
+      "assumptions": "Human-directed aims, explicit task boundaries and separate authorship; no inferred private traits.",
+      "evidence": "The daily work distinguishes material availability, encounter, understanding, endorsement, learning and benefit instead of counting artifacts as knowledge acquired.",
+      "claimCeiling": "This is general design guidance, not a complete or validated model of a person, a learner assessment, or empirical benefit evidence.",
+      "sourceIds": [
+        "corollaries"
+      ]
+    },
+    {
+      "id": "2026-09-13:recoverable-continuation",
+      "date": "2026-09-13",
+      "title": "Preserve the correction path rather than defend a result",
+      "projectIds": [
+        "cross-carrier-wave",
+        "historical-recovery",
+        "orbit-library"
+      ],
+      "evidenceClass": "RESEARCH_CONTROL_IMPLICATION",
+      "statement": "Retain predecessor evidence and reopen the smallest consequential distinction when sources, goals, permissions or dependencies change.",
+      "assumptions": "Recovery is lawful, justified and available; privacy minimization still applies.",
+      "evidence": "The M01 correction, de Bruijn origin binding and unresolved-reference defect each identify a different relation that a compact representation must retain.",
+      "claimCeiling": "Knowledge Decay is not only technical freshness. Recovering a record, restoring usable practice and showing human benefit require different evidence. No automatic cross-project authority transfer.",
+      "sourceIds": [
+        "v6",
+        "debruijn",
+        "hunt",
+        "corollaries"
+      ]
     }
   ]
 }

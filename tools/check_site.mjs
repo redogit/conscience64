@@ -100,6 +100,46 @@ try {
   assert.equal(api.stats().projects.count, registry.projects.length);
   assert.equal(api.irpo({ I: 'historical-recovery', P: { action: 'projects.reflow' } }).O.projectId, 'historical-recovery');
   assert.ok(elements.get('irpo-o').textContent.includes('historical-recovery'));
+  assert.equal(api.version, '1.3.0');
+  assert.equal(registry.version, '1.1.0');
+  const lessons = api.projects.lessons({date: '2026-09-13'});
+  assert.equal(lessons.total, 14);
+  assert.equal(new Set(lessons.lessons.map(x => x.id)).size, lessons.total);
+  assert.equal(api.stats().projects.lessonCount, lessons.total);
+  for (const lesson of lessons.lessons) {
+    for (const key of ['statement','assumptions','evidence','claimCeiling','evidenceClass']) assert.ok(lesson[key]);
+    for (const id of lesson.projectIds) assert.ok(registry.projects.some(p => p.id === id));
+    for (const id of lesson.sourceIds) assert.match(lessons.policy.sources[id].sha256, /^[0-9a-f]{64}$/);
+  }
+  assert.ok(api.projects.lessons({text: 'Max-Cut'}).lessons.some(x => x.id.endsWith(':maxcut28')));
+  assert.ok(api.projects.lessons({projectId: 'geometry-codecs', text: 'de Bruijn'}).total > 0);
+  assert.equal(api.projects.lessons({date: '1900-01-01'}).total, 0);
+  assert.throws(() => api.projects.lessons({projectId: 'missing'}), /UNRESOLVED_PROJECT/);
+  assert.throws(() => api.projects.lessons({from: 'missing'}), /INVALID_LESSON_FILTER/);
+  assert.equal(api.irpo({I: {date: '2026-09-13'}, P: {action: 'projects.lessons'}}).O.total, 14);
+  const publicCopy = api.projects.lessons(); publicCopy.lessons[0].statement = 'changed';
+  assert.notEqual(api.projects.lessons().lessons[0].statement, 'changed');
+  for (const field of ['from','to']) {
+    assert.throws(() => api.search.advanced({[field]: 'missing'}), /UNRESOLVED_REFERENCE/);
+    for (const value of [null, '', ' ', 0, false, [], {}])
+      assert.throws(() => api.search.advanced({[field]: value}), /INVALID_REFERENCE/);
+  }
+  assert.equal(api.search.advanced({objectTypes:['research-edge']}).total, counts['research-edge']);
+  const known = api.get('project:orbit').uoid;
+  assert.ok(api.search.advanced({from:'project:orbit'}).results.every(r => r.sourceUoid === known));
+  assert.ok(api.search.advanced({to:'project:orbit'}).results.every(r => r.targetUoid === known));
+  assert.throws(() => api.irpo({I:{from:'missing'}, P:{action:'search.advanced'}}), /UNRESOLVED_REFERENCE/);
+  // Exercise the app's actual registered message listener as well as direct calls.
+  let reply;
+  const message = init => Object.assign(new Event('message'), init);
+  const source = {postMessage: value => { reply = value; }};
+  events.dispatchEvent(message({data:{type:'conscience64.api', id:'regression-missing', method:'search.advanced', args:[{from:'missing'}]}, source}));
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(reply.ok, false); assert.equal(reply.result, null); assert.match(reply.error, /UNRESOLVED_REFERENCE/);
+  events.dispatchEvent(message({data:{type:'conscience64.api', id:'regression-lessons', method:'projects.lessons', args:[{date:'2026-09-13'}]}, source}));
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(reply.ok, true); assert.equal(reply.result.total, 14);
+  console.log('PASS update: 14 source-qualified lessons; strict endpoint filters; direct, IRPO and message routes');
   console.log(`PASS site: ${records.length} records, ${counts['research-node']} nodes, ${counts['research-edge']} edges, ${registry.projects.length} projects; app startup and API smoke checks`);
 } catch (error) {
   console.error(`FAIL site: ${error.message}`);

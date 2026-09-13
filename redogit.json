@@ -9,11 +9,19 @@
     "build": null,
     "verify": "python3 tools/redogit_selfcheck.py",
     "project_registry": "research/projects/projects.json",
-    "browser_api_version": "1.2.0"
+    "browser_api_version": "1.3.0"
   },
   "predecessors": [
-    { "id": "partial-base64-research-transport", "path": null, "retained": true },
-    { "id": "cross-carrier-v2.2-checkpoint", "path": "research/cross-carrier/2026-09-12/v2.2", "retained": true }
+    {
+      "id": "partial-base64-research-transport",
+      "path": null,
+      "retained": true
+    },
+    {
+      "id": "cross-carrier-v2.2-checkpoint",
+      "path": "research/cross-carrier/2026-09-12/v2.2",
+      "retained": true
+    }
   ],
   "history_policy": {
     "preserve_predecessors": true,
@@ -24,7 +32,11 @@
   },
   "research_policy": {
     "surface": "I/R/P/O",
-    "checks": ["assumption", "test", "unknown"],
+    "checks": [
+      "assumption",
+      "test",
+      "unknown"
+    ],
     "project_registry": "research/projects/projects.json",
     "rules": [
       "UNKNOWN != ABSENT",
@@ -39,7 +51,14 @@
       "CALIBRATION_RESULT != OPEN_PROBLEM_RESULT",
       "FINITE_VERIFICATION != UNIVERSALITY",
       "REPRESENTATION_CORRECTNESS != PHYSICAL_TRUTH",
-      "LOSS_ACKNOWLEDGED != LOSS_CONCEALED"
+      "LOSS_ACKNOWLEDGED != LOSS_CONCEALED",
+      "UNRESOLVED_REFERENCE != OMITTED_FILTER",
+      "CURRENT_OUTPUT != FUTURE_OUTPUT != SELECTED_LABEL_UPDATE",
+      "LOSSLESS_TRANSPORT != COMPRESSION",
+      "CODEBOOK != ADDRESS != CONSTRUCTION_STATE",
+      "COMPACT_SIZE != CHEAP_QUERY",
+      "EVALUATION_COMPLETE != PROMOTION_APPROVED",
+      "PERSON != RECORDED_MODEL"
     ],
     "promotion": "evidence-gated and forward-only",
     "historical_checkpoint_policy": "do not rewrite verified predecessors merely to conform to newer lessons"
