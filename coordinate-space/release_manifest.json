@@ -1,8 +1,8 @@
 {
-  "schema": "coordinate-space-public-release/v1.1",
+  "schema": "coordinate-space-public-release/v1.2",
   "date": "2026-09-13",
-  "edition": "PUBLIC_MULTILINGUAL_CLOCK_INDEPENDENT",
-  "predecessor_commit": "2bb57da9b7e1ada21af89a5b0e5ee789e67a080f",
+  "edition": "PUBLIC_EXACT_SOURCE_FILE_INTAKE",
+  "predecessor_commit": "15ba591d55a9fde8a28af2833e478dcfd5718167",
   "files": {
     "CULTURE_TIME_CONTRACT.md": {
       "bytes": 7666,
@@ -13,12 +13,16 @@
       "sha256": "37ba7f81fe8880b9640b9e92218891acb1636525e61fc6ed67f59b971949a90b"
     },
     "README.md": {
-      "bytes": 5430,
-      "sha256": "093f0212fe764a8957aa384bb200c4db4ca55cedb464d87044ba49d830dd24a8"
+      "bytes": 7122,
+      "sha256": "b0fca49d61b0a2702dc8a4a04685c00a7b2b23db65fe987a4640909a9628dc4b"
+    },
+    "UPDATE_v1_2.md": {
+      "bytes": 5807,
+      "sha256": "9db1ba5c42301e027de915920987f48c90f6c3d1c0a98dcd3259452df4f54a3a"
     },
     "browser_checks.py": {
-      "bytes": 6130,
-      "sha256": "f6db713ca911d5c32fdf53f2e92d7eb46bd64da73f42ca715e1e9be851282ba5"
+      "bytes": 6254,
+      "sha256": "66fb0f094ef3387680b605dd599cd7088e756b76d8e2b2463c3db8e3902de81e"
     },
     "codec.js": {
       "bytes": 2744,
@@ -41,12 +45,16 @@
       "sha256": "cabb18665bdad165b110b67453be7b04cc71d83fa5a91598276d768b98a8f41e"
     },
     "i18n.js": {
-      "bytes": 3270,
-      "sha256": "a7f943edf358387dc23f2df1460ecf4adeb1dcc0712d86dbae59aa32e6c25fbd"
+      "bytes": 3613,
+      "sha256": "ba415ee059c445fceb1a93b66666482a3952ceebf7c6019ec7b68701d68ac9b9"
     },
     "index.html": {
-      "bytes": 9475,
-      "sha256": "5431818cddafa470de3b8ab3a0eedba1dac544f68809edabea194fa930fa06af"
+      "bytes": 10211,
+      "sha256": "565968dfd1d9bcff3f0ecf052843c32eefc34ba9ae11182c1e9f77e6ad16402e"
+    },
+    "intake_browser_checks.py": {
+      "bytes": 6982,
+      "sha256": "8c79c32b19c720eee0d1ed75239a96820f48ff30260e19e20cae714434e02ffb"
     },
     "locales.js": {
       "bytes": 33292,
@@ -60,9 +68,13 @@
       "bytes": 2067,
       "sha256": "29179f0f61206751a89301ab28cb6ec618092fcb620b7c5509fc43c5be153390"
     },
+    "source_file.js": {
+      "bytes": 1422,
+      "sha256": "0861a427406b6d15939cd8ee5e61d6d0e99cf25ad5463946d5a225e82a8e7581"
+    },
     "test_codec.mjs": {
-      "bytes": 1831,
-      "sha256": "f7c5b33ce0c80ec37fa6518850718bb4dd575dfab0ee3bb57ddcd3f894a61d27"
+      "bytes": 1944,
+      "sha256": "3a84d0bf54631862ec4b02076f903136df1a4a18ba5329fbcf155a1cd646382d"
     },
     "test_culture.mjs": {
       "bytes": 3444,
@@ -72,9 +84,13 @@
       "bytes": 6401,
       "sha256": "3b47acfe0187c377a4d8a72e56184db23cf7d669570d5e48f28ad5a12fcf6362"
     },
+    "test_source_file.mjs": {
+      "bytes": 2637,
+      "sha256": "0b4f66b77860c54ae3f43879a7ef7bff85c67f468d3e3b66b5825404f82ab05b"
+    },
     "ui.js": {
-      "bytes": 6281,
-      "sha256": "4c11f16728d075d5635c2c60761cca806f84d5f8f52f4ab395feeab347e22657"
+      "bytes": 8089,
+      "sha256": "70107a270c2b9c1f780c4f801703930c2329bac85057deacd3bbc937bb2666e7"
     },
     "unicode_crosscheck.py": {
       "bytes": 1413,
@@ -109,13 +125,20 @@
     "unicode_transcript_bytes": 4382592,
     "unicode_sha256": "e0a7693f7362e88827c15e772e55b3490bd983f90711df7f3ef36c2b1ef6847e",
     "independent_python_unicode_sweep": "PASS",
-    "browser_dom_checks": 144,
-    "timezones": [
-      "UTC",
-      "America/New_York",
-      "Pacific/Kiritimati",
-      "Asia/Kolkata"
-    ]
+    "browser_dom_checks": 177,
+    "javascript_source_file": 47
   },
-  "local_browser_boundary": "HTTP navigation blocked by environment policy. 144 DOM checks passed. HTTP delivery is required by the GitHub Pages deployment gate; no accessibility or translation certification."
+  "local_browser_boundary": "HTTP navigation blocked by environment policy (ERR_BLOCKED_BY_ADMINISTRATOR). 177 DOM checks passed. Existing GitHub gate requires HTTP-served checks before publication. Translation and accessibility are not certified.",
+  "prior_local_timezone_checks": [
+    "UTC",
+    "America/New_York",
+    "Pacific/Kiritimati",
+    "Asia/Kolkata"
+  ],
+  "local_environment": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "node": "v22.16.0",
+    "chromium": "144.0.7559.96"
+  }
 }

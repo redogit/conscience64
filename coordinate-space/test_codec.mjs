@@ -21,3 +21,6 @@ console.log(JSON.stringify({status:'PASS',checks,scope:'public JavaScript exact-
 
 // Culture/clock regression suite is also required by the existing deployment gate.
 await import("./test_culture.mjs");
+
+// Original source-file intake and preference matching regression gate.
+await import("./test_source_file.mjs");

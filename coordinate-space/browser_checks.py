@@ -45,7 +45,7 @@ def run(dom_only=False):
             page.set_content(re.sub(r'<script[^>]+src="[^"]+"[^>]*></script>', '', (ROOT/'index.html').read_text()))
             page.evaluate('() => {' + (ROOT/'sha256.js').read_text() + ';globalThis.sha256Bytes=sha256Bytes;globalThis.bytesToHex=bytesToHex;}')
             page.evaluate('() => {' + (ROOT/'codec.js').read_text() + '}')
-            for name in ['locales.js','i18n.js','ui.js']:
+            for name in ['source_file.js','locales.js','i18n.js','ui.js']:
                 page.evaluate('() => {' + (ROOT/name).read_text() + '}')
             check('DOM initialization', page.locator('#encode').count() == 1)
         else:
@@ -84,6 +84,8 @@ def run(dom_only=False):
         check('clear wins pending file import', page.locator('#packet').input_value() == '' and page.locator('#status').get_attribute('data-state') == 'cleared')
         from culture_browser_checks import exercise
         exercise(page, check)
+        from intake_browser_checks import exercise as intake_exercise
+        intake_exercise(page, check)
         check('no unexpected network requests', all(url.startswith(origin) for url in requests))
         check('no uncaught JS errors', not errors)
         version = browser.version

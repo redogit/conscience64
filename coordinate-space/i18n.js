@@ -29,14 +29,22 @@
   }
   for (const value of root.CoordinateLanguagePacks) { const p = validate(value); if (packs.has(p.locale)) throw Error('E_DUPLICATE_LOCALE'); packs.set(p.locale,p); }
   // Do not map a specifically requested script to a different script.
-  function resolve(requested) {
+  function match(requested) {
     try {
       const loc = new Intl.Locale(tag(requested));
       if (packs.has(loc.baseName)) return loc.baseName;
       const script = loc.maximize().script;
       const candidates = [...packs.keys()].filter(k => { const p = new Intl.Locale(k); return p.language === loc.language && p.maximize().script === script; });
-      return candidates[0] || 'en';
-    } catch { return 'en'; }
+      return candidates[0] || null;
+    } catch { return null; }
+  }
+  function resolve(requested) { return match(requested) || 'en'; }
+  function resolvePreferred(requested) {
+    if (!Array.isArray(requested)) throw Error('E_LANGUAGE_PREFERENCES');
+    for (const preference of requested.slice(0,128)) {
+      const found = match(preference); if (found) return found;
+    }
+    return 'en';
   }
   function importText(text) {
     if (typeof text !== 'string' || new TextEncoder().encode(text).length > LIMIT) throw Error('E_LANGUAGE_PACK');
@@ -48,5 +56,5 @@
   function get(locale) { if (!packs.has(locale)) throw Error('E_LANGUAGE'); return packs.get(locale); }
   function number(n,locale) { return new Intl.NumberFormat(locale, {maximumFractionDigits:0}).format(n); }
   function template(locale='en') { return JSON.stringify(get(locale),null,2); }
-  root.CoordinateI18n = Object.freeze({tag,validate,resolve,importText,get,number,template,limit:LIMIT,keys:Object.freeze(keys),list:()=>[...packs.values()]});
+  root.CoordinateI18n = Object.freeze({tag,validate,resolve,resolvePreferred,importText,get,number,template,limit:LIMIT,keys:Object.freeze(keys),list:()=>[...packs.values()]});
 })(globalThis);

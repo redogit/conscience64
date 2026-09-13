@@ -1,8 +1,21 @@
 'use strict';
 const byId = id => document.getElementById(id), I = CoordinateI18n;
-let locale = I.resolve(new URLSearchParams(location.search).get('lang') || navigator.languages?.[0] || 'en');
+const requestedLocale = new URLSearchParams(location.search).get('lang');
+let locale = requestedLocale ? I.resolve(requestedLocale) : I.resolvePreferred(Array.from(navigator.languages || ['en']));
 let verified = null, generation = 0, packGeneration = 0, state = 'idle', errorDetail = '', languageState = '';
 const t = key => I.get(locale).messages[key];
+// A textarea preview can normalize newlines. Keep the imported text separately
+// until an editor input event (or a changed editor value at Encode) replaces it.
+let importedSource = null;
+function importSource(text) {
+  byId('text').value = text;
+  importedSource = {text, preview:byId('text').value};
+}
+function sourceText() {
+  if (importedSource && byId('text').value === importedSource.preview) return importedSource.text;
+  importedSource = null;
+  return byId('text').value;
+}
 function sourcePresentation() {
   let value = byId('source-lang').value.trim(), valid = true;
   try { value = value ? I.tag(value) : ''; } catch { value = ''; valid = false; }
@@ -29,6 +42,10 @@ function renderState() {
   byId('status').textContent = prefix + t(state); byId('status').dataset.state = state;
   byId('details').textContent = errorDetail; byId('details').hidden = !errorDetail;
   byId('language-status').textContent = languageState ? t(languageState) : '';
+  byId('source-origin').textContent = importedSource
+    ? 'Exact imported bytes are active. Editing the preview starts a new text source.'
+    : 'Text editor is active. Its line endings follow the browser text field.';
+  byId('source-origin').dataset.mode = importedSource ? 'imported' : 'editor';
   summary(); sourcePresentation();
 }
 function selectOptions() {
@@ -56,7 +73,7 @@ function accept(packet, imported = false) {
   verified = {packet,...result}; state = 'passed';
   byId('recovered').textContent = result.text;
   byId('savePacket').disabled = byId('saveText').disabled = false;
-  if (imported) { byId('source-lang').value = ''; byId('source-dir').value = 'auto'; }
+  if (imported) { importSource(result.text); byId('source-lang').value = ''; byId('source-dir').value = 'auto'; }
   renderState();
 }
 function perform(action) {
@@ -64,24 +81,29 @@ function perform(action) {
   try { action(); } catch (error) { invalidate('failed'); errorDetail = String(error.message).slice(0,800); renderState(); }
 }
 byId('encode').addEventListener('click', () => perform(() => {
-  const packet = CoordinateCodec.encode(byId('text').value); accept(packet);
+  const packet = CoordinateCodec.encode(sourceText()); accept(packet);
   byId('packet').value = JSON.stringify(packet,null,2);
 }));
 byId('decode').addEventListener('click', () => perform(() => {
   if (byId('packet').value.length > 12*1024*1024) throw Error('E_ENVELOPE_LIMIT: 12 MiB');
   accept(JSON.parse(byId('packet').value),true);
 }));
-for (const id of ['text','packet']) byId(id).addEventListener('input', () => invalidate());
+byId('text').addEventListener('input', () => { importedSource = null; byId('source-file').value = ''; invalidate(); });
+byId('packet').addEventListener('input', () => invalidate());
 byId('source-lang').addEventListener('input', sourcePresentation);
 byId('source-dir').addEventListener('change', sourcePresentation);
-byId('language').addEventListener('change', () => { locale = byId('language').value; applyLocale(); });
+byId('language').addEventListener('change', () => {
+  packGeneration++; languageState = ''; // Newer deliberate choice wins an older asynchronous import.
+  locale = byId('language').value; applyLocale();
+});
 byId('clear').addEventListener('click', () => {
-  packGeneration++; languageState = '';
-  for (const id of ['text','packet','load','source-lang','language-pack']) byId(id).value = '';
+  packGeneration++; languageState = ''; importedSource = null;
+  for (const id of ['text','packet','load','source-lang','language-pack','source-file']) byId(id).value = '';
   byId('source-dir').value = 'auto'; invalidate('cleared'); byId('text').focus();
 });
 byId('load').addEventListener('change', async () => {
   invalidate('waiting'); const ticket = generation, file = byId('load').files[0];
+  byId('load').value = ''; // Selecting this same local file again must still fire change.
   if (!file) { invalidate(); return; }
   try {
     if (file.size > 12*1024*1024) throw Error('E_ENVELOPE_LIMIT: 12 MiB');
@@ -89,8 +111,22 @@ byId('load').addEventListener('change', async () => {
     byId('packet').value = text; perform(() => accept(JSON.parse(text),true));
   } catch (error) { if (ticket === generation) { invalidate('failed'); errorDetail = String(error.message).slice(0,800); renderState(); } }
 });
+byId('source-file').addEventListener('change', async () => {
+  invalidate('waiting'); const ticket = generation, file = byId('source-file').files[0];
+  byId('source-file').value = '';
+  if (!file) { invalidate(); return; }
+  try {
+    const packet = await CoordinateSourceFile.read(file);
+    if (ticket !== generation) return;
+    accept(packet,true); byId('packet').value = JSON.stringify(packet,null,2);
+  } catch (error) {
+    if (ticket === generation) { invalidate('failed'); errorDetail = String(error.message).slice(0,800); renderState(); }
+  }
+});
 byId('language-pack').addEventListener('change', async () => {
-  const ticket = ++packGeneration, file = byId('language-pack').files[0]; if (!file) return;
+  const ticket = ++packGeneration, file = byId('language-pack').files[0];
+  byId('language-pack').value = '';
+  if (!file) return;
   try {
     if (file.size > I.limit) throw Error('E_LANGUAGE_PACK_LIMIT');
     const text = await file.text(); if (ticket !== packGeneration) return;

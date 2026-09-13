@@ -1,10 +1,20 @@
-# Coordinate Space Workbench — culture and clock-independent public edition
+# Coordinate Space Workbench — public edition 1.2
 
 Open [the workbench](https://redogit.github.io/conscience64/coordinate-space/).
 
 Encode, inspect, import and recover exact Unicode text through the existing `exact-utf8-f64/v1` carrier. Processing stays on the device: no input uploads, accounts, analytics or automatic saving.
 
-## What changed
+## Update 1.2: exact original-file intake
+
+Open an original UTF-8 file using the file picker under **Original text**. BOM, CRLF, lone CR, NUL and mixed-script bytes remain exact even when the text-area preview normalizes its displayed line endings. **Encode and verify** reuses the retained original bytes until you edit the preview; editing deliberately starts a new text source. The verified download remains exact. Invalid UTF-8 and files over 1 MiB are rejected, not silently converted. Original JSON files and coordinate envelopes have separate import controls.
+
+An older language-pack read can no longer overwrite a newer manual language selection. Clear, newer typing and newer file selections invalidate stale source-file completions. The same file can be selected again. Automatic language selection now checks the browser's preference list rather than only its first item. The 16 language drafts and the 40-key language-pack format are unchanged; new explanatory diagnostics remain explicitly English.
+
+Fresh local gates: **177 browser checks**, **47 original-file/preference assertions**, the existing 35 codec assertions and 367 Unicode/locale assertions, 9 Python regression methods, and the independent full scalar-range replay. The browser result is DOM-only in this environment; GitHub's unchanged publication gate must pass HTTP-served tests before publishing. These are bounded implementation checks, not translation or accessibility certification.
+
+See [the 1.2 audit and compatibility notes](UPDATE_v1_2.md). The byte codec and both audited Python modules are unchanged. No new corpus, timestamps, telemetry, storage, or private material is introduced.
+
+## Retained multilingual and clock-independent behavior
 
 16 interface-language drafts and an extensible local translation-pack loader; explicit RTL/LTR support; language and direction hints for source text independent of the interface; localized counts with invariant machine numbers; and no date-stamped interface or wall-clock dependency in content identity. Original dates, ordering and provenance are preserved, not erased.
 
@@ -47,7 +57,7 @@ The typed reader can inspect a compatible dataset with `CoordinateSpace('/path/t
 
 The release verifies an explicit file allowlist and retains the unchanged audited Python module hashes. The browser `codec.js` and its v1 envelope contract also remain unchanged from commit `2bb57da9b7e1ada21af89a5b0e5ee789e67a080f`.
 
-The suite passes 9 Python regression methods, 35 original JavaScript assertions, 367 added Unicode/locale/clock checks, and an independent Python replay of all 1,112,064 Unicode scalar values in bounded batches. These are not all possible Unicode strings. The browser suite has 144 checks across all 16 locales and both mobile and desktop layouts.
+The suite passes 9 Python regression methods, 35 original JavaScript assertions, 367 added Unicode/locale/clock checks, and an independent Python replay of all 1,112,064 Unicode scalar values in bounded batches. These are not all possible Unicode strings. The browser suite now has 177 checks across all 16 locales and both mobile and desktop layouts.
 
 ```bash
 python -m pip install playwright==1.57.0
