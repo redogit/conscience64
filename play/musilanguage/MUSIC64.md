@@ -4,11 +4,28 @@ Open [Word Forge](word-forge.html). The existing [four-track radio](radio.html) 
 
 ## Use
 
-Enter up to 1,024 UTF-8 bytes, choose metal, classical, funk or fusion, and press **Forge & play**. Exact UTF-8 rank sampling is an alternative source. It samples syntactically valid strings, not necessarily meaningful words; it does not enumerate all strings or all float patterns.
+Enter up to 1,024 UTF-8 bytes, choose one of **64 style profiles across eight broad families**, and press **Forge & play**. The compact MUSIC64 float still carries one of four core families; the richer profile lives in the recipe so older addresses remain valid. Exact UTF-8 rank sampling is an alternative source. It samples syntactically valid strings, not necessarily meaningful words; it does not enumerate all strings or all float patterns.
 
-**Make my floats stumble** flips 1–6 note/rhythm bits per cell in a private copy. **Hear original → mistake → repair** compares four bars three times. **Repair** restores the anchor bits exactly. **Keep my take** adopts the altered cells as this listener's next anchor, not as objectively better music. **Undo** retains at most 16 prior takes in this tab's memory. The shared songs, source text, UTF-8 transport and research are unchanged.
+**Make my floats stumble** flips 1–6 note/rhythm bits per cell in a private copy. **Hear original → mistake → repair** compares four bars three times. **Repair** restores the anchor bits exactly. **Keep my take** adopts the altered cells as this listener's next anchor, not as objectively better music. **Undo** retains at most 16 prior takes in this tab's memory. The shared songs, source text, UTF-8 transport, selected style profile and research are unchanged.
 
 Optional continuous exploration runs locally while this page is open. It renders each next take, so transitions can contain a gap. Stop invalidates queued playback. Browser/device sleep can suspend playback; no autonomous server session is implied.
+
+## 64 style profiles
+
+`style-profiles.js` adds 64 creative arrangement profiles grouped into:
+
+- Heavy / guitar
+- Classical / acoustic
+- Jazz / blues / soul
+- Rock / punk / indie
+- Electronic / dance
+- Beat / groove
+- Ambient / cinematic
+- Folk / unusual pulse
+
+Profiles can change default tempo, meter and motif treatment and then alter the rendered score through deterministic track balance, event density, swing, syncopation, register and a small number of explicit pattern additions. They are creative approximations and **not claims of cultural authenticity** or replacements for the living traditions whose genre names inspired some labels.
+
+The `styleProfile` is recipe metadata and is intentionally **not packed into the 52-bit MUSIC64/v1 cell**. This preserves compatibility with existing float addresses. Listener-local note/rhythm mistakes preserve the selected profile. The profile test requires 64 definitions, eight families, and at least 56 distinct early-score signatures; the current set yields 64 distinct tested signatures. Distinct event signatures are software evidence, not a guarantee that every listener will perceive every profile as categorically different.
 
 ## Exact MUSIC64/v1 layout
 
@@ -22,13 +39,13 @@ These are ordinary positive binary64 numbers in `[1,2)`, not a new numeric stand
 | Scale | 30–32 | 3 |
 | Tempo offset (72–199 BPM) | 33–39 | 7 |
 | Meter | 40–41 | 2 |
-| Ensemble | 42–43 | 2 |
+| Ensemble core family | 42–43 | 2 |
 | Motif treatment | 44–45 | 2 |
 | Intensity | 46–51 | 6 |
 
-Exact addresses use `m64v1:` plus 16 hexadecimal binary64 bits. A full round-trip decimal is also accepted. Use the complete recipe and versioned renderer for full replay; an address alone is one cell, not source text or a stored recording. Distinct bit patterns are not guaranteed to sound different. The artistic map is lossy.
+Exact addresses use `m64v1:` plus 16 hexadecimal binary64 bits. A full round-trip decimal is also accepted. Use the complete recipe and versioned renderer for full replay; an address alone is one cell, not source text, a stored recording, or the 64-profile choice. Distinct bit patterns are not guaranteed to sound different. The artistic map is lossy.
 
-Listener edits use XOR masks restricted to bits 0–25. Rhythm-only edits use 18–25; note-only edits use 0–17. Tonic, scale, tempo, meter, ensemble, intensity, float exponent and sign cannot change through this layer. Bit restoration is exact; perceived improvement is decided by the listener. Note-event replay is deterministic for the pinned engine; bit-identical PCM across browser implementations is not promised.
+Listener edits use XOR masks restricted to bits 0–25. Rhythm-only edits use 18–25; note-only edits use 0–17. Tonic, scale, tempo, meter, core ensemble family, intensity, float exponent, sign and recipe-level style profile cannot change through this layer. Bit restoration is exact; perceived improvement is decided by the listener. Note-event replay is deterministic for the pinned engine; bit-identical PCM across browser implementations is not promised.
 
 ## Source and sampling lineage
 
@@ -48,10 +65,11 @@ The comparison is an evaluator-created musical audition, not evidence that scien
 
 ```sh
 node play/musilanguage/music64-test.mjs
+node play/musilanguage/style-test.mjs
 python play/musilanguage/music64-browser.py --live --output /tmp/music64-checks
 ```
 
-The Node suite checks all 65,536 two-byte strings, a separate scalar-length recurrence for lengths 0–1,024, 180 rank fixtures, 4,096 float field roundtrips, 160 scores, and 90 local mutation/repair trials. Browser checks cover separate listeners, playback controls, receipts, UTF-8 samples, cancellations, transitions, MIDI, three full renders, and mobile overflow. `--fixture` uses the same inline source without a hosted origin and does not check live Conscience64 or browser storage access. Logs distinguish it from the full hosted test.
+The Node MUSIC64 suite checks all 65,536 two-byte strings, a separate scalar-length recurrence for lengths 0–1,024, rank fixtures, float field roundtrips, scores, and local mutation/repair trials. `style-test.mjs` checks all 64 profiles, all eight families, distinct score signatures, and preservation of style profile through listener-local stumble/repair. Browser checks cover separate listeners, playback controls, receipts, UTF-8 samples, cancellations, transitions, MIDI, full renders, mobile overflow and the live Conscience64 bridge.
 
 ## Credits and use
 
