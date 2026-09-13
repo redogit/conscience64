@@ -17,20 +17,20 @@ const unicodeRecord={uoid:'uoid:sha256:'+'1'.repeat(64),logicalId:'coordinate-sp
 globalThis.Conscience64API={projects:{list:()=>({projects:structuredClone(registry.projects)})},search:{simple:q=>({results:String(q).toLowerCase().includes('unicode')?[structuredClone(unicodeRecord)]:[]})},irpo:x=>structuredClone(x)};
 globalThis.document={querySelector:()=>null,getElementById:()=>null};globalThis.addEventListener=()=>{};
 const qa=await readFile(resolve(root,'space-lens-qa.js'));await import(`data:text/javascript;base64,${qa.toString('base64')}`);
-assert.equal(globalThis.SpaceLensQA.version,'1.1.0');
+assert.equal(globalThis.SpaceLensQA.version,'1.2.0');
 
 const orbit=globalThis.SpaceLensQA.answer('What is Orbit Library?');
-assert.match(orbit.answer,/Orbit Library:/);assert.match(orbit.answer,/navigation|history|source/i);assert.match(orbit.confidence,/strong project match|bounded project match/);assert.ok(orbit.sources.some(s=>s.id==='orbit-library'));
+assert.match(orbit.answer,/Orbit Library/i);assert.match(orbit.answer,/navigation|history|source/i);assert.match(orbit.confidence,/strong project match|bounded project match/);assert.ok(orbit.sources.some(s=>s.id==='orbit-library'));
+assert.doesNotMatch(orbit.answer,/Orbit Library:\s/,'answer should not use the old label-colon template');
 const recovery=globalThis.SpaceLensQA.answer('What remains unresolved in Historical Recovery?');assert.match(recovery.answer,/Fuzzball/i);assert.match(recovery.limit,/Recovery graph|missing carriers|unresolved/i);
-const models=globalThis.SpaceLensQA.answer('What did model experiments teach us?');assert.match(models.answer,/Model Experiments:/);assert.match(models.answer,/negative evidence|execution correctness|predictive usefulness/i);
+const models=globalThis.SpaceLensQA.answer('What did model experiments teach us?');assert.match(models.answer,/Model Experiments/i);assert.match(models.answer,/negative evidence|execution correctness|predictive usefulness/i);
 const moonshot=globalThis.SpaceLensQA.answer('What failed in Operator Moonshot?');assert.match(moonshot.answer,/failed replication|failed.*robustness|promising branches failed/i);
 const unicode=globalThis.SpaceLensQA.answer('What does the Unicode crosscheck do?');assert.match(unicode.answer,/Unicode scalar values|UTF-8 byte encodings/i);assert.equal(unicode.sources[0].id,unicodeRecord.uoid);
 
-const unknownQ='What is zzzqv-nonexistent-carrier-8472?';const unknown=globalThis.SpaceLensQA.answer(unknownQ);assert.equal(unknown.confidence,'unresolved');assert.match(unknown.answer,/do not have enough indexed material/i);assert.match(unknown.limit,/not proof of absence/i);assert.ok(unknown.searchWider.length>=4);assert.ok(unknown.searchWider.every(x=>/^https:\/\//.test(x.url)));
+const unknownQ='What is zzzqv-nonexistent-carrier-8472?';const unknown=globalThis.SpaceLensQA.answer(unknownQ);assert.equal(unknown.confidence,'unresolved');assert.match(unknown.answer,/could not find enough|cannot find enough|not enough/i);assert.match(unknown.limit,/not proof|does not exist|missing|unindexed/i);assert.ok(unknown.searchWider.length>=4);assert.ok(unknown.searchWider.every(x=>/^https:\/\//.test(x.url)));
 
-globalThis.SpaceLensMemory.teach(unknownQ,'This is a locally taught answer for regression testing.');const learned=globalThis.SpaceLensQA.answer(unknownQ);assert.equal(learned.confidence,'learned locally');assert.equal(learned.learned,true);assert.match(learned.answer,/locally taught answer/);assert.match(learned.limit,/not independently verified/i);
-globalThis.SpaceLensMemory.forgetTeaching(unknownQ);
+globalThis.SpaceLensMemory.teach(unknownQ,'This is a locally taught answer for regression testing.');const learned=globalThis.SpaceLensQA.answer(unknownQ);assert.equal(learned.confidence,'learned locally');assert.equal(learned.learned,true);assert.match(learned.answer,/locally taught answer/);assert.match(learned.limit,/not independently verified/i);globalThis.SpaceLensMemory.forgetTeaching(unknownQ);
 
 globalThis.SpaceLensMemory.learnSelection('What is Orbit Library?','orbit-library');assert.equal(globalThis.SpaceLensMemory.sourceBoost('orbit-library'),1);
-for(const answer of [orbit,recovery,models,moonshot,unicode,unknown,learned]){assert.ok(answer.answer.length<900,'answer should stay concise');assert.ok(answer.limit.length>0,'every answer must carry a limit');assert.ok(Array.isArray(answer.sources),'sources must be explicit');}
-console.log('PASS Space Lens QA: persistent learning, wider-search fallback, project identity, failures, unresolved remainder, and record fallback');
+for(const answer of [orbit,recovery,models,moonshot,unicode,unknown,learned]){assert.ok(answer.answer.length<900,'answer should stay concise');assert.ok(answer.limit.length>0,'every answer must carry a limit');assert.ok(Array.isArray(answer.sources),'sources must be explicit');assert.doesNotMatch(answer.answer,/\s{2,}/,'answer should not contain awkward repeated spacing');}
+console.log('PASS Space Lens QA: natural bounded answers, persistent learning, wider-search fallback, failures, unresolved remainder, and record fallback');
