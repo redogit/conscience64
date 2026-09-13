@@ -58,3 +58,11 @@ Calibration families must remain distinct from open targets. A successful finite
 ## Claim ceiling
 
 Operator Moonshot is a research process and evidence ledger, not evidence that its larger theoretical targets have been solved.
+
+## September 13, 2026 — candidate S1024 / compression calibration reference
+
+The [Human Expression / S1024 checkpoint](../updates/2026-09-13-human-expression-s1024.md) adds a scoped method reference, not a new scientific promotion. It distinguishes exact byte transport, bounded behavioral classes, implementation cost, synthetic learned compression and historical-source validity.
+
+The two prior learning probes remain separate inherited experiments. Positive coding gains, distribution-shift failures, model/context/framing costs and simpler comparators must remain together. No new model was trained on the Human Expression Archive; its source rights do not grant training permission.
+
+Fresh project-integration checks concern custody and exact references. They are not an independent replication of a Moonshot research target, a law of human cognition, a Hodge or P-vs-NP result, or authority to import historical sayings into an active proof. Current research goals and promotion gates are unchanged. The next step is a separately preregistered, task-relevant comparator and counterprobe when this method earns use.
