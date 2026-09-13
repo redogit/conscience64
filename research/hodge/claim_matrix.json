@@ -1,0 +1,156 @@
+{
+  "schema": "conscience64/hodge-claim-matrix/v1",
+  "version": "1.0.0",
+  "date": "2026-09-13",
+  "target": {
+    "statement": "For smooth projective complex X and codimension p, image(CH^p(X)_Q -> H^(2p)(X,Q)) equals H^(2p)(X,Q) intersect H^(p,p)(X).",
+    "status": "OPEN",
+    "claimCeiling": "No current project artifact proves the Hodge conjecture."
+  },
+  "statusVocabulary": [
+    "DEFINITION",
+    "KNOWN_THEOREM",
+    "CALIBRATION",
+    "VERIFIED_FINITE_COMPUTATION",
+    "SUPPORTED_BOUNDED",
+    "COUNTEREXAMPLE_TO_ROUTE",
+    "BRIDGE_CANDIDATE",
+    "OPEN_LEMMA",
+    "UNRESOLVED",
+    "REJECTED_OVERCLAIM"
+  ],
+  "invariants": [
+    "CALIBRATION_RESULT != OPEN_PROBLEM_RESULT",
+    "FINITE_VERIFICATION != UNIVERSALITY",
+    "SAME_HODGE_DIAMOND != SAME_ALGEBRAIC_CYCLE_STRUCTURE",
+    "SYMMETRY != USEFUL_QUOTIENT",
+    "CYCLE_COUNT != CYCLE_CLASS_RANK",
+    "COMPLEX_(p,p) != RATIONAL_HODGE_CLASS",
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "RELATED != SUPPORTS",
+    "UNKNOWN != ABSENT"
+  ],
+  "claims": [
+    {
+      "id": "HODGE-C001",
+      "subject": "K3 Hodge diamond",
+      "statement": "K3 is a real-four-dimensional complex surface with Hodge diamond middle row (1,20,1) and Betti numbers (1,0,22,0,1).",
+      "status": "CALIBRATION",
+      "role": "dimension/topology/Hodge footing",
+      "notClaimed": "The Hodge diamond alone determines algebraic-cycle structure."
+    },
+    {
+      "id": "HODGE-C002",
+      "subject": "Kummer construction",
+      "statement": "An abelian surface quotient by inversion and resolution supplies a K3 calibration with sixteen exceptional curves and nontrivial integral gluing issues.",
+      "status": "CALIBRATION",
+      "role": "quotient-resolution-cycle footing",
+      "notClaimed": "Rational dimension bookkeeping is the full integral K3 lattice."
+    },
+    {
+      "id": "HODGE-C003",
+      "subject": "Fermat quartic lines",
+      "statement": "The current calibration constructs 48 lines and records a rank-20 rational intersection span.",
+      "status": "VERIFIED_FINITE_COMPUTATION",
+      "role": "explicit cycle-span calibration",
+      "notClaimed": "Every quartic K3 has Picard rank 20 or 48 independent divisor classes."
+    },
+    {
+      "id": "HODGE-C004",
+      "subject": "Cubic fourfold calibration",
+      "statement": "Smooth cubic fourfolds are retained as codimension-two/period/Hodge-locus calibration objects rather than open ordinary H^4 Hodge instances.",
+      "status": "CALIBRATION",
+      "role": "fourfold footing",
+      "notClaimed": "The general Hodge conjecture follows from the cubic-fourfold case."
+    },
+    {
+      "id": "HODGE-C005",
+      "subject": "24-cell / quaternion / D4 / E6",
+      "statement": "These structures provide finite symmetry, root-system, and representation-theoretic calibration material usable for partitioning searches when an explicit geometric action is certified.",
+      "status": "BRIDGE_CANDIDATE",
+      "role": "symmetry/search partition",
+      "notClaimed": "Numerical or diagrammatic resemblance identifies K3 cohomology or proves algebraicity."
+    },
+    {
+      "id": "HODGE-C006",
+      "subject": "P-vs-NP range avoidance transfer",
+      "statement": "Search for rational Hodge classes outside the span of currently known algebraic-cycle classes to identify an incomplete generator family and target new cycle constructions.",
+      "status": "BRIDGE_CANDIDATE",
+      "role": "search method",
+      "notClaimed": "A class outside the known span is non-algebraic."
+    },
+    {
+      "id": "HODGE-C007",
+      "subject": "P-vs-NP sharing discipline",
+      "statement": "Independent mathematical structure must be measured after relations and reuse are accounted for, not by raw construction count.",
+      "status": "SUPPORTED_BOUNDED",
+      "role": "rank/accounting method",
+      "notClaimed": "Circuit DAG complexity and Chow-group relations are the same object."
+    },
+    {
+      "id": "HODGE-C008",
+      "subject": "Symmetry promise discipline",
+      "statement": "A symmetry action becomes computationally useful only after the action, quotient, target sector, and required promise are certified.",
+      "status": "SUPPORTED_BOUNDED",
+      "role": "counterprobe",
+      "notClaimed": "Large automorphism groups automatically reduce cycle search."
+    },
+    {
+      "id": "HODGE-C009",
+      "subject": "4D observer/projection transfer",
+      "statement": "A distinction lost under a projection or coordinate elimination can remain genuine in the source object, so source coordinates and maps must be retained during geometric reductions.",
+      "status": "SUPPORTED_BOUNDED",
+      "role": "representation counterprobe",
+      "notClaimed": "Synthetic 4D observer experiments establish a physical dimension or Hodge theorem."
+    },
+    {
+      "id": "HODGE-C010",
+      "subject": "Representation-sector deficit",
+      "statement": "For a certified group action, D_rho = dim(H_rho) - dim(A_rho) is a targeted search statistic for missing known algebraic-cycle sectors.",
+      "status": "OPEN_LEMMA",
+      "role": "active experimental framework",
+      "notClaimed": "Positive D_rho proves the corresponding Hodge classes are non-algebraic."
+    },
+    {
+      "id": "HODGE-C011",
+      "subject": "Conscience64 cooperation",
+      "statement": "Conscience64 may navigate, reflow, recover, and preserve typed relations and claim ceilings for the Hodge program.",
+      "status": "SUPPORTED_BOUNDED",
+      "role": "research infrastructure",
+      "notClaimed": "Conscience64 agreement supplies independent mathematical evidence."
+    }
+  ],
+  "bridges": [
+    {
+      "id": "BR-HODGE-PNP-01",
+      "source": "P vs NP / Partial-Hard",
+      "target": "known-cycle span versus rational Hodge target",
+      "mapping": "range avoidance -> cycle-generator deficit",
+      "status": "BRIDGE_CANDIDATE",
+      "counterprobe": "Verify that an outside-known-span class is not mislabeled outside the full algebraic image."
+    },
+    {
+      "id": "BR-HODGE-4D-01",
+      "source": "4D codec / observer",
+      "target": "basis/projection/primitive-decomposition steps",
+      "mapping": "lost coordinate -> retained source distinction",
+      "status": "BRIDGE_CANDIDATE",
+      "counterprobe": "Construct two source objects collapsing under the selected projection and test whether the Hodge-relevant invariant differs."
+    },
+    {
+      "id": "BR-HODGE-CARRIER-01",
+      "source": "Cross-Carrier Wave",
+      "target": "cycle -> class -> lattice -> representation-sector transport",
+      "mapping": "typed source/transform/target contract",
+      "status": "BRIDGE_CANDIDATE",
+      "counterprobe": "Record exactly what each map forgets and reject inverse claims without an inverse theorem."
+    }
+  ],
+  "activeExperiments": [
+    "H1_FERMAT_K3_RECONSTRUCTION",
+    "H2_KUMMER_INTEGRAL_RATIONAL_SEPARATION",
+    "H3_REPRESENTATION_SECTOR_DEFICIT",
+    "H4_FOURFOLD_CODIMENSION_TWO_TRANSFER",
+    "H5_BAD_BRIDGE_COUNTEREXAMPLE_ENGINE"
+  ]
+}
