@@ -33,7 +33,7 @@
     {"file":"sql/frontier_mutilation_v5.sql","bytes":579,"sha256":"03e7529c0f8cc557b8982a363f50dfcfd5130c77b6b8349bb1730c32c29892c7"},
     {"file":"sql/symmetry_aware_constructor_v5.cpp","bytes":6718,"sha256":"2d67e936d861e4a3df1500662dee8f0fce2450c45c17ab132d82d623d8c4eb2d"},
     {"file":"selection/HIGHGIRTH20_COMPACT_MAXCUT28_CERT.min.json","bytes":359,"sha256":"d73e271cdca713e0d4a7ac406106282bb1bd586eabf90c5f37795b0ddc60098c"},
-    {"file":"selection/verify_compact_maxcut28_min.py","bytes":947,"sha256":"4c0e869a5f89855d562b25e12432666b3e92a6ea659e0e5a9c35e4aab028fd1d"},
+    {"file":"selection/verify_compact_maxcut28_min.py","bytes":918,"sha256":"a20fc29480614ada45dfeb0aa9b9add8a683472d60f05f793020f8f7a91d0406"},
     {"file":"selection/COMPACT_MAXCUT28_CERTIFICATE.md","bytes":2358,"sha256":"c5d610ec61095e9f0bae7d5369fadae5f4a22b9dd566d006d254fd506a322bfa"}
   ],
   "not_directly_materialized_from_source_package": [
