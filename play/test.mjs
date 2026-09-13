@@ -9,14 +9,11 @@ const shelf = { items };
 assert.deepEqual(c.parseDocument(JSON.stringify(c.documentFor('orbit', shelf)), 'orbit'), shelf);
 for (const value of corpus) assert.ok(c.search(items, value).some(r => r.title === value));
 assert.equal(c.search(items, 'café')[0].title, 'cafe\u0301');
-for (const source of ['javascript:alert(1)', 'data:text/html,x', 'file:///tmp/x', 'https://name:password@example.org', '/relative']) {
-  assert.throws(() => c.validate('orbit', { items: [{ ...items[0], source }] }), /invalid-url/);
-}
+for (const source of ['javascript:alert(1)', 'data:text/html,x', 'file:///tmp/x', 'https://name:password@example.org', '/relative']) assert.throws(() => c.validate('orbit', { items: [{ ...items[0], source }] }), /invalid-url/);
 assert.throws(() => c.validate('orbit', { items: [items[0], items[0]] }));
 assert.throws(() => c.parseDocument(JSON.stringify(c.documentFor('orbit', shelf)), 'weave'), /wrong-project/);
 assert.throws(() => c.parseDocument('null', 'orbit'));
 assert.throws(() => c.validate('orbit', { items: Array(201).fill(items[0]) }));
-// Valid collections larger than 1 MB must survive their own export/import.
 const big = { items: Array.from({ length: 80 }, (_, i) => ({ ...items[0], id: String(i), text: '界'.repeat(19000) })) };
 assert.deepEqual(c.parseDocument(JSON.stringify(c.documentFor('orbit', big)), 'orbit'), big);
 const original = 'مرحبا\r\n\r\n👩🏽‍💻\nनमस्ते';
@@ -40,15 +37,13 @@ for (let offset = 0; offset < 36; offset++) {
 const garden = { cells: c.grow(() => .6), title: '</title><script>alert(1)</script>', description: 'A & B < C' };
 assert.deepEqual(c.parseDocument(JSON.stringify(c.documentFor('garden', garden)), 'garden'), garden);
 const svg = c.svg(garden, 'Pattern', 'Description');
-assert.ok(!svg.includes('<script>'));
-assert.ok(svg.includes('&lt;script&gt;'));
-assert.ok(svg.includes('A &amp; B &lt; C'));
+assert.ok(!svg.includes('<script>'));assert.ok(svg.includes('&lt;script&gt;'));assert.ok(svg.includes('A &amp; B &lt; C'));
 assert.throws(() => c.validate('garden', { ...garden, cells: [4] }));
 for (const locale of Object.keys(languages)) {
   assert.deepEqual(Object.keys(messages[locale]).sort(), Object.keys(messages.en).sort(), `translation keys: ${locale}`);
   assert.ok(Object.values(messages[locale]).every(s => typeof s === 'string' && s.length));
 }
-for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garden/index.html', 'steps/index.html', 'compare/index.html']) {
+for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garden/index.html', 'steps/index.html', 'compare/index.html', 'computational-chorus/index.html']) {
   const html = await readFile(new URL(path, import.meta.url), 'utf8');
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
   assert.equal(new Set(ids).size, ids.length, `duplicate IDs: ${path}`);
@@ -61,38 +56,23 @@ for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garde
   }
 }
 const catalog = JSON.parse(await readFile(new URL('projects.json', import.meta.url), 'utf8'));
-assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare']);
+assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare', 'computational-chorus']);
 for (const p of catalog.projects) assert.ok(await stat(new URL(p.entry, import.meta.url)));
+const chorus = await readFile(new URL('computational-chorus/chorus.mjs', import.meta.url), 'utf8');
+assert.match(chorus, /P \?= NP/);assert.match(chorus, /meaning preserved \/ cognitive effort/i);assert.match(chorus, /witness-verifier characterization of NP/i);assert.match(chorus, /memory aid, not evidence|memory aid/i);
 const plan = c.initial('steps'); plan.title = 'تعلّم 👩🏽‍💻'; plan.fields.P = 'Try one small thing';
 const first = c.checkpoint(plan, 'first', '2026-09-13T12:00:00.000Z');
 first.fields.P = 'Try a second thing'; first.fields.O = 'A useful observation';
 const second = c.checkpoint(first, 'second', '2026-09-13T12:01:00.000Z');
-assert.equal(second.checkpoints[0].fields.P, 'Try one small thing');
-assert.equal(second.checkpoints[0].fields.O, '');
-assert.equal(second.checkpoints[1].fields.O, 'A useful observation');
-assert.equal(plan.checkpoints.length, 0, 'recording must not mutate its input');
+assert.equal(second.checkpoints[0].fields.P, 'Try one small thing');assert.equal(second.checkpoints[0].fields.O, '');assert.equal(second.checkpoints[1].fields.O, 'A useful observation');assert.equal(plan.checkpoints.length, 0, 'recording must not mutate its input');
 assert.deepEqual(c.parseDocument(JSON.stringify(c.documentFor('steps', second)), 'steps'), second);
-assert.throws(() => c.checkpoint(c.initial('steps'), 'x', '2026-09-13T12:00:00.000Z'), /plan-required/);
-assert.throws(() => c.checkpoint(first, 'first', '2026-09-13T12:01:00.000Z'));
-assert.throws(() => c.checkpoint(first, 'next', 'not a date'));
-assert.throws(() => c.validate('steps', { ...first, checkpoints: Array(101).fill(first.checkpoints[0]) }), /checkpoint-limit/);
+assert.throws(() => c.checkpoint(c.initial('steps'), 'x', '2026-09-13T12:00:00.000Z'), /plan-required/);assert.throws(() => c.checkpoint(first, 'first', '2026-09-13T12:01:00.000Z'));assert.throws(() => c.checkpoint(first, 'next', 'not a date'));assert.throws(() => c.validate('steps', { ...first, checkpoints: Array(101).fill(first.checkpoints[0]) }), /checkpoint-limit/);
 const compareProject = { ...c.initial('compare'), original: '\ufeffمرحبا\r\n\r\n👩🏽‍💻', revision: '\ufeffمرحبا\n\n👩🏽‍💻' };
-assert.deepEqual(c.parseDocument(JSON.stringify(c.documentFor('compare', compareProject)), 'compare'), compareProject);
-assert.equal(c.compareText(compareProject.original, compareProject.revision).lineEndingsOnly, true);
-assert.equal(c.compareText('é', 'e\u0301').identical, false);
-assert.deepEqual(c.compareText('é', 'e\u0301').counts, { same: 0, removed: 1, added: 1 });
-assert.throws(() => c.compareText('x\n'.repeat(301), ''), /compare-limit/);
-// For every pair of small repeated-line inputs, reconstruct both sides and
-// compare the retained-line count with an independent subsequence enumeration.
-const arrays = [[]];
-for (let size = 1; size <= 3; size++) for (const prefix of arrays.filter(a => a.length === size - 1)) for (const value of ['a', 'b']) arrays.push([...prefix, value]);
+assert.deepEqual(c.parseDocument(JSON.stringify(c.documentFor('compare', compareProject)), 'compare'), compareProject);assert.equal(c.compareText(compareProject.original, compareProject.revision).lineEndingsOnly, true);assert.equal(c.compareText('é', 'e\u0301').identical, false);assert.deepEqual(c.compareText('é', 'e\u0301').counts, { same: 0, removed: 1, added: 1 });assert.throws(() => c.compareText('x\n'.repeat(301), ''), /compare-limit/);
+const arrays = [[]];for (let size = 1; size <= 3; size++) for (const prefix of arrays.filter(a => a.length === size - 1)) for (const value of ['a', 'b']) arrays.push([...prefix, value]);
 const subsequences = a => Array.from({ length: 1 << a.length }, (_, mask) => a.filter((_, i) => mask & (1 << i)));
 for (const a of arrays) for (const b of arrays) {
-  const diff = c.compareText(a.join('\n'), b.join('\n'));
-  assert.deepEqual(diff.rows.filter(r => r.kind !== 'added').map(r => r.text), a);
-  assert.deepEqual(diff.rows.filter(r => r.kind !== 'removed').map(r => r.text), b);
-  const possibilities = new Set(subsequences(b).map(s => JSON.stringify(s)));
-  const maximum = Math.max(...subsequences(a).filter(s => possibilities.has(JSON.stringify(s))).map(s => s.length));
-  assert.equal(diff.counts.same, maximum);
+  const diff = c.compareText(a.join('\n'), b.join('\n'));assert.deepEqual(diff.rows.filter(r => r.kind !== 'added').map(r => r.text), a);assert.deepEqual(diff.rows.filter(r => r.kind !== 'removed').map(r => r.text), b);
+  const possibilities = new Set(subsequences(b).map(s => JSON.stringify(s)));const maximum = Math.max(...subsequences(a).filter(s => possibilities.has(JSON.stringify(s))).map(s => s.length));assert.equal(diff.counts.same, maximum);
 }
-console.log('PASS playground: five project formats; Unicode, provenance checkpoints, exact text differences, original recovery, line endings, geometry, safe exports, translations, and page resources.');
+console.log('PASS playground: six public tools; Unicode, provenance checkpoints, exact text differences, original recovery, geometry, voice/music resources, and mnemonic claim boundaries.');
