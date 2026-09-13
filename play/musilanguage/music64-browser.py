@@ -83,6 +83,21 @@ async def run(args):
             await page.evaluate("document.getElementById('words').value='Canceled music';document.getElementById('words').dispatchEvent(new Event('input'));document.getElementById('forge').click();WordForge.stop()")
             await page.wait_for_function('!WordForge.state.busy');assert not await page.evaluate('WordForge.state.playing')
             checks.append('Exact UTF-8 samples including CRLF; 1024-byte bound; stop cancels outstanding render')
+            # Force the hosted-browser failure even on browsers that settle resume promptly.
+            await page.evaluate("""()=>{
+                const proto=(window.AudioContext||window.webkitAudioContext).prototype;
+                const resume=proto.resume;
+                proto.resume=function(){return new Promise(resolve=>{window.finishOldMusicResume=resolve;});};
+                WordForge.play();WordForge.stop();proto.resume=resume;
+            }""")
+            await page.wait_for_function('!WordForge.state.busy',timeout=1000)
+            assert not await page.evaluate('WordForge.state.playing')
+            await page.click('#play');await page.wait_for_function('WordForge.state.playing && !WordForge.state.busy')
+            await page.evaluate('window.finishOldMusicResume();delete window.finishOldMusicResume;')
+            await page.wait_for_timeout(80)
+            assert await page.evaluate('WordForge.state.playing && !WordForge.state.busy')
+            await page.click('#stop')
+            checks.append('Forced unresolved audio resume cancels immediately; obsolete completion cannot stop a newer take')
             assert await page.evaluate("WordForge.accept({origin:'https://evil.invalid',source:window,data:{type:'conscience64.api.result',id:'word-forge-1',ok:true,result:{}}})") is False
             if not args.fixture:
                 assert await page.evaluate('localStorage.length')==0
