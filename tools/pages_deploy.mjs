@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { createRequire } from 'node:module';
 
 const required = name => {
   const value = process.env[name];
@@ -22,16 +22,13 @@ if (!fs.existsSync(artifactTar)) {
   throw new Error(`Pages artifact tar was not found: ${artifactTar}`);
 }
 
-const artifactModuleUrl = pathToFileURL(
-  path.join(runtimeDir, 'node_modules', '@actions', 'artifact', 'lib', 'artifact.js')
-).href;
-const { DefaultArtifactClient } = await import(artifactModuleUrl);
-
+const runtimeRequire = createRequire(path.join(runtimeDir, 'package.json'));
+const { DefaultArtifactClient } = runtimeRequire('@actions/artifact');
 const artifactClient = new DefaultArtifactClient();
+
 const upload = await artifactClient.uploadArtifact(
   'github-pages',
   [artifactTar],
-  runnerTemp,
   { retentionDays: 1 }
 );
 
@@ -56,7 +53,6 @@ const apiBase = process.env.GITHUB_API_URL || 'https://api.github.com';
 const apiHeaders = {
   Accept: 'application/vnd.github+json',
   Authorization: `Bearer ${githubToken}`,
-  'X-GitHub-Api-Version': '2026-03-10',
   'Content-Type': 'application/json'
 };
 
@@ -66,7 +62,6 @@ const createResponse = await fetch(createUrl, {
   headers: apiHeaders,
   body: JSON.stringify({
     artifact_id: Number(upload.id),
-    environment: 'github-pages',
     pages_build_version: buildVersion,
     oidc_token: oidc.value
   })
