@@ -85,3 +85,11 @@ T(X) = (X', Δ, L, U)
 ## Claim ceiling
 
 This project does **not** claim a completed theory of knowledge, universal semantic geometry, or globally minimal representation.
+
+## September 13, 2026 — explicit 1,024-byte branch registry
+
+See the [Human Expression / S1024 integration checkpoint](../updates/2026-09-13-human-expression-s1024.md).
+
+The archive's `SP1024-1` raw-byte carrier uses 133 finite float64 values per full 1,024-byte section: 1,064 binary payload bytes before framing. The separately preserved `S1024V1` branch ranks UTF-8 conditional on section boundary states; its retained report gives 117 values / 936 payload bytes for a complete section and 1,030 standalone framed bytes. The formats and contracts are not interchangeable, and the latter branch's experiments were not rerun during this integration.
+
+Fresh local integration checks recovered the 156,714-byte archive record stream through both raw sections and the inherited SP1024-1 float frame. Exact record references preserve logical records even where byte cuts cross characters or records. Storage cuts do not become semantic boundaries. No corpus-wide truth test, historical equivalence, new training result, or universal S′/idea detector is claimed.
