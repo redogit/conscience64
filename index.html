@@ -12,15 +12,15 @@
 </head>
 <body>
 <main itemprop="mainEntity" itemscope itemtype="https://schema.org/Dataset" itemid="uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599">
-<header><h1 itemprop="name">Conscience64</h1><p itemprop="description">Universal object space. Visible surface: Space Lens + human answer + optional I / R / P / O.</p><meta itemprop="identifier" content="uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599"></header>
+<header><h1 itemprop="name">Conscience64</h1><p itemprop="description">Universal object space. Visible surface: Space Lens + human answer + local/web search + optional I / R / P / O.</p><meta itemprop="identifier" content="uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599"></header>
 <nav class="project-nav" aria-label="Public projects"><a href="./play/">Five free projects</a><a href="./coordinate-space/">Coordinate Space Workbench</a><a href="./research/projects/">Research project records</a></nav>
 <section class="space-tool" aria-labelledby="space-tool-title">
-  <div class="space-tool-header"><div><h2 id="space-tool-title">Space Lens</h2><p>The black-hole-like field is the operational surface. Ask a question, search wider when needed, and keep local learning across sessions without confusing it with verified evidence.</p></div><p id="space-count" aria-live="polite">Loading searchable space…</p></div>
+  <div class="space-tool-header"><div><h2 id="space-tool-title">Space Lens</h2><p>The black-hole-like field is the operational surface. Ask a question, search the local index, or search selected public sources inside Conscience64 itself.</p></div><p id="space-count" aria-live="polite">Loading searchable space…</p></div>
   <div class="space-stage"><canvas id="space" aria-hidden="true"></canvas><div class="space-core" aria-hidden="true"><div><strong>SPACE LENS</strong><span>ask → search → learn → continue</span></div></div><div class="space-console"><form id="space-search-form" role="search"><label for="space-search" style="position:absolute;left:-10000px">Ask Space Lens</label><input id="space-search" name="q" type="search" autocomplete="off" placeholder="Ask Space Lens a question…"><button type="submit">Ask</button></form><div class="lens-actions" aria-label="Space Lens shortcuts"><button type="button" data-lens-action="projects">Projects</button><button type="button" data-lens-action="recovery">Recovery</button><button type="button" data-lens-action="lessons">Lessons</button><button type="button" data-lens-action="reset">Reset view</button></div></div></div>
   <div class="space-readout"><div class="space-readout-top"><h3 id="space-readout-title">Lens ready</h3><p id="space-readout-status" role="status" aria-live="polite">Ask a question to begin.</p></div><div id="space-results" class="space-results" aria-label="Space Lens results"></div></div>
 </section>
 <details class="technical-state"><summary>Technical I / R / P / O state</summary><div class="irpo" aria-label="I R P O state"><section itemscope itemtype="https://schema.org/Thing"><h2 itemprop="name">I — Input</h2><pre id="irpo-i" itemprop="description">Loading…</pre></section><section itemscope itemtype="https://schema.org/Thing"><h2 itemprop="name">R — Relation / Scratch</h2><pre id="irpo-r" itemprop="description"></pre></section><section itemscope itemtype="https://schema.org/Thing"><h2 itemprop="name">P — Plan</h2><pre id="irpo-p" itemprop="description"></pre></section><section itemscope itemtype="https://schema.org/Thing"><h2 itemprop="name">O — Output</h2><pre id="irpo-o" itemprop="description"></pre></section></div></details>
-<p class="api-note">Space Lens learns locally in your browser. Query history, feedback, chosen sources, aliases, and explicit teachings can persist and be exported. Local learning remains separate from verified Conscience64 source records.</p>
+<p class="api-note">Space Lens learns locally in your browser. Local Search stays on-device. Web Search sends a query only to the public providers you explicitly select and renders those results inside Conscience64. Saved web results become local learned memory, not verified research evidence.</p>
 </main>
 <script type="module" src="./app.js"></script>
 <script>
@@ -36,4 +36,5 @@
 </script>
 <script src="./space-lens-memory.js" defer></script>
 <script src="./space-lens-qa.js" defer></script>
+<script src="./space-lens-web-search.js" defer></script>
 </body></html>
