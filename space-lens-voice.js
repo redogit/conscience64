@@ -1,0 +1,28 @@
+(()=>{
+'use strict';
+const SpeechRecognition=globalThis.SpeechRecognition||globalThis.webkitSpeechRecognition;
+const synth=globalThis.speechSynthesis||null;
+let recognition=null,listening=false,autoSpeak=true,currentLang=(navigator.language||'en-US');
+const $=id=>document.getElementById(id);
+function bestVoice(lang){if(!synth)return null;const voices=synth.getVoices();return voices.find(v=>v.lang?.toLowerCase()===lang.toLowerCase())||voices.find(v=>v.lang?.toLowerCase().startsWith(lang.split('-')[0].toLowerCase()))||voices.find(v=>v.default)||voices[0]||null;}
+function speak(text,lang=currentLang){if(!synth||!text)return;const u=new SpeechSynthesisUtterance(String(text));u.lang=lang;const v=bestVoice(lang);if(v)u.voice=v;u.rate=1;u.pitch=1;synth.cancel();synth.speak(u);}
+function setStatus(text){const el=$('space-voice-status');if(el)el.textContent=text;}
+function submitTranscript(text){const input=$('space-search'),form=$('space-search-form');if(!input||!form)return;input.value=text;setStatus(`Heard ${currentLang}`);form.requestSubmit?.();if(!form.requestSubmit)form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));}
+function stop(){if(recognition&&listening){try{recognition.stop();}catch{}}}
+function start(){
+  if(!SpeechRecognition){setStatus('Speech recognition unavailable in this browser; typing still works.');return;}
+  if(!recognition){recognition=new SpeechRecognition();recognition.interimResults=true;recognition.continuous=false;recognition.maxAlternatives=1;recognition.onstart=()=>{listening=true;setStatus(`Listening · ${currentLang}`);const b=$('space-voice-button');if(b)b.textContent='Stop';};recognition.onend=()=>{listening=false;const b=$('space-voice-button');if(b)b.textContent='Speak';if($('space-voice-status')?.textContent.startsWith('Listening'))setStatus('Voice ready');};recognition.onerror=e=>setStatus(`Voice input: ${e.error||'error'}`);recognition.onresult=e=>{let final='';let interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0]?.transcript||'';if(e.results[i].isFinal)final+=t;else interim+=t;}const input=$('space-search');if(input&&(final||interim))input.value=(final||interim).trim();if(final.trim())submitTranscript(final.trim());};}
+  recognition.lang=currentLang;try{recognition.start();}catch(err){setStatus(String(err?.message||err));}
+}
+function toggle(){listening?stop():start();}
+function addUI(){
+  if($('space-voice-controls'))return;const form=$('space-search-form');if(!form)return;const wrap=document.createElement('div');wrap.id='space-voice-controls';wrap.className='space-voice-controls';wrap.innerHTML=`<button type="button" id="space-voice-button" aria-pressed="false">Speak</button><label><span class="sr-only">Voice language</span><select id="space-voice-language" aria-label="Voice language"><option value="auto">Auto / browser language</option><option value="en-US">English (US)</option><option value="en-GB">English (UK)</option><option value="es-ES">Español</option><option value="fr-FR">Français</option><option value="de-DE">Deutsch</option><option value="pt-BR">Português</option><option value="it-IT">Italiano</option><option value="ja-JP">日本語</option><option value="ko-KR">한국어</option><option value="zh-CN">中文</option><option value="hi-IN">हिन्दी</option><option value="ar-SA">العربية</option></select></label><label class="space-voice-check"><input id="space-voice-autospeak" type="checkbox" checked> speak answers</label><span id="space-voice-status" role="status" aria-live="polite">Voice ready</span>`;form.parentElement?.insertAdjacentElement('afterend',wrap);
+  const style=document.createElement('style');style.textContent=`.space-voice-controls{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin-top:.55rem;font-size:.75rem;color:var(--muted)}.space-voice-controls button,.space-voice-controls select{border:1px solid #405071;background:#111a2b;color:var(--fg);border-radius:.5rem;padding:.48rem .62rem}.space-voice-controls button{cursor:pointer}.space-voice-controls button:focus-visible,.space-voice-controls select:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}.space-voice-check{display:flex;align-items:center;gap:.3rem}.sr-only{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}`;document.head.appendChild(style);
+  $('space-voice-button').addEventListener('click',toggle);$('space-voice-language').addEventListener('change',e=>{currentLang=e.target.value==='auto'?(navigator.language||'en-US'):e.target.value;setStatus(`Voice language ${currentLang}`);});$('space-voice-autospeak').addEventListener('change',e=>autoSpeak=e.target.checked);
+  if(!SpeechRecognition)$('space-voice-button').disabled=true;
+}
+function watchAnswers(){const host=$('space-answer-text');if(!host)return;const observer=new MutationObserver(()=>{const text=host.textContent.trim();if(autoSpeak&&text)speak(text,currentLang);});observer.observe(host,{childList:true,subtree:true,characterData:true});}
+function install(){addUI();watchAnswers();if(synth){synth.getVoices();synth.onvoiceschanged=()=>synth.getVoices();}setStatus(SpeechRecognition?'Voice enabled; microphone starts only after you press Speak.':'Speech input is not supported here; spoken answers may still work.');}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
+globalThis.SpaceLensVoice=Object.freeze({speak,start,stop,get language(){return currentLang;}});
+})();
