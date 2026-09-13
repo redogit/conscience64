@@ -1,0 +1,167 @@
+{
+  "schema": "conscience64/research-project-registry/v1",
+  "version": "1.0.0",
+  "surface": "I/R/P/O",
+  "forwardOnly": true,
+  "learnedInvariants": [
+    "UNKNOWN != ABSENT",
+    "UNASSIGNED != ABSENT",
+    "RELATED != SUPPORTS",
+    "SEMANTIC_SIMILARITY != IDENTITY",
+    "SOURCE != RECONSTRUCTION",
+    "BYTE_IDENTITY != SEMANTIC_TRUTH",
+    "CURRENT_NAVIGATION != HISTORICAL_SOURCE",
+    "MECHANISM_ACTIVE != MECHANISM_USEFUL",
+    "MECHANISM_USEFUL != MECHANISM_CAUSAL",
+    "CALIBRATION_RESULT != OPEN_PROBLEM_RESULT",
+    "FINITE_VERIFICATION != UNIVERSALITY",
+    "REPRESENTATION_CORRECTNESS != PHYSICAL_TRUTH",
+    "LOSS_ACKNOWLEDGED != LOSS_CONCEALED"
+  ],
+  "transformStates": [
+    "PRESERVED",
+    "TRANSFORMED",
+    "SPLIT",
+    "MERGED",
+    "INTRODUCED",
+    "LOST",
+    "UNRESOLVED"
+  ],
+  "evidencePolicy": {
+    "preserveFailures": true,
+    "preservePredecessors": true,
+    "preserveUnresolvedRemainder": true,
+    "replicateBeforePromotionWhenApplicable": true,
+    "preferExactIdentityBeforeSemanticRetrieval": true,
+    "sourceNativeBeforeCrossProjectReuse": true,
+    "oneDegreeExperimentWhenPractical": true
+  },
+  "projects": [
+    {
+      "id": "cross-carrier-wave",
+      "name": "Cross-Carrier Wave",
+      "status": "ACTIVE_BOUNDED_RESEARCH",
+      "path": "research/projects/cross-carrier-wave.md",
+      "I": "Provenance-preserving carrier/transform experiments across representations and domains.",
+      "R": "Faithful compression/translation/abstraction must remain distinct from concealed consequential loss.",
+      "P": "Use adaptive typed carriers, explicit transform states, one-degree probes, and carried loss/remainder.",
+      "O": "Adaptive carrier overlays and explicit loss accounting were retained; universal-theory interpretations were rejected.",
+      "highlight": "Transform contracts now carry provenance, change, loss, uncertainty, ethics/cost, and remainder.",
+      "lowlight": "Early fixed-dimensional and universal-coordinate readings exceeded the evidence.",
+      "claimCeiling": "Research architecture; not a completed theory of knowledge or universal semantic geometry.",
+      "checks": {
+        "assumption": "Consequential distinctions can be identified locally enough to test preservation.",
+        "test": "Ablate or alter one carrier/transform relation and test reconstructibility.",
+        "unknown": "Broad real-world benefit outside bounded experiments remains unestablished."
+      }
+    },
+    {
+      "id": "orbit-library",
+      "name": "Orbit Library",
+      "status": "ACTIVE_KNOWLEDGE_AND_RECOVERY_INFRASTRUCTURE",
+      "path": "research/projects/orbit-library.md",
+      "I": "A compact active navigation surface with recoverable source/history/support layers.",
+      "R": "Useful navigation is not exhaustive historical identity or evidence authority.",
+      "P": "Prefer source-native reconstruction, exact identity, cold locators when earned, and explicit unknown/unassigned states.",
+      "O": "Compact navigation works, but root-edge audits proved exact file-level historical coverage remains partial.",
+      "highlight": "Current/history/support and exact-source boundaries became explicit.",
+      "lowlight": "Later historical catalogs omitted genuine predecessor identities.",
+      "claimCeiling": "Navigation/recovery infrastructure; not a complete model of the Library.",
+      "checks": {
+        "assumption": "A small active surface is preferable when exact recovery remains possible.",
+        "test": "Freeze loose-root samples and measure exact recovery, family representation, ambiguity, and unresolved cases.",
+        "unknown": "The benefit/cost threshold for broader exact-file indexing remains unresolved."
+      }
+    },
+    {
+      "id": "tiny-babel-tbcl",
+      "name": "Tiny Babel / TBCL",
+      "status": "PRESERVED_VERIFIED_FINITE_RESULT_RUNTIME_LINEAGE",
+      "path": "research/projects/tiny-babel-tbcl.md",
+      "I": "Finite language/retrieval/reorganization research plus later TBCL runtime/reconstruction work.",
+      "R": "Subject/obligation must remain distinct from carrier/index/hierarchy/runtime representation.",
+      "P": "Preserve the finite subject, exact verification boundary, strict semantics, and source/reconstruction separation.",
+      "O": "Finite exhaustive verification and carrier reduction succeeded within bounded inherited domains.",
+      "highlight": "Exhaustive finite verification replaced example-only confidence.",
+      "lowlight": "Finite success does not imply universal language, retrieval, or global minimality.",
+      "claimCeiling": "Verified finite behavior only.",
+      "checks": {
+        "assumption": "The finite subject/query space faithfully represents the bounded claim.",
+        "test": "Exhaustive enumeration plus behavior comparison across carriers and independent verification where possible.",
+        "unknown": "Scaling to open-ended/noisy/culturally variable domains remains unresolved."
+      }
+    },
+    {
+      "id": "operator-moonshot",
+      "name": "Operator Moonshot",
+      "status": "ACTIVE_RESEARCH_LAB_WITH_EXPLICIT_CLAIM_CEILINGS",
+      "path": "research/projects/operator-moonshot.md",
+      "I": "Bounded mathematical, computational, educational, operator, and calibration experiments.",
+      "R": "Interesting mechanism, replicated result, general scientific claim, and open-problem solution are different evidence levels.",
+      "P": "Replicate before promotion, preserve failed replications, use calibration only as calibration, and attack with counterexamples/ablations.",
+      "O": "Evidence discipline strengthened; Cycle 3 replication and Education E3 robustness failures remain preserved.",
+      "highlight": "Causal ablation, replication, provenance, and claim ceilings became core practice.",
+      "lowlight": "Several promising branches failed replication/robustness and some original source remains missing.",
+      "claimCeiling": "Research laboratory/evidence ledger; not proof that larger open targets are solved.",
+      "checks": {
+        "assumption": "The experiment target, baseline, and evidence carrier actually measure the claimed relation.",
+        "test": "Replication, ablation, adversarial counterexamples, independent verification, and simpler baselines.",
+        "unknown": "Generalization outside finite/synthetic domains remains unresolved."
+      }
+    },
+    {
+      "id": "model-experiments",
+      "name": "Model Experiments",
+      "status": "EXPERIMENTAL_MACHINERY_AND_NEGATIVE_EVIDENCE",
+      "path": "research/projects/model-experiments.md",
+      "I": "PulseNet, PulseNet GP, SPDM, streaming/recurrent memory, Micro-Ouro, compressed-domain and related model experiments.",
+      "R": "Mechanism activity, usefulness, and causality must be tested separately.",
+      "P": "Keep runnable baselines, ablate proposed mechanisms, compare against trivial alternatives, and preserve regressions.",
+      "O": "Reusable machinery and negative evidence accumulated; several mechanisms changed outputs without earning usefulness claims.",
+      "highlight": "Model work increasingly separated execution correctness, numerical stability, and predictive usefulness.",
+      "lowlight": "Regressions, baseline errors, weak reasoning cores, and below-chance checkpoints were found and retained.",
+      "claimCeiling": "Bounded implementation/experiment evidence; no general intelligence or universal reasoning claim.",
+      "checks": {
+        "assumption": "Benchmarks distinguish proposed mechanisms from simpler alternatives.",
+        "test": "Frozen data/baselines, ablation, multi-seed reruns, held-out performance, and stability checks.",
+        "unknown": "Value after training, scaling, native implementation, domain shift, and stronger baselines remains unresolved."
+      }
+    },
+    {
+      "id": "geometry-codecs",
+      "name": "Geometry, 4D Codecs, and Observer Experiments",
+      "status": "PRESERVED_TECHNICAL_LINEAGE",
+      "path": "research/projects/geometry-codecs.md",
+      "I": "3D/4D geometry, topology, inversion, compact encodings, finite observer/classification, and float64 carrier experiments.",
+      "R": "Useful/correct representation is not evidence of physical truth.",
+      "P": "Test round trips, corruption, inverse transforms, finite confounds, and raw-bit/numeric boundaries independently.",
+      "O": "Engineering mechanisms survived; over-strong physical interpretations and rigid fixed-dimensional stories were rejected.",
+      "highlight": "Encoding correctness and observer distinguishability became independently testable.",
+      "lowlight": "Geometric resemblance and finite discrimination can invite interpretations beyond the evidence.",
+      "claimCeiling": "Engineering and bounded mathematical experiments; no new physical theory claim.",
+      "checks": {
+        "assumption": "Encoding/transform specifications are explicit enough for independent testing.",
+        "test": "Exact encode/decode, perturbation, inverse-transform, confound enumeration, ablation, and integrity checks.",
+        "unknown": "Which representations correspond to deeper physical structure, if any, remains unresolved."
+      }
+    },
+    {
+      "id": "historical-recovery",
+      "name": "Historical Recovery",
+      "status": "ACTIVE_SOURCE_NATIVE_ARCHAEOLOGY",
+      "path": "research/projects/historical-recovery.md",
+      "I": "Old code, generic pasted sources, archives, later summaries, incomplete indexes, and source-native recovery evidence.",
+      "R": "Not found by an index is not absence; semantic resemblance is not project identity.",
+      "P": "Follow exact file IDs, chronology, archive membership, namespaces, migrations, and source hashes before assigning identity.",
+      "O": "Hidden predecessor identities were recovered; Fuzzball remains an explicit unresolved carrier and a prior black-hole conflation was corrected.",
+      "highlight": "FractalDeflectiveEngine and GrandUnifiedPerceptron predecessor identities were recovered from obscured carriers.",
+      "lowlight": "Fuzzball and the original structured solver/operator-lab source remain unresolved gaps; some archive bytes are inaccessible.",
+      "claimCeiling": "Recovery graph only; missing carriers remain unresolved rather than substituted.",
+      "checks": {
+        "assumption": "User-attested historical projects are legitimate recovery targets without implying a relation to candidate files.",
+        "test": "Exact source, namespace, archive path, hash, chronology, and independent migration/provenance references.",
+        "unknown": "The exact Fuzzball carrier, chronology, and relation to neighboring projects remain unresolved."
+      }
+    }
+  ]
+}
