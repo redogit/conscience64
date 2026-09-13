@@ -13,7 +13,6 @@ The [public playground](https://redogit.github.io/conscience64/play/) turns ongo
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes with source links |
 | [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Rearrange writing while keeping the original |
 | [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Make geometric art and export SVG or text |
-
 | [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan a next step and preserve dated checkpoints |
 | [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Compare exact text changes and preserve both inputs |
 
