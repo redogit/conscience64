@@ -4,5 +4,5 @@ outputs:
   page_url:
     description: Deployed GitHub Pages URL
 runs:
-  using: node20
+  using: node24
   main: index.js
