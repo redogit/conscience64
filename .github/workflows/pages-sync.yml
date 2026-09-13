@@ -11,9 +11,6 @@ on:
       - 'API.md'
       - 'BUILD_AUDIT.json'
       - '.nojekyll'
-      - '.github/actions/pages-deploy/**'
-      - '.github/workflows/pages.yml'
-      - 'tools/pages_deploy.mjs'
       - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
 
