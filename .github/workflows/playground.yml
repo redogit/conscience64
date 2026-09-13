@@ -1,0 +1,34 @@
+name: Verify public playground projects
+
+on:
+  push:
+    branches: [main, 'rollout/**']
+    paths: ['play/**', '.github/workflows/playground.yml']
+  pull_request:
+    paths: ['play/**', '.github/workflows/playground.yml']
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: conscience64-playground-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize the exact public commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify data, translations, and static resources
+        run: node play/test.mjs
+      - name: Exercise the applications in Chrome
+        run: node play/browser-test.mjs

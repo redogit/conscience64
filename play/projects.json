@@ -1,0 +1,12 @@
+{
+  "schema": "conscience64/public-tools/v1",
+  "version": "1.0.0",
+  "interfaceLanguages": ["en", "es", "fr", "ar"],
+  "license": "MIT",
+  "lineageCommit": "15d6784d88d6ae12a1e24ac96d406beddbeee5e1",
+  "projects": [
+    {"id":"orbit","name":"Orbit Shelf","entry":"orbit/index.html","purpose":"Collect and search personal notes with source links and writing-language metadata.","inspiredBy":"Orbit Library","source":"../research/projects/orbit-library.md","relationship":"New application inspired by documented navigation and source-preservation goals; not a recovered Orbit implementation."},
+    {"id":"weave","name":"Word Weave","entry":"weave/index.html","purpose":"Rearrange writing while keeping the original and exporting a separate remix.","inspiredBy":"Language work and Tiny Babel / TBCL","source":"../research/projects/tiny-babel-tbcl.md","relationship":"New writing application inspired by source/transform separation; not a TBCL interpreter or a model of linguistic truth."},
+    {"id":"garden","name":"Pattern Garden","entry":"garden/index.html","purpose":"Create geometric patterns with keyboard controls, rotation, mirroring, undo, SVG, and text export.","inspiredBy":"Geometry, codecs, and creative world-building ideas","source":"../research/projects/geometry-codecs.md","relationship":"New creative geometry application; not a representation of a particular culture or a physical-theory result."}
+  ]
+}

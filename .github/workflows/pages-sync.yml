@@ -13,6 +13,7 @@ on:
       - 'README.md'
       - 'SITE_DATA_RECOVERY.md'
       - 'research/projects/**'
+      - 'play/**'
       - 'tools/check_site.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
@@ -42,6 +43,12 @@ jobs:
 
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
+
+      - name: Verify public playground projects before publishing
+        run: node play/test.mjs
+
+      - name: Exercise public projects in Chrome before publishing
+        run: node play/browser-test.mjs
 
       - name: Advance gh-pages to exact main commit
         shell: bash
