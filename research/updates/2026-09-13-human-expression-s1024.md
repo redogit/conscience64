@@ -1,5 +1,7 @@
 # Human Expression Archive / S1024 — project integration checkpoint
 
+> **Implementation destination corrected — September 13, 2026:** The user explicitly selected [redogit/Other-Projects-](https://github.com/redogit/Other-Projects-) for these projects. The [Human Expression Archive](https://github.com/redogit/Other-Projects-/tree/main/Human%20Expression%20Archive) and [S1024 Compression Lab](https://github.com/redogit/Other-Projects-/tree/main/S1024%20Compression%20Lab) are now published there in [commit 7094cde](https://github.com/redogit/Other-Projects-/commit/7094cde66f01fcd56760b04d59ee46564996b8e5). This Conscience64 document remains a historical cross-reference, not their implementation owner. The historical checkpoint below is retained without changing its original evidence scope. No Conscience64 runtime or deployment change is made by this routing correction.
+
 Date: 2026-09-13  
 Checkpoint: `HEA-S1024-PROJECT-INTEGRATION-20260913-01`  
 Status: `SCOPED_REFERENCE_UPDATE_NOT_RUNTIME_PROMOTION`
