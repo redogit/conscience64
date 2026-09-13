@@ -6,15 +6,19 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SURFACE = ROOT / "research" / "cross-carrier" / "2026-09-12" / "v2.2"
 REPOSITORY_MANIFEST = SURFACE / "repository_manifest.json"
+PROJECT_REGISTRY = ROOT / "research" / "projects" / "projects.json"
+PROJECT_CHECK = ROOT / "tools" / "check_project_registry.py"
 V5_RESULT = SURFACE / "sql" / "SYMMETRY_AWARE_CONSTRUCTION_V5_RESULTS.json"
 COMPACT_MAXCUT_CERT = SURFACE / "selection" / "HIGHGIRTH20_COMPACT_MAXCUT28_CERT.min.json"
 PYTHON_FILES = (
     ROOT / "tools" / "verify_research_manifest.py",
+    PROJECT_CHECK,
     SURFACE / "cross_carrier_float64_space_codec.py",
     SURFACE / "search_float64_space.py",
     SURFACE / "sql" / "partial_translation_stabilizer.py",
@@ -22,6 +26,7 @@ PYTHON_FILES = (
 )
 JSON_FILES = (
     ROOT / "redogit.json",
+    PROJECT_REGISTRY,
     SURFACE / "coordinate_schema.json",
     SURFACE / "lookup_selfcheck.json",
     SURFACE / "manifest.json",
@@ -80,6 +85,33 @@ def main() -> int:
     except Exception as exc:
         failures += 1
         print(f"FAIL contract: {exc}", file=sys.stderr)
+
+    try:
+        registry = parsed_json[PROJECT_REGISTRY]
+        assert isinstance(registry, dict)
+        assert registry.get("schema") == "conscience64/research-project-registry/v1"
+        assert registry.get("forwardOnly") is True
+        assert isinstance(registry.get("projects"), list) and registry["projects"]
+        assert isinstance(registry.get("learnedInvariants"), list) and registry["learnedInvariants"]
+        print("PASS current project registry surface")
+    except Exception as exc:
+        failures += 1
+        print(f"FAIL project registry surface: {exc}", file=sys.stderr)
+
+    try:
+        result = subprocess.run(
+            [sys.executable, str(PROJECT_CHECK)],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            raise RuntimeError((result.stderr or result.stdout).strip())
+        print(result.stdout.strip())
+    except Exception as exc:
+        failures += 1
+        print(f"FAIL learned-project invariants: {exc}", file=sys.stderr)
 
     try:
         v5 = parsed_json[V5_RESULT]
