@@ -13,12 +13,12 @@ on:
       - '.nojekyll'
       - '.github/actions/pages-deploy/**'
       - '.github/workflows/pages.yml'
+      - 'tools/pages_deploy.mjs'
       - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
-  actions: write
 
 concurrency:
   group: conscience64-pages-source
@@ -48,17 +48,3 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push --force origin "$GITHUB_SHA:refs/heads/gh-pages"
-
-      - name: Dispatch protected Pages deployment on gh-pages
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          curl --fail-with-body --silent --show-error \
-            --request POST \
-            --header "Accept: application/vnd.github+json" \
-            --header "Authorization: Bearer ${GITHUB_TOKEN}" \
-            --header "X-GitHub-Api-Version: 2022-11-28" \
-            "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/workflows/pages.yml/dispatches" \
-            --data '{"ref":"gh-pages"}'
