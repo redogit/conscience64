@@ -115,6 +115,53 @@ Conscience64API.projects.invariants()
 
 The registry intentionally preserves rules including `UNKNOWN != ABSENT`, `SEMANTIC_SIMILARITY != IDENTITY`, `SOURCE != RECONSTRUCTION`, `BYTE_IDENTITY != SEMANTIC_TRUTH`, `MECHANISM_ACTIVE != MECHANISM_USEFUL`, and `FINITE_VERIFICATION != UNIVERSALITY`.
 
+## Hodge research companion surface
+
+The repository now carries an integrated Hodge-conjecture research spine and support stack:
+
+```text
+research/projects/hodge-conjecture.md
+research/hodge/README.md
+research/hodge/STRUCTURAL_SUPPORTS.md
+research/hodge/RESEARCH_INTEGRATION_MAP.md
+research/hodge/CONSCIENCE64_COOPERATION.md
+research/hodge/claim_matrix.json
+```
+
+These records integrate K3/Kummer/Fermat/fourfold calibration work, 4D/compass and symmetry footings, P-vs-NP-derived research methods, Cross-Carrier transport discipline, Orbit/Knowledge-Decay provenance, TBCL/CSOL distinction control, Moonshot proof admission, and a machine-readable bridge/claim ledger.
+
+The Hodge files are currently a **supplemental repository research surface**, not an eighth entry in `research/projects/projects.json`. Therefore:
+
+```js
+Conscience64API.projects.list()
+```
+
+still reports the seven registry projects documented by API version 1.3.0, and
+
+```js
+Conscience64API.projects.get("hodge-conjecture")
+```
+
+must not be assumed to resolve until a later registry/API version explicitly adds that project. `UNRESOLVED_PROJECT` or `null` at this layer is not evidence that the repository Hodge research is absent.
+
+The companion contract adds the research invariant:
+
+```text
+CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
+```
+
+and Hodge-specific guards including:
+
+```text
+CALIBRATION_RESULT != OPEN_PROBLEM_RESULT
+SAME_HODGE_DIAMOND != SAME_ALGEBRAIC_CYCLE_STRUCTURE
+SYMMETRY != USEFUL_QUOTIENT
+CYCLE_COUNT != CYCLE_CLASS_RANK
+COMPLEX_(p,p) != RATIONAL_HODGE_CLASS
+```
+
+A later registry promotion should preserve the current seven-project registry as predecessor state rather than silently pretending Hodge was always present.
+
 ## Microdata
 
 ```js
