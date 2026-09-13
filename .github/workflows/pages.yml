@@ -26,6 +26,8 @@ concurrency:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Materialize exact public commit without external Actions
@@ -77,7 +79,7 @@ jobs:
 
       - name: Upload and deploy Pages artifact
         id: deployment
-        uses: redogit/conscience64/.github/actions/pages-deploy@00834be5e2993398afdbf0f9ef9912692c9ec10f
+        uses: redogit/conscience64/.github/actions/pages-deploy@d1f3dc161c688bd4d3d571e592372365a02832a2
         env:
           GITHUB_TOKEN: ${{ github.token }}
           PAGES_RUNTIME_DIR: ${{ runner.temp }}/conscience64-pages-runtime
