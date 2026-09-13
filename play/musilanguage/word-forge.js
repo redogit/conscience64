@@ -2,7 +2,7 @@
 'use strict';
 (()=>{
 const M=Music64,U=UTF8MusicSpace,L=ListenerFloatMusic,E=MusilanguageEngine,$=id=>document.getElementById(id);
-const S={recipe:null,score:null,buffer:null,ctx:null,master:null,node:null,start:0,offset:0,playing:false,busy:false,epoch:0,transitions:0,undo:[],receipt:null};
+const S={recipe:null,score:null,buffer:null,ctx:null,master:null,node:null,start:0,offset:0,playing:false,busy:false,epoch:0,transitions:0,undo:[],receipt:null,operation:null};
 const mixes=['fusion','metal','classical','funk'],copy=x=>structuredClone(x);
 let exact=null,frame=null,serial=0;const pending=new Map();
 const say=s=>$('status').textContent=s,fmt=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
@@ -11,7 +11,14 @@ function words(text){$('words').value=text;exact={text,view:$('words').value};by
 function bytes(){try{$('bytes').textContent=U.bytes(inputText()).length+' / 1,024 UTF-8 bytes';}catch(e){say(e.message);}}
 function settings(){return Object.fromEntries(['tonic','mode','bpm','meter','style','transform'].map(k=>[k,Number($(k).value)]));}
 function position(){return S.playing?Math.max(0,Math.min(S.score.duration,S.ctx.currentTime-S.start+S.offset)):S.offset;}
-function stop(reset=true){const at=position();S.epoch++;if(S.node){S.node.onended=null;try{S.node.stop();}catch{}S.node.disconnect();S.node=null;}S.playing=false;S.offset=reset?0:at;if(S.ctx)S.ctx.suspend().catch(()=>{});$('play').textContent=reset?'Play':'Resume';tick();}
+// A canceled AudioContext.resume() may never settle in some browsers. Race every
+// asynchronous playback/export against an explicit token; old completion cannot
+// release a newer operation's lock or restart audio after Stop.
+const CANCELED=Symbol('canceled');
+function beginOperation(){let cancel;const canceled=new Promise(resolve=>{cancel=()=>resolve(CANCELED);});const op={cancel,canceled,epoch:S.epoch};S.operation=op;S.busy=true;$('play').disabled=true;return op;}
+function finishOperation(op){if(S.operation!==op)return;S.operation=null;S.busy=false;$('play').disabled=false;}
+function cancelOperation(){const op=S.operation;if(op){op.cancel();finishOperation(op);}}
+function stop(reset=true){const at=position();S.epoch++;cancelOperation();if(S.node){S.node.onended=null;try{S.node.stop();}catch{}S.node.disconnect();S.node=null;}S.playing=false;S.offset=reset?0:at;if(S.ctx)S.ctx.suspend().catch(()=>{});$('play').textContent=reset?'Play':'Resume';tick();}
 function tick(){if(!S.score)return;const t=position(),beat=t*S.score.bpm/60,sec=S.score.sections.find(s=>beat>=s.start&&beat<s.end)||S.score.sections.at(-1),cue=S.score.cues.filter(c=>c.b<=beat).at(-1);$('clock').textContent=fmt(t)+' / '+fmt(S.score.duration);if(document.activeElement!==$('seek'))$('seek').value=t;$('movement').textContent=sec.name;if(cue)$('lyric').textContent=cue.text;}
 function show(){const r=S.recipe,p=M.validate(r)[0];$('title').textContent=S.score.title;$('meta').textContent=S.score.key+' · '+S.score.bpm+' BPM · '+fmt(S.score.duration);$('seek').max=S.score.duration;$('address').value=r.cells[0];$('decimal').textContent=M.parse(r.cells[0]).toPrecision(17);$('cells').textContent=r.cells.join('\n');$('coverage').textContent=JSON.stringify(r.coverage,null,2);
 for(const k of ['tonic','mode','meter','style','transform'])$(k).value=p[k];$('bpm').value=p.tempo+72;
@@ -20,7 +27,23 @@ const l=r.listener;$('listener-state').textContent=l?'Your '+l.phase+' · seed '
 function load(recipe,remember=true){L.validate(recipe);const score=L.compose(recipe);if(remember&&S.recipe){S.undo.push(copy(S.recipe));if(S.undo.length>16)S.undo.shift();}stop();S.recipe=copy(recipe);S.score=score;S.buffer=null;show();}
 async function unlock(){if(!S.ctx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw Error('Web Audio unavailable.');S.ctx=new AC();S.master=S.ctx.createGain();S.master.gain.value=Number($('volume').value)/100;S.master.connect(S.ctx.destination);}await S.ctx.resume();}
 function limit(buffer){let peak=0;for(let c=0;c<buffer.numberOfChannels;c++)for(const x of buffer.getChannelData(c)){if(!Number.isFinite(x))throw Error('Invalid audio sample; playback canceled.');peak=Math.max(peak,Math.abs(x));}if(peak>.9)for(let c=0;c<buffer.numberOfChannels;c++){const a=buffer.getChannelData(c);for(let i=0;i<a.length;i++)a[i]*=.9/peak;}return buffer;}
-async function play(){if(S.busy)return;S.busy=true;$('play').disabled=true;const epoch=S.epoch;try{await unlock();if(!S.buffer){say('Rendering your local take…');const p=M.validate(S.recipe)[0],b=await E.renderer(S.score).render(E.levels(mixes[p.style]),22050);if(epoch!==S.epoch)return;S.buffer=limit(b);}if(epoch!==S.epoch)return;if(S.offset>=S.score.duration-.03)S.offset=0;S.node=S.ctx.createBufferSource();S.node.buffer=S.buffer;S.node.connect(S.master);S.start=S.ctx.currentTime+.03;S.playing=true;$('play').textContent='Pause';S.node.onended=()=>{if(epoch!==S.epoch)return;S.node.disconnect();S.node=null;S.playing=false;S.offset=S.score.duration;tick();$('play').textContent='Play again';if($('endless').checked){S.transitions++;load(L.next(S.recipe),false);play();}else say('Finished. Keep what you like; undo what you do not.');};S.node.start(S.start,S.offset);say('Playing your take. No change to shared music.');}catch(e){say(e.message);S.playing=false;}finally{S.busy=false;$('play').disabled=false;}}
+async function play(){
+ if(S.busy)return;const op=beginOperation(),epoch=op.epoch;
+ try{
+  if(await Promise.race([unlock(),op.canceled])===CANCELED||epoch!==S.epoch)return;
+  if(!S.buffer){
+   say('Rendering your local take…');const p=M.validate(S.recipe)[0];
+   const b=await Promise.race([E.renderer(S.score).render(E.levels(mixes[p.style]),22050),op.canceled]);
+   if(b===CANCELED||epoch!==S.epoch)return;S.buffer=limit(b);
+  }
+  if(epoch!==S.epoch)return;if(S.offset>=S.score.duration-.03)S.offset=0;
+  const node=S.ctx.createBufferSource();S.node=node;node.buffer=S.buffer;node.connect(S.master);
+  S.start=S.ctx.currentTime+.03;S.playing=true;$('play').textContent='Pause';
+  node.onended=()=>{if(epoch!==S.epoch)return;node.disconnect();S.node=null;S.playing=false;S.offset=S.score.duration;tick();$('play').textContent='Play again';if($('endless').checked){S.transitions++;load(L.next(S.recipe),false);play();}else say('Finished. Keep what you like; undo what you do not.');};
+  node.start(S.start,S.offset);say('Playing your take. No change to shared music.');
+ }catch(e){if(epoch===S.epoch){say(e.message);S.playing=false;}}
+ finally{finishOperation(op);}
+}
 async function apply(make){if(S.busy)return;try{load(make());await play();}catch(e){say(e.message);}}
 $('forge').onclick=()=>{S.receipt=null;apply(()=>M.fromText(inputText(),settings()));};$('play').onclick=()=>S.playing?(stop(false),say('Paused.')):play();$('stop').onclick=()=>{stop();say('Stopped; pending playback is canceled.');};$('words').oninput=()=>{exact=null;bytes();};$('volume').oninput=()=>{if(S.master)S.master.gain.setTargetAtTime(Number($('volume').value)/100,S.ctx.currentTime,.025);};$('seek').onchange=()=>{const was=S.playing,offset=Number($('seek').value);stop();S.offset=offset;tick();if(was)play();};
 for(const [i,[name]]of M.MODES.entries())$('mode').add(new Option(name,String(i)));for(const [i,name]of M.NOTES.entries())$('tonic').add(new Option(name,String(i)));$('tonic').value='2';
@@ -34,7 +57,7 @@ function sample(random){try{const n=Number($('length').value),str=$('rank').valu
 $('sample').onclick=()=>sample(true);$('use-rank').onclick=()=>sample(false);
 function download(data,name,type){const url=URL.createObjectURL(new Blob([data],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);}
 function session(){return {format:'word-forge-session/v1',recipe:copy(S.recipe),companion:S.receipt,engineVersion:E.version,music64Version:M.version,listenerVersion:L.version,notice:'Includes source text. Review before sharing. Local artwork, not a scientific finding.'};}
-$('export').onclick=()=>{download(JSON.stringify(session(),null,2),'my-music64-take.json','application/json');say('Export includes the source phrase. Review before sharing.');};$('midi').onclick=()=>download(E.renderer(S.score).midi(),'my-music64-take.mid','audio/midi');$('wav').onclick=async()=>{if(S.busy)return;S.busy=true;try{const renderer=E.renderer(S.score),p=M.validate(S.recipe)[0];say('Rendering WAV…');const b=limit(await renderer.render(E.levels(mixes[p.style]),44100));download(renderer.wav(b),'my-music64-take.wav','audio/wav');say('WAV exported.');}catch(e){say(e.message);}finally{S.busy=false;}};
+$('export').onclick=()=>{download(JSON.stringify(session(),null,2),'my-music64-take.json','application/json');say('Export includes the source phrase. Review before sharing.');};$('midi').onclick=()=>download(E.renderer(S.score).midi(),'my-music64-take.mid','audio/midi');$('wav').onclick=async()=>{if(S.busy)return;const op=beginOperation();try{const renderer=E.renderer(S.score),p=M.validate(S.recipe)[0];say('Rendering WAV…');const raw=await Promise.race([renderer.render(E.levels(mixes[p.style]),44100),op.canceled]);if(raw===CANCELED||op.epoch!==S.epoch)return;const b=limit(raw);download(renderer.wav(b),'my-music64-take.wav','audio/wav');say('WAV exported.');}catch(e){if(op.epoch===S.epoch)say(e.message);}finally{finishOperation(op);}};
 function importSession(s){if(s?.format!=='word-forge-session/v1'||s.engineVersion!==E.version||s.music64Version!==M.version||(s.listenerVersion&&s.listenerVersion!==L.version))throw Error('Unsupported session or engine version.');const r=s.recipe;L.validate(r);if(r.source){const fresh=M.fromText(r.source.text).source;for(const k of Object.keys(fresh))if(JSON.stringify(r.source[k])!==JSON.stringify(fresh[k]))throw Error('Source receipt mismatch: '+k);}load(r);if(r.source)words(r.source.text);S.receipt=null;say('Local recipe restored. Imported companion metadata is not a live response. Press Play.');}
 $('import').onchange=async e=>{if(S.busy)return;try{const f=e.target.files[0];if(!f)return;if(f.size>262144)throw Error('Import limit: 256 KiB.');importSession(JSON.parse(await f.text()));}catch(e){say('Import: '+e.message);}finally{e.target.value='';}};
 function accept(event){const m=event.data;if(!frame||event.origin!==location.origin||event.source!==frame.contentWindow||m?.type!=='conscience64.api.result'||!pending.has(m.id))return false;const p=pending.get(m.id);clearTimeout(p.timer);pending.delete(m.id);m.ok?p.resolve(m.result):p.reject(Error(m.error||'API error'));return true;}
