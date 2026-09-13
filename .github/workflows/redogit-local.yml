@@ -49,6 +49,10 @@ jobs:
           grep -F 'generic_sym obs=5 scores=56 wordops=2912' /tmp/symmetry_aware_constructor_v5.log
           grep -F 'paired_t15 obs=8 scores=20 wordops=2080' /tmp/symmetry_aware_constructor_v5.log
           grep -F 'selected_t=7 first_survivors=500' /tmp/symmetry_aware_constructor_v5.log
+      - name: Verify compact Max-Cut successor certificate
+        run: >-
+          python3 research/cross-carrier/2026-09-12/v2.2/selection/verify_compact_maxcut28_min.py
+          research/cross-carrier/2026-09-12/v2.2/selection/HIGHGIRTH20_COMPACT_MAXCUT28_CERT.min.json
       - name: Verify committed research surface bytes and hashes
         run: >-
           python3 tools/verify_research_manifest.py
