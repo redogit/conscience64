@@ -7,11 +7,11 @@ const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,Number(v)||0));
 const uniq=a=>[...new Set(a.filter(Boolean))];
 const tokens=s=>String(s||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').split(/[^a-z0-9:_-]+/).filter(Boolean);
 const now=()=>Date.now();
-let lastRoute=null,lastOrientation=null;
+let lastRoute=null,lastOrientation=null,eventsWired=false,observedAnswer=null;
 
 function inferDomains(text){
   const s=String(text||'').toLowerCase(),out=[];
-  const tests={history:/history|archive|chronolog|recovery|source/,language:/language|utf|unicode|semantic|translation|speech|voice/,geometry:/geometry|4d|coordinate|topolog|hodge|compass/,models:/model|neural|agent|learning|compression/,human:/human|people|accessib|ethic|help|culture/,research:/research|evidence|claim|experiment|proof|test/,crossDomain:/cross[- ]?domain|carrier|wave|transform|functional/};
+  const tests={history:/history|archive|chronolog|recovery|source/,language:/language|utf|unicode|semantic|translation|speech|voice/,geometry:/geometry|4d|coordinate|topolog|hodge|compass/,models:/model|neural|agent|learning|compression/,human:/human|people|accessib|ethic|help|culture/,research:/research|evidence|claim|experiment|proof|test/,'cross-domain':/cross[- ]?domain|carrier|wave|transform|functional/};
   for(const[k,re]of Object.entries(tests))if(re.test(s))out.push(k);
   return out.length?out:['research'];
 }
@@ -46,12 +46,7 @@ function parameterize({question='',answer='',confidence='',sourceLabels=[],selec
   const crossCarrierWave=clamp(.22+.46*carrierDiversity+.18*selection+.14*evidence);
   const crossDomainWave=clamp(.18+.48*domainDiversity+.18*transformIntensity+.16*evidence);
   const successAggregation=clamp(.30*evidence+.22*selection+.20*helpfulness+.15*recency+.13*Math.max(crossCarrierWave,crossDomainWave));
-  const vector=Object.freeze({
-    x:carrierDiversity,
-    y:domainDiversity,
-    z:clamp(.55*evidence+.45*transformIntensity),
-    w:recency
-  });
+  const vector=Object.freeze({x:carrierDiversity,y:domainDiversity,z:clamp(.55*evidence+.45*transformIntensity),w:recency});
   lastOrientation={schema:'conscience64/compass4d/v1',role:ROLE.compass,vector,functionals:{crossCarrierWave,crossDomainWave,successAggregation,selection,helpfulness,evidence,transformIntensity},carriers,domains,at:new Date().toISOString(),interpretation:'4D runtime orientation vector projected into the UI; not a physical four-dimensional measurement or scientific claim.'};
   dispatchEvent(new CustomEvent('space-compass4d-orientation',{detail:lastOrientation}));
   renderCompass(lastOrientation);return structuredClone(lastOrientation);
@@ -73,12 +68,15 @@ function addUI(){
 }
 function renderRoute(r){const el=document.getElementById('space-master-route');if(el)el.textContent=`Master route: ${r.carriers.join(' → ')} · domains ${r.domains.join(' × ')}`;}
 function renderCompass(o){const el=document.getElementById('space-compass-readout');if(!el)return;const v=o.vector,f=o.functionals;el.textContent=`Compass4D x=${v.x.toFixed(2)} y=${v.y.toFixed(2)} z=${v.z.toFixed(2)} w=${v.w.toFixed(2)} · carrier wave ${f.crossCarrierWave.toFixed(2)} · domain wave ${f.crossDomainWave.toFixed(2)} · success ${f.successAggregation.toFixed(2)}`;}
+function wireAnswer(){const answer=document.getElementById('space-answer-text');if(!answer||answer===observedAnswer)return;observedAnswer=answer;new MutationObserver(()=>setTimeout(currentAnswerOrientation,0)).observe(answer,{childList:true,subtree:true,characterData:true});}
 function wire(){
+  if(eventsWired)return;eventsWired=true;
   document.addEventListener('submit',e=>{if(e.target?.id==='space-search-form')route(document.getElementById('space-search')?.value||'');},true);
   document.addEventListener('click',e=>{if(e.target?.closest?.('.space-result')||e.target?.id==='space-helpful')setTimeout(currentAnswerOrientation,40);});
-  const answer=document.getElementById('space-answer-text');if(answer)new MutationObserver(()=>setTimeout(currentAnswerOrientation,0)).observe(answer,{childList:true,subtree:true,characterData:true});
+  wireAnswer();
 }
-function install(){addUI();wire();route('');}
+function install(){addUI();wire();wireAnswer();route('');}
+addEventListener('conscience64-ready',()=>{addUI();wire();wireAnswer();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 globalThis.SpaceLensMaster=Object.freeze({roles:ROLE,companions:DEFAULT_COMPANIONS,route,parameterize,current:()=>({route:structuredClone(lastRoute),orientation:structuredClone(lastOrientation)})});
 })();
