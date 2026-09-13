@@ -52,9 +52,9 @@ def exercise(page, check):
     page.wait_for_timeout(100)
     check('incomplete translation rejected atomically', page.evaluate("document.documentElement.lang==='chr'") and page.locator('#packet').input_value()==baseline)
     # Clear invalidates pending translation imports, just as it invalidates envelopes.
-    page.evaluate("() => {window.savedText=File.prototype.text; File.prototype.text=function(){return new Promise(resolve=>window.finishImport=()=>resolve(CoordinateI18n.template('en')))}}")
+    page.evaluate("() => {window.savedBuffer=File.prototype.arrayBuffer; File.prototype.arrayBuffer=function(){return new Promise(resolve=>window.finishImport=()=>resolve(new TextEncoder().encode(CoordinateI18n.template('en')).buffer))}}")
     page.locator('#language-pack').set_input_files({'name':'slow-language.json','mimeType':'application/json','buffer':b'{}'})
-    page.locator('#clear').click();page.evaluate('() => {window.finishImport(); File.prototype.text=window.savedText;}');page.wait_for_timeout(30)
+    page.locator('#clear').click();page.evaluate('() => {window.finishImport(); File.prototype.arrayBuffer=window.savedBuffer;}');page.wait_for_timeout(30)
     check('clear wins pending language import', page.evaluate("document.documentElement.lang==='chr'") and page.locator('#language-status').inner_text()=='')
     page.locator('#language').select_option('en')
     # Do not force the selected source culture/script on a newly imported payload.

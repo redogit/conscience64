@@ -1,9 +1,13 @@
 {
-  "schema": "coordinate-space-public-release/v1.2",
+  "schema": "coordinate-space-public-release/v1.2.1",
   "date": "2026-09-13",
-  "edition": "PUBLIC_EXACT_SOURCE_FILE_INTAKE",
-  "predecessor_commit": "15ba591d55a9fde8a28af2833e478dcfd5718167",
+  "edition": "PUBLIC_EXACT_SOURCE_FILE_INTAKE_STRICT_JSON",
+  "predecessor_commit": "347438c589105950593938e26394b3451080885a",
   "files": {
+    "COMPLETION_1_2_1.md": {
+      "bytes": 2438,
+      "sha256": "ecc74cc5ad2c6b91637d7d19db5c6ee8b28a596afa3060021fdc16c9b50a8ce2"
+    },
     "CULTURE_TIME_CONTRACT.md": {
       "bytes": 7666,
       "sha256": "adf8492ee8fa5107be5582b9a962bcf2c1d3b0ea56cf92b433f255b07be75e16"
@@ -21,20 +25,24 @@
       "sha256": "9db1ba5c42301e027de915920987f48c90f6c3d1c0a98dcd3259452df4f54a3a"
     },
     "browser_checks.py": {
-      "bytes": 6254,
-      "sha256": "66fb0f094ef3387680b605dd599cd7088e756b76d8e2b2463c3db8e3902de81e"
+      "bytes": 6419,
+      "sha256": "19fd63e45d46ad1e0197c549059975cf9307fa0d619d44f4d9982cb0f3804d57"
     },
     "codec.js": {
       "bytes": 2744,
       "sha256": "bddd295dbe53bb275642fc3f6259a1694f37808f2e97f96c5bd6689a9ac4ef01"
+    },
+    "completion_browser_checks.py": {
+      "bytes": 5678,
+      "sha256": "de05b6b4fffed68ee696a33cfe5b8ecfe3b0cf53c61a2c07d54166c77b5242fd"
     },
     "coordinate_runtime.py": {
       "bytes": 9808,
       "sha256": "137840583674a590aa2d471eaf45ae6cbe90bde5e71e486aa49592522f3cf3c3"
     },
     "culture_browser_checks.py": {
-      "bytes": 7069,
-      "sha256": "0793e9a0c38c7e0b26accd1c997fbd60d1fe5c5b17d8ec1013a13a835e5c6e43"
+      "bytes": 7127,
+      "sha256": "f11cb506ea2845e54ce0b8f77fe68211bd98216cd4b42008cefc031b33cee506"
     },
     "example.py": {
       "bytes": 1062,
@@ -53,8 +61,8 @@
       "sha256": "565968dfd1d9bcff3f0ecf052843c32eefc34ba9ae11182c1e9f77e6ad16402e"
     },
     "intake_browser_checks.py": {
-      "bytes": 6982,
-      "sha256": "8c79c32b19c720eee0d1ed75239a96820f48ff30260e19e20cae714434e02ffb"
+      "bytes": 7040,
+      "sha256": "6883763ac0abdeed57fd601bdced1a862f279893e71ab7d84c7133d1b010b08c"
     },
     "locales.js": {
       "bytes": 33292,
@@ -89,8 +97,8 @@
       "sha256": "0b4f66b77860c54ae3f43879a7ef7bff85c67f468d3e3b66b5825404f82ab05b"
     },
     "ui.js": {
-      "bytes": 8089,
-      "sha256": "70107a270c2b9c1f780c4f801703930c2329bac85057deacd3bbc937bb2666e7"
+      "bytes": 8489,
+      "sha256": "5b52e3f317bd9706ea1b50a60ffe10109c73ea8192813c8c4a5d3e33cecfa96f"
     },
     "unicode_crosscheck.py": {
       "bytes": 1413,
@@ -115,7 +123,7 @@
   "messages_per_locale": 40,
   "translation_review": "ASSISTANT_DRAFT_NOT_COMMUNITY_CERTIFIED",
   "clock_contract": "Source bytes, order, schema and digest are authoritative. Wall clock, calendar and UI locale are not identity inputs.",
-  "local_checks": {
+  "prior_local_checks": {
     "python_methods": 9,
     "python_text_roundtrips": 516,
     "javascript_original": 35,
@@ -125,20 +133,22 @@
     "unicode_transcript_bytes": 4382592,
     "unicode_sha256": "e0a7693f7362e88827c15e772e55b3490bd983f90711df7f3ef36c2b1ef6847e",
     "independent_python_unicode_sweep": "PASS",
-    "browser_dom_checks": 177,
-    "javascript_source_file": 47
+    "browser_dom_checks": 144,
+    "timezones": [
+      "UTC",
+      "America/New_York",
+      "Pacific/Kiritimati",
+      "Asia/Kolkata"
+    ],
+    "evidence_commit": "15ba591d55a9fde8a28af2833e478dcfd5718167"
   },
-  "local_browser_boundary": "HTTP navigation blocked by environment policy (ERR_BLOCKED_BY_ADMINISTRATOR). 177 DOM checks passed. Existing GitHub gate requires HTTP-served checks before publication. Translation and accessibility are not certified.",
-  "prior_local_timezone_checks": [
-    "UTC",
-    "America/New_York",
-    "Pacific/Kiritimati",
-    "Asia/Kolkata"
-  ],
-  "local_environment": {
-    "python": "3.13.5",
-    "numpy": "2.3.5",
-    "node": "v22.16.0",
-    "chromium": "144.0.7559.96"
+  "patch_checks": {
+    "local_base_commit": "15ba591d55a9fde8a28af2833e478dcfd5718167",
+    "local_dom_checks": 153,
+    "new_import_regressions": 9,
+    "reconciled_base_commit": "347438c589105950593938e26394b3451080885a",
+    "expected_integrated_http_checks": 186,
+    "publication_gate": "REQUIRED_FULL_HTTP_CHECKS",
+    "boundary": "Local HTTP navigation blocked. Integrated publication is conditional on the GitHub HTTP browser gate; no inherited PASS for this reconciliation."
   }
 }

@@ -85,7 +85,7 @@ byId('encode').addEventListener('click', () => perform(() => {
   byId('packet').value = JSON.stringify(packet,null,2);
 }));
 byId('decode').addEventListener('click', () => perform(() => {
-  if (byId('packet').value.length > 12*1024*1024) throw Error('E_ENVELOPE_LIMIT: 12 MiB');
+  if (new TextEncoder().encode(byId('packet').value).length > 12*1024*1024) throw Error('E_ENVELOPE_LIMIT: 12 MiB');
   accept(JSON.parse(byId('packet').value),true);
 }));
 byId('text').addEventListener('input', () => { importedSource = null; byId('source-file').value = ''; invalidate(); });
@@ -101,13 +101,20 @@ byId('clear').addEventListener('click', () => {
   for (const id of ['text','packet','load','source-lang','language-pack','source-file']) byId(id).value = '';
   byId('source-dir').value = 'auto'; invalidate('cleared'); byId('text').focus();
 });
+async function readLocalUTF8(file, maximum) {
+  if (file.size > maximum) throw Error('E_FILE_LIMIT: ' + maximum + ' bytes');
+  // File.text() replaces invalid UTF-8. Import contracts must reject it instead.
+  const bytes = await file.arrayBuffer();
+  if (bytes.byteLength > maximum) throw Error('E_FILE_LIMIT: ' + maximum + ' bytes');
+  // Allow a JSON transport BOM; the exact source payload inside is untouched.
+  return new TextDecoder('utf-8', {fatal:true}).decode(bytes);
+}
 byId('load').addEventListener('change', async () => {
   invalidate('waiting'); const ticket = generation, file = byId('load').files[0];
   byId('load').value = ''; // Selecting this same local file again must still fire change.
   if (!file) { invalidate(); return; }
   try {
-    if (file.size > 12*1024*1024) throw Error('E_ENVELOPE_LIMIT: 12 MiB');
-    const text = await file.text(); if (ticket !== generation) return;
+    const text = await readLocalUTF8(file,12*1024*1024); if (ticket !== generation) return;
     byId('packet').value = text; perform(() => accept(JSON.parse(text),true));
   } catch (error) { if (ticket === generation) { invalidate('failed'); errorDetail = String(error.message).slice(0,800); renderState(); } }
 });
@@ -128,8 +135,7 @@ byId('language-pack').addEventListener('change', async () => {
   byId('language-pack').value = '';
   if (!file) return;
   try {
-    if (file.size > I.limit) throw Error('E_LANGUAGE_PACK_LIMIT');
-    const text = await file.text(); if (ticket !== packGeneration) return;
+    const text = await readLocalUTF8(file,I.limit); if (ticket !== packGeneration) return;
     const pack = I.importText(text); locale = pack.locale; languageState = 'packOk'; selectOptions(); applyLocale();
   } catch { if (ticket === packGeneration) { languageState = 'packError'; renderState(); } }
 });

@@ -77,15 +77,17 @@ def run(dom_only=False):
         page.locator('#clear').click()
         check('clear erases input and result', page.locator('#text').input_value() == '' and page.locator('#packet').input_value() == '' and page.locator('#recovered').inner_text() == '' and page.locator('#saveText').is_disabled())
         # An asynchronous import must not repopulate input after Clear.
-        page.evaluate("() => {window.savedText=File.prototype.text; File.prototype.text=function(){return new Promise(resolve=>window.finishImport=()=>resolve('{}'))}}")
+        page.evaluate("() => {window.savedBuffer=File.prototype.arrayBuffer; File.prototype.arrayBuffer=function(){return new Promise(resolve=>window.finishImport=()=>resolve(new TextEncoder().encode('{}').buffer))}}")
         page.locator('#load').set_input_files({'name':'slow.json','mimeType':'application/json','buffer':b'{}'})
-        page.locator('#clear').click(); page.evaluate('() => {window.finishImport(); File.prototype.text=window.savedText;}')
+        page.locator('#clear').click(); page.evaluate('() => {window.finishImport(); File.prototype.arrayBuffer=window.savedBuffer;}')
         page.wait_for_timeout(30)
         check('clear wins pending file import', page.locator('#packet').input_value() == '' and page.locator('#status').get_attribute('data-state') == 'cleared')
         from culture_browser_checks import exercise
         exercise(page, check)
         from intake_browser_checks import exercise as intake_exercise
         intake_exercise(page, check)
+        from completion_browser_checks import exercise_completion
+        exercise_completion(page, check)
         check('no unexpected network requests', all(url.startswith(origin) for url in requests))
         check('no uncaught JS errors', not errors)
         version = browser.version

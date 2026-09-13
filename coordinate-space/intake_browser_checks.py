@@ -44,11 +44,11 @@ def exercise(page, check):
     expect(page.locator('#status')).to_have_attribute('data-state','failed')
     check('oversized source rejected', page.locator('#saveText').is_disabled())
     # An old translation-file read must not overwrite a newer explicit choice.
-    page.evaluate("""() => {window.savedFileText=File.prototype.text;
-      File.prototype.text=function(){return new Promise(resolve=>window.finishLanguage=()=>resolve(CoordinateI18n.template('en')))}}""")
+    page.evaluate("""() => {window.savedFileBuffer=File.prototype.arrayBuffer;
+      File.prototype.arrayBuffer=function(){return new Promise(resolve=>window.finishLanguage=()=>resolve(new TextEncoder().encode(CoordinateI18n.template('en')).buffer))}}""")
     page.locator('#language-pack').set_input_files({'name':'slow-language.json','mimeType':'application/json','buffer':b'{}'})
     page.locator('#language').select_option('ar')
-    page.evaluate('() => {window.finishLanguage(); File.prototype.text=window.savedFileText;}')
+    page.evaluate('() => {window.finishLanguage(); File.prototype.arrayBuffer=window.savedFileBuffer;}')
     page.wait_for_timeout(30)
     check('newer language choice wins older import', page.locator('html').get_attribute('lang')=='ar' and page.locator('#language-status').text_content()=='')
     # Hold original-file reads to test Clear, typing, and a newer import separately.
