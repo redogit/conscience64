@@ -2,7 +2,7 @@
 'use strict';
 const SpeechRecognition=globalThis.SpeechRecognition||globalThis.webkitSpeechRecognition;
 const synth=globalThis.speechSynthesis||null;
-let recognition=null,listening=false,autoSpeak=true,currentLang=(navigator.language||'en-US'),autoLanguage=true;
+let recognition=null,listening=false,autoSpeak=true,currentLang=(navigator.language||'en-US'),autoLanguage=true,observedAnswer=null;
 const $=id=>document.getElementById(id);
 const baseLang=tag=>String(tag||'en').split('-')[0].toLowerCase();
 function bestVoice(lang){if(!synth)return null;const voices=synth.getVoices();const want=String(lang||'').toLowerCase(),base=baseLang(want);return voices.find(v=>v.lang?.toLowerCase()===want)||voices.find(v=>baseLang(v.lang)===base&&v.localService)||voices.find(v=>baseLang(v.lang)===base)||voices.find(v=>v.default)||voices[0]||null;}
@@ -47,8 +47,9 @@ function addUI(){
   $('space-voice-button').addEventListener('click',toggle);$('space-voice-language').addEventListener('change',e=>{autoLanguage=e.target.value==='auto';currentLang=autoLanguage?(navigator.language||'en-US'):e.target.value;setStatus(`Voice language · ${autoLanguage?'automatic':currentLang}`);});$('space-voice-autospeak').addEventListener('change',e=>autoSpeak=e.target.checked);
   if(!SpeechRecognition)$('space-voice-button').disabled=true;
 }
-function watchAnswers(){const host=$('space-answer-text');if(!host)return;let last='';const observer=new MutationObserver(()=>{const text=host.textContent.trim();if(text&&text!==last){last=text;speakAnswer(text);}});observer.observe(host,{childList:true,subtree:true,characterData:true});}
+function watchAnswers(){const host=$('space-answer-text');if(!host||host===observedAnswer)return;observedAnswer=host;let last='';const observer=new MutationObserver(()=>{const text=host.textContent.trim();if(text&&text!==last){last=text;speakAnswer(text);}});observer.observe(host,{childList:true,subtree:true,characterData:true});}
 function install(){addUI();watchAnswers();if(synth){synth.getVoices();synth.onvoiceschanged=()=>synth.getVoices();}setStatus(SpeechRecognition?'Voice ready · local recognition preferred when available':'Speech input unavailable here; spoken answers may still work.');}
+addEventListener('conscience64-ready',()=>{addUI();watchAnswers();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 globalThis.SpaceLensVoice=Object.freeze({speak,start,stop,detectLanguage,translateForVoice,get language(){return currentLang;}});
 })();
