@@ -13,6 +13,10 @@ let volatile=fresh();
 
 function storage(){try{return globalThis.localStorage||null;}catch{return null;}}
 function valid(x){return x&&x.schema===SCHEMA&&typeof x.queries==='object'&&typeof x.teachings==='object'&&typeof x.sourceVotes==='object';}
+function notify(state){
+  if(typeof globalThis.dispatchEvent!=='function'||typeof globalThis.CustomEvent!=='function')return;
+  try{globalThis.dispatchEvent(new CustomEvent('space-lens-memory-changed',{detail:{updatedAt:state.updatedAt}}));}catch{}
+}
 function load(){
   const s=storage();if(!s)return clone(volatile);
   try{const x=JSON.parse(s.getItem(KEY)||'null');if(valid(x)){volatile=x;return clone(x);}}catch{}
@@ -20,7 +24,7 @@ function load(){
 }
 function save(state){
   state.updatedAt=now();volatile=clone(state);const s=storage();if(s){try{s.setItem(KEY,JSON.stringify(state));}catch{}}
-  return clone(state);
+  notify(state);return clone(state);
 }
 function trimQueries(state){
   const rows=Object.entries(state.queries).sort((a,b)=>String(b[1].lastAsked||'').localeCompare(String(a[1].lastAsked||'')));
@@ -74,7 +78,7 @@ function importText(text,{merge=true}={}){
   for(const[id,n]of Object.entries(incoming.sourceVotes||{}))state.sourceVotes[id]=Math.max(Number(state.sourceVotes[id]||0),Number(n||0));
   state.selections=[...(state.selections||[]),...(incoming.selections||[])];trimQueries(state);return save(state);
 }
-function clear(){volatile=fresh();const s=storage();if(s){try{s.removeItem(KEY);}catch{}}return stats();}
+function clear(){volatile=fresh();const s=storage();if(s){try{s.removeItem(KEY);}catch{}}notify(volatile);return stats();}
 
 const API=Object.freeze({schema:SCHEMA,normalize,record,feedback,teach,forgetTeaching,recall,learnSelection,sourceBoost,rememberAlias,aliasFor,expand,stats,exportText,importText,clear});
 globalThis.SpaceLensMemory=API;
