@@ -1,5 +1,5 @@
 {
-  "status": "PASS_WITH_DEPLOYMENT_CONFIGURATION_REQUIRED",
+  "status": "SITE_DATA_AND_API_VERIFIED",
   "spaceUoid": "uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599",
   "recordCount": 734,
   "uniqueUoids": 734,
@@ -7,7 +7,12 @@
   "allUoidsSha256Form": true,
   "microdataCoverage": 734,
   "visibleControls": 0,
-  "visibleSurface": ["I", "R", "P", "O"],
+  "visibleSurface": [
+    "I",
+    "R",
+    "P",
+    "O"
+  ],
   "browserApiVersion": "1.2.0",
   "apiMethods": [
     "search.simple",
@@ -36,7 +41,15 @@
     "version": "1.0.0",
     "projectCount": 7,
     "learnedInvariantCount": 13,
-    "transformStates": ["PRESERVED", "TRANSFORMED", "SPLIT", "MERGED", "INTRODUCED", "LOST", "UNRESOLVED"],
+    "transformStates": [
+      "PRESERVED",
+      "TRANSFORMED",
+      "SPLIT",
+      "MERGED",
+      "INTRODUCED",
+      "LOST",
+      "UNRESOLVED"
+    ],
     "forwardOnly": true,
     "humanIndex": "research/projects/README.md",
     "verification": "tools/check_project_registry.py"
@@ -60,7 +73,10 @@
     "fuzzballStatus": "USER_ATTESTED_CARRIER_NOT_YET_LOCATED",
     "fuzzballBlackHoleConflationRejected": true,
     "orphanProjectMap": "research/history/ORPHAN_PROJECT_RECOVERY_MAP.md",
-    "recoveredPredecessors": ["FractalDeflectiveEngine", "GrandUnifiedPerceptron"],
+    "recoveredPredecessors": [
+      "FractalDeflectiveEngine",
+      "GrandUnifiedPerceptron"
+    ],
     "knownIndependentGap": "original structured solver/operator lab source",
     "unknownMustNotBeSubstituted": true
   },
@@ -86,6 +102,7 @@
     "exactPublicCommitMaterialization": true,
     "currentChecks": [
       "browser API JavaScript syntax",
+      "site transport integrity and actual browser API startup",
       "project registry schema and required fields",
       "learned invariant preservation",
       "Fuzzball correction boundary",
@@ -94,12 +111,29 @@
       "compact Max-Cut successor-certificate invariants",
       "repository-surface byte counts and SHA-256 hashes"
     ],
-    "historicalKnownPassRuns": [34719575880, 34719651062],
+    "historicalKnownPassRuns": [
+      34719575880,
+      34719651062
+    ],
     "schedulerProbeRun": 34719467106,
     "schedulerProbeConclusion": "success"
   },
   "pagesDeploymentMode": "branch-static",
-  "pagesSourceRequired": "main branch / repository root",
-  "pagesWorkflowRequired": false,
-  "privacyBoundary": "Research, public/reference materials, methods, language/cultural carriers and technical history may be connected. Private personal/family/intimate/legal/medical/financial/location/contact/account data are excluded."
+  "pagesSourceRequired": "gh-pages branch / repository root",
+  "pagesWorkflowRequired": true,
+  "privacyBoundary": "Research, public/reference materials, methods, language/cultural carriers and technical history may be connected. Private personal/family/intimate/legal/medical/financial/location/contact/account data are excluded.",
+  "siteVerification": {
+    "command": "node tools/check_site.mjs",
+    "checks": [
+      "shard byte counts and hashes",
+      "complete base64 and gzip stream",
+      "decoded corpus hash and record counts",
+      "unique identifiers and graph endpoint identities",
+      "actual app startup and search/project APIs"
+    ],
+    "visualBrowserRenderingChecked": false,
+    "recoveryRecord": "SITE_DATA_RECOVERY.md"
+  },
+  "pagesSynchronizationWorkflow": ".github/workflows/pages-sync.yml",
+  "pagesNativeDeployment": true
 }

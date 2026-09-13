@@ -67,8 +67,12 @@ The browser corpus is transported through ordered `data-NN.txt` shards. Shard bo
 
 See [`data-manifest.json`](data-manifest.json) for the current browser-transport state. This transport is separate from generated research checkpoints; incomplete research archive shards are not treated as complete current artifacts.
 
+Run `node tools/check_site.mjs` with Node.js 22 or newer to verify all shard identities, decompress the complete corpus, check graph endpoints, and exercise the actual app startup and search/project APIs. Both repository verification and Pages source synchronization run this check. It covers data and API behavior, not visual rendering.
+
+The repaired transport is a documented browser projection of the verified original Pages package. See [`SITE_DATA_RECOVERY.md`](SITE_DATA_RECOVERY.md) for source hashes, retained fields, and the rebuild command.
+
 ## GitHub Pages
 
-This repository is a static site and does not require a GitHub Actions deployment workflow. Configure GitHub Pages to publish from the **`main` branch / repository root**.
+GitHub Pages publishes the **`gh-pages` branch / repository root**. The `pages-sync.yml` workflow checks the site and synchronizes the exact `main` commit to that publishing branch; GitHub's native Pages build and deployment then publishes it. Changes to the browser files or structured project library trigger synchronization.
 
 The published corpus is privacy-safe; personal/family/private information is outside the site.

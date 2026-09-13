@@ -10,6 +10,10 @@ on:
       - 'data-*.txt'
       - 'API.md'
       - 'BUILD_AUDIT.json'
+      - 'README.md'
+      - 'SITE_DATA_RECOVERY.md'
+      - 'research/projects/**'
+      - 'tools/check_site.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
@@ -35,6 +39,9 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify site data and browser API before publishing
+        run: node tools/check_site.mjs
 
       - name: Advance gh-pages to exact main commit
         shell: bash

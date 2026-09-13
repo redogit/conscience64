@@ -4,13 +4,55 @@
   "transportEncoding": "base64(gzip(utf8(json)))",
   "semanticIdentityIndependentOfShardBoundaries": true,
   "shards": [
-    {"path":"data-00.txt","bytes":20000,"gitBlobSha":"1f7e06378bd0d8054afaf844d026e0d332d77c5a","state":"PAYLOAD"},
-    {"path":"data-01.txt","bytes":19999,"gitBlobSha":"c2740aaa9d8bed54bb32dd02f10ad1898dc7d126","state":"PAYLOAD"},
-    {"path":"data-02.txt","bytes":10000,"gitBlobSha":"288c3e95612d1ce37dd23a05695b130d267454a5","state":"PAYLOAD"},
-    {"path":"data-03.txt","bytes":10000,"gitBlobSha":"4ed97e817a8eac8de29682c8c42bfd0fd3738886","state":"PAYLOAD"},
-    {"path":"data-04.txt","bytes":10000,"gitBlobSha":"37ed9e5ac2c32851994665099488ab28ff9cfdf2","state":"PAYLOAD"},
-    {"path":"data-05.txt","bytes":10000,"gitBlobSha":"5e421c1137807456346c46139b42036879b36a11","state":"PAYLOAD"},
-    {"path":"data-06.txt","bytes":0,"gitBlobSha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","state":"RESERVED_CONTINUATION"}
+    {
+      "path": "data-00.txt",
+      "bytes": 20000,
+      "gitBlobSha": "033bdcc5c784cf10ae714ae337782024c574f666",
+      "sha256": "fe19c037c13d0617c57ecbf365655b7da67571c2eabcbec7cd1bfcf781cbe7b2",
+      "state": "PAYLOAD"
+    },
+    {
+      "path": "data-01.txt",
+      "bytes": 20000,
+      "gitBlobSha": "4d85397f2cdb90d318a996cbf42407e02c4ea2f2",
+      "sha256": "7005593f8320208ed84f8981763d4c1321fe84df50919c73309b39da7f757ae3",
+      "state": "PAYLOAD"
+    },
+    {
+      "path": "data-02.txt",
+      "bytes": 20000,
+      "gitBlobSha": "ef699b5e6d19205c61cd072edc7c52c1b6e6e3ff",
+      "sha256": "fc49d159900394c6305151f98d808f4bf6bd06a7442a71a7583005e06605728c",
+      "state": "PAYLOAD"
+    },
+    {
+      "path": "data-03.txt",
+      "bytes": 20000,
+      "gitBlobSha": "8b35f0291c19ddc2eeb4d6366a8946d95ba21ba7",
+      "sha256": "51d6743f70d4e22f1f3536ab413e4bb1d53187584bff913bb48a9b87a27ba46d",
+      "state": "PAYLOAD"
+    },
+    {
+      "path": "data-04.txt",
+      "bytes": 20000,
+      "gitBlobSha": "d298ac901725727e37599fedd93ab7c6ca0b9f3f",
+      "sha256": "e3fc7efd5653b0932e80f892686b2c851bb7b7064abe22641fb8b3e0f030e2bd",
+      "state": "PAYLOAD"
+    },
+    {
+      "path": "data-05.txt",
+      "bytes": 18256,
+      "gitBlobSha": "fc2ff78305986543d5c919ca512308d3a58ac1ec",
+      "sha256": "5196be8a8c4213a39ce45510f72fdcbd9dd35706a7f7eb27e6a761c354769402",
+      "state": "PAYLOAD"
+    },
+    {
+      "path": "data-06.txt",
+      "bytes": 0,
+      "gitBlobSha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "state": "RESERVED_CONTINUATION"
+    }
   ],
   "rules": {
     "missingFutureShardMeansAbsent": false,
@@ -23,5 +65,53 @@
   "next": {
     "loader": "Read this manifest rather than hard-code shard filenames.",
     "corpusGrowth": "Add verified recovery objects, recompute corpus identity/version, then regenerate transport shards and this manifest atomically."
+  },
+  "recordCount": 734,
+  "objectTypes": {
+    "research-edge": 508,
+    "research-node": 218,
+    "space-manifest": 1,
+    "world": 1,
+    "world-fragment": 6
+  },
+  "decodedBytes": 438858,
+  "decodedSha256": "f1c8731ff3d8e4c6251366c81f7715435b56f4c9f9bb31b07002eb9efa7df1b3",
+  "source": {
+    "archive": "CONSCIENCE64_GITHUB_PAGES_READY.zip",
+    "archiveSha256": "76e74cd203b5066cfd28d5f404e6b9ee8d99bcb48eb4a3322c895ff0037be738",
+    "entry": "conscience64/space-index.json",
+    "entrySha256": "1f174fc2ca64c42dd94a72ec02396b78db80158a8e14fc499692ee9c02b000fa"
+  },
+  "projection": {
+    "schema": "conscience64/browser-projection/v1",
+    "retainedFields": [
+      "authority",
+      "basis",
+      "category",
+      "data",
+      "degree",
+      "description",
+      "domain",
+      "kind",
+      "label",
+      "logicalId",
+      "nonstem_tags",
+      "objectType",
+      "provenance",
+      "relation",
+      "source",
+      "sourceUoid",
+      "target",
+      "targetUoid",
+      "time_layer",
+      "uoid"
+    ],
+    "identity": "Original source UOIDs are retained; decodedSha256 identifies the projected browser bytes separately.",
+    "microdata": "Generated on demand by app.js; full source metadata remains in the original package."
+  },
+  "recovery": {
+    "predecessorCommit": "788326bd403679f537c766bdf8ee8168e0d83535",
+    "reason": "The predecessor transport had malformed identifiers and an invalid gzip stream. Regenerated from the verified original source, not from guessed continuation bytes.",
+    "recordLineage": "All 734 original logical IDs and UOIDs are retained. The newer research project registry is a separate carrier."
   }
 }
