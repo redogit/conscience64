@@ -78,4 +78,10 @@ function clear(){volatile=fresh();const s=storage();if(s){try{s.removeItem(KEY);
 
 const API=Object.freeze({schema:SCHEMA,normalize,record,feedback,teach,forgetTeaching,recall,learnSelection,sourceBoost,rememberAlias,aliasFor,expand,stats,exportText,importText,clear});
 globalThis.SpaceLensMemory=API;
+
+// Space Lens local search is a browser-local tool layered on this memory store.
+// Loading is explicit and local; no external search service is contacted.
+if(typeof document!=='undefined'&&document.createElement&&!globalThis.SpaceLensLocalSearch&&!document.querySelector?.('script[data-space-lens-local-search]')){
+  const script=document.createElement('script');script.src='./space-lens-local-search.js';script.defer=true;script.dataset.spaceLensLocalSearch='true';document.head?.appendChild(script);
+}
 })();
