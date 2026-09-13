@@ -5,6 +5,10 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
+const html=await readFile(resolve(root,'index.html'),'utf8');
+assert.match(html,/<script\b[^>]*src="\.\/space-lens-qa\.js"[^>]*><\/script>/,'Space Lens QA script is not wired into index.html');
+assert.match(html,/id="space-search-form"/);
+assert.match(html,/id="space-readout-status"/);
 const registry=JSON.parse(await readFile(resolve(root,'research/projects/projects.json'),'utf8'));
 
 const unicodeRecord={
@@ -62,4 +66,4 @@ for(const answer of [orbit,recovery,models,moonshot,unicode,unknown]){
   assert.ok(Array.isArray(answer.sources),'sources must be explicit');
 }
 
-console.log('PASS Space Lens QA: project identity, failures, unresolved remainder, record fallback, and unknown handling');
+console.log('PASS Space Lens QA: live wiring, project identity, failures, unresolved remainder, record fallback, and unknown handling');
