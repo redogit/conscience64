@@ -6,6 +6,7 @@ on:
     paths:
       - 'redogit.json'
       - 'app.js'
+      - 'space-lens-memory.js'
       - 'space-lens-qa.js'
       - 'index.html'
       - 'data-manifest.json'
@@ -21,6 +22,7 @@ on:
     paths:
       - 'redogit.json'
       - 'app.js'
+      - 'space-lens-memory.js'
       - 'space-lens-qa.js'
       - 'index.html'
       - 'data-manifest.json'
@@ -57,11 +59,14 @@ jobs:
       - name: Check browser API and Space Lens syntax
         run: |
           node --check app.js
+          node --check space-lens-memory.js
           node --check space-lens-qa.js
       - name: Check site data and browser API startup
         run: node tools/check_site.mjs
       - name: Check Space Lens human-readable answers
         run: node tools/check_space_lens_qa.mjs
+      - name: Check Space Lens persistent learning memory
+        run: node tools/check_space_lens_memory.mjs
       - name: Check compact REDOGIT surface
         run: python3 tools/redogit_selfcheck.py
       - name: Replay SQL v5 finite constructor
