@@ -12,11 +12,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SURFACE = ROOT / "research" / "cross-carrier" / "2026-09-12" / "v2.2"
 REPOSITORY_MANIFEST = SURFACE / "repository_manifest.json"
 V5_RESULT = SURFACE / "sql" / "SYMMETRY_AWARE_CONSTRUCTION_V5_RESULTS.json"
+COMPACT_MAXCUT_CERT = SURFACE / "selection" / "HIGHGIRTH20_COMPACT_MAXCUT28_CERT.min.json"
 PYTHON_FILES = (
     ROOT / "tools" / "verify_research_manifest.py",
     SURFACE / "cross_carrier_float64_space_codec.py",
     SURFACE / "search_float64_space.py",
     SURFACE / "sql" / "partial_translation_stabilizer.py",
+    SURFACE / "selection" / "verify_compact_maxcut28_min.py",
 )
 JSON_FILES = (
     ROOT / "redogit.json",
@@ -31,6 +33,7 @@ JSON_FILES = (
     SURFACE / "sql" / "STABILIZER_AGGREGATE_WALSH_CHECK.json",
     SURFACE / "sql" / "CONSTRUCTION_COST_RESULTS_2026-09-12.json",
     V5_RESULT,
+    COMPACT_MAXCUT_CERT,
 )
 
 
@@ -98,6 +101,23 @@ def main() -> int:
     except Exception as exc:
         failures += 1
         print(f"FAIL SQL v5 invariants: {exc}", file=sys.stderr)
+
+    try:
+        cert = parsed_json[COMPACT_MAXCUT_CERT]
+        assert isinstance(cert, dict)
+        assert cert.get("v") == 1
+        assert cert.get("n") == 20
+        edges = cert.get("e")
+        deleted = cert.get("d")
+        cycles = cert.get("c")
+        assert isinstance(edges, list) and len(edges) == 30
+        assert isinstance(deleted, list) and len(deleted) == 2
+        assert isinstance(cycles, list) and [len(c) for c in cycles] == [7, 7, 9]
+        assert cert.get("mc") == 28
+        print("PASS compact Max-Cut successor-certificate invariants")
+    except Exception as exc:
+        failures += 1
+        print(f"FAIL compact Max-Cut certificate: {exc}", file=sys.stderr)
 
     try:
         repo_manifest = parsed_json[REPOSITORY_MANIFEST]
