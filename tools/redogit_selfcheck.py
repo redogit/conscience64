@@ -40,6 +40,53 @@ JSON_FILES = (
     V5_RESULT,
     COMPACT_MAXCUT_CERT,
 )
+EXPECTED_HISTORY = {
+    "preserve_predecessors": True,
+    "preserve_failures": True,
+    "preserve_unresolved_remainder": True,
+    "preserve_source_native_identity": True,
+    "rewrite_history": False,
+}
+EXPECTED_CHECKS = ["assumption", "test", "unknown"]
+EXPECTED_EVIDENCE_CLASSES = [
+    "executed-and-verified",
+    "externally-validated",
+    "formal-consequence",
+    "hypothesis-or-open-question",
+]
+REQUIRED_DISTINCTIONS = {
+    "UNKNOWN != ABSENT",
+    "UNASSIGNED != ABSENT",
+    "UNSELECTED != FALSE",
+    "INDEX_MISS != ABSENCE",
+    "RELATED != SUPPORTS",
+    "SEMANTIC_SIMILARITY != IDENTITY",
+    "SOURCE != RECONSTRUCTION",
+    "BYTE_IDENTITY != SEMANTIC_TRUTH",
+    "CURRENT_NAVIGATION != HISTORICAL_SOURCE",
+    "OBSERVATION != INTERPRETATION",
+    "VIEWPOINT_CHANGE != TASK_CHANGE",
+    "SELECTION != GLOBAL_OPTIMALITY",
+    "FINITE_VERIFICATION != UNIVERSALITY",
+    "LOSS_ACKNOWLEDGED != LOSS_CONCEALED",
+    "EVALUATION_COMPLETE != PROMOTION_APPROVED",
+    "PERSON != RECORDED_MODEL",
+    "USER_GOAL != SYSTEM_GOAL",
+    "PREDECESSOR != SUCCESSOR",
+    "INTERNAL_CONSISTENCY != EXTERNAL_VALIDATION",
+    "CLAIM != EVIDENCE",
+}
+CONSCIENCE_DISTINCTIONS = {
+    "MECHANISM_ACTIVE != MECHANISM_USEFUL",
+    "MECHANISM_USEFUL != MECHANISM_CAUSAL",
+    "CALIBRATION_RESULT != OPEN_PROBLEM_RESULT",
+    "REPRESENTATION_CORRECTNESS != PHYSICAL_TRUTH",
+    "UNRESOLVED_REFERENCE != OMITTED_FILTER",
+    "CURRENT_OUTPUT != FUTURE_OUTPUT != SELECTED_LABEL_UPDATE",
+    "LOSSLESS_TRANSPORT != COMPRESSION",
+    "CODEBOOK != ADDRESS != CONSTRUCTION_STATE",
+    "COMPACT_SIZE != CHEAP_QUERY",
+}
 
 
 def sha256(path: Path) -> str:
@@ -76,12 +123,28 @@ def main() -> int:
         assert isinstance(contract, dict)
         assert contract.get("schema") == "redogit/v1"
         assert contract.get("repository") == "redogit/conscience64"
-        history = contract.get("history_policy")
-        assert isinstance(history, dict)
-        assert history.get("preserve_predecessors") is True
-        assert history.get("preserve_failures") is True
-        assert history.get("rewrite_history") is False
-        print("PASS contract redogit/v1 history policy")
+        assert contract.get("history_policy") == EXPECTED_HISTORY
+        research = contract.get("research_policy")
+        assert isinstance(research, dict)
+        assert research.get("surface") == "I/R/P/O"
+        assert research.get("checks") == EXPECTED_CHECKS
+        assert research.get("evidence_classes") == EXPECTED_EVIDENCE_CLASSES
+        assert research.get("project_registry") == "research/projects/projects.json"
+        shared = research.get("required_distinctions")
+        domain = research.get("domain_distinctions")
+        assert isinstance(shared, list)
+        assert isinstance(domain, list)
+        assert REQUIRED_DISTINCTIONS.issubset(set(shared))
+        assert CONSCIENCE_DISTINCTIONS.issubset(set(domain))
+        for field in (
+            "claim_policy",
+            "selection_policy",
+            "promotion",
+            "knowledge_decay",
+            "historical_checkpoint_policy",
+        ):
+            assert isinstance(research.get(field), str) and research[field]
+        print("PASS contract redogit/v1 learned history and research policy")
     except Exception as exc:
         failures += 1
         print(f"FAIL contract: {exc}", file=sys.stderr)
