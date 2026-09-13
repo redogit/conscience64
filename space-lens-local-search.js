@@ -54,6 +54,8 @@ function scoreDoc(d,qTokens,qNorm,index){
   else if(qNorm&&title.includes(qNorm))score+=14;
   if(qNorm&&id.includes(qNorm))score+=10;
   if(qNorm&&d._hay.includes(qNorm))score+=7;
+  // Learned preference may rerank a real lexical match, but must never manufacture one.
+  if(score<=0)return 0;
   const boost=memory()?.sourceBoost?.(d.refId)||memory()?.sourceBoost?.(d.id)||0;score+=Math.min(12,Number(boost||0)*1.75);
   if(d.type==='learned')score+=1.5;
   return score;
@@ -122,9 +124,10 @@ function install(){
   });
   document.getElementById('local-search-form')?.addEventListener('submit',e=>{e.preventDefault();runSearch({resetOffset:true});});
   document.getElementById('local-search-type')?.addEventListener('change',()=>runSearch({resetOffset:true}));
+  addEventListener('space-lens-memory-changed',()=>rebuild());
 }
 
-const API=Object.freeze({version:'1.0.0',rebuild,refresh:rebuild,search,suggestions,stats,inspect,open});
+const API=Object.freeze({version:'1.0.1',rebuild,refresh:rebuild,search,suggestions,stats,inspect,open});
 globalThis.SpaceLensLocalSearch=API;
 if(typeof document!=='undefined'){addEventListener('conscience64-ready',install,{once:true});if(api())install();}
 })();
