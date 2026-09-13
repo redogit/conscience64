@@ -71,6 +71,14 @@ jobs:
           node coordinate-space/test_codec.mjs
           "$PY" coordinate-space/browser_checks.py
 
+      - name: Verify Musilanguage radio and real Conscience64 integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check play/musilanguage/engine.js
+          node --check play/musilanguage/radio.js
+          "$RUNNER_TEMP/coordinate-space-venv/bin/python" play/musilanguage/radio-test.py
+
       - name: Advance gh-pages to exact main commit
         shell: bash
         env:
