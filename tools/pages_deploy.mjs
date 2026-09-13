@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { createRequire } from 'node:module';
+import { pathToFileURL } from 'node:url';
 
 const required = name => {
   const value = process.env[name];
@@ -22,13 +22,16 @@ if (!fs.existsSync(artifactTar)) {
   throw new Error(`Pages artifact tar was not found: ${artifactTar}`);
 }
 
-const runtimeRequire = createRequire(path.join(runtimeDir, 'package.json'));
-const { DefaultArtifactClient } = runtimeRequire('@actions/artifact');
+const artifactModuleUrl = pathToFileURL(
+  path.join(runtimeDir, 'node_modules', '@actions', 'artifact', 'lib', 'artifact.js')
+).href;
+const { DefaultArtifactClient } = await import(artifactModuleUrl);
 const artifactClient = new DefaultArtifactClient();
 
 const upload = await artifactClient.uploadArtifact(
   'github-pages',
   [artifactTar],
+  runnerTemp,
   { retentionDays: 1 }
 );
 
