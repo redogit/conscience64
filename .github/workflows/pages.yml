@@ -1,17 +1,6 @@
 name: Deploy Conscience64 to GitHub Pages
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'index.html'
-      - 'app.js'
-      - 'data-manifest.json'
-      - 'data-*.txt'
-      - 'API.md'
-      - 'BUILD_AUDIT.json'
-      - '.nojekyll'
-      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -27,7 +16,7 @@ concurrency:
 jobs:
   deploy:
     environment:
-      name: conscience64-pages
+      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Materialize exact public commit without external Actions
@@ -83,4 +72,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           PAGES_RUNTIME_DIR: ${{ runner.temp }}/conscience64-pages-runtime
-          PAGES_ENVIRONMENT: conscience64-pages
+          PAGES_ENVIRONMENT: github-pages
