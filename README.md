@@ -6,13 +6,16 @@ Visible surface: **I / R / P / O**.
 
 ## Try the free projects
 
-The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into three usable tools:
+The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into five usable tools:
 
 | Tool | What you can do |
 | --- | --- |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes with source links |
 | [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Rearrange writing while keeping the original |
 | [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Make geometric art and export SVG or text |
+
+| [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan a next step and preserve dated checkpoints |
+| [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Compare exact text changes and preserve both inputs |
 
 English, Spanish, French, and Arabic interfaces; Unicode writing; keyboard controls; optional local saving; no accounts. The new tools have an MIT license scoped to `play/`. See [the usage and provenance notes](play/README.md). Their [public-tool catalog](play/projects.json) is separate from the research registry below.
 

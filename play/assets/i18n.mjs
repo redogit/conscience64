@@ -1,3 +1,4 @@
+import { more } from './more-i18n.mjs';
 export const languages = { en: 'English', es: 'Español', fr: 'Français', ar: 'العربية' };
 // Interface translations are editable. User writing is never translated automatically.
 export const messages = {
@@ -67,4 +68,5 @@ export const messages = {
     supported:'أربع لغات للواجهة كبداية. اكتب بأي لغة. ساعدنا في تحسين النسخة القادمة.', about:'عن هذه المشاريع', sourceCode:'الشيفرة المصدرية', licenses:'ترخيص MIT لهذه الأدوات الجديدة', noScript:'تحتاج هذه الأدوات إلى JavaScript. لا يُحفظ شيء تلقائيًا.', patternDescription:'شبكة من ستة صفوف وستة أعمدة تحتوي على دوائر ومعيّنات ونجوم وخلايا فارغة.', example:'جرّب مثالًا', exampleTitle:'فكرة مفيدة', exampleNote:'اترك مساحة صغيرة لتعلّم شيء جديد.', exampleLines:'أنصت باهتمام.\nاترك مساحة صغيرة.\nشارك ما تتعلّمه.', newTools:'أدوات جديدة من أفكار مستمرة', languageNote:'تغيير لغة الواجهة يُبقي كتابتك كما هي تمامًا.'
   }
 };
+for (const locale of Object.keys(languages)) Object.assign(messages[locale], more[locale]);
 export const translate = (locale, key, values = {}) => (messages[locale]?.[key] ?? messages.en[key] ?? key).replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ''));

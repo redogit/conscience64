@@ -9,6 +9,7 @@ if (!languages[locale]) locale = 'en';
 let state = app === 'home' ? null : core.initial(app);
 let undone = [], removedNote = null, activeCell = 0;
 let dirty = false;
+let compared = false;
 addEventListener('beforeunload', event => {
   const draft = app === 'orbit' && ['note-title', 'note-text', 'note-source'].some(id => $(id)?.value);
   if (dirty || draft) { event.preventDefault(); event.returnValue = ''; }
@@ -51,6 +52,14 @@ function download(contents, name, type = 'text/plain;charset=utf-8') {
 function syncFields() {
   if (app === 'weave') { $('original').value = state.original; $('writing-language').value = state.language; }
   if (app === 'garden') { $('pattern-title').value = state.title; $('description').value = state.description; }
+  if (app === 'steps') {
+    $('goal').value = state.title; $('writing-language').value = state.language;
+    for (const key of core.PLAN_FIELDS) $(`plan-${key}`).value = state.fields[key];
+  }
+  if (app === 'compare') {
+    for (const key of ['original', 'revision', 'source', 'originalLanguage', 'revisionLanguage']) $(`compare-${key}`).value = state[key];
+    compared = false;
+  }
 }
 function translatePage() {
   document.documentElement.lang = locale;
@@ -204,7 +213,104 @@ if (app === 'garden') {
   $('download-text').addEventListener('click', () => download(gardenText(), 'pattern-garden.txt'));
 }
 
-function render() { if (app === 'orbit') renderOrbit(); if (app === 'weave') renderWeave(); if (app === 'garden') renderGarden(); }
+const planLabel = key => t(['I', 'R', 'P', 'O'].includes(key) ? `plan${key}` : key);
+function planText(entry) { return [entry.title, ...core.PLAN_FIELDS.map(key => `${planLabel(key)}\n${entry.fields[key]}`)].join('\n\n'); }
+function renderSteps() {
+  const list = $('checkpoints'); list.replaceChildren();
+  $('goal').setAttribute('lang', state.language);
+  for (const key of core.PLAN_FIELDS) $(`plan-${key}`).setAttribute('lang', state.language);
+  if (!state.checkpoints.length) list.append(node('p', t('noCheckpoints'), 'empty'));
+  state.checkpoints.forEach((entry, index) => {
+    const card = node('details', undefined, 'note-card'), summary = node('summary');
+    summary.append(node('strong', `${t('checkpoint', { n: new Intl.NumberFormat(locale).format(index + 1) })} — `), writing(node('bdi'), entry.title, entry.language));
+    const date = node('time', new Intl.DateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(entry.at)));
+    date.dateTime = entry.at; date.className = 'muted';
+    card.append(summary, date);
+    for (const key of core.PLAN_FIELDS) if (entry.fields[key]) {
+      card.append(node('h3', planLabel(key)), writing(node('p', undefined, 'user-text'), entry.fields[key], entry.language));
+    }
+    list.append(card);
+  });
+}
+if (app === 'steps') {
+  $('goal').addEventListener('input', () => { state.title = $('goal').value; });
+  for (const key of core.PLAN_FIELDS) $(`plan-${key}`).addEventListener('input', () => { state.fields[key] = $(`plan-${key}`).value; });
+  $('writing-language').addEventListener('change', () => {
+    try { state.language = core.language($('writing-language').value.trim()); renderSteps(); }
+    catch (error) { $('writing-language').value = state.language; fail(error); }
+  });
+  $('plan-form').addEventListener('submit', event => {
+    event.preventDefault();
+    try { state = core.checkpoint(state, crypto.randomUUID(), new Date().toISOString()); dirty = true; renderSteps(); announce('recorded'); }
+    catch (error) { fail(error); }
+  });
+  $('example').addEventListener('click', () => {
+    if (state.title || state.language || Object.values(state.fields).some(Boolean)) { announce('exampleEmpty'); return; }
+    state.title = t('sampleGoal'); state.language = locale;
+    for (const key of ['I', 'R', 'P']) state.fields[key] = t(`sample${key}`);
+    dirty = true; syncFields(); renderSteps(); $('goal').focus();
+  });
+  $('download-text').addEventListener('click', () => download([
+    t('draft'), planText(state), ...state.checkpoints.map((entry, i) => `${t('checkpoint', { n: i + 1 })}\n${entry.at}\n${planText(entry)}`)
+  ].join('\n\n---\n\n'), 'small-steps.txt'));
+}
+
+const changeLabel = kind => t({ same: 'same', removed: 'removedLine', added: 'addedLine' }[kind]);
+function positions(row) {
+  const number = value => value === null ? '—' : new Intl.NumberFormat(locale).format(value);
+  return t('positions', { from: number(row.originalLine), to: number(row.revisionLine) });
+}
+function renderCompare() {
+  $('compare-original').setAttribute('lang', state.originalLanguage);
+  $('compare-revision').setAttribute('lang', state.revisionLanguage);
+  const list = $('changes'); list.replaceChildren();
+  $('download-text').disabled = !compared;
+  $('comparison-detail').textContent = '';
+  if (!compared) { $('comparison-counts').textContent = t('notCompared'); return; }
+  const diff = core.compareText(state.original, state.revision);
+  $('comparison-counts').textContent = t('diffCounts', Object.fromEntries(Object.entries(diff.counts).map(([key, value]) => [key, new Intl.NumberFormat(locale).format(value)])));
+  if (diff.identical || diff.lineEndingsOnly) $('comparison-detail').textContent = t(diff.identical ? 'identical' : 'lineEndings');
+  for (const row of diff.rows) {
+    const li = node('li', undefined, `diff-row diff-${row.kind}`);
+    li.append(node('strong', changeLabel(row.kind)), node('span', positions(row), 'muted'));
+    li.append(writing(node('p', undefined, 'user-text'), row.text || t('emptyLine'), row.text ? (row.kind === 'added' ? state.revisionLanguage : state.originalLanguage) : locale));
+    list.append(li);
+  }
+}
+if (app === 'compare') {
+  for (const key of ['original', 'revision']) $(`file-${key}`).addEventListener('change', async event => {
+    const input = event.target, file = input.files[0]; if (!file) return;
+    try {
+      if (file.size > 80000) throw new Error('compare-limit');
+      let decoded;
+      try { decoded = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(await file.arrayBuffer()); }
+      catch { throw new Error('invalid-utf8'); }
+      state = core.validate(app, { ...state, [key]: decoded }); dirty = true; syncFields(); renderCompare(); announce('textFileLoaded');
+    } catch (error) { fail(error); }
+    finally { input.value = ''; }
+  });
+  for (const key of ['original', 'revision', 'source', 'originalLanguage', 'revisionLanguage']) {
+    const el = $(`compare-${key}`), event = ['original', 'revision'].includes(key) ? 'input' : 'change';
+    el.addEventListener(event, () => {
+      try { state = core.validate(app, { ...state, [key]: el.value }); compared = false; renderCompare(); }
+      catch (error) { el.value = state[key]; fail(error); }
+    });
+  }
+  $('compare-now').addEventListener('click', () => { compared = true; renderCompare(); announce('compared'); });
+  $('example').addEventListener('click', () => {
+    if (Object.values(state).some(Boolean)) { announce('exampleEmpty'); return; }
+    state = { ...state, original: t('sampleSource'), revision: t('sampleRevision'), originalLanguage: locale, revisionLanguage: locale };
+    dirty = true; syncFields(); compared = true; renderCompare();
+  });
+  $('download-text').addEventListener('click', () => {
+    if (!compared) return;
+    const diff = core.compareText(state.original, state.revision);
+    const header = [t('compare'), state.source, $('comparison-counts').textContent, $('comparison-detail').textContent].filter(Boolean);
+    download([...header, ...diff.rows.map(row => `${changeLabel(row.kind)} | ${positions(row)}\n${row.text}`)].join('\n\n'), 'source-compare.txt');
+  });
+}
+
+function render() { if (app === 'orbit') renderOrbit(); if (app === 'weave') renderWeave(); if (app === 'garden') renderGarden(); if (app === 'steps') renderSteps(); if (app === 'compare') renderCompare(); }
 if (app !== 'home') {
   $('save').addEventListener('click', () => {
     try { localStorage.setItem(key, JSON.stringify(core.documentFor(app, state))); dirty = false; announce('saved'); }

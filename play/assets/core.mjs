@@ -4,8 +4,11 @@ export const MAX_FILE_BYTES = 32_000_000;
 export const SCHEMA = 'conscience64.play/v1';
 export const lines = text => text === '' ? [] : text.split(/\r\n|\r|\n/u);
 export const identity = text => lines(text).map((_, i) => i);
+export const PLAN_FIELDS = ['I', 'R', 'P', 'O', 'assumption', 'test', 'unknown'];
 export const initial = app => app === 'orbit' ? { items: [] } : app === 'weave'
   ? { original: '', language: '', order: [] }
+  : app === 'steps' ? { title: '', language: '', fields: Object.fromEntries(PLAN_FIELDS.map(key => [key, ''])), checkpoints: [] }
+  : app === 'compare' ? { original: '', revision: '', source: '', originalLanguage: '', revisionLanguage: '' }
   : { cells: Array(SIZE * SIZE).fill(0), title: '', description: '' };
 
 function text(value, max) {
@@ -28,6 +31,24 @@ export function sourceURL(value) {
 }
 export function validate(app, data) {
   if (!data || typeof data !== 'object') throw new Error('invalid-data');
+  if (app === 'steps') {
+    if (!Array.isArray(data.checkpoints) || data.checkpoints.length > 100) throw new Error('checkpoint-limit');
+    const draft = planDraft(data);
+    const checkpoints = data.checkpoints.map(checkpoint => {
+      const id = text(checkpoint.id, 100), at = text(checkpoint.at, 30);
+      if (!id || !Number.isFinite(Date.parse(at)) || new Date(at).toISOString() !== at) throw new Error('invalid-data');
+      const entry = planDraft(checkpoint);
+      if (!entry.title.trim() || !entry.fields.P.trim()) throw new Error('plan-required');
+      return { id, at, ...entry };
+    });
+    if (new Set(checkpoints.map(c => c.id)).size !== checkpoints.length) throw new Error('invalid-data');
+    return { ...draft, checkpoints };
+  }
+  if (app === 'compare') {
+    const original = text(data.original, 20000), revision = text(data.revision, 20000);
+    if (lines(original).length > 300 || lines(revision).length > 300) throw new Error('compare-limit');
+    return { original, revision, source: sourceURL(data.source), originalLanguage: language(data.originalLanguage), revisionLanguage: language(data.revisionLanguage) };
+  }
   if (app === 'orbit') {
     if (!Array.isArray(data.items) || data.items.length > 200) throw new Error('item-limit');
     const items = data.items.map(item => {
@@ -49,6 +70,34 @@ export function validate(app, data) {
     return { cells: [...data.cells], title: text(data.title, 120), description: text(data.description, 500) };
   }
   throw new Error('invalid-data');
+}
+function planDraft(data) {
+  if (!data.fields || typeof data.fields !== 'object') throw new Error('invalid-data');
+  return { title: text(data.title, 160), language: language(data.language), fields: Object.fromEntries(PLAN_FIELDS.map(key => [key, text(data.fields[key], 4000)])) };
+}
+export function checkpoint(data, id, at) {
+  const valid = validate('steps', data);
+  if (!valid.title.trim() || !valid.fields.P.trim()) throw new Error('plan-required');
+  return validate('steps', { ...valid, checkpoints: [...valid.checkpoints, { id, at, ...planDraft(valid) }] });
+}
+// Exact line comparison, bounded to 300 x 300 entries. No Unicode folding,
+// trimming, or semantic inference. Inputs are retained separately in exports.
+export function compareText(original, revision) {
+  text(original, 20000); text(revision, 20000);
+  const a = lines(original), b = lines(revision), n = a.length, m = b.length;
+  if (n > 300 || m > 300) throw new Error('compare-limit');
+  const lengths = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--)
+    lengths[i][j] = a[i] === b[j] ? lengths[i + 1][j + 1] + 1 : Math.max(lengths[i + 1][j], lengths[i][j + 1]);
+  const rows = [], counts = { same: 0, removed: 0, added: 0 };
+  let i = 0, j = 0;
+  function add(kind, value, from, to) { rows.push({ kind, text: value, originalLine: from, revisionLine: to }); counts[kind]++; }
+  while (i < n || j < m) {
+    if (i < n && j < m && a[i] === b[j]) { add('same', a[i], i + 1, j + 1); i++; j++; }
+    else if (j < m && (i === n || lengths[i][j + 1] > lengths[i + 1][j])) { add('added', b[j], null, j + 1); j++; }
+    else { add('removed', a[i], i + 1, null); i++; }
+  }
+  return { rows, counts, identical: original === revision, lineEndingsOnly: original !== revision && counts.removed === 0 && counts.added === 0 };
 }
 export const documentFor = (app, data) => ({ schema: SCHEMA, app, data: validate(app, data) });
 export function parseDocument(raw, app) {

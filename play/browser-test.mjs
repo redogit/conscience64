@@ -166,7 +166,68 @@ try {
     if (xml.querySelector('parsererror,script') || !xml.querySelector('title').textContent.includes('نجمة')) throw new Error('Invalid or unsafe SVG export');
     if (getComputedStyle(document.getElementById('grid')).direction !== 'ltr') throw new Error('Grid coordinate direction changed in RTL layout');
   });
-  console.log('PASS Chrome: all three applications, four interface languages, 320px/1100px layouts, Unicode writing, keyboard grid, undo, storage, imports, and safe SVG export.');
+  await visit('steps');
+  await evaluate(() => {
+    const $ = id => document.getElementById(id);
+    const input = (id, value) => { $(id).value = value; $(id).dispatchEvent(new Event('input', { bubbles: true })); };
+    input('goal', 'مرحبا <img src=x> 👩🏽‍💻'); input('plan-P', 'First small step');
+    $('plan-form').requestSubmit();
+    input('plan-P', 'Second small step'); input('plan-O', 'Learned something'); $('plan-form').requestSubmit();
+    const cards = [...$('checkpoints').children];
+    if (cards.length !== 2 || !cards[0].textContent.includes('First small step') || cards[0].textContent.includes('Second small step') || !cards[1].textContent.includes('Learned something') || $('checkpoints').querySelector('img')) throw new Error('Checkpoint history or text safety failed');
+    cards.forEach(card => { card.open = true; }); $('save').click();
+  });
+  await checkLayouts('steps');
+  await visit('steps');
+  await evaluate(() => {
+    const $ = id => document.getElementById(id);
+    if ($('goal').value) throw new Error('Plan loaded without consent');
+    $('load').click();
+    if ($('plan-P').value !== 'Second small step' || $('checkpoints').children.length !== 2 || !$('goal').value.includes('مرحبا')) throw new Error('Plan save/load lost history');
+  });
+
+  await visit('compare');
+  await evaluate(() => {
+    const $ = id => document.getElementById(id);
+    for (const [id, value] of [['original', 'same\nمرحبا <img src=x>'], ['revision', 'same\n你好 👩🏽‍💻']]) {
+      $('compare-' + id).value = value; $('compare-' + id).dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    $('compare-now').click();
+    if ($('changes').children.length !== 3 || $('changes').querySelectorAll('.diff-added').length !== 1 || $('changes').querySelectorAll('.diff-removed').length !== 1 || $('changes').querySelector('img')) throw new Error('Exact diff or text safety failed');
+    $('compare-revision').value += '!'; $('compare-revision').dispatchEvent(new Event('input', { bubbles: true }));
+    if (!$('download-text').disabled || $('changes').children.length) throw new Error('Stale comparison remained available');
+    $('compare-now').click();
+  });
+  await checkLayouts('compare');
+  await evaluate(async () => {
+    const $ = id => document.getElementById(id);
+    const upload = async (key, body) => {
+      const input = $('file-' + key), transfer = new DataTransfer();
+      transfer.items.add(new File([body], key + '.txt', { type: 'text/plain' })); input.files = transfer.files; input.dispatchEvent(new Event('change'));
+      for (let i = 0; i < 50 && input.files.length; i++) await new Promise(r => setTimeout(r, 20));
+      if (input.files.length) throw new Error('File import did not finish');
+    };
+    const original = '\ufeffone\r\nمرحبا', revision = '\ufeffone\nمرحبا';
+    await upload('original', original); await upload('revision', revision); $('compare-now').click();
+    if ($('changes').querySelector('.diff-added,.diff-removed') || !$('comparison-detail').textContent) throw new Error('Line endings were not identified separately');
+    let exported;
+    const create = URL.createObjectURL, click = HTMLAnchorElement.prototype.click;
+    URL.createObjectURL = blob => { exported = blob; return create(blob); };
+    HTMLAnchorElement.prototype.click = function () { if (!this.download) click.call(this); };
+    $('export').click();
+    const doc = JSON.parse(await exported.text());
+    URL.createObjectURL = create; HTMLAnchorElement.prototype.click = click;
+    if (doc.data.original !== original || doc.data.revision !== revision) throw new Error('File import/export changed BOM or line endings');
+    await upload('original', new Uint8Array([0xc3, 0x28]));
+    if (!$('status').classList.contains('error') || $('compare-original').value !== original.replaceAll('\r\n', '\n')) throw new Error('Invalid UTF-8 replaced original');
+    $('save').click();
+  });
+  await visit('compare');
+  await evaluate(() => {
+    const $ = id => document.getElementById(id); $('load').click(); $('compare-now').click();
+    if ($('changes').querySelector('.diff-added,.diff-removed') || !$('comparison-detail').textContent) throw new Error('Comparison save/load lost exact strings');
+  });
+  console.log('PASS Chrome: all five applications, four interface languages, 320px/1100px layouts, Unicode writing, keyboard grid, undo, storage, imports, safe SVG export, checkpoint history, exact differences, and UTF-8 file preservation.');
 } catch (error) {
   console.error(`FAIL Chrome: ${error.message}`); process.exitCode = 1;
 } finally {

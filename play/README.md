@@ -1,12 +1,15 @@
 # Conscience64 / Play
 
-Three small, free web applications built from ongoing project ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
+Five small, free web applications built from ongoing project ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
 
 | Project | Use it for | Take your work with you |
 | --- | --- | --- |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes, source links, and writing-language metadata | Import/export a project file; optional browser storage |
 | [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Arrange lines of writing while preserving the original | Download the remix as text or export the complete project |
 | [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Explore a six-by-six pattern with shapes, rotation, mirroring, and undo | Download SVG with a title and description, a text representation, or the complete project |
+
+| [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan one next step and record dated checkpoints | Export the current draft and prior checkpoints as JSON or text |
+| [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Inspect exact line additions and removals between two texts | Open UTF-8 files; export the original and revision as JSON or a text comparison |
 
 No account, payment, backend, analytics, remote font, or package installation is needed to use the tools. Work stays in memory unless the person explicitly saves to their browser or downloads a file. Opening a source link makes a normal browser request to that website in another tab. Browser storage can be cleared or unavailable; exported files are portable backups. Do not rely on keeping an unsaved tab open as storage.
 
@@ -16,9 +19,15 @@ The first release includes English, Spanish, French, and Arabic interface transl
 
 The interfaces use native labeled form controls, visible keyboard focus, status announcements, logical CSS spacing, responsive layouts, shape distinctions beyond color, reduced-motion support, and forced-colors support. Pattern Garden uses arrow keys, Home/End, and Enter/Space; Tab enters the pattern once and then leaves it. Columns in this geometric grid always run left to right, including in Arabic layouts, as described in its instructions.
 
-The first four translations are a starting point. They have not been reviewed by every language community. Automated browser checks do not establish universal accessibility, cultural suitability, or WCAG conformance. Screen-reader and community review are welcome through GitHub issues and pull requests. Add a locale to `assets/i18n.mjs`, add its native name to the page selectors, and keep translation keys complete. Never replace someone's writing with an interface translation. No symbols or templates are presented as belonging to or representing a particular tradition.
+The first four translations are a starting point. They have not been reviewed by every language community. Automated browser checks do not establish universal accessibility, cultural suitability, or WCAG conformance. Screen-reader and community review are welcome through GitHub issues and pull requests. Add a locale to `assets/i18n.mjs` and `assets/more-i18n.mjs`, add its native name to the page selectors, and keep translation keys complete. Never replace someone's writing with an interface translation. No symbols or templates are presented as belonging to or representing a particular tradition.
 
 Implementation references: [W3C WCAG 2.2 quick reference](https://www.w3.org/WAI/WCAG22/quickref/), [W3C bidirectional markup guidance](https://www.w3.org/International/questions/qa-html-dir), and [Intl.Segmenter documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter). Character counts use grapheme segmentation where available; older browsers fall back to Unicode code-point counts.
+
+## Small Steps and Source Compare
+
+Small Steps adapts the public I/R/P/O prompts into a self-directed planner: what you have, what difference matters, one next step, and what happened. Optional questions capture assumptions, a way to check, and what remains unknown. A checkpoint copies the current draft with its date; subsequent edits do not rewrite it. A goal and next step are required. Save or export to keep up to 100 checkpoints. This tool does not score people or predict wellbeing.
+
+Source Compare compares exact lines with no case folding, Unicode normalization, or semantic interpretation. It shows additions, removals, unchanged lines, and their positions. Matching line contents with different line endings receive a separate notice. Each input is limited to 20,000 UTF-16 code units and 300 lines. Opening UTF-8 text files preserves their original line endings and any byte-order mark in the project data; invalid UTF-8 is rejected. Editing in browser text boxes may normalize line endings. JSON export retains both input strings; the readable comparison report uses newlines between its report entries. Changing an input clears the old result until Compare is pressed again. A text difference does not establish translation quality, meaning, authorship, or research validity.
 
 ## Run and verify
 
@@ -42,11 +51,11 @@ node play/browser-test.mjs
 # Or: CHROME_BIN=/path/to/chromium node play/browser-test.mjs
 ```
 
-Browser checks use an isolated temporary browser profile, local HTTP server, and Chrome DevTools Protocol. They exercise all three tools, four interface languages, right-to-left layout, keyboard movement, save/load, imports, and narrow-screen overflow. They do not send user content anywhere. Deployment runs these checks before advancing `gh-pages`.
+Browser checks use an isolated temporary browser profile, local HTTP server, and Chrome DevTools Protocol. They exercise all five tools, four interface languages, right-to-left layout, keyboard movement, save/load, imports, and narrow-screen overflow. They do not send user content anywhere. Deployment runs these checks before advancing `gh-pages`.
 
 ## Origins and rights
 
-These are new implementations made for the user's GitHub rollout request, not recovered historical code. `projects.json` records the source project names, public documentation paths, and exact lineage commit. Orbit inspired useful navigation with source preservation; language/TBCL work inspired the original/remix boundary; geometry and creative world-building inspired Pattern Garden. These relationships do not transfer research authority or establish new scientific claims. Existing research checkpoints and their seven-project registry remain separate.
+These are new implementations made for the user's GitHub rollout request, not recovered historical code. `projects.json` records the source project names, public documentation paths, and exact lineage commit. Orbit inspired useful navigation with source preservation; language/TBCL work inspired the original/remix boundary; geometry and creative world-building inspired Pattern Garden. The public I/R/P/O API inspired Small Steps; source-preservation work in the cross-carrier project inspired Source Compare. These relationships do not transfer research authority or establish new scientific claims. Existing research checkpoints and their seven-project registry remain separate.
 
 The MIT license in this directory applies to the new code and documentation under `play/`. It does not relicense the surrounding repository, linked sources, historical archives, or material entered by users. The built-in examples are newly written neutral prompts. Users retain their rights and responsibilities for their own content.
 
