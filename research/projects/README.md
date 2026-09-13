@@ -28,9 +28,18 @@ Checks:
 | [Orbit Library](orbit-library.md) | Small active surface with recoverable history, exact-source discipline, cold recovery edges | File-level historical coverage remained sparse; later indexes omitted real predecessor identities | Knowledge/recovery infrastructure |
 | [Tiny Babel / TBCL](tiny-babel-tbcl.md) | Finite exhaustive verification and carrier reduction under bounded obligations | Finite results do not establish universal language or retrieval claims | Preserved verified finite result + runtime lineage |
 | [Operator Moonshot](operator-moonshot.md) | Stronger evidence discipline, causal ablation work, bounded operator experiments | Cycle 3 failed replication; Education E3 robustness failure; open-problem work must not inherit calibration claims | Research laboratory with explicit claim ceilings |
+| [Hodge Conjecture Research Spine](hodge-conjecture.md) | Integrated K3/Kummer/Fermat/fourfold footing plus exact deficit, symmetry, provenance, and counterprobe machinery | Structural resemblance, finite computation, P-vs-NP methods, and 4D geometry do not constitute Hodge proof evidence without an explicit bridge | Active open-problem research with strict claim ceiling |
 | [Model Experiments](model-experiments.md) | Reusable model mechanisms plus useful negative evidence | Regressions, weak reasoning cores, below-chance checkpoints, misleading baselines | Experimental machinery / negative evidence |
 | [Geometry / 4D / Codecs](geometry-codecs.md) | Round-trip/integrity discipline and finite observer attacks | Representation can be mistaken for physical truth; finite confounds are not global uniqueness | Preserved technical lineage |
 | [Historical Recovery](historical-recovery.md) | Recovered hidden predecessor identities and preserved `UNKNOWN != ABSENT` | Fuzzball carrier still unresolved; some old source packages remain missing/inaccessible | Active source-native archaeology |
+
+### Hodge support surfaces
+
+The Hodge project has explicit support files rather than silently importing other projects:
+
+- [`../hodge/STRUCTURAL_SUPPORTS.md`](../hodge/STRUCTURAL_SUPPORTS.md) — mathematical, computational, symmetry, provenance, and proof-admission footing stack;
+- [`../hodge/RESEARCH_INTEGRATION_MAP.md`](../hodge/RESEARCH_INTEGRATION_MAP.md) — role/disposition map for the broader research corpus;
+- [`../hodge/CONSCIENCE64_COOPERATION.md`](../hodge/CONSCIENCE64_COOPERATION.md) — I/R/P/O cooperation contract and non-authority boundary for Conscience64.
 
 ## Learned invariants
 
@@ -50,6 +59,16 @@ CALIBRATION_RESULT != OPEN_PROBLEM_RESULT
 FINITE_VERIFICATION != UNIVERSALITY
 REPRESENTATION_CORRECTNESS != PHYSICAL_TRUTH
 LOSS_ACKNOWLEDGED != LOSS_CONCEALED
+```
+
+Hodge-specific additions carried by the human-readable support stack are:
+
+```text
+SAME_HODGE_DIAMOND != SAME_ALGEBRAIC_CYCLE_STRUCTURE
+SYMMETRY != USEFUL_QUOTIENT
+CYCLE_COUNT != CYCLE_CLASS_RANK
+COMPLEX_(p,p) != RATIONAL_HODGE_CLASS
+CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
 ```
 
 ## Reading rule
