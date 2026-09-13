@@ -1,0 +1,8 @@
+name: REDOGIT Pages deploy
+description: Upload and deploy the prepared GitHub Pages artifact without third-party Actions.
+outputs:
+  page_url:
+    description: Deployed GitHub Pages URL
+runs:
+  using: node20
+  main: index.js
