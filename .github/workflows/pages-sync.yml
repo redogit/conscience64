@@ -1,0 +1,64 @@
+name: Sync Conscience64 Pages source
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'app.js'
+      - 'data-manifest.json'
+      - 'data-*.txt'
+      - 'API.md'
+      - 'BUILD_AUDIT.json'
+      - '.nojekyll'
+      - '.github/actions/pages-deploy/**'
+      - '.github/workflows/pages.yml'
+      - '.github/workflows/pages-sync.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: conscience64-pages-source
+  cancel-in-progress: true
+
+jobs:
+  publish-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize exact main commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Advance gh-pages to exact main commit
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push --force origin "$GITHUB_SHA:refs/heads/gh-pages"
+
+      - name: Dispatch protected Pages deployment on gh-pages
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            "${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/actions/workflows/pages.yml/dispatches" \
+            --data '{"ref":"gh-pages"}'
