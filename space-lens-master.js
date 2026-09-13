@@ -1,7 +1,7 @@
 (()=>{
 'use strict';
 
-const ROLE=Object.freeze({visitor:'Learner',master:'Master',compass:'Compass4D'});
+const ROLE=Object.freeze({visitor:'Learner',master:'Master',masterKind:'Governance Master',compass:'Compass4D',compassKind:'Navigation Master'});
 const DEFAULT_COMPANIONS=Object.freeze(['Conscience64','Library','Operator','Companions']);
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,Number(v)||0));
 const uniq=a=>[...new Set(a.filter(Boolean))];
@@ -24,7 +24,7 @@ function inferCarriers(text){
 }
 function route(question){
   const q=String(question||'').trim(),domains=inferDomains(q),carriers=inferCarriers(q);
-  lastRoute={role:ROLE.visitor,master:ROLE.master,compass:ROLE.compass,question:q,carriers,domains,at:new Date().toISOString(),rule:'Learner asks; Master coordinates; Compass4D orients; carriers retrieve; evidence rules still govern claims.'};
+  lastRoute={role:ROLE.visitor,master:ROLE.master,masterKind:ROLE.masterKind,compass:ROLE.compass,compassKind:ROLE.compassKind,question:q,carriers,domains,at:new Date().toISOString(),rule:'Learner asks; Master governs routing and evidence boundaries; Compass4D is the navigation master; carriers retrieve; evidence rules still govern claims.'};
   dispatchEvent(new CustomEvent('space-master-route',{detail:lastRoute}));
   renderRoute(lastRoute);return structuredClone(lastRoute);
 }
@@ -49,7 +49,7 @@ function parameterize({question='',answer='',confidence='',sourceLabels=[],selec
   const crossCarrierDomainWave=clamp(Math.sqrt(crossCarrierWave*crossDomainWave)*(.72+.28*transformIntensity));
   const successAggregation=clamp(.27*evidence+.20*selection+.18*helpfulness+.14*recency+.09*crossCarrierWave+.06*crossDomainWave+.06*crossCarrierDomainWave);
   const vector=Object.freeze({x:carrierDiversity,y:domainDiversity,z:clamp(.55*evidence+.45*transformIntensity),w:recency});
-  lastOrientation={schema:'conscience64/compass4d/v1',role:ROLE.compass,vector,functionals:{crossCarrierWave,crossDomainWave,crossCarrierDomainWave,successAggregation,selection,helpfulness,evidence,transformIntensity},carriers,domains,at:new Date().toISOString(),interpretation:'4D runtime orientation vector projected into the UI; not a physical four-dimensional measurement or scientific claim.'};
+  lastOrientation={schema:'conscience64/compass4d/v1',role:ROLE.compass,roleKind:ROLE.compassKind,vector,functionals:{crossCarrierWave,crossDomainWave,crossCarrierDomainWave,successAggregation,selection,helpfulness,evidence,transformIntensity},carriers,domains,at:new Date().toISOString(),interpretation:'4D runtime orientation vector projected into the UI; not a physical four-dimensional measurement or scientific claim.'};
   dispatchEvent(new CustomEvent('space-compass4d-orientation',{detail:lastOrientation}));
   renderCompass(lastOrientation);return structuredClone(lastOrientation);
 }
@@ -65,10 +65,10 @@ function currentAnswerOrientation(){
 function addUI(){
   if(document.getElementById('space-master-runtime'))return;
   const header=document.querySelector('.space-tool-header');if(!header)return;
-  const box=document.createElement('div');box.id='space-master-runtime';box.className='space-master-runtime';box.innerHTML=`<div class="space-role-chain" aria-label="Space Lens runtime roles"><strong>Learner</strong><span aria-hidden="true">→</span><strong>Master</strong><span aria-hidden="true">→</span><strong>Compass4D</strong></div><div id="space-master-route" class="space-master-route">Master coordinates every question; all visitors begin as learners.</div><div id="space-compass-readout" class="space-compass-readout">Compass4D: x carrier · y domain · z transform/evidence · w recent time</div>`;header.appendChild(box);
+  const box=document.createElement('div');box.id='space-master-runtime';box.className='space-master-runtime';box.innerHTML=`<div class="space-role-chain" aria-label="Space Lens runtime roles"><strong>Learner</strong><span aria-hidden="true">→</span><strong>Master · governance</strong><span aria-hidden="true">→</span><strong>Compass4D · navigation master</strong></div><div id="space-master-route" class="space-master-route">Master governs every route; all visitors begin as learners. Compass4D is the navigation master.</div><div id="space-compass-readout" class="space-compass-readout">Compass4D: x carrier · y domain · z transform/evidence · w recent time</div>`;header.appendChild(box);
   const style=document.createElement('style');style.textContent=`.space-master-runtime{flex:1 1 100%;display:grid;gap:.3rem;padding:.55rem .7rem;border:1px solid rgba(255,212,134,.22);border-radius:.65rem;background:rgba(5,7,14,.48);font:600 .7rem/1.35 ui-sans-serif,system-ui;color:var(--muted)}.space-role-chain{display:flex;gap:.42rem;align-items:center;flex-wrap:wrap}.space-role-chain strong:nth-of-type(2){color:#ffd486}.space-role-chain strong:nth-of-type(3){color:#c7ffac}.space-master-route,.space-compass-readout{font-weight:500}.space-compass-readout{color:#b9c4d8}`;document.head.appendChild(style);
 }
-function renderRoute(r){const el=document.getElementById('space-master-route');if(el)el.textContent=`Master route: ${r.carriers.join(' → ')} · domains ${r.domains.join(' × ')}`;}
+function renderRoute(r){const el=document.getElementById('space-master-route');if(el)el.textContent=`Master route: ${r.carriers.join(' → ')} · domains ${r.domains.join(' × ')} · Compass4D navigation`;}
 function renderCompass(o){const el=document.getElementById('space-compass-readout');if(!el)return;const v=o.vector,f=o.functionals;el.textContent=`Compass4D x=${v.x.toFixed(2)} y=${v.y.toFixed(2)} z=${v.z.toFixed(2)} w=${v.w.toFixed(2)} · carrier ${f.crossCarrierWave.toFixed(2)} · domain ${f.crossDomainWave.toFixed(2)} · carrier×domain ${f.crossCarrierDomainWave.toFixed(2)} · success ${f.successAggregation.toFixed(2)}`;}
 function wireAnswer(){const answer=document.getElementById('space-answer-text');if(!answer||answer===observedAnswer)return;observedAnswer=answer;new MutationObserver(()=>setTimeout(currentAnswerOrientation,0)).observe(answer,{childList:true,subtree:true,characterData:true});}
 function wire(){
