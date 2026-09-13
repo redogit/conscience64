@@ -45,9 +45,11 @@ function parameterize({question='',answer='',confidence='',sourceLabels=[],selec
   const transformIntensity=clamp((tokens(question).filter(t=>/carrier|wave|transform|functional|cross|4d/.test(t)).length+domains.length-1)/7);
   const crossCarrierWave=clamp(.22+.46*carrierDiversity+.18*selection+.14*evidence);
   const crossDomainWave=clamp(.18+.48*domainDiversity+.18*transformIntensity+.16*evidence);
-  const successAggregation=clamp(.30*evidence+.22*selection+.20*helpfulness+.15*recency+.13*Math.max(crossCarrierWave,crossDomainWave));
+  // Geometric coupling means the combined wave stays bounded unless both carrier and domain traversal are active.
+  const crossCarrierDomainWave=clamp(Math.sqrt(crossCarrierWave*crossDomainWave)*(.72+.28*transformIntensity));
+  const successAggregation=clamp(.27*evidence+.20*selection+.18*helpfulness+.14*recency+.09*crossCarrierWave+.06*crossDomainWave+.06*crossCarrierDomainWave);
   const vector=Object.freeze({x:carrierDiversity,y:domainDiversity,z:clamp(.55*evidence+.45*transformIntensity),w:recency});
-  lastOrientation={schema:'conscience64/compass4d/v1',role:ROLE.compass,vector,functionals:{crossCarrierWave,crossDomainWave,successAggregation,selection,helpfulness,evidence,transformIntensity},carriers,domains,at:new Date().toISOString(),interpretation:'4D runtime orientation vector projected into the UI; not a physical four-dimensional measurement or scientific claim.'};
+  lastOrientation={schema:'conscience64/compass4d/v1',role:ROLE.compass,vector,functionals:{crossCarrierWave,crossDomainWave,crossCarrierDomainWave,successAggregation,selection,helpfulness,evidence,transformIntensity},carriers,domains,at:new Date().toISOString(),interpretation:'4D runtime orientation vector projected into the UI; not a physical four-dimensional measurement or scientific claim.'};
   dispatchEvent(new CustomEvent('space-compass4d-orientation',{detail:lastOrientation}));
   renderCompass(lastOrientation);return structuredClone(lastOrientation);
 }
@@ -67,7 +69,7 @@ function addUI(){
   const style=document.createElement('style');style.textContent=`.space-master-runtime{flex:1 1 100%;display:grid;gap:.3rem;padding:.55rem .7rem;border:1px solid rgba(255,212,134,.22);border-radius:.65rem;background:rgba(5,7,14,.48);font:600 .7rem/1.35 ui-sans-serif,system-ui;color:var(--muted)}.space-role-chain{display:flex;gap:.42rem;align-items:center;flex-wrap:wrap}.space-role-chain strong:nth-of-type(2){color:#ffd486}.space-role-chain strong:nth-of-type(3){color:#c7ffac}.space-master-route,.space-compass-readout{font-weight:500}.space-compass-readout{color:#b9c4d8}`;document.head.appendChild(style);
 }
 function renderRoute(r){const el=document.getElementById('space-master-route');if(el)el.textContent=`Master route: ${r.carriers.join(' → ')} · domains ${r.domains.join(' × ')}`;}
-function renderCompass(o){const el=document.getElementById('space-compass-readout');if(!el)return;const v=o.vector,f=o.functionals;el.textContent=`Compass4D x=${v.x.toFixed(2)} y=${v.y.toFixed(2)} z=${v.z.toFixed(2)} w=${v.w.toFixed(2)} · carrier wave ${f.crossCarrierWave.toFixed(2)} · domain wave ${f.crossDomainWave.toFixed(2)} · success ${f.successAggregation.toFixed(2)}`;}
+function renderCompass(o){const el=document.getElementById('space-compass-readout');if(!el)return;const v=o.vector,f=o.functionals;el.textContent=`Compass4D x=${v.x.toFixed(2)} y=${v.y.toFixed(2)} z=${v.z.toFixed(2)} w=${v.w.toFixed(2)} · carrier ${f.crossCarrierWave.toFixed(2)} · domain ${f.crossDomainWave.toFixed(2)} · carrier×domain ${f.crossCarrierDomainWave.toFixed(2)} · success ${f.successAggregation.toFixed(2)}`;}
 function wireAnswer(){const answer=document.getElementById('space-answer-text');if(!answer||answer===observedAnswer)return;observedAnswer=answer;new MutationObserver(()=>setTimeout(currentAnswerOrientation,0)).observe(answer,{childList:true,subtree:true,characterData:true});}
 function wire(){
   if(eventsWired)return;eventsWired=true;
