@@ -1,0 +1,95 @@
+(()=>{
+'use strict';
+
+const script=document.currentScript;
+const AUTO=script?.dataset?.voiceAuto!=='false';
+const SpeechRecognition=globalThis.SpeechRecognition||globalThis.webkitSpeechRecognition||null;
+const synth=globalThis.speechSynthesis||null;
+let recognition=null,session=null,phase='idle',pending='',speechGeneration=0;
+const listeners=new Set();
+
+const baseLang=tag=>String(tag||'').split('-')[0].toLowerCase();
+const localeFor=el=>el?.getAttribute?.('lang')||document.documentElement.lang||navigator.language||'en-US';
+const emit=(next,detail={})=>{
+  phase=next;
+  const payload={phase,...detail,at:Date.now()};
+  for(const fn of listeners)try{fn(payload);}catch{}
+  globalThis.dispatchEvent?.(new CustomEvent('voice-anywhere-state',{detail:payload}));
+};
+const onState=fn=>{listeners.add(fn);return()=>listeners.delete(fn);};
+
+function toSpeakable(value,{maxLength=5000}={}){
+  let s=String(value??'').replace(/https?:\/\/\S+/g,' link ');
+  const pairs=[
+    [/\bUTF-?8\b/gi,'U T F eight'],[/\bFloat\s*64\b/gi,'float sixty four'],[/\bIRPO\b/g,'I R P O'],[/\bTBCL\b/g,'T B C L'],[/\bCSOL\b/g,'C S O L'],[/\bNP\b/g,'N P'],[/\bP\s*\?=\s*NP\b/g,'P, question mark, equals N P'],
+    [/S['′’]/g,'S prime'],[/→|->/g,' to '],[/↔|<->/g,' if and only if '],[/⇒|=>/g,' implies '],[/≠|!=/g,' does not equal '],[/≤|<=/g,' less than or equal to '],[/≥|>=/g,' greater than or equal to '],[/∈/g,' is in '],[/∉/g,' is not in '],[/∃/g,' there exists '],[/∀/g,' for all '],[/∞/g,' infinity '],[/√/g,' square root '],[/Σ/g,' sum '],[/Δ/g,' delta '],[/λ/g,' lambda '],[/π/g,' pi '],[/⊕/g,' xor '],[/∧/g,' and '],[/∨/g,' or '],[/¬/g,' not '],[/≈/g,' approximately '],[/=/g,' equals '],[/\+/g,' plus '],[/\*/g,' times ']
+  ];
+  for(const[re,repl]of pairs)s=s.replace(re,repl);
+  s=s.replace(/[`*_#{}\[\]|<>]/g,' ').replace(/\s*[:;]\s*/g,', ').replace(/\s+/g,' ').trim();
+  if(s.length>maxLength)s=s.slice(0,maxLength).replace(/\s+\S*$/,'')+'…';
+  return s;
+}
+function chunks(text,max=210){
+  const src=toSpeakable(text);if(!src)return[];const sentences=src.match(/[^.!?]+[.!?]?/g)||[src],out=[];let cur='';
+  for(const raw of sentences){const s=raw.trim();if(!s)continue;if((cur+' '+s).trim().length<=max){cur=(cur+' '+s).trim();continue;}if(cur)out.push(cur);if(s.length<=max){cur=s;continue;}for(const word of s.split(/\s+/)){if((cur+' '+word).trim().length>max&&cur){out.push(cur);cur=word;}else cur=(cur+' '+word).trim();}}
+  if(cur)out.push(cur);return out;
+}
+function bestVoice(lang){
+  if(!synth)return null;const voices=synth.getVoices(),want=String(lang||'').toLowerCase(),base=baseLang(want);
+  return voices.find(v=>v.lang?.toLowerCase()===want)||voices.find(v=>baseLang(v.lang)===base&&v.localService)||voices.find(v=>baseLang(v.lang)===base)||voices.find(v=>v.default)||voices[0]||null;
+}
+function cancelSpeech(){speechGeneration++;try{synth?.cancel();}catch{}if(phase==='speaking')emit('idle',{reason:'speech-cancelled'});}
+function speak(text,{lang=navigator.language||'en-US',rate=1,pitch=1,volume=1,onEnd}={}){
+  const parts=chunks(text);if(!synth||!parts.length)return false;cancelSpeech();const generation=++speechGeneration,voice=bestVoice(lang);let i=0;emit('speaking',{lang,total:parts.length});
+  const next=()=>{
+    if(generation!==speechGeneration)return;
+    if(i>=parts.length){emit('idle',{reason:'speech-complete'});try{onEnd?.();}catch{}return;}
+    const u=new SpeechSynthesisUtterance(parts[i++]);u.lang=lang;if(voice)u.voice=voice;u.rate=rate;u.pitch=pitch;u.volume=volume;u.onend=()=>setTimeout(next,0);u.onerror=()=>setTimeout(next,0);try{synth.speak(u);}catch{emit('idle',{reason:'speech-error'});}
+  };next();return true;
+}
+async function preferLocal(rec,lang){
+  if(!SpeechRecognition||!('processLocally'in rec)||typeof SpeechRecognition.available!=='function')return false;
+  try{const status=await SpeechRecognition.available({langs:[lang],processLocally:true,quality:'dictation'});if(status==='available'){rec.processLocally=true;return true;}if(status==='downloadable'&&typeof SpeechRecognition.install==='function'&&navigator.userActivation?.isActive){const ok=await SpeechRecognition.install({langs:[lang],processLocally:true,quality:'dictation'});if(ok){rec.processLocally=true;return true;}}}catch{}
+  try{rec.processLocally=false;}catch{}return false;
+}
+function buildRecognition(){
+  if(recognition||!SpeechRecognition)return;
+  recognition=new SpeechRecognition();recognition.interimResults=true;recognition.continuous=false;recognition.maxAlternatives=1;
+  recognition.onstart=()=>emit('listening',{lang:recognition.lang,onDevice:!!recognition.processLocally});
+  recognition.onresult=e=>{let final='',interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0]?.transcript||'';if(e.results[i].isFinal)final+=t;else interim+=t;}const text=(final||interim).trim();try{session?.onInterim?.(text);}catch{}if(final.trim()){pending=final.trim();emit('heard',{text:pending});try{recognition.stop();}catch{}}};
+  recognition.onend=()=>{const text=pending;pending='';const current=session;session=null;emit('idle',{reason:text?'recognized':'ended'});if(text){globalThis.dispatchEvent?.(new CustomEvent('voice-anywhere-final',{detail:{text,lang:recognition.lang}}));setTimeout(()=>{try{current?.onFinal?.(text);}catch{}},0);}};
+  recognition.onerror=e=>{pending='';const current=session;session=null;emit('idle',{reason:'recognition-error',error:e.error});try{current?.onError?.(e.error);}catch{}};
+}
+async function listen({lang=navigator.language||'en-US',preferOnDevice=true,onFinal,onInterim,onError}={}){
+  if(!SpeechRecognition)return false;if(phase==='listening')stopListening();cancelSpeech();buildRecognition();pending='';session={onFinal,onInterim,onError};recognition.lang=lang;if(preferOnDevice)await preferLocal(recognition,lang);try{recognition.start();return true;}catch(e){session=null;emit('idle',{reason:'start-error',error:String(e?.message||e)});return false;}
+}
+function stopListening({discard=false}={}){if(discard)pending='';if(recognition&&phase==='listening')try{recognition.stop();}catch{}return true;}
+function cancel(){pending='';session=null;stopListening({discard:true});cancelSpeech();emit('idle',{reason:'cancelled'});}
+
+function editableTarget(){
+  const a=document.activeElement;if(a&&(a.matches?.('textarea,input[type="text"],input[type="search"],input:not([type])')||a.isContentEditable))return a;
+  return [...document.querySelectorAll('textarea,input[type="text"],input[type="search"],input:not([type])')].find(el=>!el.disabled&&el.offsetParent!==null)||null;
+}
+function insertText(el,text){
+  if(!el)return false;if(el.isContentEditable){document.execCommand?.('insertText',false,text);el.dispatchEvent(new InputEvent('input',{bubbles:true,inputType:'insertText',data:text}));return true;}
+  const start=Number.isFinite(el.selectionStart)?el.selectionStart:el.value.length,end=Number.isFinite(el.selectionEnd)?el.selectionEnd:start,before=el.value.slice(0,start),after=el.value.slice(end);el.value=before+text+after;const caret=before.length+text.length;try{el.setSelectionRange(caret,caret);}catch{}el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));el.focus();return true;
+}
+function readableText(){
+  const selected=String(globalThis.getSelection?.()||'').trim();if(selected)return selected;const a=document.activeElement;if(a?.value?.trim())return a.value;if(a?.isContentEditable&&a.textContent.trim())return a.textContent;
+  const preferred=document.querySelector('[data-voice-read],#space-answer-text,#recovered,#remix,#pattern-words,#result,#output');if(preferred?.textContent?.trim())return preferred.textContent.trim();
+  return document.querySelector('main')?.innerText?.trim().slice(0,1800)||document.body.innerText.trim().slice(0,1800);
+}
+function installDock({position='right'}={}){
+  if(document.getElementById('voice-anywhere-dock'))return;const dock=document.createElement('div');dock.id='voice-anywhere-dock';dock.className='voice-anywhere-dock';dock.innerHTML='<button type="button" data-va="listen">Speak</button><button type="button" data-va="read">Read</button><span data-va-status role="status" aria-live="polite">Voice ready</span>';
+  const style=document.createElement('style');style.textContent=`.voice-anywhere-dock{position:fixed;z-index:2147483000;${position==='left'?'left':'right'}:.75rem;bottom:.75rem;display:flex;align-items:center;gap:.4rem;padding:.45rem .55rem;border:1px solid rgba(120,140,170,.65);border-radius:.7rem;background:rgba(12,18,30,.9);color:#eef4ff;font:600 .74rem/1.2 system-ui,sans-serif;box-shadow:0 .4rem 1.5rem rgba(0,0,0,.25);backdrop-filter:blur(8px)}.voice-anywhere-dock button{font:inherit;padding:.4rem .55rem;border:1px solid #53647d;border-radius:.45rem;background:#17243a;color:inherit;cursor:pointer}.voice-anywhere-dock button:focus-visible{outline:3px solid #8dd8ff;outline-offset:2px}.voice-anywhere-dock [data-va-status]{max-width:12rem;color:#b8c5d9;font-weight:500}@media(max-width:520px){.voice-anywhere-dock [data-va-status]{display:none}}@media(forced-colors:active){.voice-anywhere-dock{border:1px solid CanvasText;background:Canvas}.voice-anywhere-dock button{border:1px solid ButtonText}}`;document.head.appendChild(style);document.body.appendChild(dock);
+  const listenButton=dock.querySelector('[data-va="listen"]'),readButton=dock.querySelector('[data-va="read"]'),status=dock.querySelector('[data-va-status]');
+  if(!SpeechRecognition)listenButton.disabled=true;if(!synth)readButton.disabled=true;
+  onState(s=>{status.textContent=s.phase==='listening'?'Listening…':s.phase==='speaking'?'Speaking…':s.phase==='heard'?'Got it…':'Voice ready';listenButton.textContent=s.phase==='listening'?'Stop':'Speak';readButton.textContent=s.phase==='speaking'?'Stop':'Read';});
+  listenButton.addEventListener('click',()=>{if(phase==='listening'){stopListening({discard:true});return;}const target=editableTarget(),lang=localeFor(target);listen({lang,onInterim:t=>{status.textContent=t?`Hearing: ${t.slice(0,42)}`:'Listening…';},onFinal:t=>{if(target)insertText(target,t);else status.textContent='No editable field is active.';}});});
+  readButton.addEventListener('click',()=>{if(phase==='speaking'){cancelSpeech();return;}speak(readableText(),{lang:localeFor(document.activeElement)});});
+}
+
+const api=Object.freeze({version:'1.0.0',supported:Object.freeze({recognition:!!SpeechRecognition,synthesis:!!synth}),toSpeakable,chunks,speak,listen,stopListening,cancel,cancelSpeech,onState,installDock,insertText,readableText,get state(){return{phase,listening:phase==='listening',speaking:phase==='speaking'};}});
+globalThis.VoiceAnywhere=api;
+if(AUTO){const boot=()=>installDock();if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();}
+})();
