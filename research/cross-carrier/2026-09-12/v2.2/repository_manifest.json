@@ -29,7 +29,7 @@
     {"file":"sql/CONSTRUCTION_COST_RESULTS_2026-09-12.json","bytes":1260,"sha256":"1c23616efc42023f939a51b6417e59283932697eb9e1ce1a4ca90782afad6589"},
     {"file":"sql/frontier_mutilation_v4_construction.sql","bytes":335,"sha256":"8e0b213a94e81896cb6b3c101faec685bc92604308bc2c3d3aeaba350d095819"},
     {"file":"sql/SYMMETRY_AWARE_CONSTRUCTION_V5.md","bytes":3216,"sha256":"1eb1ad815a71e00a0f003a7da27f847671b92c2ce38be010954419becb5af614"},
-    {"file":"sql/SYMMETRY_AWARE_CONSTRUCTION_V5_RESULTS.json","bytes":3774,"sha256":"0e8faa8c09e09e2c2d4a000d856210c672e3fad65f1dbe7e0c7ebb5004fed7b4"},
+    {"file":"sql/SYMMETRY_AWARE_CONSTRUCTION_V5_RESULTS.json","bytes":3775,"sha256":"235f89b2f9b6b4360fd7674cfd035b3aa4e172fac064706a838dffc42de94840"},
     {"file":"sql/frontier_mutilation_v5.sql","bytes":579,"sha256":"03e7529c0f8cc557b8982a363f50dfcfd5130c77b6b8349bb1730c32c29892c7"},
     {"file":"sql/symmetry_aware_constructor_v5.cpp","bytes":7029,"sha256":"1d69504abca511d2290d70b7682ecfdb208f82a85e4709c89fb07b998195aa50"}
   ],
