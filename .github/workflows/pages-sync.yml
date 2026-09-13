@@ -8,6 +8,7 @@ on:
       - 'app.js'
       - 'space-lens-memory.js'
       - 'space-lens-qa.js'
+      - 'space-lens-local-search.js'
       - 'data-manifest.json'
       - 'data-*.txt'
       - 'API.md'
@@ -20,6 +21,7 @@ on:
       - 'tools/check_site.mjs'
       - 'tools/check_space_lens_qa.mjs'
       - 'tools/check_space_lens_memory.mjs'
+      - 'tools/check_space_lens_local_search.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
@@ -49,12 +51,14 @@ jobs:
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
 
-      - name: Verify Space Lens answer and learning layers before publishing
+      - name: Verify Space Lens answer, learning, and local-search layers before publishing
         run: |
           node --check space-lens-memory.js
           node --check space-lens-qa.js
+          node --check space-lens-local-search.js
           node tools/check_space_lens_qa.mjs
           node tools/check_space_lens_memory.mjs
+          node tools/check_space_lens_local_search.mjs
 
       - name: Verify public playground projects before publishing
         run: node play/test.mjs
