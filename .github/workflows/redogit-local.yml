@@ -9,6 +9,7 @@ on:
       - 'space-lens-memory.js'
       - 'space-lens-qa.js'
       - 'space-lens-local-search.js'
+      - 'space-lens-web-search.js'
       - 'index.html'
       - 'data-manifest.json'
       - 'data-*.txt'
@@ -26,6 +27,7 @@ on:
       - 'space-lens-memory.js'
       - 'space-lens-qa.js'
       - 'space-lens-local-search.js'
+      - 'space-lens-web-search.js'
       - 'index.html'
       - 'data-manifest.json'
       - 'data-*.txt'
@@ -64,6 +66,7 @@ jobs:
           node --check space-lens-memory.js
           node --check space-lens-qa.js
           node --check space-lens-local-search.js
+          node --check space-lens-web-search.js
       - name: Check site data and browser API startup
         run: node tools/check_site.mjs
       - name: Check Space Lens human-readable answers
@@ -72,6 +75,8 @@ jobs:
         run: node tools/check_space_lens_memory.mjs
       - name: Check Space Lens local search engine
         run: node tools/check_space_lens_local_search.mjs
+      - name: Check Space Lens in-page Web Search
+        run: node tools/check_space_lens_web_search.mjs
       - name: Check compact REDOGIT surface
         run: python3 tools/redogit_selfcheck.py
       - name: Replay SQL v5 finite constructor
