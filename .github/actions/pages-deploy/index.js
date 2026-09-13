@@ -14,6 +14,7 @@ async function main() {
   const githubToken = required('GITHUB_TOKEN');
   const repository = required('GITHUB_REPOSITORY');
   const buildVersion = required('GITHUB_SHA');
+  const pagesEnvironment = required('PAGES_ENVIRONMENT');
   const oidcRequestUrl = required('ACTIONS_ID_TOKEN_REQUEST_URL');
   const oidcRequestToken = required('ACTIONS_ID_TOKEN_REQUEST_TOKEN');
   const outputFile = required('GITHUB_OUTPUT');
@@ -68,6 +69,7 @@ async function main() {
     headers: apiHeaders,
     body: JSON.stringify({
       artifact_id: Number(upload.id),
+      environment: pagesEnvironment,
       pages_build_version: buildVersion,
       oidc_token: oidc.value
     })
