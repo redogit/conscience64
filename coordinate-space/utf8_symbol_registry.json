@@ -1,0 +1,132 @@
+[
+  {
+    "ns": "framework",
+    "sym": "Dep",
+    "name": "Dep",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "boundary",
+    "sym": "W_eff",
+    "name": "W_eff",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "boundary",
+    "sym": "R_B",
+    "name": "R_B",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "decomp",
+    "sym": "H_D",
+    "name": "H_D",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "decomp",
+    "sym": "Ĥ_D",
+    "name": "Ĥ_D",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "framework",
+    "sym": "I",
+    "name": "I",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "framework",
+    "sym": "R",
+    "name": "R",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "framework",
+    "sym": "Scr",
+    "name": "Scr",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "boundary",
+    "sym": "B",
+    "name": "B",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "boundary",
+    "sym": "B/∼",
+    "name": "B/∼",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "boundary",
+    "sym": "Q(B)",
+    "name": "Q(B)",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "decomp",
+    "sym": "C_flat",
+    "name": "C_flat",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  },
+  {
+    "ns": "decomp",
+    "sym": "C_carry",
+    "name": "C_carry",
+    "kind": "scalar",
+    "domain": "research",
+    "definition": "Synthetic public compatibility example; not a recovered research definition.",
+    "provenance": "assistant",
+    "status": "calibration"
+  }
+]

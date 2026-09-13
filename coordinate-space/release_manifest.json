@@ -1,0 +1,80 @@
+{
+  "schema": "coordinate-space-public-release/v1",
+  "date": "2026-09-13",
+  "edition": "PUBLIC_SOURCE_AND_AUTHORED_EXAMPLES",
+  "files": {
+    "LICENSE": {
+      "bytes": 1077,
+      "sha256": "37ba7f81fe8880b9640b9e92218891acb1636525e61fc6ed67f59b971949a90b"
+    },
+    "README.md": {
+      "bytes": 4363,
+      "sha256": "3de8b099a5ce16173e5606402d02add6e240e87fc43d426575c3d8057b7d1bc4"
+    },
+    "browser_checks.py": {
+      "bytes": 5992,
+      "sha256": "642a859213de480f7a74c48135002a8cccbfe7affc53b1f1040768ca598ac7ea"
+    },
+    "codec.js": {
+      "bytes": 2744,
+      "sha256": "bddd295dbe53bb275642fc3f6259a1694f37808f2e97f96c5bd6689a9ac4ef01"
+    },
+    "coordinate_runtime.py": {
+      "bytes": 9808,
+      "sha256": "137840583674a590aa2d471eaf45ae6cbe90bde5e71e486aa49592522f3cf3c3"
+    },
+    "example.py": {
+      "bytes": 953,
+      "sha256": "e784b931b69afab0ed38bf68e13f183a86bdba3951b585261d638493b443889d"
+    },
+    "float64_coordinate_builder.py": {
+      "bytes": 22158,
+      "sha256": "cabb18665bdad165b110b67453be7b04cc71d83fa5a91598276d768b98a8f41e"
+    },
+    "index.html": {
+      "bytes": 5863,
+      "sha256": "c80fbdad259dfc361286f4501953853ad632233e23efb2929e46a559c52d735b"
+    },
+    "requirements.txt": {
+      "bytes": 83,
+      "sha256": "7466ba49fcf8fa63d6b7847c1537bcf072c5a021eb804be97636b3b8a1ce9bf9"
+    },
+    "sha256.js": {
+      "bytes": 2067,
+      "sha256": "29179f0f61206751a89301ab28cb6ec618092fcb620b7c5509fc43c5be153390"
+    },
+    "test_codec.mjs": {
+      "bytes": 1710,
+      "sha256": "8e1614fb68c5747ea55f3afb6148d443c752c81826140c2d6c8584543e95f369"
+    },
+    "test_public.py": {
+      "bytes": 6401,
+      "sha256": "3b47acfe0187c377a4d8a72e56184db23cf7d669570d5e48f28ad5a12fcf6362"
+    },
+    "ui.js": {
+      "bytes": 2756,
+      "sha256": "a062ed3b82b778eddce86526c781a8d86cf9c5e9a6aa9f8fff9ff19815ee5a76"
+    },
+    "utf8_symbol_registry.json": {
+      "bytes": 3562,
+      "sha256": "8fcd67f4077267817b29d9d84db22981550edece78d368b2cd1d2eb4751e0016"
+    },
+    "verify_release.py": {
+      "bytes": 1397,
+      "sha256": "ed62c2ffea104fbbc1460c08c58b9ccaece436ab8ec950059cd4a4371521a02e"
+    }
+  },
+  "unchanged_audited_modules": {
+    "coordinate_runtime.py": "137840583674a590aa2d471eaf45ae6cbe90bde5e71e486aa49592522f3cf3c3",
+    "float64_coordinate_builder.py": "cabb18665bdad165b110b67453be7b04cc71d83fa5a91598276d768b98a8f41e"
+  },
+  "private_corpus_included": false,
+  "historical_archives_included": false,
+  "local_checks": {
+    "python_methods": 9,
+    "python_text_roundtrips": 516,
+    "javascript_assertions": 35,
+    "browser_dom_checks": 16
+  },
+  "local_browser_boundary": "Navigation blocked; DOM-only execution. HTTP and CSP await the GitHub browser check."
+}

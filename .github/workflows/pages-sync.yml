@@ -14,6 +14,7 @@ on:
       - 'SITE_DATA_RECOVERY.md'
       - 'research/projects/**'
       - 'play/**'
+      - 'coordinate-space/**'
       - 'tools/check_site.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
@@ -49,6 +50,19 @@ jobs:
 
       - name: Exercise public projects in Chrome before publishing
         run: node play/browser-test.mjs
+
+      - name: Verify Coordinate Space public release before publishing
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/coordinate-space-venv"
+          PY="$RUNNER_TEMP/coordinate-space-venv/bin/python"
+          "$PY" -m pip install -r coordinate-space/requirements.txt playwright==1.57.0
+          "$PY" coordinate-space/verify_release.py
+          "$PY" coordinate-space/test_public.py
+          "$PY" coordinate-space/example.py
+          node coordinate-space/test_codec.mjs
+          "$PY" coordinate-space/browser_checks.py
 
       - name: Advance gh-pages to exact main commit
         shell: bash
