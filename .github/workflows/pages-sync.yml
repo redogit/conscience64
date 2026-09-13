@@ -98,6 +98,18 @@ jobs:
           python3 -m venv "$RUNNER_TEMP/coordinate-space-venv"
           PY="$RUNNER_TEMP/coordinate-space-venv/bin/python"
           "$PY" -m pip install -r coordinate-space/requirements.txt playwright==1.57.0
+          "$PY" - <<'PY'
+          from pathlib import Path
+          import hashlib, json
+          root=Path('coordinate-space')
+          manifest=json.loads((root/'release_manifest.json').read_text(encoding='utf-8'))
+          print('COORDINATE_RELEASE_DIGEST_AUDIT')
+          for name, expected in manifest['files'].items():
+              raw=(root/name).read_bytes()
+              actual={'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+              if actual != expected:
+                  print(json.dumps({'file':name,'expected':expected,'actual':actual},sort_keys=True))
+          PY
           "$PY" coordinate-space/verify_release.py
           "$PY" coordinate-space/test_public.py
           "$PY" coordinate-space/example.py
