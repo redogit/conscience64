@@ -34,8 +34,19 @@ async function loadSpace(){
   if(!Array.isArray(records)) throw new Error('Space payload is not an object array.');
   return {manifest,shards,records};
 }
+async function loadProjects(){
+  const registry=await fetch('./research/projects/projects.json',{cache:'no-store'}).then(r=>{
+    if(!r.ok) throw new Error('Failed to load research/projects/projects.json'); return r.json();
+  });
+  if(registry?.schema!=='conscience64/research-project-registry/v1'||!Array.isArray(registry.projects))
+    throw new Error('Invalid research project registry');
+  return registry;
+}
 
-const {manifest:TRANSPORT,shards:SHARDS,records:SPACE}=await loadSpace();
+const [SPACE_BUNDLE,PROJECT_REGISTRY]=await Promise.all([loadSpace(),loadProjects()]);
+const {manifest:TRANSPORT,shards:SHARDS,records:SPACE}=SPACE_BUNDLE;
+const PROJECTS=PROJECT_REGISTRY.projects;
+const PROJECT_BY_ID=new Map(PROJECTS.map(p=>[p.id,p]));
 const byUoid=new Map(SPACE.map(x=>[x.uoid,x]));
 const byLogicalId=new Map(SPACE.filter(x=>x.logicalId).map(x=>[x.logicalId,x]));
 function resolve(id){return byUoid.get(id)||byLogicalId.get(id)||null;}
@@ -121,6 +132,29 @@ function traverse(start,spec={}){
   }
   return {start:clone(root),nodes:nodes.map(clone),edges:edges.map(clone)};
 }
+function projectList(spec={}){
+  const q=String(spec.text??'').trim().toLowerCase(),statuses=new Set(arr(spec.status||spec.statuses));
+  const rows=PROJECTS.filter(p=>{
+    if(statuses.size&&!statuses.has(p.status))return false;
+    if(q&&!JSON.stringify(p).toLowerCase().includes(q))return false;
+    return true;
+  });
+  return {schema:PROJECT_REGISTRY.schema,total:rows.length,projects:rows.map(clone)};
+}
+function projectGet(id){return clone(PROJECT_BY_ID.get(String(id))||null);}
+function projectReflow(id){
+  const p=PROJECT_BY_ID.get(String(id));if(!p)return null;
+  return {projectId:p.id,status:p.status,path:p.path,
+    I:p.I,
+    R:{difference:p.R,checks:clone(p.checks)},
+    P:p.P,
+    O:{result:p.O,highlight:p.highlight,lowlight:p.lowlight,claimCeiling:p.claimCeiling}};
+}
+function learnedInvariants(){return clone({
+  invariants:PROJECT_REGISTRY.learnedInvariants,
+  transformStates:PROJECT_REGISTRY.transformStates,
+  evidencePolicy:PROJECT_REGISTRY.evidencePolicy
+});}
 function generatedMicrodata(r){
   if(!r)return null;if(r.microdata)return clone(r.microdata);
   return {itemScope:true,itemType:'https://schema.org/Thing',itemId:r.uoid,properties:{identifier:r.uoid,name:r.label||r.logicalId||r.uoid,
@@ -134,7 +168,9 @@ function microdataHTML(id){
 }
 function stats(){
   const byType={},byKind={};for(const r of SPACE){byType[r.objectType]=(byType[r.objectType]||0)+1;if(r.kind)byKind[r.kind]=(byKind[r.kind]||0)+1;}
-  return {spaceUoid:SPACE_UOID,total:SPACE.length,byType,byKind,transport:{encoding:TRANSPORT.transportEncoding,payloadShards:SHARDS.length,
+  return {spaceUoid:SPACE_UOID,total:SPACE.length,byType,byKind,
+    projects:{count:PROJECTS.length,registryVersion:PROJECT_REGISTRY.version,learnedInvariantCount:(PROJECT_REGISTRY.learnedInvariants||[]).length},
+    transport:{encoding:TRANSPORT.transportEncoding,payloadShards:SHARDS.length,
     reservedShards:(TRANSPORT.shards||[]).filter(s=>s.state!=='PAYLOAD').length}};
 }
 function updateIRPO(x){
@@ -150,24 +186,32 @@ function irpo(input={}){
     else if(action==='get')O=clone(resolve(typeof I==='string'?I:I?.id));
     else if(action==='relations')O=relations(typeof I==='string'?I:I?.id,R||{});
     else if(action==='traverse')O=traverse(typeof I==='string'?I:I?.id,R||{});
+    else if(action==='projects.list')O=projectList(P.spec||((typeof I==='object'&&I)?I:{}));
+    else if(action==='projects.get')O=projectGet(typeof I==='string'?I:I?.id);
+    else if(action==='projects.reflow')O=projectReflow(typeof I==='string'?I:I?.id);
+    else if(action==='projects.invariants')O=learnedInvariants();
     else O={status:'NO_EXECUTOR',message:`Unknown P.action: ${action}`};
   }
   const rec={I,R,P,O,at:new Date().toISOString(),spaceUoid:SPACE_UOID};IRPO_HISTORY.push(rec);if(IRPO_HISTORY.length>512)IRPO_HISTORY.shift();updateIRPO(rec);return clone(rec);
 }
 const API=Object.freeze({
-  version:'1.1.0',spaceUoid:SPACE_UOID,
+  version:'1.2.0',spaceUoid:SPACE_UOID,
   search:Object.freeze({simple:simpleSearch,advanced:advancedSearch}),get:id=>clone(resolve(id)),relations,traverse,microdata,microdataHTML,irpo,
+  projects:Object.freeze({list:projectList,get:projectGet,reflow:projectReflow,invariants:learnedInvariants}),
   history:()=>clone(IRPO_HISTORY),stats,all:()=>SPACE.map(clone),
   help:()=>({simple:'Conscience64API.search.simple("physics black hole", {limit:20})',advanced:'Conscience64API.search.advanced({text:"language", minDegree:5})',
     get:'Conscience64API.get("project:physics")',relations:'Conscience64API.relations("project:physics", {direction:"out"})',
     traverse:'Conscience64API.traverse("project:orbit", {depth:2})',microdata:'Conscience64API.microdata("project:orbit")',
-    irpo:'Conscience64API.irpo({I:"black hole",R:{},P:{action:"search.simple"}})'})
+    projects:'Conscience64API.projects.list(); Conscience64API.projects.reflow("historical-recovery")',
+    invariants:'Conscience64API.projects.invariants()',
+    irpo:'Conscience64API.irpo({I:"historical-recovery",R:{},P:{action:"projects.reflow"}})'})
 });
 globalThis.Conscience64API=API;
 addEventListener('message',async event=>{
   const m=event.data;if(!m||m.type!=='conscience64.api'||!m.id)return;const reply={type:'conscience64.api.result',id:m.id,ok:true,result:null};
   try{const args=Array.isArray(m.args)?m.args:[],route={'search.simple':()=>simpleSearch(...args),'search.advanced':()=>advancedSearch(...args),'get':()=>API.get(...args),
-    'relations':()=>relations(...args),'traverse':()=>traverse(...args),'microdata':()=>microdata(...args),'irpo':()=>irpo(...args),'stats':()=>stats()}[String(m.method||'')];
+    'relations':()=>relations(...args),'traverse':()=>traverse(...args),'microdata':()=>microdata(...args),'irpo':()=>irpo(...args),'stats':()=>stats(),
+    'projects.list':()=>projectList(...args),'projects.get':()=>projectGet(...args),'projects.reflow':()=>projectReflow(...args),'projects.invariants':()=>learnedInvariants()}[String(m.method||'')];
     if(!route)throw new Error(`Unknown API method: ${m.method}`);reply.result=await route();}catch(e){reply.ok=false;reply.error=String(e?.message||e);}
   event.source?.postMessage(reply,'*');
 });
@@ -181,6 +225,7 @@ function draw(){
     pts.forEach((r,i)=>{const hsh=parseInt(r.uoid.slice(-8),16)>>>0,radius=.18+((hsh%1000)/1000)*.28,speed=.015+((hsh>>>8)%100)/8000,phase=((hsh^seed)%6283)/1000+t*speed*((i%2)?1:-1),px=cx+Math.cos(phase)*radius*m,py=cy+Math.sin(phase)*radius*m*.58;x.fillStyle=i%3===0?'#8dd8ff':i%3===1?'#ffd486':'#c7ffac';x.globalAlpha=.55;x.beginPath();x.arc(px,py,Math.max(1,m*.0025),0,Math.PI*2);x.fill();});x.globalAlpha=1;requestAnimationFrame(frame);}
   requestAnimationFrame(frame);
 }
-updateIRPO({I:`Searchable privacy-safe space: ${SPACE.length} universal objects.`,R:'Objects retain UOIDs and searchable relations; search never upgrades relation to evidence.',
-  P:{action:'API_ONLY',available:['search.simple','search.advanced','get','relations','traverse','microdata','irpo']},O:stats()});
+updateIRPO({I:`Searchable privacy-safe space: ${SPACE.length} universal objects plus ${PROJECTS.length} structured project records.`,
+  R:{difference:'Objects retain UOIDs and searchable relations; projects retain claim ceilings, failures, and unresolved remainder.',checks:{assumption:'Related material is not automatically evidence.',test:'Use exact identity, provenance, ablation/replication, and project-specific checks.',unknown:'Unresolved project remainder remains explicit.'}},
+  P:{action:'API_ONLY',available:['search.simple','search.advanced','get','relations','traverse','microdata','irpo','projects.list','projects.get','projects.reflow','projects.invariants']},O:stats()});
 draw();dispatchEvent(new CustomEvent('conscience64-ready',{detail:stats()}));
