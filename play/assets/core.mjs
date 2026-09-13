@@ -1,4 +1,8 @@
 // New public tools inspired by the project lineage documented in ../README.md.
+if (typeof window !== 'undefined') {
+  import('../../voice-anywhere.js').catch(() => {});
+  import('../../research-song.js').catch(() => {});
+}
 export const SIZE = 6;
 export const MAX_FILE_BYTES = 32_000_000;
 export const SCHEMA = 'conscience64.play/v1';
