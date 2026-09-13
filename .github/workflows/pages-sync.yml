@@ -6,6 +6,8 @@ on:
     paths:
       - 'index.html'
       - 'app.js'
+      - 'voice-anywhere.js'
+      - 'research-song.js'
       - 'space-lens-memory.js'
       - 'space-lens-qa.js'
       - 'space-lens-local-search.js'
@@ -61,8 +63,11 @@ jobs:
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
 
-      - name: Verify Space Lens answer, learning, search, external-gate, Human Builder, Master, 4D field, voice, and help layers before publishing
+      - name: Verify Space Lens, portable voice, song, and Chorus layers before publishing
         run: |
+          node --check voice-anywhere.js
+          node --check research-song.js
+          node --check play/computational-chorus/chorus.mjs
           node --check space-lens-memory.js
           node --check space-lens-qa.js
           node --check space-lens-local-search.js
