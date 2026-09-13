@@ -15,6 +15,7 @@ on:
       - 'space-lens-master.js'
       - 'space-lens-field.js'
       - 'space-lens-voice.js'
+      - 'space-lens-help.js'
       - 'data-manifest.json'
       - 'data-*.txt'
       - 'API.md'
@@ -60,7 +61,7 @@ jobs:
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
 
-      - name: Verify Space Lens answer, learning, search, external-gate, Human Builder, Master, 4D field, and voice layers before publishing
+      - name: Verify Space Lens answer, learning, search, external-gate, Human Builder, Master, 4D field, voice, and help layers before publishing
         run: |
           node --check space-lens-memory.js
           node --check space-lens-qa.js
@@ -71,6 +72,7 @@ jobs:
           node --check space-lens-master.js
           node --check space-lens-field.js
           node --check space-lens-voice.js
+          node --check space-lens-help.js
           node tools/check_space_lens_qa.mjs
           node tools/check_space_lens_memory.mjs
           node tools/check_space_lens_local_search.mjs
