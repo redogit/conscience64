@@ -10,6 +10,7 @@ on:
       - 'space-lens-qa.js'
       - 'space-lens-local-search.js'
       - 'space-lens-web-search.js'
+      - 'space-lens-human-builder.js'
       - 'data-manifest.json'
       - 'data-*.txt'
       - 'API.md'
@@ -24,6 +25,7 @@ on:
       - 'tools/check_space_lens_memory.mjs'
       - 'tools/check_space_lens_local_search.mjs'
       - 'tools/check_space_lens_web_search.mjs'
+      - 'tools/check_space_lens_human_builder.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
@@ -53,16 +55,18 @@ jobs:
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
 
-      - name: Verify Space Lens answer, learning, local-search, and in-page web-search layers before publishing
+      - name: Verify Space Lens answer, learning, search, and Human Builder layers before publishing
         run: |
           node --check space-lens-memory.js
           node --check space-lens-qa.js
           node --check space-lens-local-search.js
           node --check space-lens-web-search.js
+          node --check space-lens-human-builder.js
           node tools/check_space_lens_qa.mjs
           node tools/check_space_lens_memory.mjs
           node tools/check_space_lens_local_search.mjs
           node tools/check_space_lens_web_search.mjs
+          node tools/check_space_lens_human_builder.mjs
 
       - name: Verify public playground projects before publishing
         run: node play/test.mjs
