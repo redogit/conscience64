@@ -7,7 +7,9 @@
     "status": "current",
     "path": ".",
     "build": null,
-    "verify": "python3 tools/redogit_selfcheck.py"
+    "verify": "python3 tools/redogit_selfcheck.py",
+    "project_registry": "research/projects/projects.json",
+    "browser_api_version": "1.2.0"
   },
   "predecessors": [
     { "id": "partial-base64-research-transport", "path": null, "retained": true },
@@ -16,17 +18,69 @@
   "history_policy": {
     "preserve_predecessors": true,
     "preserve_failures": true,
+    "preserve_unresolved_remainder": true,
+    "preserve_source_native_identity": true,
     "rewrite_history": false
   },
+  "research_policy": {
+    "surface": "I/R/P/O",
+    "checks": ["assumption", "test", "unknown"],
+    "project_registry": "research/projects/projects.json",
+    "rules": [
+      "UNKNOWN != ABSENT",
+      "UNASSIGNED != ABSENT",
+      "RELATED != SUPPORTS",
+      "SEMANTIC_SIMILARITY != IDENTITY",
+      "SOURCE != RECONSTRUCTION",
+      "BYTE_IDENTITY != SEMANTIC_TRUTH",
+      "CURRENT_NAVIGATION != HISTORICAL_SOURCE",
+      "MECHANISM_ACTIVE != MECHANISM_USEFUL",
+      "MECHANISM_USEFUL != MECHANISM_CAUSAL",
+      "CALIBRATION_RESULT != OPEN_PROBLEM_RESULT",
+      "FINITE_VERIFICATION != UNIVERSALITY",
+      "REPRESENTATION_CORRECTNESS != PHYSICAL_TRUTH",
+      "LOSS_ACKNOWLEDGED != LOSS_CONCEALED"
+    ],
+    "promotion": "evidence-gated and forward-only",
+    "historical_checkpoint_policy": "do not rewrite verified predecessors merely to conform to newer lessons"
+  },
   "boundary": {
-    "owns": ["privacy-safe public research surface", "carrier provenance", "deterministic identifiers", "research manifests", "runner-independent integrity checks", "direct-Git CI verification"],
-    "does_not_own": ["personal or family information", "private legal information", "medical information", "financial information", "claims that byte identity proves semantic truth"]
+    "owns": [
+      "privacy-safe public research surface",
+      "carrier provenance",
+      "deterministic identifiers",
+      "research manifests",
+      "structured project registry",
+      "claim ceilings and negative evidence",
+      "source-native recovery state",
+      "runner-independent integrity checks",
+      "direct-Git CI verification"
+    ],
+    "does_not_own": [
+      "personal or family information",
+      "private legal information",
+      "medical information",
+      "financial information",
+      "claims that byte identity proves semantic truth",
+      "claims that semantic similarity proves project identity",
+      "claims that an index miss proves absence",
+      "authority over historical sources merely because they are indexed"
+    ]
   },
   "verification": {
     "workflow": ".github/workflows/redogit-local.yml",
     "last_verified_run": 34719575880,
     "conclusion": "success",
-    "checks": ["exact commit materialization", "REDOGIT compact-surface self-check", "repository-surface byte counts", "repository-surface SHA-256 hashes"],
+    "checks": [
+      "exact commit materialization",
+      "REDOGIT compact-surface self-check",
+      "research-project registry schema",
+      "learned-invariant preservation",
+      "Fuzzball recovery correction boundary",
+      "orphan predecessor identity preservation",
+      "repository-surface byte counts",
+      "repository-surface SHA-256 hashes"
+    ],
     "transport": "public Git fetch of exact GITHUB_SHA; no external GitHub Action dependencies",
     "diagnostic_lineage": {
       "standalone_scheduler_probe_run": 34719467106,
