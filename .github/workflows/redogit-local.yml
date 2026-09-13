@@ -10,6 +10,7 @@ on:
       - 'space-lens-qa.js'
       - 'space-lens-local-search.js'
       - 'space-lens-web-search.js'
+      - 'space-lens-external-gate.js'
       - 'space-lens-human-builder.js'
       - 'index.html'
       - 'data-manifest.json'
@@ -29,6 +30,7 @@ on:
       - 'space-lens-qa.js'
       - 'space-lens-local-search.js'
       - 'space-lens-web-search.js'
+      - 'space-lens-external-gate.js'
       - 'space-lens-human-builder.js'
       - 'index.html'
       - 'data-manifest.json'
@@ -69,6 +71,7 @@ jobs:
           node --check space-lens-qa.js
           node --check space-lens-local-search.js
           node --check space-lens-web-search.js
+          node --check space-lens-external-gate.js
           node --check space-lens-human-builder.js
       - name: Check site data and browser API startup
         run: node tools/check_site.mjs
@@ -80,6 +83,8 @@ jobs:
         run: node tools/check_space_lens_local_search.mjs
       - name: Check Space Lens in-page Web Search
         run: node tools/check_space_lens_web_search.mjs
+      - name: Check real-need external search refinement
+        run: node tools/check_space_lens_external_gate.mjs
       - name: Check Space Lens Human Builder
         run: node tools/check_space_lens_human_builder.mjs
       - name: Check compact REDOGIT surface
