@@ -107,11 +107,13 @@ jobs:
           node --check play/musilanguage/radio.js
           "$RUNNER_TEMP/coordinate-space-venv/bin/python" play/musilanguage/radio-test.py
 
-      - name: Verify listener-local MUSIC64 words, float edits, and real companion bridge
+      - name: Verify listener-local MUSIC64 words, float edits, style profiles, and real companion bridge
         shell: bash
         run: |
           set -euo pipefail
+          node --check play/musilanguage/style-profiles.js
           node play/musilanguage/music64-test.mjs
+          node play/musilanguage/style-test.mjs
           "$RUNNER_TEMP/coordinate-space-venv/bin/python" play/musilanguage/music64-browser.py --live --output "$RUNNER_TEMP/music64-checks"
 
       - name: Advance gh-pages to exact main commit
