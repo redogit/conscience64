@@ -1,9 +1,10 @@
 {
   "schema": "conscience64.mmo.linkages/v1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "nodes": [
     {"id":"play-hub","path":"../index.html","kind":"navigation"},
     {"id":"mmo-main","path":"index.html","kind":"game"},
+    {"id":"current-state","path":"CURRENT.md","kind":"current-state-ledger"},
     {"id":"reality-canon","path":"REALITY_CANON.md","kind":"current-successor-canon"},
     {"id":"arcade-forge","path":"forge.html","kind":"creator-tool"},
     {"id":"plugin-contract","path":"plugin-contract.json","kind":"contract"},
@@ -26,6 +27,9 @@
   ],
   "edges": [
     {"from":"play-hub","to":"mmo-main","relation":"opens"},
+    {"from":"mmo-main","to":"current-state","relation":"links-current-state"},
+    {"from":"current-state","to":"reality-canon","relation":"loads-before"},
+    {"from":"current-state","to":"release-plan","relation":"distinguishes-current-from-roadmap"},
     {"from":"reality-canon","to":"mmo-main","relation":"governs-current-presentation"},
     {"from":"reality-canon","to":"arcade-forge","relation":"governs-generated-content-direction"},
     {"from":"reality-canon","to":"plugin-contract","relation":"constrains-content-direction"},
@@ -59,6 +63,7 @@
     "MYSTERY_13TH != PREPLANNED_LEVEL_13",
     "ROADMAP != IMPLEMENTED_STATE",
     "PLUGIN_DATA != EXECUTABLE_AUTHORITY",
+    "TEST_CONFIGURED != TEST_OBSERVED_PASSING",
     "CURRENT_REALITY_CANON != REWRITTEN_PREDECESSOR_HISTORY"
   ]
 }
