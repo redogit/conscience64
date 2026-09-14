@@ -10,7 +10,7 @@ This file connects the MMO surfaces without collapsing their responsibilities.
 - **MMO main page:** `index.html`
 - **Astronomy boundary:** in-game reconstruction is labeled; linked EHT/NASA sources retain the scientific evidence role.
 
-When an older MMO aesthetic or content note conflicts with `REALITY_CANON.md`, the reality canon controls current presentation. Historical predecessor files remain historical; they are not rewritten.
+When an older MMO aesthetic or content note conflicts with `REALITY_CANON.md`, the reality canon controls the current presentation. Historical predecessor files remain historical; they are not rewritten.
 
 Boundary:
 
