@@ -69,6 +69,13 @@
 
 <section class="identity" aria-labelledby="identity-title"><div><p class="eyebrow">Being somebody</p><h2 id="identity-title">Who are you today?</h2><p>You can change roles. A role changes what the world offers; it does not rank your value.</p></div><label for="role-select">Choose a role</label><select id="role-select"><option>Explorer</option><option>Builder</option><option>Helper</option><option>Researcher</option><option>Storyteller</option><option>Chaos Mechanic</option></select><label for="motto">Your current motto</label><input id="motto" maxlength="120" placeholder="What sounds like you today?"><button id="save-identity" type="button">Use this identity</button></section>
 
+<section class="chronicle save-panel" aria-labelledby="save-title">
+  <div class="section-head"><div><p class="eyebrow">Portable local life</p><h2 id="save-title">Save this run</h2></div><span class="locked">LOCAL STATE ONLY</span></div>
+  <p>Your local save can preserve progress, role, companion form, motto, and the visible chronicle. It is portable data, not authoritative multiplayer state and never proof of prize eligibility.</p>
+  <div class="hero-actions"><button id="save-local" type="button">Save locally</button><button id="load-local" type="button">Load saved copy</button><button id="export-save" type="button">Export save</button><label><span class="sr-only">Import MMO save</span><input id="import-save" type="file" accept=".json,application/json"></label><button id="clear-save" type="button">Clear saved copy</button></div>
+  <p id="save-status" role="status" aria-live="polite">Nothing loads automatically.</p>
+</section>
+
 <section class="prizes" aria-labelledby="prize-title"><div class="section-head"><div><p class="eyebrow">Future real-world rewards</p><h2 id="prize-title">Prize Vault</h2></div><span class="locked">REDEMPTION NOT ACTIVE</span></div><p>Real-world prizes are designed as a future <strong>free-entry, achievement-based</strong> program. No purchase, wager, purchasable random chance, or cash-out mechanic is part of this prototype. Local browser scores are intentionally not accepted as prize proof.</p><div class="vault-grid"><article><strong>Explorer Patch</strong><p>Planned physical recognition for verified exploration events.</p><small>Future / fulfillment not configured</small></article><article><strong>Builder Drop</strong><p>Planned small physical reward for verified maker challenges.</p><small>Future / fulfillment not configured</small></article><article><strong>World Event Prize</strong><p>Reserved for published skill or achievement events with official rules.</p><small>Future / no chance-based award active</small></article></div><details><summary>Prize integrity boundary</summary><p>Before redemption can activate, the game needs published eligibility and fulfillment rules, privacy-minimized verified event records, anti-tamper/server attestation, geographic and age restrictions where required, a support path, and a method for resolving disputes. Until then, every reward shown here is informational only.</p></details></section>
 
 <section class="companion" aria-labelledby="companion-title"><div><p class="eyebrow">Private companion</p><h2 id="companion-title">Shapeshifter</h2><p>Your fictional adult companion can change appearance and attitude with the world. The public build keeps presentation non-graphic. Mature presentation is not implemented in this public prototype.</p></div><button id="morph" type="button">Morph companion</button><p id="companion-state" role="status" aria-live="polite">Form: Red-world wanderer.</p></section>
@@ -76,6 +83,7 @@
 </main>
 <footer><div class="footer-links"><a href="../">All Play projects</a><a href="CURRENT.md">Current state</a><a href="forge.html">Arcade Forge</a><a href="LINKAGES.md">Linkages</a><a href="LEVELS.md">12 + Mystery 13th</a><a href="RELEASE_PLAN_2026-11-15.md">Release plan</a><a href="../../history/index.html?facet=mmo">History &amp; restore</a><a href="https://github.com/redogit/conscience64/tree/main/play/mmo">Source</a></div><p>Local browser prototype. No account. No payment. No active real-world prize redemption.</p></footer>
 <script src="plugin-runtime.js" defer></script>
+<script src="save-runtime.js" defer></script>
 <script src="game.js" defer></script>
 </body>
 </html>
