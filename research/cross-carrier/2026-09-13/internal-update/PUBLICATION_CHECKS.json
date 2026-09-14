@@ -1,0 +1,24 @@
+{
+  "publication_date": "2026-09-14",
+  "base_commit": "b6da9fcc8e56019b27656f7e244a8b1f763ed15c",
+  "checks": {
+    "complete_inventory": "736 members verified",
+    "direct_sources": "Original source identity preserved; declared question-flow successors separately hashed",
+    "search_policy": "15 passed",
+    "browser_ui": "passed",
+    "internal_workspace": "passed",
+    "site_api": "passed",
+    "redogit_integrity": "passed",
+    "contextual_questions": "UI requests missing goal and API rejects incomplete contextual answers; internal mouse/touch still passes"
+  },
+  "not_reexecuted": [
+    "39-packet prior transport experiment",
+    "strict corroboration legacy failures",
+    "live public provider retrieval"
+  ],
+  "open_limits": [
+    "public Chromium proxy certificate validation",
+    "arbitrary external activation not enabled",
+    "strict corroboration candidate unpromoted"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "black-hole-conscience-ecs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "serve": "node serve.mjs"
+  }
+}

@@ -25,6 +25,7 @@ on:
       - 'README.md'
       - 'SITE_DATA_RECOVERY.md'
       - 'research/projects/**'
+      - 'research/cross-carrier/2026-09-13/internal-update/**'
       - 'play/**'
       - 'coordinate-space/**'
       - 'tools/check_site.mjs'

@@ -1,0 +1,723 @@
+{
+  "ok": true,
+  "result": "Retrieved 10 candidate records; 25 search routes available.",
+  "artifact": {
+    "query": "Hodge conjecture",
+    "effective_query": "Hodge conjecture",
+    "country": "",
+    "category": "research",
+    "routes": [
+      {
+        "id": "crossref",
+        "name": "Crossref",
+        "category": "research",
+        "country_affinity": "GLOBAL",
+        "homepage": "https://search.crossref.org/",
+        "query_template": "https://search.crossref.org/?q={q}",
+        "enabled": true,
+        "mode": "api_and_launch",
+        "route_kind": "native_search",
+        "index_family": "crossref_metadata",
+        "evidence_url": "https://search.crossref.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.crossref.org/?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "europepmc",
+        "name": "Europe PMC",
+        "category": "research",
+        "country_affinity": "GB",
+        "homepage": "https://europepmc.org/",
+        "query_template": "https://europepmc.org/search?query={q}",
+        "enabled": true,
+        "mode": "api_and_launch",
+        "route_kind": "native_search",
+        "index_family": "europepmc_metadata",
+        "evidence_url": "https://europepmc.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://europepmc.org/search?query=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "ajol",
+        "name": "African Journals Online",
+        "category": "research",
+        "country_affinity": "ZA",
+        "homepage": "https://www.ajol.info/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://www.ajol.info/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Awww.ajol.info+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "base",
+        "name": "BASE",
+        "category": "research",
+        "country_affinity": "DE",
+        "homepage": "https://www.base-search.net/",
+        "query_template": "https://www.base-search.net/Search/Results?lookfor={q}&type=all",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://www.base-search.net/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://www.base-search.net/Search/Results?lookfor=Hodge%20conjecture&type=all",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "core",
+        "name": "CORE",
+        "category": "research",
+        "country_affinity": "GB",
+        "homepage": "https://core.ac.uk/",
+        "query_template": "https://core.ac.uk/search?q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://core.ac.uk/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://core.ac.uk/search?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "cinii",
+        "name": "CiNii Research",
+        "category": "research",
+        "country_affinity": "JP",
+        "homepage": "https://cir.nii.ac.jp/",
+        "query_template": "https://cir.nii.ac.jp/all?q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://cir.nii.ac.jp/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://cir.nii.ac.jp/all?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "doaj",
+        "name": "DOAJ",
+        "category": "research",
+        "country_affinity": "GLOBAL",
+        "homepage": "https://doaj.org/",
+        "query_template": "https://doaj.org/search/articles?ref=homepage-box&q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://doaj.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://doaj.org/search/articles?ref=homepage-box&q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "dergipark",
+        "name": "DergiPark",
+        "category": "research",
+        "country_affinity": "TR",
+        "homepage": "https://dergipark.org.tr/",
+        "query_template": "https://dergipark.org.tr/en/search?q={q}&section=articles",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://dergipark.org.tr/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://dergipark.org.tr/en/search?q=Hodge%20conjecture&section=articles",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "eudml",
+        "name": "EuDML",
+        "category": "research",
+        "country_affinity": "EU",
+        "homepage": "https://eudml.org/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://eudml.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Aeudml.org+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "garuda",
+        "name": "GARUDA",
+        "category": "research",
+        "country_affinity": "ID",
+        "homepage": "https://garuda.kemdikbud.go.id/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://garuda.kemdikbud.go.id/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Agaruda.kemdikbud.go.id+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "scholar",
+        "name": "Google Scholar",
+        "category": "research",
+        "country_affinity": "US",
+        "homepage": "https://scholar.google.com/",
+        "query_template": "https://scholar.google.com/scholar?q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://scholar.google.com/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://scholar.google.com/scholar?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "hal",
+        "name": "HAL",
+        "category": "research",
+        "country_affinity": "FR",
+        "homepage": "https://hal.science/",
+        "query_template": "https://hal.science/search/index/?q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://hal.science/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://hal.science/search/index/?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "jstage",
+        "name": "J-STAGE",
+        "category": "research",
+        "country_affinity": "JP",
+        "homepage": "https://www.jstage.jst.go.jp/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://www.jstage.jst.go.jp/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Awww.jstage.jst.go.jp+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "la-referencia",
+        "name": "LA Referencia",
+        "category": "research",
+        "country_affinity": "LATAM",
+        "homepage": "https://www.lareferencia.info/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://www.lareferencia.info/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Awww.lareferencia.info+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "openalex",
+        "name": "OpenAlex",
+        "category": "research",
+        "country_affinity": "GLOBAL",
+        "homepage": "https://openalex.org/",
+        "query_template": "https://openalex.org/works?search={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://openalex.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://openalex.org/works?search=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "pubmed",
+        "name": "PubMed",
+        "category": "research",
+        "country_affinity": "US",
+        "homepage": "https://pubmed.ncbi.nlm.nih.gov/",
+        "query_template": "https://pubmed.ncbi.nlm.nih.gov/?term={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://pubmed.ncbi.nlm.nih.gov/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/?term=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "recolecta",
+        "name": "RECOLECTA",
+        "category": "research",
+        "country_affinity": "ES",
+        "homepage": "https://recolecta.fecyt.es/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://recolecta.fecyt.es/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Arecolecta.fecyt.es+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "redalyc",
+        "name": "Redalyc",
+        "category": "research",
+        "country_affinity": "MX",
+        "homepage": "https://www.redalyc.org/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://www.redalyc.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Awww.redalyc.org+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "scielo",
+        "name": "SciELO",
+        "category": "research",
+        "country_affinity": "BR",
+        "homepage": "https://search.scielo.org/",
+        "query_template": "https://search.scielo.org/?q={q}&lang=en",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://search.scielo.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.scielo.org/?q=Hodge%20conjecture&lang=en",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "semantic-scholar",
+        "name": "Semantic Scholar",
+        "category": "research",
+        "country_affinity": "US",
+        "homepage": "https://www.semanticscholar.org/",
+        "query_template": "https://www.semanticscholar.org/search?q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://www.semanticscholar.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://www.semanticscholar.org/search?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "shodhganga",
+        "name": "Shodhganga",
+        "category": "research",
+        "country_affinity": "IN",
+        "homepage": "https://shodhganga.inflibnet.ac.in/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://shodhganga.inflibnet.ac.in/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Ashodhganga.inflibnet.ac.in+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "thaijo",
+        "name": "Thai journal search",
+        "category": "research",
+        "country_affinity": "TH",
+        "homepage": "https://search.tci-thailand.org/",
+        "query_template": null,
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "site_search_via_brave",
+        "index_family": "unverified",
+        "evidence_url": "https://search.tci-thailand.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://search.brave.com/search?q=site%3Asearch.tci-thailand.org+Hodge+conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "zenodo",
+        "name": "Zenodo",
+        "category": "research",
+        "country_affinity": "CH",
+        "homepage": "https://zenodo.org/",
+        "query_template": "https://zenodo.org/search?q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://zenodo.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://zenodo.org/search?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "arxiv",
+        "name": "arXiv",
+        "category": "research",
+        "country_affinity": "US",
+        "homepage": "https://arxiv.org/",
+        "query_template": "https://arxiv.org/search/?query={q}&searchtype=all",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://arxiv.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://arxiv.org/search/?query=Hodge%20conjecture&searchtype=all",
+        "query": "Hodge conjecture"
+      },
+      {
+        "id": "zbmath",
+        "name": "zbMATH Open",
+        "category": "research",
+        "country_affinity": "DE",
+        "homepage": "https://zbmath.org/",
+        "query_template": "https://zbmath.org/?q={q}",
+        "enabled": true,
+        "mode": "launch",
+        "route_kind": "native_search",
+        "index_family": "unverified",
+        "evidence_url": "https://zbmath.org/",
+        "verification": "catalogued; live result retrieval not asserted",
+        "known_russian_provider": false,
+        "url": "https://zbmath.org/?q=Hodge%20conjecture",
+        "query": "Hodge conjecture"
+      }
+    ],
+    "country_scope": "global",
+    "authority_transfer": false,
+    "corroborated": false,
+    "unresolved": [
+      "Results require source-specific verification."
+    ],
+    "results": [
+      {
+        "title": "Algebraic Cycles, Hodge Structure, and the Hodge Conjecture",
+        "url": "https://doi.org/10.2139/ssrn.5371902",
+        "doi": "10.2139/ssrn.5371902",
+        "provider": "crossref",
+        "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00"
+          }
+        ]
+      },
+      {
+        "title": "Formulation of the general Hodge conjecture",
+        "url": "https://doi.org/10.1090/crmm/010/07",
+        "doi": "10.1090/crmm/010/07",
+        "provider": "crossref",
+        "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00"
+          }
+        ]
+      },
+      {
+        "title": "A survey of the Hodge conjecture for abelian varieties",
+        "url": "https://doi.org/10.1090/crmm/010/17",
+        "doi": "10.1090/crmm/010/17",
+        "provider": "crossref",
+        "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00"
+          }
+        ]
+      },
+      {
+        "title": "The approach to the Hodge conjecture via normal functions",
+        "url": "https://doi.org/10.1090/crmm/010/14",
+        "doi": "10.1090/crmm/010/14",
+        "provider": "crossref",
+        "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00"
+          }
+        ]
+      },
+      {
+        "title": "A real analogue of the Hodge conjecture",
+        "url": "https://doi.org/10.70675/b5eabab4zdfeaz4ccfza9bbz79a42b964ae3",
+        "doi": "10.70675/b5eabab4zdfeaz4ccfza9bbz79a42b964ae3",
+        "provider": "crossref",
+        "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00"
+          }
+        ]
+      },
+      {
+        "title": "Proof of the Hodge Conjecture",
+        "url": "https://doi.org/10.20944/preprints202509.1435.v1",
+        "doi": "10.20944/preprints202509.1435.v1",
+        "provider": "europepmc",
+        "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00"
+          }
+        ]
+      },
+      {
+        "title": "Relative Secant Cycles and Hodge Classes",
+        "url": "https://doi.org/10.20944/preprints202602.0462.v5",
+        "doi": "10.20944/preprints202602.0462.v5",
+        "provider": "europepmc",
+        "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00"
+          }
+        ]
+      },
+      {
+        "title": "Integral Defects of Rational Hodge Cycle Constructions",
+        "url": "https://doi.org/10.20944/preprints202607.0326.v1",
+        "doi": "10.20944/preprints202607.0326.v1",
+        "provider": "europepmc",
+        "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00"
+          }
+        ]
+      },
+      {
+        "title": "Globalization of Perturbative Chern-Simons Theory on the Moduli Space of Flat Connections in the BV Formalism.",
+        "url": "https://doi.org/10.1007/s00220-026-05727-w",
+        "doi": "10.1007/s00220-026-05727-w",
+        "provider": "europepmc",
+        "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00"
+          }
+        ]
+      },
+      {
+        "title": "Planck-Scale Structures Reinterpreted as Thresholds of Informational Hosting: From Informational Collapse to Hodge Topologies",
+        "url": "https://doi.org/10.20944/preprints202602.0787.v1",
+        "doi": "10.20944/preprints202602.0787.v1",
+        "provider": "europepmc",
+        "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+        "relation": "CANDIDATE_ONLY",
+        "corroborated": false,
+        "provenance": [
+          {
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00"
+          }
+        ]
+      }
+    ],
+    "provider_runs": [
+      {
+        "provider": "crossref",
+        "status": "ok",
+        "results": [
+          {
+            "title": "Algebraic Cycles, Hodge Structure, and the Hodge Conjecture",
+            "url": "https://doi.org/10.2139/ssrn.5371902",
+            "doi": "10.2139/ssrn.5371902",
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "Formulation of the general Hodge conjecture",
+            "url": "https://doi.org/10.1090/crmm/010/07",
+            "doi": "10.1090/crmm/010/07",
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "A survey of the Hodge conjecture for abelian varieties",
+            "url": "https://doi.org/10.1090/crmm/010/17",
+            "doi": "10.1090/crmm/010/17",
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "The approach to the Hodge conjecture via normal functions",
+            "url": "https://doi.org/10.1090/crmm/010/14",
+            "doi": "10.1090/crmm/010/14",
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "A real analogue of the Hodge conjecture",
+            "url": "https://doi.org/10.70675/b5eabab4zdfeaz4ccfza9bbz79a42b964ae3",
+            "doi": "10.70675/b5eabab4zdfeaz4ccfza9bbz79a42b964ae3",
+            "provider": "crossref",
+            "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          }
+        ],
+        "filtered_count": 0,
+        "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+        "response_sha256": "ac3507d158ab564d8aa40fd3de4f7a8f7ab799dc466778e0a57050fd40c9c995",
+        "endpoint": "https://api.crossref.org/works"
+      },
+      {
+        "provider": "europepmc",
+        "status": "ok",
+        "results": [
+          {
+            "title": "Proof of the Hodge Conjecture",
+            "url": "https://doi.org/10.20944/preprints202509.1435.v1",
+            "doi": "10.20944/preprints202509.1435.v1",
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "Relative Secant Cycles and Hodge Classes",
+            "url": "https://doi.org/10.20944/preprints202602.0462.v5",
+            "doi": "10.20944/preprints202602.0462.v5",
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "Integral Defects of Rational Hodge Cycle Constructions",
+            "url": "https://doi.org/10.20944/preprints202607.0326.v1",
+            "doi": "10.20944/preprints202607.0326.v1",
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "Globalization of Perturbative Chern-Simons Theory on the Moduli Space of Flat Connections in the BV Formalism.",
+            "url": "https://doi.org/10.1007/s00220-026-05727-w",
+            "doi": "10.1007/s00220-026-05727-w",
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          },
+          {
+            "title": "Planck-Scale Structures Reinterpreted as Thresholds of Informational Hosting: From Informational Collapse to Hodge Topologies",
+            "url": "https://doi.org/10.20944/preprints202602.0787.v1",
+            "doi": "10.20944/preprints202602.0787.v1",
+            "provider": "europepmc",
+            "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+            "relation": "CANDIDATE_ONLY",
+            "corroborated": false
+          }
+        ],
+        "filtered_count": 0,
+        "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+        "response_sha256": "21b88d287419f49444d748d46a2b3348b2a4104060e0864c6208c6383ea9860b",
+        "endpoint": "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
+      }
+    ]
+  },
+  "evidence": [
+    "retrieval:crossref:sha256:ac3507d158ab564d8aa40fd3de4f7a8f7ab799dc466778e0a57050fd40c9c995",
+    "retrieval:europepmc:sha256:21b88d287419f49444d748d46a2b3348b2a4104060e0864c6208c6383ea9860b"
+  ],
+  "evidence_kind": "retrieval-trace",
+  "scope_kind": "retrieval-state",
+  "substantive": false,
+  "corroborated": false,
+  "satisfies": [],
+  "unresolved": [
+    "Results require source-specific verification."
+  ],
+  "cost": {
+    "elapsed_seconds": 6.482651619997341
+  },
+  "endpoint_metadata_note": "Endpoint field corrected from final-result host to the actual adapter endpoint; retrieved records and hashes unchanged."
+}

@@ -1,0 +1,7 @@
+{
+  "object_id": "artifact-b7b55e6685",
+  "source_sha256": "600f58a2a569d8f126c769b40df1f70e47495277a14adb9bc541fb8978845598",
+  "status": "QUARANTINED",
+  "exact_transport": true,
+  "authority_transfer": false
+}

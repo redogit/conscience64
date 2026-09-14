@@ -1,0 +1,164 @@
+{
+  "schema": "orbit-search-working/3",
+  "subject": "Hodge conjecture",
+  "motivator": "Locate bounded research leads",
+  "request": "Search without promoting claims",
+  "obligation": "Preserve source identity and unresolved questions",
+  "surface": {
+    "user_query": "Hodge conjecture",
+    "assistant_output_kind": "retrieval metadata",
+    "roles_distinct": true
+  },
+  "context": {
+    "knowledge_decay": "active dependency"
+  },
+  "observations": [
+    {
+      "provider": "crossref",
+      "status": "ok",
+      "results": [
+        {
+          "title": "Algebraic Cycles, Hodge Structure, and the Hodge Conjecture",
+          "url": "https://doi.org/10.2139/ssrn.5371902",
+          "doi": "10.2139/ssrn.5371902",
+          "provider": "crossref",
+          "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "Formulation of the general Hodge conjecture",
+          "url": "https://doi.org/10.1090/crmm/010/07",
+          "doi": "10.1090/crmm/010/07",
+          "provider": "crossref",
+          "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "A survey of the Hodge conjecture for abelian varieties",
+          "url": "https://doi.org/10.1090/crmm/010/17",
+          "doi": "10.1090/crmm/010/17",
+          "provider": "crossref",
+          "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "The approach to the Hodge conjecture via normal functions",
+          "url": "https://doi.org/10.1090/crmm/010/14",
+          "doi": "10.1090/crmm/010/14",
+          "provider": "crossref",
+          "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "A real analogue of the Hodge conjecture",
+          "url": "https://doi.org/10.70675/b5eabab4zdfeaz4ccfza9bbz79a42b964ae3",
+          "doi": "10.70675/b5eabab4zdfeaz4ccfza9bbz79a42b964ae3",
+          "provider": "crossref",
+          "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        }
+      ],
+      "filtered_count": 0,
+      "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+      "response_sha256": "ac3507d158ab564d8aa40fd3de4f7a8f7ab799dc466778e0a57050fd40c9c995",
+      "endpoint": "doi.org"
+    },
+    {
+      "provider": "europepmc",
+      "status": "ok",
+      "results": [
+        {
+          "title": "Proof of the Hodge Conjecture",
+          "url": "https://doi.org/10.20944/preprints202509.1435.v1",
+          "doi": "10.20944/preprints202509.1435.v1",
+          "provider": "europepmc",
+          "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "Relative Secant Cycles and Hodge Classes",
+          "url": "https://doi.org/10.20944/preprints202602.0462.v5",
+          "doi": "10.20944/preprints202602.0462.v5",
+          "provider": "europepmc",
+          "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "Integral Defects of Rational Hodge Cycle Constructions",
+          "url": "https://doi.org/10.20944/preprints202607.0326.v1",
+          "doi": "10.20944/preprints202607.0326.v1",
+          "provider": "europepmc",
+          "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "Globalization of Perturbative Chern-Simons Theory on the Moduli Space of Flat Connections in the BV Formalism.",
+          "url": "https://doi.org/10.1007/s00220-026-05727-w",
+          "doi": "10.1007/s00220-026-05727-w",
+          "provider": "europepmc",
+          "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        },
+        {
+          "title": "Planck-Scale Structures Reinterpreted as Thresholds of Informational Hosting: From Informational Collapse to Hodge Topologies",
+          "url": "https://doi.org/10.20944/preprints202602.0787.v1",
+          "doi": "10.20944/preprints202602.0787.v1",
+          "provider": "europepmc",
+          "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+          "relation": "CANDIDATE_ONLY",
+          "corroborated": false
+        }
+      ],
+      "filtered_count": 0,
+      "retrieved_at": "2026-09-13T23:18:28.646349+00:00",
+      "response_sha256": "21b88d287419f49444d748d46a2b3348b2a4104060e0864c6208c6383ea9860b",
+      "endpoint": "doi.org"
+    }
+  ],
+  "kept": [
+    {
+      "title": "Algebraic Cycles, Hodge Structure, and the Hodge Conjecture",
+      "url": "https://doi.org/10.2139/ssrn.5371902",
+      "doi": "10.2139/ssrn.5371902",
+      "provider": "crossref",
+      "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+      "relation": "CANDIDATE_ONLY",
+      "corroborated": false,
+      "provenance": [
+        {
+          "provider": "crossref",
+          "retrieved_at": "2026-09-13T23:18:28.628110+00:00"
+        }
+      ]
+    },
+    {
+      "title": "Formulation of the general Hodge conjecture",
+      "url": "https://doi.org/10.1090/crmm/010/07",
+      "doi": "10.1090/crmm/010/07",
+      "provider": "crossref",
+      "retrieved_at": "2026-09-13T23:18:28.628110+00:00",
+      "relation": "CANDIDATE_ONLY",
+      "corroborated": false,
+      "provenance": [
+        {
+          "provider": "crossref",
+          "retrieved_at": "2026-09-13T23:18:28.628110+00:00"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "Source content and applicability not yet verified"
+  ],
+  "authority_transfer": false,
+  "corroborated": false
+}

@@ -1,0 +1,2821 @@
+{
+  "version": "3.0",
+  "country_source": "pycountry 26.2.16",
+  "policy": {
+    "excluded_country": "RU",
+    "excluded_provider_names": [
+      "Yandex",
+      "Rambler",
+      "Mail.ru",
+      "Sputnik",
+      "Nigma",
+      "Aport"
+    ],
+    "blocked_roots": [
+      "yandex.com",
+      "yandex.ru",
+      "ya.ru",
+      "rambler.ru",
+      "mail.ru",
+      "go.mail.ru",
+      "sputnik.ru",
+      "nigma.ru",
+      "aport.ru"
+    ],
+    "blocked_tlds": [
+      "ru",
+      "su",
+      "xn--p1ai"
+    ],
+    "scope": "Provider routing and known endpoints; not a claim of zero Russian-origin documents, investment or hidden upstream dependencies"
+  },
+  "providers": [
+    {
+      "id": "google",
+      "name": "Google",
+      "category": "web",
+      "country_affinity": "US",
+      "homepage": "https://www.google.com/",
+      "query_template": "https://www.google.com/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.google.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "bing",
+      "name": "Bing",
+      "category": "web",
+      "country_affinity": "US",
+      "homepage": "https://www.bing.com/",
+      "query_template": "https://www.bing.com/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.bing.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "brave",
+      "name": "Brave Search",
+      "category": "web",
+      "country_affinity": "US",
+      "homepage": "https://search.brave.com/",
+      "query_template": "https://search.brave.com/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "brave",
+      "evidence_url": "https://search.brave.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "duckduckgo",
+      "name": "DuckDuckGo",
+      "category": "web",
+      "country_affinity": "US",
+      "homepage": "https://duckduckgo.com/",
+      "query_template": "https://duckduckgo.com/?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "bing_and_other_sources",
+      "evidence_url": "https://duckduckgo.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "mojeek",
+      "name": "Mojeek",
+      "category": "web",
+      "country_affinity": "GB",
+      "homepage": "https://www.mojeek.com/",
+      "query_template": "https://www.mojeek.com/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "mojeek",
+      "evidence_url": "https://www.mojeek.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "qwant",
+      "name": "Qwant",
+      "category": "web",
+      "country_affinity": "FR",
+      "homepage": "https://www.qwant.com/",
+      "query_template": "https://www.qwant.com/?q={q}&t=web",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.qwant.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "ecosia",
+      "name": "Ecosia",
+      "category": "web",
+      "country_affinity": "DE",
+      "homepage": "https://www.ecosia.org/",
+      "query_template": "https://www.ecosia.org/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.ecosia.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "startpage",
+      "name": "Startpage",
+      "category": "web",
+      "country_affinity": "NL",
+      "homepage": "https://www.startpage.com/",
+      "query_template": "https://www.startpage.com/sp/search?query={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.startpage.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "swisscows",
+      "name": "Swisscows",
+      "category": "web",
+      "country_affinity": "CH",
+      "homepage": "https://swisscows.com/",
+      "query_template": "https://swisscows.com/en/web?query={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://swisscows.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "marginalia",
+      "name": "Marginalia",
+      "category": "web",
+      "country_affinity": "SE",
+      "homepage": "https://marginalia-search.com/",
+      "query_template": "https://marginalia-search.com/search?query={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://marginalia-search.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "wiby",
+      "name": "Wiby",
+      "category": "web",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://wiby.me/",
+      "query_template": "https://wiby.me/?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://wiby.me/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "yahoo",
+      "name": "Yahoo Search",
+      "category": "web",
+      "country_affinity": "US",
+      "homepage": "https://search.yahoo.com/",
+      "query_template": "https://search.yahoo.com/search?p={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://search.yahoo.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "seznam",
+      "name": "Seznam",
+      "category": "web",
+      "country_affinity": "CZ",
+      "homepage": "https://search.seznam.cz/",
+      "query_template": "https://search.seznam.cz/?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://search.seznam.cz/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "naver",
+      "name": "Naver",
+      "category": "web",
+      "country_affinity": "KR",
+      "homepage": "https://search.naver.com/",
+      "query_template": "https://search.naver.com/search.naver?query={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://search.naver.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "daum",
+      "name": "Daum",
+      "category": "web",
+      "country_affinity": "KR",
+      "homepage": "https://search.daum.net/",
+      "query_template": "https://search.daum.net/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://search.daum.net/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "yahoo-jp",
+      "name": "Yahoo Japan",
+      "category": "web",
+      "country_affinity": "JP",
+      "homepage": "https://search.yahoo.co.jp/",
+      "query_template": "https://search.yahoo.co.jp/search?p={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://search.yahoo.co.jp/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "baidu",
+      "name": "Baidu",
+      "category": "web",
+      "country_affinity": "CN",
+      "homepage": "https://www.baidu.com/",
+      "query_template": "https://www.baidu.com/s?wd={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.baidu.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "sogou",
+      "name": "Sogou",
+      "category": "web",
+      "country_affinity": "CN",
+      "homepage": "https://www.sogou.com/",
+      "query_template": "https://www.sogou.com/web?query={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.sogou.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "360search",
+      "name": "360 Search",
+      "category": "web",
+      "country_affinity": "CN",
+      "homepage": "https://www.so.com/",
+      "query_template": "https://www.so.com/s?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.so.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "yep",
+      "name": "Yep",
+      "category": "web",
+      "country_affinity": "SG",
+      "homepage": "https://yep.com/",
+      "query_template": "https://yep.com/web?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://yep.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "category": "research",
+      "country_affinity": "US",
+      "homepage": "https://arxiv.org/",
+      "query_template": "https://arxiv.org/search/?query={q}&searchtype=all",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://arxiv.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "crossref",
+      "name": "Crossref",
+      "category": "research",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://search.crossref.org/",
+      "query_template": "https://search.crossref.org/?q={q}",
+      "enabled": true,
+      "mode": "api_and_launch",
+      "route_kind": "native_search",
+      "index_family": "crossref_metadata",
+      "evidence_url": "https://search.crossref.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "category": "research",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://openalex.org/",
+      "query_template": "https://openalex.org/works?search={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://openalex.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "semantic-scholar",
+      "name": "Semantic Scholar",
+      "category": "research",
+      "country_affinity": "US",
+      "homepage": "https://www.semanticscholar.org/",
+      "query_template": "https://www.semanticscholar.org/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.semanticscholar.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "scholar",
+      "name": "Google Scholar",
+      "category": "research",
+      "country_affinity": "US",
+      "homepage": "https://scholar.google.com/",
+      "query_template": "https://scholar.google.com/scholar?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://scholar.google.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "base",
+      "name": "BASE",
+      "category": "research",
+      "country_affinity": "DE",
+      "homepage": "https://www.base-search.net/",
+      "query_template": "https://www.base-search.net/Search/Results?lookfor={q}&type=all",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.base-search.net/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "core",
+      "name": "CORE",
+      "category": "research",
+      "country_affinity": "GB",
+      "homepage": "https://core.ac.uk/",
+      "query_template": "https://core.ac.uk/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://core.ac.uk/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "doaj",
+      "name": "DOAJ",
+      "category": "research",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://doaj.org/",
+      "query_template": "https://doaj.org/search/articles?ref=homepage-box&q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://doaj.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "pubmed",
+      "name": "PubMed",
+      "category": "research",
+      "country_affinity": "US",
+      "homepage": "https://pubmed.ncbi.nlm.nih.gov/",
+      "query_template": "https://pubmed.ncbi.nlm.nih.gov/?term={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://pubmed.ncbi.nlm.nih.gov/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "europepmc",
+      "name": "Europe PMC",
+      "category": "research",
+      "country_affinity": "GB",
+      "homepage": "https://europepmc.org/",
+      "query_template": "https://europepmc.org/search?query={q}",
+      "enabled": true,
+      "mode": "api_and_launch",
+      "route_kind": "native_search",
+      "index_family": "europepmc_metadata",
+      "evidence_url": "https://europepmc.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "zbmath",
+      "name": "zbMATH Open",
+      "category": "research",
+      "country_affinity": "DE",
+      "homepage": "https://zbmath.org/",
+      "query_template": "https://zbmath.org/?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://zbmath.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "eudml",
+      "name": "EuDML",
+      "category": "research",
+      "country_affinity": "EU",
+      "homepage": "https://eudml.org/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://eudml.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "hal",
+      "name": "HAL",
+      "category": "research",
+      "country_affinity": "FR",
+      "homepage": "https://hal.science/",
+      "query_template": "https://hal.science/search/index/?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://hal.science/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "zenodo",
+      "name": "Zenodo",
+      "category": "research",
+      "country_affinity": "CH",
+      "homepage": "https://zenodo.org/",
+      "query_template": "https://zenodo.org/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://zenodo.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "scielo",
+      "name": "SciELO",
+      "category": "research",
+      "country_affinity": "BR",
+      "homepage": "https://search.scielo.org/",
+      "query_template": "https://search.scielo.org/?q={q}&lang=en",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://search.scielo.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "redalyc",
+      "name": "Redalyc",
+      "category": "research",
+      "country_affinity": "MX",
+      "homepage": "https://www.redalyc.org/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://www.redalyc.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "la-referencia",
+      "name": "LA Referencia",
+      "category": "research",
+      "country_affinity": "LATAM",
+      "homepage": "https://www.lareferencia.info/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://www.lareferencia.info/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "ajol",
+      "name": "African Journals Online",
+      "category": "research",
+      "country_affinity": "ZA",
+      "homepage": "https://www.ajol.info/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://www.ajol.info/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "jstage",
+      "name": "J-STAGE",
+      "category": "research",
+      "country_affinity": "JP",
+      "homepage": "https://www.jstage.jst.go.jp/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://www.jstage.jst.go.jp/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "cinii",
+      "name": "CiNii Research",
+      "category": "research",
+      "country_affinity": "JP",
+      "homepage": "https://cir.nii.ac.jp/",
+      "query_template": "https://cir.nii.ac.jp/all?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://cir.nii.ac.jp/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "dergipark",
+      "name": "DergiPark",
+      "category": "research",
+      "country_affinity": "TR",
+      "homepage": "https://dergipark.org.tr/",
+      "query_template": "https://dergipark.org.tr/en/search?q={q}&section=articles",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://dergipark.org.tr/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "garuda",
+      "name": "GARUDA",
+      "category": "research",
+      "country_affinity": "ID",
+      "homepage": "https://garuda.kemdikbud.go.id/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://garuda.kemdikbud.go.id/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "thaijo",
+      "name": "Thai journal search",
+      "category": "research",
+      "country_affinity": "TH",
+      "homepage": "https://search.tci-thailand.org/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://search.tci-thailand.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "shodhganga",
+      "name": "Shodhganga",
+      "category": "research",
+      "country_affinity": "IN",
+      "homepage": "https://shodhganga.inflibnet.ac.in/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://shodhganga.inflibnet.ac.in/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "ndl-india",
+      "name": "National Digital Library of India",
+      "category": "archives",
+      "country_affinity": "IN",
+      "homepage": "https://ndl.iitkgp.ac.in/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://ndl.iitkgp.ac.in/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "recolecta",
+      "name": "RECOLECTA",
+      "category": "research",
+      "country_affinity": "ES",
+      "homepage": "https://recolecta.fecyt.es/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://recolecta.fecyt.es/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "category": "code",
+      "country_affinity": "US",
+      "homepage": "https://github.com/",
+      "query_template": "https://github.com/search?q={q}&type=repositories",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://github.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "gitlab",
+      "name": "GitLab",
+      "category": "code",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://gitlab.com/",
+      "query_template": "https://gitlab.com/search?search={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://gitlab.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "stackoverflow",
+      "name": "Stack Overflow",
+      "category": "code",
+      "country_affinity": "US",
+      "homepage": "https://stackoverflow.com/",
+      "query_template": "https://stackoverflow.com/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://stackoverflow.com/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face",
+      "category": "code",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://huggingface.co/",
+      "query_template": "https://huggingface.co/models?search={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://huggingface.co/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "datagov",
+      "name": "Data.gov",
+      "category": "code",
+      "country_affinity": "US",
+      "homepage": "https://data.gov/",
+      "query_template": "https://catalog.data.gov/dataset?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://data.gov/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "eu-data",
+      "name": "European Data Portal",
+      "category": "code",
+      "country_affinity": "EU",
+      "homepage": "https://data.europa.eu/",
+      "query_template": "https://data.europa.eu/data/datasets?query={q}&locale=en",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://data.europa.eu/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "worldbank",
+      "name": "World Bank Data",
+      "category": "code",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://data.worldbank.org/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://data.worldbank.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "gbif",
+      "name": "GBIF",
+      "category": "code",
+      "country_affinity": "DK",
+      "homepage": "https://www.gbif.org/",
+      "query_template": "https://www.gbif.org/dataset/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.gbif.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "internetarchive",
+      "name": "Internet Archive",
+      "category": "archives",
+      "country_affinity": "US",
+      "homepage": "https://archive.org/",
+      "query_template": "https://archive.org/search?query={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://archive.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "openlibrary",
+      "name": "Open Library",
+      "category": "archives",
+      "country_affinity": "US",
+      "homepage": "https://openlibrary.org/",
+      "query_template": "https://openlibrary.org/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://openlibrary.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "worldcat",
+      "name": "WorldCat",
+      "category": "archives",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://search.worldcat.org/",
+      "query_template": "https://search.worldcat.org/search?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://search.worldcat.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "loc",
+      "name": "Library of Congress",
+      "category": "archives",
+      "country_affinity": "US",
+      "homepage": "https://www.loc.gov/",
+      "query_template": "https://www.loc.gov/search/?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.loc.gov/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "europeana",
+      "name": "Europeana",
+      "category": "archives",
+      "country_affinity": "EU",
+      "homepage": "https://www.europeana.eu/",
+      "query_template": "https://www.europeana.eu/en/search?query={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.europeana.eu/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "trove",
+      "name": "Trove",
+      "category": "archives",
+      "country_affinity": "AU",
+      "homepage": "https://trove.nla.gov.au/",
+      "query_template": "https://trove.nla.gov.au/search?keyword={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://trove.nla.gov.au/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "paperspast",
+      "name": "Papers Past",
+      "category": "archives",
+      "country_affinity": "NZ",
+      "homepage": "https://paperspast.natlib.govt.nz/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://paperspast.natlib.govt.nz/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "canada-archives",
+      "name": "Library and Archives Canada",
+      "category": "archives",
+      "country_affinity": "CA",
+      "homepage": "https://library-archives.canada.ca/",
+      "query_template": null,
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "site_search_via_brave",
+      "index_family": "unverified",
+      "evidence_url": "https://library-archives.canada.ca/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "wikipedia",
+      "name": "Wikipedia",
+      "category": "archives",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://www.wikipedia.org/",
+      "query_template": "https://en.wikipedia.org/w/index.php?search={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://www.wikipedia.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "wikimedia",
+      "name": "Wikimedia Commons",
+      "category": "archives",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://commons.wikimedia.org/",
+      "query_template": "https://commons.wikimedia.org/w/index.php?search={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://commons.wikimedia.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    },
+    {
+      "id": "openverse",
+      "name": "Openverse",
+      "category": "archives",
+      "country_affinity": "GLOBAL",
+      "homepage": "https://openverse.org/",
+      "query_template": "https://openverse.org/search/?q={q}",
+      "enabled": true,
+      "mode": "launch",
+      "route_kind": "native_search",
+      "index_family": "unverified",
+      "evidence_url": "https://openverse.org/",
+      "verification": "catalogued; live result retrieval not asserted",
+      "known_russian_provider": false
+    }
+  ],
+  "countries": [
+    {
+      "code": "AF",
+      "name": "Afghanistan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AL",
+      "name": "Albania",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "DZ",
+      "name": "Algeria",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AS",
+      "name": "American Samoa",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AD",
+      "name": "Andorra",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AO",
+      "name": "Angola",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AI",
+      "name": "Anguilla",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AQ",
+      "name": "Antarctica",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AG",
+      "name": "Antigua and Barbuda",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AR",
+      "name": "Argentina",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AM",
+      "name": "Armenia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AW",
+      "name": "Aruba",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AU",
+      "name": "Australia",
+      "local_provider_ids": [
+        "trove"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AT",
+      "name": "Austria",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AZ",
+      "name": "Azerbaijan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BS",
+      "name": "Bahamas",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BH",
+      "name": "Bahrain",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BD",
+      "name": "Bangladesh",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BB",
+      "name": "Barbados",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BY",
+      "name": "Belarus",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BE",
+      "name": "Belgium",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BZ",
+      "name": "Belize",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BJ",
+      "name": "Benin",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BM",
+      "name": "Bermuda",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BT",
+      "name": "Bhutan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BO",
+      "name": "Bolivia, Plurinational State of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BQ",
+      "name": "Bonaire, Sint Eustatius and Saba",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BA",
+      "name": "Bosnia and Herzegovina",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BW",
+      "name": "Botswana",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BV",
+      "name": "Bouvet Island",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BR",
+      "name": "Brazil",
+      "local_provider_ids": [
+        "scielo"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IO",
+      "name": "British Indian Ocean Territory",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BN",
+      "name": "Brunei Darussalam",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BG",
+      "name": "Bulgaria",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BF",
+      "name": "Burkina Faso",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BI",
+      "name": "Burundi",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CV",
+      "name": "Cabo Verde",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KH",
+      "name": "Cambodia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CM",
+      "name": "Cameroon",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CA",
+      "name": "Canada",
+      "local_provider_ids": [
+        "canada-archives"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KY",
+      "name": "Cayman Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CF",
+      "name": "Central African Republic",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TD",
+      "name": "Chad",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CL",
+      "name": "Chile",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CN",
+      "name": "China",
+      "local_provider_ids": [
+        "baidu",
+        "sogou",
+        "360search"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CX",
+      "name": "Christmas Island",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CC",
+      "name": "Cocos (Keeling) Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CO",
+      "name": "Colombia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KM",
+      "name": "Comoros",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CG",
+      "name": "Congo",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CD",
+      "name": "Congo, The Democratic Republic of the",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CK",
+      "name": "Cook Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CR",
+      "name": "Costa Rica",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "HR",
+      "name": "Croatia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CU",
+      "name": "Cuba",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CW",
+      "name": "Curaçao",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CY",
+      "name": "Cyprus",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CZ",
+      "name": "Czechia",
+      "local_provider_ids": [
+        "seznam"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CI",
+      "name": "Côte d'Ivoire",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "DK",
+      "name": "Denmark",
+      "local_provider_ids": [
+        "gbif"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "DJ",
+      "name": "Djibouti",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "DM",
+      "name": "Dominica",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "DO",
+      "name": "Dominican Republic",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "EC",
+      "name": "Ecuador",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "EG",
+      "name": "Egypt",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SV",
+      "name": "El Salvador",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GQ",
+      "name": "Equatorial Guinea",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ER",
+      "name": "Eritrea",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "EE",
+      "name": "Estonia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SZ",
+      "name": "Eswatini",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ET",
+      "name": "Ethiopia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "FK",
+      "name": "Falkland Islands (Malvinas)",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "FO",
+      "name": "Faroe Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "FJ",
+      "name": "Fiji",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "FI",
+      "name": "Finland",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "FR",
+      "name": "France",
+      "local_provider_ids": [
+        "qwant",
+        "hal"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GF",
+      "name": "French Guiana",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PF",
+      "name": "French Polynesia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TF",
+      "name": "French Southern Territories",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GA",
+      "name": "Gabon",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GM",
+      "name": "Gambia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GE",
+      "name": "Georgia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "DE",
+      "name": "Germany",
+      "local_provider_ids": [
+        "ecosia",
+        "base",
+        "zbmath"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GH",
+      "name": "Ghana",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GI",
+      "name": "Gibraltar",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GR",
+      "name": "Greece",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GL",
+      "name": "Greenland",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GD",
+      "name": "Grenada",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GP",
+      "name": "Guadeloupe",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GU",
+      "name": "Guam",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GT",
+      "name": "Guatemala",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GG",
+      "name": "Guernsey",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GN",
+      "name": "Guinea",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GW",
+      "name": "Guinea-Bissau",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GY",
+      "name": "Guyana",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "HT",
+      "name": "Haiti",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "HM",
+      "name": "Heard Island and McDonald Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "VA",
+      "name": "Holy See (Vatican City State)",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "HN",
+      "name": "Honduras",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "HK",
+      "name": "Hong Kong",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "HU",
+      "name": "Hungary",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IS",
+      "name": "Iceland",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IN",
+      "name": "India",
+      "local_provider_ids": [
+        "shodhganga",
+        "ndl-india"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ID",
+      "name": "Indonesia",
+      "local_provider_ids": [
+        "garuda"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IR",
+      "name": "Iran, Islamic Republic of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IQ",
+      "name": "Iraq",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IE",
+      "name": "Ireland",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IM",
+      "name": "Isle of Man",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IL",
+      "name": "Israel",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "IT",
+      "name": "Italy",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "JM",
+      "name": "Jamaica",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "JP",
+      "name": "Japan",
+      "local_provider_ids": [
+        "yahoo-jp",
+        "jstage",
+        "cinii"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "JE",
+      "name": "Jersey",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "JO",
+      "name": "Jordan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KZ",
+      "name": "Kazakhstan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KE",
+      "name": "Kenya",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KI",
+      "name": "Kiribati",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KP",
+      "name": "Korea, Democratic People's Republic of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KR",
+      "name": "Korea, Republic of",
+      "local_provider_ids": [
+        "naver",
+        "daum"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KW",
+      "name": "Kuwait",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KG",
+      "name": "Kyrgyzstan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LA",
+      "name": "Lao People's Democratic Republic",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LV",
+      "name": "Latvia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LB",
+      "name": "Lebanon",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LS",
+      "name": "Lesotho",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LR",
+      "name": "Liberia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LY",
+      "name": "Libya",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LI",
+      "name": "Liechtenstein",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LT",
+      "name": "Lithuania",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LU",
+      "name": "Luxembourg",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MO",
+      "name": "Macao",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MG",
+      "name": "Madagascar",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MW",
+      "name": "Malawi",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MY",
+      "name": "Malaysia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MV",
+      "name": "Maldives",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ML",
+      "name": "Mali",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MT",
+      "name": "Malta",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MH",
+      "name": "Marshall Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MQ",
+      "name": "Martinique",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MR",
+      "name": "Mauritania",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MU",
+      "name": "Mauritius",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "YT",
+      "name": "Mayotte",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MX",
+      "name": "Mexico",
+      "local_provider_ids": [
+        "redalyc"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "FM",
+      "name": "Micronesia, Federated States of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MD",
+      "name": "Moldova, Republic of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MC",
+      "name": "Monaco",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MN",
+      "name": "Mongolia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ME",
+      "name": "Montenegro",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MS",
+      "name": "Montserrat",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MA",
+      "name": "Morocco",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MZ",
+      "name": "Mozambique",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MM",
+      "name": "Myanmar",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NA",
+      "name": "Namibia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NR",
+      "name": "Nauru",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NP",
+      "name": "Nepal",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NL",
+      "name": "Netherlands",
+      "local_provider_ids": [
+        "startpage"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NC",
+      "name": "New Caledonia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NZ",
+      "name": "New Zealand",
+      "local_provider_ids": [
+        "paperspast"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NI",
+      "name": "Nicaragua",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NE",
+      "name": "Niger",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NG",
+      "name": "Nigeria",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NU",
+      "name": "Niue",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NF",
+      "name": "Norfolk Island",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MK",
+      "name": "North Macedonia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MP",
+      "name": "Northern Mariana Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "NO",
+      "name": "Norway",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "OM",
+      "name": "Oman",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PK",
+      "name": "Pakistan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PW",
+      "name": "Palau",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PS",
+      "name": "Palestine, State of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PA",
+      "name": "Panama",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PG",
+      "name": "Papua New Guinea",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PY",
+      "name": "Paraguay",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PE",
+      "name": "Peru",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PH",
+      "name": "Philippines",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PN",
+      "name": "Pitcairn",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PL",
+      "name": "Poland",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PT",
+      "name": "Portugal",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PR",
+      "name": "Puerto Rico",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "QA",
+      "name": "Qatar",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "RO",
+      "name": "Romania",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "RW",
+      "name": "Rwanda",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "RE",
+      "name": "Réunion",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "BL",
+      "name": "Saint Barthélemy",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SH",
+      "name": "Saint Helena, Ascension and Tristan da Cunha",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "KN",
+      "name": "Saint Kitts and Nevis",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LC",
+      "name": "Saint Lucia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "MF",
+      "name": "Saint Martin (French part)",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "PM",
+      "name": "Saint Pierre and Miquelon",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "VC",
+      "name": "Saint Vincent and the Grenadines",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "WS",
+      "name": "Samoa",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SM",
+      "name": "San Marino",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ST",
+      "name": "Sao Tome and Principe",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SA",
+      "name": "Saudi Arabia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SN",
+      "name": "Senegal",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "RS",
+      "name": "Serbia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SC",
+      "name": "Seychelles",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SL",
+      "name": "Sierra Leone",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SG",
+      "name": "Singapore",
+      "local_provider_ids": [
+        "yep"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SX",
+      "name": "Sint Maarten (Dutch part)",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SK",
+      "name": "Slovakia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SI",
+      "name": "Slovenia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SB",
+      "name": "Solomon Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SO",
+      "name": "Somalia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ZA",
+      "name": "South Africa",
+      "local_provider_ids": [
+        "ajol"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GS",
+      "name": "South Georgia and the South Sandwich Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SS",
+      "name": "South Sudan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ES",
+      "name": "Spain",
+      "local_provider_ids": [
+        "recolecta"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "LK",
+      "name": "Sri Lanka",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SD",
+      "name": "Sudan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SR",
+      "name": "Suriname",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SJ",
+      "name": "Svalbard and Jan Mayen",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SE",
+      "name": "Sweden",
+      "local_provider_ids": [
+        "marginalia"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "CH",
+      "name": "Switzerland",
+      "local_provider_ids": [
+        "swisscows",
+        "zenodo"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "SY",
+      "name": "Syrian Arab Republic",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TW",
+      "name": "Taiwan, Province of China",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TJ",
+      "name": "Tajikistan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TZ",
+      "name": "Tanzania, United Republic of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TH",
+      "name": "Thailand",
+      "local_provider_ids": [
+        "thaijo"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TL",
+      "name": "Timor-Leste",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TG",
+      "name": "Togo",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TK",
+      "name": "Tokelau",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TO",
+      "name": "Tonga",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TT",
+      "name": "Trinidad and Tobago",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TN",
+      "name": "Tunisia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TM",
+      "name": "Turkmenistan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TC",
+      "name": "Turks and Caicos Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TV",
+      "name": "Tuvalu",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "TR",
+      "name": "Türkiye",
+      "local_provider_ids": [
+        "dergipark"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "UG",
+      "name": "Uganda",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "UA",
+      "name": "Ukraine",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AE",
+      "name": "United Arab Emirates",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom",
+      "local_provider_ids": [
+        "mojeek",
+        "core",
+        "europepmc"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "local_provider_ids": [
+        "google",
+        "bing",
+        "brave",
+        "duckduckgo",
+        "yahoo",
+        "arxiv",
+        "semantic-scholar",
+        "scholar",
+        "pubmed",
+        "github",
+        "stackoverflow",
+        "datagov",
+        "internetarchive",
+        "openlibrary",
+        "loc"
+      ],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "UM",
+      "name": "United States Minor Outlying Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "UY",
+      "name": "Uruguay",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "UZ",
+      "name": "Uzbekistan",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "VU",
+      "name": "Vanuatu",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "VE",
+      "name": "Venezuela, Bolivarian Republic of",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "VN",
+      "name": "Viet Nam",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "VG",
+      "name": "Virgin Islands, British",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "VI",
+      "name": "Virgin Islands, U.S.",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "WF",
+      "name": "Wallis and Futuna",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "EH",
+      "name": "Western Sahara",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "YE",
+      "name": "Yemen",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ZM",
+      "name": "Zambia",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "ZW",
+      "name": "Zimbabwe",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    },
+    {
+      "code": "AX",
+      "name": "Åland Islands",
+      "local_provider_ids": [],
+      "fallback": "global_engines_with_country_keyword",
+      "local_origin_guaranteed": false
+    }
+  ]
+}

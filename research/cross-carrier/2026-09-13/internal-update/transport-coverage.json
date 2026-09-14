@@ -1,0 +1,775 @@
+{
+  "boundary": "Recovered 39-branch snapshot; not full account census",
+  "branches": [
+    {
+      "branch": "data-driven-ecs",
+      "runtime_status_this_continuation": "EXECUTED_JSONL_BRIDGE; strict router candidate not promoted",
+      "recorded_branch": {
+        "key": "data-driven-ecs",
+        "name": "Data-driven ECS",
+        "group": "active-core",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "ACTIVE",
+        "problem_class": "software",
+        "linked_problem_keys": [
+          "P-CROSS-CARRIER",
+          "P-INTEGRATION"
+        ],
+        "next_obligation": "Accept new bounded problems through deterministic intake and preserve restart-safe criterion graphs.",
+        "claim_ceiling": "bounded framework behavior only",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "cross-carrier-wave",
+      "runtime_status_this_continuation": "EXECUTED_FOUR_RUNTIME_PACKET_CHAIN",
+      "recorded_branch": {
+        "key": "cross-carrier-wave",
+        "name": "Cross Carrier Wave",
+        "group": "active-core",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "ACTIVE",
+        "problem_class": "research",
+        "linked_problem_keys": [
+          "P-CROSS-CARRIER"
+        ],
+        "next_obligation": "Reuse only when a receiving problem declares a consequential carrier/transform obligation.",
+        "claim_ceiling": "finite bounded implementations; not a universal physical field",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "orbit",
+      "runtime_status_this_continuation": "EXECUTED_DATABASE_REOPEN_AND_CONNECTION_CHECKS",
+      "recorded_branch": {
+        "key": "orbit",
+        "name": "Orbit Lab",
+        "group": "active-core",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "ACTIVE",
+        "problem_class": "recovery",
+        "linked_problem_keys": [
+          "P-ORBIT-RECOVERY"
+        ],
+        "next_obligation": "Preserve selective primary-evidence routing; investigate host-wrapper linger only when it blocks a real task; accessibility remains human-evidence bounded.",
+        "claim_ceiling": "retrieval/verification behavior within recorded scope",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-ORBIT-CURRENT"
+        ]
+      }
+    },
+    {
+      "branch": "knowledge-decay",
+      "runtime_status_this_continuation": "EXECUTED_PROVENANCE_TABLE_LOSS_AND_RECOVERY_PROBE",
+      "recorded_branch": {
+        "key": "knowledge-decay",
+        "name": "Historical knowledge recovery / Knowledge Decay",
+        "group": "active-core",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "ACTIVE_ON_DEMAND",
+        "problem_class": "recovery",
+        "linked_problem_keys": [
+          "P-ORBIT-RECOVERY"
+        ],
+        "next_obligation": "Reverify recovered knowledge only when a present obligation depends on it.",
+        "claim_ceiling": "source-bound recovery, not global completeness",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "pool-water",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "pool-water",
+        "name": "Water / pool engineering",
+        "group": "physical",
+        "coverage": "DESIGN_ONLY",
+        "activation": "BLOCKED_HUMAN",
+        "problem_class": "physical",
+        "linked_problem_keys": [
+          "P-POOL"
+        ],
+        "next_obligation": "Run the already-defined physical OFF/ON cleaning measurement, then record attention/maintenance cost.",
+        "claim_ceiling": "design until physical measurement exists",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "accessibility",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "accessibility",
+        "name": "Accessibility / CPACC / Section 508 / JAWS / document accessibility",
+        "group": "human-application",
+        "coverage": "DESIGNED_NOT_RUN",
+        "activation": "BLOCKED_HUMAN",
+        "problem_class": "human",
+        "linked_problem_keys": [
+          "P-ORBIT-RECOVERY"
+        ],
+        "next_obligation": "Collect real assistive-technology/user evidence for accessibility claims; keep tooling assistance distinct from human outcome evidence.",
+        "claim_ceiling": "design/tooling without human outcome claim",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "hodge",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "hodge",
+        "name": "Hodge conjecture",
+        "group": "open-research",
+        "coverage": "OPEN_NOT_ESTABLISHED",
+        "activation": "OPEN_RESEARCH",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Work only on explicitly bounded mathematical subclaims with proof/counterexample gates; no proof claim without complete primary mathematical evidence.",
+        "claim_ceiling": "open problem; no proof established",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "p-vs-np",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "p-vs-np",
+        "name": "P vs NP",
+        "group": "open-research",
+        "coverage": "OPEN_NOT_ESTABLISHED",
+        "activation": "OPEN_RESEARCH",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Separate finite SAT/decomposition behavior from complexity-class claims; attack only bounded lemmas or counterexamples.",
+        "claim_ceiling": "open problem; no resolution established",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "physics-extra-dim",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "physics-extra-dim",
+        "name": "Physics / quantum / extra-dimension observer",
+        "group": "open-research",
+        "coverage": "SYNTHETIC_EVIDENCE_ONLY",
+        "activation": "OPEN_RESEARCH",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Keep synthetic geometry/rank evidence separate from physical observation; seek discriminating observable or no-go constraint before physical claims.",
+        "claim_ceiling": "synthetic/model evidence only",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "operator-moonshot",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "operator-moonshot",
+        "name": "Operator Moonshot",
+        "group": "predecessor",
+        "coverage": "HISTORY_RECOVERY_AUTHORITY",
+        "activation": "QUARANTINED_ON_DEMAND",
+        "problem_class": "recovery",
+        "linked_problem_keys": [],
+        "next_obligation": "Use as primary-evidence locator/method source only when a current question earns retrieval; never inherit predecessor authority.",
+        "claim_ceiling": "predecessor evidence/methods only",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-MOONSHOT",
+          "CTX-OLU-RESIDUALS"
+        ]
+      }
+    },
+    {
+      "branch": "one-level-up",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "one-level-up",
+        "name": "One_Level_Up / AIRLOCK",
+        "group": "governance-method",
+        "coverage": "EVIDENCE_DISCIPLINE_PLUS_FINITE_QUOTIENT",
+        "activation": "ACTIVE_ON_DEMAND",
+        "problem_class": "recovery",
+        "linked_problem_keys": [],
+        "next_obligation": "Apply admission/provenance discipline to cross-project transfers; unresolved remains unresolved.",
+        "claim_ceiling": "custody/admission method, not domain truth",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "r3",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "r3",
+        "name": "R\u00b3 Scientific Method",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "CAPABILITY",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Provide bounded experimental design and one-factor tests when selected by a current problem.",
+        "claim_ceiling": "method support only outside its tested domains",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "tbcl",
+      "runtime_status_this_continuation": "EXECUTED_V0_1_SERIALIZER_AND_ORBIT_COMPACT_CARRIER",
+      "recorded_branch": {
+        "key": "tbcl",
+        "name": "TBCL \u2014 Context Language Lab",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "CAPABILITY",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Use relation/evaluation machinery only behind an explicit task interface; preserve source-language semantics.",
+        "claim_ceiling": "tested finite language/runtime behavior",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "tiny-babel",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "tiny-babel",
+        "name": "Tiny Babel",
+        "group": "reusable-method",
+        "coverage": "RECOVERY_ADJACENT",
+        "activation": "DORMANT_ON_DEMAND",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Recover clean source window before relying on historical recovery authority.",
+        "claim_ceiling": "locator/recovery boundary",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "csol",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "csol",
+        "name": "CSOL",
+        "group": "interface-method",
+        "coverage": "METHOD_OR_INTERFACE_PRESSURE",
+        "activation": "CAPABILITY",
+        "problem_class": "human",
+        "linked_problem_keys": [],
+        "next_obligation": "Pressure human-facing interfaces toward clarity/economy without converting interface quality into truth authority.",
+        "claim_ceiling": "method/interface pressure",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "shadow",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "shadow",
+        "name": "SHADOW",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "CAPABILITY_WITH_RECOVERY_GAP",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Use bounded structured-memory/control evidence; cleanly recover no-hook/control source window before stronger continuation.",
+        "claim_ceiling": "partial bounded control/memory evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "pdr",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "pdr",
+        "name": "Parameter Differential Reflow",
+        "group": "experimental",
+        "coverage": "EXPERIMENTAL_MECHANISM_NOT_PROMOTED",
+        "activation": "DORMANT_ON_DEMAND",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Require matched fixed-parameter baseline before any promotion or integration.",
+        "claim_ceiling": "experimental mechanism",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "runtime-relation-index",
+      "runtime_status_this_continuation": "COMPILED_AND_EXECUTED_SCOPED_LOOKUP",
+      "recorded_branch": {
+        "key": "runtime-relation-index",
+        "name": "RuntimeRelationIndex",
+        "group": "tooling",
+        "coverage": "TOOLING_NOT_EVIDENCE_AUTHORITY",
+        "activation": "CAPABILITY",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Use as retrieval helper only; never treat retrieval adjacency as evidence.",
+        "claim_ceiling": "tooling only",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "codec4d",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "codec4d",
+        "name": "4D codec / observer",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED_WITH_RECOVERY_GAP",
+        "activation": "CAPABILITY",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Reuse finite classification/nullspace/inversion counterevidence; recover incomplete source lineage if a current task requires implementation-level authority.",
+        "claim_ceiling": "finite codec/observer evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "musilanguage",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "musilanguage",
+        "name": "Musilanguage / necessity-first",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED_WITH_RECOVERY_GAP",
+        "activation": "CAPABILITY",
+        "problem_class": "human",
+        "linked_problem_keys": [],
+        "next_obligation": "Apply necessity-first compression only where it preserves consequential distinctions; recover Observer lineage before stronger claims.",
+        "claim_ceiling": "bounded observer/method evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "pulsenet-gp",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "pulsenet-gp",
+        "name": "PulseNet GP",
+        "group": "experimental",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "DORMANT_ON_DEMAND",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Use short curvature/structural-deletion evidence only as bounded model evidence; require new benchmark before broader claims.",
+        "claim_ceiling": "bounded prototype evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "pulsenet",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "pulsenet",
+        "name": "PulseNet original",
+        "group": "experimental",
+        "coverage": "EVIDENCE_LINKED_PARTIAL_LINEAGE",
+        "activation": "DORMANT_ON_DEMAND",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Resolve lineage/rewrite regression before treating prior XOR/spiral runs as current implementation evidence.",
+        "claim_ceiling": "mixed/partial lineage",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "computer-mind",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "computer-mind",
+        "name": "Computer Mind",
+        "group": "experimental",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "CAPABILITY",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Reuse component-confirmation/utility-boundary experiment patterns, not a mind ontology.",
+        "claim_ceiling": "bounded component/utility evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "CTX-EVIDENCE-MAP"
+        ]
+      }
+    },
+    {
+      "branch": "taskworld",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "taskworld",
+        "name": "TaskWorld / Operator-Mind O1.1",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "CAPABILITY",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Reuse causal ablation and independent-verification pattern when an executable actor/obligation interface needs it.",
+        "claim_ceiling": "bounded causal behavior",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "mncl",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "mncl",
+        "name": "MNCL / MNCL2",
+        "group": "experimental",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "DORMANT_ON_DEMAND",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Reuse only for matched factorization/causal questions with original boundaries preserved.",
+        "claim_ceiling": "bounded grid/factorization evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "spdm",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "spdm",
+        "name": "SPDM",
+        "group": "experimental",
+        "coverage": "EVIDENCE_LINKED_MIXED",
+        "activation": "DORMANT_ON_DEMAND",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Preserve repaired benchmark and failed reasoning-core result; require stronger baseline for any renewed mechanism claim.",
+        "claim_ceiling": "mixed bounded benchmark evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "language-workbench",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "language-workbench",
+        "name": "Language Structure Workbench",
+        "group": "application-tooling",
+        "coverage": "SOFTWARE_EVIDENCE",
+        "activation": "CAPABILITY",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Use selfchecked interface behavior as software capability, not linguistic truth authority.",
+        "claim_ceiling": "software behavior",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "multifactorial-creativity",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "multifactorial-creativity",
+        "name": "Multifactorial Creativity",
+        "group": "generator",
+        "coverage": "GENERATOR_METHOD_NO_TRUTH_AUTHORITY",
+        "activation": "CAPABILITY",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Generate candidates only; downstream evidence gates decide admission.",
+        "claim_ceiling": "idea generation only",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "web-ethics-economics",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "web-ethics-economics",
+        "name": "Web / ethics / economics",
+        "group": "human-direction",
+        "coverage": "NORMATIVE_ORIENTATION",
+        "activation": "ALWAYS_CONSTRAINT",
+        "problem_class": "human",
+        "linked_problem_keys": [],
+        "next_obligation": "Continue as continuous planning/action/result constraints, never empirical scientific proof.",
+        "claim_ceiling": "normative/decision layer",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "harmonic-field",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "harmonic-field",
+        "name": "3D + time harmonic field generator",
+        "group": "test-input",
+        "coverage": "DOMAIN_TEST_INPUT",
+        "activation": "DORMANT_ON_DEMAND",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Use as explicit mathematical test material only when a receiving experiment declares it.",
+        "claim_ceiling": "domain test input",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "excel-jaws",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "excel-jaws",
+        "name": "Excel/report automation + JAWS",
+        "group": "application-tooling",
+        "coverage": "APPLICATION_TOOLING",
+        "activation": "READY_FOR_INTAKE",
+        "problem_class": "application",
+        "linked_problem_keys": [],
+        "next_obligation": "Accept a concrete report/workbook task and optimize for screen-reader-safe reading/filling without reusing unrelated spreadsheets.",
+        "claim_ceiling": "application behavior, not research evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "member-success-jira",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "member-success-jira",
+        "name": "Member Success / Jira",
+        "group": "application-tooling",
+        "coverage": "APPLICATION_TOOLING",
+        "activation": "READY_FOR_INTAKE",
+        "problem_class": "application",
+        "linked_problem_keys": [],
+        "next_obligation": "Accept concrete team/member-success workflow input; preserve people as people rather than categories.",
+        "claim_ceiling": "application workflow",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "rivir",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "rivir",
+        "name": "RIVIR",
+        "group": "application-tooling",
+        "coverage": "APPLICATION_TOOLING",
+        "activation": "READY_FOR_INTAKE",
+        "problem_class": "application",
+        "linked_problem_keys": [],
+        "next_obligation": "Accept concrete API/data-pool task through I/R/P/O boundary; keep implementation separate from claims about people or outcomes.",
+        "claim_ceiling": "application/API behavior",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "pursuit-happiness",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "pursuit-happiness",
+        "name": "Pursuit of Happiness",
+        "group": "human-direction",
+        "coverage": "HUMAN_DIRECTION",
+        "activation": "HUMAN_DIRECTION",
+        "problem_class": "human",
+        "linked_problem_keys": [],
+        "next_obligation": "Use as a human aim/constraint when explicitly selected; do not convert it into a universal optimization target.",
+        "claim_ceiling": "human direction, not empirical proof",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "shared-well",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "shared-well",
+        "name": "Shared Well / hopes and values",
+        "group": "human-direction",
+        "coverage": "HUMAN_DIRECTION_NON_EVIDENTIARY",
+        "activation": "HUMAN_DIRECTION",
+        "problem_class": "human",
+        "linked_problem_keys": [],
+        "next_obligation": "Carry values relationally without treating them as independent empirical replication.",
+        "claim_ceiling": "orientation/context",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "graph-decomposition",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "graph-decomposition",
+        "name": "Graph decomposition / Independent Set",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "CAPABILITY",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Use exact composition/held-out recursion only for matched combinatorial obligations.",
+        "claim_ceiling": "bounded graph evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "polynomial-echoes",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "polynomial-echoes",
+        "name": "Polynomial/Chebyshev echoes",
+        "group": "reusable-method",
+        "coverage": "EVIDENCE_LINKED",
+        "activation": "CAPABILITY",
+        "problem_class": "research",
+        "linked_problem_keys": [],
+        "next_obligation": "Reuse basis-aligned positive and negative search results only for matched smooth-response questions.",
+        "claim_ceiling": "bounded polynomial evidence",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "float64-builder",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "float64-builder",
+        "name": "Float64 algorithmic builder",
+        "group": "infrastructure",
+        "coverage": "IMPLEMENTATION_EVIDENCE",
+        "activation": "CAPABILITY",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Use deterministic float64-safe IDs/integrity coordinates only for identity/indexing; never semantic weight or evidence score.",
+        "claim_ceiling": "identity/integrity implementation only",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE"
+        ]
+      }
+    },
+    {
+      "branch": "redogit-conscience64",
+      "runtime_status_this_continuation": "CATALOGUED_ONLY",
+      "recorded_branch": {
+        "key": "redogit-conscience64",
+        "name": "redogit / conscience64 GitHub deployment",
+        "group": "application-tooling",
+        "coverage": "LIVE_LOCAL_VERIFICATION_PASS_DEPLOYMENT_CONFIG_REQUIRED",
+        "activation": "BLOCKED_EXTERNAL_CONFIGURATION",
+        "problem_class": "software",
+        "linked_problem_keys": [],
+        "next_obligation": "Enable/confirm branch-static GitHub Pages source as main/root through repository Pages configuration, then verify the public deployment separately from CI.",
+        "claim_ceiling": "Latest local verification workflow passes at 44da96f; external Pages deployment remains unverified/configuration-required.",
+        "context_source_ids": [
+          "CTX-BRANCH-MAP",
+          "CTX-COVERAGE",
+          "LIVE-GITHUB-2026-09-12"
+        ]
+      }
+    }
+  ]
+}

@@ -55,3 +55,7 @@ A coordinate transform, codec, topology, or finite classifier can be internally 
 ## Claim ceiling
 
 This lineage supports engineering and bounded mathematical experiments. It does not establish a new physical theory or observational result about spacetime.
+
+## Internal workspace successor — September 13, 2026
+
+The [complete update](../cross-carrier/2026-09-13/internal-update/README.md) represents global search, isolated XY interaction, the geometric black-hole projection, quarantined working-packet import, and earlier transport materials. Its [inventory](../cross-carrier/2026-09-13/internal-update/MATERIALS.json) accounts for all 736 source-bundle members. Results and unresolved failures remain separate; no cross-project authority or mathematical proof transfers through this link.
