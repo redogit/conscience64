@@ -1,9 +1,15 @@
 {
   "schema": "conscience64.mmo.plugin-contract/v1",
   "pluginSchema": "conscience64.mmo.plugin/v1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "executionModel": "data-only",
   "mechanics": ["choice", "input", "creative"],
+  "contentDirection": {
+    "canonical": "REALITY_CANON.md",
+    "preferredRecipe": "real place or object + understandable activity + optional strange complication",
+    "ordinaryGameAllowed": true,
+    "anomalyRequired": false
+  },
   "limits": {
     "fileBytes": 65536,
     "idPattern": "^[a-z0-9][a-z0-9-]{2,63}$",
@@ -18,9 +24,14 @@
     "executablePluginCode": false,
     "htmlInterpretation": false,
     "urls": false,
-    "networkRequests": false,
+    "networkAuthority": false,
     "serverAuthority": false,
-    "realWorldPrizeEligibility": false
+    "prizeAuthority": false,
+    "importedTextIsDataOnly": true
   },
-  "note": "Plug-ins are validated JSON recipes executed by the built-in MMO runtime. Local installation never makes a plug-in authoritative for multiplayer state or prizes."
+  "authority": {
+    "localPluginReward": "local game state only",
+    "multiplayerAchievement": "requires authoritative server validation",
+    "realWorldPrize": "never granted by this plug-in contract"
+  }
 }
