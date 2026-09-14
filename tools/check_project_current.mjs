@@ -41,6 +41,23 @@ for (const record of current.softwareBoundaryRecords || []) {
   assert.match(text, /^# /, `${record.path} must be a human-readable software boundary record`);
 }
 
+const mmo = current.softwareBoundaryRecords.find(record => record.id === 'mmo-world-beta');
+assert.ok(mmo, 'MMO World software boundary missing');
+assert.equal(mmo.canonicalRoot, 'play/mmo-world/');
+assert.equal(mmo.localExtension?.id, 'arcade-forge');
+assert.equal(mmo.localExtension?.authority, 'LOCAL_PREVIEW_ONLY');
+assert.ok(!mmo.localExtension?.path.startsWith('play/mmo/'), 'retired play/mmo tree must not become canonical');
+const forgeContract = JSON.parse(await readFile(new URL(`../${mmo.localExtension.contract}`, import.meta.url), 'utf8'));
+assert.equal(forgeContract.executionModel, 'data-only');
+assert.equal(forgeContract.security.executablePluginCode, false);
+assert.equal(forgeContract.security.networkAuthority, false);
+assert.equal(forgeContract.security.serverAuthority, false);
+assert.equal(forgeContract.security.prizeAuthority, false);
+assert.equal(forgeContract.authority.localPluginReward, 'preview metadata only; not applied to canonical game state');
+const forgeRuntime = await readFile(new URL(`../${mmo.localExtension.runtime}`, import.meta.url), 'utf8');
+assert.ok(forgeRuntime.includes('unsupported field'), 'Forge runtime must reject unknown fields');
+assert.ok(forgeRuntime.includes('stored plugin shelf is corrupt; it was not overwritten'), 'Forge runtime must fail visibly on corrupt shelf');
+
 const analytics = current.analyticsContinuation;
 assert.ok(analytics, 'analytics continuation missing');
 assert.equal(analytics.status, 'LOCAL_LIVE_SERVICE_IMPLEMENTED_REMOTE_DEPLOYMENT_NOT_ESTABLISHED');
@@ -72,7 +89,10 @@ for (const invariant of [
   'PRODUCER_EVENT_ID != CANONICAL_LEDGER_EVENT_ID',
   'REPLAYED_EVENT != NEW_EXECUTION',
   'CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE',
-  'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO'
+  'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO',
+  'DATA_ONLY_PLUGIN != EXECUTABLE_CODE',
+  'LOCAL_PLUGIN_PREVIEW != CANONICAL_GAME_STATE',
+  'LOCAL_PLUGIN != SERVER_AUTHORITY'
 ]) assert.ok(current.addedInvariants.includes(invariant), `missing invariant: ${invariant}`);
 
-console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger, software boundary records, and live analytics continuation verified.`);
+console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger, software boundaries, Arcade Forge, and live analytics continuation verified.`);
