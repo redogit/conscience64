@@ -8,6 +8,7 @@ const [index, style, forge, forgeJs, gameJs, saveRuntimeJs, current, canon, link
 
 assert.match(current, /implemented now/i);
 assert.match(current, /Portable local player state/i);
+assert.match(current, /Grounded Starter Pack/i);
 assert.match(current, /LOCAL_SAVE != SERVER_AUTHORITY/);
 assert.match(current, /TEST_CONFIGURED != TEST_OBSERVED_PASSING/);
 assert.match(current, /Not implemented yet/i);
@@ -32,6 +33,12 @@ assert.match(index, /id="save-local"/);
 assert.match(index, /Nothing loads automatically/);
 assert.match(style, /--brick:/); assert.match(style, /--concrete:/); assert.match(style, /\.street-scene/); assert.match(style, /\.sky-window/); assert.match(style, /\.black-hole/);
 assert.match(forge, /ordinary place\/object\/activity first/i); assert.match(forge, /MAKER GARAGE/);
+assert.match(forgeJs, /Grounded Starter Pack/);
+assert.match(forgeJs, /market-closing-shift/);
+assert.match(forgeJs, /bus-transfer-seven/);
+assert.match(forgeJs, /workshop-sort/);
+assert.match(forgeJs, /observatory-label-check/);
+assert.match(forgeJs, /runtime\.install/);
 assert.match(forgeJs, /corner market/); assert.match(forgeJs, /bus stop/); assert.match(forgeJs, /rooftop observatory/); assert.doesNotMatch(forgeJs, /Floating Library/);
 assert.match(gameJs, /Conscience64MMOPlugins/);
 assert.match(gameJs, /Conscience64MMOSave/);
@@ -58,4 +65,4 @@ assert.ok(linkageGraph.invariants.includes('TEST_CONFIGURED != TEST_OBSERVED_PAS
 const projects = JSON.parse(projectsText); const mmo = projects.projects.find(project => project.id === 'mmo'); assert.ok(mmo); assert.equal(mmo.source, 'mmo/REALITY_CANON.md'); assert.match(mmo.purpose, /grounded real-world-feeling/i);
 const sample = JSON.parse(sampleText); assert.equal(sample.schema, 'conscience64.mmo.plugin/v1'); assert.match(sample.prompt, /corner market|market display/i); assert.match(sample.description, /grounded-reality-first/i);
 const contract = JSON.parse(contractText); assert.equal(contract.contentDirection.canonical, 'REALITY_CANON.md'); assert.equal(contract.contentDirection.anomalyRequired, false);
-console.log('PASS MMO reality canon: current-state boundary, grounded world, astronomy boundary, Forge generation, main-MMO plug-in discovery, portable save boundary, untimed Redline route, registry and linkages');
+console.log('PASS MMO reality canon: current-state boundary, grounded world, astronomy boundary, Forge generation, Grounded Starter Pack, main-MMO plug-in discovery, portable save boundary, untimed Redline route, registry and linkages');
