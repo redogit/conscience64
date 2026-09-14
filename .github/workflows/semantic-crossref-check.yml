@@ -9,8 +9,12 @@ on:
       - 'tools/semantic-corpus.mjs'
       - 'tools/semantic-corpus.test.mjs'
       - 'tools/semantic-routing.mjs'
+      - 'tools/semantic-query.mjs'
+      - 'tools/semantic-query.test.mjs'
+      - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - 'tools/SEMANTIC_SITUATION_QUERY.md'
       - '.github/workflows/semantic-crossref-check.yml'
   pull_request:
     paths:
@@ -19,8 +23,12 @@ on:
       - 'tools/semantic-corpus.mjs'
       - 'tools/semantic-corpus.test.mjs'
       - 'tools/semantic-routing.mjs'
+      - 'tools/semantic-query.mjs'
+      - 'tools/semantic-query.test.mjs'
+      - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - 'tools/SEMANTIC_SITUATION_QUERY.md'
       - '.github/workflows/semantic-crossref-check.yml'
   workflow_dispatch:
 
@@ -49,11 +57,30 @@ jobs:
           node --check tools/semantic-crossref.mjs
           node --check tools/semantic-corpus.mjs
           node --check tools/semantic-routing.mjs
+          node --check tools/semantic-query.mjs
+          node --check tools/query-semantic-corpus.mjs
           node --check tools/build-semantic-corpus-map.mjs
       - name: Verify deterministic semantic cross-reference behavior and stress bound
         run: node tools/semantic-crossref.test.mjs
       - name: Verify real repository corpus ingestion and bounded semantic routing
         run: node tools/semantic-corpus.test.mjs
+      - name: Verify Situation-to-helper semantic queries
+        run: node tools/semantic-query.test.mjs
+      - name: Exercise current repository Situation query CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/conscience64-semantic-query.json"
+          node tools/query-semantic-corpus.mjs --root . --query "provenance evidence accessibility deterministic ECS game" --limit 8 --threshold 0.06 --output "$OUT" > "$RUNNER_TEMP/query.log"
+          test -s "$OUT"
+          node - "$OUT" <<'NODE'
+          const fs=require('node:fs');
+          const data=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+          if(data.schema!=='conscience64.semantic-corpus-query/v1')throw new Error('wrong query schema');
+          if(!data.result?.matches?.length)throw new Error('empty semantic helper query');
+          if(!data.boundaries.includes('HELPER_CANDIDATE != APPLICABLE_HELPER'))throw new Error('missing helper applicability boundary');
+          console.log(`SEMANTIC_QUERY_OK records=${data.corpusStats.included} matches=${data.result.matches.length}`);
+          NODE
       - name: Build current repository semantic map artifact
         shell: bash
         run: |
