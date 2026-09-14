@@ -1,0 +1,31 @@
+{
+  "schema": "conscience64.red-wilds.visual-samples/v1",
+  "count": 19,
+  "purpose": "reference-only visual sampling for Red Wilds design exploration",
+  "invariants": [
+    "SAMPLE != CANON",
+    "REFERENCE_IMAGE != IMPLEMENTED_GAME_ASSET",
+    "REFERENCE != EVIDENCE"
+  ],
+  "samples": [
+    {"id":"generated-concept-ui-board","kind":"generated_concept","label":"Cinematic glossy UI concept board","page":"page-1.html","canon":false},
+    {"id":"generated-red-wilds-concept-board","kind":"generated_concept","label":"Red Wilds concept board","page":"page-1.html","canon":false},
+    {"id":"generated-red-wilds-moodboard","kind":"generated_concept","label":"Red Wilds moodboard","page":"page-1.html","canon":false},
+    {"id":"generated-rooftop-observatory","kind":"generated_concept","label":"Rooftop observatory HUD","page":"page-1.html","canon":false},
+    {"id":"generated-maker-garage-arcade","kind":"generated_concept","label":"Mercer maker garage / Red Street arcade","page":"page-2.html","canon":false},
+    {"id":"generated-neon-rain-mercer","kind":"generated_concept","label":"Neon rain at Mercer Street","page":"page-2.html","canon":false},
+    {"id":"generated-riverside-fuzzball","kind":"generated_concept","label":"Riverside park Fuzzball encounter","page":"page-2.html","canon":false},
+    {"id":"user-reference-01","kind":"user_reference","label":"User reference 01","page":"page-2.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-02","kind":"user_reference","label":"User reference 02","page":"page-3.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-03","kind":"user_reference","label":"User reference 03","page":"page-3.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-04","kind":"user_reference","label":"User reference 04","page":"page-3.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-05","kind":"user_reference","label":"User reference 05","page":"page-3.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-06","kind":"user_reference","label":"User reference 06","page":"page-4.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-07","kind":"user_reference","label":"User reference 07","page":"page-4.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-08","kind":"user_reference","label":"User reference 08","page":"page-4.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-09","kind":"user_reference","label":"User reference 09","page":"page-4.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-10","kind":"user_reference","label":"User reference 10","page":"page-5.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-11","kind":"user_reference","label":"User reference 11","page":"page-5.html","canon":false,"externalReuseRequiresRightsConsentReview":true},
+    {"id":"user-reference-12","kind":"user_reference","label":"User reference 12","page":"page-5.html","canon":false,"externalReuseRequiresRightsConsentReview":true}
+  ]
+}
