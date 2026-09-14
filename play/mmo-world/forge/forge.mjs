@@ -1,4 +1,5 @@
 import { PLUGIN_SCHEMA, createPluginShelf, exportPlugin, parsePluginJson, validatePlugin } from '../plugin-runtime.mjs';
+import { createReactionTrial } from '../timing-runtime.mjs';
 
 const $ = id => document.getElementById(id);
 const rewards = Object.freeze({
@@ -6,8 +7,10 @@ const rewards = Object.freeze({
   medium: Object.freeze({ xp: 16, joy: 8, tokens: 1, discoveries: 0 }),
   big: Object.freeze({ xp: 30, joy: 15, tokens: 2, discoveries: 1 }),
 });
+const zeroReward = Object.freeze({ xp: 0, joy: 0, tokens: 0, discoveries: 0 });
 let current = null;
 let shelf = null;
+let activeTrial = null;
 
 function setStatus(message, error = false) {
   $('status').textContent = message;
@@ -35,14 +38,73 @@ function recipe() {
     base.correctIndex = 0;
   } else if (mechanic === 'input') {
     base.answers = lines('answers');
+  } else if (mechanic === 'timing') {
+    base.minDelayMs = Number($('min-delay').value);
+    base.maxDelayMs = Number($('max-delay').value);
+    base.falseStartReward = zeroReward;
   }
   return validatePlugin(base);
 }
+function rewardSummary(reward) {
+  return `XP ${reward.xp}, Joy ${reward.joy}, tokens ${reward.tokens}, discoveries ${reward.discoveries}`;
+}
 function rewardText(plugin) {
-  const reward = plugin.reward;
-  return `Preview reward only — XP ${reward.xp}, Joy ${reward.joy}, tokens ${reward.tokens}, discoveries ${reward.discoveries}. This does not change canonical MMO World state.`;
+  const base = `Success preview — ${rewardSummary(plugin.reward)}. This does not change canonical MMO World state.`;
+  if (plugin.mechanic !== 'timing') return base;
+  return `${base} False-start preview — ${rewardSummary(plugin.falseStartReward)}. Reaction time is measurement only, not a threshold or accessibility gate.`;
+}
+function cancelActiveTrial() {
+  if (activeTrial) activeTrial.cancel();
+  activeTrial = null;
+}
+function renderTimingTester(plugin) {
+  let practice = false;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.textContent = 'WAIT…';
+  button.setAttribute('aria-label', 'Redline timing control. Wait for GO before pressing.');
+  const practiceButton = document.createElement('button');
+  practiceButton.type = 'button';
+  practiceButton.textContent = 'Show signal now (practice)';
+
+  activeTrial = createReactionTrial({
+    minDelayMs: plugin.minDelayMs,
+    maxDelayMs: plugin.maxDelayMs,
+    onSignal: () => {
+      button.textContent = 'GO!';
+      $('test-result').textContent = practice ? 'Practice signal is live. Press GO when ready.' : 'GO! Press now for a local reaction-time measurement.';
+    },
+  });
+
+  button.addEventListener('click', () => {
+    const result = activeTrial?.press();
+    if (!result) return;
+    if (result.status === 'false-start') {
+      button.disabled = true;
+      practiceButton.disabled = true;
+      $('test-result').textContent = `False start. Preview only — ${rewardSummary(plugin.falseStartReward)}. No canonical state changed.`;
+      activeTrial = null;
+    } else if (result.status === 'reaction') {
+      button.disabled = true;
+      practiceButton.disabled = true;
+      $('test-result').textContent = `Reaction: ${Math.round(result.reactionMs)} ms${practice ? ' (practice signal)' : ''}. Measurement only; no pass/fail threshold, accessibility gate, or canonical progression.`;
+      activeTrial = null;
+    }
+  });
+  practiceButton.addEventListener('click', () => {
+    if (!activeTrial) return;
+    practice = true;
+    const result = activeTrial.practiceNow();
+    if (result.status === 'ready') {
+      button.textContent = 'GO!';
+      practiceButton.disabled = true;
+      $('test-result').textContent = 'Practice signal shown immediately. Press GO when ready; the measurement remains local practice only.';
+    }
+  });
+  $('tester').append(button, practiceButton);
 }
 function renderTester(plugin) {
+  cancelActiveTrial();
   current = plugin;
   $('preview-title').textContent = plugin.name;
   $('preview-prompt').textContent = plugin.prompt;
@@ -74,6 +136,8 @@ function renderTester(plugin) {
       $('test-result').textContent = accepted ? 'Accepted in this local preview.' : 'Not accepted by this recipe.';
     });
     $('tester').append(input, button);
+  } else if (plugin.mechanic === 'timing') {
+    renderTimingTester(plugin);
   } else {
     const input = document.createElement('input');
     input.type = 'text';
@@ -148,11 +212,15 @@ function download(plugin) {
   anchor.click();
   setTimeout(() => URL.revokeObjectURL(href), 1000);
 }
+function updateMechanicFields() {
+  const mechanic = $('mechanic').value;
+  $('choice-field').hidden = mechanic !== 'choice';
+  $('answer-field').hidden = mechanic !== 'input';
+  $('timing-min-field').hidden = mechanic !== 'timing';
+  $('timing-max-field').hidden = mechanic !== 'timing';
+}
 
-$('mechanic').addEventListener('change', () => {
-  $('choice-field').hidden = $('mechanic').value !== 'choice';
-  $('answer-field').hidden = $('mechanic').value !== 'input';
-});
+$('mechanic').addEventListener('change', updateMechanicFields);
 $('name').addEventListener('input', () => {
   if (!$('id').dataset.manual) $('id').value = slug($('name').value);
 });
@@ -206,9 +274,10 @@ $('randomize').addEventListener('click', () => {
   $('id').dataset.manual = '';
   $('id').value = slug(title);
   $('mechanic').value = 'creative';
-  $('mechanic').dispatchEvent(new Event('change'));
+  updateMechanicFields();
   $('prompt').value = `At the ${setting}, ${action} the ${object}${anomaly}. Give your solution or method a name.`;
   setStatus(anomaly ? 'Grounded recipe loaded with one optional anomaly.' : 'Grounded ordinary-life recipe loaded.');
 });
 
+updateMechanicFields();
 refreshShelf();

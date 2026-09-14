@@ -12,8 +12,8 @@ This page directly runs the already gated Explorer World client while exposing t
 - **Advertising surface:** yes — this is the stable URL to advertise gradually.
 - **World Variety Lab:** yes — each region has curated adjective pools across light, sound, flora, fauna, motion, mood, mystery, and danger. A player can advance a deterministic local variety generation without changing map/combat/progression/reward semantics.
 - **Arcade Forge:** yes — local data-only mini-game recipe builder/tester/import/export shelf. Plug-in rewards are preview metadata only and do not modify canonical Explorer state.
-- **Starter Arcade pack:** nine validated recipes: the original duck-rescue sample plus four Monster Mood states, three exact Cipher Snap puzzles, and one bounded Make Something seed.
-- **Redline timing game:** deferred; the current `choice | input | creative` plug-in schema cannot represent its reaction-time semantics honestly.
+- **Starter Arcade pack:** ten validated recipes: the duck-rescue sample plus four Monster Mood states, three exact Cipher Snap puzzles, one bounded Make Something seed, and Redline Classic.
+- **Redline timing:** admitted through one bounded `timing` mechanic. Imported data supplies only delay/reward metadata; trusted canonical runtime code performs local timing.
 - **Bluetooth:** optional, user-initiated Web Bluetooth connection plus Gamepad API support for controllers already paired by the operating system.
 - **Internal DNS:** deployment configuration is under `../../infra/internal-dns/`; it is not required for the static game to run.
 
@@ -29,9 +29,9 @@ Major world/canon releases remain slow and deliberate. Local adjective mutations
 
 `forge/` is the admitted successor of the useful **data-only plug-in idea** from the retired `play/mmo/` branch. It does not revive that old parallel MMO architecture.
 
-The canonical machine contract is `plugin-contract.json`; validation/runtime code is `plugin-runtime.mjs`. Supported mechanics are `choice`, `input`, and `creative`.
+The canonical machine contract is `plugin-contract.json`; validation/runtime code is `plugin-runtime.mjs`. Supported mechanics are `choice`, `input`, `creative`, and `timing`.
 
-The contract deliberately rejects unknown top-level and reward fields, excessive rewards, duplicate choice/answer items after normalization, oversized files, excessive local shelf entries, malformed stored shelves, and unsupported mechanics. Imported files have no executable JavaScript, interpreted HTML, URL field, network, server, account, multiplayer, commerce, or prize authority.
+The contract deliberately rejects unknown top-level and reward fields, excessive rewards, duplicate choice/answer items after normalization, oversized files, excessive local shelf entries, malformed stored shelves, unsupported mechanics, timing ranges outside the declared bounds, plug-in clocks/timer callbacks, and reaction-time thresholds. Imported files have no executable JavaScript, interpreted HTML, URL field, network, server, account, multiplayer, commerce, or prize authority.
 
 The Forge page uses `connect-src 'none'` and renders imported/player text with DOM text nodes/text content. Stored recipes remain browser-local. A corrupt local shelf fails visibly and is not silently replaced by an empty shelf.
 
@@ -44,9 +44,15 @@ The Forge page uses `connect-src 'none'` and renders imported/player text with D
 - **Monster Mood:** the old runtime chose one of four moods randomly. The starter pack preserves all four possible mood states as four fixed `choice` recipes. This is source-state coverage, not preservation of the old random selection mechanism.
 - **Cipher Snap:** all three original finite puzzles map directly to `input` recipes.
 - **Make Something:** one bounded old-style material/purpose combination maps to a `creative` recipe; the old random generator is not claimed preserved.
-- **Redline:** deliberately absent. Its delayed GO transition and reaction timing are not representable by the current schema. Status: `DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA`.
+- **Redline Classic:** `timing-runtime.mjs` adapts the source interaction: a random wait in `[900,2700)` ms, false start before GO, and monotonic reaction measurement after GO. The old success/false-start reward values are preserved only as preview metadata.
 
-`forge/test.mjs` enumerates and validates every JSON recipe in `plugins/`. A new malformed recipe therefore breaks the canonical MMO World gate rather than silently becoming starter content.
+Redline status:
+
+`CORE_INTERACTION_SEMANTICS_ADAPTED / OLD_STATE_AUTHORITY_NOT_PRESERVED`
+
+There is no reaction-time pass/fail threshold. Reaction time is not an accessibility gate, player-worth measure, canonical progression condition, or prize score. The preview includes **Show signal now (practice)** so waiting for a random signal is optional.
+
+`timing-runtime.test.mjs` tests the source wait range, false start, monotonic measurement, practice signal, and cancellation with injected clocks/timers. `forge/test.mjs` enumerates and validates all ten JSON recipes. The Forge Chrome smoke exercises false-start and practice-reaction paths in the rendered page.
 
 ## Protocols
 

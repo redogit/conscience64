@@ -11,6 +11,9 @@ export const LIMITS = Object.freeze({
   itemChars: 120,
   choices: 8,
   answers: 16,
+  timingMinDelayMs: 250,
+  timingMaxDelayMs: 10000,
+  timingMaxSpanMs: 5000,
 });
 export const REWARD_CAPS = Object.freeze({ xp: 40, joy: 20, tokens: 4, discoveries: 1 });
 const ID_PATTERN = /^[a-z0-9][a-z0-9-]{2,63}$/;
@@ -21,6 +24,7 @@ const MECHANIC_FIELDS = Object.freeze({
   choice: new Set(['choices','correctIndex']),
   input: new Set(['answers']),
   creative: new Set(),
+  timing: new Set(['minDelayMs','maxDelayMs','falseStartReward']),
 });
 
 export class PluginValidationError extends Error {}
@@ -39,9 +43,16 @@ function boundedText(value, max, field) {
   if (!text || text.length > max) throw new PluginValidationError(`${field} length invalid`);
   return text;
 }
-function boundedInt(value, key) {
-  if (!Number.isInteger(value) || value < 0 || value > REWARD_CAPS[key]) throw new PluginValidationError(`reward.${key} invalid`);
+function boundedRewardInt(value, key, label = 'reward') {
+  if (!Number.isInteger(value) || value < 0 || value > REWARD_CAPS[key]) throw new PluginValidationError(`${label}.${key} invalid`);
   return value;
+}
+function normalizedReward(value, label = 'reward') {
+  if (!isPlainObject(value)) throw new PluginValidationError(`${label} must be an object`);
+  onlyKeys(value, REWARD_FIELDS, label);
+  const reward = {};
+  for (const key of REWARD_FIELDS) reward[key] = boundedRewardInt(value[key] ?? 0, key, label);
+  return reward;
 }
 function uniqueTextList(value, maxItems, field) {
   if (!Array.isArray(value) || value.length < 1 || value.length > maxItems) throw new PluginValidationError(`${field} invalid`);
@@ -54,8 +65,14 @@ function uniqueTextList(value, maxItems, field) {
   }
   return Object.freeze(out);
 }
+function timingDelay(value, field) {
+  if (!Number.isInteger(value)) throw new PluginValidationError(`${field} must be an integer millisecond value`);
+  if (value < LIMITS.timingMinDelayMs || value > LIMITS.timingMaxDelayMs) throw new PluginValidationError(`${field} outside timing bounds`);
+  return value;
+}
 function deepFreezePlugin(plugin) {
   Object.freeze(plugin.reward);
+  if (plugin.falseStartReward) Object.freeze(plugin.falseStartReward);
   if (plugin.choices) Object.freeze(plugin.choices);
   if (plugin.answers) Object.freeze(plugin.answers);
   return Object.freeze(plugin);
@@ -83,11 +100,7 @@ export function validatePlugin(input) {
   const version = boundedText(input.version, LIMITS.versionChars, 'version');
   if (!VERSION_PATTERN.test(version)) throw new PluginValidationError('version must be semantic version text');
   const prompt = boundedText(input.prompt, LIMITS.promptChars, 'prompt');
-
-  if (!isPlainObject(input.reward)) throw new PluginValidationError('reward must be an object');
-  onlyKeys(input.reward, REWARD_FIELDS, 'reward');
-  const reward = {};
-  for (const key of REWARD_FIELDS) reward[key] = boundedInt(input.reward[key] ?? 0, key);
+  const reward = normalizedReward(input.reward);
 
   const plugin = { schema: PLUGIN_SCHEMA, id, name, version, mechanic, prompt, reward };
   if (input.description != null) plugin.description = boundedText(input.description, LIMITS.descriptionChars, 'description');
@@ -100,6 +113,14 @@ export function validatePlugin(input) {
     plugin.correctIndex = input.correctIndex;
   } else if (mechanic === 'input') {
     plugin.answers = uniqueTextList(input.answers, LIMITS.answers, 'answers');
+  } else if (mechanic === 'timing') {
+    const minDelayMs = timingDelay(input.minDelayMs, 'minDelayMs');
+    const maxDelayMs = timingDelay(input.maxDelayMs, 'maxDelayMs');
+    if (maxDelayMs < minDelayMs) throw new PluginValidationError('maxDelayMs must be greater than or equal to minDelayMs');
+    if (maxDelayMs - minDelayMs > LIMITS.timingMaxSpanMs) throw new PluginValidationError('timing delay span too large');
+    plugin.minDelayMs = minDelayMs;
+    plugin.maxDelayMs = maxDelayMs;
+    plugin.falseStartReward = normalizedReward(input.falseStartReward, 'falseStartReward');
   }
 
   return deepFreezePlugin(plugin);
