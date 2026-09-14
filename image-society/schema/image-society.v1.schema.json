@@ -12,6 +12,18 @@
       "items": { "type": "string" },
       "uniqueItems": true
     },
+    "outputGeometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "aspect_ratio": { "type": "string", "minLength": 1, "maxLength": 50 },
+        "width": { "type": "integer", "minimum": 1, "maximum": 100000 },
+        "height": { "type": "integer", "minimum": 1, "maximum": 100000 },
+        "format": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "variant_count_target": { "type": "integer", "minimum": 1, "maximum": 1000000 },
+        "adapter_fallback_allowed": { "type": "boolean" }
+      }
+    },
     "runManifest": {
       "type": "object",
       "additionalProperties": false,
@@ -26,7 +38,7 @@
         "run_id": { "type": "string", "minLength": 1, "maxLength": 200 },
         "title": { "type": "string", "maxLength": 500 },
         "objective": { "type": "string", "maxLength": 4000 },
-        "max_calls": { "type": "integer", "minimum": 1, "maximum": 100000 },
+        "max_calls": { "type": "integer", "minimum": 1, "maximum": 1000000 },
         "max_parallelism": { "type": "integer", "minimum": 1, "maximum": 64 },
         "max_retries_per_call": { "type": "integer", "minimum": 0, "maximum": 10 },
         "checkpoint_every_events": { "type": "integer", "minimum": 1 },
@@ -82,7 +94,8 @@
             "continuity_targets": { "$ref": "#/$defs/stringArray" },
             "authority_targets": { "$ref": "#/$defs/stringArray" },
             "accessibility_targets": { "$ref": "#/$defs/stringArray" },
-            "audience_context": { "$ref": "#/$defs/stringArray" }
+            "audience_context": { "$ref": "#/$defs/stringArray" },
+            "output_geometry": { "$ref": "#/$defs/outputGeometry" }
           }
         },
         "success_criteria": { "$ref": "#/$defs/stringArray" },
