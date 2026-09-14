@@ -103,8 +103,14 @@
     moods.forEach(m=>button(m,()=>{ if(m===mood){$('game-result').textContent='Perfect read. The monster gives you a completely unnecessary trophy.';reward({xp:18,joy:8,tokens:2},'Won Monster Mood.');} else {$('game-result').textContent=`Wrong mood. It was ${mood}. The monster respects the attempt anyway.`;reward({xp:5,joy:2},'Monster Mood attempt recorded without punishment.');} $('game-controls').replaceChildren(); }));
   }
   function raceGame() {
-    setPlayfield('Redline','Wait. Do not press GO until the signal changes.');
+    setPlayfield('Redline','Wait for GO, or choose the untimed route if reaction speed is not how you want to play.');
     const go=button('WAIT…',()=>{ if(go.dataset.ready==='1'){const elapsed=performance.now()-Number(go.dataset.start);$('game-result').textContent=`Reaction: ${Math.round(elapsed)} ms. The road grudgingly approves.`;reward({xp:24,joy:7,tokens:2},'Finished a Redline reaction race.');} else {$('game-result').textContent='False start. The road laughs politely.';reward({xp:3,joy:1},'Redline false start: no loss, try again later.');} clearTimeout(state.raceTimer);$('game-controls').replaceChildren(); });
+    button('Use untimed route',()=>{
+      clearTimeout(state.raceTimer);
+      setPlayfield('Redline — untimed route','No reaction timer. The signal is green, the road is clear, and you can enter when you are ready.');
+      button('Enter when ready',()=>{$('game-result').textContent='You enter cleanly at your own pace. Same world, different interaction.';reward({xp:12,joy:6,tokens:1},'Finished Redline using the untimed route.');$('game-controls').replaceChildren();});
+      button('Keep waiting',()=>{$('game-result').textContent='You wait. There is no penalty and no timer pushing you forward.';});
+    });
     state.raceTimer=setTimeout(()=>{go.textContent='GO!';go.dataset.ready='1';go.dataset.start=String(performance.now());},900+Math.random()*1800);
   }
   function puzzleGame() {
