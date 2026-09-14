@@ -14,6 +14,7 @@ on:
       - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - 'tools/SEMANTIC_SITUATION_QUERY.md'
       - '.github/workflows/semantic-crossref-check.yml'
   pull_request:
     paths:
@@ -27,6 +28,7 @@ on:
       - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - 'tools/SEMANTIC_SITUATION_QUERY.md'
       - '.github/workflows/semantic-crossref-check.yml'
   workflow_dispatch:
 
