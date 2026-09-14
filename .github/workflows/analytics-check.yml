@@ -33,6 +33,15 @@ jobs:
       - name: Verify browser event contract
         run: node analytics/test.mjs
 
+      - name: Ensure LLVM development tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v llvm-config >/dev/null 2>&1 && ! find /usr/bin -maxdepth 1 -type f -name 'llvm-config-*' -print -quit | grep -q .; then
+            sudo apt-get update
+            sudo apt-get install -y --no-install-recommends llvm-dev
+          fi
+
       - name: Build and exercise LLVM event bridge
         shell: bash
         run: |
