@@ -31,6 +31,7 @@ on:
       - 'play/**'
       - 'coordinate-space/**'
       - 'tools/check_site.mjs'
+      - 'tools/check_voice_anywhere.mjs'
       - 'tools/check_space_lens_qa.mjs'
       - 'tools/check_space_lens_memory.mjs'
       - 'tools/check_space_lens_local_search.mjs'
@@ -71,9 +72,10 @@ jobs:
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
 
-      - name: Verify Space Lens, portable voice, song, and Chorus layers before publishing
+      - name: Verify Space Lens, portable voice/type, song, and Chorus layers before publishing
         run: |
           node --check voice-anywhere.js
+          node tools/check_voice_anywhere.mjs
           node --check research-song.js
           node --check play/computational-chorus/chorus.mjs
           node --check space-lens-memory.js
