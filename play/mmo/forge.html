@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'"><title>Arcade Forge · Conscience64 MMO RPG</title><link rel="stylesheet" href="style.css"><style>.forge{margin-top:24px;border:1px solid var(--line);border-radius:1rem;background:#1b080a;padding:22px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field label{display:block;font-weight:800;margin-bottom:.35rem}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:.55rem;background:#100506;color:white;padding:.7rem}.field textarea{min-height:8rem}.wide{grid-column:1/-1}.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:15px}.preview{margin-top:18px;border:1px dashed #9b3a44;border-radius:.8rem;padding:18px;background:#100506}.installed{padding-left:1.2rem}.installed li{margin:.7rem 0}.tester button{margin:.3rem}.status{min-height:1.6em;color:var(--green)}@media(max-width:700px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}}</style></head><body>
+<a class="skip" href="#main">Skip to Arcade Forge</a><header class="topbar"><a class="brand" href="./">CONSCIENCE64 MMO RPG</a><span class="build">ARCADE FORGE · PLUG-AND-PLAY</span></header>
+<main id="main" tabindex="-1"><section class="hero"><p class="eyebrow">Make games inside the game</p><h1>ARCADE<br><span>FORGE</span></h1><p class="lede">Create a mini-game recipe, test it, install it locally, export it, or import somebody else's compatible recipe. Plug-ins are validated JSON data—not executable JavaScript.</p></section>
+<section class="forge" aria-labelledby="forge-title"><div class="section-head"><div><p class="eyebrow">Recipe builder</p><h2 id="forge-title">Forge a plug-in</h2></div><button id="randomize" type="button">Cook up something</button></div>
+<div class="grid">
+<div class="field"><label for="name">Game name</label><input id="name" maxlength="80" value="Duck Rescue 64"></div>
+<div class="field"><label for="id">Plug-in ID</label><input id="id" maxlength="64" value="duck-rescue-64"></div>
+<div class="field"><label for="mechanic">Mechanic</label><select id="mechanic"><option value="choice">Choice</option><option value="input">Answer</option><option value="creative">Creative</option></select></div>
+<div class="field"><label for="reward">Reward intensity</label><select id="reward"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="big">Big but bounded</option></select></div>
+<div class="field wide"><label for="prompt">What happens?</label><textarea id="prompt">A rubber duck is trapped on a floating library. Pick the least ridiculous rescue plan.</textarea></div>
+<div class="field wide" id="choice-field"><label for="choices">Choices — one per line; first line is the correct choice</label><textarea id="choices">Build a tiny bridge
+Challenge gravity to a duel
+Ask the duck to file paperwork</textarea></div>
+<div class="field wide" id="answer-field" hidden><label for="answers">Accepted answers — one per line</label><textarea id="answers">bridge
+small bridge</textarea></div>
+</div>
+<div class="actions"><button id="build" class="primary" type="button">Build &amp; test</button><button id="install" type="button">Install locally</button><button id="export" type="button">Export .json</button><label><span class="sr-only">Import plug-in</span><input id="import" type="file" accept=".json,application/json"></label></div><p id="status" class="status" role="status" aria-live="polite"></p>
+<div class="preview"><h3 id="preview-title">Preview</h3><p id="preview-prompt">Build a recipe to test it here.</p><div id="tester" class="tester"></div><p id="test-result" role="status" aria-live="polite"></p></div>
+</section>
+<section class="forge"><div class="section-head"><div><p class="eyebrow">Installed locally</p><h2>Plug-in shelf</h2></div><button id="refresh" type="button">Refresh</button></div><ol id="installed" class="installed"></ol><p>Installed recipes live only in this browser profile. They are not trusted for multiplayer authority or real-world prizes.</p></section>
+</main><footer><a href="./">Back to MMO</a> · <a href="plugin-contract.json">Plug-in contract</a> · <a href="plugins/duck-rescue.json">Example plug-in</a></footer>
+<script src="plugin-runtime.js" defer></script><script src="forge.js" defer></script></body></html>
