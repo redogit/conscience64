@@ -4,19 +4,30 @@ Privacy-safe universal research space hosted as a static GitHub Pages applicatio
 
 Visible surface: **I / R / P / O**.
 
+## MMO World Beta
+
+**Featured launch surface:** [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/)
+
+The MMO World page directly runs the already smoke-tested Explorer World shard while the shared-world layer remains gated. It is intentionally honest about the current boundary: playable browser world now; server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not yet claimed complete. The beta also exposes optional user-initiated Bluetooth/gamepad support and the DU-SD/1, DU-CAP/1, DU-WATCH/1, and DU-BT/1 protocol contracts.
+
+Advertising should point to this stable Conscience64 URL and grow interest gradually rather than bypassing safety, recovery, stability, moderation/support-capacity, or operating-cost gates.
+
 ## Try the free projects
 
-The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into five usable tools:
+The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into a growing set of usable browser projects:
 
 | Tool | What you can do |
 | --- | --- |
+| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Enter the playable Explorer shard through the MMO launch surface; optionally connect a Bluetooth companion or OS-paired gamepad |
+| [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Play the current single-player browser shard directly |
+| [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Explore exact, speakable, mnemonic, and procedural musical projections |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes with source links |
 | [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Rearrange writing while keeping the original |
 | [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Make geometric art and export SVG or text |
 | [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan a next step and preserve dated checkpoints |
 | [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Compare exact text changes and preserve both inputs |
 
-English, Spanish, French, and Arabic interfaces; Unicode writing; keyboard controls; optional local saving; no accounts. The new tools have an MIT license scoped to `play/`. See [the usage and provenance notes](play/README.md). Their [public-tool catalog](play/projects.json) is separate from the research registry below.
+English, Spanish, French, and Arabic interfaces are available across the original utility set; Unicode writing, keyboard controls, optional local saving, and no-account operation remain core accessibility/privacy goals. The new tools have an MIT license scoped to `play/`. See [the usage and provenance notes](play/README.md). Their [public-tool catalog](play/projects.json) is separate from the research registry below.
 
 ## Internal workspace update
 

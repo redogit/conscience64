@@ -1,0 +1,15 @@
+services:
+  dns:
+    image: coredns/coredns:1.14.6
+    command: ["-conf", "/etc/coredns/Corefile"]
+    restart: unless-stopped
+    read_only: true
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    ports:
+      - "127.0.0.1:1053:1053/udp"
+      - "127.0.0.1:1053:1053/tcp"
+      - "127.0.0.1:9153:9153/tcp"
+    volumes:
+      - ./Corefile:/etc/coredns/Corefile:ro
+      - ./db.beta.internal:/etc/coredns/db.beta.internal:ro

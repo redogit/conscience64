@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+const html = await readFile(new URL('index.html', import.meta.url), 'utf8');
+const js = await readFile(new URL('companion.mjs', import.meta.url), 'utf8');
+const protocols = JSON.parse(await readFile(new URL('protocols.json', import.meta.url), 'utf8'));
+assert.match(html, /MMO World Beta/);assert.match(html, /\.\.\/explorer-world\/game\.mjs/);assert.match(html, /Connect Bluetooth companion/);assert.match(html, /shared networking gated/);
+assert.match(js, /requestDevice/);assert.match(js, /acceptAllDevices:\s*true/);assert.match(js, /gamepadconnected/);assert.ok(!js.includes('requestLEScan'));
+assert.deepEqual(protocols.protocols.map(p => p.id), ['DU-SD/1','DU-CAP/1','DU-WATCH/1','DU-BT/1']);
+assert.equal(protocols.protocols.find(p => p.id === 'DU-BT/1').serviceUuid, 'd3a00001-7e4f-4d55-9b3e-434f4e534336');
+console.log('PASS MMO World beta: direct Explorer shard, bounded protocols, explicit Bluetooth gesture, gamepad bridge.');

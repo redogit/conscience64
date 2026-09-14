@@ -1,0 +1,12 @@
+$ORIGIN beta.internal.
+$TTL 30
+@       IN SOA ns.beta.internal. hostmaster.beta.internal. (
+            2026091301 60 30 3600 30 )
+        IN NS  ns.beta.internal.
+ns      IN A   127.0.0.1
+mmo     IN A   127.0.0.1
+api     IN A   127.0.0.1
+_dns._udp      IN SRV 0 100 1053 ns.beta.internal.
+_mmo._tcp      IN SRV 10 100 443 mmo.beta.internal.
+_du-cap        IN TXT "du-sd=1" "du-cap=1" "du-watch=1" "du-bt=1"
+mmo            IN TXT "app=conscience64" "surface=mmo-world-beta" "network=pre-authoritative-mmo" "growth=slow"
