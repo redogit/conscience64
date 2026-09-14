@@ -58,19 +58,22 @@ try {
     if(result.exceptionDetails)throw new Error(result.exceptionDetails.exception?.description||result.exceptionDetails.text);
     return result.result.value;
   };
-
-  const url=`${origin}/play/mmo/?test=1`;
-  await call('Page.navigate',{url});
-  for(let i=0;i<100;i++){
-    if(await evaluate(url=>location.href===url && !!globalThis.Conscience64MMOPlugins && !!document.getElementById('plugin-games'),url))break;
-    if(i===99)throw new Error('MMO did not initialize');
-    await new Promise(r=>setTimeout(r,100));
+  async function waitReady(url) {
+    for(let i=0;i<100;i++){
+      if(await evaluate(url=>location.href===url && !!globalThis.Conscience64MMOPlugins && !!globalThis.Conscience64MMOSave && !!document.getElementById('plugin-games'),url))return;
+      if(i===99)throw new Error('MMO did not initialize');
+      await new Promise(r=>setTimeout(r,100));
+    }
   }
+
+  let url=`${origin}/play/mmo/?test=1`;
+  await call('Page.navigate',{url});
+  await waitReady(url);
 
   for(const width of [1100,320]){
     await call('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
-    const layout=await evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,street:!!document.querySelector('.street-scene'),observatory:!!document.querySelector('.sky-window'),label:document.querySelector('.sky-label')?.textContent||''}));
-    assert.ok(layout.street && layout.observatory,'grounded world surfaces missing');
+    const layout=await evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth,street:!!document.querySelector('.street-scene'),observatory:!!document.querySelector('.sky-window'),label:document.querySelector('.sky-label')?.textContent||'',save:!!document.getElementById('save-local')}));
+    assert.ok(layout.street && layout.observatory && layout.save,'grounded world or save surfaces missing');
     assert.match(layout.label,/NOT TELESCOPE DATA/);
     assert.ok(layout.scroll<=layout.width+1,`MMO horizontal overflow at ${width}: ${JSON.stringify(layout)}`);
   }
@@ -107,7 +110,51 @@ try {
   assert.match(pluginResult.result,/Completed|success/i);
   assert.match(pluginResult.status,/validated local plug-in/i);
 
-  console.log('PASS MMO Chrome: grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward and text safety');
+  const saveRoundTrip=await evaluate(()=>{
+    const xpSaved=Number(document.getElementById('xp').textContent);
+    document.getElementById('role-select').value='Builder';
+    document.getElementById('motto').value='Keep the street useful';
+    document.getElementById('save-identity').click();
+    document.getElementById('save-local').click();
+    const savedStatus=document.getElementById('save-status').textContent;
+    document.querySelector('[data-life="walk"]').click();
+    const changed=Number(document.getElementById('xp').textContent);
+    document.getElementById('load-local').click();
+    return {
+      xpSaved,
+      changed,
+      restored:Number(document.getElementById('xp').textContent),
+      role:document.getElementById('role').textContent,
+      motto:document.getElementById('motto').value,
+      savedStatus,
+      loadedStatus:document.getElementById('save-status').textContent
+    };
+  });
+  assert.ok(saveRoundTrip.changed>saveRoundTrip.xpSaved,'run did not change after local save');
+  assert.equal(saveRoundTrip.restored,saveRoundTrip.xpSaved,'explicit load did not restore XP');
+  assert.equal(saveRoundTrip.role,'Builder');
+  assert.equal(saveRoundTrip.motto,'Keep the street useful');
+  assert.match(saveRoundTrip.savedStatus,/Saved locally/);
+  assert.match(saveRoundTrip.loadedStatus,/Loaded local save/);
+
+  url=`${origin}/play/mmo/?test=2`;
+  await call('Page.navigate',{url});
+  await waitReady(url);
+  const noAutoLoad=await evaluate(()=>({xp:Number(document.getElementById('xp').textContent),role:document.getElementById('role').textContent,status:document.getElementById('save-status').textContent}));
+  assert.equal(noAutoLoad.xp,0,'saved state loaded automatically without consent');
+  assert.equal(noAutoLoad.role,'Explorer');
+  assert.match(noAutoLoad.status,/Nothing loads automatically/);
+
+  const explicitAfterReload=await evaluate(()=>{
+    document.getElementById('load-local').click();
+    return {xp:Number(document.getElementById('xp').textContent),role:document.getElementById('role').textContent,motto:document.getElementById('motto').value,status:document.getElementById('save-status').textContent};
+  });
+  assert.equal(explicitAfterReload.xp,saveRoundTrip.xpSaved);
+  assert.equal(explicitAfterReload.role,'Builder');
+  assert.equal(explicitAfterReload.motto,'Keep the street useful');
+  assert.match(explicitAfterReload.status,/Loaded local save/);
+
+  console.log('PASS MMO Chrome: grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward, text safety, explicit portable save/load and no auto-load');
 } catch(error) {
   console.error(`FAIL MMO Chrome: ${error.message}`); process.exitCode=1;
 } finally {
