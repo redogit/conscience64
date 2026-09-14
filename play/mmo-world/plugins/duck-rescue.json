@@ -1,0 +1,16 @@
+{
+  "schema": "conscience64.mmo.plugin/v1",
+  "id": "duck-rescue",
+  "name": "Storm Drain Duck Rescue",
+  "version": "1.0.1",
+  "mechanic": "choice",
+  "prompt": "After an evening rainstorm, a rubber duck from the corner market display is lodged beside a storm drain. Choose the safest practical recovery plan without stepping into traffic.",
+  "choices": [
+    "Ask the shopkeeper for a broom or grabber and retrieve it from the sidewalk",
+    "Walk into the traffic lane to pick it up",
+    "Climb into the storm drain"
+  ],
+  "correctIndex": 0,
+  "reward": {"xp": 16, "joy": 8, "tokens": 1, "discoveries": 0},
+  "description": "Known-good example for the data-only local Arcade Forge contract. Rewards are preview metadata only and do not modify canonical MMO World state."
+}

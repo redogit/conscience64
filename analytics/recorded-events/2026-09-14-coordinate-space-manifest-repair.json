@@ -1,0 +1,20 @@
+{
+  "time": "2026-09-14T06:32:44Z",
+  "kind": "REVISED",
+  "project": "coordinate-space",
+  "message": "The Coordinate Space release manifest was reconciled to the intentional 2.5D/3D Compass presentation successor, then the exact repaired revision passed dedicated release/Chrome verification and the full Conscience64 publication chain.",
+  "evidence": "executed",
+  "source": "github-actions:34813791353",
+  "status": "passed-and-deployed",
+  "repository": "redogit/conscience64",
+  "revision": "c9f5ad3400cf86377aa52a3e23dad5317cb2717b",
+  "command": "Sync Conscience64 Pages source",
+  "environment": "GitHub Actions ubuntu-latest publication gate plus native GitHub Pages deployment",
+  "scope": "Reconciled the intentional Coordinate Space index.html presentation/navigation byte identity, preserved the predecessor digest, left exact-utf8-f64/v1 and audited core-module identities unchanged, passed release/public/codec/Chrome/Musilanguage/MUSIC64 gates, and deployed the exact repaired revision. This is a release-identity repair, not a new codec or scientific claim.",
+  "independence": "same-source",
+  "failed_publication_run": 34813281038,
+  "repair_pr": 23,
+  "dedicated_gate_run": 34813690259,
+  "deployment_run": 34813890216,
+  "source_presentation_commit": "1935ad6a31f155e5872236788950361086672a50"
+}

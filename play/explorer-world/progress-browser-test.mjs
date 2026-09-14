@@ -18,26 +18,10 @@ try{
  const evaluate=async(fn,...args)=>{const r=await call('Runtime.evaluate',{expression:`(${fn.toString()})(...${JSON.stringify(args)})`,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result.value;};
  async function visit(path){await call('Page.navigate',{url:`${origin}${path}`});for(let i=0;i<80;i++){if(await evaluate(()=>document.readyState==='complete'&&!!document.getElementById('start')))return;await new Promise(r=>setTimeout(r,100));}throw Error(`page did not initialize: ${path}`);}
  const controls=()=>evaluate(()=>['save-progress','load-progress','clear-progress','progress-status'].map(id=>!!document.getElementById(id)));
-
- await visit('/play/explorer-world/');
- assert.deepEqual(await controls(),[true,true,true,true],'Explorer World must expose explicit progress controls');
- await evaluate(()=>document.getElementById('start').click());await new Promise(r=>setTimeout(r,80));
- await evaluate(()=>document.getElementById('pulse').click());await new Promise(r=>setTimeout(r,40));
- const savedEnergy=Number(await evaluate(()=>document.getElementById('energy').textContent));assert.ok(savedEnergy<100,'test must save changed gameplay state');
- await evaluate(()=>document.getElementById('save-progress').click());
- assert.equal(await evaluate(key=>localStorage.getItem(key)!==null,SAVE_KEY),true,'manual save must write local checkpoint');
- await evaluate(()=>document.getElementById('restart').click());assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),100);
- await evaluate(()=>document.getElementById('load-progress').click());
- assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),savedEnergy,'load must restore saved gameplay state');
- assert.match(await evaluate(()=>document.getElementById('progress-status').textContent),/loaded/i);
-
- await visit('/play/mmo-world/');
- assert.deepEqual(await controls(),[true,true,true,true],'MMO World must expose the same explicit local checkpoint controls');
- await evaluate(()=>document.getElementById('load-progress').click());
- assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),savedEnergy,'MMO World must load the same founding-shard checkpoint');
- await evaluate(()=>document.getElementById('clear-progress').click());
- assert.equal(await evaluate(key=>localStorage.getItem(key),SAVE_KEY),null,'clear must remove the local checkpoint');
- assert.match(await evaluate(()=>document.getElementById('progress-status').textContent),/cleared|no local checkpoint/i);
- assert.deepEqual(errors,[],'browser runtime exceptions');
- console.log('PASS Explorer/MMO progress browser: explicit save, restart, shared load, and clear.');
+ await visit('/play/explorer-world/');assert.deepEqual(await controls(),[true,true,true,true]);
+ await evaluate(()=>document.getElementById('start').click());await new Promise(r=>setTimeout(r,80));await evaluate(()=>document.getElementById('pulse').click());await new Promise(r=>setTimeout(r,40));
+ const savedEnergy=Number(await evaluate(()=>document.getElementById('energy').textContent));assert.ok(savedEnergy<100);await evaluate(()=>document.getElementById('save-progress').click());assert.equal(await evaluate(key=>localStorage.getItem(key)!==null,SAVE_KEY),true);
+ await evaluate(()=>document.getElementById('restart').click());assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),100);await evaluate(()=>document.getElementById('load-progress').click());assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),savedEnergy);assert.match(await evaluate(()=>document.getElementById('progress-status').textContent),/loaded/i);
+ await visit('/play/mmo-world/');assert.deepEqual(await controls(),[true,true,true,true]);await evaluate(()=>document.getElementById('load-progress').click());assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),savedEnergy);await evaluate(()=>document.getElementById('clear-progress').click());assert.equal(await evaluate(key=>localStorage.getItem(key),SAVE_KEY),null);assert.match(await evaluate(()=>document.getElementById('progress-status').textContent),/cleared|no local checkpoint/i);
+ assert.deepEqual(errors,[]);console.log('PASS Explorer/MMO progress browser: explicit save, restart, shared load, and clear.');
 }catch(error){console.error(`FAIL Explorer/MMO progress browser: ${error.message}`);process.exitCode=1;}finally{socket?.close();chrome?.kill('SIGTERM');for(const q of pending.values())clearTimeout(q.timer);server.closeAllConnections();await new Promise(r=>server.close(r));await rm(profile,{recursive:true,force:true,maxRetries:10,retryDelay:100});}

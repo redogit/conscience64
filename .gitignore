@@ -1,0 +1,4 @@
+# Conscience64 direct knowledge bridge runtime state
+knowledge/knowledge.jsonl
+knowledge/*.runtime.jsonl
+knowledge/runtime/

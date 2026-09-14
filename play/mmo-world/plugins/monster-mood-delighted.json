@@ -1,0 +1,12 @@
+{
+  "schema": "conscience64.mmo.plugin/v1",
+  "id": "monster-mood-delighted",
+  "name": "Monster Mood — Delighted",
+  "version": "1.0.0",
+  "mechanic": "choice",
+  "prompt": "The monster is DELIGHTED. Match its displayed mood before the local preview ends.",
+  "choices": ["GRUMPY", "CONFUSED", "DELIGHTED", "SUSPICIOUS"],
+  "correctIndex": 2,
+  "reward": {"xp": 18, "joy": 8, "tokens": 2, "discoveries": 0},
+  "description": "One static state from the retired randomized Monster Mood mini-game, adapted to the data-only Forge contract."
+}

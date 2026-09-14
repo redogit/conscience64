@@ -4,8 +4,8 @@ export const SAVE_VERSION=1;
 export const SAVE_SCHEMA='conscience64.explorer-world/save';
 export const SAVE_KEY='conscience64.explorer-world.progress.v1';
 
-const finite=(value)=>Number.isFinite(value);
-const bool=(value)=>value===true;
+const finite=value=>Number.isFinite(value);
+const bool=value=>value===true;
 
 function validPlayer(player){
   return !!player&&finite(player.x)&&finite(player.y)&&finite(player.health)&&finite(player.energy);
@@ -52,21 +52,12 @@ export function hydrate(input){
   world.portal.active=portalUnlocked({echoes:doc.echoes,fuzzballFound});
   const player={x:doc.player.x,y:doc.player.y,radius:14,health:doc.player.health,energy:doc.player.energy,invuln:0};
   return{
-    world,
-    player,
-    playing:false,
-    paused:false,
-    gameOver:false,
-    echoes:doc.echoes,
-    defeated:doc.defeated,
-    fuzzballFound,
+    world,player,playing:false,paused:false,gameOver:false,
+    echoes:doc.echoes,defeated:doc.defeated,fuzzballFound,
     region:regionAt(player.x,player.y).id,
     regionsSeen:new Set(doc.regionsSeen.map(String)),
-    pulse:0,
-    pulseCooldown:0,
-    chapterComplete:bool(doc.chapterComplete),
-    lastStory:String(doc.lastStory||''),
-    time:finite(doc.time)?doc.time:0
+    pulse:0,pulseCooldown:0,chapterComplete:bool(doc.chapterComplete),
+    lastStory:String(doc.lastStory||''),time:finite(doc.time)?doc.time:0
   };
 }
 
@@ -82,14 +73,6 @@ export function loadLocal(storage=globalThis.localStorage){
   return hydrate(doc);
 }
 
-export function hasLocal(storage=globalThis.localStorage){
-  return !!storage?.getItem&&storage.getItem(SAVE_KEY)!=null;
-}
-
-export function clearLocal(storage=globalThis.localStorage){
-  if(storage?.removeItem)storage.removeItem(SAVE_KEY);
-}
-
-export function shouldResetOnStart(state){
-  return !!state?.gameOver;
-}
+export function hasLocal(storage=globalThis.localStorage){return !!storage?.getItem&&storage.getItem(SAVE_KEY)!=null;}
+export function clearLocal(storage=globalThis.localStorage){if(storage?.removeItem)storage.removeItem(SAVE_KEY);}
+export function shouldResetOnStart(state){return !!state?.gameOver;}

@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const gpu=await readFile(new URL('./space-lens-gpu.js',import.meta.url),'utf8');
+const home=await readFile(new URL('./index.html',import.meta.url),'utf8');
+const play=await readFile(new URL('./play/index.html',import.meta.url),'utf8');
+const history=await readFile(new URL('./history/index.html',import.meta.url),'utf8');
+assert.match(gpu,/XYZ geometry \+ perspective projection/);
+assert.match(gpu,/WebGPU -> WebGL2 -> WebGL -> existing Canvas2D/);
+assert.match(gpu,/primitive:\{topology:'point-list'\}/);
+assert.match(gpu,/gl\.drawArrays\(gl\.POINTS,0,COUNT\)/);
+assert.match(gpu,/geometry:'xyz-perspective'/);
+assert.doesNotMatch(play,/fuzzball-hidden/);
+assert.doesNotMatch(home,/href=["'][^"']*fuzzball-hidden/i);
+assert.match(history,/perspective:1200px/);
+assert.match(history,/prefers-reduced-motion:reduce/);
+assert.match(history,/forced-colors:active/);
+console.log('PASS spatial UI: perspective XYZ renderer, GPU fallbacks, hidden-game boundary, and accessible History depth.');

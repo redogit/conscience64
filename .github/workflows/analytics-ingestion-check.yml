@@ -34,13 +34,13 @@ jobs:
         working-directory: analytics
         run: |
           set -euo pipefail
-          python3 -m py_compile server.py test_server.py
+          python3 -m py_compile server.py test_server.py test_recorded_events.py
 
-      - name: Run Python ingestion and real-event tests
+      - name: Run Python ingestion and recorded-event corpus tests
         working-directory: analytics
         run: |
           set -euo pipefail
-          python3 -m unittest -v test_server.py
+          python3 -m unittest -v test_server.py test_recorded_events.py
 
       - name: Run JavaScript event-contract tests
         working-directory: analytics

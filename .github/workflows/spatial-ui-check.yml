@@ -1,0 +1,36 @@
+name: Verify spatial UI
+
+on:
+  pull_request:
+    paths:
+      - 'space-lens-gpu.js'
+      - 'spatial-ui-test.mjs'
+      - 'index.html'
+      - 'play/**'
+      - 'history/**'
+      - '.github/workflows/spatial-ui-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize exact commit without external Actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init .
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth 1 origin "${GITHUB_SHA}"
+          git checkout --detach FETCH_HEAD
+      - name: Syntax check GPU renderer
+        run: node --check space-lens-gpu.js
+      - name: Verify spatial and hidden-boundary contracts
+        run: node spatial-ui-test.mjs
+      - name: Verify existing history contracts
+        run: |
+          node history/test.mjs
+          node history/knowledge-test.mjs
