@@ -30,6 +30,10 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Verify simple MMO core
         run: node play/mmo/simple/test.mjs
+      - name: Verify simple MMO ECS import and video-job contract
+        run: node play/mmo/simple/ecs.test.mjs
+      - name: Verify ECS video carrier syntax
+        run: node --check play/mmo/simple/tools/render-ecs-videos.mjs
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
       - name: Verify grounded MMO reality canon
