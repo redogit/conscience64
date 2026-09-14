@@ -32,6 +32,12 @@ function requireNonEmptyString(value,name){
   return value;
 }
 
+function requireSha256(value,name){
+  requireNonEmptyString(value,name);
+  if(!/^[0-9a-f]{64}$/.test(value)) throw new TypeError(`${name} must be a lowercase SHA-256 hex digest`);
+  return value;
+}
+
 export function canonicalJson(value){
   return JSON.stringify(canonicalValue(value));
 }
@@ -50,6 +56,7 @@ export function buildCarrierPlan(jobs,options={}){
   if(!Array.isArray(jobs)) throw new TypeError('jobs must be an array');
   const place=requireNonEmptyString(options.place,'options.place');
   const recipeId=requireNonEmptyString(options.recipeId,'options.recipeId');
+  const recipeSha256=requireSha256(options.recipeSha256,'options.recipeSha256');
   const renderer=requireNonEmptyString(options.renderer,'options.renderer');
 
   const orderedSource=[...jobs].sort((a,b)=>String(a.id).localeCompare(String(b.id)));
@@ -76,6 +83,7 @@ export function buildCarrierPlan(jobs,options={}){
     carrier:{
       renderer,
       recipeId,
+      recipeSha256,
       canon:false,
       worldAuthority:false,
       seeds:Object.fromEntries(SEED_DOMAINS.map(domain=>[domain,carrierSeed(job.id,domain)]))
@@ -86,7 +94,8 @@ export function buildCarrierPlan(jobs,options={}){
     schema:PLAN_SCHEMA,
     sourceJobCount:jobs.length,
     sourceJobsSha256:sha256Canonical(orderedSource),
-    selection:{place,recipeId,renderer},
+    recipeSha256,
+    selection:{place,recipeId,recipeSha256,renderer},
     boundaries:[...BOUNDARIES],
     jobs:rows
   };
