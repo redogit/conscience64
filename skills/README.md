@@ -2,6 +2,14 @@
 
 Three reusable project skills implement the documented Society working cycle without claiming canonical Society activation.
 
+## Where an agent fits
+
+An agent performs the work, a skill guides a reusable workflow, and a connector supplies authorized access to supported tools or data. A plugin can package skills and connections. One agent can use many skills; a shared skill does not require one dedicated agent per copy.
+
+A society organizes relationships, responsibilities, and decision authority. A swarm is a coordination pattern in which participants adapt through local interactions and feedback. An agent can participate in both; running several workers in parallel alone does not establish swarm behavior.
+
+See [the component map, coordination choices, and proposed Visual Studio workflow](SOCIETY.md#agents-skills-connectors-societies-and-swarms). These are architectural distinctions, not a claim of a connected editor, an executed swarm, or canonical Society activation.
+
 ## Fast routing
 
 | Situation | Skill | Result |

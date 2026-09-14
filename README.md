@@ -47,6 +47,10 @@ English, Spanish, French, and Arabic interfaces are available across the origina
 
 [Orbit Search and Conscience space](research/cross-carrier/2026-09-13/internal-update/global_search/index.html) adds 65 enabled search services, 248 country/territory routes excluding Russia, and a geometric 4D-to-3D black-hole view. Run locally for metadata retrieval and a separate headless XY interaction workspace. [Materials, validation and complete recovery bundle](research/cross-carrier/2026-09-13/internal-update/README.md) preserve prior transport results and open failures. Public browsing still depends on network/certificate access; external-page activation is not enabled.
 
+## Agents, skills, and coordination
+
+The [Society skills guide](skills/README.md) explains how agents use skills and connectors, how a society organizes their responsibilities, and how swarm coordination differs from parallel execution. The [architecture and proposed development workflow](skills/SOCIETY.md#agents-skills-connectors-societies-and-swarms) preserve the existing human-purpose and evidence boundaries; they do not claim a connected Visual Studio editor, an executed swarm, or canonical Society activation.
+
 ## Research projects
 
 The research portfolio has a compact project map that preserves both accomplishments and failures instead of presenting only successes.

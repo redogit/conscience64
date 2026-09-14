@@ -4,6 +4,54 @@ This file is the routing layer above individual project skills.
 
 It does **not** canonically activate Operator Moonshot Society. It is an implementation of the documented advisory structure for reusable project work.
 
+## Agents, skills, connectors, societies, and swarms
+
+An agent is a participant. A society describes relationships and responsibilities among participants; a swarm describes a pattern of coordination. The same agent can participate in both.
+
+The levels below describe governance and reusable capabilities. An agent acts across those levels; a swarm is a coordination mode, not another mandatory level above Society.
+
+| Component | Responsibility | Development example |
+|---|---|---|
+| Agent | Observe a situation, choose actions toward a goal, use permitted tools, and report outcomes. | A worker investigating a build failure. |
+| Skill | Supply reusable instructions, procedures, and resources for a bounded workflow. | A build-and-test procedure. |
+| Connector / MCP server | Expose supported data and actions through an authorized connection. | Reading editor diagnostics, if the particular connector supports it. |
+| Plugin | Package skills, tool connections, or both for installation and reuse. | A development integration with a diagnostic workflow. |
+| Society of agents | Organize membership, roles, communication, shared resources, obligations, and decision authority. | Builders, testers, and reviewers working under project agreements. |
+| Swarm | Coordinate participants through local interactions and feedback that produce collective behavior. | Search workers adapting their exploration to findings from other workers. |
+
+An agent is distinct from the model it uses, its assigned role, and its skill files. A model may support multiple agent instances. A role describes a responsibility; naming a role does not start a worker. One agent may use many skills, and many agents may share a skill. A skill does not require a dedicated agent, establish a connection, or grant permissions.
+
+An agent executes or invokes an Operator under the existing contract. Its output remains subject to the evidence and admission requirements below. A software agent's role is not a model of a person's worth or standing.
+
+### Society and swarm coordination
+
+A Society may use a single worker, a coordinator with delegated workers, a review team, or a temporary swarm as the task warrants. Members can have different roles and goals; their obligations and conflicts must remain explicit.
+
+For this architecture, record the actual coordination mechanism:
+
+- **Single worker:** one agent applies the relevant skills and Operators.
+- **Delegated team:** a coordinator allocates bounded tasks and reconciles results.
+- **Swarm coordination:** participants adapt actions through declared local interactions or shared environmental signals; the collective behavior must be observed before a swarm-performance claim is made.
+
+Parallel execution alone does not demonstrate swarm behavior. Calling workers a society does not canonically activate Operator Moonshot Society. Agreement among agents does not establish independent corroboration, especially when they share a model, prompt, or source.
+
+### Proposed development workflow
+
+An illustrative Visual Studio workflow would let a build agent use `build-test`, obtain diagnostics through an available connector or local development tools, and return the change and observations. Review work would apply `review-admit` with the evidence, predecessor, and rollback path. A temporary exploration swarm could be considered only when a bounded question benefits from that coordination pattern.
+
+For each actual worker run, preserve the goal, role, current state, applicable skill/Operator versions, tool permissions, inputs and source identities, coordination method, cost budget, stop condition, outputs, failures, and evidence scope. For swarm experiments, also record the interaction rules, observed adaptation, and comparison with a single-worker or delegated-team baseline. Scheduling, communication, duplicate work, and review count toward cost.
+
+This is a documented design example, not evidence that a Visual Studio connector is installed, an agent runtime is running, or a swarm has been executed. The connector's identity, available tools, connection state, and supported editor must be verified in the target environment before claiming access. Visual Studio and Visual Studio Code remain distinct products.
+
+### Sources and scope
+
+This section records the September 14, 2026 conversation clarification. The component mapping is an architectural synthesis; the development workflow is proposed. No new runtime or performance result is reported here.
+
+- [OpenAI: Skills](https://developers.openai.com/plugins/concepts/skills) describes reusable workflows and the complementary roles of skills and MCP tools.
+- [OpenAI: Model Context Protocol](https://learn.chatgpt.com/docs/extend/mcp) describes tool connections and the distinction between hosted and local configuration.
+- [Sycara and Zeng: Coordination of Multiple Intelligent Software Agents](https://publications.ri.cmu.edu/storage/publications/pub_files/pub1/sycara_katia_1996_9/sycara_katia_1996_9.pdf) reports an implemented architecture with specialized agents and task-dependent collaboration. It does not verify this project's implementation.
+- [Reynolds: Boids](https://www.red3d.com/cwr/boids/) provides an original example of coordinated group behavior arising from local rules. It does not establish effectiveness for language-model coding agents.
+
 ## Level 0 — Skill
 
 A skill is one bounded reusable transformation.
