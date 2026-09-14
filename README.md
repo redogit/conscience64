@@ -14,7 +14,9 @@ The forward-only project manifest is [`research/projects/CURRENT.json`](research
 
 **Featured launch surface:** [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/)
 
-The MMO World page directly runs the already smoke-tested Explorer World shard while the shared-world layer remains gated. It is intentionally honest about the current boundary: playable browser world now; server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not yet claimed complete. The beta also exposes optional user-initiated Bluetooth/gamepad support, deterministic descriptive world varieties, and the DU-SD/1, DU-CAP/1, DU-WATCH/1, and DU-BT/1 protocol contracts.
+The MMO World page directly runs the already smoke-tested Explorer World shard while the shared-world layer remains gated. It is intentionally honest about the current boundary: playable browser world now; server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not yet claimed complete. The beta also exposes optional user-initiated Bluetooth/gamepad support, deterministic descriptive world varieties, a local data-only [Arcade Forge](https://redogit.github.io/conscience64/play/mmo-world/forge/), and the DU-SD/1, DU-CAP/1, DU-WATCH/1, and DU-BT/1 protocol contracts.
+
+Arcade Forge admits the useful data-only mini-game recipe idea from the retired parallel MMO branch without reviving that architecture. Imported plug-ins cannot execute code or HTML, add URL/network/server/account/prize authority, or modify canonical Explorer progression. Their reward values are preview metadata only.
 
 Advertising should point to this stable Conscience64 URL and grow interest gradually rather than bypassing safety, recovery, stability, moderation/support-capacity, or operating-cost gates.
 
@@ -30,7 +32,7 @@ The [public playground](https://redogit.github.io/conscience64/play/) turns ongo
 
 | Tool | What you can do |
 | --- | --- |
-| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Enter the playable Explorer shard through the MMO launch surface; explore deterministic descriptive world varieties; optionally connect a Bluetooth companion or OS-paired gamepad |
+| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Enter the playable Explorer shard, explore deterministic descriptive varieties, open the local data-only Arcade Forge, and optionally connect a Bluetooth companion or OS-paired gamepad |
 | [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Play the current single-player browser shard directly |
 | [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Explore exact, speakable, mnemonic, and procedural musical projections |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes with source links |
@@ -85,6 +87,9 @@ DEMO_DATA != RESEARCH_EVIDENCE
 STATIC_VIEW != AUTHORITATIVE_LEDGER
 CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
 PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO
+DATA_ONLY_PLUGIN != EXECUTABLE_CODE
+LOCAL_PLUGIN_PREVIEW != CANONICAL_GAME_STATE
+LOCAL_PLUGIN != SERVER_AUTHORITY
 ```
 
 ## REDOGIT

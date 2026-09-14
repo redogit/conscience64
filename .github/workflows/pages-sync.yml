@@ -114,6 +114,7 @@ jobs:
         run: |
           node play/browser-test.mjs
           node play/explorer-world/browser-test.mjs
+          node play/mmo-world/forge/browser-test.mjs
 
       - name: Verify Coordinate Space public release before publishing
         shell: bash
