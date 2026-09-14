@@ -32,3 +32,5 @@ jobs:
         run: node play/test.mjs
       - name: Exercise the applications in Chrome
         run: node play/browser-test.mjs
+      - name: Exercise Explorer World in Chrome
+        run: node play/explorer-world/browser-test.mjs
