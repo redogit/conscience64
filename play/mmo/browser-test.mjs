@@ -76,12 +76,6 @@ try {
   }
   const starterPack=await evaluate(()=>{
     document.getElementById('install-starter-pack').click();
-    return {
-      names:globalThis.Conscience64MMOPlugins.list().map(p=>p.name).sort(),
-      status:document.getElementById('status').textContent
-    };
-  });
-  assert.deepEqual(starterPack.names,['Bus Transfer','Market Closing Shift','Observatory Label Check','Workshop Sort'].sort());
     return {names:globalThis.Conscience64MMOPlugins.list().map(p=>p.name).sort(),status:document.getElementById('status').textContent};
   });
   assert.deepEqual(starterPack.names,expectedStarterPack);
@@ -92,7 +86,6 @@ try {
   await waitReady(url);
 
   const starterCabinets=await evaluate(()=>[...document.querySelectorAll('#plugin-games .game-card h3')].map(node=>node.textContent).sort());
-  assert.deepEqual(starterCabinets,['Bus Transfer','Market Closing Shift','Observatory Label Check','Workshop Sort'].sort());
   assert.deepEqual(starterCabinets,expectedStarterPack);
   const movementCabinets=await evaluate(()=>[...document.querySelectorAll('.game-room [data-game="slalom"],.game-room [data-game="relay"]')].map(button=>button.closest('.game-card')?.querySelector('h3')?.textContent).filter(Boolean).sort());
   assert.deepEqual(movementCabinets,['Parcel Relay','Sidewalk Slalom']);
@@ -217,7 +210,6 @@ try {
   assert.equal(explicitAfterReload.motto,'Keep the street useful');
   assert.match(explicitAfterReload.status,/Loaded local save/);
 
-  console.log('PASS MMO Chrome: grounded starter pack Forge-to-MMO path, grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward, text safety, explicit portable save/load and no auto-load');
   console.log('PASS MMO Chrome: 12-slot activity mix including Sidewalk Slalom + Parcel Relay untimed routes, six-game Grounded Starter Pack, grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward, text safety, untimed Redline route, explicit portable save/load and no auto-load');
 } catch(error) {
   console.error(`FAIL MMO Chrome: ${error.message}`); process.exitCode=1;
