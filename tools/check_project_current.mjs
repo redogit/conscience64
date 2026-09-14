@@ -41,6 +41,24 @@ for (const record of current.softwareBoundaryRecords || []) {
   assert.match(text, /^# /, `${record.path} must be a human-readable software boundary record`);
 }
 
+const analytics = current.analyticsContinuation;
+assert.ok(analytics, 'analytics continuation missing');
+assert.equal(analytics.status, 'LOCAL_LIVE_SERVICE_IMPLEMENTED_REMOTE_DEPLOYMENT_NOT_ESTABLISHED');
+assert.equal(analytics.independence, 'same-source');
+assert.match(analytics.sourceRevision, /^[0-9a-f]{40}$/);
+assert.equal(typeof analytics.sourceWorkflowRun, 'number');
+
+const liveService = await readFile(new URL(`../${analytics.liveService}`, import.meta.url), 'utf8');
+assert.ok(liveService.includes('Last-Event-ID'), 'live analytics service must carry resume semantics');
+assert.ok(liveService.includes('allow-public-read'), 'live analytics service must make public-read exposure explicit');
+
+const recordedEvent = JSON.parse(await readFile(new URL(`../${analytics.recordedEvent}`, import.meta.url), 'utf8'));
+assert.equal(recordedEvent.revision, analytics.sourceRevision);
+assert.equal(recordedEvent.source, `github-actions:${analytics.sourceWorkflowRun}`);
+assert.equal(recordedEvent.independence, 'same-source');
+assert.equal(recordedEvent.kind, 'TESTED');
+assert.equal(recordedEvent.status, 'passed');
+
 for (const invariant of [
   'USER_INPUT != ASSISTANT_SYNTHESIS',
   'REQUESTED != IMPLEMENTED',
@@ -50,8 +68,11 @@ for (const invariant of [
   'TRANSPORT_VALIDITY != EVIDENCE_VALIDITY',
   'DEMO_DATA != RESEARCH_EVIDENCE',
   'STATIC_VIEW != AUTHORITATIVE_LEDGER',
+  'LOCAL_LIVE_SERVICE != REMOTE_PRODUCTION_DEPLOYMENT',
+  'PRODUCER_EVENT_ID != CANONICAL_LEDGER_EVENT_ID',
+  'REPLAYED_EVENT != NEW_EXECUTION',
   'CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE',
   'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO'
 ]) assert.ok(current.addedInvariants.includes(invariant), `missing invariant: ${invariant}`);
 
-console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger and software boundary records verified.`);
+console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger, software boundary records, and live analytics continuation verified.`);
