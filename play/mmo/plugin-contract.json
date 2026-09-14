@@ -1,0 +1,26 @@
+{
+  "schema": "conscience64.mmo.plugin-contract/v1",
+  "pluginSchema": "conscience64.mmo.plugin/v1",
+  "version": "1.0.0",
+  "executionModel": "data-only",
+  "mechanics": ["choice", "input", "creative"],
+  "limits": {
+    "fileBytes": 65536,
+    "idPattern": "^[a-z0-9][a-z0-9-]{2,63}$",
+    "nameChars": 80,
+    "promptChars": 500,
+    "choices": 8,
+    "answers": 16,
+    "itemChars": 120,
+    "rewardCaps": {"xp":40,"joy":20,"tokens":4,"discoveries":1}
+  },
+  "security": {
+    "executablePluginCode": false,
+    "htmlInterpretation": false,
+    "urls": false,
+    "networkRequests": false,
+    "serverAuthority": false,
+    "realWorldPrizeEligibility": false
+  },
+  "note": "Plug-ins are validated JSON recipes executed by the built-in MMO runtime. Local installation never makes a plug-in authoritative for multiplayer state or prizes."
+}
