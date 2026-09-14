@@ -87,6 +87,8 @@ try {
 
   const starterCabinets=await evaluate(()=>[...document.querySelectorAll('#plugin-games .game-card h3')].map(node=>node.textContent).sort());
   assert.deepEqual(starterCabinets,expectedStarterPack);
+  const movementCabinets=await evaluate(()=>[...document.querySelectorAll('.game-room [data-game="slalom"],.game-room [data-game="relay"]')].map(button=>button.closest('.game-card')?.querySelector('h3')?.textContent).filter(Boolean).sort());
+  assert.deepEqual(movementCabinets,['Parcel Relay','Sidewalk Slalom']);
 
   for(const width of [1100,320]){
     await call('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
@@ -137,6 +139,41 @@ try {
   assert.match(untimedRedline.prompt,/No reaction timer/);
   assert.match(untimedRedline.result,/own pace/);
 
+  const movementResults=await evaluate(()=>{
+    function completeUntimed(gameId, routeLabel){
+      const before=Number(document.getElementById('xp').textContent);
+      document.querySelector(`[data-game="${gameId}"]`).click();
+      const untimed=[...document.querySelectorAll('#game-controls button')].find(b=>b.textContent==='Use untimed route');
+      if(!untimed)throw new Error(`${gameId} untimed route missing`);
+      untimed.click();
+      const prompt=document.getElementById('game-prompt').textContent;
+      const marker=`${routeLabel}: `;
+      const start=prompt.indexOf(marker);
+      if(start<0)throw new Error(`${gameId} route label missing`);
+      const tail=prompt.slice(start+marker.length);
+      const routeText=tail.split('. The route stays visible.')[0];
+      const moves=routeText.split(' → ').map(x=>x.trim()).filter(Boolean);
+      for(const move of moves){
+        const control=[...document.querySelectorAll('#game-controls button')].find(b=>b.textContent===move);
+        if(!control)throw new Error(`${gameId} control ${move} missing`);
+        control.click();
+      }
+      return {before,after:Number(document.getElementById('xp').textContent),prompt,result:document.getElementById('game-result').textContent,moves};
+    }
+    return {
+      slalom:completeUntimed('slalom','Marked path'),
+      relay:completeUntimed('relay','Bay route')
+    };
+  });
+  assert.equal(movementResults.slalom.after-movementResults.slalom.before,12);
+  assert.match(movementResults.slalom.prompt,/route stays visible/i);
+  assert.match(movementResults.slalom.result,/own pace/i);
+  assert.ok(movementResults.slalom.moves.length>=4);
+  assert.equal(movementResults.relay.after-movementResults.relay.before,13);
+  assert.match(movementResults.relay.prompt,/route stays visible/i);
+  assert.match(movementResults.relay.result,/own pace/i);
+  assert.ok(movementResults.relay.moves.length>=4);
+
   const saveRoundTrip=await evaluate(()=>{
     const xpSaved=Number(document.getElementById('xp').textContent);
     document.getElementById('role-select').value='Builder';
@@ -173,7 +210,7 @@ try {
   assert.equal(explicitAfterReload.motto,'Keep the street useful');
   assert.match(explicitAfterReload.status,/Loaded local save/);
 
-  console.log('PASS MMO Chrome: six-game Grounded Starter Pack Forge-to-MMO path, grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward, text safety, untimed Redline route, explicit portable save/load and no auto-load');
+  console.log('PASS MMO Chrome: 12-slot activity mix including Sidewalk Slalom + Parcel Relay untimed routes, six-game Grounded Starter Pack, grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward, text safety, untimed Redline route, explicit portable save/load and no auto-load');
 } catch(error) {
   console.error(`FAIL MMO Chrome: ${error.message}`); process.exitCode=1;
 } finally {
