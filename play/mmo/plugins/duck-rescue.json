@@ -1,0 +1,16 @@
+{
+  "schema": "conscience64.mmo.plugin/v1",
+  "id": "duck-rescue",
+  "name": "Duck Rescue",
+  "version": "1.0.0",
+  "mechanic": "choice",
+  "prompt": "A rubber duck is stranded on a floating library. Choose the least ridiculous rescue plan.",
+  "choices": [
+    "Build a tiny bridge",
+    "Challenge gravity to a duel",
+    "Ask the duck to file paperwork"
+  ],
+  "correctIndex": 0,
+  "reward": {"xp": 16, "joy": 8, "tokens": 1, "discoveries": 0},
+  "description": "Known-good example for the data-only plug-and-play contract."
+}
