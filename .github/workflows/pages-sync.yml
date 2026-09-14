@@ -86,7 +86,9 @@ jobs:
           node analytics/test.mjs
           node --check play/computational-chorus/chorus.mjs
           node --check play/explorer-world/world.mjs
+          node --check play/explorer-world/progress.mjs
           node --check play/explorer-world/game.mjs
+          node play/explorer-world/progress-test.mjs
           node --check play/mmo-world/companion.mjs
           node play/mmo-world/test.mjs
           python3 infra/internal-dns/verify_config.py
@@ -114,6 +116,7 @@ jobs:
         run: |
           node play/browser-test.mjs
           node play/explorer-world/browser-test.mjs
+          node play/explorer-world/progress-browser-test.mjs
 
       - name: Verify Coordinate Space public release before publishing
         shell: bash
