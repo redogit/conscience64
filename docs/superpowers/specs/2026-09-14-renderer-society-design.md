@@ -14,9 +14,9 @@ The system must permit rapid experimental rendering without allowing visual outp
 
 ## Existing Baseline
 
-The current visual-carrier v2 layer consumes deterministic ECS `SceneVideoJobs`, selects bounded jobs, preserves ECS render intent, binds the carrier plan to recipe content by SHA-256, derives domain-separated render seeds, and seals the canonical carrier plan.
+The current visual-carrier v2 layer consumes deterministic ECS `SceneVideoJobs`, preserves ECS render intent, binds carrier plans to recipe content by SHA-256, derives domain-separated render seeds, and seals canonical carrier plans.
 
-The existing authority flow is one-way:
+The authority flow is one-way:
 
 ```text
 core.mjs -> ECS -> SceneVideoJobs -> sealed carrier plan -> visual recipe -> renderer/toolchain -> artifact
@@ -93,21 +93,9 @@ A registry entry is exactly one of:
 2. `stage` — a bounded transformation inside a composable render pipeline;
 3. `pipeline` — an ordered composition of immutable stage identities and versions.
 
-Examples of complete renderers include a headless Blender/Cycles implementation, an Unreal-based implementation, a procedural renderer, a neural renderer, or future implementations that do not yet exist.
+Examples of complete renderers include headless Blender/Cycles, Unreal-based, procedural, neural, and future implementations not yet known.
 
-Example stage capabilities include:
-
-- scene construction;
-- geometry;
-- materials;
-- lighting;
-- character rendering;
-- motion;
-- atmosphere/effects;
-- accessibility transforms;
-- diagnostic overlays;
-- post-processing;
-- encoding.
+Example stage capabilities include scene construction, geometry, materials, lighting, character rendering, motion, atmosphere/effects, accessibility transforms, diagnostic overlays, post-processing, and encoding.
 
 ### 1.2 Stable Identity
 
@@ -119,11 +107,11 @@ A logical ID such as:
 renderer:blender-cycles-reference
 ```
 
-is not sufficient provenance by itself. An execution MUST also bind to the exact manifest content digest and version.
+is not sufficient provenance by itself. An execution MUST also bind to the exact manifest-content digest and version.
 
-### 1.3 Minimum Manifest Fields
+### 1.3 Minimum Manifest Payload
 
-A renderer, stage, or pipeline manifest records at minimum:
+A renderer, stage, or pipeline manifest payload records at minimum:
 
 - stable ID;
 - version;
@@ -134,24 +122,23 @@ A renderer, stage, or pipeline manifest records at minimum:
 - accepted input contracts;
 - produced output contracts;
 - determinism declaration;
-- resource class declarations;
+- resource-class declarations;
 - toolchain/container identity requirements;
-- authority: `none`;
-- manifest SHA-256.
+- authority: `none`.
+
+The manifest SHA-256 is registry/provenance metadata computed over the canonical manifest payload. It is not included inside the payload being hashed, avoiding a self-referential digest.
 
 ### 1.4 Pipeline Identity
 
-A composable pipeline identity is content-addressed over its ordered composition.
-
-Conceptually:
+A composable pipeline identity is content-addressed over canonical JSON with stable key ordering and an ordered stage list:
 
 ```text
-pipeline identity = SHA256(
-  ordered stage identities
-  + exact stage versions
-  + stage manifest digests
-  + stage parameters
-)
+pipeline identity = SHA256(canonical({
+  ordered stage identities,
+  exact stage versions,
+  stage manifest digests,
+  stage parameters
+}))
 ```
 
 Changing one stage or one stage parameter creates a distinct pipeline identity without changing the ECS job identity.
@@ -172,33 +159,30 @@ Experimental implementations may fail conformance or reproducibility tests and r
 
 Normal trusted/reference/production-candidate routing uses only admitted implementations unless a render request explicitly permits experimental candidates.
 
-Admission is evidence-based and reversible.
-
-Admission does not confer world authority.
+Admission is evidence-based and reversible. Admission does not confer world authority.
 
 ## 3. Governance Classification
 
-Admission state and usage classification are separate concepts.
+Admission state and usage classifications are separate concepts.
 
-A renderer can be admitted without being a reference renderer or production candidate.
-
-### 3.1 Lifecycle Evidence States
+### 3.1 Evidence Lifecycle
 
 The evidence lifecycle is:
 
 ```text
-discovered -> experimental -> tested -> admitted
+discovered -> experimental -> tested -> admitted -> trusted
 ```
 
-After admission, classifications may branch:
+`reference` and `production-candidate` are separate usage classifications with distinct evidence requirements:
 
 ```text
-                  +--> reference
-admitted -> trusted
-                  +--> production-candidate
+admitted -> production-candidate
+trusted  -> reference
+
+reference and production-candidate may coexist on the same implementation.
 ```
 
-`reference` and `production-candidate` are independent classifications. An implementation can be either, both, or neither.
+Thus an implementation can be admitted without either classification; it can be production-candidate without being reference; and it can be reference without being production-candidate.
 
 ### 3.2 Experimental to Tested
 
@@ -238,23 +222,13 @@ Reference renderers are evidence instruments and require stronger guarantees:
 - explicit version pinning;
 - documented long-term regeneration path.
 
-Multiple reference renderers may coexist.
-
-Agreement between independent reference renderers is evidence about carrier stability or interpretation overlap, not proof of world truth.
+Multiple reference renderers may coexist. Agreement among them is evidence about carrier stability or interpretation overlap, not proof of world truth.
 
 ### 3.6 Production-Candidate Classification
 
-Production candidacy measures operational suitability rather than scientific reproducibility alone.
+Production candidacy measures operational suitability rather than scientific reproducibility alone. It requires admitted status but not reference classification.
 
-Relevant evidence includes:
-
-- acceptable latency;
-- acceptable cost;
-- scalability;
-- available hardware/runtime support;
-- accessibility requirements;
-- platform portability;
-- operational reliability.
+Relevant evidence includes acceptable latency, acceptable cost, scalability, hardware/runtime availability, accessibility requirements, platform portability, and operational reliability.
 
 ### 3.7 Suspension and Regression
 
@@ -297,7 +271,7 @@ These intents are carrier-routing hints only.
 
 Routing determines candidate eligibility.
 
-A routing policy filters registry entries by declared and admitted evidence, including:
+A routing policy filters registry entries by:
 
 - capability compatibility;
 - experimental/admitted tier;
@@ -317,25 +291,17 @@ The exact candidate set and its canonical ordering MUST be content-addressed.
 
 Routing determines who is eligible. Fan-out determines how many eligible candidates execute.
 
-The initial fan-out modes are:
-
 ### 6.1 `single-best`
 
-Execute exactly one policy-selected candidate.
-
-Use for routine regeneration, low-cost reference work, and narrow deterministic checks.
+Execute exactly one policy-selected candidate. Use for routine regeneration, low-cost reference work, and narrow deterministic checks.
 
 ### 6.2 `comparison-set`
 
-Execute a bounded set of candidates.
-
-Use for renderer comparison, photoreal/stylized contrasts, accessibility comparison, reference/preview comparison, or bounded quality exploration.
+Execute a bounded set of candidates. Use for renderer comparison, photoreal/stylized contrasts, accessibility comparison, reference/preview comparison, or bounded quality exploration.
 
 ### 6.3 `society-sweep`
 
-Execute a broader explicitly bounded pool, normally including experimental implementations.
-
-Use for research, renderer discovery, stress testing, and quality/cost/reproducibility exploration.
+Execute a broader explicitly bounded pool, normally including experimental implementations. Use for research, renderer discovery, stress testing, and quality/cost/reproducibility exploration.
 
 A society sweep MUST still have explicit upper bounds on candidate count and resource consumption.
 
@@ -344,8 +310,8 @@ A society sweep MUST still have explicit upper bounds on candidate count and res
 A fan-out decision records:
 
 - fan-out mode;
-- routing policy digest;
-- registry snapshot digest;
+- routing-policy digest;
+- registry-snapshot digest;
 - eligible candidate-set digest;
 - ordered selected execution identities;
 - deterministic selection rationale data;
@@ -355,9 +321,7 @@ The system must be able to answer why every output exists.
 
 ## 7. Execution Isolation
 
-Each complete renderer or pipeline execution runs as an isolated job over a sealed input bundle.
-
-The bundle includes:
+Each complete renderer or pipeline execution runs as an isolated job over a sealed input bundle containing:
 
 - sealed ECS job;
 - recipe and digest;
@@ -371,26 +335,20 @@ The bundle includes:
 
 Execution may produce artifacts, measurements, logs, stage evidence, and failure evidence.
 
-Execution MUST NOT mutate:
-
-- ECS/world state;
-- visual recipes;
-- registry manifests;
-- admission records;
-- historical provenance records.
+Execution MUST NOT mutate ECS/world state, visual recipes, registry manifests, admission records, or historical provenance records.
 
 ## 8. Composable Pipeline Semantics
 
-A pipeline is an ordered transformation graph, initially restricted to a linear ordered stage sequence unless a later design explicitly adds general DAG execution.
+A pipeline is initially restricted to a linear ordered stage sequence unless a later design explicitly adds general DAG execution.
 
 For each stage, provenance records at minimum:
 
 - stage identity/version;
-- stage manifest SHA-256;
+- stage-manifest SHA-256;
 - input SHA-256;
-- canonical parameter SHA-256;
+- canonical-parameter SHA-256;
 - output SHA-256 on success;
-- failure record digest on failure;
+- failure-record digest on failure;
 - measured execution metadata.
 
 Changing one stage SHOULD leave upstream stage identities and outputs unchanged when their sealed inputs are unchanged. All changed downstream identities must remain observable.
@@ -401,17 +359,9 @@ Existing carrier-v2 seed-domain separation remains the baseline.
 
 Random decisions MUST be derived from stable identities and named domains rather than one shared sequential PRNG stream.
 
-Initial domains include:
+Initial domains include `layout`, `lighting`, `motion`, `materials`, and `crowd`.
 
-- layout;
-- lighting;
-- motion;
-- materials;
-- crowd.
-
-Renderers or stages may introduce additional namespaced domains without renumbering existing domains.
-
-Pipeline stages MUST NOT silently reuse another stage's private random stream.
+Renderers or stages may introduce additional namespaced domains without renumbering existing domains. Pipeline stages MUST NOT silently reuse another stage's private random stream.
 
 ## 10. Failure Semantics
 
@@ -433,7 +383,7 @@ A failed execution MUST produce a content-addressed failure record when sufficie
 
 A failed candidate MUST NOT silently disappear from a comparison set.
 
-For partial pipeline failure, successful upstream stage evidence is retained, the failed stage is recorded, and no nonexistent downstream artifact may be represented as successful.
+For partial pipeline failure, successful upstream-stage evidence is retained, the failed stage is recorded, and no nonexistent downstream artifact may be represented as successful.
 
 ## 11. Provenance Graph
 
@@ -458,12 +408,12 @@ ECS job SHA
 Every final artifact records at minimum:
 
 - source repository revision where applicable;
-- ECS job digest;
+- ECS-job digest;
 - recipe digest;
-- render request digest;
-- routing/fan-out decision digest;
+- render-request digest;
+- routing/fan-out-decision digest;
 - renderer or pipeline identity and manifest digest;
-- admission record digest and governance state at execution time;
+- admission-record digest and governance state at execution time;
 - toolchain/container/runtime identity;
 - asset-manifest digest;
 - stage evidence;
@@ -490,7 +440,7 @@ Evaluation is downstream of execution and does not change world authority.
 
 Candidate artifacts may be compared on independent dimensions including:
 
-- adherence to sealed job camera/duration/resolution semantics;
+- adherence to sealed-job camera/duration/resolution semantics;
 - recipe adherence;
 - visual clarity;
 - human realism;
@@ -505,20 +455,9 @@ Candidate artifacts may be compared on independent dimensions including:
 
 The system MUST NOT collapse these dimensions into one universal renderer-truth score.
 
-A renderer may optimize one dimension while performing poorly on another.
-
 ## 14. Resource and Cost Evidence
 
-Where measurable and reliable, every execution records:
-
-- wall-clock runtime;
-- CPU time;
-- GPU/device identity;
-- peak memory;
-- disk/output bytes;
-- renderer samples/iterations where meaningful;
-- external-service cost when applicable;
-- energy measurements when available and trustworthy.
+Where measurable and reliable, every execution records wall-clock runtime, CPU time, GPU/device identity, peak memory, disk/output bytes, renderer samples/iterations where meaningful, external-service cost when applicable, and energy measurements when available and trustworthy.
 
 Resource evidence informs routing and production suitability but does not affect world authority.
 
@@ -545,15 +484,11 @@ Failing conformance does not require deletion from the experimental pool. It pre
 
 Required architectural tests include:
 
-### Renderer mutation
-
 ```text
 change renderer only
 => ECS/job hash unchanged
 => renderer/pipeline execution identity changes
 ```
-
-### Recipe mutation
 
 ```text
 change recipe
@@ -561,22 +496,16 @@ change recipe
 => ECS/job identity unchanged
 ```
 
-### Stage mutation
-
 ```text
 change one downstream stage
 => unaffected upstream stage identities remain unchanged
 => changed stage and downstream identities change
 ```
 
-### Seed-domain extension
-
 ```text
 add a new seed domain
 => existing seed-domain outputs unchanged
 ```
-
-### Governance promotion
 
 ```text
 promote experimental/admitted renderer
@@ -585,24 +514,11 @@ promote experimental/admitted renderer
 => only current governance classification changes
 ```
 
-### Differential comparison
-
 Independent renderers may render the same sealed job and recipe. Differences are observations to evaluate, not automatic proof that one output is world truth.
 
 ## 17. Renderer-Society Health
 
-Registry health may expose multidimensional operational metrics such as:
-
-- registered implementation count;
-- experimental count;
-- admitted count;
-- suspended count;
-- successful and failed execution counts;
-- reference replay success rate;
-- median runtime;
-- median output size;
-- capability coverage;
-- unserved capability requests.
+Registry health may expose multidimensional metrics such as registered implementation count, experimental/admitted/suspended counts, successful and failed execution counts, reference replay success rate, median runtime, median output size, capability coverage, and unserved capability requests.
 
 No single universal renderer score is permitted by this design.
 
@@ -618,7 +534,7 @@ The first implementation should preserve backward compatibility at the data boun
 
 ## 19. Initial Renderer Families
 
-The architecture should be able to represent, without privileging any as truth:
+The architecture should represent, without privileging any as truth:
 
 - deterministic reference renderer;
 - high-quality photoreal renderer;
@@ -632,15 +548,15 @@ The architecture should be able to represent, without privileging any as truth:
 - neural/generative experimental renderer;
 - future renderer classes not currently known.
 
-The registry is extensible by manifest rather than by hard-coded renderer-name enumeration.
+The registry is extensible by manifest rather than hard-coded renderer-name enumeration.
 
 ## 20. First Bounded Implementation Target
 
-The first implementation after this specification should remain bounded to the existing Mercer & Red Street three-perspective experiment.
+The first implementation after this specification remains bounded to the existing Mercer & Red Street three-perspective experiment.
 
-It should demonstrate:
+It must demonstrate:
 
-- a registry with at least one admitted/reference-compatible implementation and at least one experimental implementation;
+- a registry with at least one admitted implementation eligible for `reference-deterministic` routing and at least one experimental implementation;
 - one complete-renderer entry;
 - one composable pipeline made from multiple stages;
 - deterministic routing over a sealed registry snapshot;
@@ -651,7 +567,7 @@ It should demonstrate:
 - no changes to ECS/world authority;
 - no promotion of rendered output into production visual canon.
 
-A `society-sweep` executor may be specified in the implementation interfaces but should not be exercised broadly until resource bounds and the smaller comparison-set behavior are verified.
+A `society-sweep` executor may be specified in implementation interfaces but should not be exercised broadly until resource bounds and smaller comparison-set behavior are verified.
 
 ## 21. Out of Scope for the First Implementation
 
@@ -666,15 +582,15 @@ The following are intentionally deferred:
 - remote untrusted renderer execution without a separate security design;
 - replacing or rewriting PR #48 smoke artifacts or existing carrier-v2 historical seals.
 
-## Acceptance Criteria for the Architecture
+## Acceptance Criteria
 
-The architecture is considered preserved when an implementation can show all of the following simultaneously:
+The architecture is preserved when an implementation can show all of the following simultaneously:
 
 1. one sealed ECS job can route to one or many eligible renderer executions;
 2. complete renderers and composed pipelines use the same registry/governance surface;
 3. experimental renderers are discoverable without becoming normally trusted;
 4. admitted/trusted/reference/production classifications are evidence-backed and reversible;
-5. changing renderer, recipe, stage, routing policy, or registry snapshot changes downstream provenance without changing ECS job identity;
+5. changing renderer, recipe, stage, routing policy, or registry snapshot changes downstream provenance without changing ECS-job identity;
 6. failed renderers remain represented in execution evidence;
 7. promotion changes governance state but does not rewrite artifact history;
 8. execution cannot write back into ECS/world authority;
