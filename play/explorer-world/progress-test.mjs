@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {createWorld} from './world.mjs';
-import {SAVE_KEY,SAVE_SCHEMA,SAVE_VERSION,snapshot,hydrate,saveLocal,loadLocal,clearLocal} from './progress.mjs';
+import {SAVE_KEY,SAVE_SCHEMA,SAVE_VERSION,snapshot,hydrate,saveLocal,loadLocal,clearLocal,hasLocal,shouldResetOnStart} from './progress.mjs';
 
 const world=createWorld(640064);
 world.echoes[0].collected=true;
@@ -51,16 +51,22 @@ assert.deepEqual([...restored.regionsSeen].sort(),['anomaly','nightbog','sunmead
 
 const values=new Map();
 const storage={setItem:(k,v)=>values.set(k,v),getItem:k=>values.has(k)?values.get(k):null,removeItem:k=>values.delete(k)};
+assert.equal(hasLocal(storage),false);
 saveLocal(state,storage);
 assert.ok(values.has(SAVE_KEY));
+assert.equal(hasLocal(storage),true);
 const loaded=loadLocal(storage);
 assert.equal(loaded.chapterComplete,true);
 assert.equal(loaded.echoes,6);
 assert.equal(loaded.fuzzballFound,true);
 clearLocal(storage);
 assert.equal(loadLocal(storage),null);
+assert.equal(hasLocal(storage),false);
 
+assert.equal(shouldResetOnStart({gameOver:true,chapterComplete:false}),true,'game-over start must create a fresh run');
+assert.equal(shouldResetOnStart({gameOver:false,chapterComplete:true}),false,'completed chapter must be resumable for free exploration');
+assert.equal(shouldResetOnStart({gameOver:false,chapterComplete:false}),false);
 assert.throws(()=>hydrate({schema:SAVE_SCHEMA,version:999}),/unsupported save version/i);
 assert.throws(()=>hydrate({schema:'wrong',version:SAVE_VERSION}),/invalid save schema/i);
 assert.throws(()=>hydrate({...doc,player:{x:NaN,y:0,health:100,energy:100}}),/invalid player/i);
-console.log('PASS Explorer World progress: versioned local save round-trip, deterministic reconstruction, validation, and clear.');
+console.log('PASS Explorer World progress: versioned local save round-trip, deterministic reconstruction, explicit save presence, post-completion resume policy, validation, and clear.');
