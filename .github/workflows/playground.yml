@@ -30,10 +30,18 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
+      - name: Verify grounded MMO reality canon
+        run: node play/mmo/test-reality.mjs
+      - name: Verify MMO data-only plug-in runtime
+        run: node play/mmo/test-plugins.mjs
+      - name: Verify MMO portable local save runtime
+        run: node play/mmo/test-save.mjs
       - name: Verify canonical MMO World and Arcade Forge contracts
         run: node play/mmo-world/test.mjs
       - name: Exercise the applications in Chrome
         run: node play/browser-test.mjs
+      - name: Exercise grounded MMO successor in Chrome
+        run: node play/mmo/browser-test.mjs
       - name: Exercise Explorer World in Chrome
         run: node play/explorer-world/browser-test.mjs
       - name: Exercise Arcade Forge in Chrome

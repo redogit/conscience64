@@ -1,32 +1,66 @@
 # Conscience64 / Play
 
-Five small, free web applications built from ongoing project ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
+Seven free browser projects built from ongoing ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
 
-| Project | Use it for | Take your work with you |
+| Project | Use it for | Current boundary |
 | --- | --- | --- |
+| [Conscience64 MMO RPG](https://redogit.github.io/conscience64/play/mmo/) | Live in a grounded world of neighborhoods, work, travel, games, people and real-sky observation before monsters, Fuzzball and impossible events intrude | Local-first MMO-world prototype today; networked MMO and real-world prize redemption are not yet active |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes, source links, and writing-language metadata | Import/export a project file; optional browser storage |
-| [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Arrange lines of writing while preserving the original | Download the remix as text or export the complete project |
-| [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Explore a six-by-six pattern with shapes, rotation, mirroring, and undo | Download SVG with a title and description, a text representation, or the complete project |
-| [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan one next step and record dated checkpoints | Export the current draft and prior checkpoints as JSON or text |
-| [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Inspect exact line additions and removals between two texts | Open UTF-8 files; export the original and revision as JSON or a text comparison |
+| [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Arrange lines of writing while preserving the original | Download the remix or export the project |
+| [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Explore a six-by-six pattern with shapes, rotation, mirroring, and undo | Download SVG/text or export the project |
+| [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan one next step and record dated checkpoints | Export the current draft and prior checkpoints |
+| [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Inspect exact line additions and removals between two texts | Open UTF-8 files; export both versions and comparison |
+| [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Turn bounded research notation into exact, speakable, mnemonic, and musical forms | Mnemonics/sonification are memory aids, not proof |
 
-No account, payment, backend, analytics, remote font, or package installation is needed to use the tools. Work stays in memory unless the person explicitly saves to their browser or downloads a file. Opening a source link makes a normal browser request to that website in another tab. Browser storage can be cleared or unavailable; exported files are portable backups. Do not rely on keeping an unsaved tab open as storage.
+## MMO RPG
+
+The MMO prototype is intentionally about **fun, doing things, and being somebody** rather than maximizing grind or spending. Its world starts from recognizable ordinary life: apartments, markets, workshops, transit, parks, weathered materials, believable light, people doing everyday things, and a real-sky/astronomy reference layer. Monsters, impossible geometry, Fuzzball, strange research connections and other anomalies are layered above that baseline rather than replacing it.
+
+The current visual/world direction is canonical in [`mmo/REALITY_CANON.md`](mmo/REALITY_CANON.md). If older MMO aesthetic notes conflict with it, the Reality Canon controls the current successor while predecessor history remains preserved.
+
+Key boundary:
+
+`OBSERVATION != PROCESSED_SCIENCE_IMAGE != GAME_RECONSTRUCTION`
+
+The in-game roof observatory uses real astronomy as a structural reference. EHT black-hole imagery and NASA/Webb processing explanations remain evidence/reference sources; the game's star field and black-hole view are labeled reconstructions, not telescope data.
+
+The architectural zoom is documented in [`mmo/LEVELS.md`](mmo/LEVELS.md): twelve levels from one action through human purpose, followed by a **Mystery 13th** that is the annual emergent result of the twelve rather than a preplanned Level 13.
+
+The cross-surface graph is documented in [`mmo/LINKAGES.md`](mmo/LINKAGES.md) and [`mmo/linkages.json`](mmo/linkages.json).
+
+### Plug-and-play Arcade Forge
+
+Arcade Forge follows the same grounded rule: real place/object/activity first, then an optional strange complication. Fully ordinary mini-games are valid.
+
+The local plug-in path is now end-to-end:
+
+`Forge recipe → validation → local installation → main-MMO discovery → arcade cabinet → local play → bounded local reward`
+
+The main MMO reads installed `conscience64.mmo.plugin/v1` recipes from the validated local runtime and renders them as additional arcade cabinets without rebuilding the application. Choice, answer, and creative plug-ins can be played directly from the main page.
+
+Plug-ins remain data-only. They cannot add executable JavaScript, arbitrary HTML, network authority, server authority, multiplayer achievement authority, or real-world prize authority. HTML-like text in a plug-in is rendered as text.
+
+The full major-release target is **November 15, 2026**. See [`mmo/RELEASE_PLAN_2026-11-15.md`](mmo/RELEASE_PLAN_2026-11-15.md). The plan separates the game release from real-world prize activation: the game may release with the Prize Vault visible but redemption disabled if legal, verification, fraud-control, privacy, or fulfillment gates are not complete.
+
+### Conscience64 cooperation boundary
+
+The MMO uses the public read-only Conscience64 browser API as a cooperating context/research carrier. It can retrieve bounded objects, projects, lessons, and IRPO records to seed questions or world events. `CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE`: retrieval does not transfer proof, authority, or prize eligibility.
+
+### Real-world prizes
+
+The prototype does **not** currently redeem real-world prizes. Any future prize program must have official rules, verified server-side achievements, eligibility and jurisdiction review, fraud controls, privacy-minimized fulfillment, and funding before activation. The current design does not require a purchase, wager, purchasable random chance, or cash-equivalent loot-box route for prize participation.
+
+## Local-first tools and data
+
+No account, payment, backend, analytics, remote font, or package installation is needed to use the existing local tools. Work stays in memory unless the person explicitly saves to their browser or downloads a file. Opening a source link makes a normal browser request to that website in another tab. Browser storage can be cleared or unavailable; exported files are portable backups. Do not rely on keeping an unsaved tab open as storage.
+
+The MMO is also local-first in its current public prototype. Networked identity, authoritative multiplayer state, and server-attested achievements are November-release work and must not be represented as already implemented until they exist.
 
 ## Language and access
 
-The first release includes English, Spanish, French, and Arabic interface translations. It supports Unicode writing in any language, optional language tags, and automatic text direction for user writing. Arabic switches the surrounding layout to right-to-left. Changing the interface language does not translate, normalize, or rewrite stored writing. Word Weave rearranges whole lines, retains blank lines, and normalizes line endings only in the exported remix; the original string remains in the project file.
+The original Play suite includes English, Spanish, French, and Arabic interface translations and supports Unicode writing in any language. The MMO v1.0 plan requires localization/accessibility work before claiming equivalent language coverage.
 
-The interfaces use native labeled form controls, visible keyboard focus, status announcements, logical CSS spacing, responsive layouts, shape distinctions beyond color, reduced-motion support, and forced-colors support. Pattern Garden uses arrow keys, Home/End, and Enter/Space; Tab enters the pattern once and then leaves it. Columns in this geometric grid always run left to right, including in Arabic layouts, as described in its instructions.
-
-The first four translations are a starting point. They have not been reviewed by every language community. Automated browser checks do not establish universal accessibility, cultural suitability, or WCAG conformance. Screen-reader and community review are welcome through GitHub issues and pull requests. Add a locale to `assets/i18n.mjs` and `assets/more-i18n.mjs`, add its native name to the page selectors, and keep translation keys complete. Never replace someone's writing with an interface translation. No symbols or templates are presented as belonging to or representing a particular tradition.
-
-Implementation references: [W3C WCAG 2.2 quick reference](https://www.w3.org/WAI/WCAG22/quickref/), [W3C bidirectional markup guidance](https://www.w3.org/International/questions/qa-html-dir), and [Intl.Segmenter documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter). Character counts use grapheme segmentation where available; older browsers fall back to Unicode code-point counts.
-
-## Small Steps and Source Compare
-
-Small Steps adapts the public I/R/P/O prompts into a self-directed planner: what you have, what difference matters, one next step, and what happened. Optional questions capture assumptions, a way to check, and what remains unknown. A checkpoint copies the current draft with its date; subsequent edits do not rewrite it. A goal and next step are required. Save or export to keep up to 100 checkpoints. This tool does not score people or predict wellbeing.
-
-Source Compare compares exact lines with no case folding, Unicode normalization, or semantic interpretation. It shows additions, removals, unchanged lines, and their positions. Matching line contents with different line endings receive a separate notice. Each input is limited to 20,000 UTF-16 code units and 300 lines. Opening UTF-8 text files preserves their original line endings and any byte-order mark in the project data; invalid UTF-8 is rejected. Editing in browser text boxes may normalize line endings. JSON export retains both input strings; the readable comparison report uses newlines between its report entries. Changing an input clears the old result until Compare is pressed again. A text difference does not establish translation quality, meaning, authorship, or research validity.
+The interfaces use native labeled form controls, visible keyboard focus, status announcements, responsive layouts, reduced-motion support, and forced-colors support where implemented. Automated browser checks do not establish universal accessibility, cultural suitability, or WCAG conformance. The November MMO plan explicitly requires manual assistive-technology review in addition to automation.
 
 ## Run and verify
 
@@ -35,29 +69,34 @@ From the repository root, serve the static files:
 ```bash
 python3 -m http.server 8000
 # Open http://localhost:8000/play/
+# MMO: http://localhost:8000/play/mmo/
 ```
 
-Run the dependency-free core checks with Node.js 22 or newer:
+Run the dependency-free checks with Node.js 22 or newer:
 
 ```bash
 node play/test.mjs
+node play/mmo/test-reality.mjs
+node play/mmo/test-plugins.mjs
 ```
 
-For actual browser checks, install Google Chrome locally or use the included GitHub Actions gate, whose runner already supplies it:
+For browser checks, install Google Chrome locally or use the included GitHub Actions gate:
 
 ```bash
 node play/browser-test.mjs
-# Or: CHROME_BIN=/path/to/chromium node play/browser-test.mjs
+node play/mmo/browser-test.mjs
 ```
 
-Browser checks use an isolated temporary browser profile, local HTTP server, and Chrome DevTools Protocol. They exercise all five tools, four interface languages, right-to-left layout, keyboard movement, save/load, imports, and narrow-screen overflow. They do not send user content anywhere. Deployment runs these checks before advancing `gh-pages`.
+The MMO-specific browser smoke test checks the grounded neighborhood and observatory, 1100px and 320px layout behavior, astronomy labeling, local plug-in installation/discovery/play, exact bounded local rewards, and that HTML-like plug-in text does not execute as markup.
+
+These checks verify the current prototype surfaces only. Dedicated multiplayer, manual accessibility, security, load, recovery, and prize-verification gates remain separate v1.0 work and must not be inferred from passing local/browser tests.
 
 ## Origins and rights
 
-These are new implementations made for the user's GitHub rollout request, not recovered historical code. `projects.json` records the source project names, public documentation paths, and exact lineage commit. Orbit inspired useful navigation with source preservation; language/TBCL work inspired the original/remix boundary; geometry and creative world-building inspired Pattern Garden. The public I/R/P/O API inspired Small Steps; source-preservation work in the cross-carrier project inspired Source Compare. These relationships do not transfer research authority or establish new scientific claims. Existing research checkpoints and their seven-project registry remain separate.
+These are new implementations made for the user's GitHub rollout and game requests, not recovered historical code unless a specific source record says otherwise. `projects.json` records source relationships and boundaries. Relationships do not transfer research authority or establish new scientific claims.
 
-The MIT license in this directory applies to the new code and documentation under `play/`. It does not relicense the surrounding repository, linked sources, historical archives, or material entered by users. The built-in examples are newly written neutral prompts. Users retain their rights and responsibilities for their own content.
+The MIT license in this directory applies to the new code and documentation under `play/`. It does not relicense the surrounding repository, linked sources, historical archives, or material entered by users. Users retain their rights and responsibilities for their own content.
 
-## Data format
+## Existing local data format
 
-Exports use `conscience64.play/v1`, an explicit application ID, and validated data. Imports reject another application's files, invalid URLs, duplicate identifiers, invalid pattern states, and corrupt line-order permutations. The file limit is 32 MB, large enough for the bounded note collection. No imported text is interpreted as HTML, JavaScript, or a command. SVG exports contain only generated geometry and escaped text metadata.
+The original local tools export `conscience64.play/v1` documents with validated application IDs. The MMO plug-in surface uses the separate data-only `conscience64.mmo.plugin/v1` contract. Neither local format is an authoritative multiplayer or prize record. Multiplayer persistence and verified achievements require separate server-side schemas under the v1.0 release plan.
