@@ -27,7 +27,7 @@ Boundary:
 
 ## Player-facing chain
 
-`Play Hub → MMO Main Page → Neighborhood / Observatory / World / Arcade → Arcade Forge → Installed Plug-ins → Chronicle / History`
+`Play Hub → MMO Main Page → Neighborhood / Observatory / World / Arcade → Arcade Forge → Installed Plug-ins → Portable Local Save → Chronicle / History`
 
 - **Play Hub:** `../index.html`
 - **MMO Main Page:** `index.html`
@@ -36,14 +36,37 @@ Boundary:
 - **Reality canon:** `REALITY_CANON.md`
 - **Plug-in contract:** `plugin-contract.json`
 - **Plug-in runtime:** `plugin-runtime.js`
+- **Portable save runtime:** `save-runtime.js`
 - **Known-good sample:** `plugins/duck-rescue.json`
 - **History / restore:** `../../history/index.html?facet=mmo`
 
-Installed plug-ins now complete the local runtime chain:
+Installed plug-ins complete the local content chain:
 
 `Forge install → validated local storage → MMO runtime discovery → local arcade cabinet → bounded local reward`
 
 A plug-in result remains local state. It does not become server authority, multiplayer achievement proof, or real-world prize eligibility.
+
+## Portable local-life chain
+
+`current local run → validated save document → explicit browser save OR exported JSON → explicit load/import → restored local run`
+
+- **Schema:** `conscience64.mmo.save/v1`
+- **Runtime:** `save-runtime.js`
+- **Player controls:** `index.html#save-title`
+
+The save carries bounded local progress, role, shapeshifter form, motto, and the visible chronicle. It does not load automatically. Importing a portable save does not silently persist it as the browser's saved copy.
+
+Boundary:
+
+`LOCAL_SAVE != SERVER_AUTHORITY`
+
+A portable save does not establish:
+
+- multiplayer identity;
+- server-authoritative achievements;
+- scarce-item authority;
+- anti-cheat attestation;
+- real-world prize eligibility.
 
 ## Conscience64 cooperation chain
 
@@ -99,6 +122,7 @@ Roadmap status never upgrades itself into implementation status.
 
 The current public Prize Vault stops before redemption.
 
+- local save != server authority
 - local score != verified achievement
 - verified achievement != prize eligibility
 - prize eligibility != fulfillment completion
@@ -112,10 +136,11 @@ Plug-ins are data-only. They cannot ship executable JavaScript, arbitrary HTML, 
 
 ## Verification chain
 
-`source change → static project checks → Reality Canon regression → plug-in runtime execution test → existing Play Chrome suite → dedicated MMO Chrome smoke test`
+`source change → static project checks → Reality Canon regression → plug-in runtime test → save runtime test → existing Play Chrome suite → dedicated MMO Chrome smoke test`
 
 - **Reality regression:** `test-reality.mjs`
 - **Plug-in runtime test:** `test-plugins.mjs`
+- **Portable save test:** `test-save.mjs`
 - **MMO browser smoke test:** `browser-test.mjs`
 - **CI gate:** `../../.github/workflows/playground.yml`
 
@@ -126,7 +151,10 @@ The dedicated MMO browser test checks:
 - astronomy reconstruction stays labeled `NOT TELESCOPE DATA`;
 - a data-only plug-in can be installed, discovered, rendered as a cabinet, and played;
 - the exact bounded reward is applied locally;
-- plug-in text containing HTML-like markup remains text rather than executable markup.
+- plug-in text containing HTML-like markup remains text rather than executable markup;
+- a local run can be explicitly saved, changed, and explicitly restored;
+- reloading the page does **not** auto-load the saved run;
+- explicit load after reload restores the saved state.
 
 A configured check is not a passing result until CI actually reports success.
 
@@ -134,7 +162,7 @@ A configured check is not a passing result until CI actually reports success.
 
 ## Machine-readable map
 
-`linkages.json` is the machine-readable form of this map. It includes the current-state ledger, Reality Canon, external astronomy references, plug-in runtime path, verification scripts, CI gate, and evidence-boundary invariants.
+`linkages.json` is the machine-readable form of this map. It includes the current-state ledger, Reality Canon, external astronomy references, plug-in runtime, portable save runtime, verification scripts, CI gate, and evidence-boundary invariants.
 
 ## History and correction
 
