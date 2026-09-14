@@ -2,7 +2,7 @@ name: Verify public playground projects
 
 on:
   push:
-    branches: [main, 'rollout/**']
+    branches: [main, 'rollout/**', 'release/**']
     paths: ['play/**', '.github/workflows/playground.yml']
   pull_request:
     paths: ['play/**', '.github/workflows/playground.yml']
@@ -34,3 +34,8 @@ jobs:
         run: node play/browser-test.mjs
       - name: Exercise Explorer World in Chrome
         run: node play/explorer-world/browser-test.mjs
+      - name: Verify Fuzzball hidden alpha model
+        run: |
+          node --check play/fuzzball-hidden/world.mjs
+          node --check play/fuzzball-hidden/game.mjs
+          node play/fuzzball-hidden/test.mjs
