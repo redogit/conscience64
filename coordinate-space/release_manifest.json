@@ -3,6 +3,14 @@
   "date": "2026-09-13",
   "edition": "PUBLIC_EXACT_SOURCE_FILE_INTAKE_STRICT_JSON",
   "predecessor_commit": "347438c589105950593938e26394b3451080885a",
+  "last_reconciled": "2026-09-14",
+  "presentation_successor": {
+    "source_commit": "1935ad6a31f155e5872236788950361086672a50",
+    "predecessor_index": {"bytes": 10720, "sha256": "ffcfbd012037a602cd16ec153426860b50e29360b5b0a891ebd7cda55e770f06"},
+    "current_index": {"bytes": 11841, "sha256": "2eafb385f64a95d8d27a6568e7481ad3acb4cfc6d9046e9d38b936185a1bc9f1"},
+    "scope": "2.5D/3D presentation and navigation successor only; exact-utf8-f64/v1 codec behavior and audited core-module identities remain unchanged.",
+    "reason": "The intentional Compass UI merge changed coordinate-space/index.html without reconciling its release-manifest identity."
+  },
   "files": {
     "COMPLETION_1_2_1.md": {"bytes": 2438, "sha256": "ecc74cc5ad2c6b91637d7d19db5c6ee8b28a596afa3060021fdc16c9b50a8ce2"},
     "CULTURE_TIME_CONTRACT.md": {"bytes": 7666, "sha256": "adf8492ee8fa5107be5582b9a962bcf2c1d3b0ea56cf92b433f255b07be75e16"},
@@ -17,7 +25,7 @@
     "example.py": {"bytes": 1062, "sha256": "254218068cc59abd5b17d956f2269985c1922be983dbdd017806b4a3234b11de"},
     "float64_coordinate_builder.py": {"bytes": 22158, "sha256": "cabb18665bdad165b110b67453be7b04cc71d83fa5a91598276d768b98a8f41e"},
     "i18n.js": {"bytes": 3613, "sha256": "ba415ee059c445fceb1a93b66666482a3952ceebf7c6019ec7b68701d68ac9b9"},
-    "index.html": {"bytes": 10720, "sha256": "ffcfbd012037a602cd16ec153426860b50e29360b5b0a891ebd7cda55e770f06"},
+    "index.html": {"bytes": 11841, "sha256": "2eafb385f64a95d8d27a6568e7481ad3acb4cfc6d9046e9d38b936185a1bc9f1"},
     "intake_browser_checks.py": {"bytes": 7040, "sha256": "6883763ac0abdeed57fd601bdced1a862f279893e71ab7d84c7133d1b010b08c"},
     "locales.js": {"bytes": 33292, "sha256": "f80e9380bfee4308480b94661e419c6013698a55117e7201f8b331c7c23538ff"},
     "requirements.txt": {"bytes": 83, "sha256": "7466ba49fcf8fa63d6b7847c1537bcf072c5a021eb804be97636b3b8a1ce9bf9"},
