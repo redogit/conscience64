@@ -34,5 +34,7 @@ jobs:
         run: node play/mmo/test-reality.mjs
       - name: Verify MMO data-only plug-in runtime
         run: node play/mmo/test-plugins.mjs
-      - name: Exercise the applications in Chrome
+      - name: Exercise the existing applications in Chrome
         run: node play/browser-test.mjs
+      - name: Exercise MMO reality and plug-and-play in Chrome
+        run: node play/mmo/browser-test.mjs
