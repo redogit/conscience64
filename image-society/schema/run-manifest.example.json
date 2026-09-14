@@ -12,7 +12,7 @@
   "promotion_mode": "manual",
   "authority_mode": "strict",
   "accessibility_mode": "enabled",
-  "allowed_providers": [],
+  "allowed_providers": ["mock"],
   "allowed_renderers": [],
   "privacy_classification": "internal",
   "budgets": {
