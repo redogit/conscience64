@@ -66,9 +66,26 @@ try {
     }
   }
 
+  const forgeUrl=`${origin}/play/mmo/forge.html?test=starter-pack`;
+  await call('Page.navigate',{url:forgeUrl});
+  for(let i=0;i<100;i++){
+    if(await evaluate(url=>location.href===url && !!globalThis.Conscience64MMOPlugins && !!document.getElementById('install-starter-pack'),forgeUrl))break;
+    if(i===99)throw new Error('Arcade Forge starter pack did not initialize');
+    await new Promise(r=>setTimeout(r,100));
+  }
+  const starterPack=await evaluate(()=>{
+    document.getElementById('install-starter-pack').click();
+    return {names:globalThis.Conscience64MMOPlugins.list().map(p=>p.name).sort(),status:document.getElementById('status').textContent};
+  });
+  assert.deepEqual(starterPack.names,['Bus Transfer','Market Closing Shift','Observatory Label Check','Workshop Sort'].sort());
+  assert.match(starterPack.status,/Installed Grounded Starter Pack/);
+
   let url=`${origin}/play/mmo/?test=1`;
   await call('Page.navigate',{url});
   await waitReady(url);
+
+  const starterCabinets=await evaluate(()=>[...document.querySelectorAll('#plugin-games .game-card h3')].map(node=>node.textContent).sort());
+  assert.deepEqual(starterCabinets,['Bus Transfer','Market Closing Shift','Observatory Label Check','Workshop Sort'].sort());
 
   for(const width of [1100,320]){
     await call('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:false});
@@ -95,14 +112,7 @@ try {
     const prompt=document.getElementById('game-prompt').textContent;
     const before=Number(document.getElementById('xp').textContent);
     document.querySelector('#game-controls button').click();
-    return {
-      prompt,
-      after:Number(document.getElementById('xp').textContent),
-      before,
-      result:document.getElementById('game-result').textContent,
-      status:document.getElementById('plugin-status').textContent,
-      images:document.querySelectorAll('#playfield img').length
-    };
+    return {prompt,after:Number(document.getElementById('xp').textContent),before,result:document.getElementById('game-result').textContent,status:document.getElementById('plugin-status').textContent,images:document.querySelectorAll('#playfield img').length};
   });
   assert.match(pluginResult.prompt,/cardboard display/);
   assert.equal(pluginResult.images,0);
@@ -136,15 +146,7 @@ try {
     document.querySelector('[data-life="walk"]').click();
     const changed=Number(document.getElementById('xp').textContent);
     document.getElementById('load-local').click();
-    return {
-      xpSaved,
-      changed,
-      restored:Number(document.getElementById('xp').textContent),
-      role:document.getElementById('role').textContent,
-      motto:document.getElementById('motto').value,
-      savedStatus,
-      loadedStatus:document.getElementById('save-status').textContent
-    };
+    return {xpSaved,changed,restored:Number(document.getElementById('xp').textContent),role:document.getElementById('role').textContent,motto:document.getElementById('motto').value,savedStatus,loadedStatus:document.getElementById('save-status').textContent};
   });
   assert.ok(saveRoundTrip.changed>saveRoundTrip.xpSaved,'run did not change after local save');
   assert.equal(saveRoundTrip.restored,saveRoundTrip.xpSaved,'explicit load did not restore XP');
@@ -170,7 +172,7 @@ try {
   assert.equal(explicitAfterReload.motto,'Keep the street useful');
   assert.match(explicitAfterReload.status,/Loaded local save/);
 
-  console.log('PASS MMO Chrome: grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward, text safety, untimed Redline route, explicit portable save/load and no auto-load');
+  console.log('PASS MMO Chrome: Grounded Starter Pack Forge-to-MMO path, grounded world, 320px layout, labeled astronomy, local plug-in discovery/play, bounded reward, text safety, untimed Redline route, explicit portable save/load and no auto-load');
 } catch(error) {
   console.error(`FAIL MMO Chrome: ${error.message}`); process.exitCode=1;
 } finally {
