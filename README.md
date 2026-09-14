@@ -4,6 +4,12 @@ Privacy-safe universal research space hosted as a static GitHub Pages applicatio
 
 Visible surface: **I / R / P / O**.
 
+## September 13–14 consolidation
+
+[`research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md`](research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md) is the current two-day synthesis. It keeps recoverable user directions separate from implemented, verified, proposed, open, and unrecovered state. It is explicitly **not** presented as a byte-perfect transcript.
+
+The forward-only project manifest is [`research/projects/CURRENT.json`](research/projects/CURRENT.json). Historical/browser snapshots remain preserved rather than rewritten to look current.
+
 ## MMO World Beta
 
 **Featured launch surface:** [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/)
@@ -68,6 +74,9 @@ Every searchable object in the preserved browser corpus has a deterministic `uoi
 ## Evidence boundaries carried forward
 
 ```text
+USER_INPUT != ASSISTANT_SYNTHESIS
+REQUESTED != IMPLEMENTED
+IMPLEMENTED != VERIFIED
 BYTE_IDENTITY != SEMANTIC_TRUTH
 OBSERVATION != INTERPRETATION
 REPETITION != VERIFICATION
@@ -75,6 +84,7 @@ TRANSPORT_VALIDITY != EVIDENCE_VALIDITY
 DEMO_DATA != RESEARCH_EVIDENCE
 STATIC_VIEW != AUTHORITATIVE_LEDGER
 CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
+PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO
 ```
 
 ## REDOGIT
