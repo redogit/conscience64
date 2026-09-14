@@ -33,6 +33,7 @@ on:
       - 'analytics/**'
       - 'infra/internal-dns/**'
       - 'tools/check_site.mjs'
+      - 'tools/check_project_current.mjs'
       - 'tools/check_voice_anywhere.mjs'
       - 'tools/check_space_lens_qa.mjs'
       - 'tools/check_space_lens_memory.mjs'
@@ -71,8 +72,10 @@ jobs:
           node history/test.mjs
           node history/knowledge-test.mjs
 
-      - name: Verify site data and browser API before publishing
-        run: node tools/check_site.mjs
+      - name: Verify site data, browser API, and current project lineage before publishing
+        run: |
+          node tools/check_site.mjs
+          node tools/check_project_current.mjs
 
       - name: Verify Space Lens, portable voice/type, song, Chorus, analytics, and game layers before publishing
         run: |

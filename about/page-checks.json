@@ -1,75 +1,44 @@
 {
   "pages": [
-    {
-      "page": "index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "coordinate-space/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "research/projects/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/compare/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/computational-chorus/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/garden/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/musilanguage/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/musilanguage/radio.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/musilanguage/single.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/musilanguage/word-forge.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/orbit/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/steps/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "play/weave/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "research/cross-carrier/2026-09-13/internal-update/global_search/index.html",
-      "update_link": "PASS"
-    },
-    {
-      "page": "about/index.html",
-      "update_link": "PASS"
-    }
+    { "page": "index.html", "update_link": "PASS" },
+    { "page": "analytics/index.html", "update_link": "PASS" },
+    { "page": "coordinate-space/index.html", "update_link": "PASS" },
+    { "page": "research/projects/index.html", "update_link": "PASS" },
+    { "page": "play/compare/index.html", "update_link": "PASS" },
+    { "page": "play/computational-chorus/index.html", "update_link": "PASS" },
+    { "page": "play/garden/index.html", "update_link": "PASS" },
+    { "page": "play/index.html", "update_link": "PASS" },
+    { "page": "play/musilanguage/index.html", "update_link": "PASS" },
+    { "page": "play/musilanguage/radio.html", "update_link": "PASS" },
+    { "page": "play/musilanguage/single.html", "update_link": "PASS" },
+    { "page": "play/musilanguage/word-forge.html", "update_link": "PASS" },
+    { "page": "play/orbit/index.html", "update_link": "PASS" },
+    { "page": "play/steps/index.html", "update_link": "PASS" },
+    { "page": "play/weave/index.html", "update_link": "PASS" },
+    { "page": "research/cross-carrier/2026-09-13/internal-update/global_search/index.html", "update_link": "PASS" },
+    { "page": "about/index.html", "update_link": "PASS" }
   ],
   "about": {
     "public_repos": 7,
     "private_placeholder": 1,
-    "daily_topics": 10,
+    "daily_topics_target": 12,
     "mobile_width": 390
+  },
+  "currentResearchProjects": {
+    "preservedBrowserRegistry": 7,
+    "successorRecords": 2,
+    "humanReadableTotal": 9,
+    "manifest": "research/projects/CURRENT.json",
+    "check": "tools/check_project_current.mjs"
+  },
+  "analytics": {
+    "publicSurface": "analytics/index.html",
+    "mergedCommit": "7422be4cf65063bfece190c9a6bc1ec19306242c",
+    "browserContract": "PASS",
+    "llvmBuildAndEmission": "PASS",
+    "sourceSync": "PASS",
+    "nativePagesDeployment": "PASS",
+    "boundary": "transport validity and deployment do not establish evidence validity"
   },
   "cooperation": {
     "mode": "actual browser API from local source; not remote chat",
@@ -111,7 +80,8 @@
           "count": 7,
           "registryVersion": "1.1.0",
           "learnedInvariantCount": 20,
-          "lessonCount": 14
+          "lessonCount": 14,
+          "status": "PRESERVED_BROWSER_API_SNAPSHOT"
         },
         "transport": {
           "encoding": "base64(gzip(utf8(json)))",

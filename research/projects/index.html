@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Open the existing Conscience64 research project records, source overview, and machine-readable project registry.">
+  <meta name="description" content="Open the current Conscience64 research project records, forward-only project manifest, and preserved machine-readable registry snapshot.">
   <title>Research project records — Conscience64</title>
   <style>
     :root { color-scheme: light dark; font-family: system-ui, sans-serif; line-height: 1.6; }
@@ -12,34 +12,39 @@
     a { text-underline-offset: .2em; }
     a:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
     li { margin-block: .55rem; }
+    .boundary { border-inline-start: .3rem solid currentColor; padding-inline-start: 1rem; }
     footer { margin-top: 2rem; border-top: 1px solid; padding-top: 1rem; }
   </style>
 </head>
 <body>
-  <nav aria-label="Site navigation"><a href="../../">Back to Conscience64</a></nav>
+  <nav aria-label="Site navigation"><a href="../../">Back to Conscience64</a> · <a href="../../analytics/">Research Analytics</a></nav>
   <main id="main">
     <h1>Research project records</h1>
-    <p>Open the existing human-readable records on GitHub. The original records retain their findings, failures, evidence boundaries, and unresolved questions; this page is navigation, not a replacement for them.</p>
+    <p>Open the current human-readable records on GitHub. Records retain their findings, failures, evidence boundaries, and unresolved questions; this page is navigation, not a replacement for them.</p>
     <p><a href="https://github.com/redogit/conscience64/blob/main/research/projects/README.md">Read the research overview and reading rules</a>.</p>
     <section aria-labelledby="records-title">
-      <h2 id="records-title">Project records</h2>
+      <h2 id="records-title">Current human-readable records</h2>
       <ul>
         <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/cross-carrier-wave.md">Cross-Carrier Wave</a></li>
         <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/orbit-library.md">Orbit Library</a></li>
         <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/tiny-babel-tbcl.md">Tiny Babel / TBCL</a></li>
         <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/operator-moonshot.md">Operator Moonshot</a></li>
+        <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/hodge-conjecture.md">Hodge Conjecture Research Spine</a></li>
+        <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/research-analytics.md">Research Analytics</a></li>
         <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/model-experiments.md">Model Experiments</a></li>
         <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/geometry-codecs.md">Geometry / 4D / Codecs</a></li>
         <li><a href="https://github.com/redogit/conscience64/blob/main/research/projects/historical-recovery.md">Historical Recovery</a></li>
       </ul>
     </section>
     <section aria-labelledby="source-title">
-      <h2 id="source-title">Source and registry</h2>
-      <p><a href="https://github.com/redogit/conscience64/tree/main/research/projects">Browse the complete records directory on GitHub</a> for the current source files, including any records added after this navigation page.</p>
-      <p><a href="./projects.json">Open the machine-readable project registry (JSON)</a>.</p>
+      <h2 id="source-title">Source and registry lineage</h2>
+      <p><a href="https://github.com/redogit/conscience64/tree/main/research/projects">Browse the complete records directory on GitHub</a>.</p>
+      <p><a href="./CURRENT.json">Open the current forward-only project manifest (JSON)</a>.</p>
+      <p><a href="./projects.json">Open the preserved seven-project browser/API registry snapshot (JSON)</a>.</p>
+      <p class="boundary"><strong>Boundary:</strong> the browser API still reports the preserved seven-project registry snapshot. The current manifest adds Hodge and Research Analytics as later records without claiming the compressed API corpus was regenerated.</p>
     </section>
   </main>
-  <footer><p>This page works without JavaScript. Project claims and status belong to the linked records and registry, not to their presence in this index.</p></footer>
+  <footer><p>This page works without JavaScript. Project claims and status belong to the linked records and manifests, not to their presence in this index.</p></footer>
 <nav data-redogit-update="2026-09-14" aria-label="REDOGIT updates" style="position:relative;padding:1rem;font:16px/1.5 system-ui;clear:both"><a href="../../about/index.html#today">About me · Today’s work</a> · <a href="https://github.com/redogit/redogit/blob/main/REDOGIT.md">REDOGIT protocol</a> · <a href="../../history/index.html?facet=research-projects-index">History &amp; restore</a></nav>
 </body>
 </html>

@@ -1,0 +1,61 @@
+{
+  "schema": "conscience64/research-project-current/v1",
+  "date": "2026-09-14",
+  "forwardOnly": true,
+  "baseRegistry": {
+    "path": "research/projects/projects.json",
+    "version": "1.1.0",
+    "projectCount": 7,
+    "status": "PRESERVED_BROWSER_API_SNAPSHOT"
+  },
+  "successorRecords": [
+    {
+      "id": "hodge-conjecture",
+      "name": "Hodge Conjecture Research Spine",
+      "path": "research/projects/hodge-conjecture.md",
+      "status": "ACTIVE_OPEN_PROBLEM_RESEARCH_WITH_STRICT_CLAIM_CEILING",
+      "authorityTransfer": false
+    },
+    {
+      "id": "research-analytics",
+      "name": "Research Analytics",
+      "path": "research/projects/research-analytics.md",
+      "status": "DEPLOYED_BOUNDED_RESEARCH_INFRASTRUCTURE",
+      "authorityTransfer": false
+    }
+  ],
+  "currentHumanReadableProjectCount": 9,
+  "browserApiProjection": {
+    "projectCount": 7,
+    "registryVersion": "1.1.0",
+    "status": "LEGACY_SNAPSHOT_UNCHANGED",
+    "note": "Conscience64API continues to expose the preserved seven-project registry snapshot carried in the browser corpus. CURRENT.json records later human-readable successor records without pretending that the compressed browser corpus was regenerated."
+  },
+  "twoDayInputStateLedger": {
+    "path": "research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md",
+    "status": "PROVENANCE_BOUNDED_WORKING_SYNTHESIS",
+    "scope": "Recoverable consequential user directions from September 13-14 plus separately labeled implemented, verified, proposed, open, and unrecovered state.",
+    "verbatimTranscript": false
+  },
+  "softwareBoundaryRecords": [
+    {
+      "id": "mmo-world-beta",
+      "path": "research/projects/mmo-world-beta.md",
+      "status": "ACTIVE_PLAYABLE_BETA_NETWORKED_MMO_NOT_YET_ESTABLISHED",
+      "researchGraphAdmission": false
+    }
+  ],
+  "addedInvariants": [
+    "USER_INPUT != ASSISTANT_SYNTHESIS",
+    "REQUESTED != IMPLEMENTED",
+    "IMPLEMENTED != VERIFIED",
+    "OBSERVATION != INTERPRETATION",
+    "REPETITION != VERIFICATION",
+    "TRANSPORT_VALIDITY != EVIDENCE_VALIDITY",
+    "DEMO_DATA != RESEARCH_EVIDENCE",
+    "STATIC_VIEW != AUTHORITATIVE_LEDGER",
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO"
+  ],
+  "readingRule": "Read projects.json as the preserved machine/browser snapshot and CURRENT.json as the forward-only current project manifest. Read the two-day ledger for user-direction/state synthesis. Later records do not rewrite the predecessor registry or silently change browser API counts."
+}
