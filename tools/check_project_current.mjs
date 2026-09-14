@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 
 const base = JSON.parse(await readFile(new URL('../research/projects/projects.json', import.meta.url), 'utf8'));
 const current = JSON.parse(await readFile(new URL('../research/projects/CURRENT.json', import.meta.url), 'utf8'));
@@ -58,6 +58,21 @@ const forgeRuntime = await readFile(new URL(`../${mmo.localExtension.runtime}`, 
 assert.ok(forgeRuntime.includes('unsupported field'), 'Forge runtime must reject unknown fields');
 assert.ok(forgeRuntime.includes('stored plugin shelf is corrupt; it was not overwritten'), 'Forge runtime must fail visibly on corrupt shelf');
 
+const starter = mmo.localExtension?.starterPack;
+assert.ok(starter, 'starter Arcade pack missing');
+assert.equal(starter.validatedRecipeCount, 9);
+assert.equal(starter.retiredRuntimeAdaptations, 8);
+assert.equal(starter.ordinaryLifeExamples, 1);
+assert.equal(starter.redline, 'DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA');
+const pluginDir = new URL(`../${starter.path}`, import.meta.url);
+const pluginFiles = (await readdir(pluginDir)).filter(name => name.endsWith('.json')).sort();
+assert.equal(pluginFiles.length, starter.validatedRecipeCount);
+assert.ok(!pluginFiles.some(name => /redline/i.test(name)), 'Redline must not be silently approximated');
+const pluginLineage = await readFile(new URL('README.md', pluginDir), 'utf8');
+assert.match(pluginLineage, /DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA/);
+assert.match(pluginLineage, /random selection mechanism/);
+assert.match(pluginLineage, /random generator is not claimed preserved/);
+
 const analytics = current.analyticsContinuation;
 assert.ok(analytics, 'analytics continuation missing');
 assert.equal(analytics.status, 'LOCAL_LIVE_SERVICE_IMPLEMENTED_REMOTE_DEPLOYMENT_NOT_ESTABLISHED');
@@ -92,7 +107,9 @@ for (const invariant of [
   'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO',
   'DATA_ONLY_PLUGIN != EXECUTABLE_CODE',
   'LOCAL_PLUGIN_PREVIEW != CANONICAL_GAME_STATE',
-  'LOCAL_PLUGIN != SERVER_AUTHORITY'
+  'LOCAL_PLUGIN != SERVER_AUTHORITY',
+  'SOURCE_STATE_ADAPTATION != BEHAVIORAL_IDENTITY',
+  'UNREPRESENTABLE != SILENTLY_OMITTED'
 ]) assert.ok(current.addedInvariants.includes(invariant), `missing invariant: ${invariant}`);
 
-console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger, software boundaries, Arcade Forge, and live analytics continuation verified.`);
+console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger, software boundaries, ${starter.validatedRecipeCount} starter Arcade recipes with explicit Redline remainder, and live analytics continuation verified.`);
