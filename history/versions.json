@@ -131,6 +131,11 @@
   ],
   "releases": [
     {
+      "name": "Fuzzball Hidden Game Alpha 0.1",
+      "commit": "89400df4ed1dc605ea8d54562ef2c94954c5cb96",
+      "status": "Merged; unlisted Play surface; deterministic model and repository Play workflow verified"
+    },
+    {
       "name": "Facet version history and saved-work restore",
       "commit": "1c19771c24c432ddd81f1cdb6ce9b2000c156055",
       "status": "Pages deployment confirmed"

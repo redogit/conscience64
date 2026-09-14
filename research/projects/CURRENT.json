@@ -43,6 +43,14 @@
       "path": "research/projects/mmo-world-beta.md",
       "status": "ACTIVE_PLAYABLE_BETA_NETWORKED_MMO_NOT_YET_ESTABLISHED",
       "researchGraphAdmission": false
+    },
+    {
+      "id": "fuzzball-hidden-alpha",
+      "path": "research/updates/2026-09-14-fuzzball-hidden-alpha.md",
+      "status": "MERGED_ALPHA_UNLISTED_PLAY_SURFACE_VERIFIED_WITHIN_DECLARED_MODEL_SCOPE",
+      "researchGraphAdmission": false,
+      "historicalCarrierIdentity": false,
+      "distribution": "UNLISTED_NO_PUBLIC_PLAY_CATALOG_LINK"
     }
   ],
   "analyticsContinuation": {
@@ -66,7 +74,9 @@
     "PRODUCER_EVENT_ID != CANONICAL_LEDGER_EVENT_ID",
     "REPLAYED_EVENT != NEW_EXECUTION",
     "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
-    "PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO"
+    "PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO",
+    "HISTORICAL_FUZZBALL_CARRIER != NEW_FUZZBALL_HIDDEN_GAME",
+    "UNLISTED != SECURITY_BOUNDARY"
   ],
   "readingRule": "Read projects.json as the preserved machine/browser snapshot and CURRENT.json as the forward-only current project manifest. Read the two-day ledger for user-direction/state synthesis. The local live analytics service is an implemented transport continuation, not a claim of remote production deployment or scientific authority. Later records do not rewrite the predecessor registry or silently change browser API counts."
 }
