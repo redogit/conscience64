@@ -140,6 +140,16 @@ class BridgeExposureGuardTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'write token'):
                 bridge.build_server('127.0.0.1', 0, ledger, write_token='short', read_token=READ_TOKEN)
 
+    def test_loopback_requires_strong_read_token(self):
+        if bridge is None:
+            self.fail('knowledge.bridge is not implemented yet')
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / 'a.jsonl'
+            with self.assertRaisesRegex(ValueError, 'read token'):
+                bridge.build_server('127.0.0.1', 0, ledger, write_token=WRITE_TOKEN, read_token='')
+            with self.assertRaisesRegex(ValueError, 'read token'):
+                bridge.build_server('127.0.0.1', 0, ledger, write_token=WRITE_TOKEN, read_token='short')
+
     def test_non_loopback_is_rejected_even_with_strong_tokens(self):
         if bridge is None:
             self.fail('knowledge.bridge is not implemented yet')

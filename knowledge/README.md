@@ -35,6 +35,8 @@ export C64_KNOWLEDGE_READ_TOKEN='replace-with-a-long-read-token'
 python3 -m knowledge.bridge
 ```
 
+Both bearer tokens are required and must be at least 16 characters.
+
 Default endpoint: `http://127.0.0.1:8776`
 
 Default runtime ledger: `knowledge/knowledge.jsonl`
@@ -45,7 +47,7 @@ The runtime ledger is ignored by Git.
 
 Knowledge Bridge v1 is **loopback-only**. It refuses every non-loopback bind, even when credentials are supplied. Remote/private serving is a separate deployment boundary that requires explicit TLS, access-control, retention, and operations evidence before admission.
 
-A write bearer token of at least 16 characters is required even on loopback. The read token is optional; leaving it empty disables authenticated restricted reads while public-only reads remain available. When a read token is configured, it must be at least 16 characters.
+A write bearer token and a read bearer token of at least 16 characters are required even on loopback. Public packets may still be read without presenting the read bearer, but the server itself will not start without a strong configured read credential for restricted-read capability. Supplying an invalid bearer never silently downgrades authorization.
 
 ## Teach one packet
 
@@ -138,4 +140,4 @@ python3 -m py_compile knowledge/*.py
 python3 -m unittest discover -s knowledge -p 'test_*.py' -v
 ```
 
-The suite covers packet identity, claim/visibility validation, append-only integrity, exact re-ingestion idempotency, corruption detection, public/restricted filtering, authorization, batch atomicity, body bounds, required loopback write authentication, unconditional non-loopback refusal, repository filtering/chunking, and a live end-to-end repository-teacher smoke test.
+The suite covers packet identity, claim/visibility validation, append-only integrity, exact re-ingestion idempotency, corruption detection, public/restricted filtering, authorization, batch atomicity, body bounds, mandatory strong loopback read/write credentials, unconditional non-loopback refusal, repository filtering/chunking, and a live end-to-end repository-teacher smoke test.
