@@ -18,7 +18,7 @@ Cost counts, time turns, ethics edges every plan.
 
 ## Chorus
 
-**Period. Enter. Tweet. Explode.**  
+**Period. Enter. Communicate. Explode.**  
 Compress the carrier; keep the code.  
 Compare the change; counterprobe the claim.  
 Carry what survives—don’t rename resemblance proof.
@@ -46,7 +46,7 @@ A beautiful pattern is a beginning, not a verdict.
 
 ## Final chorus
 
-**Period. Enter. Tweet. Explode.**  
+**Period. Enter. Communicate. Explode.**  
 Say it clearly; test the code.  
 Compress. Compare. Counterprobe. Carry.  
 **Claim only what survives.**
