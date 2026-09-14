@@ -47,7 +47,7 @@ const input = runtime.install({
 assert.equal(input.mechanic, 'input');
 assert.equal(runtime.list().length, 2);
 runtime.remove(choice.id);
-assert.deepEqual(runtime.list().map(p=>p.id), ['bus-route-check']);
+assert.equal(runtime.list().map(p=>p.id).join(','), 'bus-route-check', 'remaining plug-in id after removal');
 
 const exported = JSON.parse(runtime.exportPlugin(input));
 assert.equal(exported.id, input.id);
