@@ -6,12 +6,20 @@ on:
     paths:
       - 'tools/semantic-crossref.mjs'
       - 'tools/semantic-crossref.test.mjs'
+      - 'tools/semantic-corpus.mjs'
+      - 'tools/semantic-corpus.test.mjs'
+      - 'tools/semantic-routing.mjs'
+      - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
       - '.github/workflows/semantic-crossref-check.yml'
   pull_request:
     paths:
       - 'tools/semantic-crossref.mjs'
       - 'tools/semantic-crossref.test.mjs'
+      - 'tools/semantic-corpus.mjs'
+      - 'tools/semantic-corpus.test.mjs'
+      - 'tools/semantic-routing.mjs'
+      - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
       - '.github/workflows/semantic-crossref-check.yml'
   workflow_dispatch:
@@ -36,7 +44,29 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-      - name: Verify mapper syntax
-        run: node --check tools/semantic-crossref.mjs
+      - name: Verify semantic mapper and corpus tool syntax
+        run: |
+          node --check tools/semantic-crossref.mjs
+          node --check tools/semantic-corpus.mjs
+          node --check tools/semantic-routing.mjs
+          node --check tools/build-semantic-corpus-map.mjs
       - name: Verify deterministic semantic cross-reference behavior and stress bound
         run: node tools/semantic-crossref.test.mjs
+      - name: Verify real repository corpus ingestion and bounded semantic routing
+        run: node tools/semantic-corpus.test.mjs
+      - name: Build current repository semantic map artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/conscience64-semantic-map.json"
+          node tools/build-semantic-corpus-map.mjs --root . --output "$OUT" --max-files 5000 --max-file-bytes 256000 --max-text-chars 4000 --threshold 0.30 --max-edges 8
+          test -s "$OUT"
+          node - "$OUT" <<'NODE'
+          const fs=require('node:fs');
+          const p=process.argv[2];
+          const data=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(data.schema!=='conscience64.semantic-corpus-map/v1')throw new Error('wrong semantic corpus map schema');
+          if(!data.graph?.nodes?.length||!data.graph?.edges?.length)throw new Error('empty semantic corpus map');
+          if(!data.boundaries.includes('RELATED != SUPPORTS'))throw new Error('missing semantic boundary');
+          console.log(`SEMANTIC_MAP_OK nodes=${data.graph.nodes.length} edges=${data.graph.edges.length} bridges=${data.bridgeCandidates.length}`);
+          NODE
