@@ -4,6 +4,7 @@
   "day_scope": "2026-09-13 local working day through 2026-09-14 UTC",
   "current_pages": [
     "index.html",
+    "analytics/index.html",
     "coordinate-space/index.html",
     "research/projects/index.html",
     "play/compare/index.html",
@@ -26,13 +27,29 @@
     "public": 7,
     "private_placeholder": 1
   },
+  "research_project_accounting": {
+    "browser_api_registry_snapshot": 7,
+    "forward_only_successor_records": 2,
+    "current_human_readable_records": 9,
+    "current_manifest": "research/projects/CURRENT.json"
+  },
   "protocol_changed": false,
-  "scope_note": "Current application entrypoints updated; preserved historical HTML, source templates and internal fixtures are not independently rewritten",
+  "scope_note": "Current application entrypoints and current project-manifest surfaces updated; preserved historical HTML, browser corpus data, source templates and internal fixtures are not silently rewritten",
   "sources": [
     {
       "topic": "Research space and access",
       "url": "https://github.com/redogit/conscience64",
       "status": "implemented / recorded checks"
+    },
+    {
+      "topic": "Research analytics",
+      "url": "https://redogit.github.io/conscience64/analytics/",
+      "status": "deployed / LLVM and browser contract checks passed"
+    },
+    {
+      "topic": "MMO World beta",
+      "url": "https://redogit.github.io/conscience64/play/mmo-world/",
+      "status": "playable single-player shard / networked MMO gated"
     },
     {
       "topic": "People and practical use",
@@ -72,7 +89,7 @@
     {
       "topic": "Music, play and shared exploration",
       "url": "https://github.com/redogit/conscience64/tree/main/play",
-      "status": "public source / further ideas proposed"
+      "status": "public source / current MMO beta playable"
     },
     {
       "topic": "Next investigation",
@@ -85,6 +102,12 @@
       "status": "implemented / browser-local records"
     }
   ],
+  "current_analytics_deployment": {
+    "commit": "7422be4cf65063bfece190c9a6bc1ec19306242c",
+    "source_sync_status": "success",
+    "native_pages_status": "success",
+    "analytics_ci_status": "success"
+  },
   "previous_internal_update_deployment": {
     "commit": "83d5bab5623dbbfff669a6fbbc3a27a4c48bfc1f",
     "status": "success",
