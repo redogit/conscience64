@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import * as c from './assets/core.mjs';
 import { messages, languages } from './assets/i18n.mjs';
+import * as world from './explorer-world/world.mjs';
 
 const corpus = ['مرحبا بالعالم', 'שלום', '你好世界', 'สวัสดี', 'नमस्ते', 'cafe\u0301', '👩🏽‍💻'];
 const items = corpus.map((value, i) => ({ id: String(i), title: value, text: value, source: 'https://example.org/source', language: '' }));
@@ -43,7 +44,7 @@ for (const locale of Object.keys(languages)) {
   assert.deepEqual(Object.keys(messages[locale]).sort(), Object.keys(messages.en).sort(), `translation keys: ${locale}`);
   assert.ok(Object.values(messages[locale]).every(s => typeof s === 'string' && s.length));
 }
-for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garden/index.html', 'steps/index.html', 'compare/index.html', 'computational-chorus/index.html', 'mmo/index.html']) {
+for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garden/index.html', 'steps/index.html', 'compare/index.html', 'computational-chorus/index.html', 'explorer-world/index.html', 'mmo/index.html']) {
   const html = await readFile(new URL(path, import.meta.url), 'utf8');
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
   assert.equal(new Set(ids).size, ids.length, `duplicate IDs: ${path}`);
@@ -56,8 +57,8 @@ for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garde
   }
 }
 const catalog = JSON.parse(await readFile(new URL('projects.json', import.meta.url), 'utf8'));
-assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare', 'computational-chorus', 'mmo']);
-assert.equal(catalog.version, '1.3.0');
+assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare', 'computational-chorus', 'explorer-world', 'mmo']);
+assert.equal(catalog.version, '1.3.1');
 for (const p of catalog.projects) assert.ok(await stat(new URL(p.entry, import.meta.url)));
 const mmo = await readFile(new URL('mmo/index.html', import.meta.url), 'utf8');
 const mmoJs = await readFile(new URL('mmo/game.js', import.meta.url), 'utf8');
@@ -72,6 +73,7 @@ assert.match(releasePlan, /November 15, 2026/);
 assert.match(releasePlan, /PRIZES_ON.*PRIZES_DEFERRED/s);
 const chorus = await readFile(new URL('computational-chorus/chorus.mjs', import.meta.url), 'utf8');
 assert.match(chorus, /P \?= NP/);assert.match(chorus, /meaning preserved \/ cognitive effort/i);assert.match(chorus, /witness-verifier characterization of NP/i);assert.match(chorus, /memory aid, not evidence|memory aid/i);
+const worldA=world.createWorld(640064),worldB=world.createWorld(640064);assert.deepEqual(worldA,worldB,'game world seed must be deterministic');assert.equal(world.regionAt(100,100).id,'sunmeadow');assert.equal(world.regionAt(1700,900).id,'anomaly');assert.equal(world.fuzzballUnlocked({echoes:2}),false);assert.equal(world.fuzzballUnlocked({echoes:3}),true);assert.equal(world.portalUnlocked({echoes:6,fuzzballFound:false}),false);assert.equal(world.portalUnlocked({echoes:6,fuzzballFound:true}),true);assert.equal(worldA.monsters.length,18);assert.equal(worldA.echoes.length,12);assert.ok(worldA.monsters.every(m=>world.MONSTER_TYPES[m.type]));
 const plan = c.initial('steps'); plan.title = 'تعلّم 👩🏽‍💻'; plan.fields.P = 'Try one small thing';
 const first = c.checkpoint(plan, 'first', '2026-09-13T12:00:00.000Z');
 first.fields.P = 'Try a second thing'; first.fields.O = 'A useful observation';
@@ -87,4 +89,4 @@ for (const a of arrays) for (const b of arrays) {
   const diff = c.compareText(a.join('\n'), b.join('\n'));assert.deepEqual(diff.rows.filter(r => r.kind !== 'added').map(r => r.text), a);assert.deepEqual(diff.rows.filter(r => r.kind !== 'removed').map(r => r.text), b);
   const possibilities = new Set(subsequences(b).map(s => JSON.stringify(s)));const maximum = Math.max(...subsequences(a).filter(s => possibilities.has(JSON.stringify(s))).map(s => s.length));assert.equal(diff.counts.same, maximum);
 }
-console.log('PASS playground: seven public tools including MMO prototype; Unicode, provenance checkpoints, exact text differences, original recovery, geometry, voice/music resources, mnemonic claim boundaries, Conscience64 cooperation boundary, and Mystery 13th architecture.');
+console.log('PASS playground: eight registered public projects including Explorer World and the grounded MMO successor; Unicode, provenance checkpoints, exact text differences, original recovery, geometry, voice/music resources, mnemonic claim boundaries, and deterministic game rules.');

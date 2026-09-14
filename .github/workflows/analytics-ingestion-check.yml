@@ -1,0 +1,49 @@
+name: Analytics ingestion check
+
+on:
+  pull_request:
+    paths:
+      - 'analytics/**'
+      - '.github/workflows/analytics-ingestion-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'analytics/**'
+      - '.github/workflows/analytics-ingestion-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize exact commit without external Actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Compile Python ingestion modules
+        working-directory: analytics
+        run: |
+          set -euo pipefail
+          python3 -m py_compile server.py test_server.py test_recorded_events.py
+
+      - name: Run Python ingestion and recorded-event corpus tests
+        working-directory: analytics
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v test_server.py test_recorded_events.py
+
+      - name: Run JavaScript event-contract tests
+        working-directory: analytics
+        run: |
+          set -euo pipefail
+          node test.mjs

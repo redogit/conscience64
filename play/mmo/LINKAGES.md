@@ -27,7 +27,7 @@ Boundary:
 
 ## Player-facing chain
 
-`Play Hub → MMO Main Page → Neighborhood / Observatory / World / Arcade → Arcade Forge → Installed Plug-ins → Portable Local Save → Chronicle / History`
+`Play Hub → MMO Main Page → Neighborhood / Observatory / World / Arcade → Arcade Forge → Grounded Starter Pack / user recipes → Installed Plug-ins → Portable Local Save → Chronicle / History`
 
 - **Play Hub:** `../index.html`
 - **MMO Main Page:** `index.html`
@@ -45,6 +45,46 @@ Installed plug-ins complete the local content chain:
 `Forge install → validated local storage → MMO runtime discovery → local arcade cabinet → bounded local reward`
 
 A plug-in result remains local state. It does not become server authority, multiplayer achievement proof, or real-world prize eligibility.
+
+## Grounded Starter Pack chain
+
+`explicit Forge button → six validated data-only recipes → local plug-in storage → MMO cabinet discovery → untimed local play`
+
+The starter recipes live in `forge.js` and use the same `conscience64.mmo.plugin/v1` validator as user-created recipes:
+
+- **Market Closing Shift** — corner-market helping choice.
+- **Bus Transfer** — fictional in-game transit-reading input.
+- **Workshop Sort** — maker-garage organization choice.
+- **Observatory Label Check** — astronomy evidence-boundary choice.
+- **Repair Bench Remix** — creative/maker activity using harmless ordinary materials.
+- **Fuzzball: Question or Claim?** — research-boundary activity separating an open question from fact or proof.
+
+The pack does not install automatically. The player must select **Install Grounded Starter Pack** in Arcade Forge.
+
+Boundary:
+
+`STARTER_PACK_INSTALL != SERVER_AUTHORITY`
+
+Installing or completing a starter activity does not establish multiplayer achievement authority or real-world prize eligibility. The Fuzzball activity also preserves:
+
+`OPEN_QUESTION != EVIDENCE != PROOF`
+
+## Activity-mix linkage
+
+Current explicit activity slots after installing the six-game pack:
+
+`4 built-in + 6 Starter Pack = 10`
+
+Current category coverage toward the November v1.0 mix:
+
+- puzzle/language/pattern: covered;
+- creative/maker: covered;
+- cooperative/helping: covered;
+- monster: covered;
+- Fuzzball question: covered;
+- movement/reaction: Redline provides one slot; **two additional movement/reaction activities remain**.
+
+Those future movement/reaction activities should each include an accessible non-timed alternative rather than making motor speed the only participation path.
 
 ## Portable local-life chain
 
@@ -146,12 +186,14 @@ Plug-ins are data-only. They cannot ship executable JavaScript, arbitrary HTML, 
 
 The dedicated MMO browser test checks:
 
+- Grounded Starter Pack installation in Forge and discovery of all six cabinets in the MMO;
 - grounded neighborhood and observatory surfaces load;
 - 1100px and 320px layouts avoid page-level horizontal overflow;
 - astronomy reconstruction stays labeled `NOT TELESCOPE DATA`;
 - a data-only plug-in can be installed, discovered, rendered as a cabinet, and played;
 - the exact bounded reward is applied locally;
 - plug-in text containing HTML-like markup remains text rather than executable markup;
+- the untimed Redline route remains playable;
 - a local run can be explicitly saved, changed, and explicitly restored;
 - reloading the page does **not** auto-load the saved run;
 - explicit load after reload restores the saved state.
@@ -162,7 +204,7 @@ A configured check is not a passing result until CI actually reports success.
 
 ## Machine-readable map
 
-`linkages.json` is the machine-readable form of this map. It includes the current-state ledger, Reality Canon, external astronomy references, plug-in runtime, portable save runtime, verification scripts, CI gate, and evidence-boundary invariants.
+`linkages.json` is the machine-readable form of this map. It includes the current-state ledger, Reality Canon, Grounded Starter Pack, external astronomy references, plug-in runtime, portable save runtime, verification scripts, CI gate, and evidence-boundary invariants.
 
 ## History and correction
 

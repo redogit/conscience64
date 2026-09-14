@@ -4,29 +4,65 @@ Privacy-safe universal research space hosted as a static GitHub Pages applicatio
 
 Visible surface: **I / R / P / O**.
 
+## September 13–14 consolidation
+
+[`research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md`](research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md) is the current two-day synthesis. It keeps recoverable user directions separate from implemented, verified, proposed, open, and unrecovered state. It is explicitly **not** presented as a byte-perfect transcript.
+
+The forward-only project manifest is [`research/projects/CURRENT.json`](research/projects/CURRENT.json). Historical/browser snapshots remain preserved rather than rewritten to look current.
+
+## MMO World Beta
+
+**Featured launch surface:** [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/)
+
+The MMO World page directly runs the already smoke-tested Explorer World shard while the shared-world layer remains gated. It is intentionally honest about the current boundary: playable browser world now; server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not yet claimed complete. The beta also exposes optional user-initiated Bluetooth/gamepad support, deterministic descriptive world varieties, a local data-only [Arcade Forge](https://redogit.github.io/conscience64/play/mmo-world/forge/), and the DU-SD/1, DU-CAP/1, DU-WATCH/1, and DU-BT/1 protocol contracts.
+
+Arcade Forge admits the useful data-only mini-game recipe idea from the retired parallel MMO branch without reviving that architecture. Imported plug-ins cannot execute code or HTML, add URL/network/server/account/prize authority, or modify canonical Explorer progression. Their reward values are preview metadata only.
+
+Advertising should point to this stable Conscience64 URL and grow interest gradually rather than bypassing safety, recovery, stability, moderation/support-capacity, or operating-cost gates.
+
+## Research analytics
+
+[Research Analytics](https://redogit.github.io/conscience64/analytics/) is an evidence-bounded event-stream view for observations, tests, verification, contradictions, interpretations, boundary changes, revisions, promotions, and reopened questions. The browser validates every event before rendering it and labels fallback/demo data explicitly. GitHub Pages is only the static view; it is not represented as the authoritative ledger or a live event backend.
+
+The companion LLVM bridge emits the same JSON contract from compiled experiments. CI builds the bridge, validates its emitted event, rejects unknown event kinds, and runs the browser contract checks before analytics changes are published.
+
 ## Try the free projects
 
-The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into five usable tools:
+The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into a growing set of usable browser projects:
 
 | Tool | What you can do |
 | --- | --- |
+| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Enter the playable Explorer shard, explore deterministic descriptive varieties, open the local data-only Arcade Forge, and optionally connect a Bluetooth companion or OS-paired gamepad |
+| [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Play the current single-player browser shard directly |
+| [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Explore exact, speakable, mnemonic, and procedural musical projections |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes with source links |
 | [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Rearrange writing while keeping the original |
 | [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Make geometric art and export SVG or text |
 | [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan a next step and preserve dated checkpoints |
 | [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Compare exact text changes and preserve both inputs |
 
-English, Spanish, French, and Arabic interfaces; Unicode writing; keyboard controls; optional local saving; no accounts. The new tools have an MIT license scoped to `play/`. See [the usage and provenance notes](play/README.md). Their [public-tool catalog](play/projects.json) is separate from the research registry below.
+English, Spanish, French, and Arabic interfaces are available across the original utility set; Unicode writing, keyboard controls, optional local saving, and no-account operation remain core accessibility/privacy goals. The new tools have an MIT license scoped to `play/`. See [the usage and provenance notes](play/README.md). Their [public-tool catalog](play/projects.json) is separate from the research registry below.
 
 ## Internal workspace update
 
 [Orbit Search and Conscience space](research/cross-carrier/2026-09-13/internal-update/global_search/index.html) adds 65 enabled search services, 248 country/territory routes excluding Russia, and a geometric 4D-to-3D black-hole view. Run locally for metadata retrieval and a separate headless XY interaction workspace. [Materials, validation and complete recovery bundle](research/cross-carrier/2026-09-13/internal-update/README.md) preserve prior transport results and open failures. Public browsing still depends on network/certificate access; external-page activation is not enabled.
 
+## Agents, skills, and coordination
+
+The [Society skills guide](skills/README.md) explains how agents use skills and connectors, how a society organizes their responsibilities, and how swarm coordination differs from parallel execution. The [architecture and proposed development workflow](skills/SOCIETY.md#agents-skills-connectors-societies-and-swarms) preserve the existing human-purpose and evidence boundaries; they do not claim a connected Visual Studio editor, an executed swarm, or canonical Society activation.
+
 ## Research projects
 
-The research portfolio now has a compact project map that preserves both accomplishments and failures instead of presenting only successes.
+The research portfolio has a compact project map that preserves both accomplishments and failures instead of presenting only successes.
 
-See [`research/projects/README.md`](research/projects/README.md) for the current highlights, lowlights, claim ceilings, and unresolved remainders across Cross-Carrier Wave, Orbit, Tiny Babel/TBCL, Operator Moonshot, model experiments, geometry/codecs, and historical recovery.
+See [`research/projects/README.md`](research/projects/README.md) for the current nine human-readable records and their claim ceilings: Cross-Carrier Wave, Orbit Library, Tiny Babel/TBCL, Operator Moonshot, Hodge Conjecture Research Spine, Research Analytics, Model Experiments, Geometry/4D/Codecs, and Historical Recovery.
+
+The registry lineage is intentionally split rather than silently rewritten:
+
+- [`research/projects/projects.json`](research/projects/projects.json) is the preserved seven-project browser/API registry snapshot;
+- [`research/projects/CURRENT.json`](research/projects/CURRENT.json) is the forward-only current manifest that adds Hodge and Research Analytics as successor records.
+
+`Conscience64API.stats().projects.count` therefore remains seven until the compressed browser corpus is deliberately regenerated. The current human-readable portfolio count is nine. `tools/check_project_current.mjs` verifies that distinction.
 
 Browser API: `window.Conscience64API`.
 
@@ -39,7 +75,26 @@ Conscience64API.traverse("project:orbit", { depth: 2 })
 Conscience64API.irpo({ I: "black hole", R: {}, P: { action: "search.simple" } })
 ```
 
-Every searchable object has a deterministic `uoid:sha256:...` identifier and microdata.
+Every searchable object in the preserved browser corpus has a deterministic `uoid:sha256:...` identifier and microdata.
+
+## Evidence boundaries carried forward
+
+```text
+USER_INPUT != ASSISTANT_SYNTHESIS
+REQUESTED != IMPLEMENTED
+IMPLEMENTED != VERIFIED
+BYTE_IDENTITY != SEMANTIC_TRUTH
+OBSERVATION != INTERPRETATION
+REPETITION != VERIFICATION
+TRANSPORT_VALIDITY != EVIDENCE_VALIDITY
+DEMO_DATA != RESEARCH_EVIDENCE
+STATIC_VIEW != AUTHORITATIVE_LEDGER
+CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
+PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO
+DATA_ONLY_PLUGIN != EXECUTABLE_CODE
+LOCAL_PLUGIN_PREVIEW != CANONICAL_GAME_STATE
+LOCAL_PLUGIN != SERVER_AUTHORITY
+```
 
 ## REDOGIT
 
@@ -77,6 +132,7 @@ python3 tools/redogit_selfcheck.py
 python3 tools/verify_research_manifest.py \
   research/cross-carrier/2026-09-12/v2.2/repository_manifest.json \
   research/cross-carrier/2026-09-12/v2.2
+node tools/check_project_current.mjs
 ```
 
 ## Corpus transport

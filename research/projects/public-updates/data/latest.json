@@ -1,0 +1,42 @@
+{
+  "evidence_boundary": "publication and retrieval do not create independent scientific evidence",
+  "privacy_boundary": "private records are excluded before record content is read; the client receives only public-admitted records",
+  "record_count": 3,
+  "records": [
+    {
+      "evidence_relation": "same-source",
+      "id": "2026-09-14-fuzzball-hidden-alpha",
+      "published_at": "2026-09-14T00:00:00Z",
+      "record_sha256": "5b35af7fec1a38dce971e9fe97e34b7669d7bac6378c8f4d4b7bbcd408eb3992",
+      "source_blob_sha1": "e034d9d52f9add5492cb634b50a6f7269f5b9504",
+      "source_bytes": 3424,
+      "source_path": "research/updates/2026-09-14-fuzzball-hidden-alpha.md",
+      "summary": "A deterministic hidden browser-game alpha with bounded humanoid/world behavior was merged and verified within its declared software model. The new game remains explicitly distinct from the unresolved historical Fuzzball research carrier, and unlisted does not mean access-controlled.",
+      "title": "Fuzzball Hidden Game — Alpha 0.1"
+    },
+    {
+      "evidence_relation": "same-source",
+      "id": "2026-09-14-coordinate-space-compass-repair",
+      "published_at": "2026-09-14T00:00:00Z",
+      "record_sha256": "9a4d70654132a631a711fe3685519628ab364d786869e3053608a9d16fc34715",
+      "source_blob_sha1": "5a12bbacfc45c22625c585f9888965c257c589ce",
+      "source_bytes": 2503,
+      "source_path": "research/updates/2026-09-14-coordinate-space-compass-manifest-repair.md",
+      "summary": "An intentional Compass presentation successor changed the public index identity without changing the audited codec/runtime core. The release manifest was reconciled while preserving the predecessor identity and the distinction between presentation changes and codec semantics.",
+      "title": "Coordinate Space Compass release-manifest repair"
+    },
+    {
+      "evidence_relation": "same-source",
+      "id": "2026-09-13-human-expression-s1024",
+      "published_at": "2026-09-13T00:00:00Z",
+      "record_sha256": "49ca05fc303e3534a5320ff89bcad7b586a42188cda4093ae3edcdfd2b0f5b7f",
+      "source_blob_sha1": "a71501a2881a74b96e11b08d6b08e940f87ec3e4",
+      "source_bytes": 6008,
+      "source_path": "research/updates/2026-09-13-human-expression-s1024.md",
+      "summary": "The implementation home was corrected to redogit/Other-Projects- while Conscience64 retains a sanitized historical cross-reference. Carrier branches, provenance, rights and evidence boundaries remain separate; the checkpoint does not promote a runtime or universal compression/learning claim.",
+      "title": "Human Expression Archive / S1024 project integration checkpoint"
+    }
+  ],
+  "schema": "conscience64/public-research-updates/v1",
+  "selection": "explicit-public-admissions-only"
+}

@@ -1,0 +1,20 @@
+{
+  "time": "2026-09-14T06:32:44Z",
+  "kind": "TESTED",
+  "project": "mmo-world",
+  "message": "The bounded nine-recipe starter Arcade pack passed its data-contract, lineage, Chrome, and full Conscience64 publication gates and is present in the deployed successor.",
+  "evidence": "executed",
+  "source": "github-actions:34813791353",
+  "status": "passed-and-deployed",
+  "repository": "redogit/conscience64",
+  "revision": "c9f5ad3400cf86377aa52a3e23dad5317cb2717b",
+  "feature_revision": "960a9a112fd305c0b8378b35c064ce5448be0c60",
+  "command": "Sync Conscience64 Pages source",
+  "environment": "GitHub Actions ubuntu-latest publication gate plus native GitHub Pages deployment",
+  "scope": "Verified nine linked and validated data-only Forge recipes: four fixed Monster Mood source states, three exact Cipher Snap puzzles, one bounded Make Something seed, and the duck-rescue ordinary-life sample. Verified explicit Redline deferral, Forge Chrome at 320px, existing Explorer/Fuzzball/playground gates, and exact publication. Does not establish behavioral identity with retired randomized/timing runtimes, authoritative multiplayer, prize eligibility, or scientific truth.",
+  "independence": "same-source",
+  "starter_recipe_count": 9,
+  "retired_runtime_adaptations": 8,
+  "redline_status": "DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA",
+  "deployment_run": 34813890216
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redogit.github.io/conscience64/knowledge/KNOWLEDGE_PACKET_SCHEMA.json",
+  "title": "Conscience64 Knowledge Packet Producer Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project", "kind", "content", "source", "visibility"],
+  "properties": {
+    "project": {"type": "string", "minLength": 1},
+    "kind": {
+      "type": "string",
+      "enum": [
+        "OBSERVATION", "TESTED", "VERIFIED", "NEGATIVE_RESULT", "HYPOTHESIS",
+        "INTERPRETATION", "CONTRADICTION", "BOUNDARY", "REVISION", "PROMOTION",
+        "REOPENED", "REFERENCE", "METHOD", "DEFINITION", "DESIGN"
+      ]
+    },
+    "content": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "minLength": 1},
+    "visibility": {"type": "string", "enum": ["public", "restricted"]},
+    "evidence": {"type": "string", "minLength": 1},
+    "independence": {"type": "string", "minLength": 1},
+    "claim_ceiling": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "source_revision": {"type": "string", "minLength": 1},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "parents": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^uoid:sha256:[0-9a-f]{64}$"},
+      "uniqueItems": true
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "metadata": {"type": "object"}
+  }
+}

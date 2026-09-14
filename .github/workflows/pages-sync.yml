@@ -30,7 +30,11 @@ on:
       - 'research/cross-carrier/2026-09-13/internal-update/**'
       - 'play/**'
       - 'coordinate-space/**'
+      - 'analytics/**'
+      - 'infra/internal-dns/**'
       - 'tools/check_site.mjs'
+      - 'tools/check_project_current.mjs'
+      - 'tools/check_voice_anywhere.mjs'
       - 'tools/check_space_lens_qa.mjs'
       - 'tools/check_space_lens_memory.mjs'
       - 'tools/check_space_lens_local_search.mjs'
@@ -68,14 +72,24 @@ jobs:
           node history/test.mjs
           node history/knowledge-test.mjs
 
-      - name: Verify site data and browser API before publishing
-        run: node tools/check_site.mjs
+      - name: Verify site data, browser API, and current project lineage before publishing
+        run: |
+          node tools/check_site.mjs
+          node tools/check_project_current.mjs
 
-      - name: Verify Space Lens, portable voice, song, and Chorus layers before publishing
+      - name: Verify Space Lens, portable voice/type, song, Chorus, analytics, and game layers before publishing
         run: |
           node --check voice-anywhere.js
+          node tools/check_voice_anywhere.mjs
           node --check research-song.js
+          (cd analytics && python3 -m unittest -v test_server.py test_recorded_events.py)
+          node analytics/test.mjs
           node --check play/computational-chorus/chorus.mjs
+          node --check play/explorer-world/world.mjs
+          node --check play/explorer-world/game.mjs
+          node --check play/mmo-world/companion.mjs
+          node play/mmo-world/test.mjs
+          python3 infra/internal-dns/verify_config.py
           node --check space-lens-memory.js
           node --check space-lens-qa.js
           node --check space-lens-local-search.js
@@ -97,7 +111,10 @@ jobs:
         run: node play/test.mjs
 
       - name: Exercise public projects in Chrome before publishing
-        run: node play/browser-test.mjs
+        run: |
+          node play/browser-test.mjs
+          node play/explorer-world/browser-test.mjs
+          node play/mmo-world/forge/browser-test.mjs
 
       - name: Verify Coordinate Space public release before publishing
         shell: bash

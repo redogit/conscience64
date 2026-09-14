@@ -1,0 +1,74 @@
+name: Verify Coordinate Space public release
+
+on:
+  pull_request:
+    paths:
+      - 'coordinate-space/**'
+      - '.github/workflows/coordinate-space-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'coordinate-space/**'
+      - '.github/workflows/coordinate-space-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize exact commit without external Actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Install Coordinate Space verification dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/coordinate-space-venv"
+          PY="$RUNNER_TEMP/coordinate-space-venv/bin/python"
+          "$PY" -m pip install -r coordinate-space/requirements.txt playwright==1.57.0
+
+      - name: Audit release-manifest byte identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/coordinate-space-venv/bin/python" - <<'PY'
+          from pathlib import Path
+          import hashlib, json, sys
+          root=Path('coordinate-space')
+          manifest=json.loads((root/'release_manifest.json').read_text(encoding='utf-8'))
+          mismatches=[]
+          for name, expected in manifest['files'].items():
+              raw=(root/name).read_bytes()
+              actual={'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
+              if actual != expected:
+                  mismatches.append({'file':name,'expected':expected,'actual':actual})
+          print(json.dumps({'checked':len(manifest['files']),'mismatches':mismatches},sort_keys=True))
+          if mismatches: sys.exit(1)
+          PY
+
+      - name: Verify public release and codec behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          PY="$RUNNER_TEMP/coordinate-space-venv/bin/python"
+          "$PY" coordinate-space/verify_release.py
+          "$PY" coordinate-space/test_public.py
+          "$PY" coordinate-space/example.py
+          node coordinate-space/test_codec.mjs
+
+      - name: Exercise Coordinate Space in Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/coordinate-space-venv/bin/python" coordinate-space/browser_checks.py

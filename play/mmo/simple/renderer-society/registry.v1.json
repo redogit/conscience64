@@ -1,0 +1,93 @@
+{
+  "schema": "conscience64.renderer-registry/v1",
+  "entries": [
+    {
+      "id": "renderer:deterministic-diagnostic",
+      "version": "1.0.0",
+      "kind": "complete-renderer",
+      "discoveryTier": "admitted",
+      "governance": {
+        "classifications": [],
+        "evidenceScope": "admitted-bounded-mercer-control-plane-v1"
+      },
+      "capabilities": {
+        "intents": ["reference-deterministic", "diagnostic"],
+        "features": ["diagnostic"],
+        "determinism": "reference-deterministic",
+        "inputContracts": ["conscience64.visual-carrier-job/v2"],
+        "outputContracts": ["conscience64.visual-diagnostic-artifact/v1"]
+      },
+      "resourceClasses": ["tiny"],
+      "latencyClasses": ["interactive"],
+      "executionSurfaces": ["local"],
+      "authority": "none"
+    },
+    {
+      "id": "stage:diagnostic-envelope",
+      "version": "1.0.0",
+      "kind": "stage",
+      "discoveryTier": "experimental",
+      "governance": {
+        "classifications": [],
+        "evidenceScope": "unadmitted-experimental"
+      },
+      "capabilities": {
+        "intents": ["diagnostic"],
+        "features": ["diagnostic", "envelope"],
+        "determinism": "reference-deterministic",
+        "inputContracts": ["conscience64.visual-carrier-job/v2", "conscience64.renderer-stage-output/v1"],
+        "outputContracts": ["conscience64.renderer-stage-output/v1"]
+      },
+      "resourceClasses": ["tiny"],
+      "latencyClasses": ["interactive"],
+      "executionSurfaces": ["local"],
+      "authority": "none"
+    },
+    {
+      "id": "stage:diagnostic-markers",
+      "version": "1.0.0",
+      "kind": "stage",
+      "discoveryTier": "experimental",
+      "governance": {
+        "classifications": [],
+        "evidenceScope": "unadmitted-experimental"
+      },
+      "capabilities": {
+        "intents": ["diagnostic"],
+        "features": ["diagnostic", "markers"],
+        "determinism": "reference-deterministic",
+        "inputContracts": ["conscience64.renderer-stage-output/v1"],
+        "outputContracts": ["conscience64.visual-diagnostic-artifact/v1"]
+      },
+      "resourceClasses": ["tiny"],
+      "latencyClasses": ["interactive"],
+      "executionSurfaces": ["local"],
+      "authority": "none"
+    },
+    {
+      "id": "pipeline:experimental-diagnostic",
+      "version": "1.0.0",
+      "kind": "pipeline",
+      "discoveryTier": "experimental",
+      "governance": {
+        "classifications": [],
+        "evidenceScope": "unadmitted-experimental"
+      },
+      "capabilities": {
+        "intents": ["diagnostic"],
+        "features": ["diagnostic"],
+        "determinism": "reference-deterministic",
+        "inputContracts": ["conscience64.visual-carrier-job/v2"],
+        "outputContracts": ["conscience64.visual-diagnostic-artifact/v1"]
+      },
+      "stageRefs": [
+        "stage:diagnostic-envelope",
+        "stage:diagnostic-markers"
+      ],
+      "resourceClasses": ["tiny"],
+      "latencyClasses": ["interactive"],
+      "executionSurfaces": ["local"],
+      "authority": "none"
+    }
+  ]
+}

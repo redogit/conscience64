@@ -1,0 +1,52 @@
+{
+  "experiment": "DF-HODGE-01",
+  "status": "EXECUTED_FINITE_REPRESENTATION_CHECK",
+  "scope": "Four current Hodge residual routes; hand-audited next-action labels; no theorem claim.",
+  "routes": {
+    "m39_star_split": "TEST_EIGENSPACE_TRANSPORT",
+    "m45_standard": "COMPUTE_GEOMETRIC_INTERSECTION_KERNEL",
+    "m45_two_pair": "TEST_CANCELLATION",
+    "m33_level_lift": "VERIFY_LIFTED_ALGEBRAICITY_BRIDGE"
+  },
+  "candidate_features": [
+    "explicit_target_cycle",
+    "auxiliary_join",
+    "level_lift",
+    "finite_witness_verified",
+    "residual_character_identified",
+    "theorem_application_complete"
+  ],
+  "result": {
+    "minimum_sufficient_feature_count": 3,
+    "unique_minimum_sufficient_feature_set": [
+      "explicit_target_cycle",
+      "auxiliary_join",
+      "level_lift"
+    ],
+    "common_features_not_needed_for_separation": [
+      "finite_witness_verified",
+      "residual_character_identified",
+      "theorem_application_complete"
+    ]
+  },
+  "one_degree_ablations": [
+    {
+      "removed": "explicit_target_cycle",
+      "merged_conflict": ["m39_star_split", "m45_standard"],
+      "different_required_actions": ["TEST_EIGENSPACE_TRANSPORT", "COMPUTE_GEOMETRIC_INTERSECTION_KERNEL"]
+    },
+    {
+      "removed": "auxiliary_join",
+      "merged_conflict": ["m39_star_split", "m45_two_pair"],
+      "different_required_actions": ["TEST_EIGENSPACE_TRANSPORT", "TEST_CANCELLATION"]
+    },
+    {
+      "removed": "level_lift",
+      "merged_conflict": ["m39_star_split", "m33_level_lift"],
+      "different_required_actions": ["TEST_EIGENSPACE_TRANSPORT", "VERIFY_LIFTED_ALGEBRAICITY_BRIDGE"]
+    }
+  ],
+  "interpretation": "The declared finite field has a three-coordinate core that is sufficient and inclusion-minimal for reproducing the four current next-action classes. This is evidence about representation sufficiency only.",
+  "learning_use": "Future route outcomes can update planner statistics conditioned on these and newly admitted coordinates. Verifier rules and theorem truth conditions remain frozen.",
+  "claim_ceiling": "No validation of the hand-audited mathematical actions, no Hodge implication, no P-vs-NP implication, and no generalization to unseen routes is established by this finite check."
+}

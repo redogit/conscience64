@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="Conscience64 research analytics: an evidence-bounded event stream that keeps observations, interpretations, contradictions, revisions, and promotions distinct.">
+<title>Conscience64 Research Analytics</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div>
+    <p class="boundary-note"><a href="../">← Conscience64</a> · <a href="../research/projects/">Research records</a> · <a href="../research/projects/research-analytics.md">Analytics record</a> · <a href="../about/index.html#today">About me</a> · <a href="../history/">History &amp; restore</a></p>
+    <h1>MAIN ANALYTICS · Research Event Stream</h1>
+    <div class="sub">Observation ≠ interpretation. Repetition ≠ verification. Evidence keeps its provenance.</div>
+  </div>
+  <div><span id="mode" class="status" role="status" aria-live="polite">starting…</span> · <span id="clock"></span></div>
+</header>
+<main>
+  <section class="grid" id="metrics" aria-label="Research event counters"></section>
+  <section class="panel" aria-labelledby="controls-title">
+    <h2 id="controls-title">View controls</h2>
+    <div class="toolbar"><button id="pause" type="button">Pause</button><button id="resume" type="button">Resume</button><button id="clear" type="button">Clear view</button></div>
+    <div class="legend">Ledger kinds: OBSERVATION · TESTED · VERIFIED · CONTRADICTION · INTERPRETATION · BOUNDARY · REVISED · PROMOTED · REOPENED. Promotion is never automatic.</div>
+    <p class="boundary-note">GitHub Pages does not provide the live event backend. Without a same-origin SSE endpoint, this page visibly enters demo mode. Demo events are not research evidence.</p>
+    <p class="boundary-note">The current project manifest is forward-only: the browser API still carries its preserved seven-project registry snapshot, while Hodge and Research Analytics are recorded as later successor records in <a href="../research/projects/CURRENT.json">CURRENT.json</a>.</p>
+    <div id="controlStatus" class="sr-only" role="status" aria-live="polite"></div>
+  </section>
+  <section class="panel"><h2>Event stream</h2><div id="stream" class="stream" role="log" aria-live="off" aria-label="Research event stream"></div></section>
+</main>
+<script type="module" src="dashboard.mjs"></script>
+</body>
+</html>

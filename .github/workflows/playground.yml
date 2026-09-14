@@ -2,7 +2,7 @@ name: Verify public playground projects
 
 on:
   push:
-    branches: [main, 'rollout/**']
+    branches: [main, 'rollout/**', 'release/**']
     paths: ['play/**', '.github/workflows/playground.yml']
   pull_request:
     paths: ['play/**', '.github/workflows/playground.yml']
@@ -28,15 +28,46 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify simple MMO core
+        run: node play/mmo/simple/test.mjs
+      - name: Verify simple MMO ECS import and video-job contract
+        run: node play/mmo/simple/ecs.test.mjs
+      - name: Verify ECS video carrier syntax
+        run: node --check play/mmo/simple/tools/render-ecs-videos.mjs
+      - name: Verify deterministic visual carrier v2 contract
+        run: node play/mmo/simple/visual-carrier-v2.test.mjs
+      - name: Verify bounded renderer society contract
+        run: node play/mmo/simple/renderer-society.test.mjs
+      - name: Verify renderer society three-perspective metamorphic contract
+        run: node play/mmo/simple/renderer-society-metamorphic.test.mjs
+      - name: Verify renderer society three-perspective comparison fanout
+        run: node play/mmo/simple/renderer-society-comparison.test.mjs
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
-      - name: Verify MMO grounded reality canon
+      - name: Verify grounded MMO reality canon
         run: node play/mmo/test-reality.mjs
       - name: Verify MMO data-only plug-in runtime
         run: node play/mmo/test-plugins.mjs
       - name: Verify MMO portable local save runtime
         run: node play/mmo/test-save.mjs
-      - name: Exercise the existing applications in Chrome
+      - name: Verify Explorer World local progress contract
+        run: node play/explorer-world/progress-test.mjs
+      - name: Verify canonical MMO World and Arcade Forge contracts
+        run: node play/mmo-world/test.mjs
+      - name: Verify Redline character cooperation contract
+        run: node play/mmo-world/redline/verify-redline.mjs
+      - name: Exercise the applications in Chrome
         run: node play/browser-test.mjs
-      - name: Exercise MMO reality and plug-and-play in Chrome
+      - name: Exercise grounded MMO successor in Chrome
         run: node play/mmo/browser-test.mjs
+      - name: Exercise Explorer World in Chrome
+        run: node play/explorer-world/browser-test.mjs
+      - name: Exercise Explorer/MMO local progress in Chrome
+        run: node play/explorer-world/progress-browser-test.mjs
+      - name: Exercise Arcade Forge in Chrome
+        run: node play/mmo-world/forge/browser-test.mjs
+      - name: Verify Fuzzball hidden alpha model
+        run: |
+          node --check play/fuzzball-hidden/world.mjs
+          node --check play/fuzzball-hidden/game.mjs
+          node play/fuzzball-hidden/test.mjs

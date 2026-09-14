@@ -1,0 +1,122 @@
+name: Verify semantic cross-reference mapper
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/semantic-crossref.mjs'
+      - 'tools/semantic-crossref.test.mjs'
+      - 'tools/semantic-corpus.mjs'
+      - 'tools/semantic-corpus.test.mjs'
+      - 'tools/semantic-routing.mjs'
+      - 'tools/semantic-query.mjs'
+      - 'tools/semantic-query.test.mjs'
+      - 'tools/semantic-applicability.mjs'
+      - 'tools/semantic-applicability.test.mjs'
+      - 'tools/hypothesis-algorithm-builder.mjs'
+      - 'tools/hypothesis-algorithm-builder.test.mjs'
+      - 'tools/run-hypothesis-algorithm-builder.mjs'
+      - 'tools/HYPOTHESIS_ALGORITHM_BUILDER.md'
+      - 'tools/query-semantic-corpus.mjs'
+      - 'tools/build-semantic-corpus-map.mjs'
+      - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - 'tools/SEMANTIC_SITUATION_QUERY.md'
+      - 'tools/SEMANTIC_APPLICABILITY_GATE.md'
+      - 'skills/recover-bound/SKILL.md'
+      - '.github/workflows/semantic-crossref-check.yml'
+  pull_request:
+    paths:
+      - 'tools/semantic-crossref.mjs'
+      - 'tools/semantic-crossref.test.mjs'
+      - 'tools/semantic-corpus.mjs'
+      - 'tools/semantic-corpus.test.mjs'
+      - 'tools/semantic-routing.mjs'
+      - 'tools/semantic-query.mjs'
+      - 'tools/semantic-query.test.mjs'
+      - 'tools/semantic-applicability.mjs'
+      - 'tools/semantic-applicability.test.mjs'
+      - 'tools/hypothesis-algorithm-builder.mjs'
+      - 'tools/hypothesis-algorithm-builder.test.mjs'
+      - 'tools/run-hypothesis-algorithm-builder.mjs'
+      - 'tools/HYPOTHESIS_ALGORITHM_BUILDER.md'
+      - 'tools/query-semantic-corpus.mjs'
+      - 'tools/build-semantic-corpus-map.mjs'
+      - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - 'tools/SEMANTIC_SITUATION_QUERY.md'
+      - 'tools/SEMANTIC_APPLICABILITY_GATE.md'
+      - 'skills/recover-bound/SKILL.md'
+      - '.github/workflows/semantic-crossref-check.yml'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: conscience64-semantic-crossref-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize exact public commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify semantic mapper, corpus, query, applicability, and hypothesis-builder syntax
+        run: |
+          node --check tools/semantic-crossref.mjs
+          node --check tools/semantic-corpus.mjs
+          node --check tools/semantic-routing.mjs
+          node --check tools/semantic-query.mjs
+          node --check tools/semantic-applicability.mjs
+          if test -f tools/hypothesis-algorithm-builder.mjs; then node --check tools/hypothesis-algorithm-builder.mjs; fi
+          if test -f tools/run-hypothesis-algorithm-builder.mjs; then node --check tools/run-hypothesis-algorithm-builder.mjs; fi
+          node --check tools/query-semantic-corpus.mjs
+          node --check tools/build-semantic-corpus-map.mjs
+      - name: Verify deterministic semantic cross-reference behavior and stress bound
+        run: node tools/semantic-crossref.test.mjs
+      - name: Verify real repository corpus ingestion and bounded semantic routing
+        run: node tools/semantic-corpus.test.mjs
+      - name: Verify Situation-to-helper semantic queries
+        run: node tools/semantic-query.test.mjs
+      - name: Verify explicit semantic-helper applicability and negative control
+        run: node tools/semantic-applicability.test.mjs
+      - name: Verify governed hypothesis Algorithm Builder
+        run: node tools/hypothesis-algorithm-builder.test.mjs
+      - name: Exercise current repository Situation query CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/conscience64-semantic-query.json"
+          node tools/query-semantic-corpus.mjs --root . --query "provenance evidence accessibility deterministic ECS game" --limit 8 --threshold 0.06 --output "$OUT" > "$RUNNER_TEMP/query.log"
+          test -s "$OUT"
+          node - "$OUT" <<'NODE'
+          const fs=require('node:fs');
+          const data=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+          if(data.schema!=='conscience64.semantic-corpus-query/v1')throw new Error('wrong query schema');
+          if(!data.result?.matches?.length)throw new Error('empty semantic helper query');
+          if(!data.boundaries.includes('HELPER_CANDIDATE != APPLICABLE_HELPER'))throw new Error('missing helper applicability boundary');
+          console.log(`SEMANTIC_QUERY_OK records=${data.corpusStats.included} matches=${data.result.matches.length}`);
+          NODE
+      - name: Build current repository semantic map artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/conscience64-semantic-map.json"
+          node tools/build-semantic-corpus-map.mjs --root . --output "$OUT" --max-files 5000 --max-file-bytes 256000 --max-text-chars 4000 --threshold 0.30 --max-edges 8
+          test -s "$OUT"
+          node - "$OUT" <<'NODE'
+          const fs=require('node:fs');
+          const p=process.argv[2];
+          const data=JSON.parse(fs.readFileSync(p,'utf8'));
+          if(data.schema!=='conscience64.semantic-corpus-map/v1')throw new Error('wrong semantic corpus map schema');
+          if(!data.graph?.nodes?.length||!data.graph?.edges?.length)throw new Error('empty semantic corpus map');
+          if(!data.boundaries.includes('RELATED != SUPPORTS'))throw new Error('missing semantic boundary');
+          console.log(`SEMANTIC_MAP_OK nodes=${data.graph.nodes.length} edges=${data.graph.edges.length} bridges=${data.bridgeCandidates.length}`);
+          NODE
