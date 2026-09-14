@@ -1,0 +1,9 @@
+{
+  "evidence_relation": "same-source",
+  "id": "2026-09-13-human-expression-s1024",
+  "published_at": "2026-09-13T00:00:00Z",
+  "schema": "conscience64/public-research-update/v1",
+  "source_path": "research/updates/2026-09-13-human-expression-s1024.md",
+  "summary": "The implementation home was corrected to redogit/Other-Projects- while Conscience64 retains a sanitized historical cross-reference. Carrier branches, provenance, rights and evidence boundaries remain separate; the checkpoint does not promote a runtime or universal compression/learning claim.",
+  "title": "Human Expression Archive / S1024 project integration checkpoint"
+}
