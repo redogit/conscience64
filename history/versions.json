@@ -131,6 +131,11 @@
   ],
   "releases": [
     {
+      "name": "Facet version history and saved-work restore",
+      "commit": "1c19771c24c432ddd81f1cdb6ce9b2000c156055",
+      "status": "Pages deployment confirmed"
+    },
+    {
       "name": "Pages and About Me update",
       "commit": "02d710cd8a985d8672cc0fd83b518db9d04db8f4",
       "status": "Pages deployment confirmed"
@@ -145,5 +150,10 @@
       "commit": "b6da9fcc8e56019b27656f7e244a8b1f763ed15c",
       "status": "Pages deployment recorded"
     }
-  ]
+  ],
+  "knowledge_history": {
+    "path": "history/index.html#knowledge",
+    "scope": "Open-scope, browser-local revision records; append-only restores; evidence is recorded, not automatically verified.",
+    "schema": "redogit/knowledge-history/1"
+  }
 }

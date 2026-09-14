@@ -78,6 +78,11 @@
       "topic": "Next investigation",
       "url": "https://github.com/redogit/conscience64/blob/main/research/hodge/CONSCIENCE64_COOPERATION.md",
       "status": "proposed / not yet verified"
+    },
+    {
+      "topic": "Version history and necessary repairs",
+      "url": "https://redogit.github.io/conscience64/history/#knowledge",
+      "status": "implemented / browser-local records"
     }
   ],
   "previous_internal_update_deployment": {

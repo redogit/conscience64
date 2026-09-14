@@ -64,7 +64,9 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
 
       - name: Verify local checkpoint restore boundaries
-        run: node history/test.mjs
+        run: |
+          node history/test.mjs
+          node history/knowledge-test.mjs
 
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
