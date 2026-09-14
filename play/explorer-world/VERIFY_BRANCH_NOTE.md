@@ -1,1 +1,0 @@
-Temporary note for review: repository push CI is triggered through a `rollout/**` ref pointing at this review branch head. The rollout ref is verification-only; the review branch remains the proposed integration source.
