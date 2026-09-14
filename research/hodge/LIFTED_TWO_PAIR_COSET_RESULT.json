@@ -1,0 +1,38 @@
+{
+  "experiment": "HODGE-LIFTED-TWO-PAIR-COSET-SEARCH",
+  "status": "EXECUTED_EXACT_ENUMERATION_WITH_AUTHENTICATED_SOURCE_REDUCER",
+  "purpose": "Test whether the certified lifted members of W70 and W110 acquire a two-pair-standard coset-transfer witness even though the base levels do not.",
+  "method": {
+    "grade2_enumeration": "meet-in-the-middle over all unordered nonzero residue pairs; complementary full unit-residue profiles; exact grade-2 verification",
+    "lattice_membership": "fraction-free integer reducer from the authenticated ancillary S_m implementation",
+    "calibration": [
+      "grade-2 counts reproduced independently established counts at m=45 (275), m=70 (700), m=110 (1648)",
+      "published m=45 two-pair target and Q are detected in the same S_45 coset",
+      "known m=168 target and *-split beta are detected in the same nonzero S_168 coset"
+    ],
+    "independence_boundary": "The m=210/220 membership reduction re-executes the authenticated source algorithm; the independent SymPy-HNF implementation timed out at m=210 and is not claimed as a second implementation at these levels."
+  },
+  "results": [
+    {
+      "wall": "W70",
+      "level": 210,
+      "target": [2,9,129,142,168,180],
+      "S_m_rank_reported_by_reducer": 185,
+      "grade2_hodge_quadruples": 6125,
+      "quadruples_in_target_coset": 0,
+      "verdict": "NO_LIFTED_TWO_PAIR_COSET_WITNESS_AT_210"
+    },
+    {
+      "wall": "W110",
+      "level": 220,
+      "target": [1,62,111,142,162,182],
+      "S_m_rank_reported_by_reducer": 179,
+      "grade2_hodge_quadruples": 6347,
+      "quadruples_in_target_coset": 0,
+      "verdict": "NO_LIFTED_TWO_PAIR_COSET_WITNESS_AT_220"
+    }
+  ],
+  "consequence": "The published two-pair-standard coset-transfer route remains unavailable after the already-certified lifts represented by W70@210 and W110@220.",
+  "next_route": "For W114, the smallest lift that activates a 5-standard family is level 570. Treat that as a new out-of-census experiment with its own resource and source contract; alternatively search other algebraic gap families before increasing level.",
+  "claim_ceiling": "Mechanism-specific bounded negative result. No non-algebraicity, no general Hodge conclusion, and no P-vs-NP evidence transfer."
+}
