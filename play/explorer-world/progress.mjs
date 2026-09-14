@@ -41,6 +41,17 @@ function validateRegions(values){
   }
 }
 
+function validateMonsterStates(values,world){
+  const canonical=new Map(world.monsters.map(monster=>[monster.id,monster]));
+  for(const saved of values){
+    const id=String(saved?.id),base=canonical.get(id);
+    if(!base)continue; // identity admission reports the unknown-ID error separately
+    const positionValid=finite(saved.x)&&finite(saved.y)&&saved.x>=0&&saved.x<=WORLD.width&&saved.y>=0&&saved.y<=WORLD.height;
+    const healthValid=finite(saved.hp)&&saved.hp<=base.maxHp&&((saved.alive===true&&saved.hp>0)||(saved.alive===false&&saved.hp<=0));
+    if(!positionValid||!healthValid||typeof saved.alive!=='boolean')throw new Error(`Invalid monster state: ${id}.`);
+  }
+}
+
 export function snapshot(state){
   if(!state?.world||!validPlayer(state.player))throw new Error('Invalid runtime state.');
   return{
@@ -66,11 +77,14 @@ export function hydrate(input){
   validateUniqueKnownIds(doc.collectedEchoIds,new Set(world.echoes.map(e=>e.id)),'echo');
   validateUniqueKnownIds(doc.monsters.map(monster=>monster?.id),new Set(world.monsters.map(monster=>monster.id)),'monster');
   validateRegions(doc.regionsSeen);
+  validateMonsterStates(doc.monsters,world);
+  if(doc.echoes!==doc.collectedEchoIds.length)throw new Error('Echo counter does not match collected echo state.');
+  const defeatedInDocument=doc.monsters.reduce((count,monster)=>count+(monster?.alive===false?1:0),0);
+  if(doc.defeated!==defeatedInDocument)throw new Error('Defeat counter does not match monster state.');
   const echoIds=new Set(doc.collectedEchoIds.map(String)),monsterById=new Map(doc.monsters.map(m=>[String(m.id),m]));
   for(const echo of world.echoes)echo.collected=echoIds.has(echo.id);
   for(const monster of world.monsters){
     const saved=monsterById.get(monster.id);if(!saved)continue;
-    if(!finite(saved.x)||!finite(saved.y)||!finite(saved.hp)||typeof saved.alive!=='boolean')throw new Error(`Invalid monster state: ${monster.id}.`);
     monster.x=saved.x;monster.y=saved.y;monster.hp=saved.hp;monster.alive=saved.alive;
   }
   const fuzzballFound=bool(doc.fuzzballFound);world.fuzzball.found=fuzzballFound;
