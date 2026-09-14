@@ -2,10 +2,19 @@
 
 This file connects the MMO surfaces without collapsing their responsibilities.
 
+## Load order
+
+Resume current work in this order:
+
+`CURRENT.md → REALITY_CANON.md → LINKAGES.md / linkages.json → LEVELS.md → RELEASE_PLAN_2026-11-15.md → implementation files → observed test results`
+
+This prevents roadmap prose from being mistaken for current implementation.
+
 ## Canonical reality chain
 
 `ordinary physical world → observed natural world → scientific observation → processed scientific image → game reconstruction → anomaly`
 
+- **Current state ledger:** `CURRENT.md`
 - **Reality canon:** `REALITY_CANON.md`
 - **MMO main page:** `index.html`
 - **Astronomy boundary:** in-game reconstruction is labeled; linked EHT/NASA sources retain the scientific evidence role.
@@ -22,6 +31,7 @@ Boundary:
 
 - **Play Hub:** `../index.html`
 - **MMO Main Page:** `index.html`
+- **Current state:** `CURRENT.md`
 - **Arcade Forge:** `forge.html`
 - **Reality canon:** `REALITY_CANON.md`
 - **Plug-in contract:** `plugin-contract.json`
@@ -74,11 +84,14 @@ The external scientific source retains the evidence role. The game visual retain
 
 `Current grounded local prototype → plug-in content growth → authoritative multiplayer → moderation / accessibility / security gates → RC → RED WILDS 1.0`
 
+- **Current state:** `CURRENT.md`
 - **Major release plan:** `RELEASE_PLAN_2026-11-15.md`
 - **Target:** November 15, 2026
 - **Current art/world precedence:** `REALITY_CANON.md`
 
 Roadmap status never upgrades itself into implementation status.
+
+`ROADMAP != IMPLEMENTED_STATE`
 
 ## Prize chain
 
@@ -117,9 +130,11 @@ The dedicated MMO browser test checks:
 
 A configured check is not a passing result until CI actually reports success.
 
+`TEST_CONFIGURED != TEST_OBSERVED_PASSING`
+
 ## Machine-readable map
 
-`linkages.json` is the machine-readable form of this map. It includes the current Reality Canon, external astronomy references, plug-in runtime path, verification scripts, CI gate, and evidence-boundary invariants.
+`linkages.json` is the machine-readable form of this map. It includes the current-state ledger, Reality Canon, external astronomy references, plug-in runtime path, verification scripts, CI gate, and evidence-boundary invariants.
 
 ## History and correction
 
