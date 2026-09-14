@@ -7,8 +7,8 @@
       "kind": "complete-renderer",
       "discoveryTier": "admitted",
       "governance": {
-        "classifications": ["trusted", "reference"],
-        "evidenceScope": "mercer-control-plane-v1"
+        "classifications": [],
+        "evidenceScope": "admitted-bounded-mercer-control-plane-v1"
       },
       "capabilities": {
         "intents": ["reference-deterministic", "diagnostic"],
