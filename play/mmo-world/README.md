@@ -9,10 +9,22 @@ This page directly runs the already gated Explorer World client while exposing t
 - **Playable:** yes — the deterministic Explorer shard.
 - **Live networked MMORPG:** no.
 - **Accounts/shared authoritative state:** not yet.
+- **Local progress:** yes — explicit manual browser-local save/load/clear shared with `play/explorer-world/` on the same origin.
+- **Server/cloud save:** no.
 - **Advertising surface:** yes — this is the stable URL to advertise gradually.
 - **World Variety Lab:** yes — each region has curated adjective pools across light, sound, flora, fauna, motion, mood, mystery, and danger. A player can advance a deterministic local variety generation without changing map/combat/progression/reward semantics.
 - **Bluetooth:** optional, user-initiated Web Bluetooth connection plus Gamepad API support for controllers already paired by the operating system.
 - **Internal DNS:** deployment configuration is under `../../infra/internal-dns/`; it is not required for the static game to run.
+
+## Founding-shard progress
+
+The MMO beta page and Explorer World use the same versioned browser-local checkpoint. Loading is explicit rather than automatic. The deterministic world seed is recreated first; then bounded mutable state is restored.
+
+The checkpoint can preserve player position/health/energy, Echo Shards, bounded monster state, region visitation, Fuzzball encounter state, defeated count, current story signal, and Chapter One completion. A completed chapter can be resumed for free exploration instead of forcing a new run.
+
+`LOCAL_BROWSER_CHECKPOINT != SERVER_AUTHORITATIVE_MMO_STATE`.
+
+This does not provide identity, account sync, cloud backup, anti-cheat authority, multiplayer synchronization, entitlement, moderation authority, or persistence across browsers/devices.
 
 ## World varieties
 
@@ -32,4 +44,4 @@ Advertising is an intake mechanism, not permission for uncontrolled population g
 
 ## Fuzzball
 
-The game easter egg is newly introduced. It remains separate from the unresolved historical Fuzzball project identity preserved by Conscience64 recovery records.
+The game easter egg is newly introduced. It remains separate from the unresolved historical Fuzzball project identity preserved by Conscience64 recovery records. The separate hidden Fuzzball Alpha remains unlisted and provenance-distinct from both the historical carrier and the Explorer/MMO checkpoint format.
