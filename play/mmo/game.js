@@ -2,12 +2,14 @@
 (() => {
   const root = document;
   const $ = id => root.getElementById(id);
-  const state = { xp:0, joy:50, discoveries:0, tokens:0, level:1, role:'Explorer', morph:0, activeGame:null, raceTimer:null };
+  const state = { xp:0, joy:50, discoveries:0, tokens:0, level:1, role:'Explorer', morph:0, motto:'', activeGame:null, raceTimer:null };
   const log = $('log');
   const apiFrame = $('conscience-companion');
   const apiState = $('conscience-state');
   const plugins = globalThis.Conscience64MMOPlugins || null;
+  const saves = globalThis.Conscience64MMOSave || null;
   const pending = new Map();
+  const companionForms=['Red-world wanderer','Cosmic glam form','Noir guardian','Impossible geometry','Heroic festival form'];
   let requestSeq = 0;
   const clamp = (v,min,max) => Math.max(min, Math.min(max, v));
   const targetOrigin = location.origin === 'null' ? '*' : location.origin;
@@ -26,6 +28,7 @@
     state.xp += xp; state.joy = clamp(state.joy + joy, 0, 100); state.discoveries += discoveries; state.tokens += tokens;
     state.level = 1 + Math.floor(state.xp / 100); render(); if (reason) addLog(reason);
   }
+  function renderCompanion() { $('companion-state').textContent=`Form: ${companionForms[state.morph] || companionForms[0]}.`; }
 
   function apiCall(method, ...args) {
     return new Promise((resolve, reject) => {
@@ -166,6 +169,32 @@
     status.textContent=`${rows.length} validated local plug-in${rows.length===1?'':'s'} ready. Local-only; not multiplayer or prize authority.`;
   }
 
+  function snapshotState() {
+    return {
+      xp:state.xp, joy:state.joy, discoveries:state.discoveries, tokens:state.tokens,
+      role:state.role, morph:state.morph, motto:state.motto,
+      chronicle:[...log.children].map(li=>li.textContent).slice(0,12)
+    };
+  }
+  function applySave(doc) {
+    if (!saves) throw new Error('save runtime unavailable');
+    const safe=saves.validate(doc), data=safe.state;
+    state.xp=data.xp; state.joy=data.joy; state.discoveries=data.discoveries; state.tokens=data.tokens;
+    state.role=data.role; state.morph=data.morph; state.motto=data.motto; state.level=1+Math.floor(state.xp/100);
+    $('role-select').value=state.role; $('motto').value=state.motto; render(); renderCompanion();
+    log.replaceChildren();
+    if(data.chronicle.length){
+      for(const text of data.chronicle){const li=document.createElement('li');li.textContent=text;log.appendChild(li);}
+    } else addLog('Loaded a local save with an empty chronicle.');
+    return safe;
+  }
+  function setSaveStatus(text,error=false){const el=$('save-status');if(!el)return;el.textContent=text;el.style.color=error?'#e59097':'';}
+  function downloadSave(doc){
+    const blob=new Blob([saves.exportSave(doc)],{type:'application/json'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='conscience64-mmo-save.json';a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  }
+
   $('enter-world').addEventListener('click',()=>{$('street-title').scrollIntoView({behavior:'smooth',block:'start'});reward({xp:2,joy:4},'You stepped outside into Mercer & Red Street.');});
   $('random-event').addEventListener('click',async()=>{const event=weirdEvents[Math.floor(Math.random()*weirdEvents.length)],seed=await conscienceSeed('play creativity strange world');reward({joy:5,xp:3},seed?`${event} Conscience64 also surfaced “${seed}” as optional context.`:event);});
   root.querySelectorAll('[data-life]').forEach(b=>b.addEventListener('click',()=>{const [text,gain]=lifeEvents[b.dataset.life]||['You spend some time in the neighborhood.',{joy:2}];$('life-status').textContent=text;reward(gain,text);}));
@@ -176,9 +205,16 @@
   if($('refresh-plugins')) $('refresh-plugins').addEventListener('click',refreshPlugins);
   addEventListener('storage',event=>{if(plugins && event.key===plugins.storageKey) refreshPlugins();});
   addEventListener('pageshow',refreshPlugins);
-  $('save-identity').addEventListener('click',()=>{state.role=$('role-select').value;render();const motto=$('motto').value.trim();addLog(`Today you are a ${state.role}${motto?`: “${motto}”`:'.'}`);});
-  $('morph').addEventListener('click',()=>{const forms=['Red-world wanderer','Cosmic glam form','Noir guardian','Impossible geometry','Heroic festival form'];state.morph=(state.morph+1)%forms.length;$('companion-state').textContent=`Form: ${forms[state.morph]}.`;reward({joy:3},`Private shapeshifter changed to ${forms[state.morph]}.`);});
-  $('reset').addEventListener('click',()=>{state.xp=0;state.joy=50;state.discoveries=0;state.tokens=0;state.level=1;state.role='Explorer';render();log.replaceChildren();addLog('Local run reset. The world remembers nothing except that restarting is allowed.');$('game-title').textContent='Pick a game.';$('game-prompt').textContent='The arcade is waiting.';$('game-controls').replaceChildren();$('game-result').textContent='';if($('life-status'))$('life-status').textContent='The block is alive. Nothing demands your attention yet.';if($('sky-status'))$('sky-status').textContent='The roof is quiet. The sky is not.';});
+  $('save-identity').addEventListener('click',()=>{state.role=$('role-select').value;state.motto=$('motto').value.trim();render();addLog(`Today you are a ${state.role}${state.motto?`: “${state.motto}”`:'.'}`);});
+  $('morph').addEventListener('click',()=>{state.morph=(state.morph+1)%companionForms.length;renderCompanion();reward({joy:3},`Private shapeshifter changed to ${companionForms[state.morph]}.`);});
 
-  render(); refreshPlugins(); if(apiFrame) apiFrame.addEventListener('load',connectConscience,{once:true});
+  if($('save-local')) $('save-local').addEventListener('click',()=>{try{if(!saves)throw new Error('save runtime unavailable');const doc=saves.save(snapshotState());setSaveStatus(`Saved locally at ${new Date(doc.savedAt).toLocaleString()}.`);}catch(error){setSaveStatus(error.message,true);}});
+  if($('load-local')) $('load-local').addEventListener('click',()=>{try{if(!saves)throw new Error('save runtime unavailable');const doc=saves.load();if(!doc){setSaveStatus('No local saved copy exists yet.');return;}applySave(doc);setSaveStatus(`Loaded local save from ${new Date(doc.savedAt).toLocaleString()}. Local state only.`);}catch(error){setSaveStatus(`Load rejected: ${error.message}`,true);}});
+  if($('export-save')) $('export-save').addEventListener('click',()=>{try{if(!saves)throw new Error('save runtime unavailable');const doc=saves.documentFor(snapshotState());downloadSave(doc);setSaveStatus('Portable save exported. It is local player data, not multiplayer or prize proof.');}catch(error){setSaveStatus(error.message,true);}});
+  if($('import-save')) $('import-save').addEventListener('change',async()=>{const input=$('import-save'),file=input.files[0];if(!file)return;try{if(!saves)throw new Error('save runtime unavailable');if(file.size>131072)throw new Error('save file too large');const doc=saves.parse(await file.text());applySave(doc);setSaveStatus('Imported save loaded into this run. It was not automatically stored as the local saved copy.');}catch(error){setSaveStatus(`Import rejected: ${error.message}`,true);}finally{input.value='';}});
+  if($('clear-save')) $('clear-save').addEventListener('click',()=>{try{if(!saves)throw new Error('save runtime unavailable');saves.clear();setSaveStatus('Saved browser copy cleared. Current run is unchanged.');}catch(error){setSaveStatus(error.message,true);}});
+
+  $('reset').addEventListener('click',()=>{state.xp=0;state.joy=50;state.discoveries=0;state.tokens=0;state.level=1;state.role='Explorer';state.morph=0;state.motto='';render();renderCompanion();$('role-select').value='Explorer';$('motto').value='';log.replaceChildren();addLog('Local run reset. The world remembers nothing except that restarting is allowed.');$('game-title').textContent='Pick a game.';$('game-prompt').textContent='The arcade is waiting.';$('game-controls').replaceChildren();$('game-result').textContent='';if($('life-status'))$('life-status').textContent='The block is alive. Nothing demands your attention yet.';if($('sky-status'))$('sky-status').textContent='The roof is quiet. The sky is not.';setSaveStatus('Current run reset. Any separately saved browser copy remains until you clear or replace it.');});
+
+  render(); renderCompanion(); refreshPlugins(); if(apiFrame) apiFrame.addEventListener('load',connectConscience,{once:true});
 })();
