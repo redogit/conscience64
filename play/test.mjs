@@ -44,7 +44,7 @@ for (const locale of Object.keys(languages)) {
   assert.deepEqual(Object.keys(messages[locale]).sort(), Object.keys(messages.en).sort(), `translation keys: ${locale}`);
   assert.ok(Object.values(messages[locale]).every(s => typeof s === 'string' && s.length));
 }
-for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garden/index.html', 'steps/index.html', 'compare/index.html', 'computational-chorus/index.html', 'explorer-world/index.html']) {
+for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garden/index.html', 'steps/index.html', 'compare/index.html', 'computational-chorus/index.html', 'explorer-world/index.html', 'mmo/index.html']) {
   const html = await readFile(new URL(path, import.meta.url), 'utf8');
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
   assert.equal(new Set(ids).size, ids.length, `duplicate IDs: ${path}`);
@@ -57,8 +57,20 @@ for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garde
   }
 }
 const catalog = JSON.parse(await readFile(new URL('projects.json', import.meta.url), 'utf8'));
-assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare', 'computational-chorus', 'explorer-world']);
+assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare', 'computational-chorus', 'explorer-world', 'mmo']);
+assert.equal(catalog.version, '1.3.1');
 for (const p of catalog.projects) assert.ok(await stat(new URL(p.entry, import.meta.url)));
+const mmo = await readFile(new URL('mmo/index.html', import.meta.url), 'utf8');
+const mmoJs = await readFile(new URL('mmo/game.js', import.meta.url), 'utf8');
+const levels = await readFile(new URL('mmo/LEVELS.md', import.meta.url), 'utf8');
+const releasePlan = await readFile(new URL('mmo/RELEASE_PLAN_2026-11-15.md', import.meta.url), 'utf8');
+assert.match(mmo, /REDEMPTION NOT ACTIVE/);
+assert.match(mmo, /Conscience64 Companion/);
+assert.match(mmoJs, /conscience64\.api/);
+assert.match(mmoJs, /Retrieval is inspiration\/context, not independent evidence or prize verification/);
+assert.match(levels, /MYSTERY_13TH != PREPLANNED_LEVEL_13/);
+assert.match(releasePlan, /November 15, 2026/);
+assert.match(releasePlan, /PRIZES_ON.*PRIZES_DEFERRED/s);
 const chorus = await readFile(new URL('computational-chorus/chorus.mjs', import.meta.url), 'utf8');
 assert.match(chorus, /P \?= NP/);assert.match(chorus, /meaning preserved \/ cognitive effort/i);assert.match(chorus, /witness-verifier characterization of NP/i);assert.match(chorus, /memory aid, not evidence|memory aid/i);
 const worldA=world.createWorld(640064),worldB=world.createWorld(640064);assert.deepEqual(worldA,worldB,'game world seed must be deterministic');assert.equal(world.regionAt(100,100).id,'sunmeadow');assert.equal(world.regionAt(1700,900).id,'anomaly');assert.equal(world.fuzzballUnlocked({echoes:2}),false);assert.equal(world.fuzzballUnlocked({echoes:3}),true);assert.equal(world.portalUnlocked({echoes:6,fuzzballFound:false}),false);assert.equal(world.portalUnlocked({echoes:6,fuzzballFound:true}),true);assert.equal(worldA.monsters.length,18);assert.equal(worldA.echoes.length,12);assert.ok(worldA.monsters.every(m=>world.MONSTER_TYPES[m.type]));
@@ -77,4 +89,4 @@ for (const a of arrays) for (const b of arrays) {
   const diff = c.compareText(a.join('\n'), b.join('\n'));assert.deepEqual(diff.rows.filter(r => r.kind !== 'added').map(r => r.text), a);assert.deepEqual(diff.rows.filter(r => r.kind !== 'removed').map(r => r.text), b);
   const possibilities = new Set(subsequences(b).map(s => JSON.stringify(s)));const maximum = Math.max(...subsequences(a).filter(s => possibilities.has(JSON.stringify(s))).map(s => s.length));assert.equal(diff.counts.same, maximum);
 }
-console.log('PASS playground: seven public projects; Unicode, provenance checkpoints, exact text differences, original recovery, geometry, voice/music resources, mnemonic claim boundaries, and deterministic Explorer World game rules.');
+console.log('PASS playground: eight registered public projects including Explorer World and the grounded MMO successor; Unicode, provenance checkpoints, exact text differences, original recovery, geometry, voice/music resources, mnemonic claim boundaries, and deterministic game rules.');

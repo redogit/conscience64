@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 
 const base = JSON.parse(await readFile(new URL('../research/projects/projects.json', import.meta.url), 'utf8'));
 const current = JSON.parse(await readFile(new URL('../research/projects/CURRENT.json', import.meta.url), 'utf8'));
@@ -41,6 +41,56 @@ for (const record of current.softwareBoundaryRecords || []) {
   assert.match(text, /^# /, `${record.path} must be a human-readable software boundary record`);
 }
 
+const mmo = current.softwareBoundaryRecords.find(record => record.id === 'mmo-world-beta');
+assert.ok(mmo, 'MMO World software boundary missing');
+assert.equal(mmo.canonicalRoot, 'play/mmo-world/');
+assert.equal(mmo.localExtension?.id, 'arcade-forge');
+assert.equal(mmo.localExtension?.authority, 'LOCAL_PREVIEW_ONLY');
+assert.ok(!mmo.localExtension?.path.startsWith('play/mmo/'), 'retired play/mmo tree must not become canonical');
+const forgeContract = JSON.parse(await readFile(new URL(`../${mmo.localExtension.contract}`, import.meta.url), 'utf8'));
+assert.equal(forgeContract.executionModel, 'data-only');
+assert.equal(forgeContract.security.executablePluginCode, false);
+assert.equal(forgeContract.security.networkAuthority, false);
+assert.equal(forgeContract.security.serverAuthority, false);
+assert.equal(forgeContract.security.prizeAuthority, false);
+assert.equal(forgeContract.authority.localPluginReward, 'preview metadata only; not applied to canonical game state');
+const forgeRuntime = await readFile(new URL(`../${mmo.localExtension.runtime}`, import.meta.url), 'utf8');
+assert.ok(forgeRuntime.includes('unsupported field'), 'Forge runtime must reject unknown fields');
+assert.ok(forgeRuntime.includes('stored plugin shelf is corrupt; it was not overwritten'), 'Forge runtime must fail visibly on corrupt shelf');
+
+const starter = mmo.localExtension?.starterPack;
+assert.ok(starter, 'starter Arcade pack missing');
+assert.equal(starter.validatedRecipeCount, 9);
+assert.equal(starter.retiredRuntimeAdaptations, 8);
+assert.equal(starter.ordinaryLifeExamples, 1);
+assert.equal(starter.redline, 'DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA');
+const pluginDir = new URL(`../${starter.path}`, import.meta.url);
+const pluginFiles = (await readdir(pluginDir)).filter(name => name.endsWith('.json')).sort();
+assert.equal(pluginFiles.length, starter.validatedRecipeCount);
+assert.ok(!pluginFiles.some(name => /redline/i.test(name)), 'Redline must not be silently approximated');
+const pluginLineage = await readFile(new URL('README.md', pluginDir), 'utf8');
+assert.match(pluginLineage, /DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA/);
+assert.match(pluginLineage, /not the old random selection mechanism/);
+assert.match(pluginLineage, /not that random generator/);
+
+const analytics = current.analyticsContinuation;
+assert.ok(analytics, 'analytics continuation missing');
+assert.equal(analytics.status, 'LOCAL_LIVE_SERVICE_IMPLEMENTED_REMOTE_DEPLOYMENT_NOT_ESTABLISHED');
+assert.equal(analytics.independence, 'same-source');
+assert.match(analytics.sourceRevision, /^[0-9a-f]{40}$/);
+assert.equal(typeof analytics.sourceWorkflowRun, 'number');
+
+const liveService = await readFile(new URL(`../${analytics.liveService}`, import.meta.url), 'utf8');
+assert.ok(liveService.includes('Last-Event-ID'), 'live analytics service must carry resume semantics');
+assert.ok(liveService.includes('allow-public-read'), 'live analytics service must make public-read exposure explicit');
+
+const recordedEvent = JSON.parse(await readFile(new URL(`../${analytics.recordedEvent}`, import.meta.url), 'utf8'));
+assert.equal(recordedEvent.revision, analytics.sourceRevision);
+assert.equal(recordedEvent.source, `github-actions:${analytics.sourceWorkflowRun}`);
+assert.equal(recordedEvent.independence, 'same-source');
+assert.equal(recordedEvent.kind, 'TESTED');
+assert.equal(recordedEvent.status, 'passed');
+
 for (const invariant of [
   'USER_INPUT != ASSISTANT_SYNTHESIS',
   'REQUESTED != IMPLEMENTED',
@@ -50,8 +100,16 @@ for (const invariant of [
   'TRANSPORT_VALIDITY != EVIDENCE_VALIDITY',
   'DEMO_DATA != RESEARCH_EVIDENCE',
   'STATIC_VIEW != AUTHORITATIVE_LEDGER',
+  'LOCAL_LIVE_SERVICE != REMOTE_PRODUCTION_DEPLOYMENT',
+  'PRODUCER_EVENT_ID != CANONICAL_LEDGER_EVENT_ID',
+  'REPLAYED_EVENT != NEW_EXECUTION',
   'CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE',
-  'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO'
+  'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO',
+  'DATA_ONLY_PLUGIN != EXECUTABLE_CODE',
+  'LOCAL_PLUGIN_PREVIEW != CANONICAL_GAME_STATE',
+  'LOCAL_PLUGIN != SERVER_AUTHORITY',
+  'SOURCE_STATE_ADAPTATION != BEHAVIORAL_IDENTITY',
+  'UNREPRESENTABLE != SILENTLY_OMITTED'
 ]) assert.ok(current.addedInvariants.includes(invariant), `missing invariant: ${invariant}`);
 
-console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger and software boundary records verified.`);
+console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger, software boundaries, ${starter.validatedRecipeCount} starter Arcade recipes with explicit Redline remainder, and live analytics continuation verified.`);

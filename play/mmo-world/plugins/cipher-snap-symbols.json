@@ -1,0 +1,11 @@
+{
+  "schema": "conscience64.mmo.plugin/v1",
+  "id": "cipher-snap-symbols",
+  "name": "Cipher Snap — Symbols",
+  "version": "1.0.0",
+  "mechanic": "input",
+  "prompt": "Complete the sequence: ◆ ● ◆ ● ?",
+  "answers": ["◆"],
+  "reward": {"xp": 20, "joy": 6, "tokens": 2, "discoveries": 1},
+  "description": "Data-only successor of one exact Cipher Snap puzzle from the retired MMO branch."
+}

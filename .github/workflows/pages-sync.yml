@@ -82,6 +82,7 @@ jobs:
           node --check voice-anywhere.js
           node tools/check_voice_anywhere.mjs
           node --check research-song.js
+          (cd analytics && python3 -m unittest -v test_server.py test_recorded_events.py)
           node analytics/test.mjs
           node --check play/computational-chorus/chorus.mjs
           node --check play/explorer-world/world.mjs
@@ -113,6 +114,7 @@ jobs:
         run: |
           node play/browser-test.mjs
           node play/explorer-world/browser-test.mjs
+          node play/mmo-world/forge/browser-test.mjs
 
       - name: Verify Coordinate Space public release before publishing
         shell: bash
