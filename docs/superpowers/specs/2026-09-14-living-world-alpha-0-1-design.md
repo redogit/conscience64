@@ -83,13 +83,13 @@ No single `CivilizationEngine`, `EconomyEngine`, or `FunEngine` owns the world.
 
 A participating system is modeled conceptually as:
 
-`S_i = (X, N, W, C, D, P, R, V, H, Sigma)`
+`S_i = (X, N, G, C, D, P, R, V, H, Sigma)`
 
 where:
 
 - `X` — present state
 - `N` — needs
-- `W` — wants
+- `G` — wants/goals
 - `C` — capabilities
 - `D` — dependencies
 - `P` — productions/contributions
@@ -440,24 +440,62 @@ Finite success never establishes universal correctness:
 
 `FINITE_VERIFICATION != UNIVERSALITY`
 
-## 16. Deferred from Alpha 0.1
+## 16. Delivery decomposition
 
-The following are deliberately outside the first implementation boundary:
+This architecture is intentionally broader than one implementation batch. To get a playable Alpha quickly without weakening the design, implementation is split into successor polyforms with explicit gates.
+
+### 16.1 Alpha 0.1A — playable local living kernel
+
+This is the first implementation plan after approval of this spec. It includes only what is required to play the vertical slice locally:
+
+- extend the existing Red Wilds ECS with authoritative event/history/replay mechanics;
+- implement the minimum dependency ecology and changing wants needed by the proof scenario;
+- implement the ten compositional player verbs;
+- implement deterministic browser-native DHTML/Canvas/SVG scene generation;
+- preserve a semantic HTML interaction surface and accessibility requirements;
+- save/reload and deterministic replay;
+- unit, interaction, ablation, replay, playable-scenario, and accessibility checks needed by the Alpha proof.
+
+GraphQL is not allowed to block first playability.
+
+### 16.2 Alpha 0.1B — standards membrane
+
+After 0.1A is observed working, a successor plan adds the GraphQL membrane around the same authoritative engine:
+
+- GraphQL September 2025 schema for permitted queries and action requests;
+- Fetch/HTTP transport for query and mutation operations;
+- EventSource/SSE world-event stream when live push is useful;
+- contract tests proving GraphQL cannot directly mutate authoritative components;
+- replay equivalence between local command admission and requests accepted through the membrane.
+
+### 16.3 Federation successors
+
+Applying the living constitution across every active repository and external/public inventory is an architectural federation program, not part of the first playable implementation batch.
+
+Each project receives a separately reviewable adapter/polyform that preserves its own authority, privacy, provenance, evidence boundaries, and rollback path.
+
+No repository is bulk-rewritten merely to adopt shared vocabulary.
+
+## 17. Deferred from Alpha 0.1A
+
+The following are deliberately outside the first playable implementation boundary:
 
 - production-scale MMO networking
 - planetary/civilization-scale simulation
 - remote durable multiplayer authority
 - economy with real money or prizes
 - neural image/video generation as a required graphics path
+- GraphQL membrane implementation (belongs to Alpha 0.1B)
 - WebSocket-only realtime transport
 - draft-only web-platform dependencies
 - automatic promotion of external research into game truth
+- cross-repository bulk mutation
 
-These may receive successor polyforms after the Alpha proves the living-world kernel.
+These receive successor polyforms after the Alpha proves the living-world kernel.
 
-## 17. Acceptance boundary
+## 18. Acceptance boundary
 
-Alpha 0.1 is successful only when the implementation demonstrates the vertical-slice proof with reproducible evidence while preserving the constitutional boundaries above.
+Alpha 0.1A is successful only when the implementation demonstrates the vertical-slice proof with reproducible evidence while preserving the constitutional boundaries above.
 
 The target is not maximum feature count. The target is the smallest playable program that proves:
 
