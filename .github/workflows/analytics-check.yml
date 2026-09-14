@@ -1,0 +1,57 @@
+name: Verify research analytics
+
+on:
+  pull_request:
+    paths:
+      - 'analytics/**'
+      - '.github/workflows/analytics-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'analytics/**'
+      - '.github/workflows/analytics-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize exact commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify browser event contract
+        run: node analytics/test.mjs
+
+      - name: Build and exercise LLVM event bridge
+        shell: bash
+        run: |
+          set -euo pipefail
+          LLVM_CONFIG="$(command -v llvm-config || true)"
+          if [[ -z "$LLVM_CONFIG" ]]; then
+            LLVM_CONFIG="$(find /usr/bin -maxdepth 1 -type f -name 'llvm-config-*' -print | sort -V | tail -n 1)"
+          fi
+          if [[ -z "$LLVM_CONFIG" || ! -x "$LLVM_CONFIG" ]]; then
+            echo 'LLVM development tooling is required for the analytics bridge gate.' >&2
+            exit 1
+          fi
+          BUILD="$RUNNER_TEMP/conscience64-analytics-build"
+          cmake -S analytics -B "$BUILD" -DLLVM_DIR="$($LLVM_CONFIG --cmakedir)"
+          cmake --build "$BUILD" --parallel 2
+          EVENT_FILE="$RUNNER_TEMP/conscience64-analytics-event.json"
+          "$BUILD/llvm_event_bridge" OBSERVATION ci 'LLVM bridge workflow smoke test' executed > "$EVENT_FILE"
+          EVENT_FILE="$EVENT_FILE" node --input-type=module -e "import fs from 'node:fs'; import {validateEvent} from './analytics/event-contract.mjs'; const event=JSON.parse(fs.readFileSync(process.env.EVENT_FILE,'utf8')); const checked=validateEvent(event); if(!checked.ok){console.error(checked.error);process.exit(1)} console.log('PASS LLVM bridge event', event.time, event.kind);"
+          if "$BUILD/llvm_event_bridge" PROVED_BY_REPETITION ci invalid executed >/dev/null 2>&1; then
+            echo 'Bridge accepted an unknown event kind.' >&2
+            exit 1
+          fi
