@@ -30,6 +30,7 @@ on:
       - 'research/cross-carrier/2026-09-13/internal-update/**'
       - 'play/**'
       - 'coordinate-space/**'
+      - 'infra/internal-dns/**'
       - 'tools/check_site.mjs'
       - 'tools/check_voice_anywhere.mjs'
       - 'tools/check_space_lens_qa.mjs'
@@ -80,6 +81,9 @@ jobs:
           node --check play/computational-chorus/chorus.mjs
           node --check play/explorer-world/world.mjs
           node --check play/explorer-world/game.mjs
+          node --check play/mmo-world/companion.mjs
+          node play/mmo-world/test.mjs
+          python3 infra/internal-dns/verify_config.py
           node --check space-lens-memory.js
           node --check space-lens-qa.js
           node --check space-lens-local-search.js
