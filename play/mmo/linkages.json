@@ -1,0 +1,41 @@
+{
+  "schema": "conscience64.mmo.linkages/v1",
+  "version": "1.0.0",
+  "nodes": [
+    {"id":"play-hub","path":"../index.html","kind":"navigation"},
+    {"id":"mmo-main","path":"index.html","kind":"game"},
+    {"id":"arcade-forge","path":"forge.html","kind":"creator-tool"},
+    {"id":"plugin-contract","path":"plugin-contract.json","kind":"contract"},
+    {"id":"plugin-runtime","path":"plugin-runtime.js","kind":"runtime"},
+    {"id":"sample-plugin","path":"plugins/duck-rescue.json","kind":"plugin"},
+    {"id":"levels","path":"LEVELS.md","kind":"architecture"},
+    {"id":"release-plan","path":"RELEASE_PLAN_2026-11-15.md","kind":"roadmap"},
+    {"id":"conscience-api","path":"../../API.md","kind":"api"},
+    {"id":"conscience-root","path":"../../index.html","kind":"companion-surface"},
+    {"id":"project-registry","path":"../../research/projects/projects.json","kind":"research-registry"},
+    {"id":"history","path":"../../history/index.html?facet=mmo","kind":"history-restore"},
+    {"id":"prize-vault","path":"index.html#prize-title","kind":"future-reward-boundary"}
+  ],
+  "edges": [
+    {"from":"play-hub","to":"mmo-main","relation":"opens"},
+    {"from":"mmo-main","to":"arcade-forge","relation":"creates-mini-games-with"},
+    {"from":"arcade-forge","to":"plugin-contract","relation":"validates-against"},
+    {"from":"plugin-contract","to":"plugin-runtime","relation":"constrains"},
+    {"from":"sample-plugin","to":"plugin-contract","relation":"conforms-to"},
+    {"from":"plugin-runtime","to":"mmo-main","relation":"supplies-local-games-to"},
+    {"from":"mmo-main","to":"conscience-api","relation":"cooperates-through"},
+    {"from":"conscience-api","to":"project-registry","relation":"exposes-bounded-project-context-from"},
+    {"from":"mmo-main","to":"levels","relation":"implements-within"},
+    {"from":"levels","to":"release-plan","relation":"scopes"},
+    {"from":"mmo-main","to":"history","relation":"restores-through"},
+    {"from":"prize-vault","to":"release-plan","relation":"gated-by"}
+  ],
+  "invariants": [
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "LOCAL_SCORE != VERIFIED_ACHIEVEMENT",
+    "VERIFIED_ACHIEVEMENT != PRIZE_ELIGIBILITY",
+    "MYSTERY_13TH != PREPLANNED_LEVEL_13",
+    "ROADMAP != IMPLEMENTED_STATE",
+    "PLUGIN_DATA != EXECUTABLE_AUTHORITY"
+  ]
+}
