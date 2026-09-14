@@ -1,4 +1,4 @@
-import {createWorld,regionAt,portalUnlocked} from './world.mjs';
+import {WORLD,REGIONS,createWorld,regionAt,portalUnlocked} from './world.mjs';
 
 export const SAVE_VERSION=1;
 export const SAVE_SCHEMA='conscience64.explorer-world/save';
@@ -8,17 +8,48 @@ const finite=value=>Number.isFinite(value);
 const bool=value=>value===true;
 
 function validPlayer(player){
-  return !!player&&finite(player.x)&&finite(player.y)&&finite(player.health)&&finite(player.energy);
+  return !!player&&finite(player.x)&&finite(player.y)&&player.x>=0&&player.x<=WORLD.width&&player.y>=0&&player.y<=WORLD.height&&finite(player.health)&&player.health>=0&&player.health<=100&&finite(player.energy)&&player.energy>=0&&player.energy<=100;
 }
 
 function requireDocument(doc){
   if(!doc||doc.schema!==SAVE_SCHEMA)throw new Error('Invalid save schema.');
   if(doc.version!==SAVE_VERSION)throw new Error(`Unsupported save version: ${doc.version}.`);
-  if(!Number.isInteger(doc.seed)||doc.seed<0)throw new Error('Invalid world seed.');
+  if(!Number.isInteger(doc.seed)||doc.seed<0||doc.seed>0xffffffff)throw new Error('Invalid world seed.');
   if(!validPlayer(doc.player))throw new Error('Invalid player state.');
   if(!Array.isArray(doc.collectedEchoIds)||!Array.isArray(doc.monsters)||!Array.isArray(doc.regionsSeen))throw new Error('Invalid save collections.');
-  if(!finite(doc.echoes)||doc.echoes<0||!finite(doc.defeated)||doc.defeated<0)throw new Error('Invalid save counters.');
+  if(!Number.isInteger(doc.echoes)||doc.echoes<0||!Number.isInteger(doc.defeated)||doc.defeated<0)throw new Error('Invalid save counters.');
   return doc;
+}
+
+function validateUniqueKnownIds(values,known,label){
+  const seen=new Set();
+  for(const raw of values){
+    const id=String(raw);
+    if(!known.has(id))throw new Error(`Unknown ${label} id: ${id}.`);
+    if(seen.has(id))throw new Error(`Duplicate ${label} id: ${id}.`);
+    seen.add(id);
+  }
+}
+
+function validateRegions(values){
+  const known=new Set(REGIONS.map(region=>region.id)),seen=new Set();
+  for(const raw of values){
+    const id=String(raw);
+    if(!known.has(id))throw new Error(`Unknown region: ${id}.`);
+    if(seen.has(id))throw new Error(`Duplicate region: ${id}.`);
+    seen.add(id);
+  }
+}
+
+function validateMonsterStates(values,world){
+  const canonical=new Map(world.monsters.map(monster=>[monster.id,monster]));
+  for(const saved of values){
+    const id=String(saved?.id),base=canonical.get(id);
+    if(!base)continue; // identity admission reports the unknown-ID error separately
+    const positionValid=finite(saved.x)&&finite(saved.y)&&saved.x>=0&&saved.x<=WORLD.width&&saved.y>=0&&saved.y<=WORLD.height;
+    const healthValid=finite(saved.hp)&&saved.hp<=base.maxHp&&((saved.alive===true&&saved.hp>0)||(saved.alive===false&&saved.hp<=0));
+    if(!positionValid||!healthValid||typeof saved.alive!=='boolean')throw new Error(`Invalid monster state: ${id}.`);
+  }
 }
 
 export function snapshot(state){
@@ -41,11 +72,19 @@ export function snapshot(state){
 }
 
 export function hydrate(input){
-  const doc=requireDocument(input),world=createWorld(doc.seed),echoIds=new Set(doc.collectedEchoIds.map(String)),monsterById=new Map(doc.monsters.map(m=>[String(m.id),m]));
+  const doc=requireDocument(input),world=createWorld(doc.seed);
+  if(doc.echoes>world.echoes.length||doc.defeated>world.monsters.length)throw new Error('Invalid save counters.');
+  validateUniqueKnownIds(doc.collectedEchoIds,new Set(world.echoes.map(e=>e.id)),'echo');
+  validateUniqueKnownIds(doc.monsters.map(monster=>monster?.id),new Set(world.monsters.map(monster=>monster.id)),'monster');
+  validateRegions(doc.regionsSeen);
+  validateMonsterStates(doc.monsters,world);
+  if(doc.echoes!==doc.collectedEchoIds.length)throw new Error('Echo counter does not match collected echo state.');
+  const defeatedInDocument=doc.monsters.reduce((count,monster)=>count+(monster?.alive===false?1:0),0);
+  if(doc.defeated!==defeatedInDocument)throw new Error('Defeat counter does not match monster state.');
+  const echoIds=new Set(doc.collectedEchoIds.map(String)),monsterById=new Map(doc.monsters.map(m=>[String(m.id),m]));
   for(const echo of world.echoes)echo.collected=echoIds.has(echo.id);
   for(const monster of world.monsters){
     const saved=monsterById.get(monster.id);if(!saved)continue;
-    if(!finite(saved.x)||!finite(saved.y)||!finite(saved.hp)||typeof saved.alive!=='boolean')throw new Error(`Invalid monster state: ${monster.id}.`);
     monster.x=saved.x;monster.y=saved.y;monster.hp=saved.hp;monster.alive=saved.alive;
   }
   const fuzzballFound=bool(doc.fuzzballFound);world.fuzzball.found=fuzzballFound;
