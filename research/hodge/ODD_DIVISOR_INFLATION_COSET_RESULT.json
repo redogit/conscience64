@@ -1,0 +1,62 @@
+{
+  "experiment": "HODGE-ODD-DIVISOR-INFLATION-COSET-SEARCH",
+  "status": "EXECUTED_EXACT_NECESSARY-CONDITION_OBSTRUCTION",
+  "mathematical_basis": "The July 2026 odd-degree theorem proves every Hodge class on every odd Fermat fourfold of degree <=199 is algebraic. Therefore any Hodge sextuple at an odd divisor d of an even wall level M is an algebraic candidate after the standard level inflation d -> M. Coset transfer would require its inflated multiplicity vector to lie in the target S_M coset.",
+  "search_method": "Enumerate every sorted triple at odd divisor d; pair complementary full Galois-residue profiles to produce every grade-3 Hodge sextuple; simultaneously require equality of the mod-2 quotient remainder for S_M after inflation. Additive hashes are used only as a candidate index and all possible exact matches would necessarily match the hashes; zero raw matches therefore cannot be a hash false-negative.",
+  "positive_calibration": "Using the level-21 classical gap generator inflated to level 210 as the target, the same engine finds same-coset Hodge candidates, so the combined Hodge/coset matching path is active rather than vacuously empty.",
+  "walls": [
+    {
+      "wall":"W70",
+      "target_level":210,
+      "target":[2,9,129,142,168,180],
+      "S_mod2_span_rank":181,
+      "odd_divisor_searches":[
+        {"d":3,"sorted_triples":4,"raw_combined_matches":0},
+        {"d":5,"sorted_triples":20,"raw_combined_matches":0},
+        {"d":7,"sorted_triples":56,"raw_combined_matches":0},
+        {"d":15,"sorted_triples":560,"raw_combined_matches":0},
+        {"d":21,"sorted_triples":1540,"raw_combined_matches":0},
+        {"d":35,"sorted_triples":7140,"raw_combined_matches":0},
+        {"d":105,"sorted_triples":192920,"raw_combined_matches":0}
+      ],
+      "verdict":"NO_DIRECT_ODD-DIVISOR_INFLATION_COSET_WITNESS"
+    },
+    {
+      "wall":"W110",
+      "target_level":220,
+      "target":[1,62,111,142,162,182],
+      "S_mod2_span_rank":175,
+      "odd_divisor_searches":[
+        {"d":5,"sorted_triples":20,"raw_combined_matches":0},
+        {"d":11,"sorted_triples":220,"raw_combined_matches":0},
+        {"d":55,"sorted_triples":27720,"raw_combined_matches":0}
+      ],
+      "verdict":"NO_DIRECT_ODD-DIVISOR_INFLATION_COSET_WITNESS"
+    },
+    {
+      "wall":"W114",
+      "target_level":114,
+      "target":[1,7,78,79,86,91],
+      "S_mod2_span_rank":93,
+      "odd_divisor_searches":[
+        {"d":3,"sorted_triples":4,"raw_combined_matches":0},
+        {"d":19,"sorted_triples":1140,"raw_combined_matches":0},
+        {"d":57,"sorted_triples":30856,"raw_combined_matches":0}
+      ],
+      "verdict":"NO_DIRECT_ODD-DIVISOR_INFLATION_COSET_WITNESS"
+    }
+  ],
+  "extra_checks": {
+    "m105_gap_class_inflated_to_210": {
+      "source":[1,22,43,64,90,95],
+      "inflated":[2,44,86,128,180,190],
+      "source_in_S105":false,
+      "inflated_in_S210":false,
+      "same_coset_as_W70_210":false,
+      "double_in_S210":true
+    },
+    "m21_gap_generator_inflated_to_210":"checked separately; remains a gap but not the W70 coset"
+  },
+  "result": "Direct inflation from any odd divisor level whose Hodge classes are covered by the 2026 odd-degree theorem cannot supply a same-coset witness for W70@210, W110@220, or W114@114.",
+  "claim_ceiling": "This excludes only direct divisor-level inflation followed by the current coset-transfer theorem. It does not exclude non-divisor level correspondences, larger lifts followed by descent, new exchange families, or new geometric cycle constructions. No P-vs-NP evidence is used."
+}
