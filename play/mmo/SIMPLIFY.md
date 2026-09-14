@@ -45,7 +45,24 @@ The default game surface should be one page with:
 - recent creations/life;
 - a small Learn panel.
 
-Advanced surfaces such as Arcade Forge, project history, research records, release plans, prize governance, and implementation diagnostics remain available but are not part of the default mental model.
+Advanced surfaces such as Arcade Forge, project history, research records, release plans, prize governance, implementation diagnostics, and visual-reference review remain available but are not part of the default mental model.
+
+## Visual samples
+
+The simple game links to `simple/visual-samples/`, a reference-only gallery built from the current design session.
+
+- 19 image samples total;
+- 12 user-supplied references;
+- 7 generated Red Wilds concept images;
+- optimized preview copies are embedded into five small gallery pages so the review surface works without a separate image build pipeline.
+
+These are **samples to learn from**, not automatic canon or finished production assets.
+
+`SAMPLE != CANON`
+
+`REFERENCE_IMAGE != IMPLEMENTED_GAME_ASSET`
+
+Preserve provenance. For user-supplied images, verify applicable rights and consent before any reuse outside this project or beyond reference/design work.
 
 ## Twelve activities, one data shape
 
