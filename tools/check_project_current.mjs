@@ -70,8 +70,8 @@ assert.equal(pluginFiles.length, starter.validatedRecipeCount);
 assert.ok(!pluginFiles.some(name => /redline/i.test(name)), 'Redline must not be silently approximated');
 const pluginLineage = await readFile(new URL('README.md', pluginDir), 'utf8');
 assert.match(pluginLineage, /DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA/);
-assert.match(pluginLineage, /random selection mechanism/);
-assert.match(pluginLineage, /random generator is not claimed preserved/);
+assert.match(pluginLineage, /not the old random selection mechanism/);
+assert.match(pluginLineage, /not that random generator/);
 
 const analytics = current.analyticsContinuation;
 assert.ok(analytics, 'analytics continuation missing');
