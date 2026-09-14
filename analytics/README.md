@@ -115,9 +115,11 @@ For any remote deployment, place the service behind an appropriate TLS/reverse-p
 Current entries include:
 
 - `2026-09-14-consolidation.json` — the successful September 13–14 Conscience64 publication gate at revision `0e213a5d8dd685876d94600c443342d257363006`;
-- `2026-09-14-arcade-forge-admission.json` — the bounded Arcade Forge contract/adversarial/Chrome/publication result at revision `c0ab6343ca0ecd91dcd84faaf66b79618112e12d`.
+- `2026-09-14-arcade-forge-admission.json` — the bounded Arcade Forge contract/adversarial/Chrome/publication result at revision `c0ab6343ca0ecd91dcd84faaf66b79618112e12d`;
+- `2026-09-14-coordinate-space-manifest-repair.json` — the deployed Coordinate Space release-identity reconciliation after the intentional Compass presentation successor, at revision `c9f5ad3400cf86377aa52a3e23dad5317cb2717b`;
+- `2026-09-14-starter-arcade-pack-deployment.json` — the deployed nine-recipe starter Arcade pack, carried by that same repaired publication successor and retaining feature revision `960a9a112fd305c0b8378b35c064ce5448be0c60`.
 
-Both are deliberately labeled `same-source`. They establish that the named repository checks ran and passed within their declared software scopes; they are **not** independent validation of underlying scientific claims.
+These current records are deliberately labeled `same-source`: they establish that the named repository checks ran and passed within their declared software scopes. They are **not** independent validation of underlying scientific claims.
 
 `test_recorded_events.py` enumerates every JSON record in this directory, checks its minimum provenance/contract shape, sends it through the real HTTP ingestion service, and verifies that provenance survives append/replay. Adding a malformed recorded event therefore breaks the analytics gate instead of silently growing an untested evidence folder.
 
