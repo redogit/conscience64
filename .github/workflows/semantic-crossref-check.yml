@@ -11,10 +11,14 @@ on:
       - 'tools/semantic-routing.mjs'
       - 'tools/semantic-query.mjs'
       - 'tools/semantic-query.test.mjs'
+      - 'tools/semantic-applicability.mjs'
+      - 'tools/semantic-applicability.test.mjs'
       - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
       - 'tools/SEMANTIC_SITUATION_QUERY.md'
+      - 'tools/SEMANTIC_APPLICABILITY_GATE.md'
+      - 'skills/recover-bound/SKILL.md'
       - '.github/workflows/semantic-crossref-check.yml'
   pull_request:
     paths:
@@ -25,10 +29,14 @@ on:
       - 'tools/semantic-routing.mjs'
       - 'tools/semantic-query.mjs'
       - 'tools/semantic-query.test.mjs'
+      - 'tools/semantic-applicability.mjs'
+      - 'tools/semantic-applicability.test.mjs'
       - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
       - 'tools/SEMANTIC_SITUATION_QUERY.md'
+      - 'tools/SEMANTIC_APPLICABILITY_GATE.md'
+      - 'skills/recover-bound/SKILL.md'
       - '.github/workflows/semantic-crossref-check.yml'
   workflow_dispatch:
 
@@ -52,12 +60,13 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-      - name: Verify semantic mapper and corpus tool syntax
+      - name: Verify semantic mapper, corpus, query, and applicability syntax
         run: |
           node --check tools/semantic-crossref.mjs
           node --check tools/semantic-corpus.mjs
           node --check tools/semantic-routing.mjs
           node --check tools/semantic-query.mjs
+          node --check tools/semantic-applicability.mjs
           node --check tools/query-semantic-corpus.mjs
           node --check tools/build-semantic-corpus-map.mjs
       - name: Verify deterministic semantic cross-reference behavior and stress bound
@@ -66,6 +75,8 @@ jobs:
         run: node tools/semantic-corpus.test.mjs
       - name: Verify Situation-to-helper semantic queries
         run: node tools/semantic-query.test.mjs
+      - name: Verify explicit semantic-helper applicability and negative control
+        run: node tools/semantic-applicability.test.mjs
       - name: Exercise current repository Situation query CLI
         shell: bash
         run: |
