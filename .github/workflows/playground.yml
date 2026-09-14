@@ -40,6 +40,8 @@ jobs:
         run: node play/mmo/simple/renderer-society.test.mjs
       - name: Verify renderer society three-perspective metamorphic contract
         run: node play/mmo/simple/renderer-society-metamorphic.test.mjs
+      - name: Verify renderer society three-perspective comparison fanout
+        run: node play/mmo/simple/renderer-society-comparison.test.mjs
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
       - name: Verify grounded MMO reality canon
