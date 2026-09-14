@@ -6,6 +6,7 @@
   const log = $('log');
   const apiFrame = $('conscience-companion');
   const apiState = $('conscience-state');
+  const plugins = globalThis.Conscience64MMOPlugins || null;
   const pending = new Map();
   let requestSeq = 0;
   const clamp = (v,min,max) => Math.max(min, Math.min(max, v));
@@ -116,6 +117,55 @@
   }
   const games={monster:monsterGame,race:raceGame,puzzle:puzzleGame,make:makeGame};
 
+  function finishPlugin(plugin, message) {
+    $('game-result').textContent = message;
+    reward(plugin.reward, `Completed local plug-in “${plugin.name}”. Local result only; no multiplayer or prize authority.`);
+    $('game-controls').replaceChildren();
+  }
+  function playPlugin(plugin) {
+    if (!plugins) return;
+    let safe;
+    try { safe = plugins.validate(plugin); } catch (error) { $('plugin-status').textContent = `Plug-in rejected: ${error.message}`; return; }
+    setPlayfield(safe.name, safe.prompt);
+    if (safe.mechanic === 'choice') {
+      safe.choices.forEach((choice, index) => button(choice, () => {
+        if (index === safe.correctIndex) finishPlugin(safe, 'Completed. The cabinet records a local success.');
+        else $('game-result').textContent = 'Not this one. Nothing is lost; try another answer.';
+      }));
+    } else if (safe.mechanic === 'input') {
+      const input=document.createElement('input'); input.type='text'; input.maxLength=120; input.setAttribute('aria-label',`${safe.name} answer`); $('game-controls').appendChild(input);
+      button('Check',()=>{
+        const value=input.value.trim().toLowerCase();
+        if (safe.answers.some(answer=>answer.toLowerCase()===value)) finishPlugin(safe,'Accepted. The cabinet records a local success.');
+        else $('game-result').textContent='Not accepted by this recipe. Try again.';
+      });
+    } else if (safe.mechanic === 'creative') {
+      const input=document.createElement('input'); input.type='text'; input.maxLength=120; input.placeholder='Name what you made'; input.setAttribute('aria-label',`${safe.name} creation`); $('game-controls').appendChild(input);
+      button('Complete',()=>{
+        const value=input.value.trim();
+        if (!value) { $('game-result').textContent='Give your result a name first.'; return; }
+        finishPlugin(safe,`Created locally: ${value}.`);
+      });
+    }
+  }
+  function refreshPlugins() {
+    const shelf=$('plugin-games'), status=$('plugin-status');
+    if (!shelf || !status) return;
+    shelf.replaceChildren();
+    if (!plugins) { status.textContent='Plug-in runtime unavailable; built-in arcade remains playable.'; return; }
+    const rows=plugins.list();
+    if (!rows.length) { status.textContent='Nothing installed yet. Build or import a data-only game in Arcade Forge.'; return; }
+    for (const plugin of rows) {
+      const article=document.createElement('article'); article.className='game-card';
+      const copy=document.createElement('div'); const kind=document.createElement('small'); kind.textContent='LOCAL PLUG-IN';
+      const title=document.createElement('h3'); title.textContent=plugin.name;
+      const desc=document.createElement('p'); desc.textContent=plugin.description || `${plugin.mechanic} mini-game · ${plugin.id}`;
+      const play=document.createElement('button'); play.type='button'; play.textContent='Play'; play.addEventListener('click',()=>playPlugin(plugin));
+      copy.append(kind,title,desc); article.append(copy,play); shelf.appendChild(article);
+    }
+    status.textContent=`${rows.length} validated local plug-in${rows.length===1?'':'s'} ready. Local-only; not multiplayer or prize authority.`;
+  }
+
   $('enter-world').addEventListener('click',()=>{$('street-title').scrollIntoView({behavior:'smooth',block:'start'});reward({xp:2,joy:4},'You stepped outside into Mercer & Red Street.');});
   $('random-event').addEventListener('click',async()=>{const event=weirdEvents[Math.floor(Math.random()*weirdEvents.length)],seed=await conscienceSeed('play creativity strange world');reward({joy:5,xp:3},seed?`${event} Conscience64 also surfaced “${seed}” as optional context.`:event);});
   root.querySelectorAll('[data-life]').forEach(b=>b.addEventListener('click',()=>{const [text,gain]=lifeEvents[b.dataset.life]||['You spend some time in the neighborhood.',{joy:2}];$('life-status').textContent=text;reward(gain,text);}));
@@ -123,9 +173,12 @@
   root.querySelectorAll('[data-zone]').forEach(b=>b.addEventListener('click',()=>visitZone(b.dataset.zone)));
   root.querySelectorAll('[data-game]').forEach(b=>b.addEventListener('click',()=>games[b.dataset.game]?.()));
   $('shuffle-games').addEventListener('click',()=>{const cards=[...root.querySelectorAll('.game-card')];cards.sort(()=>Math.random()-.5).forEach(c=>c.parentNode.appendChild(c));reward({joy:2},'The arcade rearranged itself.');});
+  if($('refresh-plugins')) $('refresh-plugins').addEventListener('click',refreshPlugins);
+  addEventListener('storage',event=>{if(plugins && event.key===plugins.storageKey) refreshPlugins();});
+  addEventListener('pageshow',refreshPlugins);
   $('save-identity').addEventListener('click',()=>{state.role=$('role-select').value;render();const motto=$('motto').value.trim();addLog(`Today you are a ${state.role}${motto?`: “${motto}”`:'.'}`);});
   $('morph').addEventListener('click',()=>{const forms=['Red-world wanderer','Cosmic glam form','Noir guardian','Impossible geometry','Heroic festival form'];state.morph=(state.morph+1)%forms.length;$('companion-state').textContent=`Form: ${forms[state.morph]}.`;reward({joy:3},`Private shapeshifter changed to ${forms[state.morph]}.`);});
   $('reset').addEventListener('click',()=>{state.xp=0;state.joy=50;state.discoveries=0;state.tokens=0;state.level=1;state.role='Explorer';render();log.replaceChildren();addLog('Local run reset. The world remembers nothing except that restarting is allowed.');$('game-title').textContent='Pick a game.';$('game-prompt').textContent='The arcade is waiting.';$('game-controls').replaceChildren();$('game-result').textContent='';if($('life-status'))$('life-status').textContent='The block is alive. Nothing demands your attention yet.';if($('sky-status'))$('sky-status').textContent='The roof is quiet. The sky is not.';});
 
-  render(); if(apiFrame) apiFrame.addEventListener('load',connectConscience,{once:true});
+  render(); refreshPlugins(); if(apiFrame) apiFrame.addEventListener('load',connectConscience,{once:true});
 })();
