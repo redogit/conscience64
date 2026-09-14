@@ -71,4 +71,4 @@
 - [x] Add runtime ledger ignore entries.
 - [x] Add CI that materializes the exact commit without third-party Actions, compiles modules, runs the full test suite, and dry-runs repository teaching.
 - [x] Run `python3 -m py_compile knowledge/*.py` and the complete unit/integration suite locally: 26 tests passed.
-- [ ] Open the reviewable pull request and verify its GitHub checks.
+- [x] Open the reviewable pull request and verify its GitHub checks.
