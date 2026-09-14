@@ -26,7 +26,19 @@ The in-game roof observatory uses real astronomy as a structural reference. EHT 
 
 The architectural zoom is documented in [`mmo/LEVELS.md`](mmo/LEVELS.md): twelve levels from one action through human purpose, followed by a **Mystery 13th** that is the annual emergent result of the twelve rather than a preplanned Level 13.
 
-The cross-surface graph is documented in [`mmo/LINKAGES.md`](mmo/LINKAGES.md). Arcade Forge follows the same grounded rule: real place/object/activity first, then an optional strange complication. Fully ordinary mini-games are valid.
+The cross-surface graph is documented in [`mmo/LINKAGES.md`](mmo/LINKAGES.md) and [`mmo/linkages.json`](mmo/linkages.json).
+
+### Plug-and-play Arcade Forge
+
+Arcade Forge follows the same grounded rule: real place/object/activity first, then an optional strange complication. Fully ordinary mini-games are valid.
+
+The local plug-in path is now end-to-end:
+
+`Forge recipe → validation → local installation → main-MMO discovery → arcade cabinet → local play → bounded local reward`
+
+The main MMO reads installed `conscience64.mmo.plugin/v1` recipes from the validated local runtime and renders them as additional arcade cabinets without rebuilding the application. Choice, answer, and creative plug-ins can be played directly from the main page.
+
+Plug-ins remain data-only. They cannot add executable JavaScript, arbitrary HTML, network authority, server authority, multiplayer achievement authority, or real-world prize authority. HTML-like text in a plug-in is rendered as text.
 
 The full major-release target is **November 15, 2026**. See [`mmo/RELEASE_PLAN_2026-11-15.md`](mmo/RELEASE_PLAN_2026-11-15.md). The plan separates the game release from real-world prize activation: the game may release with the Prize Vault visible but redemption disabled if legal, verification, fraud-control, privacy, or fulfillment gates are not complete.
 
@@ -60,19 +72,24 @@ python3 -m http.server 8000
 # MMO: http://localhost:8000/play/mmo/
 ```
 
-Run the dependency-free core checks with Node.js 22 or newer:
+Run the dependency-free checks with Node.js 22 or newer:
 
 ```bash
 node play/test.mjs
+node play/mmo/test-reality.mjs
+node play/mmo/test-plugins.mjs
 ```
 
-For existing browser checks, install Google Chrome locally or use the included GitHub Actions gate:
+For browser checks, install Google Chrome locally or use the included GitHub Actions gate:
 
 ```bash
 node play/browser-test.mjs
+node play/mmo/browser-test.mjs
 ```
 
-The MMO is included in the static/project-registry checks. Dedicated multiplayer, accessibility, security, load, recovery, reality-canon review, and prize verification gates are tracked for v1.0 and must not be inferred from the current prototype.
+The MMO-specific browser smoke test checks the grounded neighborhood and observatory, 1100px and 320px layout behavior, astronomy labeling, local plug-in installation/discovery/play, exact bounded local rewards, and that HTML-like plug-in text does not execute as markup.
+
+These checks verify the current prototype surfaces only. Dedicated multiplayer, manual accessibility, security, load, recovery, and prize-verification gates remain separate v1.0 work and must not be inferred from passing local/browser tests.
 
 ## Origins and rights
 
