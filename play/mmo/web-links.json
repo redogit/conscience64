@@ -1,0 +1,37 @@
+{
+  "schema": "conscience64.mmo.web-links/v1",
+  "version": "1.0.0",
+  "base": "https://redogit.github.io/conscience64/",
+  "routes": [
+    {"id":"conscience-root","label":"Conscience64","path":"./","publicUrl":"https://redogit.github.io/conscience64/","kind":"home"},
+    {"id":"play-hub","label":"Play Hub","path":"play/","publicUrl":"https://redogit.github.io/conscience64/play/","kind":"hub"},
+    {"id":"mmo-simple","label":"Red Wilds · Simple MMO","path":"play/mmo/simple/","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/","kind":"primary-game"},
+    {"id":"mmo-advanced","label":"Red Wilds · Advanced MMO","path":"play/mmo/","publicUrl":"https://redogit.github.io/conscience64/play/mmo/","kind":"advanced-game"},
+    {"id":"arcade-forge","label":"Arcade Forge","path":"play/mmo/forge.html","publicUrl":"https://redogit.github.io/conscience64/play/mmo/forge.html","kind":"creator"},
+    {"id":"visual-samples","label":"Visual Samples","path":"play/mmo/simple/visual-samples/","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/visual-samples/","kind":"visual-reference"},
+    {"id":"visual-page-1","label":"Visual Samples · Page 1","path":"play/mmo/simple/visual-samples/page-1.html","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/visual-samples/page-1.html","kind":"visual-reference"},
+    {"id":"visual-page-2","label":"Visual Samples · Page 2","path":"play/mmo/simple/visual-samples/page-2.html","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/visual-samples/page-2.html","kind":"visual-reference"},
+    {"id":"visual-page-3","label":"Visual Samples · Page 3","path":"play/mmo/simple/visual-samples/page-3.html","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/visual-samples/page-3.html","kind":"visual-reference"},
+    {"id":"visual-page-4","label":"Visual Samples · Page 4","path":"play/mmo/simple/visual-samples/page-4.html","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/visual-samples/page-4.html","kind":"visual-reference"},
+    {"id":"visual-page-5","label":"Visual Samples · Page 5","path":"play/mmo/simple/visual-samples/page-5.html","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/visual-samples/page-5.html","kind":"visual-reference"},
+    {"id":"visual-page-6","label":"Visual Samples · Latest Expansion","path":"play/mmo/simple/visual-samples/page-6.html","publicUrl":"https://redogit.github.io/conscience64/play/mmo/simple/visual-samples/page-6.html","kind":"visual-reference"},
+    {"id":"explorer-world","label":"Explorer World","path":"play/explorer-world/","publicUrl":"https://redogit.github.io/conscience64/play/explorer-world/","kind":"game"},
+    {"id":"mmo-world-beta","label":"MMO World Beta","path":"play/mmo-world/","publicUrl":"https://redogit.github.io/conscience64/play/mmo-world/","kind":"predecessor-game"},
+    {"id":"orbit","label":"Orbit Shelf","path":"play/orbit/","publicUrl":"https://redogit.github.io/conscience64/play/orbit/","kind":"tool"},
+    {"id":"weave","label":"Word Weave","path":"play/weave/","publicUrl":"https://redogit.github.io/conscience64/play/weave/","kind":"tool"},
+    {"id":"garden","label":"Pattern Garden","path":"play/garden/","publicUrl":"https://redogit.github.io/conscience64/play/garden/","kind":"tool"},
+    {"id":"steps","label":"Small Steps","path":"play/steps/","publicUrl":"https://redogit.github.io/conscience64/play/steps/","kind":"tool"},
+    {"id":"compare","label":"Source Compare","path":"play/compare/","publicUrl":"https://redogit.github.io/conscience64/play/compare/","kind":"tool"},
+    {"id":"computational-chorus","label":"Computational Chorus","path":"play/computational-chorus/","publicUrl":"https://redogit.github.io/conscience64/play/computational-chorus/","kind":"tool"},
+    {"id":"about-today","label":"About · Today","path":"about/index.html#today","publicUrl":"https://redogit.github.io/conscience64/about/index.html#today","kind":"about"},
+    {"id":"history-mmo","label":"History & Restore · MMO","path":"history/index.html?facet=mmo","publicUrl":"https://redogit.github.io/conscience64/history/index.html?facet=mmo","kind":"history"}
+  ],
+  "primaryFlow": ["conscience-root","play-hub","mmo-simple"],
+  "advancedFlow": ["mmo-simple","mmo-advanced","arcade-forge","visual-samples"],
+  "invariants": [
+    "PRIMARY_GAME_ROUTE == play/mmo/simple/",
+    "ADVANCED_MMO != PRIMARY_MMO_ENTRY",
+    "WEB_LINK != IMPLEMENTATION_STATUS",
+    "HISTORY_ROUTE != CURRENT_AUTHORITY"
+  ]
+}
