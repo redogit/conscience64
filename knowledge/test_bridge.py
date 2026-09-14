@@ -130,14 +130,28 @@ class BridgeIntegrationTests(unittest.TestCase):
 
 
 class BridgeExposureGuardTests(unittest.TestCase):
-    def test_non_loopback_requires_strong_read_and_write_tokens(self):
+    def test_loopback_requires_strong_write_token(self):
         if bridge is None:
             self.fail('knowledge.bridge is not implemented yet')
         with tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / 'a.jsonl'
             with self.assertRaisesRegex(ValueError, 'write token'):
-                bridge.build_server('0.0.0.0', 0, Path(tmp) / 'a.jsonl', write_token='', read_token=READ_TOKEN)
-            with self.assertRaisesRegex(ValueError, 'read token'):
-                bridge.build_server('0.0.0.0', 0, Path(tmp) / 'a.jsonl', write_token=WRITE_TOKEN, read_token='short')
+                bridge.build_server('127.0.0.1', 0, ledger, write_token='', read_token=READ_TOKEN)
+            with self.assertRaisesRegex(ValueError, 'write token'):
+                bridge.build_server('127.0.0.1', 0, ledger, write_token='short', read_token=READ_TOKEN)
+
+    def test_non_loopback_is_rejected_even_with_strong_tokens(self):
+        if bridge is None:
+            self.fail('knowledge.bridge is not implemented yet')
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaisesRegex(ValueError, 'loopback-only'):
+                bridge.build_server(
+                    '0.0.0.0',
+                    0,
+                    Path(tmp) / 'a.jsonl',
+                    write_token=WRITE_TOKEN,
+                    read_token=READ_TOKEN,
+                )
 
 
 if __name__ == '__main__':

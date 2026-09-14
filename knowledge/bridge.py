@@ -64,8 +64,7 @@ class KnowledgeBridgeHandler(BaseHTTPRequestHandler):
         return hmac.compare_digest(supplied, f"Bearer {token}")
 
     def _require_write_auth(self) -> None:
-        token = self.server.write_token
-        if token and not self._bearer_matches(token):
+        if not self._bearer_matches(self.server.write_token):
             raise Unauthorized()
 
     def _restricted_read_allowed(self) -> bool:
@@ -204,10 +203,13 @@ def build_server(
     if not isinstance(max_batch, int) or max_batch <= 0 or max_batch > 1000:
         raise ValueError("max_batch must be between 1 and 1000")
     if host not in LOOPBACK_HOSTS:
-        if len(write_token) < 16:
-            raise ValueError("non-loopback bind requires a write token of at least 16 characters")
-        if len(read_token) < 16:
-            raise ValueError("non-loopback bind requires a read token of at least 16 characters")
+        raise ValueError(
+            "knowledge bridge v1 is loopback-only; remote serving requires a separate TLS/access-control deployment boundary"
+        )
+    if len(write_token) < 16:
+        raise ValueError("write token must be at least 16 characters")
+    if read_token and len(read_token) < 16:
+        raise ValueError("read token must be at least 16 characters when configured")
 
     return KnowledgeBridgeServer(
         (host, port),
@@ -243,6 +245,7 @@ def main() -> None:
     host, port = server.server_address
     print(f"Conscience64 knowledge bridge: http://{host}:{port}")
     print(f"ledger: {Path(args.ledger).resolve()}")
+    print("scope: v1 loopback-only")
     print("claim boundary: INGESTED != ACCEPTED_AS_FACT")
     server.serve_forever()
 

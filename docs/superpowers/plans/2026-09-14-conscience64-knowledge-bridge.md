@@ -4,7 +4,7 @@
 
 **Goal:** Build a working direct knowledge-ingress/read/sync bridge for Conscience64 with deterministic packet identity, append-only provenance, restricted/public separation, and a conservative repository teacher.
 
-**Architecture:** A Python-stdlib knowledge packet layer feeds an append-only JSONL ledger. A small HTTP service exposes authenticated writes plus visibility-filtered reads/sync/search. A separate teacher CLI converts tracked repository text into explicitly source-only `REFERENCE` packets and sends them through the same HTTP contract.
+**Architecture:** A Python-stdlib knowledge packet layer feeds an append-only JSONL ledger. A small loopback-only HTTP service exposes authenticated writes plus visibility-filtered reads/sync/search. A separate teacher CLI converts tracked repository text into explicitly source-only `REFERENCE` packets and sends them through the same HTTP contract.
 
 **Tech Stack:** Python 3 stdlib (`http.server`, `urllib`, `json`, `hashlib`, `hmac`, `threading`, `unittest`), JSONL, GitHub Actions without third-party actions.
 
@@ -15,7 +15,9 @@
 - Existing Conscience64 authority surfaces remain unchanged.
 - `INGESTED != ACCEPTED_AS_FACT` and `TRANSPORT_VALIDITY != EVIDENCE_VALIDITY` are hard invariants.
 - Restricted knowledge is never returned without valid read authorization.
-- Non-loopback bind requires read and write bearer tokens of at least 16 characters.
+- Every bridge instance requires a write bearer token of at least 16 characters, including loopback.
+- A configured read bearer token must be at least 16 characters; omitting it disables restricted reads.
+- Knowledge Bridge v1 rejects every non-loopback bind; remote/private serving remains a separate future deployment boundary.
 - Runtime knowledge ledger files are not committed.
 - Python stdlib only; no new runtime dependencies.
 
@@ -72,3 +74,14 @@
 - [x] Add CI that materializes the exact commit without third-party Actions, compiles modules, runs the full test suite, and dry-runs repository teaching.
 - [x] Run `python3 -m py_compile knowledge/*.py` and the complete unit/integration suite locally: 26 tests passed.
 - [x] Open the reviewable pull request and verify its GitHub checks.
+
+### Task 6: Post-merge operational-boundary hardening
+
+**Files:** `knowledge/bridge.py`, `knowledge/test_bridge.py`, `knowledge/README.md`, this plan, and the v1 design spec.
+
+- [x] Add regression tests requiring strong loopback write authentication and unconditional non-loopback refusal.
+- [x] Run exact GitHub CI against the unchanged implementation and observe the intended red state: run `34854220027`, 27 tests, exactly 2 boundary-test failures.
+- [x] Enforce a write token of at least 16 characters on every bridge startup and make `_require_write_auth()` unconditional.
+- [x] Reject every non-loopback bind in v1, regardless of supplied credentials; keep remote/private serving outside this implementation.
+- [x] Re-run exact CI on production-fix commit `022b2a56b27cbb75785efe90124f7b7a20b5c5ca`: run `34854406706` completed successfully.
+- [x] Update operational documentation and design provenance without changing evidence semantics, repository-teacher labels, browser API authority, analytics authority, or ECS/world authority.

@@ -43,7 +43,9 @@ The runtime ledger is ignored by Git.
 
 ### Exposure guard
 
-Loopback is the default. A non-loopback bind refuses to start unless both the read and write bearer tokens are at least 16 characters. The built-in server does **not** provide TLS. Any remote deployment must be placed behind an appropriate TLS/reverse-proxy/access-control layer.
+Knowledge Bridge v1 is **loopback-only**. It refuses every non-loopback bind, even when credentials are supplied. Remote/private serving is a separate deployment boundary that requires explicit TLS, access-control, retention, and operations evidence before admission.
+
+A write bearer token of at least 16 characters is required even on loopback. The read token is optional; leaving it empty disables authenticated restricted reads while public-only reads remain available. When a read token is configured, it must be at least 16 characters.
 
 ## Teach one packet
 
@@ -75,7 +77,7 @@ Unauthenticated knowledge reads return **public packets only**.
 curl 'http://127.0.0.1:8776/v1/knowledge/sync?after=0&limit=100'
 ```
 
-A valid read bearer grants access to restricted packets:
+A valid configured read bearer grants access to restricted packets:
 
 ```bash
 curl \
@@ -114,7 +116,7 @@ visibility = public
 
 That means Conscience64 can retrieve and cross-reference its repository corpus without pretending the repository independently validates its own scientific claims.
 
-Do not use this teacher for arbitrary untracked local directories. Restricted/private research should be sent explicitly as `visibility=restricted` packets through an authenticated bridge.
+Do not use this teacher for arbitrary untracked local directories. Restricted/private research should be sent explicitly as `visibility=restricted` packets through the authenticated local bridge.
 
 ## HTTP surface
 
@@ -136,4 +138,4 @@ python3 -m py_compile knowledge/*.py
 python3 -m unittest discover -s knowledge -p 'test_*.py' -v
 ```
 
-The suite covers packet identity, claim/visibility validation, append-only integrity, exact re-ingestion idempotency, corruption detection, public/restricted filtering, authorization, batch atomicity, body bounds, non-loopback guards, repository filtering/chunking, and a live end-to-end repository-teacher smoke test.
+The suite covers packet identity, claim/visibility validation, append-only integrity, exact re-ingestion idempotency, corruption detection, public/restricted filtering, authorization, batch atomicity, body bounds, required loopback write authentication, unconditional non-loopback refusal, repository filtering/chunking, and a live end-to-end repository-teacher smoke test.
