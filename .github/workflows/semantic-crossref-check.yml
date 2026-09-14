@@ -2,7 +2,7 @@ name: Verify semantic cross-reference mapper
 
 on:
   push:
-    branches: [main, hypothesis-builder-final-2026-09-14]
+    branches: [main]
     paths:
       - 'tools/semantic-crossref.mjs'
       - 'tools/semantic-crossref.test.mjs'
