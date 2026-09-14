@@ -1,0 +1,42 @@
+name: Verify semantic cross-reference mapper
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/semantic-crossref.mjs'
+      - 'tools/semantic-crossref.test.mjs'
+      - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - '.github/workflows/semantic-crossref-check.yml'
+  pull_request:
+    paths:
+      - 'tools/semantic-crossref.mjs'
+      - 'tools/semantic-crossref.test.mjs'
+      - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
+      - '.github/workflows/semantic-crossref-check.yml'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: conscience64-semantic-crossref-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Materialize exact public commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify mapper syntax
+        run: node --check tools/semantic-crossref.mjs
+      - name: Verify deterministic semantic cross-reference behavior and stress bound
+        run: node tools/semantic-crossref.test.mjs
