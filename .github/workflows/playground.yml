@@ -28,6 +28,8 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Verify simple MMO core
+        run: node play/mmo/simple/test.mjs
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
       - name: Verify grounded MMO reality canon
