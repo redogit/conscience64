@@ -82,6 +82,14 @@ export function loadLocal(storage=globalThis.localStorage){
   return hydrate(doc);
 }
 
+export function hasLocal(storage=globalThis.localStorage){
+  return !!storage?.getItem&&storage.getItem(SAVE_KEY)!=null;
+}
+
 export function clearLocal(storage=globalThis.localStorage){
   if(storage?.removeItem)storage.removeItem(SAVE_KEY);
+}
+
+export function shouldResetOnStart(state){
+  return !!state?.gameOver;
 }
