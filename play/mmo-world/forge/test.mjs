@@ -34,10 +34,12 @@ for (const [name, plugin] of plugins) {
   const checked = validatePlugin(plugin);
   assert.equal(checked.schema, PLUGIN_SCHEMA, name);
   assert.ok(Object.isFrozen(checked), name);
+  assert.ok(html.includes(`../plugins/${name}`), `Forge does not link admitted recipe: ${name}`);
 }
 assert.match(lineage, /DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA/);
 assert.match(lineage, /Redline/);
 assert.doesNotMatch([...byId.keys()].join(' '), /redline/i);
+assert.doesNotMatch(html, /href="[^\"]*redline[^\"]*\.json"/i);
 
 assert.equal(example.id, 'duck-rescue');
 assert.equal(example.mechanic, 'choice');
@@ -117,6 +119,6 @@ assert.doesNotMatch(html, /<style[\s>]/i);
 assert.match(html, /data-only/i);
 assert.match(html, /preview metadata only/i);
 assert.match(html, /plugin-contract\.json/);
-assert.match(html, /plugins\/duck-rescue\.json/);
+assert.match(html, /DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA/);
 
-console.log('PASS Arcade Forge: 9 validated data-only recipes, explicit Redline deferral, bounded storage, safe text rendering, no network/code/prize authority.');
+console.log('PASS Arcade Forge: 9 validated and linked data-only recipes, explicit Redline deferral, bounded storage, safe text rendering, no network/code/prize authority.');
