@@ -29,6 +29,12 @@ Boundary:
 - **Known-good sample:** `plugins/duck-rescue.json`
 - **History / restore:** `../../history/index.html?facet=mmo`
 
+Installed plug-ins now complete the local runtime chain:
+
+`Forge install → validated local storage → MMO runtime discovery → local arcade cabinet → bounded local reward`
+
+A plug-in result remains local state. It does not become server authority, multiplayer achievement proof, or real-world prize eligibility.
+
 ## Conscience64 cooperation chain
 
 `MMO → Conscience64 browser API → bounded retrieval / projects / lessons / IRPO → world-event seed`
@@ -43,6 +49,18 @@ Boundary:
 `CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE`
 
 The game may use retrieved context as inspiration, navigation, or a bounded world-event seed. Retrieval does not become proof, authority, multiplayer verification, or prize verification.
+
+## Astronomy reference chain
+
+`EHT / NASA observation and processing references → Reality Canon → labeled game reconstruction → player-facing observatory`
+
+External references currently linked by the MMO:
+
+- Event Horizon Telescope — M87* first black-hole image.
+- Event Horizon Telescope — Sagittarius A* image.
+- NASA/Webb — explanation of how infrared data are mapped into visible-color imagery.
+
+The external scientific source retains the evidence role. The game visual retains only the reconstruction role.
 
 ## Scope chain
 
@@ -78,6 +96,30 @@ The current public Prize Vault stops before redemption.
 `grounded place/object/activity → optional anomaly → Forge recipe → schema validation → local installation → runtime discovery → bounded mini-game → local game reward`
 
 Plug-ins are data-only. They cannot ship executable JavaScript, arbitrary HTML, URLs, network authority, server authority, or prize authority.
+
+## Verification chain
+
+`source change → static project checks → Reality Canon regression → plug-in runtime execution test → existing Play Chrome suite → dedicated MMO Chrome smoke test`
+
+- **Reality regression:** `test-reality.mjs`
+- **Plug-in runtime test:** `test-plugins.mjs`
+- **MMO browser smoke test:** `browser-test.mjs`
+- **CI gate:** `../../.github/workflows/playground.yml`
+
+The dedicated MMO browser test checks:
+
+- grounded neighborhood and observatory surfaces load;
+- 1100px and 320px layouts avoid page-level horizontal overflow;
+- astronomy reconstruction stays labeled `NOT TELESCOPE DATA`;
+- a data-only plug-in can be installed, discovered, rendered as a cabinet, and played;
+- the exact bounded reward is applied locally;
+- plug-in text containing HTML-like markup remains text rather than executable markup.
+
+A configured check is not a passing result until CI actually reports success.
+
+## Machine-readable map
+
+`linkages.json` is the machine-readable form of this map. It includes the current Reality Canon, external astronomy references, plug-in runtime path, verification scripts, CI gate, and evidence-boundary invariants.
 
 ## History and correction
 
