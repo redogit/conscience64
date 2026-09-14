@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import{createServer}from'node:http';
+import{readFile,stat,mkdtemp,rm}from'node:fs/promises';
+import{spawn}from'node:child_process';
+import{tmpdir}from'node:os';
+import{resolve,extname,sep}from'node:path';
+import{fileURLToPath}from'node:url';
+import{SAVE_KEY}from'./progress.mjs';
+
+const root=fileURLToPath(new URL('../../',import.meta.url)),profile=await mkdtemp(resolve(tmpdir(),'explorer-progress-browser-'));let chrome,socket,seq=0;const pending=new Map(),errors=[];
+const server=createServer(async(req,res)=>{try{let p=resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname));if(p!==resolve(root)&&!p.startsWith(resolve(root)+sep))throw Error();if((await stat(p)).isDirectory())p=resolve(p,'index.html');const body=await readFile(p);res.writeHead(200,{'Content-Type':({'.html':'text/html;charset=utf-8','.mjs':'text/javascript;charset=utf-8','.css':'text/css;charset=utf-8','.json':'application/json'})[extname(p)]||'text/plain;charset=utf-8','Cache-Control':'no-store'});res.end(body);}catch{res.writeHead(404);res.end('Not found');}});
+function send(method,params={},sessionId){return new Promise((resolve,reject)=>{const id=++seq,timer=setTimeout(()=>{pending.delete(id);reject(Error(`CDP timeout: ${method}`));},12000);pending.set(id,{resolve,reject,timer});socket.send(JSON.stringify({id,method,params,...(sessionId?{sessionId}:{})}));});}
+try{
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin=`http://127.0.0.1:${server.address().port}`;
+ const endpoint=await new Promise((resolveEndpoint,reject)=>{let output='';const timer=setTimeout(()=>reject(Error('Chrome startup timeout')),20000);chrome=spawn(process.env.CHROME_BIN||'google-chrome',['--headless=new','--no-sandbox','--disable-dev-shm-usage','--no-first-run','--disable-background-networking','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{stdio:['ignore','ignore','pipe']});chrome.stderr.on('data',chunk=>{output=(output+chunk).slice(-12000);const m=output.match(/DevTools listening on (ws:\/\/\S+)/);if(m){clearTimeout(timer);resolveEndpoint(m[1]);}});chrome.once('error',reject);});
+ socket=new WebSocket(endpoint);await new Promise((r,j)=>{socket.addEventListener('open',r,{once:true});socket.addEventListener('error',j,{once:true});});socket.addEventListener('message',event=>{const m=JSON.parse(event.data);if(m.id){const q=pending.get(m.id);if(!q)return;pending.delete(m.id);clearTimeout(q.timer);m.error?q.reject(Error(JSON.stringify(m.error))):q.resolve(m.result);}else if(m.method==='Runtime.exceptionThrown')errors.push(m.params.exceptionDetails?.exception?.description||m.params.exceptionDetails?.text||'runtime exception');});
+ const{targetId}=await send('Target.createTarget',{url:'about:blank'}),{sessionId}=await send('Target.attachToTarget',{targetId,flatten:true});const call=(m,p={})=>send(m,p,sessionId);await call('Page.enable');await call('Runtime.enable');
+ const evaluate=async(fn,...args)=>{const r=await call('Runtime.evaluate',{expression:`(${fn.toString()})(...${JSON.stringify(args)})`,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result.value;};
+ async function visit(path){await call('Page.navigate',{url:`${origin}${path}`});for(let i=0;i<80;i++){if(await evaluate(()=>document.readyState==='complete'&&!!document.getElementById('start')))return;await new Promise(r=>setTimeout(r,100));}throw Error(`page did not initialize: ${path}`);}
+ const controls=()=>evaluate(()=>['save-progress','load-progress','clear-progress','progress-status'].map(id=>!!document.getElementById(id)));
+
+ await visit('/play/explorer-world/');
+ assert.deepEqual(await controls(),[true,true,true,true],'Explorer World must expose explicit progress controls');
+ await evaluate(()=>document.getElementById('start').click());await new Promise(r=>setTimeout(r,80));
+ await evaluate(()=>document.getElementById('pulse').click());await new Promise(r=>setTimeout(r,40));
+ const savedEnergy=Number(await evaluate(()=>document.getElementById('energy').textContent));assert.ok(savedEnergy<100,'test must save changed gameplay state');
+ await evaluate(()=>document.getElementById('save-progress').click());
+ assert.equal(await evaluate(key=>localStorage.getItem(key)!==null,SAVE_KEY),true,'manual save must write local checkpoint');
+ await evaluate(()=>document.getElementById('restart').click());assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),100);
+ await evaluate(()=>document.getElementById('load-progress').click());
+ assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),savedEnergy,'load must restore saved gameplay state');
+ assert.match(await evaluate(()=>document.getElementById('progress-status').textContent),/loaded/i);
+
+ await visit('/play/mmo-world/');
+ assert.deepEqual(await controls(),[true,true,true,true],'MMO World must expose the same explicit local checkpoint controls');
+ await evaluate(()=>document.getElementById('load-progress').click());
+ assert.equal(Number(await evaluate(()=>document.getElementById('energy').textContent)),savedEnergy,'MMO World must load the same founding-shard checkpoint');
+ await evaluate(()=>document.getElementById('clear-progress').click());
+ assert.equal(await evaluate(key=>localStorage.getItem(key),SAVE_KEY),null,'clear must remove the local checkpoint');
+ assert.match(await evaluate(()=>document.getElementById('progress-status').textContent),/cleared|no local checkpoint/i);
+ assert.deepEqual(errors,[],'browser runtime exceptions');
+ console.log('PASS Explorer/MMO progress browser: explicit save, restart, shared load, and clear.');
+}catch(error){console.error(`FAIL Explorer/MMO progress browser: ${error.message}`);process.exitCode=1;}finally{socket?.close();chrome?.kill('SIGTERM');for(const q of pending.values())clearTimeout(q.timer);server.closeAllConnections();await new Promise(r=>server.close(r));await rm(profile,{recursive:true,force:true,maxRetries:10,retryDelay:100});}
