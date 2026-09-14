@@ -1,0 +1,31 @@
+{
+  "experiment": "HODGE-M39-STAR-SPLIT-HYPOTHESIS",
+  "status": "EXECUTED_FINITE_CHARACTER_CHECK",
+  "level": 39,
+  "units_checked": 24,
+  "representatives": [
+    {
+      "a": [1,7,16,22,34,37],
+      "split": [[1,16,22],[7,34,37]],
+      "base_sums": [39,78],
+      "all_galois_conjugates_grade3": true,
+      "all_galois_conjugates_preserve_zero_sum_split": true,
+      "observed_integer_split_sums": [[39,78],[78,39]]
+    },
+    {
+      "a": [1,14,16,22,29,35],
+      "split": [[1,16,22],[14,29,35]],
+      "base_sums": [39,78],
+      "all_galois_conjugates_grade3": true,
+      "all_galois_conjugates_preserve_zero_sum_split": true,
+      "observed_integer_split_sums": [[39,78],[78,39]]
+    }
+  ],
+  "external_implication": {
+    "source": "Rifat Jumagulov, The Hodge conjecture for Fermat fourfolds of odd degree at most 199, arXiv:2608.18134v1 (2026), Theorem 1.2",
+    "source_status": "PRIMARY_PREPRINT_AUTHENTICATED",
+    "implication": "A Hodge (2,2) character whose multiset splits into two zero-sum triples has algebraic rational Hodge block via the Shioda-Katsura joining-line correspondence and Lefschetz (1,1)."
+  },
+  "research_state_change": "The two m=39 residual orbits should no longer be carried as open transport/projection obligations when this external theorem is admitted. They become externally proved calibration/closed cases.",
+  "claim_ceiling": "The local execution verifies only the theorem hypothesis. The algebraicity conclusion is source-dependent on the external theorem and is not independently reproved here. No P-vs-NP evidence is involved."
+}
