@@ -1,6 +1,6 @@
 {
   "schema": "conscience64/public-tools/v1",
-  "version": "1.4.0",
+  "version": "1.3.1",
   "interfaceLanguages": ["en", "es", "fr", "ar"],
   "license": "MIT",
   "lineageCommit": "15d6784d88d6ae12a1e24ac96d406beddbeee5e1",
