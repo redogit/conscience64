@@ -2,7 +2,7 @@ name: REDOGIT local verification
 
 on:
   push:
-    branches: [main, hypothesis-builder-final-2026-09-14]
+    branches: [main]
     paths:
       - 'redogit.json'
       - 'history/**'
