@@ -1,4 +1,4 @@
-# Conscience64 MMO RPG — Twelve Levels Up
+# Conscience64 MMO RPG — Twelve Levels Up + The Mystery 13th
 
 This document zooms the game from one immediate player action to the entire world ecosystem. Each level must preserve the lower levels rather than silently replacing them.
 
@@ -62,11 +62,22 @@ Why the whole thing exists: fun, curiosity, doing things, being someone, creatin
 
 **Invariant:** the system serves human life and enjoyment; the human does not exist to optimize the system.
 
+## Mystery 13th — Annual Emergent Result
+The Mystery 13th is **not another ordinary layer**. It is the yearly result produced by the interaction of Levels 1–12.
+
+It is evaluated after the year's actual actions, play, communities, failures, creations, changes, evidence, and surprises exist. It must not be predetermined merely to satisfy a roadmap.
+
+Possible forms include a new world rule, annual story arc, community-created place, surprising game mechanic, research question, cultural artifact, shared lesson, or an explicit unresolved remainder.
+
+**Invariant:** `MYSTERY_13TH != PREPLANNED_LEVEL_13`.
+
+**Annual rule:** preserve the evidence and history of all 12 levels, then derive or select the Mystery 13th from what genuinely emerged. If no defensible result emerges, the Mystery 13th may be explicitly `UNRESOLVED` rather than fabricated.
+
 ---
 
 ## Compression
 
-`Action → Activity → Session → Player Life → Place → World → Community → Network → Prize Layer → Conscience64 → Platform Ecosystem → Human Purpose`
+`Action → Activity → Session → Player Life → Place → World → Community → Network → Prize Layer → Conscience64 → Platform Ecosystem → Human Purpose → [annual emergence] Mystery 13th`
 
 Going upward changes scope, not ownership of truth. A success at one level does not automatically establish success at a higher one.
 
@@ -77,4 +88,5 @@ Examples:
 - a verified multiplayer achievement != prize eligibility;
 - a Conscience64 retrieval != independent evidence;
 - a fun prototype != a functioning MMO network;
-- a functioning MMO network != a healthy community.
+- a functioning MMO network != a healthy community;
+- twelve active levels != a predetermined Mystery 13th.
