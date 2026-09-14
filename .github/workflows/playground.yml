@@ -30,10 +30,14 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
+      - name: Verify canonical MMO World and Arcade Forge contracts
+        run: node play/mmo-world/test.mjs
       - name: Exercise the applications in Chrome
         run: node play/browser-test.mjs
       - name: Exercise Explorer World in Chrome
         run: node play/explorer-world/browser-test.mjs
+      - name: Exercise Arcade Forge in Chrome
+        run: node play/mmo-world/forge/browser-test.mjs
       - name: Verify Fuzzball hidden alpha model
         run: |
           node --check play/fuzzball-hidden/world.mjs
