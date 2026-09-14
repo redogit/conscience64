@@ -5,18 +5,34 @@ import {
   buildCarrierPlan,canonicalJson,carrierSeed,sealCarrierPlan,sha256Canonical
 } from './tools/visual-carrier-v2.mjs';
 
+const recipe=JSON.parse(readFileSync(new URL('./visual-carrier-v2/recipes/mercer-and-red-street.v1.json',import.meta.url),'utf8'));
+assert.equal(recipe.schema,'conscience64.visual-recipe/v1');
+assert.equal(recipe.placeEntity,'place:mercer-and-red-street');
+assert.equal(recipe.authority,'none');
+assert.equal(recipe.interpretationOnly,true);
+assert.equal(recipe.canon,false);
+assert.deepEqual(recipe.boundaries,[
+  'VISUAL_CARRIER != WORLD_AUTHORITY',
+  'VISUAL_INTERPRETATION != WORLD_FACT',
+  'VISUAL_CANDIDATE != PRODUCTION_VISUAL_CANON'
+]);
+const recipeSha256=sha256Canonical(recipe);
+
 const world=initializeECS();
 const jobs=videoJobs(world);
 const before=canonicalJson(jobs);
 
-const plan=buildCarrierPlan(jobs,{
+const planOptions={
   place:'Mercer & Red Street',
   recipeId:'mercer-and-red-street.v1',
+  recipeSha256,
   renderer:'blender-cycles-reference-v1'
-});
+};
+const plan=buildCarrierPlan(jobs,planOptions);
 
 assert.equal(plan.schema,'conscience64.visual-carrier-plan/v2');
 assert.equal(plan.sourceJobCount,24);
+assert.equal(plan.recipeSha256,recipeSha256);
 assert.equal(plan.jobs.length,3);
 assert.deepEqual(plan.jobs.map(row=>row.perspective),[
   'character-view','player-pov','world-view'
@@ -24,6 +40,7 @@ assert.deepEqual(plan.jobs.map(row=>row.perspective),[
 assert.ok(plan.jobs.every(row=>row.place==='Mercer & Red Street'));
 assert.ok(plan.jobs.every(row=>row.authority==='render-only'));
 assert.ok(plan.jobs.every(row=>row.boundary==='VIDEO_RENDER != WORLD_AUTHORITY'));
+assert.ok(plan.jobs.every(row=>row.carrier.recipeSha256===recipeSha256));
 assert.ok(plan.jobs.every(row=>row.carrier.canon===false));
 assert.ok(plan.jobs.every(row=>row.carrier.worldAuthority===false));
 
@@ -46,25 +63,15 @@ for(const row of plan.jobs){
 }
 
 assert.equal(canonicalJson(jobs),before,'carrier planning must not mutate ECS jobs');
-assert.equal(canonicalJson(buildCarrierPlan(jobs,{
-  place:'Mercer & Red Street',recipeId:'mercer-and-red-street.v1',renderer:'blender-cycles-reference-v1'
-})),canonicalJson(plan),'same inputs must produce the same carrier plan');
+assert.equal(canonicalJson(buildCarrierPlan(jobs,planOptions)),canonicalJson(plan),'same inputs must produce the same carrier plan');
+
+const changedRecipePlan=buildCarrierPlan(jobs,{...planOptions,recipeSha256:'0'.repeat(64)});
+assert.notEqual(sha256Canonical(changedRecipePlan),sha256Canonical(plan),'recipe content identity must affect carrier provenance');
+assert.deepEqual(changedRecipePlan.jobs.map(row=>row.id),plan.jobs.map(row=>row.id),'recipe changes must not change ECS job identity');
 
 const sealed=sealCarrierPlan(plan);
 assert.equal(sealed.seal.algorithm,'sha256');
 assert.equal(sealed.seal.canonicalPayloadSha256,sha256Canonical(plan));
 assert.match(sealed.seal.canonicalPayloadSha256,/^[0-9a-f]{64}$/);
 
-const recipe=JSON.parse(readFileSync(new URL('./visual-carrier-v2/recipes/mercer-and-red-street.v1.json',import.meta.url),'utf8'));
-assert.equal(recipe.schema,'conscience64.visual-recipe/v1');
-assert.equal(recipe.placeEntity,'place:mercer-and-red-street');
-assert.equal(recipe.authority,'none');
-assert.equal(recipe.interpretationOnly,true);
-assert.equal(recipe.canon,false);
-assert.deepEqual(recipe.boundaries,[
-  'VISUAL_CARRIER != WORLD_AUTHORITY',
-  'VISUAL_INTERPRETATION != WORLD_FACT',
-  'VISUAL_CANDIDATE != PRODUCTION_VISUAL_CANON'
-]);
-
-console.log('PASS visual carrier v2: Mercer 3-perspective deterministic plan, domain-separated seeds, immutable ECS input, sealed provenance boundary');
+console.log('PASS visual carrier v2: Mercer 3-perspective deterministic plan, recipe-content binding, domain-separated seeds, immutable ECS input, sealed provenance boundary');
