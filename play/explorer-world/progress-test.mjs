@@ -14,8 +14,35 @@ assert.equal(doc.monsters.find(m=>m.id==='m0').hp,18);assert.equal(doc.monsters.
 const restored=hydrate(doc);
 assert.equal(restored.world.seed,640064);assert.equal(restored.player.x,1888);assert.equal(restored.player.y,944);assert.equal(restored.player.health,73);assert.equal(restored.player.energy,41);
 assert.equal(restored.world.echoes.find(e=>e.id==='e0').collected,true);assert.equal(restored.world.echoes.find(e=>e.id==='e3').collected,true);assert.equal(restored.world.monsters.find(m=>m.id==='m0').hp,18);assert.equal(restored.world.monsters.find(m=>m.id==='m1').alive,false);assert.equal(restored.world.fuzzball.found,true);assert.equal(restored.world.portal.active,true);assert.equal(restored.chapterComplete,true);assert.deepEqual([...restored.regionsSeen].sort(),['anomaly','nightbog','sunmeadow']);
+
+// A save is a reconstruction delta. Canonical serialization must be idempotent across transport.
+const transported=JSON.parse(JSON.stringify(doc));
+assert.deepEqual(snapshot(hydrate(transported)),doc);
+assert.deepEqual(snapshot(hydrate(JSON.parse(JSON.stringify(doc)))),snapshot(hydrate(JSON.parse(JSON.stringify(doc)))));
+
+// Imported deltas may reference canonical entities, but they may not invent or alias world authority.
+assert.throws(()=>hydrate({...doc,collectedEchoIds:[...doc.collectedEchoIds,'foreign-echo']}),/unknown echo id/i);
+assert.throws(()=>hydrate({...doc,collectedEchoIds:['e0','e0']}),/duplicate echo id/i);
+assert.throws(()=>hydrate({...doc,monsters:[...doc.monsters,{...doc.monsters[0],id:'foreign-monster'}]}),/unknown monster id/i);
+assert.throws(()=>hydrate({...doc,monsters:[...doc.monsters,{...doc.monsters[0]}]}),/duplicate monster id/i);
+assert.throws(()=>hydrate({...doc,regionsSeen:[...doc.regionsSeen,'server-authoritative-zone']}),/unknown region/i);
+assert.throws(()=>hydrate({...doc,regionsSeen:['sunmeadow','sunmeadow']}),/duplicate region/i);
+
+// Mutable values remain bounded by the canonical world/runtime contract.
+assert.throws(()=>hydrate({...doc,player:{...doc.player,health:101}}),/invalid player/i);
+assert.throws(()=>hydrate({...doc,player:{...doc.player,energy:-1}}),/invalid player/i);
+assert.throws(()=>hydrate({...doc,echoes:6.5}),/invalid save counters/i);
+assert.throws(()=>hydrate({...doc,echoes:world.echoes.length+1}),/invalid save counters/i);
+assert.throws(()=>hydrate({...doc,defeated:world.monsters.length+1}),/invalid save counters/i);
+assert.throws(()=>hydrate({...doc,seed:0x100000000}),/invalid world seed/i);
+
+// Unknown authority-bearing fields are non-authoritative input and disappear on reconstruction.
+const normalized=snapshot(hydrate({...doc,authority:'server',serverAchievement:true,worldEntities:[{id:'invented'}]}));
+assert.equal(normalized.authority,undefined);assert.equal(normalized.serverAchievement,undefined);assert.equal(normalized.worldEntities,undefined);
+assert.equal(normalized.schema,SAVE_SCHEMA);assert.equal(normalized.seed,doc.seed);
+
 const values=new Map(),storage={setItem:(k,v)=>values.set(k,v),getItem:k=>values.has(k)?values.get(k):null,removeItem:k=>values.delete(k)};
 assert.equal(hasLocal(storage),false);saveLocal(state,storage);assert.ok(values.has(SAVE_KEY));assert.equal(hasLocal(storage),true);const loaded=loadLocal(storage);assert.equal(loaded.chapterComplete,true);assert.equal(loaded.echoes,6);assert.equal(loaded.fuzzballFound,true);clearLocal(storage);assert.equal(loadLocal(storage),null);assert.equal(hasLocal(storage),false);
 assert.equal(shouldResetOnStart({gameOver:true,chapterComplete:false}),true);assert.equal(shouldResetOnStart({gameOver:false,chapterComplete:true}),false);assert.equal(shouldResetOnStart({gameOver:false,chapterComplete:false}),false);
 assert.throws(()=>hydrate({schema:SAVE_SCHEMA,version:999}),/unsupported save version/i);assert.throws(()=>hydrate({schema:'wrong',version:SAVE_VERSION}),/invalid save schema/i);assert.throws(()=>hydrate({...doc,player:{x:NaN,y:0,health:100,energy:100}}),/invalid player/i);
-console.log('PASS Explorer World progress: versioned local save round-trip, deterministic reconstruction, explicit save presence, post-completion resume policy, validation, and clear.');
+console.log('PASS Explorer World progress: versioned local save round-trip, canonical reconstruction, hostile-delta rejection, authority stripping, explicit save presence, post-completion resume policy, validation, and clear.');
