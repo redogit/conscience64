@@ -11,7 +11,7 @@ const lines=Object.freeze([
   'Input. Relation. Plan. Output. Observe the change and keep the remainder.',
   'Life, learning, living belong inside the calculation.',
   'Cost counts. Time turns. Ethics edges every plan.',
-  'Period. Enter. Tweet. Explode. Compress the carrier. Keep the code.',
+  'Period. Enter. Communicate. Explode. Compress the carrier. Keep the code.',
   'Witness written. Verifier works. Search can still swell.',
   'N P hardness needs a reduction. Resemblance is not reduction.',
   'P versus N P stays open. Proof pending. Pattern is not proof.',
@@ -19,7 +19,7 @@ const lines=Object.freeze([
   'Minimal repair. Smallest shift. Strict test. Surviving structure.',
   'Hodge classes call for cycles. Coincidence cannot close the conjecture.',
   'Compress. Compare. Counterprobe. Carry. Claim only what survives.',
-  'Period. Enter. Tweet. Explode. Say it. Test it. Trace what changed.'
+  'Period. Enter. Communicate. Explode. Say it. Test it. Trace what changed.'
 ]);
 const scale=[0,2,3,5,7,9,10,12];
 let ctx=null,master=null,timer=null,nextTime=0,step=0,started=false,enabled=true,ducked=false,ui=null;
@@ -43,9 +43,9 @@ function setDucked(value){ducked=!!value;applyGain();}
 function renderState(){if(!ui)return;const b=ui.querySelector('[data-song-toggle]');if(b)b.textContent=enabled?(started?'♫ Song on':'♫ Song armed'):'♫ Song off';ui.dataset.active=started?'true':'false';}
 function installUI(){if(document.getElementById('research-song-dock'))return;ui=document.createElement('div');ui.id='research-song-dock';ui.className='research-song-dock';ui.innerHTML='<button type="button" data-song-toggle aria-pressed="false">♫ Song armed</button><span data-song-line>Keep the Remainder: first interaction starts the procedural song.</span>';const style=document.createElement('style');style.textContent=`.research-song-dock{position:fixed;z-index:2147482999;left:.75rem;bottom:.75rem;max-width:min(38rem,calc(100vw - 10rem));display:flex;align-items:center;gap:.55rem;padding:.4rem .55rem;border:1px solid rgba(125,145,170,.5);border-radius:.7rem;background:rgba(12,18,30,.78);color:#eef4ff;font:600 .72rem/1.3 system-ui,sans-serif;backdrop-filter:blur(8px);box-shadow:0 .35rem 1.3rem rgba(0,0,0,.22)}.research-song-dock button{font:inherit;white-space:nowrap;padding:.35rem .5rem;border:1px solid #53647d;border-radius:.45rem;background:#17243a;color:inherit;cursor:pointer}.research-song-dock [data-song-line]{font-weight:500;color:#c7d3e7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.research-song-dock[data-active="true"]{border-color:rgba(199,255,172,.5)}@media(max-width:650px){.research-song-dock{max-width:calc(100vw - 1.5rem);right:.75rem;bottom:3.8rem}.research-song-dock [data-song-line]{display:none}}@media(prefers-reduced-motion:reduce){.research-song-dock{backdrop-filter:none}}`;document.head.appendChild(style);document.body.appendChild(ui);ui.querySelector('[data-song-toggle]').addEventListener('click',async e=>{e.stopPropagation();if(enabled&&started)setEnabled(false);else{setEnabled(true);await start();}});renderState();}
 function arm(){if(!enabled||started)return;start();}
-addEventListener('voice-anywhere-state',e=>setDucked(['listening','speaking','heard'].includes(e.detail?.phase)));
+addEventListener('voice-anywhere-state',e=>setDucked(['listening','speaking','heard','typing'].includes(e.detail?.phase)));
 addEventListener('blur',()=>setDucked(true));addEventListener('focus',()=>setDucked(false));
 const boot=()=>{installUI();if(enabled){document.addEventListener('pointerdown',arm,{once:true,capture:true});document.addEventListener('keydown',arm,{once:true,capture:true});}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-globalThis.ResearchSong=Object.freeze({version:'1.1.0',lines,start,stop,setEnabled,setDucked,get state(){return{enabled,started,ducked,step};}});
+globalThis.ResearchSong=Object.freeze({version:'1.2.0',lines,start,stop,setEnabled,setDucked,get state(){return{enabled,started,ducked,step};}});
 })();
