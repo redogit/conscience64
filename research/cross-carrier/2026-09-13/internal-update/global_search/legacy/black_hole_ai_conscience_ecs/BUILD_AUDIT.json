@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "node_tests": {
+    "ok": true,
+    "summary": "TAP version 13\n# Subtest: Float64 coordinate ECS preserves four coordinates\nok 1 - Float64 coordinate ECS preserves four coordinates\n  ---\n  duration_ms: 2.022889\n  type: 'test'\n  ...\n# Subtest: systems execute in declared order\nok 2 - systems execute in declared order\n  ---\n  duration_ms: 0.830601\n  type: 'test'\n  ...\n# Subtest: conscience hard-blocks private export regardless of soft score\nok 3 - conscience hard-blocks private export regardless of soft score\n  ---\n  duration_ms: 5.490185\n  type: 'test'\n  ...\n# Subtest: reversible evidence-supported proposal can pass\nok 4 - reversible evidence-supported proposal can pass\n  ---\n  duration_ms: 0.29896\n  type: 'test'\n  ...\n# Subtest: irreversible proposal asks the human even at high soft score\nok 5 - irreversible proposal asks the human even at high soft score\n  ---\n  duration_ms: 0.345157\n  type: 'test'\n  ...\n1..5\n# tests 5\n# suites 0\n# pass 5\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 109.57153\n"
+  },
+  "syntax_checks": {
+    "serve.mjs": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/app.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/conscience.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/ecs.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/llm-worker.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/llm.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/renderer-loader.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/renderers/canvas2d.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/renderers/webgl2.js": {
+      "ok": true,
+      "stderr": ""
+    },
+    "src/renderers/webgpu.js": {
+      "ok": true,
+      "stderr": ""
+    }
+  },
+  "localhost_smoke": {
+    "http://127.0.0.1:4173/": {
+      "ok": true,
+      "status": 200,
+      "bytes": 4334,
+      "content_type": "text/html; charset=utf-8"
+    },
+    "http://127.0.0.1:4173/data/world.json": {
+      "ok": true,
+      "status": 200,
+      "bytes": 3955,
+      "content_type": "application/json; charset=utf-8"
+    },
+    "http://127.0.0.1:4173/src/app.js": {
+      "ok": true,
+      "status": 200,
+      "bytes": 12625,
+      "content_type": "text/javascript; charset=utf-8"
+    },
+    "http://127.0.0.1:4173/src/renderers/webgpu.js": {
+      "ok": true,
+      "status": 200,
+      "bytes": 3557,
+      "content_type": "text/javascript; charset=utf-8"
+    }
+  },
+  "progressive_fallback": [
+    "WebGPU compatibility/core",
+    "WebGL2",
+    "Canvas 2D",
+    "accessible text/control surface"
+  ],
+  "llm_fallback": [
+    "lazy WebLLM module worker after explicit human enable",
+    "deterministic local proposer"
+  ],
+  "privacy": "No model runtime/model fetch until explicit enable; no private data is part of seeded world data.",
+  "claim_boundary": "Conscience Gate is rule-based governance, not consciousness or personhood.",
+  "external_action_executor": false,
+  "naming_update": {
+    "ai_character_name": "Conscience",
+    "governance_layer_name": "Human Boundary Gate",
+    "semantic_boundary": "In-game name only; no consciousness/personhood claim."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "source": "https://github.com/searxng/searxng/blob/master/searx/settings.yml",
+  "sha256": "6c58257b7c84a7f5046b25f5e33074dc3264b7a07b838de53887a6d34eac38b0",
+  "purpose": "Discovery reference only; upstream defaults were not imported.",
+  "queried_source_modules": [
+    "naver",
+    "seznam",
+    "baidu",
+    "sogou",
+    "360search",
+    "marginalia",
+    "yep"
+  ]
+}

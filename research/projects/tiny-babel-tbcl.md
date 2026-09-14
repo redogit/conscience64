@@ -54,3 +54,7 @@ A smaller or different carrier can preserve a bounded subject without proving gl
 ## Claim ceiling
 
 Verified finite behavior is evidence for that finite subject. It is not evidence of a universal language theory.
+
+## Internal workspace successor — September 13, 2026
+
+The [complete update](../cross-carrier/2026-09-13/internal-update/README.md) represents global search, isolated XY interaction, the geometric black-hole projection, quarantined working-packet import, and earlier transport materials. Its [inventory](../cross-carrier/2026-09-13/internal-update/MATERIALS.json) accounts for all 736 source-bundle members. Results and unresolved failures remain separate; no cross-project authority or mathematical proof transfers through this link.

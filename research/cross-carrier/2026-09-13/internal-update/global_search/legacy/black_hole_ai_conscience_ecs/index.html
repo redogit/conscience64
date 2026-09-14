@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Black Hole AI: Conscience</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<a class="skip" href="#controls">Skip to controls</a>
+<header>
+  <p class="eyebrow">Coordinate-driven ECS · progressive browser fallback · local-first</p>
+  <h1>Black Hole AI: Conscience</h1>
+  <p>The black hole is a game metaphor for bounded context. <strong>Conscience</strong> is the in-game name of the AI proposal character. A separate Human Boundary Gate reviews its proposals. The name does not claim the AI is conscious.</p>
+  <div class="status-grid">
+    <p id="rendererStatus" class="status">Renderer starting…</p>
+    <p id="status" class="status" role="status" aria-live="polite">Loading world…</p>
+  </div>
+</header>
+
+<main>
+<section class="game" aria-labelledby="worldTitle">
+  <div class="section-head">
+    <div><h2 id="worldTitle">Orbit</h2><p>Recover evidence. Keep agency. Do not confuse proposals with proof.</p></div>
+    <button id="pause">Pause</button>
+  </div>
+  <div class="canvas-shell">
+    <canvas id="world" aria-hidden="true"></canvas>
+    <div class="text-state" aria-live="polite">
+      <p id="probeState">Probe initializing.</p><p id="nearby">Searching for nearby evidence.</p>
+    </div>
+  </div>
+</section>
+
+<section id="controls" class="panel" aria-labelledby="controlsTitle">
+  <h2 id="controlsTitle">Human controls</h2>
+  <p>Keyboard: WASD/arrow keys. Space scans. Touch/mouse controls work too.</p>
+  <div class="dpad" aria-label="Movement controls">
+    <button data-move="up" aria-label="Move up">↑</button>
+    <button data-move="left" aria-label="Move left">←</button>
+    <button id="scan">Scan</button>
+    <button data-move="right" aria-label="Move right">→</button>
+    <button data-move="down" aria-label="Move down">↓</button>
+  </div>
+  <div class="row">
+    <label><input id="assist" type="checkbox" checked> Assist mode</label>
+    <button id="reset">Safe reset probe</button>
+    <button id="downloadLedger">Export local decision ledger</button>
+  </div>
+  <details>
+    <summary>How the game treats failure</summary>
+    <p>Crossing the event horizon or leaving the play area safely returns the probe to orbit. Scanned evidence and decision history are preserved. The design teaches by recovery rather than punishment.</p>
+  </details>
+</section>
+
+<section class="panel" aria-labelledby="evidenceTitle">
+  <h2 id="evidenceTitle">Evidence ring</h2>
+  <p>Scanning discovers a carrier. Admission is a separate human choice. Only admitted fragments are given to the optional LLM.</p>
+  <div id="evidenceList"></div>
+</section>
+
+<section class="panel" aria-labelledby="llmTitle">
+  <h2 id="llmTitle">Conscience — AI proposal engine</h2>
+  <p>Conscience works immediately through a deterministic local proposer. Its optional browser LLM is lazy-loaded only after you explicitly enable it; enabling it can download a local browser model.</p>
+  <button id="enableLLM">Enable Conscience local AI</button>
+  <label for="question">Question for the proposal engine</label>
+  <textarea id="question" rows="3">What bounded, reversible step should I take next?</textarea>
+  <button id="ask">Ask for proposal</button>
+</section>
+
+<section class="panel" aria-labelledby="conscienceTitle">
+  <h2 id="conscienceTitle">Human Boundary Gate</h2>
+  <p>Conscience cannot authorize itself. The separate Human Boundary Gate checks human benefit, agency, privacy, evidence, reversibility, cost, uncertainty, and hard boundaries.</p>
+  <div id="proposalResult"><p>No proposal reviewed yet.</p></div>
+</section>
+
+<section class="panel" aria-labelledby="fallbackTitle">
+  <h2 id="fallbackTitle">Progressive fallback</h2>
+  <ol>
+    <li>Core ECS, controls, evidence, and Conscience Gate load first.</li>
+    <li>Renderer loads on demand: WebGPU → WebGL2 → Canvas 2D.</li>
+    <li>LLM loads only on explicit request in a module worker; otherwise the deterministic proposer remains active.</li>
+    <li>The text state remains usable even if advanced graphics fail.</li>
+  </ol>
+</section>
+</main>
+
+<footer><p>Local prototype. No external action executor is wired in. “Accept” records a game-world decision only.</p></footer>
+<script type="module" src="./src/app.js"></script>
+</body>
+</html>

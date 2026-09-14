@@ -60,7 +60,16 @@
         "assumption": "Consequential distinctions can be identified locally enough to test preservation.",
         "test": "Ablate or alter one carrier/transform relation and test reconstructibility.",
         "unknown": "Broad real-world benefit outside bounded experiments remains unestablished."
-      }
+      },
+      "updates": [
+        {
+          "id": "2026-09-13:internal-workspace",
+          "path": "research/cross-carrier/2026-09-13/internal-update/README.md",
+          "status": "BOUNDED_IMPLEMENTATION_WITH_OPEN_LIMITS",
+          "materials": "research/cross-carrier/2026-09-13/internal-update/MATERIALS.json",
+          "authorityTransfer": false
+        }
+      ]
     },
     {
       "id": "orbit-library",
@@ -78,7 +87,16 @@
         "assumption": "A small active surface is preferable when exact recovery remains possible.",
         "test": "Freeze loose-root samples and measure exact recovery, family representation, ambiguity, and unresolved cases.",
         "unknown": "The benefit/cost threshold for broader exact-file indexing remains unresolved."
-      }
+      },
+      "updates": [
+        {
+          "id": "2026-09-13:internal-workspace",
+          "path": "research/cross-carrier/2026-09-13/internal-update/README.md",
+          "status": "BOUNDED_IMPLEMENTATION_WITH_OPEN_LIMITS",
+          "materials": "research/cross-carrier/2026-09-13/internal-update/MATERIALS.json",
+          "authorityTransfer": false
+        }
+      ]
     },
     {
       "id": "tiny-babel-tbcl",
@@ -96,7 +114,16 @@
         "assumption": "The finite subject/query space faithfully represents the bounded claim.",
         "test": "Exhaustive enumeration plus behavior comparison across carriers and independent verification where possible.",
         "unknown": "Scaling to open-ended/noisy/culturally variable domains remains unresolved."
-      }
+      },
+      "updates": [
+        {
+          "id": "2026-09-13:internal-workspace",
+          "path": "research/cross-carrier/2026-09-13/internal-update/README.md",
+          "status": "BOUNDED_IMPLEMENTATION_WITH_OPEN_LIMITS",
+          "materials": "research/cross-carrier/2026-09-13/internal-update/MATERIALS.json",
+          "authorityTransfer": false
+        }
+      ]
     },
     {
       "id": "operator-moonshot",
@@ -150,7 +177,16 @@
         "assumption": "Encoding/transform specifications are explicit enough for independent testing.",
         "test": "Exact encode/decode, perturbation, inverse-transform, confound enumeration, ablation, and integrity checks.",
         "unknown": "Which representations correspond to deeper physical structure, if any, remains unresolved."
-      }
+      },
+      "updates": [
+        {
+          "id": "2026-09-13:internal-workspace",
+          "path": "research/cross-carrier/2026-09-13/internal-update/README.md",
+          "status": "BOUNDED_IMPLEMENTATION_WITH_OPEN_LIMITS",
+          "materials": "research/cross-carrier/2026-09-13/internal-update/MATERIALS.json",
+          "authorityTransfer": false
+        }
+      ]
     },
     {
       "id": "historical-recovery",

@@ -18,6 +18,10 @@ The [public playground](https://redogit.github.io/conscience64/play/) turns ongo
 
 English, Spanish, French, and Arabic interfaces; Unicode writing; keyboard controls; optional local saving; no accounts. The new tools have an MIT license scoped to `play/`. See [the usage and provenance notes](play/README.md). Their [public-tool catalog](play/projects.json) is separate from the research registry below.
 
+## Internal workspace update
+
+[Orbit Search and Conscience space](research/cross-carrier/2026-09-13/internal-update/global_search/index.html) adds 65 enabled search services, 248 country/territory routes excluding Russia, and a geometric 4D-to-3D black-hole view. Run locally for metadata retrieval and a separate headless XY interaction workspace. [Materials, validation and complete recovery bundle](research/cross-carrier/2026-09-13/internal-update/README.md) preserve prior transport results and open failures. Public browsing still depends on network/certificate access; external-page activation is not enabled.
+
 ## Research projects
 
 The research portfolio now has a compact project map that preserves both accomplishments and failures instead of presenting only successes.

@@ -64,3 +64,7 @@ See the [project-integration checkpoint](../updates/2026-09-13-human-expression-
 The local 91-record accession is linked through an incoming review checkpoint with exact compound record identities, source-byte ranges, rights/context fields, 13 qualified relations and ten explicit gaps. Its 81 source URLs are not a census of humanity; its nine collection gateways are not entire imported collections. The public registry receives a summary only, not the corpus.
 
 This is navigation and candidate intake, not runtime promotion. Existing Orbit authority, historical ingress gates, verification limits and accessibility release requirements remain unchanged. No archive record is admitted merely because Orbit references it. The distinct `redogit/orbit` game-engine fork is not this project and was not changed.
+
+## Internal workspace successor — September 13, 2026
+
+The [complete update](../cross-carrier/2026-09-13/internal-update/README.md) represents global search, isolated XY interaction, the geometric black-hole projection, quarantined working-packet import, and earlier transport materials. Its [inventory](../cross-carrier/2026-09-13/internal-update/MATERIALS.json) accounts for all 736 source-bundle members. Results and unresolved failures remain separate; no cross-project authority or mathematical proof transfers through this link.
