@@ -1,0 +1,68 @@
+{
+  "schema": "conscience64.redline.shapeshifter-states/v1",
+  "characterId": "redline-shapeshifter",
+  "fictional": true,
+  "identityClaim": false,
+  "reversible": true,
+  "states": [
+    {
+      "id": "baseline-noir",
+      "label": "Baseline Noir",
+      "silhouette": "long asymmetric coat, narrow reflective breaks, readable shoulder line",
+      "materials": ["technicalFabric", "leatherAndCoatedTextile", "metalHardware"],
+      "emissive": "minimal",
+      "vfx": ["rain-beads", "street-reflection"],
+      "gameplayMeaning": "neutral social/exploration state"
+    },
+    {
+      "id": "redline-pulse",
+      "label": "Redline Pulse",
+      "silhouette": "sharper coat breakpoints and brighter edge accents",
+      "materials": ["technicalFabric", "redlineEmissive", "metalHardware"],
+      "emissive": "pulsed red edge traces",
+      "vfx": ["pulse-afterimage", "rain-shear"],
+      "gameplayMeaning": "timing challenge / danger-readability state"
+    },
+    {
+      "id": "mirror-rain",
+      "label": "Mirror Rain",
+      "silhouette": "softened outer contour with glasslike secondary planes",
+      "materials": ["glassAndVisor", "leatherAndCoatedTextile", "redlineEmissive"],
+      "emissive": "subsurface reflection flicker",
+      "vfx": ["specular-echo", "rain-streak-distortion"],
+      "gameplayMeaning": "stealth / observation state"
+    },
+    {
+      "id": "signal-break",
+      "label": "Signal Break",
+      "silhouette": "brief fragmented outline with displaced accessory geometry",
+      "materials": ["technicalFabric", "metalHardware", "redlineEmissive"],
+      "emissive": "broken intermittent segments",
+      "vfx": ["silhouette-split", "afterimage-gap", "static-rain"],
+      "gameplayMeaning": "transition / escape state"
+    },
+    {
+      "id": "black-glass",
+      "label": "Black Glass",
+      "silhouette": "clean severe outline with reduced fabric detail and high-contrast visor plane",
+      "materials": ["glassAndVisor", "leatherAndCoatedTextile", "metalHardware"],
+      "emissive": "single restrained redline marker",
+      "vfx": ["low-frequency-reflection-shift"],
+      "gameplayMeaning": "high-tension narrative state"
+    }
+  ],
+  "transitions": [
+    {"from": "baseline-noir", "to": "redline-pulse", "trigger": "redline-signal", "reversible": true},
+    {"from": "redline-pulse", "to": "mirror-rain", "trigger": "player-choice-or-scripted-beat", "reversible": true},
+    {"from": "mirror-rain", "to": "signal-break", "trigger": "escape-beat", "reversible": true},
+    {"from": "signal-break", "to": "black-glass", "trigger": "narrative-resolution", "reversible": true},
+    {"from": "black-glass", "to": "baseline-noir", "trigger": "scene-reset", "reversible": true}
+  ],
+  "constraints": {
+    "noRealPersonIdentityInference": true,
+    "noBiometricReplicationRequirement": true,
+    "noSensitiveTraitInference": true,
+    "allStateChangesAuthoredFiction": true,
+    "deterministicTransitionIDs": true
+  }
+}
