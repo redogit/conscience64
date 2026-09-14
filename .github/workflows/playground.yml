@@ -40,6 +40,8 @@ jobs:
         run: node play/mmo/test-save.mjs
       - name: Verify canonical MMO World and Arcade Forge contracts
         run: node play/mmo-world/test.mjs
+      - name: Verify Redline character cooperation contract
+        run: node play/mmo-world/redline/verify-redline.mjs
       - name: Exercise the applications in Chrome
         run: node play/browser-test.mjs
       - name: Exercise grounded MMO successor in Chrome
