@@ -1,9 +1,10 @@
 {
   "schema": "conscience64.mmo.linkages/v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "nodes": [
     {"id":"play-hub","path":"../index.html","kind":"navigation"},
     {"id":"mmo-main","path":"index.html","kind":"game"},
+    {"id":"reality-canon","path":"REALITY_CANON.md","kind":"current-successor-canon"},
     {"id":"arcade-forge","path":"forge.html","kind":"creator-tool"},
     {"id":"plugin-contract","path":"plugin-contract.json","kind":"contract"},
     {"id":"plugin-runtime","path":"plugin-runtime.js","kind":"runtime"},
@@ -14,10 +15,23 @@
     {"id":"conscience-root","path":"../../index.html","kind":"companion-surface"},
     {"id":"project-registry","path":"../../research/projects/projects.json","kind":"research-registry"},
     {"id":"history","path":"../../history/index.html?facet=mmo","kind":"history-restore"},
-    {"id":"prize-vault","path":"index.html#prize-title","kind":"future-reward-boundary"}
+    {"id":"prize-vault","path":"index.html#prize-title","kind":"future-reward-boundary"},
+    {"id":"reality-test","path":"test-reality.mjs","kind":"verification"},
+    {"id":"plugin-test","path":"test-plugins.mjs","kind":"verification"},
+    {"id":"mmo-browser-test","path":"browser-test.mjs","kind":"browser-verification"},
+    {"id":"playground-ci","path":"../../.github/workflows/playground.yml","kind":"ci-gate"},
+    {"id":"eht-m87","url":"https://eventhorizontelescope.org/press-release-april-10-2019-astronomers-capture-first-image-black-hole","kind":"external-observation-reference"},
+    {"id":"eht-sgra","url":"https://eventhorizontelescope.org/blog/astronomers-reveal-first-image-black-hole-heart-our-galaxy","kind":"external-observation-reference"},
+    {"id":"nasa-webb-color","url":"https://science.nasa.gov/mission/webb/science-overview/science-explainers/how-are-webbs-full-color-images-made/","kind":"external-processing-reference"}
   ],
   "edges": [
     {"from":"play-hub","to":"mmo-main","relation":"opens"},
+    {"from":"reality-canon","to":"mmo-main","relation":"governs-current-presentation"},
+    {"from":"reality-canon","to":"arcade-forge","relation":"governs-generated-content-direction"},
+    {"from":"reality-canon","to":"plugin-contract","relation":"constrains-content-direction"},
+    {"from":"eht-m87","to":"reality-canon","relation":"informs-astronomy-structure"},
+    {"from":"eht-sgra","to":"reality-canon","relation":"informs-astronomy-structure"},
+    {"from":"nasa-webb-color","to":"reality-canon","relation":"informs-processing-boundary"},
     {"from":"mmo-main","to":"arcade-forge","relation":"creates-mini-games-with"},
     {"from":"arcade-forge","to":"plugin-contract","relation":"validates-against"},
     {"from":"plugin-contract","to":"plugin-runtime","relation":"constrains"},
@@ -28,14 +42,23 @@
     {"from":"mmo-main","to":"levels","relation":"implements-within"},
     {"from":"levels","to":"release-plan","relation":"scopes"},
     {"from":"mmo-main","to":"history","relation":"restores-through"},
-    {"from":"prize-vault","to":"release-plan","relation":"gated-by"}
+    {"from":"prize-vault","to":"release-plan","relation":"gated-by"},
+    {"from":"reality-test","to":"reality-canon","relation":"regression-checks"},
+    {"from":"plugin-test","to":"plugin-runtime","relation":"executes-contract-checks-on"},
+    {"from":"mmo-browser-test","to":"mmo-main","relation":"browser-smoke-tests"},
+    {"from":"mmo-browser-test","to":"plugin-runtime","relation":"tests-install-discover-play-chain"},
+    {"from":"playground-ci","to":"reality-test","relation":"runs"},
+    {"from":"playground-ci","to":"plugin-test","relation":"runs"},
+    {"from":"playground-ci","to":"mmo-browser-test","relation":"runs"}
   ],
   "invariants": [
+    "OBSERVATION != PROCESSED_SCIENCE_IMAGE != GAME_RECONSTRUCTION",
     "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
     "LOCAL_SCORE != VERIFIED_ACHIEVEMENT",
     "VERIFIED_ACHIEVEMENT != PRIZE_ELIGIBILITY",
     "MYSTERY_13TH != PREPLANNED_LEVEL_13",
     "ROADMAP != IMPLEMENTED_STATE",
-    "PLUGIN_DATA != EXECUTABLE_AUTHORITY"
+    "PLUGIN_DATA != EXECUTABLE_AUTHORITY",
+    "CURRENT_REALITY_CANON != REWRITTEN_PREDECESSOR_HISTORY"
   ]
 }
