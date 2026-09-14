@@ -50,7 +50,17 @@
         "contract": "play/mmo-world/plugin-contract.json",
         "runtime": "play/mmo-world/plugin-runtime.mjs",
         "authority": "LOCAL_PREVIEW_ONLY",
-        "sourceLineage": "retired conscience64-mmorpg-site-2026-09-13 branch"
+        "sourceLineage": "retired conscience64-mmorpg-site-2026-09-13 branch",
+        "starterPack": {
+          "path": "play/mmo-world/plugins/",
+          "validatedRecipeCount": 9,
+          "retiredRuntimeAdaptations": 8,
+          "ordinaryLifeExamples": 1,
+          "monsterMood": "FOUR_FIXED_SOURCE_STATES_RANDOM_SELECTION_NOT_PRESERVED",
+          "cipherSnap": "THREE_EXACT_PUZZLES_ADMITTED",
+          "makeSomething": "ONE_BOUNDED_CREATIVE_SEED_ADMITTED_RANDOM_GENERATOR_NOT_PRESERVED",
+          "redline": "DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA"
+        }
       }
     },
     {
@@ -87,8 +97,10 @@
     "DATA_ONLY_PLUGIN != EXECUTABLE_CODE",
     "LOCAL_PLUGIN_PREVIEW != CANONICAL_GAME_STATE",
     "LOCAL_PLUGIN != SERVER_AUTHORITY",
+    "SOURCE_STATE_ADAPTATION != BEHAVIORAL_IDENTITY",
+    "UNREPRESENTABLE != SILENTLY_OMITTED",
     "HISTORICAL_FUZZBALL_CARRIER != NEW_FUZZBALL_HIDDEN_GAME",
     "UNLISTED != SECURITY_BOUNDARY"
   ],
-  "readingRule": "Read projects.json as the preserved machine/browser snapshot and CURRENT.json as the forward-only current project manifest. Read the two-day ledger for user-direction/state synthesis. The local live analytics service is an implemented transport continuation, not a claim of remote production deployment or scientific authority. Arcade Forge is a bounded local data-only extension of canonical MMO World, not a revival of the retired play/mmo architecture or a source of authoritative game state. Later records do not rewrite the predecessor registry or silently change browser API counts."
+  "readingRule": "Read projects.json as the preserved machine/browser snapshot and CURRENT.json as the forward-only current project manifest. Read the two-day ledger for user-direction/state synthesis. The local live analytics service is an implemented transport continuation, not a claim of remote production deployment or scientific authority. Arcade Forge is a bounded local data-only extension of canonical MMO World, not a revival of the retired play/mmo architecture or a source of authoritative game state. Starter recipes preserve only the old states/behaviors that fit the current contract; Redline remains explicit remainder rather than being silently approximated. Later records do not rewrite the predecessor registry or silently change browser API counts."
 }

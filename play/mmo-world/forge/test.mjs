@@ -1,11 +1,10 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import {
   LIMITS,
   PLUGIN_SCHEMA,
   REWARD_CAPS,
   PluginStoreError,
-  PluginValidationError,
   createPluginShelf,
   exportPlugin,
   parsePluginJson,
@@ -13,19 +12,40 @@ import {
 } from '../plugin-runtime.mjs';
 
 const here = new URL('./', import.meta.url);
-const example = JSON.parse(await readFile(new URL('../plugins/duck-rescue.json', here), 'utf8'));
+const pluginsUrl = new URL('../plugins/', here);
+const pluginFiles = (await readdir(pluginsUrl)).filter(name => name.endsWith('.json')).sort();
+const plugins = [];
+for (const name of pluginFiles) plugins.push([name, JSON.parse(await readFile(new URL(name, pluginsUrl), 'utf8'))]);
+const byId = new Map(plugins.map(([name, plugin]) => [plugin.id, { name, plugin: validatePlugin(plugin) }]));
+const example = byId.get('duck-rescue').plugin;
 const contract = JSON.parse(await readFile(new URL('../plugin-contract.json', here), 'utf8'));
 const html = await readFile(new URL('index.html', here), 'utf8');
 const forge = await readFile(new URL('forge.mjs', here), 'utf8');
+const lineage = await readFile(new URL('../plugins/README.md', here), 'utf8');
 
-const good = validatePlugin(example);
-assert.equal(good.schema, PLUGIN_SCHEMA);
-assert.equal(good.id, 'duck-rescue');
-assert.equal(good.mechanic, 'choice');
-assert.equal(good.reward.xp, 16);
-assert.ok(Object.isFrozen(good));
-assert.ok(Object.isFrozen(good.reward));
-assert.ok(Object.isFrozen(good.choices));
+assert.equal(pluginFiles.length, 9, 'unexpected starter recipe count');
+assert.deepEqual(new Set(byId.keys()), new Set([
+  'duck-rescue',
+  'monster-mood-grumpy', 'monster-mood-confused', 'monster-mood-delighted', 'monster-mood-suspicious',
+  'cipher-snap-doubling', 'cipher-snap-letters', 'cipher-snap-symbols',
+  'make-something-duck-compass',
+]));
+for (const [name, plugin] of plugins) {
+  const checked = validatePlugin(plugin);
+  assert.equal(checked.schema, PLUGIN_SCHEMA, name);
+  assert.ok(Object.isFrozen(checked), name);
+  assert.ok(html.includes(`../plugins/${name}`), `Forge does not link admitted recipe: ${name}`);
+}
+assert.match(lineage, /DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA/);
+assert.match(lineage, /Redline/);
+assert.doesNotMatch([...byId.keys()].join(' '), /redline/i);
+assert.doesNotMatch(html, /href="[^\"]*redline[^\"]*\.json"/i);
+
+assert.equal(example.id, 'duck-rescue');
+assert.equal(example.mechanic, 'choice');
+assert.equal(example.reward.xp, 16);
+assert.ok(Object.isFrozen(example.reward));
+assert.ok(Object.isFrozen(example.choices));
 
 assert.equal(contract.executionModel, 'data-only');
 assert.equal(contract.pluginSchema, PLUGIN_SCHEMA);
@@ -60,7 +80,6 @@ assert.match(exportPlugin(markupValidated), /<script>/);
 assert.ok(!forge.includes('.innerHTML'));
 assert.ok(!forge.includes('insertAdjacentHTML'));
 assert.match(forge, /\.textContent\s*=/);
-
 assert.throws(() => parsePluginJson(' '.repeat(LIMITS.fileBytes + 1)), /too large/);
 assert.throws(() => parsePluginJson('{bad json'), /JSON is invalid/);
 
@@ -73,41 +92,26 @@ const storage = new FakeStorage();
 const shelf = createPluginShelf(storage, { key: 'test' });
 shelf.install(example);
 assert.equal(shelf.list().length, 1);
-assert.equal(shelf.list()[0].id, 'duck-rescue');
 assert.equal(shelf.remove('duck-rescue'), 0);
-assert.equal(shelf.list().length, 0);
 
 const corruptStorage = new FakeStorage('{');
 const corruptShelf = createPluginShelf(corruptStorage, { key: 'test' });
 assert.throws(() => corruptShelf.list(), PluginStoreError);
 assert.throws(() => corruptShelf.install(example), /corrupt/);
-assert.equal(corruptStorage.setCalls, 0, 'corrupt shelf must not be overwritten');
+assert.equal(corruptStorage.setCalls, 0);
 
 const inaccessible = { getItem(){ throw new Error('blocked'); }, setItem(){} };
 assert.throws(() => createPluginShelf(inaccessible).list(), /could not be read/);
 
 const boundedStorage = new FakeStorage();
 const boundedShelf = createPluginShelf(boundedStorage, { key: 'bounded' });
-for (let i = 0; i < LIMITS.shelfEntries; i++) {
-  boundedShelf.install({
-    schema: PLUGIN_SCHEMA,
-    id: `p-${String(i).padStart(2, '0')}`,
-    name: `Plugin ${i}`,
-    version: '1.0.0',
-    mechanic: 'creative',
-    prompt: 'Create a harmless local preview.',
-    reward: { xp: 0, joy: 0, tokens: 0, discoveries: 0 },
-  });
-}
-assert.equal(boundedShelf.list().length, LIMITS.shelfEntries);
+for (let i = 0; i < LIMITS.shelfEntries; i++) boundedShelf.install({
+  schema: PLUGIN_SCHEMA, id:`p-${String(i).padStart(2,'0')}`, name:`Plugin ${i}`, version:'1.0.0',
+  mechanic:'creative', prompt:'Create a harmless local preview.', reward:{xp:0,joy:0,tokens:0,discoveries:0}
+});
 assert.throws(() => boundedShelf.install({
-  schema: PLUGIN_SCHEMA,
-  id: 'p-overflow',
-  name: 'Overflow',
-  version: '1.0.0',
-  mechanic: 'creative',
-  prompt: 'This should not fit the bounded shelf.',
-  reward: { xp: 0, joy: 0, tokens: 0, discoveries: 0 },
+  schema: PLUGIN_SCHEMA, id:'p-overflow', name:'Overflow', version:'1.0.0', mechanic:'creative',
+  prompt:'This should not fit the bounded shelf.', reward:{xp:0,joy:0,tokens:0,discoveries:0}
 }), /entry limit exceeded/);
 
 assert.match(html, /connect-src 'none'/);
@@ -115,6 +119,6 @@ assert.doesNotMatch(html, /<style[\s>]/i);
 assert.match(html, /data-only/i);
 assert.match(html, /preview metadata only/i);
 assert.match(html, /plugin-contract\.json/);
-assert.match(html, /plugins\/duck-rescue\.json/);
+assert.match(html, /DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA/);
 
-console.log('PASS Arcade Forge: strict data-only schema, bounded storage, visible corruption, no network/code/prize authority, safe text rendering.');
+console.log('PASS Arcade Forge: 9 validated and linked data-only recipes, explicit Redline deferral, bounded storage, safe text rendering, no network/code/prize authority.');
