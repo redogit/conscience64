@@ -75,8 +75,8 @@ jobs:
           node --check tools/semantic-routing.mjs
           node --check tools/semantic-query.mjs
           node --check tools/semantic-applicability.mjs
-          if test -f tools/hypothesis-algorithm-builder.mjs; then node --check tools/hypothesis-algorithm-builder.mjs; fi
-          if test -f tools/run-hypothesis-algorithm-builder.mjs; then node --check tools/run-hypothesis-algorithm-builder.mjs; fi
+          node --check tools/hypothesis-algorithm-builder.mjs
+          node --check tools/run-hypothesis-algorithm-builder.mjs
           node --check tools/query-semantic-corpus.mjs
           node --check tools/build-semantic-corpus-map.mjs
       - name: Verify deterministic semantic cross-reference behavior and stress bound
@@ -89,6 +89,47 @@ jobs:
         run: node tools/semantic-applicability.test.mjs
       - name: Verify governed hypothesis Algorithm Builder
         run: node tools/hypothesis-algorithm-builder.test.mjs
+      - name: Exercise hypothesis Algorithm Builder CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          IN="$RUNNER_TEMP/hypothesis-builder-input.json"
+          OUT="$RUNNER_TEMP/hypothesis-builder-output.json"
+          cat > "$IN" <<'JSON'
+          {
+            "seed": {
+              "intuition": "Difference, transformation, composition, and repair may share a common reversible carrier.",
+              "subject": "reversible distinction carrier",
+              "formalStatement": "For the tested binary state space, one delta can describe and replay a state transition.",
+              "assumptions": ["finite binary states", "equal-width states"],
+              "observables": ["roundTrip", "targetReached"],
+              "scope": "finite binary calibration",
+              "provenance": {"kind": "user-intuition", "source": "ci-fixture"}
+            },
+            "plan": {
+              "baselineState": {"carrier": "xor", "mode": "reversible"},
+              "interventions": [{"id": "without-replay", "factor": "mode", "value": "describe-only"}],
+              "observations": ["roundTrip"],
+              "expected": [
+                {"conditionId": "baseline", "field": "roundTrip", "relation": "eq", "value": true},
+                {"conditionId": "without-replay", "field": "roundTrip", "relation": "eq", "value": false}
+              ]
+            },
+            "xorCalibration": {"before": "101101", "after": "011001"},
+            "manifest": {"seeds": [1, 2, 3]}
+          }
+          JSON
+          node tools/run-hypothesis-algorithm-builder.mjs --input "$IN" --output "$OUT"
+          node - "$OUT" <<'NODE'
+          const fs=require('node:fs');
+          const data=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+          if(data.schema!=='conscience64.hypothesis-algorithm-builder-run/v1')throw new Error('wrong hypothesis-builder run schema');
+          if(data.seed?.epistemicStatus!=='hypothesis-only')throw new Error('intuition was promoted');
+          if(data.xorCalibration?.delta!=='110100')throw new Error('wrong XOR calibration delta');
+          if(data.manifest?.executionStatus!=='not-executed')throw new Error('manifest falsely claims execution');
+          if(!data.boundaries.includes('INTUITION != EVIDENCE'))throw new Error('missing intuition boundary');
+          console.log(`HYPOTHESIS_BUILDER_OK hypothesis=${data.seed.id} conditions=${data.plan.conditions.length} delta=${data.xorCalibration.delta}`);
+          NODE
       - name: Exercise current repository Situation query CLI
         shell: bash
         run: |
