@@ -12,6 +12,12 @@ The MMO World page directly runs the already smoke-tested Explorer World shard w
 
 Advertising should point to this stable Conscience64 URL and grow interest gradually rather than bypassing safety, recovery, stability, moderation/support-capacity, or operating-cost gates.
 
+## Research analytics
+
+[Research Analytics](https://redogit.github.io/conscience64/analytics/) is an evidence-bounded event-stream view for observations, tests, verification, contradictions, interpretations, boundary changes, revisions, promotions, and reopened questions. The browser validates every event before rendering it and labels fallback/demo data explicitly. GitHub Pages is only the static view; it is not represented as the authoritative ledger or a live event backend.
+
+The companion LLVM bridge emits the same JSON contract from compiled experiments. CI builds the bridge, validates its emitted event, rejects unknown event kinds, and runs the browser contract checks before analytics changes are published.
+
 ## Try the free projects
 
 The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into a growing set of usable browser projects:
