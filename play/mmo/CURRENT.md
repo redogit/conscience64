@@ -36,16 +36,26 @@
 - `forge.html` builds choice, answer, and creative mini-game recipes.
 - `conscience64.mmo.plugin/v1` is data-only and validated by `plugin-runtime.js`.
 - Plug-ins can be installed, removed, imported and exported locally.
-- Installed plug-ins are now discovered by the main MMO and rendered as local arcade cabinets.
+- Installed plug-ins are discovered by the main MMO and rendered as local arcade cabinets.
 - A validated installed plug-in can be played from the main MMO without rebuilding the site.
 - Plug-in rewards are capped and remain local.
 - HTML-like plug-in text is rendered as text, not interpreted as executable markup.
 - Boundary retained: `PLUGIN_DATA != EXECUTABLE_AUTHORITY`.
 
+### Portable local player state
+- `conscience64.mmo.save/v1` is validated by `save-runtime.js`.
+- The game exposes explicit Save, Load, Export, Import, and Clear-saved-copy controls.
+- Nothing loads automatically on page startup.
+- The save carries bounded local progress, role, shapeshifter form, motto, and up to 12 visible chronicle entries.
+- Imported save data changes the current local run but is not automatically persisted as the browser's saved copy.
+- Unknown authority-like fields are stripped by validation rather than promoted.
+- A local save is portable player data, not authoritative multiplayer state and not prize proof.
+- Boundary retained: `LOCAL_SAVE != SERVER_AUTHORITY`.
+
 ### Architecture and governance
 - `LEVELS.md` defines Levels 1–12 and the annual emergent Mystery 13th.
 - `MYSTERY_13TH != PREPLANNED_LEVEL_13`.
-- `LINKAGES.md` and `linkages.json` connect the player, research, plug-in, release, prize, verification and history surfaces.
+- `LINKAGES.md` and `linkages.json` connect the player, research, plug-in, save, release, prize, verification and history surfaces.
 - `RELEASE_PLAN_2026-11-15.md` defines the v1.0 roadmap and launch gates.
 - Prize Vault is visible but redemption is disabled.
 
@@ -56,8 +66,9 @@ The repository currently contains:
 - `play/test.mjs` — Play static/data checks.
 - `play/mmo/test-reality.mjs` — Reality Canon and cross-file regression checks.
 - `play/mmo/test-plugins.mjs` — executable plug-in validation/storage/reward-boundary checks.
+- `play/mmo/test-save.mjs` — executable save validation/storage/import-export/boundary checks.
 - `play/browser-test.mjs` — existing Play browser checks.
-- `play/mmo/browser-test.mjs` — MMO browser smoke test for grounded surfaces, 320px layout, astronomy labeling, plug-in discovery/play, bounded rewards and text safety.
+- `play/mmo/browser-test.mjs` — MMO browser smoke test for grounded surfaces, 320px layout, astronomy labeling, plug-in discovery/play, bounded rewards, text safety, explicit save/load and no-auto-load behavior.
 - `.github/workflows/playground.yml` — configured to run all of the above.
 
 ### Important verification status
@@ -98,9 +109,10 @@ Current state:
 
 Also:
 
+- `LOCAL_SAVE != SERVER_AUTHORITY`
 - `LOCAL_SCORE != VERIFIED_ACHIEVEMENT`
 - `VERIFIED_ACHIEVEMENT != PRIZE_ELIGIBILITY`
-- no current local plug-in, local score, client state, or Conscience64 retrieval can establish real-world prize eligibility.
+- no current local save, plug-in, local score, client state, or Conscience64 retrieval can establish real-world prize eligibility.
 
 ## Scientific boundary
 
@@ -116,9 +128,9 @@ They are **not**:
 ## Next high-value batches
 
 1. Observe and repair CI failures until the current branch is green.
-2. Add persistent/exportable local player-world state without confusing it with authoritative multiplayer state.
-3. Expand grounded activities before adding more spectacular anomalies.
-4. Add accessible alternatives to timed/reaction activities.
+2. Expand grounded activities before adding more spectacular anomalies.
+3. Add accessible alternatives to timed/reaction activities.
+4. Extend portable player state only when a new field has a clear local-life purpose.
 5. Build the first authoritative multiplayer vertical slice only after local state/contracts are stable.
 6. Keep prize activation on its separate legal/verification/fulfillment gate.
 
