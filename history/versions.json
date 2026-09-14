@@ -1,0 +1,149 @@
+{
+  "schema": "redogit/history-catalog/1",
+  "updated": "2026-09-14",
+  "facets": [
+    {
+      "id": "index",
+      "name": "Conscience64 / Space Lens",
+      "path": "index.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "coordinate-space-index",
+      "name": "Coordinate Space",
+      "path": "coordinate-space/index.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "research-projects-index",
+      "name": "Research records",
+      "path": "research/projects/index.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "compare",
+      "name": "Source Compare",
+      "path": "play/compare/index.html",
+      "scope": "Saved local documents and source revisions."
+    },
+    {
+      "id": "play-computational-chorus-index",
+      "name": "computational-chorus",
+      "path": "play/computational-chorus/index.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "garden",
+      "name": "Pattern Garden",
+      "path": "play/garden/index.html",
+      "scope": "Saved local documents and source revisions."
+    },
+    {
+      "id": "play-index",
+      "name": "Playground",
+      "path": "play/index.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "play-musilanguage-index",
+      "name": "musilanguage",
+      "path": "play/musilanguage/index.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "play-musilanguage-radio",
+      "name": "musilanguage/radio",
+      "path": "play/musilanguage/radio.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "play-musilanguage-single",
+      "name": "musilanguage/single",
+      "path": "play/musilanguage/single.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "play-musilanguage-word-forge",
+      "name": "musilanguage/word-forge",
+      "path": "play/musilanguage/word-forge.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    },
+    {
+      "id": "orbit",
+      "name": "Orbit Shelf",
+      "path": "play/orbit/index.html",
+      "scope": "Saved local documents and source revisions."
+    },
+    {
+      "id": "steps",
+      "name": "Small Steps",
+      "path": "play/steps/index.html",
+      "scope": "Saved local documents and source revisions."
+    },
+    {
+      "id": "weave",
+      "name": "Word Weave",
+      "path": "play/weave/index.html",
+      "scope": "Saved local documents and source revisions."
+    },
+    {
+      "id": "search",
+      "name": "Orbit Search",
+      "path": "research/cross-carrier/2026-09-13/internal-update/global_search/index.html",
+      "scope": "Saved local documents and source revisions."
+    },
+    {
+      "id": "about-index",
+      "name": "About me",
+      "path": "about/index.html",
+      "scope": "Source revisions and native export/import where provided; no general runtime-state restore."
+    }
+  ],
+  "repositories": [
+    {
+      "name": "redogit",
+      "branch": "main"
+    },
+    {
+      "name": "conscience64",
+      "branch": "main"
+    },
+    {
+      "name": "Other-Projects-",
+      "branch": "main"
+    },
+    {
+      "name": "Dream-To-Action",
+      "branch": "main"
+    },
+    {
+      "name": "orbit",
+      "branch": "main"
+    },
+    {
+      "name": "MauiBrickBreak",
+      "branch": "master"
+    },
+    {
+      "name": "FirstNeuralNetwork",
+      "branch": "master"
+    }
+  ],
+  "releases": [
+    {
+      "name": "Pages and About Me update",
+      "commit": "02d710cd8a985d8672cc0fd83b518db9d04db8f4",
+      "status": "Pages deployment confirmed"
+    },
+    {
+      "name": "Internal workspace and contextual questions",
+      "commit": "83d5bab5623dbbfff669a6fbbc3a27a4c48bfc1f",
+      "status": "Pages deployment confirmed"
+    },
+    {
+      "name": "Voice-enabled Coordinate Space baseline",
+      "commit": "b6da9fcc8e56019b27656f7e244a8b1f763ed15c",
+      "status": "Pages deployment recorded"
+    }
+  ]
+}

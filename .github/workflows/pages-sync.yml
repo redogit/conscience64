@@ -6,6 +6,7 @@ on:
     paths:
       - 'index.html'
       - 'about/**'
+      - 'history/**'
       - 'app.js'
       - 'voice-anywhere.js'
       - 'research-song.js'
@@ -61,6 +62,9 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+
+      - name: Verify local checkpoint restore boundaries
+        run: node history/test.mjs
 
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs

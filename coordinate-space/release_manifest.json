@@ -17,7 +17,7 @@
     "example.py": {"bytes": 1062, "sha256": "254218068cc59abd5b17d956f2269985c1922be983dbdd017806b4a3234b11de"},
     "float64_coordinate_builder.py": {"bytes": 22158, "sha256": "cabb18665bdad165b110b67453be7b04cc71d83fa5a91598276d768b98a8f41e"},
     "i18n.js": {"bytes": 3613, "sha256": "ba415ee059c445fceb1a93b66666482a3952ceebf7c6019ec7b68701d68ac9b9"},
-    "index.html": {"bytes": 10630, "sha256": "8d38f5c6aadb63cfb67fd315d469587f77fdfdf6616dae9370d8359e960c4fc3"},
+    "index.html": {"bytes": 10720, "sha256": "ffcfbd012037a602cd16ec153426860b50e29360b5b0a891ebd7cda55e770f06"},
     "intake_browser_checks.py": {"bytes": 7040, "sha256": "6883763ac0abdeed57fd601bdced1a862f279893e71ab7d84c7133d1b010b08c"},
     "locales.js": {"bytes": 33292, "sha256": "f80e9380bfee4308480b94661e419c6013698a55117e7201f8b331c7c23538ff"},
     "requirements.txt": {"bytes": 83, "sha256": "7466ba49fcf8fa63d6b7847c1537bcf072c5a021eb804be97636b3b8a1ce9bf9"},

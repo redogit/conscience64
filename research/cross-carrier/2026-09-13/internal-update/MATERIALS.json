@@ -3779,7 +3779,7 @@
       "successor": {
         "sha256": "e591284b02ef4b2ae107d66c0fda1cd39a3fd14bb5d8cf49f170f88ddc017e27",
         "bytes": 6266,
-        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
+        "reason": "Contextual questions and REDOGIT history/restore navigation; predecessor retained"
       }
     },
     {
@@ -3838,9 +3838,9 @@
       "representation": "recovery_bundle",
       "direct": "global_search/index.html",
       "successor": {
-        "sha256": "44e0af491e78f311e0e29d581a87bcb75c5fa219eeb3c800f0bf566de0da7ba8",
-        "bytes": 87688,
-        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
+        "sha256": "5daa3f6c21a8d60e588c93a24b99001f11001c1db464d333507b85eea66102ba",
+        "bytes": 87774,
+        "reason": "Contextual questions and REDOGIT history/restore navigation; predecessor retained"
       }
     },
     {
@@ -3850,9 +3850,9 @@
       "representation": "recovery_bundle",
       "direct": "global_search/interface.html",
       "successor": {
-        "sha256": "1df80e02d9bcbf1d83d7fabaf2d160144d9f49c162c7f5b6c70aa196b4dff693",
-        "bytes": 19784,
-        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
+        "sha256": "6c01aaa2e2a03abf5e0be25937ebf505b9589759c03b4032a1c0f8f6e06a9ee3",
+        "bytes": 19870,
+        "reason": "Contextual questions and REDOGIT history/restore navigation; predecessor retained"
       }
     },
     {
@@ -4046,7 +4046,7 @@
       "successor": {
         "sha256": "c0d062c6fd01d448591c0945a21b0492b29d943fdfa5cbb99125af8be594c0c7",
         "bytes": 3763,
-        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
+        "reason": "Contextual questions and REDOGIT history/restore navigation; predecessor retained"
       }
     },
     {
@@ -4121,7 +4121,7 @@
       "successor": {
         "sha256": "16fb14226b45f8481c44fd31075c5c049be17b9710c4169712efba01056bd838",
         "bytes": 2434,
-        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
+        "reason": "Contextual questions and REDOGIT history/restore navigation; predecessor retained"
       }
     },
     {
