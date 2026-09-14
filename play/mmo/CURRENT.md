@@ -68,7 +68,7 @@
 - `RELEASE_PLAN_2026-11-15.md` defines the v1.0 roadmap and launch gates.
 - Prize Vault is visible but redemption is disabled.
 
-## Verification configured
+## Verification configured and observed
 
 The repository currently contains:
 
@@ -78,15 +78,30 @@ The repository currently contains:
 - `play/mmo/test-save.mjs` — executable save validation/storage/import-export/boundary checks.
 - `play/browser-test.mjs` — existing Play browser checks.
 - `play/mmo/browser-test.mjs` — MMO browser smoke test for six-game Starter Pack Forge-to-MMO installation/discovery, grounded surfaces, 320px layout, astronomy labeling, plug-in play, bounded rewards, text safety, the untimed Redline route, explicit save/load and no-auto-load behavior.
-- `.github/workflows/playground.yml` — configured to run all of the above.
+- `.github/workflows/playground.yml` — configured to run all of the above plus predecessor MMO World, Explorer World, Arcade Forge, and Fuzzball gates.
 
-### Important verification status
+### Observed verification status — September 14, 2026
 
-This branch adds two new Starter Pack activities. The inherited mainline verification was green before this branch began, but the six-game successor itself must be treated as configured/unverified until its own current-head CI run is observed passing.
+Pinned revision `5a7bccca080ae8fb2fd4a340d4110496a0d96afe` has an observed successful Play workflow run (`34816246833`). The exact checked-out SHA was verified before execution. The run observed successful results for:
+
+- Play static/data checks and the eight-project registry;
+- grounded MMO Reality Canon and cross-file boundaries;
+- data-only plug-in validation;
+- portable local-save validation;
+- predecessor MMO World / Arcade Forge contracts;
+- existing Play Chrome checks;
+- grounded MMO successor Chrome checks, including 12 activity slots, 320px layout, astronomy labeling, plug-in play, untimed routes and explicit save/load;
+- Explorer World Chrome checks;
+- Arcade Forge Chrome checks;
+- Fuzzball hidden-alpha syntax and deterministic-world checks.
+
+The GitHub Pages build/deploy for the same SHA (`34816363013`) also completed successfully. This is deployment evidence for the static public surface, not evidence that roadmap-only networked MMO, moderation, prize, manual accessibility, security/load, or recovery gates are complete.
+
+The evidence rule remains:
 
 `TEST_CONFIGURED != TEST_OBSERVED_PASSING`
 
-Do not call the six-game successor green until an actual run/result for this branch is observed.
+For this pinned revision, the configured checks above **were observed passing**. Future revisions must earn that status again.
 
 ## Accessibility boundary
 
@@ -122,7 +137,7 @@ The following remain roadmap work, not current capabilities:
 - full localization parity for the MMO;
 - completed manual assistive-technology testing;
 - completed security/load/recovery release gates;
-- production deployment of this successor branch.
+- production networked deployment of the shared-world successor.
 
 ## Prize boundary
 
@@ -151,12 +166,11 @@ They are **not**:
 
 ## Next high-value batches
 
-1. Observe and repair six-game Starter Pack CI until the current branch is green.
-2. Add the remaining two movement/reaction activities with explicit non-timed alternatives, completing the current 12-activity v1.0 category mix.
-3. Continue adding equivalent non-timed/non-audio routes wherever an activity otherwise depends on speed or sensory modality.
-4. Extend portable player state only when a new field has a clear local-life purpose.
-5. Build the first authoritative multiplayer vertical slice only after local state/contracts are stable.
-6. Keep prize activation on its separate legal/verification/fulfillment gate.
+1. Add the remaining two movement/reaction activities with explicit non-timed alternatives, completing the current 12-activity v1.0 category mix.
+2. Continue adding equivalent non-timed/non-audio routes wherever an activity otherwise depends on speed or sensory modality.
+3. Extend portable player state only when a new field has a clear local-life purpose.
+4. Build the first authoritative multiplayer vertical slice only after local state/contracts are stable.
+5. Keep prize activation on its separate legal/verification/fulfillment gate.
 
 ## Reconstruction rule
 
