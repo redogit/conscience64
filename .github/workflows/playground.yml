@@ -44,6 +44,8 @@ jobs:
         run: node play/mmo/test-plugins.mjs
       - name: Verify MMO portable local save runtime
         run: node play/mmo/test-save.mjs
+      - name: Verify Explorer World local progress contract
+        run: node play/explorer-world/progress-test.mjs
       - name: Verify canonical MMO World and Arcade Forge contracts
         run: node play/mmo-world/test.mjs
       - name: Verify Redline character cooperation contract
@@ -54,6 +56,8 @@ jobs:
         run: node play/mmo/browser-test.mjs
       - name: Exercise Explorer World in Chrome
         run: node play/explorer-world/browser-test.mjs
+      - name: Exercise Explorer/MMO local progress in Chrome
+        run: node play/explorer-world/progress-browser-test.mjs
       - name: Exercise Arcade Forge in Chrome
         run: node play/mmo-world/forge/browser-test.mjs
       - name: Verify Fuzzball hidden alpha model
