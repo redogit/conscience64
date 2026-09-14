@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Conscience64 MMO RPG: a red-world browser game prototype built around exploration, games inside the game, creative action, cooperation, monsters, discoveries, and a future no-purchase real-world prize program.">
 <title>Conscience64 MMO RPG · Real World Game</title>
 <link rel="stylesheet" href="style.css">
@@ -35,6 +35,13 @@
   <div><small>DISCOVERIES</small><strong id="discoveries">0</strong></div>
   <div><small>WORLD TOKENS</small><strong id="tokens">0</strong></div>
 </section>
+
+<section class="cooperation" aria-labelledby="cooperation-title">
+  <div><p class="eyebrow">Direct cooperation</p><h2 id="cooperation-title">Conscience64 Companion</h2></div>
+  <p id="conscience-state" role="status" aria-live="polite">Connecting to the Conscience64 public research space…</p>
+  <p class="cooperation-note">The game can ask the actual Conscience64 browser API for bounded research/project context and record IRPO interactions. Retrieved material can inspire a world event; it does not become proof, prize verification, or an autonomous command.</p>
+</section>
+<iframe id="conscience-companion" class="api-frame" src="../../" title="Conscience64 public read-only companion API" loading="eager"></iframe>
 
 <section class="world" aria-labelledby="world-title">
   <div class="section-head"><div><p class="eyebrow">World map</p><h2 id="world-title">The Red Wilds</h2></div><p id="world-status" role="status" aria-live="polite">Choose somewhere to go.</p></div>
