@@ -1,6 +1,7 @@
 {
   "schema": "conscience64.redline.character-materials/v1",
   "characterId": "redline-shapeshifter",
+  "ageClass": "adult",
   "status": "design-spec-not-production-canon",
   "presentation": {
     "tone": ["risky", "provocative", "neon-noir", "rain-soaked", "adult-fictional-character"],
@@ -11,7 +12,7 @@
     "skin": {
       "channels": ["baseColor", "normal", "roughness", "ao"],
       "optional": ["subsurfaceMask", "microNormal"],
-      "notes": "Fictional character skin material; no biometric reconstruction from source imagery."
+      "notes": "Fictional adult character skin material; no biometric reconstruction from source imagery."
     },
     "hair": {
       "channels": ["baseColor", "normal", "roughness", "opacity"],
@@ -58,6 +59,8 @@
     "wetDryStatesRequired": true,
     "lodTextureBudgetRequired": true,
     "darkSceneReadabilityRequired": true,
-    "highResolutionFallbackRequired": true
+    "highResolutionFallbackRequired": true,
+    "automaticChildInheritance": false,
+    "childMaterialsRequireSeparateAgeAppropriateSpecification": true
   }
 }

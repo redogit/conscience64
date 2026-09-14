@@ -1,6 +1,7 @@
 {
   "schema": "conscience64.redline.shapeshifter-states/v1",
   "characterId": "redline-shapeshifter",
+  "ageClass": "adult",
   "fictional": true,
   "identityClaim": false,
   "reversible": true,
@@ -63,6 +64,9 @@
     "noBiometricReplicationRequirement": true,
     "noSensitiveTraitInference": true,
     "allStateChangesAuthoredFiction": true,
-    "deterministicTransitionIDs": true
+    "deterministicTransitionIDs": true,
+    "childCharacterIsSeparateEntity": true,
+    "noAgeTransformBetweenAdultAndChild": true,
+    "childStateIdsAllowed": false
   }
 }

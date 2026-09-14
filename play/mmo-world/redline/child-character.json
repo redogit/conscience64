@@ -1,0 +1,61 @@
+{
+  "schema": "conscience64.redline.child-character/v1",
+  "characterId": "redline-child",
+  "fictional": true,
+  "ageClass": "child",
+  "exactAge": null,
+  "identityClaim": false,
+  "relationship": {
+    "role": "family-child",
+    "exactFamilyMapping": "story-authored-not-inferred-from-reference-media"
+  },
+  "presentation": {
+    "ageAppropriate": true,
+    "sexualizedPresentationAllowed": false,
+    "romanceOrSexualStorylineAllowed": false,
+    "adultProvocativeMaterialInheritanceAllowed": false,
+    "adultShapeshifterStateInheritanceAllowed": false,
+    "wardrobeDirection": [
+      "practical-weatherwear",
+      "layered-comfortable-clothing",
+      "high-visibility-rain-details",
+      "durable-footwear"
+    ],
+    "visualTone": [
+      "curious",
+      "brave",
+      "playful",
+      "protected",
+      "rainy-neon-world-compatible"
+    ]
+  },
+  "contentBoundary": {
+    "matureOrExplicitContentAllowed": false,
+    "whenChildPresent": "block-or-replace-before-render",
+    "unknownAgeContent": "block-until-classified",
+    "matureModuleVisibility": "off",
+    "explicitFrameFallback": "safe-world-frame",
+    "childAndAdultContentPipelinesSeparate": true
+  },
+  "gameplay": {
+    "directCombatTarget": false,
+    "reactionTimeGate": false,
+    "playerWorthScoring": false,
+    "primaryLoops": [
+      "exploration",
+      "discovery",
+      "puzzles",
+      "collection",
+      "learning",
+      "family-story-beats"
+    ]
+  },
+  "constraints": {
+    "noRealPersonIdentityInference": true,
+    "noBiometricReplicationRequirement": true,
+    "noSensitiveTraitInference": true,
+    "childIsSeparateEntityFromAdultShapeshifter": true,
+    "noAgeTransformBetweenAdultAndChild": true,
+    "ageAppropriateContentAlways": true
+  }
+}
