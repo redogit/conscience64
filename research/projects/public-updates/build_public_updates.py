@@ -105,14 +105,13 @@ def build_snapshot(repo_root: Path, admissions_path: Path) -> dict:
         if "record" not in entry:
             raise PublicationError(f"admission {index}: missing record path")
         record_rel = safe_relative(entry["record"], field="record")
-        # Privacy boundary: do not even read a private record file.
         if classification == "private":
             continue
 
         record_path = (admissions_path.parent / record_rel).resolve()
         if publication_root not in record_path.parents:
             raise PublicationError(f"admission {index}: record escaped publication directory")
-        record, record_raw = read_json(record_path)
+        record, _record_raw = read_json(record_path)
         validate_record(record, record_path=record_rel.as_posix())
 
         record_id = record["id"]
@@ -136,7 +135,7 @@ def build_snapshot(repo_root: Path, admissions_path: Path) -> dict:
             "source_path": source_rel.as_posix(),
             "source_blob_sha1": git_blob_sha1(source_raw),
             "source_bytes": len(source_raw),
-            "record_sha256": sha256_hex(record_raw),
+            "record_sha256": sha256_hex(canonical_json(record).encode("utf-8")),
             "evidence_relation": record["evidence_relation"],
         })
 

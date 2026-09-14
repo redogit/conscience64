@@ -7,7 +7,7 @@
       "evidence_relation": "same-source",
       "id": "2026-09-14-fuzzball-hidden-alpha",
       "published_at": "2026-09-14T00:00:00Z",
-      "record_sha256": "499c6336379ec1e95529e37f1ff995860d6d7927334fe1b8b4b4828c294ec6c6",
+      "record_sha256": "5b35af7fec1a38dce971e9fe97e34b7669d7bac6378c8f4d4b7bbcd408eb3992",
       "source_blob_sha1": "e034d9d52f9add5492cb634b50a6f7269f5b9504",
       "source_bytes": 3424,
       "source_path": "research/updates/2026-09-14-fuzzball-hidden-alpha.md",
