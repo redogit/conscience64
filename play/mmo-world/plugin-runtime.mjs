@@ -123,7 +123,9 @@ export function createPluginShelf(storage, options = {}) {
   const key = options.key || STORAGE_KEY;
 
   function read() {
-    const raw = storage.getItem(key);
+    let raw;
+    try { raw = storage.getItem(key); }
+    catch { throw new PluginStoreError('plugin shelf could not be read'); }
     if (raw == null || raw === '') return [];
     let parsed;
     try { parsed = JSON.parse(raw); }
@@ -153,6 +155,7 @@ export function createPluginShelf(storage, options = {}) {
   }
   function remove(id) {
     const cleanId = boundedText(id, 64, 'id');
+    if (!ID_PATTERN.test(cleanId)) throw new PluginStoreError('plugin id invalid');
     const rows = read().filter(row => row.id !== cleanId);
     persist(rows);
     return rows.length;
