@@ -48,7 +48,7 @@ A plug-in result remains local state. It does not become server authority, multi
 
 ## Grounded Starter Pack chain
 
-`explicit Forge button → four validated data-only recipes → local plug-in storage → MMO cabinet discovery → untimed local play`
+`explicit Forge button → six validated data-only recipes → local plug-in storage → MMO cabinet discovery → untimed local play`
 
 The starter recipes live in `forge.js` and use the same `conscience64.mmo.plugin/v1` validator as user-created recipes:
 
@@ -56,6 +56,8 @@ The starter recipes live in `forge.js` and use the same `conscience64.mmo.plugin
 - **Bus Transfer** — fictional in-game transit-reading input.
 - **Workshop Sort** — maker-garage organization choice.
 - **Observatory Label Check** — astronomy evidence-boundary choice.
+- **Repair Bench Remix** — creative/maker activity using harmless ordinary materials.
+- **Fuzzball: Question or Claim?** — research-boundary activity separating an open question from fact or proof.
 
 The pack does not install automatically. The player must select **Install Grounded Starter Pack** in Arcade Forge.
 
@@ -63,7 +65,26 @@ Boundary:
 
 `STARTER_PACK_INSTALL != SERVER_AUTHORITY`
 
-Installing or completing a starter activity does not establish multiplayer achievement authority or real-world prize eligibility.
+Installing or completing a starter activity does not establish multiplayer achievement authority or real-world prize eligibility. The Fuzzball activity also preserves:
+
+`OPEN_QUESTION != EVIDENCE != PROOF`
+
+## Activity-mix linkage
+
+Current explicit activity slots after installing the six-game pack:
+
+`4 built-in + 6 Starter Pack = 10`
+
+Current category coverage toward the November v1.0 mix:
+
+- puzzle/language/pattern: covered;
+- creative/maker: covered;
+- cooperative/helping: covered;
+- monster: covered;
+- Fuzzball question: covered;
+- movement/reaction: Redline provides one slot; **two additional movement/reaction activities remain**.
+
+Those future movement/reaction activities should each include an accessible non-timed alternative rather than making motor speed the only participation path.
 
 ## Portable local-life chain
 
@@ -165,7 +186,7 @@ Plug-ins are data-only. They cannot ship executable JavaScript, arbitrary HTML, 
 
 The dedicated MMO browser test checks:
 
-- Grounded Starter Pack installation in Forge and discovery of all four cabinets in the MMO;
+- Grounded Starter Pack installation in Forge and discovery of all six cabinets in the MMO;
 - grounded neighborhood and observatory surfaces load;
 - 1100px and 320px layouts avoid page-level horizontal overflow;
 - astronomy reconstruction stays labeled `NOT TELESCOPE DATA`;

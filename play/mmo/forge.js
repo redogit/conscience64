@@ -31,6 +31,17 @@
       prompt:'The roof display shows an EHT-inspired black-hole view created for the game. Which label preserves the evidence boundary?',
       choices:['In-game reconstruction — not telescope data','Direct photograph from this rooftop','Proof of a new black-hole discovery'],correctIndex:0,
       reward:{xp:10,joy:5,tokens:0,discoveries:1},description:'Untimed astronomy-literacy activity preserving observation versus reconstruction.'
+    },
+    {
+      schema:runtime.schema,id:'repair-bench-remix',name:'Repair Bench Remix',version:'1.0.0',mechanic:'creative',
+      prompt:'At the maker garage, combine a clean scrap panel, two reusable clips, and a marker into a harmless organizer or sign. Give what you made a name.',
+      reward:{xp:14,joy:9,tokens:1,discoveries:1},description:'Untimed maker activity focused on naming a small useful creation.'
+    },
+    {
+      schema:runtime.schema,id:'fuzzball-question-or-claim',name:'Fuzzball: Question or Claim?',version:'1.0.0',mechanic:'choice',
+      prompt:'Fuzzball hands you a card that says: “Could an unexplained pattern point to a useful question?” What kind of statement is that?',
+      choices:['An open question to investigate','An established scientific fact','Proof that the pattern has one cause'],correctIndex:0,
+      reward:{xp:12,joy:7,tokens:0,discoveries:1},description:'Untimed Fuzzball research-boundary activity: a question is not promoted into evidence or proof.'
     }
   ];
   function lines(id){return $(id).value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);}
