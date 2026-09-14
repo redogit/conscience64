@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="description" content="Conscience64 MMO RPG: a red-world browser game prototype built around exploration, games inside the game, creative action, cooperation, monsters, discoveries, and a future no-purchase real-world prize program.">
+<title>Conscience64 MMO RPG · Real World Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to game</a>
+<header class="topbar">
+  <a class="brand" href="../">CONSCIENCE64 / PLAY</a>
+  <span class="build">MMO RPG · WORLD 001 · LOCAL PROTOTYPE</span>
+</header>
+<main id="main" tabindex="-1">
+<section class="hero">
+  <p class="eyebrow">A game about having something worth doing</p>
+  <h1>CONSCIENCE64<br><span>MMO RPG</span></h1>
+  <p class="lede">Explore a ridiculous changing world. Play games inside the game. Build things. Help people. Race monsters. Solve strange problems. Be somebody because you chose what to do—not because a scoreboard told you who to be.</p>
+  <div class="hero-actions">
+    <button id="enter-world" type="button" class="primary">Enter the world</button>
+    <button id="random-event" type="button">Make something weird happen</button>
+  </div>
+  <p class="boundary">This first public build is single-device and local. It is an MMO-world prototype, not yet a networked MMO. Local scores are never proof of eligibility for a real-world prize.</p>
+</section>
+
+<section class="hud" aria-label="Player status">
+  <div><small>ROLE</small><strong id="role">Explorer</strong></div>
+  <div><small>LEVEL</small><strong id="level">1</strong></div>
+  <div><small>XP</small><strong id="xp">0</strong></div>
+  <div><small>JOY</small><strong id="joy">50</strong></div>
+  <div><small>DISCOVERIES</small><strong id="discoveries">0</strong></div>
+  <div><small>WORLD TOKENS</small><strong id="tokens">0</strong></div>
+</section>
+
+<section class="world" aria-labelledby="world-title">
+  <div class="section-head"><div><p class="eyebrow">World map</p><h2 id="world-title">The Red Wilds</h2></div><p id="world-status" role="status" aria-live="polite">Choose somewhere to go.</p></div>
+  <div class="zones">
+    <button class="zone" type="button" data-zone="monster"><span class="zone-icon" aria-hidden="true">👹</span><strong>Monster District</strong><small>Arcade battles, mutations, nonsense.</small></button>
+    <button class="zone" type="button" data-zone="race"><span class="zone-icon" aria-hidden="true">🏁</span><strong>Impossible Speedway</strong><small>Reaction racing against the world.</small></button>
+    <button class="zone" type="button" data-zone="puzzle"><span class="zone-icon" aria-hidden="true">◇</span><strong>Cipher Ruins</strong><small>Decode weird little mysteries.</small></button>
+    <button class="zone" type="button" data-zone="make"><span class="zone-icon" aria-hidden="true">🛠</span><strong>Maker Quarter</strong><small>Create, improve, repair, remix.</small></button>
+    <button class="zone" type="button" data-zone="help"><span class="zone-icon" aria-hidden="true">🤝</span><strong>Common Ground</strong><small>Cooperative tasks with useful outcomes.</small></button>
+    <button class="zone" type="button" data-zone="fuzz"><span class="zone-icon fuzz" aria-hidden="true">✹</span><strong>???</strong><small>Fuzzball definitely did not put this here.</small></button>
+  </div>
+</section>
+
+<section class="game-room" aria-labelledby="room-title">
+  <div class="section-head"><div><p class="eyebrow">Games inside the game</p><h2 id="room-title">Tonight's Arcade</h2></div><button id="shuffle-games" type="button">Shuffle arcade</button></div>
+  <div class="games">
+    <article class="game-card"><div><small>GAME 01</small><h3>Monster Mood</h3><p>A monster flashes a mood. Match it before it mutates.</p></div><button type="button" data-game="monster">Play</button></article>
+    <article class="game-card"><div><small>GAME 02</small><h3>Redline</h3><p>Wait for green. Move too early and the road laughs at you.</p></div><button type="button" data-game="race">Play</button></article>
+    <article class="game-card"><div><small>GAME 03</small><h3>Cipher Snap</h3><p>Crack a tiny shifting symbol sequence.</p></div><button type="button" data-game="puzzle">Play</button></article>
+    <article class="game-card"><div><small>GAME 04</small><h3>Make Something</h3><p>Combine three ridiculous ingredients into a useful invention.</p></div><button type="button" data-game="make">Play</button></article>
+  </div>
+  <div id="playfield" class="playfield" tabindex="-1">
+    <h3 id="game-title">Pick a game.</h3>
+    <p id="game-prompt">The arcade is waiting.</p>
+    <div id="game-controls" class="game-controls"></div>
+    <p id="game-result" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<section class="identity" aria-labelledby="identity-title">
+  <div><p class="eyebrow">Being somebody</p><h2 id="identity-title">Who are you today?</h2><p>You can change roles. A role changes what the world offers; it does not rank your value.</p></div>
+  <label for="role-select">Choose a role</label>
+  <select id="role-select">
+    <option>Explorer</option><option>Builder</option><option>Helper</option><option>Researcher</option><option>Storyteller</option><option>Chaos Mechanic</option>
+  </select>
+  <label for="motto">Your current motto</label>
+  <input id="motto" maxlength="120" placeholder="What sounds like you today?">
+  <button id="save-identity" type="button">Use this identity</button>
+</section>
+
+<section class="prizes" aria-labelledby="prize-title">
+  <div class="section-head"><div><p class="eyebrow">Future real-world rewards</p><h2 id="prize-title">Prize Vault</h2></div><span class="locked">REDEMPTION NOT ACTIVE</span></div>
+  <p>Real-world prizes are designed as a future <strong>free-entry, achievement-based</strong> program. No purchase, wager, purchasable random chance, or cash-out mechanic is part of this prototype. Local browser scores are intentionally not accepted as prize proof.</p>
+  <div class="vault-grid">
+    <article><strong>Explorer Patch</strong><p>Planned physical recognition for verified exploration events.</p><small>Future / fulfillment not configured</small></article>
+    <article><strong>Builder Drop</strong><p>Planned small physical reward for verified maker challenges.</p><small>Future / fulfillment not configured</small></article>
+    <article><strong>World Event Prize</strong><p>Reserved for published skill or achievement events with official rules.</p><small>Future / no chance-based award active</small></article>
+  </div>
+  <details><summary>Prize integrity boundary</summary><p>Before redemption can activate, the game needs published eligibility and fulfillment rules, privacy-minimized verified event records, anti-tamper/server attestation, geographic and age restrictions where required, a support path, and a method for resolving disputes. Until then, every reward shown here is informational only.</p></details>
+</section>
+
+<section class="companion" aria-labelledby="companion-title">
+  <div><p class="eyebrow">Private companion</p><h2 id="companion-title">Shapeshifter</h2><p>Your fictional adult companion can change appearance and attitude with the world. The public build keeps presentation non-graphic. Mature presentation is not implemented in this public prototype.</p></div>
+  <button id="morph" type="button">Morph companion</button><p id="companion-state" role="status" aria-live="polite">Form: Red-world wanderer.</p>
+</section>
+
+<section class="chronicle" aria-labelledby="chronicle-title">
+  <div class="section-head"><div><p class="eyebrow">What actually happened</p><h2 id="chronicle-title">World Chronicle</h2></div><button id="reset" type="button">Reset local run</button></div>
+  <ol id="log"><li>You found the entrance to the Red Wilds.</li></ol>
+</section>
+</main>
+<footer><a href="../">All Play projects</a> · <a href="../../history/index.html?facet=mmo">History &amp; restore</a> · <a href="https://github.com/redogit/conscience64/tree/main/play/mmo">Source</a><p>Local browser prototype. No account. No payment. No active real-world prize redemption.</p></footer>
+<script src="game.js" defer></script>
+</body>
+</html>
