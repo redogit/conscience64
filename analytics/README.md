@@ -108,13 +108,18 @@ The bearer token protects **ingestion only**. `--allow-public-read` does not mak
 
 For any remote deployment, place the service behind an appropriate TLS/reverse-proxy/access-control layer and review the event data for privacy before exposing it. Do not put private or secret-bearing events into a publicly readable ledger.
 
-## Real recorded event fixture
+## Recorded real-event corpus
 
-`recorded-events/2026-09-14-consolidation.json` records one actual repository event: the successful September 13–14 Conscience64 Pages-source verification gate at revision `0e213a5d8dd685876d94600c443342d257363006`.
+`analytics/recorded-events/` contains selected **real repository events**, not demo fixtures. Each record keeps a tested scope, source, revision where applicable, and an explicit independence label.
 
-It is deliberately labeled `same-source`. The fixture is evidence that the named repository gate ran and passed within its declared scope; it is **not** independent validation of underlying scientific claims.
+Current entries include:
 
-CI ingests this real event through `server.py` and verifies that its provenance survives append/replay.
+- `2026-09-14-consolidation.json` — the successful September 13–14 Conscience64 publication gate at revision `0e213a5d8dd685876d94600c443342d257363006`;
+- `2026-09-14-arcade-forge-admission.json` — the bounded Arcade Forge contract/adversarial/Chrome/publication result at revision `c0ab6343ca0ecd91dcd84faaf66b79618112e12d`.
+
+Both are deliberately labeled `same-source`. They establish that the named repository checks ran and passed within their declared software scopes; they are **not** independent validation of underlying scientific claims.
+
+`test_recorded_events.py` enumerates every JSON record in this directory, checks its minimum provenance/contract shape, sends it through the real HTTP ingestion service, and verifies that provenance survives append/replay. Adding a malformed recorded event therefore breaks the analytics gate instead of silently growing an untested evidence folder.
 
 ## Evidence boundary
 
@@ -130,14 +135,14 @@ Browser contract:
 node analytics/test.mjs
 ```
 
-Live ledger/server:
+Live ledger/server and recorded-event corpus:
 
 ```bash
 cd analytics
-python3 -m unittest -v test_server.py
+python3 -m unittest -v test_server.py test_recorded_events.py
 ```
 
-The ingestion suite covers canonical IDs, replay/resume semantics, malformed-ledger detection, authentication, content type, event validation, exposure boundaries, static security headers, and the real recorded consolidation event.
+The ingestion suite covers canonical IDs, replay/resume semantics, malformed-ledger detection, authentication, content type, event validation, exposure boundaries, static security headers, and every current real recorded-event fixture.
 
 Second-pass review should still check:
 
