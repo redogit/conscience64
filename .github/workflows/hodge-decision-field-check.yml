@@ -34,6 +34,7 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          python3 --version
 
       - name: Re-run finite decision-field computation
         shell: bash
