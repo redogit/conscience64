@@ -1,0 +1,31 @@
+{
+  "experiment": "HODGE-W114-5LIFT-TWO-PAIR-COSET-SEARCH",
+  "status": "EXECUTED_EXACT_NECESSARY-CONDITION_OBSTRUCTION",
+  "base_wall": "W114",
+  "base_level": 114,
+  "base_representative": [1,7,78,79,86,91],
+  "lift_factor": 5,
+  "lift_level": 570,
+  "lifted_target": [5,35,390,395,430,455],
+  "reason_for_lift": "570 is the smallest positive multiple of 114 reached by an integer lift that is divisible by 5, activating the 5-standard family used in the published two-pair theorem.",
+  "enumeration": {
+    "units_mod_570": 144,
+    "unordered_nonzero_pairs": 162165,
+    "grade2_hodge_quadruples": 41615,
+    "method": "additive-hash meet-in-the-middle with exact full-unit-profile verification; hashing can add false candidates but cannot remove a true complementary profile",
+    "calibration": "same enumerator reproduces the exact prior m=110 grade-2 count 1648"
+  },
+  "lattice_filter": {
+    "published_generator_family": "Aoki S_m pair vectors plus all prime-standard vectors, p=2 included",
+    "independent_mod2_span_rank": 493,
+    "grade2_quadruples_with_same_mod2_quotient_remainder_as_target": 0,
+    "integer_reducer_rank": 497,
+    "target_in_S_570": false,
+    "double_target_in_S_570": true,
+    "integer_same_coset_hits_after_mod2_filter": 0
+  },
+  "result": "No grade-2 Hodge quadruple at level 570 satisfies even the necessary mod-2 quotient condition for lying in the lifted W114 target coset. Therefore no two-pair-standard coset-transfer witness exists for this 5-lift.",
+  "strength": "The zero mod-2-syndrome count is already decisive; it does not depend on the later integer-lattice reducer for excluding candidates.",
+  "combined_two_pair_boundary": "Base W70@70, W110@110, certified lifts W70@210 and W110@220, and the minimal 5-activating lift W114@570 all fail the necessary grade-2 same-coset condition for the published two-pair closure route.",
+  "claim_ceiling": "Mechanism-specific obstruction only. Other lifts, algebraic gap families, correspondences, exchange families, or new geometric constructions remain open. This is not a non-algebraicity result and uses no P-vs-NP evidence."
+}
