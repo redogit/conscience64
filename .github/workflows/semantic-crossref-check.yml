@@ -13,6 +13,10 @@ on:
       - 'tools/semantic-query.test.mjs'
       - 'tools/semantic-applicability.mjs'
       - 'tools/semantic-applicability.test.mjs'
+      - 'tools/hypothesis-algorithm-builder.mjs'
+      - 'tools/hypothesis-algorithm-builder.test.mjs'
+      - 'tools/run-hypothesis-algorithm-builder.mjs'
+      - 'tools/HYPOTHESIS_ALGORITHM_BUILDER.md'
       - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
@@ -31,6 +35,10 @@ on:
       - 'tools/semantic-query.test.mjs'
       - 'tools/semantic-applicability.mjs'
       - 'tools/semantic-applicability.test.mjs'
+      - 'tools/hypothesis-algorithm-builder.mjs'
+      - 'tools/hypothesis-algorithm-builder.test.mjs'
+      - 'tools/run-hypothesis-algorithm-builder.mjs'
+      - 'tools/HYPOTHESIS_ALGORITHM_BUILDER.md'
       - 'tools/query-semantic-corpus.mjs'
       - 'tools/build-semantic-corpus-map.mjs'
       - 'tools/SEMANTIC_CROSS_REFERENCE_MAP.md'
@@ -60,13 +68,15 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-      - name: Verify semantic mapper, corpus, query, and applicability syntax
+      - name: Verify semantic mapper, corpus, query, applicability, and hypothesis-builder syntax
         run: |
           node --check tools/semantic-crossref.mjs
           node --check tools/semantic-corpus.mjs
           node --check tools/semantic-routing.mjs
           node --check tools/semantic-query.mjs
           node --check tools/semantic-applicability.mjs
+          if test -f tools/hypothesis-algorithm-builder.mjs; then node --check tools/hypothesis-algorithm-builder.mjs; fi
+          if test -f tools/run-hypothesis-algorithm-builder.mjs; then node --check tools/run-hypothesis-algorithm-builder.mjs; fi
           node --check tools/query-semantic-corpus.mjs
           node --check tools/build-semantic-corpus-map.mjs
       - name: Verify deterministic semantic cross-reference behavior and stress bound
@@ -77,6 +87,8 @@ jobs:
         run: node tools/semantic-query.test.mjs
       - name: Verify explicit semantic-helper applicability and negative control
         run: node tools/semantic-applicability.test.mjs
+      - name: Verify governed hypothesis Algorithm Builder
+        run: node tools/hypothesis-algorithm-builder.test.mjs
       - name: Exercise current repository Situation query CLI
         shell: bash
         run: |
