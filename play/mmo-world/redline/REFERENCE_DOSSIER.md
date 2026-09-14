@@ -18,9 +18,9 @@ Hard boundaries:
 - user-supplied references require applicable rights/consent review before external reuse;
 - generated noir/shapeshifter studies are fictional design references.
 
-## Character direction
+## Adult shapeshifter direction
 
-The Redline character is a **fictional adult shapeshifter** with a risky, provocative noir presentation expressed through composition and materials rather than explicit sexual content.
+The adult Redline character is a **fictional adult shapeshifter** with a risky, provocative noir presentation expressed through composition and materials rather than explicit sexual content.
 
 Stable visual language:
 
@@ -31,12 +31,20 @@ Stable visual language:
 - asymmetry, occlusion and silhouette breaks that make a transformation readable at distance;
 - visual tension from stance, lighting and environment rather than identity claims about a source person.
 
+## Child character boundary
+
+Redline now also has a **separate fictional child character** described by `child-character.json`.
+
+The child is never an adult shapeshifter state, never an age-transformed form of the adult character, and never inherits the adult character's provocative presentation contract. Exact age and exact family mapping are left unresolved until story authors explicitly define them; neither is inferred from photographs or other reference media.
+
+When the child is present, mature or explicit content is blocked or replaced **before render**. The child presentation remains age-appropriate and is scoped to exploration, discovery, puzzles, collection, learning and family story beats. Reaction speed is never a progression gate or worth metric for the child.
+
 ## Five deliverables
 
-1. **Reference dossier** — this file and the existing provenance-aware gallery.
-2. **Material system** — `materials.json`; PBR families, overlays, LOD policy and wet/dry behavior.
-3. **Shapeshifter state system** — `shapeshifter-states.json`; reversible fictional states with explicit transitions.
-4. **Cooperation contract** — `cooperation.json`; Master, Compass, Library/Orbit, Reality Canon, Redline runtime and gallery responsibilities inside Conscience64.
+1. **Reference dossier** — this file and the existing provenance-aware gallery, including the child boundary.
+2. **Material system** — `materials.json`; PBR families, overlays, LOD policy and wet/dry behavior for the adult character, with no automatic inheritance by the child.
+3. **Character state system** — `shapeshifter-states.json` for the adult plus `child-character.json` as a separate entity; no adult↔child age transformation.
+4. **Cooperation contract** — `cooperation.json`; Master, Compass, Library/Orbit, Reality Canon, Redline runtime, visual library and child-content boundary responsibilities inside Conscience64.
 5. **Acceptance gate** — `verify-redline.mjs`, executed by the Playground workflow before merge.
 
 ## Canon boundary

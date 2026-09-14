@@ -47,12 +47,19 @@
       "paths": ["play/mmo/simple/visual-samples/manifest.json"],
       "role": "Supply provenance-aware reference imagery already admitted to the Red Wilds design surface.",
       "authority": "Reference-only; sample is not canon, implementation, evidence or identity."
+    },
+    {
+      "id": "child-boundary",
+      "paths": ["play/mmo-world/redline/child-character.json"],
+      "role": "Keep the fictional child character separate from adult shapeshifter states and enforce age-appropriate pre-render content handling.",
+      "authority": "May block or replace mature/explicit presentation for child-visible scenes; may not infer age, identity, biography or family details from media."
     }
   ],
   "redlineCharacter": {
     "dossier": "play/mmo-world/redline/REFERENCE_DOSSIER.md",
     "materials": "play/mmo-world/redline/materials.json",
     "states": "play/mmo-world/redline/shapeshifter-states.json",
+    "child": "play/mmo-world/redline/child-character.json",
     "verification": "play/mmo-world/redline/verify-redline.mjs"
   },
   "cooperationRules": [
@@ -62,6 +69,8 @@
     "Do not infer real-person identity or sensitive traits from imagery.",
     "Do not turn visual similarity into canonical biography.",
     "Keep Redline timing accessibility-neutral: no reaction-time pass/fail gate.",
+    "Keep the child character separate from adult shapeshifter states and adult provocative material inheritance.",
+    "Block or replace mature/explicit frames before rendering when the child is present.",
     "Require verification before merge."
   ]
 }
