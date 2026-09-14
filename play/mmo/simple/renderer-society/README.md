@@ -17,7 +17,7 @@ The current registry contains four entries:
 
 `reference-deterministic` is a routing/determinism intent. It is **not** a declaration that the current renderer has earned the separate `reference` governance classification.
 
-The tests exercise one existing Mercer & Red Street `player-pov` carrier job with deterministic diagnostic executor functions. Those diagnostic outputs test the control plane; they are not production imagery.
+The diagnostic executors exist to test the control plane; their outputs are not production imagery. `renderer-society.test.mjs` exercises detailed execution/failure provenance on the Mercer `player-pov` job. `renderer-society-metamorphic.test.mjs` separately verifies the admitted deterministic renderer across all three existing Mercer perspectives: `character-view`, `player-pov`, and `world-view`.
 
 ## Implemented control-plane behavior
 
@@ -36,6 +36,22 @@ The tests exercise one existing Mercer & Red Street `player-pov` carrier job wit
 
 Stable provenance hashes intentionally exclude wall-clock timestamps and mutable runtime measurements.
 
+## Verified metamorphic properties
+
+The bounded verification suite now establishes, for the declared Mercer diagnostic fixture:
+
+- the three perspectives retain three distinct source-job identities;
+- their render-request, diagnostic-artifact, and execution-set identities remain distinct rather than collapsing across viewpoints;
+- repeated execution with identical sealed inputs is deterministic under the injected diagnostic executor;
+- all three perspective executions reuse the same registry snapshot;
+- changing only one experimental stage version changes that stage manifest digest;
+- the containing pipeline digest changes because pipeline identity binds the exact ordered stage versions/digests;
+- the registry snapshot, candidate-set, and fan-out decision identities change downstream of that stage mutation;
+- the unmodified admitted renderer digest does not change;
+- neither the stage mutation nor three-perspective execution changes the sealed carrier plan or ECS job identities.
+
+This is structural/provenance evidence. It is not a measurement of production image quality or a governance promotion.
+
 ## Authority and claim ceiling
 
 ```text
@@ -50,6 +66,8 @@ EXPERIMENTAL != ADMITTED
 ADMITTED != TRUSTED
 ADMITTED != REFERENCE
 ROUTING_INTENT_REFERENCE_DETERMINISTIC != GOVERNANCE_CLASS_REFERENCE
+VIEWPOINT_CHANGE != WORLD_STATE_CHANGE
+STAGE_MANIFEST_CHANGE => PIPELINE_IDENTITY_CHANGE
 ```
 
 Renderer execution receives cloned downstream inputs. It has no supported write path into ECS/world authority.
@@ -73,9 +91,10 @@ From the repository root:
 
 ```bash
 node play/mmo/simple/renderer-society.test.mjs
+node play/mmo/simple/renderer-society-metamorphic.test.mjs
 node play/mmo/simple/visual-carrier-v2.test.mjs
 node play/mmo/simple/ecs.test.mjs
 node play/mmo/simple/test.mjs
 ```
 
-The public playground workflow runs the renderer-society contract alongside the existing MMO/ECS/browser gates.
+The public playground workflow runs both renderer-society contracts alongside the existing MMO/ECS/browser gates.
