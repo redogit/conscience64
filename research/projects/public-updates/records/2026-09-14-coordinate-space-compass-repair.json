@@ -1,0 +1,9 @@
+{
+  "evidence_relation": "same-source",
+  "id": "2026-09-14-coordinate-space-compass-repair",
+  "published_at": "2026-09-14T00:00:00Z",
+  "schema": "conscience64/public-research-update/v1",
+  "source_path": "research/updates/2026-09-14-coordinate-space-compass-manifest-repair.md",
+  "summary": "An intentional Compass presentation successor changed the public index identity without changing the audited codec/runtime core. The release manifest was reconciled while preserving the predecessor identity and the distinction between presentation changes and codec semantics.",
+  "title": "Coordinate Space Compass release-manifest repair"
+}

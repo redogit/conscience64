@@ -1,0 +1,9 @@
+{
+  "evidence_relation": "same-source",
+  "id": "2026-09-14-fuzzball-hidden-alpha",
+  "published_at": "2026-09-14T00:00:00Z",
+  "schema": "conscience64/public-research-update/v1",
+  "source_path": "research/updates/2026-09-14-fuzzball-hidden-alpha.md",
+  "summary": "A deterministic hidden browser-game alpha with bounded humanoid/world behavior was merged and verified within its declared software model. The new game remains explicitly distinct from the unresolved historical Fuzzball research carrier, and unlisted does not mean access-controlled.",
+  "title": "Fuzzball Hidden Game — Alpha 0.1"
+}
