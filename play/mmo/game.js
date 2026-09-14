@@ -124,7 +124,90 @@
     setPlayfield('Make Something',`Use “${m1}” + “${m2}” to ${need}. Give the invention a name.`);const input=document.createElement('input');input.type='text';input.maxLength=80;input.placeholder='Invention name';input.setAttribute('aria-label','Invention name');$('game-controls').appendChild(input);
     button('Build it',()=>{const name=input.value.trim()||'Unnamed Contraption';$('game-result').textContent=`${name} exists in the local chronicle. Usefulness remains wonderfully unverified.`;reward({xp:16,joy:10,tokens:2,discoveries:1},`Built ${name} from ridiculous constraints.`);$('game-controls').replaceChildren();});
   }
-  const games={monster:monsterGame,race:raceGame,puzzle:puzzleGame,make:makeGame};
+
+  function movementSequenceGame(config) {
+    setPlayfield(config.title, `${config.intro} Choose a movement challenge or an untimed route.`);
+    const run = untimed => {
+      const route=config.routes[Math.floor(Math.random()*config.routes.length)];
+      const modeTitle=`${config.title} — ${untimed?'untimed route':'movement challenge'}`;
+      const visible=`${config.routeLabel}: ${route.join(' → ')}`;
+      setPlayfield(modeTitle, untimed ? `${visible}. The route stays visible. Move when you are ready.` : `${visible}. Memorize it; the route will hide shortly.`);
+      let step=0;
+      const controls=[...new Set(config.routes.flat())];
+      const makeControls=()=>{
+        $('game-controls').replaceChildren();
+        controls.forEach(move=>button(move,()=>{
+          if(move===route[step]){
+            step+=1;
+            if(step===route.length){
+              $('game-result').textContent=untimed?config.untimedResult:config.challengeResult;
+              reward(untimed?config.untimedReward:config.challengeReward, `Finished ${config.title}${untimed?' using the untimed route':' movement challenge'}.`);
+              $('game-controls').replaceChildren();
+            } else {
+              $('game-result').textContent=`Move ${step} of ${route.length} complete.`;
+            }
+          } else {
+            step=0;
+            $('game-result').textContent='Not that move. No penalty; the route restarts from the first marker.';
+          }
+        }));
+      };
+      makeControls();
+      if(!untimed){
+        const token=modeTitle;
+        setTimeout(()=>{
+          if(state.activeGame===token) $('game-prompt').textContent='Route hidden. Follow the marked movement sequence from memory; mistakes carry no penalty.';
+        },1400);
+      }
+    };
+    button('Start movement challenge',()=>run(false));
+    button('Use untimed route',()=>run(true));
+  }
+
+  function sidewalkSlalomGame() {
+    movementSequenceGame({
+      title:'Sidewalk Slalom',
+      intro:'An arcade practice lane models a marked pedestrian path around puddles and cones.',
+      routeLabel:'Marked path',
+      routes:[['Left','Right','Left','Right'],['Right','Right','Left','Left'],['Left','Left','Right','Left']],
+      challengeReward:{xp:18,joy:7,tokens:1},
+      untimedReward:{xp:12,joy:6,tokens:1},
+      challengeResult:'You clear the marked practice lane from memory.',
+      untimedResult:'You clear the marked practice lane at your own pace.'
+    });
+  }
+
+  function parcelRelayGame() {
+    movementSequenceGame({
+      title:'Parcel Relay',
+      intro:'Inside the maker garage, an empty handcart follows floor arrows between marked bays.',
+      routeLabel:'Bay route',
+      routes:[['Forward','Left','Forward','Right'],['Forward','Right','Forward','Left'],['Left','Forward','Right','Forward']],
+      challengeReward:{xp:20,joy:7,tokens:1},
+      untimedReward:{xp:13,joy:6,tokens:1},
+      challengeResult:'The empty handcart reaches the marked bay from memory.',
+      untimedResult:'The empty handcart reaches the marked bay at your own pace.'
+    });
+  }
+
+  function installMovementCards() {
+    const shelf=root.querySelector('.game-room > .games');
+    if(!shelf || shelf.querySelector('[data-game="slalom"]')) return;
+    const cards=[
+      {tag:'MOVEMENT 01',name:'Sidewalk Slalom',description:'Follow a marked left/right practice route, with an untimed path available.',game:'slalom'},
+      {tag:'MOVEMENT 02',name:'Parcel Relay',description:'Guide an empty handcart through marked garage bays, with an untimed path available.',game:'relay'}
+    ];
+    for(const item of cards){
+      const article=document.createElement('article');article.className='game-card';
+      const copy=document.createElement('div');const small=document.createElement('small');small.textContent=item.tag;
+      const h3=document.createElement('h3');h3.textContent=item.name;const p=document.createElement('p');p.textContent=item.description;
+      const play=document.createElement('button');play.type='button';play.dataset.game=item.game;play.textContent='Play';
+      copy.append(small,h3,p);article.append(copy,play);shelf.appendChild(article);
+    }
+  }
+
+  const games={monster:monsterGame,race:raceGame,puzzle:puzzleGame,make:makeGame,slalom:sidewalkSlalomGame,relay:parcelRelayGame};
+  installMovementCards();
 
   function finishPlugin(plugin, message) {
     $('game-result').textContent = message;

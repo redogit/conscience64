@@ -8,7 +8,7 @@ These JSON files are **data-only local preview recipes** for the canonical `play
 
 The retired runtime selected one of four moods at random: `GRUMPY`, `CONFUSED`, `DELIGHTED`, or `SUSPICIOUS`, then asked the player to match the displayed mood.
 
-The current plug-in schema has no randomness primitive. Instead of claiming behavioral identity, the starter pack contains four fixed choice recipes—one for each original mood state:
+The current plug-in schema does not reproduce that random selector. Instead of claiming behavioral identity, the starter pack contains four fixed choice recipes—one for each original mood state:
 
 - `monster-mood-grumpy.json`
 - `monster-mood-confused.json`
@@ -27,15 +27,28 @@ The three exact retired puzzles map directly to the current `input` mechanic:
 
 ### Make Something
 
-The retired runtime randomly combined materials and purposes. The current schema can preserve a bounded **single creative prompt**, not that random generator. `make-something-duck-compass.json` is one explicit adaptation using two source materials and one source purpose.
+The retired runtime randomly combined materials and purposes. The current schema preserves one bounded **single creative prompt**, not that random generator. `make-something-duck-compass.json` is one explicit adaptation using two source materials and one source purpose.
 
-### Redline — deliberately not admitted
+### Redline — admitted through one new timing mechanic
 
-The retired Redline mini-game depended on elapsed reaction time and a delayed `GO` transition. The current `choice | input | creative` data contract cannot represent that timing behavior without changing its semantics.
+The retired Redline runtime had four consequential interaction semantics:
 
-Status: `DEFERRED_UNREPRESENTABLE_BY_CURRENT_PLUGIN_SCHEMA`.
+1. wait for a random delay of `900 + Math.random() * 1800` milliseconds — a source interval of `[900, 2700)` ms;
+2. pressing before `GO` is a false start;
+3. once `GO` appears, reaction time is measured from a monotonic `performance.now()` clock;
+4. the old local runtime attached `{xp:24, joy:7, tokens:2}` to completion and `{xp:3, joy:1}` to a false start.
 
-Do not encode Redline as a fake choice or answer recipe merely to increase the plug-in count. A future timing mechanic, if useful, should be a separate contract decision with its own bounds and browser tests.
+`redline-classic.json` is admitted through the `timing` mechanic with `minDelayMs: 900`, `maxDelayMs: 2700`, the source success reward, and the source false-start reward.
+
+The imported JSON still contains **no clock, timer callback, JavaScript, threshold, URL, or network authority**. `timing-runtime.mjs` is trusted canonical code that supplies the local clock/timer behavior.
+
+Status:
+
+`CORE_INTERACTION_SEMANTICS_ADAPTED / OLD_STATE_AUTHORITY_NOT_PRESERVED`
+
+The important difference is reward authority. The old runtime changed its own local game state. Arcade Forge displays those reward values as historical/local **preview metadata only**. It does not modify Explorer progression or create authoritative achievements.
+
+There is deliberately **no reaction-time pass/fail threshold**. The measured time is shown to the player but is not an accessibility gate, player-worth metric, progression requirement, or prize score. The Forge also exposes an immediate **Show signal now (practice)** control so waiting for a random signal is optional during preview.
 
 ## Existing example
 
@@ -43,4 +56,6 @@ Do not encode Redline as a fake choice or answer recipe merely to increase the p
 
 ## Verification
 
-`play/mmo-world/forge/test.mjs` validates every JSON plug-in in this directory against `plugin-runtime.mjs` and checks the expected starter lineage IDs. The broader Playground and Pages workflows then exercise the Forge in Chrome.
+- `play/mmo-world/timing-runtime.test.mjs` checks the source wait range, false start, monotonic reaction measurement, immediate practice signal, and cancellation with injected clocks/timers.
+- `play/mmo-world/forge/test.mjs` validates every JSON plug-in in this directory against `plugin-runtime.mjs`, including timing bounds and rejection of plug-in-supplied clocks/thresholds.
+- the broader Playground and Pages workflows exercise the Forge in Chrome.
