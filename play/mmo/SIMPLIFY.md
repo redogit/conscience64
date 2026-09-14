@@ -51,10 +51,11 @@ Advanced surfaces such as Arcade Forge, project history, research records, relea
 
 The simple game links to `simple/visual-samples/`, a reference-only gallery built from the current design session.
 
-- 19 image samples total;
+- 26 image samples total;
 - 12 user-supplied references;
-- 7 generated Red Wilds concept images;
-- optimized preview copies are embedded into five small gallery pages so the review surface works without a separate image build pipeline.
+- 14 generated Red Wilds concept images;
+- five existing gallery pages preserve the earlier 19-sample snapshot;
+- a sixth page carries seven newer generated concepts as small WebP review previews.
 
 These are **samples to learn from**, not automatic canon or finished production assets.
 
@@ -62,7 +63,11 @@ These are **samples to learn from**, not automatic canon or finished production 
 
 `REFERENCE_IMAGE != IMPLEMENTED_GAME_ASSET`
 
-Preserve provenance. For user-supplied images, verify applicable rights and consent before any reuse outside this project or beyond reference/design work.
+`REFERENCE != IDENTITY`
+
+Preserve provenance. For user-supplied images, verify applicable rights and consent before any reuse outside this project or beyond reference/design work. Generated character studies are fictional design references and do not establish the identity of any person shown in source material.
+
+No video artifacts were present in the available design-session ingestion snapshot used for this gallery update; the manifest is therefore image-only.
 
 ## Twelve activities, one data shape
 
