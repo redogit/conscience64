@@ -1,0 +1,44 @@
+name: Analytics ingestion check
+
+on:
+  push:
+    branches:
+      - live-analytics-ingestion-v1
+  pull_request:
+    paths:
+      - 'analytics/**'
+      - '.github/workflows/analytics-ingestion-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch exact repository revision without external actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          REVISION: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p src
+          curl --fail --location \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${REPOSITORY}/tarball/${REVISION}" \
+            | tar -xz --strip-components=1 -C src
+          printf 'revision=%s\n' "${REVISION}"
+
+      - name: Run Python ingestion tests
+        working-directory: src/analytics
+        run: |
+          set -euo pipefail
+          python3 -m unittest -v test_server.py
+
+      - name: Run JavaScript event-contract tests
+        working-directory: src/analytics
+        run: |
+          set -euo pipefail
+          node test.mjs
