@@ -22,8 +22,11 @@
 
 ### Games and player activity
 - Four built-in activities currently exist: Monster Mood, Redline, Cipher Snap, and Make Something.
-- Redline retains its reaction-speed route and now also exposes an explicit **untimed route** with no reaction timer and no penalty for waiting.
+- Redline retains its reaction-speed route and also exposes an explicit **untimed route** with no reaction timer and no penalty for waiting.
 - The untimed Redline completion uses a smaller bounded local reward (`+12 XP`, `+6 Joy`, `+1 token`) while preserving access to the activity and world progression.
+- Arcade Forge now offers a one-click **Grounded Starter Pack** with four additional untimed data-only mini-games: Market Closing Shift, Bus Transfer, Workshop Sort, and Observatory Label Check.
+- Installing the Starter Pack uses the same validated plug-in contract as user-made recipes; the main MMO discovers the four installed recipes as local arcade cabinets without a rebuild.
+- The Starter Pack does not auto-install on page load. Installation is an explicit player action in Forge.
 - Player-local state includes role, level, XP, Joy, discoveries, world tokens, chronicle entries and shapeshifter form.
 - Joy is game state, not a claim about human wellbeing or worth.
 - World districts currently expose bounded local interactions and Conscience64-seeded context where available.
@@ -66,22 +69,20 @@
 The repository currently contains:
 
 - `play/test.mjs` — Play static/data checks.
-- `play/mmo/test-reality.mjs` — Reality Canon and cross-file regression checks, including the untimed Redline path.
+- `play/mmo/test-reality.mjs` — Reality Canon and cross-file regression checks, including the untimed Redline path and Grounded Starter Pack definitions.
 - `play/mmo/test-plugins.mjs` — executable plug-in validation/storage/reward-boundary checks.
 - `play/mmo/test-save.mjs` — executable save validation/storage/import-export/boundary checks.
 - `play/browser-test.mjs` — existing Play browser checks.
-- `play/mmo/browser-test.mjs` — MMO browser smoke test for grounded surfaces, 320px layout, astronomy labeling, plug-in discovery/play, bounded rewards, text safety, the untimed Redline route, explicit save/load and no-auto-load behavior.
+- `play/mmo/browser-test.mjs` — MMO browser smoke test for Grounded Starter Pack Forge-to-MMO installation/discovery, grounded surfaces, 320px layout, astronomy labeling, plug-in play, bounded rewards, text safety, the untimed Redline route, explicit save/load and no-auto-load behavior.
 - `.github/workflows/playground.yml` — configured to run all of the above.
 
 ### Important verification status
 
-At the time this CURRENT record was written, the new branch changes and verification jobs were configured, but a successful GitHub Actions run for the latest head had **not yet been observed through the available connector**.
-
-Therefore:
+This branch adds new Grounded Starter Pack behavior. The inherited mainline verification was green before this branch began, but the Starter Pack successor itself must be treated as configured/unverified until its own current-head CI run is observed passing.
 
 `TEST_CONFIGURED != TEST_OBSERVED_PASSING`
 
-Do not call the latest branch green until an actual run/result is observed.
+Do not call the Starter Pack successor green until an actual run/result for this branch is observed.
 
 ## Accessibility boundary
 
@@ -91,7 +92,8 @@ Current implemented accessibility mechanisms include:
 - visible focus styling and responsive layouts;
 - reduced-motion and forced-colors CSS support where implemented;
 - 320px browser-layout smoke coverage;
-- an explicit untimed alternative for Redline so reaction speed is not required to participate in that activity.
+- an explicit untimed alternative for Redline so reaction speed is not required to participate in that activity;
+- all four Grounded Starter Pack activities are untimed.
 
 This does **not** establish WCAG conformance or completed assistive-technology compatibility. Manual keyboard, screen-reader, zoom, speech-input, switch/control and user review remain release work.
 
@@ -128,11 +130,11 @@ Also:
 - `LOCAL_SAVE != SERVER_AUTHORITY`
 - `LOCAL_SCORE != VERIFIED_ACHIEVEMENT`
 - `VERIFIED_ACHIEVEMENT != PRIZE_ELIGIBILITY`
-- no current local save, plug-in, local score, client state, or Conscience64 retrieval can establish real-world prize eligibility.
+- no current local save, plug-in, Starter Pack activity, local score, client state, or Conscience64 retrieval can establish real-world prize eligibility.
 
 ## Scientific boundary
 
-Current astronomy visuals are game reconstructions informed by real observational structure.
+Current astronomy visuals and Observatory Label Check are game/research-literacy surfaces informed by real observational structure.
 
 They are **not**:
 
@@ -143,8 +145,8 @@ They are **not**:
 
 ## Next high-value batches
 
-1. Observe and repair CI failures until the current branch is green.
-2. Expand grounded activities before adding more spectacular anomalies.
+1. Observe and repair Starter Pack CI until the current branch is green.
+2. Continue expanding grounded activities toward the v1.0 activity target before adding more spectacular anomalies.
 3. Continue adding equivalent non-timed/non-audio routes wherever an activity otherwise depends on speed or sensory modality.
 4. Extend portable player state only when a new field has a clear local-life purpose.
 5. Build the first authoritative multiplayer vertical slice only after local state/contracts are stable.
