@@ -8,7 +8,7 @@ Visible surface: **I / R / P / O**.
 
 **Featured launch surface:** [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/)
 
-The MMO World page directly runs the already smoke-tested Explorer World shard while the shared-world layer remains gated. It is intentionally honest about the current boundary: playable browser world now; server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not yet claimed complete. The beta also exposes optional user-initiated Bluetooth/gamepad support and the DU-SD/1, DU-CAP/1, DU-WATCH/1, and DU-BT/1 protocol contracts.
+The MMO World page directly runs the already smoke-tested Explorer World shard while the shared-world layer remains gated. It is intentionally honest about the current boundary: playable browser world now; server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not yet claimed complete. The beta also exposes optional user-initiated Bluetooth/gamepad support, deterministic descriptive world varieties, and the DU-SD/1, DU-CAP/1, DU-WATCH/1, and DU-BT/1 protocol contracts.
 
 Advertising should point to this stable Conscience64 URL and grow interest gradually rather than bypassing safety, recovery, stability, moderation/support-capacity, or operating-cost gates.
 
@@ -24,7 +24,7 @@ The [public playground](https://redogit.github.io/conscience64/play/) turns ongo
 
 | Tool | What you can do |
 | --- | --- |
-| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Enter the playable Explorer shard through the MMO launch surface; optionally connect a Bluetooth companion or OS-paired gamepad |
+| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Enter the playable Explorer shard through the MMO launch surface; explore deterministic descriptive world varieties; optionally connect a Bluetooth companion or OS-paired gamepad |
 | [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Play the current single-player browser shard directly |
 | [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Explore exact, speakable, mnemonic, and procedural musical projections |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes with source links |
@@ -41,9 +41,16 @@ English, Spanish, French, and Arabic interfaces are available across the origina
 
 ## Research projects
 
-The research portfolio now has a compact project map that preserves both accomplishments and failures instead of presenting only successes.
+The research portfolio has a compact project map that preserves both accomplishments and failures instead of presenting only successes.
 
-See [`research/projects/README.md`](research/projects/README.md) for the current highlights, lowlights, claim ceilings, and unresolved remainders across Cross-Carrier Wave, Orbit, Tiny Babel/TBCL, Operator Moonshot, model experiments, geometry/codecs, and historical recovery.
+See [`research/projects/README.md`](research/projects/README.md) for the current nine human-readable records and their claim ceilings: Cross-Carrier Wave, Orbit Library, Tiny Babel/TBCL, Operator Moonshot, Hodge Conjecture Research Spine, Research Analytics, Model Experiments, Geometry/4D/Codecs, and Historical Recovery.
+
+The registry lineage is intentionally split rather than silently rewritten:
+
+- [`research/projects/projects.json`](research/projects/projects.json) is the preserved seven-project browser/API registry snapshot;
+- [`research/projects/CURRENT.json`](research/projects/CURRENT.json) is the forward-only current manifest that adds Hodge and Research Analytics as successor records.
+
+`Conscience64API.stats().projects.count` therefore remains seven until the compressed browser corpus is deliberately regenerated. The current human-readable portfolio count is nine. `tools/check_project_current.mjs` verifies that distinction.
 
 Browser API: `window.Conscience64API`.
 
@@ -56,7 +63,19 @@ Conscience64API.traverse("project:orbit", { depth: 2 })
 Conscience64API.irpo({ I: "black hole", R: {}, P: { action: "search.simple" } })
 ```
 
-Every searchable object has a deterministic `uoid:sha256:...` identifier and microdata.
+Every searchable object in the preserved browser corpus has a deterministic `uoid:sha256:...` identifier and microdata.
+
+## Evidence boundaries carried forward
+
+```text
+BYTE_IDENTITY != SEMANTIC_TRUTH
+OBSERVATION != INTERPRETATION
+REPETITION != VERIFICATION
+TRANSPORT_VALIDITY != EVIDENCE_VALIDITY
+DEMO_DATA != RESEARCH_EVIDENCE
+STATIC_VIEW != AUTHORITATIVE_LEDGER
+CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
+```
 
 ## REDOGIT
 
@@ -94,6 +113,7 @@ python3 tools/redogit_selfcheck.py
 python3 tools/verify_research_manifest.py \
   research/cross-carrier/2026-09-12/v2.2/repository_manifest.json \
   research/cross-carrier/2026-09-12/v2.2
+node tools/check_project_current.mjs
 ```
 
 ## Corpus transport
