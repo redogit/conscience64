@@ -20,7 +20,7 @@
       "id": "research-analytics",
       "name": "Research Analytics",
       "path": "research/projects/research-analytics.md",
-      "status": "DEPLOYED_BOUNDED_RESEARCH_INFRASTRUCTURE",
+      "status": "DEPLOYED_STATIC_VIEW_WITH_IMPLEMENTED_LOCAL_LIVE_LEDGER",
       "authorityTransfer": false
     }
   ],
@@ -45,6 +45,14 @@
       "researchGraphAdmission": false
     }
   ],
+  "analyticsContinuation": {
+    "liveService": "analytics/server.py",
+    "recordedEvent": "analytics/recorded-events/2026-09-14-consolidation.json",
+    "status": "LOCAL_LIVE_SERVICE_IMPLEMENTED_REMOTE_DEPLOYMENT_NOT_ESTABLISHED",
+    "sourceRevision": "0e213a5d8dd685876d94600c443342d257363006",
+    "sourceWorkflowRun": 34808700520,
+    "independence": "same-source"
+  },
   "addedInvariants": [
     "USER_INPUT != ASSISTANT_SYNTHESIS",
     "REQUESTED != IMPLEMENTED",
@@ -54,8 +62,11 @@
     "TRANSPORT_VALIDITY != EVIDENCE_VALIDITY",
     "DEMO_DATA != RESEARCH_EVIDENCE",
     "STATIC_VIEW != AUTHORITATIVE_LEDGER",
+    "LOCAL_LIVE_SERVICE != REMOTE_PRODUCTION_DEPLOYMENT",
+    "PRODUCER_EVENT_ID != CANONICAL_LEDGER_EVENT_ID",
+    "REPLAYED_EVENT != NEW_EXECUTION",
     "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
     "PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO"
   ],
-  "readingRule": "Read projects.json as the preserved machine/browser snapshot and CURRENT.json as the forward-only current project manifest. Read the two-day ledger for user-direction/state synthesis. Later records do not rewrite the predecessor registry or silently change browser API counts."
+  "readingRule": "Read projects.json as the preserved machine/browser snapshot and CURRENT.json as the forward-only current project manifest. Read the two-day ledger for user-direction/state synthesis. The local live analytics service is an implemented transport continuation, not a claim of remote production deployment or scientific authority. Later records do not rewrite the predecessor registry or silently change browser API counts."
 }
