@@ -30,6 +30,8 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
+      - name: Verify Explorer World progress contract
+        run: node play/explorer-world/progress-test.mjs
       - name: Exercise the applications in Chrome
         run: node play/browser-test.mjs
       - name: Exercise Explorer World in Chrome
