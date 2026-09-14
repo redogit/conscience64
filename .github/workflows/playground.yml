@@ -36,6 +36,8 @@ jobs:
         run: node play/browser-test.mjs
       - name: Exercise Explorer World in Chrome
         run: node play/explorer-world/browser-test.mjs
+      - name: Exercise Explorer/MMO local progress in Chrome
+        run: CHROME_BIN=${CHROME_BIN:-google-chrome} node play/explorer-world/progress-browser-test.mjs
       - name: Verify Fuzzball hidden alpha model
         run: |
           node --check play/fuzzball-hidden/world.mjs
