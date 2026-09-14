@@ -41,6 +41,10 @@ assert.match(gameJs, /applySave/);
 assert.match(gameJs, /plugins\.validate/);
 assert.match(gameJs, /Completed local plug-in/);
 assert.match(gameJs, /no multiplayer or prize authority/i);
+assert.match(gameJs, /Use untimed route/);
+assert.match(gameJs, /Redline — untimed route/);
+assert.match(gameJs, /Finished Redline using the untimed route/);
+assert.match(gameJs, /There is no penalty and no timer pushing you forward/);
 assert.match(saveRuntimeJs, /conscience64\.mmo\.save\/v1/);
 assert.match(saveRuntimeJs, /state\.chronicle too long/);
 assert.match(linkages, /Load order/i); assert.match(linkages, /CURRENT\.md/); assert.match(linkages, /Portable local-life chain/i); assert.match(linkages, /REALITY_CANON\.md/);
@@ -54,4 +58,4 @@ assert.ok(linkageGraph.invariants.includes('TEST_CONFIGURED != TEST_OBSERVED_PAS
 const projects = JSON.parse(projectsText); const mmo = projects.projects.find(project => project.id === 'mmo'); assert.ok(mmo); assert.equal(mmo.source, 'mmo/REALITY_CANON.md'); assert.match(mmo.purpose, /grounded real-world-feeling/i);
 const sample = JSON.parse(sampleText); assert.equal(sample.schema, 'conscience64.mmo.plugin/v1'); assert.match(sample.prompt, /corner market|market display/i); assert.match(sample.description, /grounded-reality-first/i);
 const contract = JSON.parse(contractText); assert.equal(contract.contentDirection.canonical, 'REALITY_CANON.md'); assert.equal(contract.contentDirection.anomalyRequired, false);
-console.log('PASS MMO reality canon: current-state boundary, grounded world, astronomy boundary, Forge generation, main-MMO plug-in discovery, portable save boundary, registry and linkages');
+console.log('PASS MMO reality canon: current-state boundary, grounded world, astronomy boundary, Forge generation, main-MMO plug-in discovery, portable save boundary, untimed Redline route, registry and linkages');

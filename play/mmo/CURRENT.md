@@ -22,6 +22,8 @@
 
 ### Games and player activity
 - Four built-in activities currently exist: Monster Mood, Redline, Cipher Snap, and Make Something.
+- Redline retains its reaction-speed route and now also exposes an explicit **untimed route** with no reaction timer and no penalty for waiting.
+- The untimed Redline completion uses a smaller bounded local reward (`+12 XP`, `+6 Joy`, `+1 token`) while preserving access to the activity and world progression.
 - Player-local state includes role, level, XP, Joy, discoveries, world tokens, chronicle entries and shapeshifter form.
 - Joy is game state, not a claim about human wellbeing or worth.
 - World districts currently expose bounded local interactions and Conscience64-seeded context where available.
@@ -64,11 +66,11 @@
 The repository currently contains:
 
 - `play/test.mjs` — Play static/data checks.
-- `play/mmo/test-reality.mjs` — Reality Canon and cross-file regression checks.
+- `play/mmo/test-reality.mjs` — Reality Canon and cross-file regression checks, including the untimed Redline path.
 - `play/mmo/test-plugins.mjs` — executable plug-in validation/storage/reward-boundary checks.
 - `play/mmo/test-save.mjs` — executable save validation/storage/import-export/boundary checks.
 - `play/browser-test.mjs` — existing Play browser checks.
-- `play/mmo/browser-test.mjs` — MMO browser smoke test for grounded surfaces, 320px layout, astronomy labeling, plug-in discovery/play, bounded rewards, text safety, explicit save/load and no-auto-load behavior.
+- `play/mmo/browser-test.mjs` — MMO browser smoke test for grounded surfaces, 320px layout, astronomy labeling, plug-in discovery/play, bounded rewards, text safety, the untimed Redline route, explicit save/load and no-auto-load behavior.
 - `.github/workflows/playground.yml` — configured to run all of the above.
 
 ### Important verification status
@@ -80,6 +82,20 @@ Therefore:
 `TEST_CONFIGURED != TEST_OBSERVED_PASSING`
 
 Do not call the latest branch green until an actual run/result is observed.
+
+## Accessibility boundary
+
+Current implemented accessibility mechanisms include:
+
+- semantic buttons/labels and status regions on the MMO surface;
+- visible focus styling and responsive layouts;
+- reduced-motion and forced-colors CSS support where implemented;
+- 320px browser-layout smoke coverage;
+- an explicit untimed alternative for Redline so reaction speed is not required to participate in that activity.
+
+This does **not** establish WCAG conformance or completed assistive-technology compatibility. Manual keyboard, screen-reader, zoom, speech-input, switch/control and user review remain release work.
+
+`AUTOMATED_ACCESSIBILITY_CHECK != MANUAL_AT_VALIDATION`
 
 ## Not implemented yet
 
@@ -129,7 +145,7 @@ They are **not**:
 
 1. Observe and repair CI failures until the current branch is green.
 2. Expand grounded activities before adding more spectacular anomalies.
-3. Add accessible alternatives to timed/reaction activities.
+3. Continue adding equivalent non-timed/non-audio routes wherever an activity otherwise depends on speed or sensory modality.
 4. Extend portable player state only when a new field has a clear local-life purpose.
 5. Build the first authoritative multiplayer vertical slice only after local state/contracts are stable.
 6. Keep prize activation on its separate legal/verification/fulfillment gate.

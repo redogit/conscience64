@@ -130,6 +130,22 @@ try {
   assert.match(pluginResult.result,/Completed|success/i);
   assert.match(pluginResult.status,/validated local plug-in/i);
 
+  const untimedRedline=await evaluate(()=>{
+    const before=Number(document.getElementById('xp').textContent);
+    document.querySelector('[data-game="race"]').click();
+    const route=[...document.querySelectorAll('#game-controls button')].find(b=>b.textContent==='Use untimed route');
+    if(!route)throw new Error('untimed Redline route missing');
+    route.click();
+    const prompt=document.getElementById('game-prompt').textContent;
+    const enter=[...document.querySelectorAll('#game-controls button')].find(b=>b.textContent==='Enter when ready');
+    if(!enter)throw new Error('untimed Redline completion control missing');
+    enter.click();
+    return {before,after:Number(document.getElementById('xp').textContent),prompt,result:document.getElementById('game-result').textContent};
+  });
+  assert.equal(untimedRedline.after-untimedRedline.before,12);
+  assert.match(untimedRedline.prompt,/No reaction timer/);
+  assert.match(untimedRedline.result,/own pace/);
+
   const saveRoundTrip=await evaluate(()=>{
     const xpSaved=Number(document.getElementById('xp').textContent);
     document.getElementById('role-select').value='Builder';
