@@ -208,8 +208,8 @@ def build_server(
         )
     if len(write_token) < 16:
         raise ValueError("write token must be at least 16 characters")
-    if read_token and len(read_token) < 16:
-        raise ValueError("read token must be at least 16 characters when configured")
+    if len(read_token) < 16:
+        raise ValueError("read token must be at least 16 characters")
 
     return KnowledgeBridgeServer(
         (host, port),
