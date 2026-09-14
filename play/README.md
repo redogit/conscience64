@@ -4,7 +4,7 @@ Seven free browser projects built from ongoing ideas. Open the [project hub](htt
 
 | Project | Use it for | Current boundary |
 | --- | --- | --- |
-| [Conscience64 MMO RPG](https://redogit.github.io/conscience64/play/mmo/) | Explore the Red Wilds, play games inside the game, create, help, discover, meet monsters and Fuzzball, choose roles, and cooperate with the Conscience64 browser API | Local-first MMO-world prototype today; networked MMO and real-world prize redemption are not yet active |
+| [Conscience64 MMO RPG](https://redogit.github.io/conscience64/play/mmo/) | Live in a grounded world of neighborhoods, work, travel, games, people and real-sky observation before monsters, Fuzzball and impossible events intrude | Local-first MMO-world prototype today; networked MMO and real-world prize redemption are not yet active |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes, source links, and writing-language metadata | Import/export a project file; optional browser storage |
 | [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Arrange lines of writing while preserving the original | Download the remix or export the project |
 | [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Explore a six-by-six pattern with shapes, rotation, mirroring, and undo | Download SVG/text or export the project |
@@ -14,9 +14,19 @@ Seven free browser projects built from ongoing ideas. Open the [project hub](htt
 
 ## MMO RPG
 
-The MMO prototype is intentionally about **fun, doing things, and being somebody** rather than maximizing grind or spending. Its initial world includes mini-games, districts, creative/maker play, cooperative/helping activities, monsters, discoveries, identity/role choices, a Joy game-state indicator, a private fictional adult shapeshifter companion kept non-graphic in the public build, and direct bounded cooperation with the public Conscience64 browser API.
+The MMO prototype is intentionally about **fun, doing things, and being somebody** rather than maximizing grind or spending. Its world starts from recognizable ordinary life: apartments, markets, workshops, transit, parks, weathered materials, believable light, people doing everyday things, and a real-sky/astronomy reference layer. Monsters, impossible geometry, Fuzzball, strange research connections and other anomalies are layered above that baseline rather than replacing it.
+
+The current visual/world direction is canonical in [`mmo/REALITY_CANON.md`](mmo/REALITY_CANON.md). If older MMO aesthetic notes conflict with it, the Reality Canon controls the current successor while predecessor history remains preserved.
+
+Key boundary:
+
+`OBSERVATION != PROCESSED_SCIENCE_IMAGE != GAME_RECONSTRUCTION`
+
+The in-game roof observatory uses real astronomy as a structural reference. EHT black-hole imagery and NASA/Webb processing explanations remain evidence/reference sources; the game's star field and black-hole view are labeled reconstructions, not telescope data.
 
 The architectural zoom is documented in [`mmo/LEVELS.md`](mmo/LEVELS.md): twelve levels from one action through human purpose, followed by a **Mystery 13th** that is the annual emergent result of the twelve rather than a preplanned Level 13.
+
+The cross-surface graph is documented in [`mmo/LINKAGES.md`](mmo/LINKAGES.md). Arcade Forge follows the same grounded rule: real place/object/activity first, then an optional strange complication. Fully ordinary mini-games are valid.
 
 The full major-release target is **November 15, 2026**. See [`mmo/RELEASE_PLAN_2026-11-15.md`](mmo/RELEASE_PLAN_2026-11-15.md). The plan separates the game release from real-world prize activation: the game may release with the Prize Vault visible but redemption disabled if legal, verification, fraud-control, privacy, or fulfillment gates are not complete.
 
@@ -62,7 +72,7 @@ For existing browser checks, install Google Chrome locally or use the included G
 node play/browser-test.mjs
 ```
 
-The MMO is now included in the static/project-registry checks. Dedicated multiplayer, accessibility, security, load, recovery, and prize verification gates are tracked in its November release plan and must be added before v1.0.
+The MMO is included in the static/project-registry checks. Dedicated multiplayer, accessibility, security, load, recovery, reality-canon review, and prize verification gates are tracked for v1.0 and must not be inferred from the current prototype.
 
 ## Origins and rights
 
@@ -72,4 +82,4 @@ The MIT license in this directory applies to the new code and documentation unde
 
 ## Existing local data format
 
-The original local tools export `conscience64.play/v1` documents with validated application IDs. The MMO does not reuse that format as an authoritative multiplayer or prize record. Multiplayer persistence and verified achievements require separate server-side schemas under the v1.0 release plan.
+The original local tools export `conscience64.play/v1` documents with validated application IDs. The MMO plug-in surface uses the separate data-only `conscience64.mmo.plugin/v1` contract. Neither local format is an authoritative multiplayer or prize record. Multiplayer persistence and verified achievements require separate server-side schemas under the v1.0 release plan.
