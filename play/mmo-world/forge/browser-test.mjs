@@ -115,6 +115,38 @@ try {
   assert.match(rejected.status, /unsupported field: url/);
   assert.equal(rejected.shelf, 1, 'rejected import changed the shelf');
 
+  await evaluate(() => {
+    document.getElementById('name').value = 'Timing Smoke';
+    document.getElementById('id').value = 'timing-smoke';
+    document.getElementById('mechanic').value = 'timing';
+    document.getElementById('mechanic').dispatchEvent(new Event('change'));
+    document.getElementById('prompt').value = 'Wait for GO.';
+    document.getElementById('min-delay').value = '250';
+    document.getElementById('max-delay').value = '250';
+    document.getElementById('build').click();
+  });
+  let timing = await evaluate(() => ({
+    hiddenMin: document.getElementById('timing-min-field').hidden,
+    buttons: [...document.querySelectorAll('#tester button')].map(button => button.textContent),
+    reward: document.getElementById('preview-reward').textContent,
+  }));
+  assert.equal(timing.hiddenMin, false);
+  assert.deepEqual(timing.buttons, ['WAIT…', 'Show signal now (practice)']);
+  assert.match(timing.reward, /not a threshold or accessibility gate/);
+  await evaluate(() => document.querySelector('#tester button').click());
+  assert.match(await evaluate(() => document.getElementById('test-result').textContent), /False start/);
+
+  await evaluate(() => document.getElementById('build').click());
+  await evaluate(() => [...document.querySelectorAll('#tester button')].find(button => /practice/i.test(button.textContent)).click());
+  timing = await evaluate(() => ({ buttons:[...document.querySelectorAll('#tester button')].map(button => button.textContent), result:document.getElementById('test-result').textContent }));
+  assert.equal(timing.buttons[0], 'GO!');
+  assert.match(timing.result, /Practice signal shown immediately/);
+  await new Promise(resolvePromise => setTimeout(resolvePromise, 20));
+  await evaluate(() => document.querySelector('#tester button').click());
+  const reaction = await evaluate(() => document.getElementById('test-result').textContent);
+  assert.match(reaction, /Reaction: \d+ ms \(practice signal\)/);
+  assert.match(reaction, /no pass\/fail threshold, accessibility gate, or canonical progression/);
+
   await call('Emulation.setDeviceMetricsOverride', { width:320, height:800, deviceScaleFactor:1, mobile:false });
   const layout = await evaluate(() => ({
     width: innerWidth,
@@ -126,7 +158,7 @@ try {
   assert.equal(layout.unnamedButtons, 0);
   assert.equal(layout.unlabeledFields, 0);
   assert.deepEqual(errors, [], 'browser runtime exceptions');
-  console.log('PASS Arcade Forge Chrome: safe text, local persistence, authority-field rejection, named controls, 320px layout.');
+  console.log('PASS Arcade Forge Chrome: safe text, local persistence, authority-field rejection, Redline false-start/practice timing paths, named controls, 320px layout.');
 } catch (error) {
   console.error(`FAIL Arcade Forge Chrome: ${error.message}`);
   process.exitCode = 1;
