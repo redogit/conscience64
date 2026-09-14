@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {canonicalJson,sha256Canonical} from './tools/visual-carrier-v2.mjs';
 
 const REGISTRY_SCHEMA='conscience64.renderer-registry/v1';
@@ -5,6 +6,10 @@ const SNAPSHOT_SCHEMA='conscience64.renderer-registry-snapshot/v1';
 const REQUEST_SCHEMA='conscience64.render-request/v1';
 const ROUTE_SCHEMA='conscience64.renderer-route/v1';
 const FANOUT_SCHEMA='conscience64.renderer-fanout/v1';
+const EXECUTION_SCHEMA='conscience64.renderer-execution/v1';
+const EXECUTION_SET_SCHEMA='conscience64.renderer-execution-set/v1';
+const FAILURE_SCHEMA='conscience64.renderer-failure/v1';
+const STAGE_EVIDENCE_SCHEMA='conscience64.renderer-stage-evidence/v1';
 const ENTRY_KINDS=new Set(['complete-renderer','stage','pipeline']);
 const DISCOVERY_TIERS=new Set(['experimental','admitted']);
 const FANOUT_MODES=new Set(['single-best','comparison-set','society-sweep']);
@@ -22,6 +27,41 @@ function assertSha256(value,name){nonEmptyString(value,name);if(!/^[0-9a-f]{64}$
 function unique(values){return new Set(values).size===values.length;}
 function entryRank(entry){return entry.discoveryTier==='admitted'?0:1;}
 function orderedCandidates(entries){return [...entries].sort((a,b)=>entryRank(a)-entryRank(b)||a.id.localeCompare(b.id)||a.manifestSha256.localeCompare(b.manifestSha256));}
+function hashBytes(bytes){return createHash('sha256').update(bytes).digest('hex');}
+function getExecutor(executors,id){
+  if(executors instanceof Map)return executors.get(id);
+  if(executors&&typeof executors==='object')return executors[id];
+  return undefined;
+}
+function assertJsonValue(value,path='output',seen=new WeakSet()){
+  if(value===null)return;
+  const type=typeof value;
+  if(type==='string'||type==='boolean')return;
+  if(type==='number'){
+    if(!Number.isFinite(value))throw new TypeError(`${path} contains a non-finite number`);
+    return;
+  }
+  if(type!=='object')throw new TypeError(`${path} contains non-JSON value ${type}`);
+  if(Buffer.isBuffer(value))return;
+  if(seen.has(value))throw new TypeError(`${path} contains a cycle`);
+  seen.add(value);
+  if(Array.isArray(value)){
+    value.forEach((item,index)=>assertJsonValue(item,`${path}[${index}]`,seen));
+    seen.delete(value);
+    return;
+  }
+  if(Object.getPrototypeOf(value)!==Object.prototype&&Object.getPrototypeOf(value)!==null)throw new TypeError(`${path} must contain only plain JSON objects, arrays, strings, finite numbers, booleans, null, or Buffer`);
+  for(const [key,item] of Object.entries(value))assertJsonValue(item,`${path}.${key}`,seen);
+  seen.delete(value);
+}
+function serializeOutput(value){
+  if(Buffer.isBuffer(value))return Buffer.from(value);
+  if(typeof value==='string')return Buffer.from(value,'utf8');
+  assertJsonValue(value);
+  const encoded=canonicalJson(value);
+  if(typeof encoded!=='string')throw new TypeError('executor output is not canonically serializable');
+  return Buffer.from(encoded,'utf8');
+}
 function verifySealedPlan(sealedPlan){
   if(!sealedPlan||typeof sealedPlan!=='object'||Array.isArray(sealedPlan))throw new TypeError('sealedPlan must be an object');
   if(sealedPlan.schema!=='conscience64.visual-carrier-plan/v2')throw new Error('sealedPlan must use visual-carrier-plan/v2');
@@ -30,6 +70,23 @@ function verifySealedPlan(sealedPlan){
   const payload=clone(sealedPlan);delete payload.seal;
   if(sha256Canonical(payload)!==sealedPlan.seal.canonicalPayloadSha256)throw new Error('sealedPlan seal does not match canonical payload');
   return sealedPlan;
+}
+function verifyRouteAndSelection(snapshot,request,route,selection){
+  if(!snapshot||snapshot.schema!==SNAPSHOT_SCHEMA)throw new Error('snapshot must be a renderer-registry-snapshot/v1');
+  assertSha256(snapshot.snapshotSha256,'snapshotSha256');
+  if(!request||request.schema!==REQUEST_SCHEMA)throw new Error('request must be a render-request/v1');
+  if(!route||route.schema!==ROUTE_SCHEMA)throw new Error('route must be a renderer-route/v1');
+  if(!selection||selection.schema!==FANOUT_SCHEMA)throw new Error('selection must be a renderer-fanout/v1');
+  const requestSha256=sha256Canonical(request);
+  if(route.registrySnapshotSha256!==snapshot.snapshotSha256)throw new Error('route registry snapshot does not match snapshot');
+  if(route.requestSha256!==requestSha256)throw new Error('route request digest does not match request');
+  if(selection.registrySnapshotSha256!==snapshot.snapshotSha256)throw new Error('fanout registry snapshot does not match snapshot');
+  if(selection.requestSha256!==requestSha256)throw new Error('fanout request digest does not match request');
+  if(selection.routingPolicySha256!==route.routingPolicySha256||selection.candidateSetSha256!==route.candidateSetSha256)throw new Error('fanout route digests do not match route');
+  const selectionPayload=clone(selection);delete selectionPayload.decisionSha256;
+  if(sha256Canonical(selectionPayload)!==selection.decisionSha256)throw new Error('fanout decision digest does not match payload');
+  const eligibleIds=new Set(route.eligible.map(entry=>entry.id));
+  for(const id of selection.selectedIds)if(!eligibleIds.has(id))throw new Error(`selected candidate ${id} is not eligible`);
 }
 
 export function loadRegistry(registryObject){
@@ -56,6 +113,9 @@ export function loadRegistry(registryObject){
     nonEmptyString(entry.capabilities.determinism,`entry ${entry.id}.capabilities.determinism`);
     stringArray(entry.capabilities.inputContracts,`entry ${entry.id}.capabilities.inputContracts`);
     stringArray(entry.capabilities.outputContracts,`entry ${entry.id}.capabilities.outputContracts`);
+    stringArray(entry.resourceClasses,`entry ${entry.id}.resourceClasses`);
+    stringArray(entry.latencyClasses,`entry ${entry.id}.latencyClasses`);
+    stringArray(entry.executionSurfaces,`entry ${entry.id}.executionSurfaces`);
     if('manifestSha256' in entry)throw new Error(`entry ${entry.id} must not embed its own manifest digest`);
     return entry;
   });
@@ -72,7 +132,15 @@ export function loadRegistry(registryObject){
     }
   }
 
-  const entries=rawEntries.map(entry=>({...entry,manifestSha256:sha256Canonical(entry)})).sort((a,b)=>a.id.localeCompare(b.id));
+  const nonPipelineDigests=new Map(rawEntries.filter(entry=>entry.kind!=='pipeline').map(entry=>[entry.id,sha256Canonical(entry)]));
+  const entries=rawEntries.map(entry=>{
+    if(entry.kind!=='pipeline')return {...entry,manifestSha256:nonPipelineDigests.get(entry.id)};
+    const resolvedStages=entry.stageRefs.map(stageId=>{
+      const stage=byId.get(stageId);
+      return {id:stage.id,version:stage.version,manifestSha256:nonPipelineDigests.get(stage.id)};
+    });
+    return {...entry,resolvedStages,manifestSha256:sha256Canonical({...entry,resolvedStages})};
+  }).sort((a,b)=>a.id.localeCompare(b.id));
   const snapshotPayload={
     schema:SNAPSHOT_SCHEMA,
     sourceSchema:REGISTRY_SCHEMA,
@@ -174,6 +242,164 @@ export function selectFanout(route,request){
     selectedIds
   };
   return {...decisionPayload,decisionSha256:sha256Canonical(decisionPayload)};
+}
+
+function baseExecutionRecord({snapshot,request,route,selection,candidate,sealedInputSha256}){
+  return {
+    schema:EXECUTION_SCHEMA,
+    candidateId:candidate.id,
+    candidateKind:candidate.kind,
+    candidateManifestSha256:candidate.manifestSha256,
+    registrySnapshotSha256:snapshot.snapshotSha256,
+    requestSha256:route.requestSha256,
+    routingPolicySha256:route.routingPolicySha256,
+    candidateSetSha256:route.candidateSetSha256,
+    fanoutDecisionSha256:selection.decisionSha256,
+    sourceJobId:request.sourceJobId,
+    sourceJobSha256:request.sourceJobSha256,
+    recipeSha256:request.recipeSha256,
+    sealedInputSha256,
+    authority:'none',
+    worldAuthority:false,
+    canon:false
+  };
+}
+function successExecution(base,stageEvidence,artifactBytes){
+  const payload={
+    ...base,
+    terminalState:'succeeded',
+    stageEvidence,
+    artifactSha256:hashBytes(artifactBytes),
+    artifactBytes:artifactBytes.length
+  };
+  return {...payload,executionSha256:sha256Canonical(payload)};
+}
+function failedExecution(base,terminalState,message,stageEvidence,failedStageId){
+  const failurePayload={
+    schema:FAILURE_SCHEMA,
+    terminalState,
+    candidateId:base.candidateId,
+    candidateManifestSha256:base.candidateManifestSha256,
+    registrySnapshotSha256:base.registrySnapshotSha256,
+    requestSha256:base.requestSha256,
+    routingPolicySha256:base.routingPolicySha256,
+    candidateSetSha256:base.candidateSetSha256,
+    fanoutDecisionSha256:base.fanoutDecisionSha256,
+    sourceJobId:base.sourceJobId,
+    sourceJobSha256:base.sourceJobSha256,
+    recipeSha256:base.recipeSha256,
+    sealedInputSha256:base.sealedInputSha256,
+    failedStageId:failedStageId??null,
+    message,
+    stageEvidence
+  };
+  const failureRecordSha256=sha256Canonical(failurePayload);
+  const executionPayload={
+    ...base,
+    terminalState,
+    ...(failedStageId?{failedStageId}:{}),
+    stageEvidence,
+    failureRecordSha256
+  };
+  return {...executionPayload,executionSha256:sha256Canonical(executionPayload)};
+}
+function invokeExecutor(executor,args){
+  if(typeof executor!=='function')return {ok:false,terminalState:'failed-toolchain',message:'executor is not available'};
+  try{
+    const output=executor(args);
+    const bytes=serializeOutput(output);
+    return {ok:true,output,bytes};
+  }catch(error){
+    const terminalState=error instanceof TypeError?'failed-provenance':'failed-render';
+    return {ok:false,terminalState,message:String(error?.message||error)};
+  }
+}
+
+export function executeSelection({snapshot,request,route,selection,executors,sealedInput}){
+  verifyRouteAndSelection(snapshot,request,route,selection);
+  if(!sealedInput||typeof sealedInput!=='object'||Array.isArray(sealedInput))throw new TypeError('sealedInput must be a carrier job object');
+  if(sealedInput.id!==request.sourceJobId)throw new Error('sealedInput job ID does not match render request');
+  if(sealedInput.sourceJobSha256!==request.sourceJobSha256)throw new Error('sealedInput source-job digest does not match render request');
+  if(sealedInput.carrier?.recipeSha256!==request.recipeSha256)throw new Error('sealedInput recipe digest does not match render request');
+  const sealedInputSha256=sha256Canonical(sealedInput);
+  const entryById=new Map(snapshot.entries.map(entry=>[entry.id,entry]));
+  const executions=[];
+
+  for(const candidateId of selection.selectedIds){
+    const candidate=entryById.get(candidateId);
+    if(!candidate)throw new Error(`selected candidate ${candidateId} is absent from registry snapshot`);
+    const base=baseExecutionRecord({snapshot,request,route,selection,candidate,sealedInputSha256});
+
+    if(candidate.kind==='complete-renderer'){
+      const result=invokeExecutor(getExecutor(executors,candidate.id),{
+        entry:clone(candidate),input:clone(sealedInput),request:clone(request)
+      });
+      if(!result.ok){
+        executions.push(failedExecution(base,result.terminalState,`${candidate.id}: ${result.message}`,[],undefined));
+        continue;
+      }
+      executions.push(successExecution(base,[],result.bytes));
+      continue;
+    }
+
+    if(candidate.kind==='pipeline'){
+      let current=clone(sealedInput);
+      let currentBytes=serializeOutput(current);
+      const stageEvidence=[];
+      let failure=null;
+      for(const stageId of candidate.stageRefs){
+        const stage=entryById.get(stageId);
+        if(!stage||stage.kind!=='stage'){
+          failure={terminalState:'failed-provenance',message:`pipeline stage ${stageId} is missing from registry snapshot`,failedStageId:stageId};
+          break;
+        }
+        const executor=getExecutor(executors,stageId);
+        if(typeof executor!=='function'){
+          failure={terminalState:'failed-toolchain',message:`executor is not available for ${stageId}`,failedStageId:stageId};
+          break;
+        }
+        const inputSha256=hashBytes(currentBytes);
+        const result=invokeExecutor(executor,{entry:clone(stage),input:clone(current),request:clone(request)});
+        if(!result.ok){
+          failure={terminalState:result.terminalState,message:`${stageId}: ${result.message}`,failedStageId:stageId};
+          break;
+        }
+        const outputSha256=hashBytes(result.bytes);
+        stageEvidence.push({
+          schema:STAGE_EVIDENCE_SCHEMA,
+          stageId,
+          stageManifestSha256:stage.manifestSha256,
+          inputSha256,
+          outputSha256,
+          terminalState:'succeeded'
+        });
+        current=result.output;
+        currentBytes=result.bytes;
+      }
+      if(failure){
+        executions.push(failedExecution(base,failure.terminalState,failure.message,stageEvidence,failure.failedStageId));
+        continue;
+      }
+      executions.push(successExecution(base,stageEvidence,currentBytes));
+      continue;
+    }
+
+    executions.push(failedExecution(base,'failed-provenance',`selected candidate ${candidate.id} is not executable`,[],undefined));
+  }
+
+  const payload={
+    schema:EXECUTION_SET_SCHEMA,
+    registrySnapshotSha256:snapshot.snapshotSha256,
+    requestSha256:route.requestSha256,
+    routingPolicySha256:route.routingPolicySha256,
+    candidateSetSha256:route.candidateSetSha256,
+    fanoutDecisionSha256:selection.decisionSha256,
+    sourceJobId:request.sourceJobId,
+    sourceJobSha256:request.sourceJobSha256,
+    sealedInputSha256,
+    executions
+  };
+  return {...payload,executionSetSha256:sha256Canonical(payload)};
 }
 
 export {canonicalJson};
