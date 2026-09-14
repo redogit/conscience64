@@ -1,0 +1,42 @@
+{
+  "experiment": "HODGE-EVEN-WALL-TWO-PAIR-COSET-OBSTRUCTION",
+  "status": "EXECUTED_EXACT_ENUMERATION_PLUS_QUOTIENT_REDUCTION",
+  "theorem_reduction": "If beta is closed by beta+p1+p2=S+Q with vanishing pairs p1,p2, a 5-standard S and a grade-2 Hodge quadruple Q, then [nu(beta)]=[nu(Q)] modulo S_m.",
+  "positive_control": {
+    "level": 45,
+    "target": [1,19,20,28,30,37],
+    "published_Q": [5,20,30,35],
+    "target_grade": 3,
+    "Q_grade": 2,
+    "same_S_m_coset": true,
+    "target_coset_zero": true,
+    "verdict": "PASS"
+  },
+  "results": [
+    {
+      "wall": "W70",
+      "level": 70,
+      "target": [1,20,24,42,61,62],
+      "grade2_hodge_quadruples_enumerated": 700,
+      "quadruples_in_target_coset": 0,
+      "verdict": "NO_SAME_LEVEL_TWO_PAIR_COSET_WITNESS"
+    },
+    {
+      "wall": "W110",
+      "level": 110,
+      "target": [1,24,62,71,81,91],
+      "grade2_hodge_quadruples_enumerated": 1648,
+      "quadruples_in_target_coset": 0,
+      "verdict": "NO_SAME_LEVEL_TWO_PAIR_COSET_WITNESS"
+    },
+    {
+      "wall": "W114",
+      "level": 114,
+      "target": [1,7,78,79,86,91],
+      "verdict": "BASE_LEVEL_GENRE_NOT_APPLICABLE",
+      "reason": "5 does not divide 114, so there is no Aoki 5-standard sextuple at this level for the published two-pair theorem."
+    }
+  ],
+  "combined_boundary": "Together with the separately calibrated star-split search, the direct same-level *-split and two-pair-standard coset-transfer routes are exhausted for the three base walls under the authenticated theorem families.",
+  "claim_ceiling": "Mechanism-specific negative result only. Other algebraic gap families, lifts, correspondences and new closure theorems remain open. No non-algebraicity and no general Hodge conclusion follow. No P-vs-NP evidence is used."
+}
