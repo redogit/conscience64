@@ -6,6 +6,13 @@
   const limits = { name:80, prompt:500, item:120 };
   const rewardCaps = { xp:40, joy:20, tokens:4, discoveries:1 };
   const idPattern = /^[a-z0-9][a-z0-9-]{2,63}$/;
+  if (typeof document !== 'undefined' && !document.querySelector('link[data-mmo-shared-controls]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'shared-controls.css';
+    link.dataset.mmoSharedControls = 'true';
+    document.head.appendChild(link);
+  }
   const text = (value, max, field) => {
     if (typeof value !== 'string') throw new Error(`${field} must be text`);
     const v = value.trim();
