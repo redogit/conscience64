@@ -72,12 +72,14 @@ jobs:
       - name: Verify site data and browser API before publishing
         run: node tools/check_site.mjs
 
-      - name: Verify Space Lens, portable voice/type, song, and Chorus layers before publishing
+      - name: Verify Space Lens, portable voice/type, song, Chorus, and game layers before publishing
         run: |
           node --check voice-anywhere.js
           node tools/check_voice_anywhere.mjs
           node --check research-song.js
           node --check play/computational-chorus/chorus.mjs
+          node --check play/explorer-world/world.mjs
+          node --check play/explorer-world/game.mjs
           node --check space-lens-memory.js
           node --check space-lens-qa.js
           node --check space-lens-local-search.js
@@ -99,7 +101,9 @@ jobs:
         run: node play/test.mjs
 
       - name: Exercise public projects in Chrome before publishing
-        run: node play/browser-test.mjs
+        run: |
+          node play/browser-test.mjs
+          node play/explorer-world/browser-test.mjs
 
       - name: Verify Coordinate Space public release before publishing
         shell: bash
