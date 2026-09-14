@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'redogit.json'
+      - 'history/**'
       - 'app.js'
       - 'space-lens-memory.js'
       - 'space-lens-qa.js'
@@ -25,6 +26,7 @@ on:
   pull_request:
     paths:
       - 'redogit.json'
+      - 'history/**'
       - 'app.js'
       - 'space-lens-memory.js'
       - 'space-lens-qa.js'
@@ -64,6 +66,10 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Check history restoration and revision lineage
+        run: |
+          node history/test.mjs
+          node history/knowledge-test.mjs
       - name: Check browser API and Space Lens syntax
         run: |
           node --check app.js
