@@ -33,6 +33,16 @@
   $('export').addEventListener('click',()=>{try{download(recipe());status('Plug-in exported.');}catch(e){status(e.message,true);}});
   $('import').addEventListener('change',async()=>{const file=$('import').files[0];if(!file)return;try{if(file.size>65536)throw new Error('plugin file too large');const p=runtime.install(JSON.parse(await file.text()));renderTester(p);refresh();status(`Imported and installed ${p.name}.`);}catch(e){status(`Import rejected: ${e.message}`,true);}finally{$('import').value='';}});
   $('refresh').addEventListener('click',refresh);
-  $('randomize').addEventListener('click',()=>{const actions=['Race','Repair','Match','Build','Teach','Balance','Escape','Compose'];const objects=['Monster','Rubber Duck','Broken Compass','Singing Rock','Tiny Robot','Floating Library','Fuzzball'];const twists=['while gravity changes','before the monster gets bored','without using the obvious answer','while everything rhymes','with one deliberately useless tool','as the room rotates'];const a=actions[Math.floor(Math.random()*actions.length)],o=objects[Math.floor(Math.random()*objects.length)],t=twists[Math.floor(Math.random()*twists.length)];$('name').value=`${a} the ${o}`;$('id').dataset.manual='';$('id').value=slug($('name').value);$('mechanic').value='creative';$('mechanic').dispatchEvent(new Event('change'));$('prompt').value=`${a} a ${o} ${t}. Give your solution a name.`;status('Fresh ridiculous recipe loaded.');});
+  $('randomize').addEventListener('click',()=>{
+    const settings=['corner market','bus stop','maker garage','apartment stairwell','city park','school gym','loading dock','rooftop observatory','community garden','small arcade'];
+    const actions=['repair','deliver','sort','match','build','identify','carry','teach','find','balance'];
+    const objects=['loose shelf','grocery bag','broken bicycle light','toolbox','bus timetable','garden hose','lost glove','star chart','arcade token tray','market display'];
+    const anomalies=['',' while one object keeps moving when nobody touches it',' after Fuzzball adds one impossible clue',' while the hallway becomes slightly longer each trip',' as one sign changes a single word',' while a monster politely offers unhelpful advice',' during a brief gravity anomaly'];
+    const setting=settings[Math.floor(Math.random()*settings.length)],action=actions[Math.floor(Math.random()*actions.length)],object=objects[Math.floor(Math.random()*objects.length)],anomaly=anomalies[Math.floor(Math.random()*anomalies.length)];
+    const title=`${action[0].toUpperCase()+action.slice(1)} at the ${setting}`;
+    $('name').value=title;$('id').dataset.manual='';$('id').value=slug(title);$('mechanic').value='creative';$('mechanic').dispatchEvent(new Event('change'));
+    $('prompt').value=`At the ${setting}, ${action} the ${object}${anomaly}. Give your solution or method a name.`;
+    status(anomaly?'Grounded recipe loaded with one anomaly.':'Grounded ordinary-life recipe loaded.');
+  });
   refresh();
 })();
