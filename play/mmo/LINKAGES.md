@@ -2,13 +2,28 @@
 
 This file connects the MMO surfaces without collapsing their responsibilities.
 
+## Canonical reality chain
+
+`ordinary physical world → observed natural world → scientific observation → processed scientific image → game reconstruction → anomaly`
+
+- **Reality canon:** `REALITY_CANON.md`
+- **MMO main page:** `index.html`
+- **Astronomy boundary:** in-game reconstruction is labeled; linked EHT/NASA sources retain the scientific evidence role.
+
+When an older MMO aesthetic or content note conflicts with `REALITY_CANON.md`, the reality canon controls current presentation. Historical predecessor files remain historical; they are not rewritten.
+
+Boundary:
+
+`OBSERVATION != PROCESSED_SCIENCE_IMAGE != GAME_RECONSTRUCTION`
+
 ## Player-facing chain
 
-`Play Hub → MMO Main Page → World / Arcade → Arcade Forge → Installed Plug-ins → Chronicle / History`
+`Play Hub → MMO Main Page → Neighborhood / Observatory / World / Arcade → Arcade Forge → Installed Plug-ins → Chronicle / History`
 
 - **Play Hub:** `../index.html`
 - **MMO Main Page:** `index.html`
 - **Arcade Forge:** `forge.html`
+- **Reality canon:** `REALITY_CANON.md`
 - **Plug-in contract:** `plugin-contract.json`
 - **Plug-in runtime:** `plugin-runtime.js`
 - **Known-good sample:** `plugins/duck-rescue.json`
@@ -39,10 +54,11 @@ The game may use retrieved context as inspiration, navigation, or a bounded worl
 
 ## Release chain
 
-`Current local prototype → plug-in content growth → authoritative multiplayer → moderation / accessibility / security gates → RC → RED WILDS 1.0`
+`Current grounded local prototype → plug-in content growth → authoritative multiplayer → moderation / accessibility / security gates → RC → RED WILDS 1.0`
 
 - **Major release plan:** `RELEASE_PLAN_2026-11-15.md`
 - **Target:** November 15, 2026
+- **Current art/world precedence:** `REALITY_CANON.md`
 
 Roadmap status never upgrades itself into implementation status.
 
@@ -59,7 +75,7 @@ The current public Prize Vault stops before redemption.
 
 ## Plug-in chain
 
-`Forge recipe → schema validation → local installation → runtime discovery → bounded mini-game → local game reward`
+`grounded place/object/activity → optional anomaly → Forge recipe → schema validation → local installation → runtime discovery → bounded mini-game → local game reward`
 
 Plug-ins are data-only. They cannot ship executable JavaScript, arbitrary HTML, URLs, network authority, server authority, or prize authority.
 
