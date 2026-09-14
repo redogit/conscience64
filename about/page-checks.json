@@ -1,0 +1,132 @@
+{
+  "pages": [
+    {
+      "page": "index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "coordinate-space/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "research/projects/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/compare/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/computational-chorus/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/garden/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/musilanguage/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/musilanguage/radio.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/musilanguage/single.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/musilanguage/word-forge.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/orbit/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/steps/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "play/weave/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "research/cross-carrier/2026-09-13/internal-update/global_search/index.html",
+      "update_link": "PASS"
+    },
+    {
+      "page": "about/index.html",
+      "update_link": "PASS"
+    }
+  ],
+  "about": {
+    "public_repos": 7,
+    "private_placeholder": 1,
+    "daily_topics": 10,
+    "mobile_width": 390
+  },
+  "cooperation": {
+    "mode": "actual browser API from local source; not remote chat",
+    "authority_transfer": false,
+    "result": {
+      "stats": {
+        "spaceUoid": "uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599",
+        "total": 734,
+        "byType": {
+          "space-manifest": 1,
+          "research-node": 218,
+          "research-edge": 508,
+          "world": 1,
+          "world-fragment": 6
+        },
+        "byKind": {
+          "manifest": 1,
+          "meta": 1,
+          "project": 23,
+          "method_project": 5,
+          "application": 3,
+          "reference": 2,
+          "infrastructure": 1,
+          "shared_operation": 23,
+          "artifact": 138,
+          "excluded_source": 6,
+          "future_research": 10,
+          "missing_artifact": 6,
+          "relation": 508,
+          "world": 1,
+          "human_direction": 1,
+          "evidence": 1,
+          "agency": 1,
+          "privacy": 1,
+          "correctability": 1,
+          "cost": 1
+        },
+        "projects": {
+          "count": 7,
+          "registryVersion": "1.1.0",
+          "learnedInvariantCount": 20,
+          "lessonCount": 14
+        },
+        "transport": {
+          "encoding": "base64(gzip(utf8(json)))",
+          "payloadShards": 6,
+          "reservedShards": 1
+        }
+      },
+      "retrieval": {
+        "query": "hodge",
+        "total": 0,
+        "offset": 0,
+        "limit": 3,
+        "spaceUoid": "uoid:sha256:aa3994488ddfcf5f0d828e679b598dd905d4d1fe958c97fd6303e357171d6599",
+        "results": []
+      }
+    }
+  }
+}

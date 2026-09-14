@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'index.html'
+      - 'about/**'
       - 'app.js'
       - 'voice-anywhere.js'
       - 'research-song.js'

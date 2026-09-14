@@ -3779,7 +3779,7 @@
       "successor": {
         "sha256": "e591284b02ef4b2ae107d66c0fda1cd39a3fd14bb5d8cf49f170f88ddc017e27",
         "bytes": 6266,
-        "reason": "User-requested contextual questions and targeted verification"
+        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
       }
     },
     {
@@ -3838,9 +3838,9 @@
       "representation": "recovery_bundle",
       "direct": "global_search/index.html",
       "successor": {
-        "sha256": "da1c1bc0e5238ec4007264f387364ec276ebb7c94ef167d106dc05d425bf78b3",
-        "bytes": 87516,
-        "reason": "User-requested contextual questions and targeted verification"
+        "sha256": "44e0af491e78f311e0e29d581a87bcb75c5fa219eeb3c800f0bf566de0da7ba8",
+        "bytes": 87688,
+        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
       }
     },
     {
@@ -3850,9 +3850,9 @@
       "representation": "recovery_bundle",
       "direct": "global_search/interface.html",
       "successor": {
-        "sha256": "224266593dfa91ed871f4446a2e18d4e0ba7a8a59130b9d0dd8f03b313c6b852",
-        "bytes": 19612,
-        "reason": "User-requested contextual questions and targeted verification"
+        "sha256": "1df80e02d9bcbf1d83d7fabaf2d160144d9f49c162c7f5b6c70aa196b4dff693",
+        "bytes": 19784,
+        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
       }
     },
     {
@@ -4046,7 +4046,7 @@
       "successor": {
         "sha256": "c0d062c6fd01d448591c0945a21b0492b29d943fdfa5cbb99125af8be594c0c7",
         "bytes": 3763,
-        "reason": "User-requested contextual questions and targeted verification"
+        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
       }
     },
     {
@@ -4121,7 +4121,7 @@
       "successor": {
         "sha256": "16fb14226b45f8481c44fd31075c5c049be17b9710c4169712efba01056bd838",
         "bytes": 2434,
-        "reason": "User-requested contextual questions and targeted verification"
+        "reason": "Contextual questions and REDOGIT About/update navigation; predecessor retained"
       }
     },
     {

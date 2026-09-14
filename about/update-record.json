@@ -1,0 +1,88 @@
+{
+  "schema": "redogit/pages-update/1",
+  "date": "2026-09-14",
+  "day_scope": "2026-09-13 local working day through 2026-09-14 UTC",
+  "current_pages": [
+    "index.html",
+    "coordinate-space/index.html",
+    "research/projects/index.html",
+    "play/compare/index.html",
+    "play/computational-chorus/index.html",
+    "play/garden/index.html",
+    "play/index.html",
+    "play/musilanguage/index.html",
+    "play/musilanguage/radio.html",
+    "play/musilanguage/single.html",
+    "play/musilanguage/word-forge.html",
+    "play/orbit/index.html",
+    "play/steps/index.html",
+    "play/weave/index.html",
+    "research/cross-carrier/2026-09-13/internal-update/global_search/index.html",
+    "about/index.html"
+  ],
+  "enabled_pages_repository": "redogit/conscience64",
+  "other_public_repositories_pages_enabled": false,
+  "repository_accounting": {
+    "public": 7,
+    "private_placeholder": 1
+  },
+  "protocol_changed": false,
+  "scope_note": "Current application entrypoints updated; preserved historical HTML, source templates and internal fixtures are not independently rewritten",
+  "sources": [
+    {
+      "topic": "Research space and access",
+      "url": "https://github.com/redogit/conscience64",
+      "status": "implemented / recorded checks"
+    },
+    {
+      "topic": "People and practical use",
+      "url": "https://github.com/redogit/Dream-To-Action",
+      "status": "prototype / human validation open"
+    },
+    {
+      "topic": "Cooperation and context",
+      "url": "https://github.com/redogit/Other-Projects-/tree/main/ChatGPT%20and%20Conscience",
+      "status": "implemented / bounded cooperation"
+    },
+    {
+      "topic": "Search and internal interaction",
+      "url": "https://github.com/redogit/conscience64/pull/1",
+      "status": "merged / network limit retained"
+    },
+    {
+      "topic": "Cross-carrier reconstruction",
+      "url": "https://github.com/redogit/conscience64/tree/main/research/cross-carrier/2026-09-13/internal-update",
+      "status": "executed records / adverse results retained"
+    },
+    {
+      "topic": "Human expression and 1,024-byte carriers",
+      "url": "https://github.com/redogit/Other-Projects-",
+      "status": "published bounded tools"
+    },
+    {
+      "topic": "SPrime and decision context",
+      "url": "https://github.com/redogit/Other-Projects-/tree/main/SPrime%20Search",
+      "status": "bounded research"
+    },
+    {
+      "topic": "Blank pages and Hodge research",
+      "url": "https://github.com/redogit/Other-Projects-/tree/main/Hodge%20Span%20Lab",
+      "status": "implemented aids / geometric obligations open"
+    },
+    {
+      "topic": "Music, play and shared exploration",
+      "url": "https://github.com/redogit/conscience64/tree/main/play",
+      "status": "public source / further ideas proposed"
+    },
+    {
+      "topic": "Next investigation",
+      "url": "https://github.com/redogit/conscience64/blob/main/research/hodge/CONSCIENCE64_COOPERATION.md",
+      "status": "proposed / not yet verified"
+    }
+  ],
+  "previous_internal_update_deployment": {
+    "commit": "83d5bab5623dbbfff669a6fbbc3a27a4c48bfc1f",
+    "status": "success",
+    "run": "https://github.com/redogit/conscience64/actions/runs/34792608720"
+  }
+}
