@@ -24,13 +24,34 @@ for (const project of current.successorRecords) {
   assert.equal(project.authorityTransfer, false);
 }
 
+assert.equal(current.twoDayInputStateLedger.verbatimTranscript, false);
+const ledger = await readFile(new URL(`../${current.twoDayInputStateLedger.path}`, import.meta.url), 'utf8');
+for (const required of [
+  'USER_INPUT != ASSISTANT_SYNTHESIS',
+  'REQUESTED != IMPLEMENTED',
+  'IMPLEMENTED != VERIFIED',
+  'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO',
+  'Neither `P = NP` nor `P != NP`',
+  'Hodge conjecture remains open'
+]) assert.ok(ledger.includes(required), `two-day ledger missing boundary: ${required}`);
+
+for (const record of current.softwareBoundaryRecords || []) {
+  assert.equal(record.researchGraphAdmission, false);
+  const text = await readFile(new URL(`../${record.path}`, import.meta.url), 'utf8');
+  assert.match(text, /^# /, `${record.path} must be a human-readable software boundary record`);
+}
+
 for (const invariant of [
+  'USER_INPUT != ASSISTANT_SYNTHESIS',
+  'REQUESTED != IMPLEMENTED',
+  'IMPLEMENTED != VERIFIED',
   'OBSERVATION != INTERPRETATION',
   'REPETITION != VERIFICATION',
   'TRANSPORT_VALIDITY != EVIDENCE_VALIDITY',
   'DEMO_DATA != RESEARCH_EVIDENCE',
   'STATIC_VIEW != AUTHORITATIVE_LEDGER',
-  'CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE'
+  'CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE',
+  'PLAYABLE_SHARD != SERVER_AUTHORITATIVE_MMO'
 ]) assert.ok(current.addedInvariants.includes(invariant), `missing invariant: ${invariant}`);
 
-console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records.`);
+console.log(`PASS current research manifest: ${base.projects.length} preserved base + ${successorIds.length} forward-only successors = ${current.currentHumanReadableProjectCount} current records; two-day ledger and software boundary records verified.`);
