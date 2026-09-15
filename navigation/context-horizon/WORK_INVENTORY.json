@@ -30,6 +30,9 @@
       "path": "navigation/context-horizon/named-architecture-seeds.json"
     },
     {
+      "path": "navigation/context-horizon/library-discovery-seeds.json"
+    },
+    {
       "path": "navigation/context-horizon/external-public-sources.json"
     }
   ],
@@ -175,6 +178,27 @@
       "notes": []
     },
     {
+      "id": "accessible-workmate-jaws2025",
+      "canonicalName": "AccessibleWorkMate JAWS 2025",
+      "aliases": [
+        "AccessibleWorkMate"
+      ],
+      "domain": "accessibility-software",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Source/package identity recovered; Windows/JAWS acceptance remained unperformed in the inspected record."
+      ]
+    },
+    {
       "id": "adaptive-connectivity-diagnostic-network",
       "canonicalName": "Adaptive Connectivity Diagnostic Network",
       "aliases": [],
@@ -207,6 +231,23 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "algorithm-harness-v2",
+      "canonicalName": "Algorithm Harness v2",
+      "aliases": [],
+      "domain": "software-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
       ],
       "notes": []
     },
@@ -908,6 +949,25 @@
       ]
     },
     {
+      "id": "cooperative-ecs-project",
+      "canonicalName": "Cooperative ECS Project",
+      "aliases": [],
+      "domain": "research-governance",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Project shell seeded from Data-Driven ECS World v0.5.0; predecessor framework remains independently recoverable."
+      ]
+    },
+    {
       "id": "cross-carrier-field-theory",
       "canonicalName": "Cross Carrier Field Theory",
       "aliases": [],
@@ -1031,6 +1091,27 @@
       "notes": []
     },
     {
+      "id": "data-driven-ecs-world-v0-5-0",
+      "canonicalName": "Data-Driven ECS World v0.5.0",
+      "aliases": [
+        "Data-Driven ECS World"
+      ],
+      "domain": "software-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Criterion-driven ECS framework with capability pool, intake, evidence gates, restart support, and authority separation."
+      ]
+    },
+    {
       "id": "de-bruijn-serialization",
       "canonicalName": "de Bruijn Serialization",
       "aliases": [],
@@ -1099,6 +1180,193 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-1",
+      "canonicalName": "Deterministic Semantic Kernel v0.1",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [
+        "deterministic-semantic-kernel-v0-2"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-2",
+      "canonicalName": "Deterministic Semantic Kernel v0.2",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-1"
+      ],
+      "successors": [
+        "deterministic-semantic-kernel-v0-3"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-3",
+      "canonicalName": "Deterministic Semantic Kernel v0.3",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-2"
+      ],
+      "successors": [
+        "deterministic-semantic-kernel-v0-4"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-4",
+      "canonicalName": "Deterministic Semantic Kernel v0.4",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-3"
+      ],
+      "successors": [
+        "deterministic-semantic-kernel-v0-5"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-5",
+      "canonicalName": "Deterministic Semantic Kernel v0.5",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-4"
+      ],
+      "successors": [
+        "deterministic-semantic-kernel-v0-6"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Historical result preserved; later v0.6 repairs an observationally removable edge rather than rewriting v0.5."
+      ]
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-6",
+      "canonicalName": "Deterministic Semantic Kernel v0.6",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-5"
+      ],
+      "successors": [
+        "deterministic-semantic-kernel-v0-7"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-7",
+      "canonicalName": "Deterministic Semantic Kernel v0.7",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-6"
+      ],
+      "successors": [
+        "deterministic-semantic-kernel-v0-8"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-8",
+      "canonicalName": "Deterministic Semantic Kernel v0.8",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-7"
+      ],
+      "successors": [
+        "deterministic-semantic-kernel-v0-9"
+      ],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "deterministic-semantic-kernel-v0-9",
+      "canonicalName": "Deterministic Semantic Kernel v0.9",
+      "aliases": [],
+      "domain": "software-research-release",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [
+        "deterministic-semantic-kernel-v0-8"
+      ],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
       ],
       "notes": []
     },
@@ -1211,6 +1479,25 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [],
       "notes": []
+    },
+    {
+      "id": "excel-report-assistant",
+      "canonicalName": "Excel Report Assistant",
+      "aliases": [],
+      "domain": "professional-automation",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Packaged implementation identity; runtime/constraint-validation obligations remain separate."
+      ]
     },
     {
       "id": "excel-report-automation",
@@ -1506,6 +1793,25 @@
       ]
     },
     {
+      "id": "grand-unified-perceptron",
+      "canonicalName": "Grand Unified Perceptron",
+      "aliases": [
+        "GUP"
+      ],
+      "domain": "model-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "historical-recovery",
       "canonicalName": "Historical Recovery",
       "aliases": [],
@@ -1637,6 +1943,28 @@
         "historical-context-seed"
       ],
       "notes": []
+    },
+    {
+      "id": "hydrovoltaic-power-water-pod",
+      "canonicalName": "Hydrovoltaic Power & Water Pod",
+      "aliases": [
+        "Hydrovoltaic Wick Cell",
+        "Wick Cell"
+      ],
+      "domain": "engineering",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Proof-of-coupled-effects / water-power prototype line; not a potable-water or field-performance claim."
+      ]
     },
     {
       "id": "ift",
@@ -1932,6 +2260,25 @@
       "notes": []
     },
     {
+      "id": "member-success-jira-forge",
+      "canonicalName": "Member Success Jira Forge",
+      "aliases": [],
+      "domain": "professional-operations",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Distinct implementation/package identity from the broader Member Success / Jira work family."
+      ]
+    },
+    {
       "id": "mfai",
       "canonicalName": "MFAI",
       "aliases": [],
@@ -1947,6 +2294,27 @@
         "historical-context-seed"
       ],
       "notes": []
+    },
+    {
+      "id": "minimal-ir-destruction-study",
+      "canonicalName": "minimal_ir Destruction Study v0.1",
+      "aliases": [
+        "Minimal-IR Destruction Study"
+      ],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Adversarial destruction study separating deterministic kernel fidelity, representation self-containment, and cross-model semantic comprehension."
+      ]
     },
     {
       "id": "mmo",
@@ -2041,6 +2409,63 @@
       "preservationStatus": "located",
       "sourceKinds": [
         "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "moonshot-cycle-1-harness",
+      "canonicalName": "Moonshot Cycle 1 Corrected Harness / Results",
+      "aliases": [
+        "Moonshot Cycle 1"
+      ],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "moonshot-cycle-2-harness",
+      "canonicalName": "Moonshot Cycle 2 Preregistered Harness / Results",
+      "aliases": [
+        "Moonshot Cycle 2"
+      ],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "moonshot-cycle-3-harness",
+      "canonicalName": "Moonshot Cycle 3 Preregistered Non-Consuming Harness",
+      "aliases": [
+        "Moonshot Cycle 3"
+      ],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
       ],
       "notes": []
     },
@@ -2418,6 +2843,25 @@
       "preservationStatus": "located",
       "sourceKinds": [
         "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "orbit-master-2-6-tw1-access3",
+      "canonicalName": "Orbit Master 2.6 TW1 ACCESS3",
+      "aliases": [
+        "Orbit Master 2.6"
+      ],
+      "domain": "knowledge-system",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
       ],
       "notes": []
     },
@@ -3189,6 +3633,27 @@
       "notes": []
     },
     {
+      "id": "redogit-python-cli",
+      "canonicalName": "REDOGIT Python CLI",
+      "aliases": [],
+      "domain": "software-tool",
+      "sourceLocations": [
+        "github:redogit/redogit/tools/redogit.py"
+      ],
+      "provenanceStatus": "github-public-file",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-file"
+      ],
+      "notes": [
+        "Local contract inspector/executor with status, check, run, and public-status commands."
+      ]
+    },
+    {
       "id": "relvm",
       "canonicalName": "RELVM",
       "aliases": [],
@@ -3314,6 +3779,27 @@
         "historical-context-seed"
       ],
       "notes": []
+    },
+    {
+      "id": "rivir-external-api-js-sdk",
+      "canonicalName": "RIVIR External API JavaScript SDK",
+      "aliases": [
+        "RIVIR external API JS SDK"
+      ],
+      "domain": "software-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "Package identity; external Swagger dependency remained absent in the inspected archive."
+      ]
     },
     {
       "id": "rolling-research-airlock",
@@ -3494,6 +3980,25 @@
       ]
     },
     {
+      "id": "semantic-invariance-falsification",
+      "canonicalName": "Semantic-Invariance Falsification",
+      "aliases": [
+        "semantic-invariance falsification archive"
+      ],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "semantic-kernel-egraph-lineage",
       "canonicalName": "Semantic Kernel / E-Graph Lineage",
       "aliases": [],
@@ -3600,6 +4105,25 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "sliding-window-spacy",
+      "canonicalName": "Sliding-Window spaCy",
+      "aliases": [
+        "Sliding-window spaCy"
+      ],
+      "domain": "software-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
       ],
       "notes": []
     },
@@ -4050,6 +4574,27 @@
         "historical-context-seed"
       ],
       "notes": []
+    },
+    {
+      "id": "you-only-think-once",
+      "canonicalName": "You Only Think Once",
+      "aliases": [
+        "YOTO"
+      ],
+      "domain": "model-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "library-discovery-seed"
+      ],
+      "notes": [
+        "RiM parallel latent workspace + Ouro shared recurrent depth + SpiralThinker training-alignment direction; preserved as a research direction, not an established result."
+      ]
     }
   ]
 }
