@@ -82,3 +82,14 @@ addEventListener('conscience64-ready',()=>{addUI();wire();wireAnswer();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 globalThis.SpaceLensMaster=Object.freeze({roles:ROLE,companions:DEFAULT_COMPANIONS,route,parameterize,current:()=>({route:structuredClone(lastRoute),orientation:structuredClone(lastOrientation)})});
 })();
+
+(()=>{
+'use strict';
+let loading=false,loaded=false;
+function loadContextHorizon(){
+  if(loading||loaded)return;loading=true;
+  import('/conscience64/navigation/context-horizon/page-adapter.mjs').then(()=>{loaded=true;}).catch(error=>{console.warn('Context Horizon unavailable; ordinary navigation remains active.',error);}).finally(()=>{loading=false;});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadContextHorizon,{once:true});else queueMicrotask(loadContextHorizon);
+addEventListener('conscience64-ready',loadContextHorizon,{once:true});
+})();
