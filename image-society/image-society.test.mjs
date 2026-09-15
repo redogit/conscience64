@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { canonicalJson, sha256Canonical } from './canonical.mjs';
 import { validateRunManifest } from './contracts.mjs';
+import { createLedger, appendEvent, eventsForBranch, ledgerDigest } from './ledger.mjs';
 
 test('canonicalJson is insensitive to object key insertion order', () => {
   const a = { z: 2, a: { y: 4, x: 3 } };
@@ -49,4 +50,27 @@ test('run manifest supports explicitly bounded long-horizon runs through one mil
   });
   assert.equal(out.max_calls, 250000);
   assert.throws(() => validateRunManifest({ ...out, max_calls: 1000001 }), /max_calls/);
+});
+
+test('ledger assigns monotonic branch sequence and preserves failed events', () => {
+  const ledger = createLedger({ run_id: 'r1', max_calls: 10 });
+  appendEvent(ledger, {
+    event_id: 'e1', branch_id: 'main', event_type: 'generate',
+    status: 'succeeded', input_artifact_ids: [], output_artifact_ids: ['a1']
+  });
+  appendEvent(ledger, {
+    event_id: 'e2', branch_id: 'main', event_type: 'critique',
+    status: 'failed-provider', input_artifact_ids: ['a1'], output_artifact_ids: []
+  });
+  const rows = eventsForBranch(ledger, 'main');
+  assert.deepEqual(rows.map(x => x.sequence_no), [1, 2]);
+  assert.equal(rows[1].status, 'failed-provider');
+  assert.match(ledgerDigest(ledger), /^[0-9a-f]{64}$/);
+});
+
+test('ledger rejects duplicate event IDs', () => {
+  const ledger = createLedger({ run_id: 'r1', max_calls: 10 });
+  const row = { event_id: 'e1', branch_id: 'main', event_type: 'plan', status: 'succeeded' };
+  appendEvent(ledger, row);
+  assert.throws(() => appendEvent(ledger, row), /duplicate event_id/);
 });
