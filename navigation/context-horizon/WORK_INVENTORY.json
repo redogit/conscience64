@@ -1,1 +1,1039 @@
-{"schema":"conscience64/context-horizon-work-inventory/v1","version":"1.0.0","generatedFrom":[{"path":"research/projects/CURRENT.json","gitBlobSha":"116ed43d833489ae9cc07adaaf7b1fd2c2227d89"},{"path":"research/projects/projects.json","gitBlobSha":"24ecb718a9a79d4abbd724787a756f5bdd734049"},{"path":"play/projects.json","gitBlobSha":"8c9ca64fcba277c13d3dc50555562a3dd876b97e"},{"path":"play/mmo/web-links.json","gitBlobSha":"9634b40c34ca5e3fc4a6ec3aa943de8cbe9bf533"},{"path":"navigation/context-horizon/preservation-seeds.json","sha256":"adc8e40a923cc790084a879d2b465cbf94a775a12743bf9ed684538918f2309b"}],"works":[{"id":"1024-byte-section-carriers","canonicalName":"1,024-byte Section Carriers","aliases":["1024-byte section carriers"],"domain":"experiment","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"accessibility-work","canonicalName":"Accessibility Work","aliases":[],"domain":"accessibility","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"bounded-learning-compression-tools","canonicalName":"Bounded Learning-Compression Tools","aliases":[],"domain":"experiment","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"chatgpt-and-conscience","canonicalName":"ChatGPT and Conscience","aliases":[],"domain":"project","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"compare","canonicalName":"Source Compare","aliases":[],"domain":"tool","sourceLocations":["play/compare/","play/compare/index.html","research/projects/cross-carrier-wave.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project","web-route"],"notes":[]},{"id":"computational-chorus","canonicalName":"Computational Chorus","aliases":[],"domain":"creative-technical","sourceLocations":["play/computational-chorus/","play/computational-chorus/index.html","research/projects/tiny-babel-tbcl.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project","web-route"],"notes":[]},{"id":"conscience64","canonicalName":"Conscience64","aliases":[],"domain":"system","sourceLocations":["index.html","README.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":[],"notes":[]},{"id":"conscience64-api-patches","canonicalName":"Conscience64 API Patches","aliases":[],"domain":"software","sourceLocations":["API.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":[],"notes":[]},{"id":"cross-carrier-wave","canonicalName":"Cross-Carrier Wave","aliases":[],"domain":"research","sourceLocations":["research/projects/cross-carrier-wave.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-project-record"],"notes":[]},{"id":"dream-to-action","canonicalName":"Dream to Action","aliases":[],"domain":"project","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"educational-experiments","canonicalName":"Educational Experiments","aliases":[],"domain":"education","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"explorer-world","canonicalName":"Explorer World","aliases":[],"domain":"game","sourceLocations":["play/explorer-world/","play/explorer-world/index.html","play/explorer-world/README.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project","web-route"],"notes":[]},{"id":"finite-table-checks","canonicalName":"Finite-Table Checks","aliases":[],"domain":"experiment","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"first-neural-network","canonicalName":"FirstNeuralNetwork","aliases":[],"domain":"software","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"fuzzball-hidden-alpha","canonicalName":"Fuzzball Hidden Alpha","aliases":["Fuzzball"],"domain":"game","sourceLocations":["play/fuzzball-hidden/","research/updates/2026-09-14-fuzzball-hidden-alpha.md"],"provenanceStatus":"repository-located","publicationStatus":"unresolved","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["software-boundary-record"],"notes":[]},{"id":"garden","canonicalName":"Pattern Garden","aliases":[],"domain":"tool","sourceLocations":["play/garden/","play/garden/index.html","research/projects/geometry-codecs.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project","web-route"],"notes":[]},{"id":"geometry-codecs","canonicalName":"Geometry, 4D Codecs, and Observer Experiments","aliases":["Geometry / 4D / Codecs"],"domain":"research","sourceLocations":["research/projects/geometry-codecs.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-project-record"],"notes":[]},{"id":"historical-recovery","canonicalName":"Historical Recovery","aliases":[],"domain":"research","sourceLocations":["research/projects/historical-recovery.md","research/history/"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-project-record"],"notes":[]},{"id":"hodge-conjecture","canonicalName":"Hodge Conjecture Research Spine","aliases":["Hodge Conjecture research"],"domain":"research","sourceLocations":["research/projects/hodge-conjecture.md","research/hodge/"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-successor-record"],"notes":[]},{"id":"human-expression-archive","canonicalName":"Human Expression Archive","aliases":[],"domain":"archive","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"human-knowledge-working-set-lab","canonicalName":"Human–Knowledge Working-Set Lab","aliases":["Human-Knowledge Working-Set Lab"],"domain":"research","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"local-sandbox-builder","canonicalName":"Local Sandbox Builder","aliases":[],"domain":"software","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"maui-brick-break","canonicalName":"MauiBrickBreak","aliases":[],"domain":"software","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"mmo","canonicalName":"Conscience64 MMO RPG","aliases":[],"domain":"game","sourceLocations":["play/mmo/simple/index.html","play/mmo/REALITY_CANON.md"],"provenanceStatus":"play-project-registry","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project"],"notes":[]},{"id":"mmo-world-beta","canonicalName":"MMO World Beta","aliases":[],"domain":"game","sourceLocations":["play/mmo-world/","research/projects/mmo-world-beta.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"predecessor","predecessors":[],"successors":["red-wilds"],"preservationStatus":"located","sourceKinds":["software-boundary-record","web-route"],"notes":[]},{"id":"model-experiments","canonicalName":"Model Experiments","aliases":[],"domain":"research","sourceLocations":["research/projects/model-experiments.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-project-record"],"notes":[]},{"id":"musilanguage","canonicalName":"Musilanguage","aliases":[],"domain":"creative-technical","sourceLocations":["play/musilanguage/"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":[],"notes":[]},{"id":"operator-moonshot","canonicalName":"Operator Moonshot","aliases":[],"domain":"research","sourceLocations":["research/projects/operator-moonshot.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-project-record"],"notes":[]},{"id":"orbit","canonicalName":"Orbit Shelf","aliases":[],"domain":"tool","sourceLocations":["play/orbit/","play/orbit/index.html","research/projects/orbit-library.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project","web-route"],"notes":[]},{"id":"orbit-engine","canonicalName":"Orbit Engine","aliases":[],"domain":"software","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"orbit-library","canonicalName":"Orbit Library","aliases":[],"domain":"research","sourceLocations":["research/projects/orbit-library.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-project-record"],"notes":[]},{"id":"other-projects","canonicalName":"Other Projects","aliases":["Other-Projects-"],"domain":"project-collection","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"p-vs-np","canonicalName":"P vs NP Research","aliases":["P VS NP research","P versus NP research"],"domain":"research","sourceLocations":["research/pnp/"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":[],"notes":[]},{"id":"philosophy-family","canonicalName":"Philosophy","aliases":["philosophical work"],"domain":"philosophy","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":["family seed only; individual arguments and lines remain preservation targets"]},{"id":"poetry-family","canonicalName":"Poetry","aliases":["poems"],"domain":"poetry","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":["family seed only; individual poems remain preservation targets and must not be invented or merged"]},{"id":"python-symmetry-experiments","canonicalName":"Python Symmetry Experiments","aliases":[],"domain":"experiment","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":[]},{"id":"red-wilds","canonicalName":"Red Wilds","aliases":["Conscience64 MMO RPG"],"domain":"game","sourceLocations":["play/mmo/simple/","play/mmo/"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":["mmo-world-beta"],"successors":[],"preservationStatus":"located","sourceKinds":[],"notes":[]},{"id":"redogit","canonicalName":"REDOGIT","aliases":["redogit"],"domain":"methodology","sourceLocations":["REDOGIT.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":[],"notes":[]},{"id":"research-analytics","canonicalName":"Research Analytics","aliases":[],"domain":"research","sourceLocations":["research/projects/research-analytics.md","analytics/"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-successor-record"],"notes":[]},{"id":"steps","canonicalName":"Small Steps","aliases":[],"domain":"tool","sourceLocations":["play/steps/","play/steps/index.html","API.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project","web-route"],"notes":[]},{"id":"stories-prose-songs-family","canonicalName":"Stories, Prose, Songs, and Sayings","aliases":["stories","prose","songs","sayings"],"domain":"creative-writing","sourceLocations":[],"provenanceStatus":"known-from-project-history","publicationStatus":"unresolved","state":"unresolved","predecessors":[],"successors":[],"preservationStatus":"must-locate-or-retain-unresolved","sourceKinds":[],"notes":["family seed only; individual works remain distinct"]},{"id":"tiny-babel-tbcl","canonicalName":"Tiny Babel / TBCL","aliases":["TBCL","Tiny Babel"],"domain":"research","sourceLocations":["research/projects/tiny-babel-tbcl.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["research-project-record"],"notes":[]},{"id":"weave","canonicalName":"Word Weave","aliases":[],"domain":"tool","sourceLocations":["play/weave/","play/weave/index.html","research/projects/tiny-babel-tbcl.md"],"provenanceStatus":"repository-located","publicationStatus":"public","state":"current","predecessors":[],"successors":[],"preservationStatus":"located","sourceKinds":["play-project","web-route"],"notes":[]}]}
+{
+  "schema": "conscience64/context-horizon-work-inventory/v1",
+  "version": "1.0.0",
+  "generatedFrom": [
+    {
+      "path": "research/projects/CURRENT.json"
+    },
+    {
+      "path": "research/projects/projects.json"
+    },
+    {
+      "path": "play/projects.json"
+    },
+    {
+      "path": "play/mmo/web-links.json"
+    },
+    {
+      "path": "navigation/context-horizon/preservation-seeds.json"
+    },
+    {
+      "path": "navigation/context-horizon/external-public-sources.json"
+    }
+  ],
+  "works": [
+    {
+      "id": "1024-byte-section-carriers",
+      "canonicalName": "1,024-byte Section Carriers",
+      "aliases": [
+        "1024-byte section carriers"
+      ],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "accessibility-work",
+      "canonicalName": "Accessibility Work",
+      "aliases": [],
+      "domain": "accessibility",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "blank-page-lab",
+      "canonicalName": "Blank Page Lab",
+      "aliases": [],
+      "domain": "philosophy-research",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/Blank Page Lab/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "bounded-learning-compression-tools",
+      "canonicalName": "Bounded Learning-Compression Tools",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "chatgpt-and-conscience",
+      "canonicalName": "ChatGPT and Conscience",
+      "aliases": [],
+      "domain": "project",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/ChatGPT and Conscience/"
+      ],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "compare",
+      "canonicalName": "Source Compare",
+      "aliases": [],
+      "domain": "tool",
+      "sourceLocations": [
+        "play/compare/",
+        "play/compare/index.html",
+        "research/projects/cross-carrier-wave.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    },
+    {
+      "id": "computational-chorus",
+      "canonicalName": "Computational Chorus",
+      "aliases": [],
+      "domain": "creative-technical",
+      "sourceLocations": [
+        "play/computational-chorus/",
+        "play/computational-chorus/index.html",
+        "research/projects/tiny-babel-tbcl.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    },
+    {
+      "id": "conscience64",
+      "canonicalName": "Conscience64",
+      "aliases": [],
+      "domain": "system",
+      "sourceLocations": [
+        "index.html",
+        "README.md",
+        "github:redogit/conscience64"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-repository"
+      ],
+      "notes": []
+    },
+    {
+      "id": "conscience64-api-patches",
+      "canonicalName": "Conscience64 API Patches",
+      "aliases": [],
+      "domain": "software",
+      "sourceLocations": [
+        "API.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "context-discovery",
+      "canonicalName": "Context Discovery",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/Context Discovery/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "cross-carrier-wave",
+      "canonicalName": "Cross-Carrier Wave",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/cross-carrier-wave.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "decision-field-mmorpg",
+      "canonicalName": "Decision Field MMORPG",
+      "aliases": [],
+      "domain": "game",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/Decision Field MMORPG/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "decision-field-operator-lab",
+      "canonicalName": "Decision Field Operator Lab",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/Decision Field Operator Lab/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "dream-to-action",
+      "canonicalName": "Dream to Action",
+      "aliases": [],
+      "domain": "project",
+      "sourceLocations": [
+        "github:redogit/Dream-To-Action",
+        "github:redogit/Dream-To-Action/README.md"
+      ],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-repository"
+      ],
+      "notes": []
+    },
+    {
+      "id": "educational-experiments",
+      "canonicalName": "Educational Experiments",
+      "aliases": [],
+      "domain": "education",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "explorer-world",
+      "canonicalName": "Explorer World",
+      "aliases": [],
+      "domain": "game",
+      "sourceLocations": [
+        "play/explorer-world/",
+        "play/explorer-world/index.html",
+        "play/explorer-world/README.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project",
+        "web-route"
+      ],
+      "notes": []
+    },
+    {
+      "id": "finite-table-checks",
+      "canonicalName": "Finite-Table Checks",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "first-neural-network",
+      "canonicalName": "FirstNeuralNetwork",
+      "aliases": [],
+      "domain": "software",
+      "sourceLocations": [
+        "github:redogit/FirstNeuralNetwork",
+        "github:redogit/FirstNeuralNetwork/README.md"
+      ],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-repository"
+      ],
+      "notes": []
+    },
+    {
+      "id": "fuzzball-hidden-alpha",
+      "canonicalName": "Fuzzball Hidden Alpha",
+      "aliases": [
+        "Fuzzball"
+      ],
+      "domain": "game",
+      "sourceLocations": [
+        "play/fuzzball-hidden/",
+        "research/updates/2026-09-14-fuzzball-hidden-alpha.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "unresolved",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "software-boundary-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "garden",
+      "canonicalName": "Pattern Garden",
+      "aliases": [],
+      "domain": "tool",
+      "sourceLocations": [
+        "play/garden/",
+        "play/garden/index.html",
+        "research/projects/geometry-codecs.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    },
+    {
+      "id": "geometry-codecs",
+      "canonicalName": "Geometry, 4D Codecs, and Observer Experiments",
+      "aliases": [
+        "Geometry / 4D / Codecs"
+      ],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/geometry-codecs.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "historical-recovery",
+      "canonicalName": "Historical Recovery",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/historical-recovery.md",
+        "research/history/"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "hodge-conjecture",
+      "canonicalName": "Hodge Conjecture Research Spine",
+      "aliases": [
+        "Hodge Conjecture research"
+      ],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/hodge-conjecture.md",
+        "research/hodge/"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-successor-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "hodge-span-lab",
+      "canonicalName": "Hodge Span Lab",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/Hodge Span Lab/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "human-expression-archive",
+      "canonicalName": "Human Expression Archive",
+      "aliases": [],
+      "domain": "archive",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/Human Expression Archive/"
+      ],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": [
+        "Bounded accession; its own record-level index remains the source of individual archive-record identity."
+      ]
+    },
+    {
+      "id": "human-knowledge-working-set-lab",
+      "canonicalName": "Human–Knowledge Working-Set Lab",
+      "aliases": [
+        "Human-Knowledge Working-Set Lab"
+      ],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "knowledge-garden",
+      "canonicalName": "Knowledge Garden",
+      "aliases": [],
+      "domain": "knowledge-system",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/knowledge-garden/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "local-sandbox-builder",
+      "canonicalName": "Local Sandbox Builder",
+      "aliases": [],
+      "domain": "software",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "maui-brick-break",
+      "canonicalName": "MauiBrickBreak",
+      "aliases": [],
+      "domain": "software",
+      "sourceLocations": [
+        "github:redogit/MauiBrickBreak",
+        "github:redogit/MauiBrickBreak/README.md"
+      ],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-repository"
+      ],
+      "notes": []
+    },
+    {
+      "id": "mmo",
+      "canonicalName": "Conscience64 MMO RPG",
+      "aliases": [],
+      "domain": "game",
+      "sourceLocations": [
+        "play/mmo/simple/index.html",
+        "play/mmo/REALITY_CANON.md"
+      ],
+      "provenanceStatus": "play-project-registry",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    },
+    {
+      "id": "mmo-world-beta",
+      "canonicalName": "MMO World Beta",
+      "aliases": [],
+      "domain": "game",
+      "sourceLocations": [
+        "play/mmo-world/",
+        "research/projects/mmo-world-beta.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "predecessor",
+      "predecessors": [],
+      "successors": [
+        "red-wilds"
+      ],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "software-boundary-record",
+        "web-route"
+      ],
+      "notes": []
+    },
+    {
+      "id": "model-experiments",
+      "canonicalName": "Model Experiments",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/model-experiments.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "musilanguage",
+      "canonicalName": "Musilanguage",
+      "aliases": [],
+      "domain": "creative-technical",
+      "sourceLocations": [
+        "play/musilanguage/"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "operator-moonshot",
+      "canonicalName": "Operator Moonshot",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/operator-moonshot.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "orbit",
+      "canonicalName": "Orbit Shelf",
+      "aliases": [],
+      "domain": "tool",
+      "sourceLocations": [
+        "play/orbit/",
+        "play/orbit/index.html",
+        "research/projects/orbit-library.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    },
+    {
+      "id": "orbit-engine",
+      "canonicalName": "Orbit Engine",
+      "aliases": [],
+      "domain": "software",
+      "sourceLocations": [
+        "github:redogit/orbit",
+        "github:redogit/orbit/readme.md"
+      ],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-repository"
+      ],
+      "notes": [
+        "Distinct from Orbit Library / knowledge-organization research."
+      ]
+    },
+    {
+      "id": "orbit-library",
+      "canonicalName": "Orbit Library",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/orbit-library.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "other-projects",
+      "canonicalName": "Other Projects",
+      "aliases": [
+        "Other-Projects-"
+      ],
+      "domain": "project-collection",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-",
+        "github:redogit/Other-Projects-/README.md"
+      ],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-repository"
+      ],
+      "notes": []
+    },
+    {
+      "id": "p-vs-np",
+      "canonicalName": "P vs NP Research",
+      "aliases": [
+        "P VS NP research",
+        "P versus NP research"
+      ],
+      "domain": "research",
+      "sourceLocations": [
+        "research/pnp/"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "p-vs-np-repair-lab",
+      "canonicalName": "P versus NP Repair Lab",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/P versus NP Repair Lab/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "philosophy-family",
+      "canonicalName": "Philosophy",
+      "aliases": [
+        "philosophical work"
+      ],
+      "domain": "philosophy",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": [
+        "family seed only; individual arguments and lines remain preservation targets"
+      ]
+    },
+    {
+      "id": "poetry-family",
+      "canonicalName": "Poetry",
+      "aliases": [
+        "poems"
+      ],
+      "domain": "poetry",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": [
+        "family seed only; individual poems remain preservation targets and must not be invented or merged"
+      ]
+    },
+    {
+      "id": "python-symmetry-experiments",
+      "canonicalName": "Python Symmetry Experiments",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "red-wilds",
+      "canonicalName": "Red Wilds",
+      "aliases": [
+        "Conscience64 MMO RPG"
+      ],
+      "domain": "game",
+      "sourceLocations": [
+        "play/mmo/simple/",
+        "play/mmo/"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [
+        "mmo-world-beta"
+      ],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "redogit",
+      "canonicalName": "REDOGIT",
+      "aliases": [
+        "redogit"
+      ],
+      "domain": "methodology",
+      "sourceLocations": [
+        "REDOGIT.md",
+        "github:redogit/redogit",
+        "github:redogit/redogit/README.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-repository"
+      ],
+      "notes": []
+    },
+    {
+      "id": "research-analytics",
+      "canonicalName": "Research Analytics",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/research-analytics.md",
+        "analytics/"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-successor-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "s1024-compression-lab",
+      "canonicalName": "S1024 Compression Lab",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/S1024 Compression Lab/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "sprime-search",
+      "canonicalName": "SPrime Search",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [
+        "github:redogit/Other-Projects-/SPrime Search/"
+      ],
+      "provenanceStatus": "github-public-subproject",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "steps",
+      "canonicalName": "Small Steps",
+      "aliases": [],
+      "domain": "tool",
+      "sourceLocations": [
+        "play/steps/",
+        "play/steps/index.html",
+        "API.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    },
+    {
+      "id": "stories-prose-songs-family",
+      "canonicalName": "Stories, Prose, Songs, and Sayings",
+      "aliases": [
+        "stories",
+        "prose",
+        "songs",
+        "sayings"
+      ],
+      "domain": "creative-writing",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-project-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [],
+      "notes": [
+        "family seed only; individual works remain distinct"
+      ]
+    },
+    {
+      "id": "tiny-babel-tbcl",
+      "canonicalName": "Tiny Babel / TBCL",
+      "aliases": [
+        "TBCL",
+        "Tiny Babel"
+      ],
+      "domain": "research",
+      "sourceLocations": [
+        "research/projects/tiny-babel-tbcl.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "weave",
+      "canonicalName": "Word Weave",
+      "aliases": [],
+      "domain": "tool",
+      "sourceLocations": [
+        "play/weave/",
+        "play/weave/index.html",
+        "research/projects/tiny-babel-tbcl.md"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    }
+  ]
+}
