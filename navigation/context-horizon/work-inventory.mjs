@@ -157,10 +157,23 @@ export function recordsFromSourceIndexes({researchProjects, researchCurrent, pla
   return records;
 }
 
+function historicalSeedDefaults(work) {
+  return {
+    ...work,
+    sourceLocations: Array.isArray(work.sourceLocations) ? work.sourceLocations : [],
+    provenanceStatus: work.provenanceStatus ?? 'known-from-library-history',
+    publicationStatus: work.publicationStatus ?? 'unresolved',
+    state: work.state ?? 'unresolved',
+    preservationStatus: work.preservationStatus ?? 'must-locate-or-retain-unresolved',
+    sourceKinds: Array.isArray(work.sourceKinds) ? work.sourceKinds : ['historical-context-seed']
+  };
+}
+
 export async function generateInventorySnapshot(repoRoot, {write = false} = {}) {
   const root = resolve(repoRoot);
   const base = dirname(fileURLToPath(import.meta.url));
   const seedPath = resolve(base, 'preservation-seeds.json');
+  const historicalSeedPath = resolve(base, 'historical-context-seeds.json');
   const externalPublicPath = resolve(base, 'external-public-sources.json');
   const sourcePaths = [
     'research/projects/CURRENT.json',
@@ -168,24 +181,27 @@ export async function generateInventorySnapshot(repoRoot, {write = false} = {}) 
     'play/projects.json',
     'play/mmo/web-links.json'
   ];
-  const [researchCurrent, researchProjects, playProjects, webLinks, seeds, externalPublic] = await Promise.all([
+  const [researchCurrent, researchProjects, playProjects, webLinks, seeds, historicalSeeds, externalPublic] = await Promise.all([
     readFile(resolve(root,sourcePaths[0]),'utf8').then(JSON.parse),
     readFile(resolve(root,sourcePaths[1]),'utf8').then(JSON.parse),
     readFile(resolve(root,sourcePaths[2]),'utf8').then(JSON.parse),
     readFile(resolve(root,sourcePaths[3]),'utf8').then(JSON.parse),
     readFile(seedPath,'utf8').then(JSON.parse),
+    readFile(historicalSeedPath,'utf8').then(JSON.parse),
     readFile(externalPublicPath,'utf8').then(JSON.parse)
   ]);
   const generatedFrom = [
     ...sourcePaths.map(path => ({path})),
     {path:'navigation/context-horizon/preservation-seeds.json'},
+    {path:'navigation/context-horizon/historical-context-seeds.json'},
     {path:'navigation/context-horizon/external-public-sources.json'}
   ];
   const sources = [
     ...recordsFromSourceIndexes({researchProjects,researchCurrent,playProjects,webLinks}),
     ...(externalPublic?.works || [])
   ];
-  const inventory = buildInventory({sources,seeds:seeds.works,generatedFrom});
+  const historical = (historicalSeeds?.works || []).map(historicalSeedDefaults);
+  const inventory = buildInventory({sources,seeds:[...(seeds.works || []), ...historical],generatedFrom});
   if (write) {
     const output = resolve(base,'WORK_INVENTORY.json');
     await writeFile(output, JSON.stringify(inventory,null,2)+'\n','utf8');
