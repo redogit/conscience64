@@ -71,6 +71,31 @@ async function executeLogicalCall({ manifest, provider, item, callIndex, signal 
   let raw = null;
   let attempts = 0;
   let status = 'succeeded';
+  let prepared = null;
+
+  try {
+    prepared = typeof provider.prepareRequest === 'function'
+      ? provider.prepareRequest(item.request)
+      : { request: item.request, negotiation: { requested_output: item.request?.desired_output ?? null, executed_output: item.request?.desired_output ?? null, fallback_used: false } };
+  } catch (error) {
+    if (error?.code !== 'failed-capability') throw error;
+    return {
+      event_id,
+      branch_id: item.branch_id,
+      event_type: item.event_type,
+      status: 'failed-capability',
+      attempt_count: 1,
+      parent_event_ids: item.parent_event_ids,
+      input_artifact_ids: item.input_artifact_ids,
+      output_artifact_ids: [],
+      actor: item.actor,
+      request_payload: item.request,
+      response_payload: { capability_error: String(error.message ?? error), capability_details: error.details ?? {} },
+      provenance: { provider: provider.name, token_in: 0, token_out: 0, cost_estimate: 0, determinism_class: provider.capabilities?.determinism_class ?? 'UNKNOWN' },
+      authority_state: item.authority_state,
+      _usage: { token_in: 0, token_out: 0, cost: 0, storage_bytes: 0 }
+    };
+  }
 
   for (let attempt = 1; attempt <= manifest.max_retries_per_call + 1; attempt += 1) {
     attempts = attempt;
@@ -79,7 +104,9 @@ async function executeLogicalCall({ manifest, provider, item, callIndex, signal 
       break;
     }
     try {
-      raw = await provider.generate(item.request, { signal, callIndex, attempt });
+      raw = typeof provider.generatePrepared === 'function'
+        ? await provider.generatePrepared(prepared, { signal, callIndex, attempt })
+        : await provider.generate(prepared.request, { signal, callIndex, attempt });
       status = 'succeeded';
       break;
     } catch (error) {
@@ -119,8 +146,8 @@ async function executeLogicalCall({ manifest, provider, item, callIndex, signal 
     actor: item.actor,
     request_payload: item.request,
     response_payload: status === 'succeeded'
-      ? { result: raw ?? null, attempt_errors: attemptErrors }
-      : { attempt_errors: attemptErrors },
+      ? { result: raw ?? null, attempt_errors: attemptErrors, capability_negotiation: prepared.negotiation }
+      : { attempt_errors: attemptErrors, capability_negotiation: prepared.negotiation },
     provenance: providerProvenance,
     authority_state: item.authority_state,
     _usage: {
@@ -132,9 +159,9 @@ async function executeLogicalCall({ manifest, provider, item, callIndex, signal 
   };
 }
 
-async function checkpointIfNeeded({ manifest, ledger, artifacts, consumption, checkpoints, onCheckpoint }) {
+async function checkpointIfNeeded({ manifest, ledger, artifacts, consumption, logicalCallCount, checkpoints, onCheckpoint }) {
   if (ledger.events.length === 0 || ledger.events.length % manifest.checkpoint_every_events !== 0) return;
-  const checkpoint = buildCheckpoint({ ledger, artifacts, budget: { call_count: ledger.events.length, ...consumption } });
+  const checkpoint = buildCheckpoint({ ledger, artifacts, budget: { call_count: logicalCallCount, ...consumption } });
   checkpoints.push(checkpoint);
   if (onCheckpoint) await onCheckpoint(checkpoint);
 }
@@ -150,51 +177,17 @@ function terminalMissing(admittedCount, terminalEvents, runId) {
 }
 
 export async function executeBatch({ manifest: manifestInput, plan, ledger: ledgerInput, provider, checkpointState = null, signal, onCheckpoint } = {}) {
-  const manifest = validateRunManifest(manifestInput);
-  if (!provider?.generate || !provider?.name) throw new TypeError('provider adapter is required');
-  if (manifest.allowed_providers && !manifest.allowed_providers.includes(provider.name)) throw new Error(`provider not allowed by run manifest: ${provider.name}`);
   if (!Array.isArray(plan)) throw new TypeError('plan must be an array');
-  const ledger = ledgerInput ?? createLedger(manifest);
-  const artifacts = checkpointState?.artifacts ?? createArtifactRegistry();
-  const consumption = checkpointState?.consumption ? { ...checkpointState.consumption } : emptyConsumption();
-  const checkpoints = [];
-  const terminal_events = [];
-  const admitted = Math.min(plan.length, manifest.max_calls);
-
-  for (let offset = 0; offset < admitted; offset += manifest.max_parallelism) {
-    const slice = plan.slice(offset, Math.min(admitted, offset + manifest.max_parallelism));
-    const tasks = slice.map((raw, j) => {
-      const callIndex = offset + j + 1;
-      const item = normalizePlanItem(raw, callIndex);
-      return executeLogicalCall({ manifest, provider, item, callIndex, signal });
-    });
-    const completed = await Promise.all(tasks);
-    for (const internal of completed) {
-      const { _usage, ...event } = internal;
-      addUsage(consumption, _usage);
-      const appended = appendEvent(ledger, event);
-      terminal_events.push(appended);
-      await checkpointIfNeeded({ manifest, ledger, artifacts, consumption, checkpoints, onCheckpoint });
-    }
-  }
-
-  let finalCheckpoint = checkpoints.at(-1);
-  if (!finalCheckpoint || finalCheckpoint.semantic_state.through_event_count !== ledger.events.length) {
-    finalCheckpoint = buildCheckpoint({ ledger, artifacts, previousCheckpoint: checkpointState?.checkpoint ?? null, budget: { call_count: admitted, ...consumption } });
-    checkpoints.push(finalCheckpoint);
-    if (onCheckpoint) await onCheckpoint(finalCheckpoint);
-  }
-  return {
-    manifest,
-    ledger,
-    call_count: admitted,
-    terminal_events,
-    missing_terminal_records: terminalMissing(admitted, terminal_events, manifest.run_id),
-    checkpoints,
-    final_checkpoint: finalCheckpoint,
-    active_context: buildActiveContext(finalCheckpoint),
-    consumption
-  };
+  let cursor = 0;
+  return executeRun({
+    manifest: manifestInput,
+    planner: () => cursor < plan.length ? plan[cursor++] : null,
+    ledger: ledgerInput,
+    provider,
+    checkpointState,
+    signal,
+    onCheckpoint
+  });
 }
 
 export async function executeRun({ manifest: manifestInput, planner, ledger: ledgerInput, provider, onCheckpoint, signal, checkpointState = null } = {}) {
@@ -266,7 +259,7 @@ export async function executeRun({ manifest: manifestInput, planner, ledger: led
       const appended = appendEvent(ledger, event);
       terminal_events.push(appended);
       admittedCount += 1;
-      await checkpointIfNeeded({ manifest, ledger, artifacts, consumption, checkpoints, onCheckpoint });
+      await checkpointIfNeeded({ manifest, ledger, artifacts, consumption, logicalCallCount: admittedCount, checkpoints, onCheckpoint });
     }
 
     const actualBudgetBlock = wouldExceedBudget(manifest, consumption, {});
