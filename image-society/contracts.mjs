@@ -72,4 +72,48 @@ export function validateRunManifest(value) {
   return deepFreeze(cloneJson(out));
 }
 
-export { RUN_SCHEMA, MAX_CALLS };
+const EVENT_TYPES = new Set([
+  'plan','generate','variation','edit','critique','compare','continuity-review',
+  'accessibility-review','authority-review','provenance-review','correction-propose',
+  'evaluate','integrate','checkpoint','summarize','promote','reject','archive'
+]);
+const TERMINAL_STATES = new Set([
+  'succeeded','failed-input','failed-policy','failed-provider','failed-toolchain',
+  'failed-resource','failed-provenance','timed-out','cancelled','retry-exhausted'
+]);
+
+function stringArray(name, value) {
+  if (value == null) return [];
+  if (!Array.isArray(value) || value.some(x => typeof x !== 'string')) throw new TypeError(`${name} must be an array of strings`);
+  return [...value];
+}
+
+export function validateTurnEvent(value, { run_id, sequence_no } = {}) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new TypeError('event must be an object');
+  const event_id = String(value.event_id ?? '').trim();
+  const branch_id = String(value.branch_id ?? '').trim();
+  if (!event_id) throw new TypeError('event_id is required');
+  if (!branch_id) throw new TypeError('branch_id is required');
+  if (!EVENT_TYPES.has(value.event_type)) throw new TypeError(`unknown event_type: ${value.event_type}`);
+  if (!TERMINAL_STATES.has(value.status)) throw new TypeError(`unknown terminal status: ${value.status}`);
+  const out = {
+    schema: 'conscience64/image-society/event/v1',
+    event_id,
+    run_id: String(run_id ?? value.run_id ?? '').trim(),
+    branch_id,
+    sequence_no: integer('sequence_no', sequence_no ?? value.sequence_no ?? 1, 1),
+    event_type: value.event_type,
+    input_artifact_ids: stringArray('input_artifact_ids', value.input_artifact_ids),
+    output_artifact_ids: stringArray('output_artifact_ids', value.output_artifact_ids),
+    parent_event_ids: stringArray('parent_event_ids', value.parent_event_ids),
+    status: value.status,
+    attempt_count: integer('attempt_count', value.attempt_count ?? 1, 1)
+  };
+  for (const key of ['intent_id', 'created_at']) if (value[key] != null) out[key] = String(value[key]);
+  for (const key of ['actor','request_payload','response_payload','observations','corrections','evaluation','provenance','authority_state','budget_evidence']) {
+    if (value[key] != null) out[key] = cloneJson(value[key]);
+  }
+  return deepFreeze(out);
+}
+
+export { RUN_SCHEMA, MAX_CALLS, EVENT_TYPES, TERMINAL_STATES };
