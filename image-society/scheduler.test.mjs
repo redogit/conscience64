@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { executeRun } from './scheduler.mjs';
-import { createProviderAdapter } from './provider-adapter.mjs';
+import { executeBatch, executeRun } from './scheduler.mjs';
+import { createProviderAdapter, negotiateImageRequest } from './provider-adapter.mjs';
 
 function boundedManifest(overrides = {}) {
   return {
@@ -100,4 +100,71 @@ test('scheduler resumes preserved ledger without duplicate logical call IDs', as
   assert.equal(resumed.terminal_events.length, 8);
   assert.equal(resumed.missing_terminal_records.length, 0);
   assert.deepEqual(resumed.terminal_events.map(x => x.event_id), Array.from({ length: 8 }, (_, i) => `resume-run:call:${i + 1}`));
+});
+
+test('executeBatch resumes from preserved logical call count without duplicate IDs', async () => {
+  const provider = createProviderAdapter({ name: 'batch-resume', async generate() { return { images: [{ url: 'mock://ok' }] }; } });
+  const manifest = boundedManifest({ run_id: 'batch-resume-run', max_calls: 6, max_parallelism: 2 });
+  const first = await executeBatch({
+    manifest,
+    plan: Array.from({ length: 4 }, (_, i) => ({ branch_id: 'main', event_type: 'generate', request: { i: i + 1 } })),
+    provider
+  });
+  assert.equal(first.call_count, 4);
+  const resumed = await executeBatch({
+    manifest,
+    plan: Array.from({ length: 4 }, (_, i) => ({ branch_id: 'main', event_type: 'generate', request: { i: i + 5 } })),
+    provider,
+    ledger: first.ledger,
+    checkpointState: { checkpoint: first.final_checkpoint, consumption: first.consumption }
+  });
+  assert.equal(resumed.call_count, 6);
+  assert.equal(resumed.missing_terminal_records.length, 0);
+  assert.deepEqual(resumed.terminal_events.map(x => x.event_id), Array.from({ length: 6 }, (_, i) => `batch-resume-run:call:${i + 1}`));
+});
+
+test('geometry negotiation rejects unsupported exact dimensions instead of silently substituting', () => {
+  assert.throws(() => negotiateImageRequest({
+    desired_output: { width: 2048, height: 1152, format: 'png', variant_count_target: 1, adapter_fallback_allowed: false }
+  }, {
+    output_geometry: { exact_dimensions: ['1024x1024', '1536x1024'], formats: ['png'], max_variants_per_call: 4 }
+  }), /unsupported.*2048x1152/i);
+});
+
+test('geometry negotiation records explicit fallback and executed geometry', () => {
+  const result = negotiateImageRequest({
+    desired_output: {
+      width: 2048, height: 1152, format: 'png', variant_count_target: 1,
+      adapter_fallback_allowed: true,
+      adapter_fallback: { width: 1536, height: 1024, operation: 'letterbox' }
+    }
+  }, {
+    output_geometry: { exact_dimensions: ['1024x1024', '1536x1024'], formats: ['png'], max_variants_per_call: 4 }
+  });
+  assert.deepEqual(result.negotiation.requested_geometry, { width: 2048, height: 1152 });
+  assert.deepEqual(result.negotiation.executed_geometry, { width: 1536, height: 1024 });
+  assert.equal(result.negotiation.fallback_used, true);
+  assert.equal(result.negotiation.operation, 'letterbox');
+  assert.equal(result.request.desired_output.width, 1536);
+  assert.equal(result.request.desired_output.height, 1024);
+});
+
+test('capability failure is terminal and does not spend provider retries', async () => {
+  let calls = 0;
+  const provider = createProviderAdapter({
+    name: 'geometry-provider',
+    capabilities: { output_geometry: { exact_dimensions: ['1024x1024'], formats: ['png'], max_variants_per_call: 1 } },
+    async generate() { calls += 1; return { images: [{ url: 'mock://unexpected' }] }; }
+  });
+  const result = await executeRun({
+    manifest: boundedManifest({ run_id: 'capability-fail', max_calls: 1, max_retries_per_call: 3 }),
+    planner: () => ({
+      branch_id: 'main', event_type: 'generate',
+      request: { desired_output: { width: 2048, height: 1152, format: 'png', variant_count_target: 1, adapter_fallback_allowed: false } }
+    }),
+    provider
+  });
+  assert.equal(calls, 0);
+  assert.equal(result.terminal_events[0].status, 'failed-capability');
+  assert.equal(result.terminal_events[0].attempt_count, 1);
 });
