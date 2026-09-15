@@ -21,6 +21,9 @@
       "path": "navigation/context-horizon/historical-context-seeds.json"
     },
     {
+      "path": "navigation/context-horizon/cross-chat-context-seeds.json"
+    },
+    {
       "path": "navigation/context-horizon/external-public-sources.json"
     }
   ],
@@ -128,6 +131,25 @@
       "notes": []
     },
     {
+      "id": "4d-compass-compass-rose",
+      "canonicalName": "4D Compass / Compass Rose",
+      "aliases": [
+        "Compass Rose in 4D"
+      ],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "accessibility-work",
       "canonicalName": "Accessibility Work",
       "aliases": [
@@ -164,6 +186,25 @@
       "notes": []
     },
     {
+      "id": "adm-005-recovery-failure-probe",
+      "canonicalName": "ADM-005 Recovery-Failure Probe",
+      "aliases": [
+        "ADM-005"
+      ],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "american-way-dream",
       "canonicalName": "American Way / American Dream",
       "aliases": [],
@@ -177,6 +218,25 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "aop-algorithmic-compiler",
+      "canonicalName": "AOP / Algorithmic Compiler",
+      "aliases": [
+        "Algorithmic Compiler"
+      ],
+      "domain": "software-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
       ],
       "notes": []
     },
@@ -283,6 +343,23 @@
       "notes": []
     },
     {
+      "id": "bgzf-compressed-text-ai",
+      "canonicalName": "BGZF Compressed Text AI",
+      "aliases": [],
+      "domain": "model-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "blank-page-lab",
       "canonicalName": "Blank Page Lab",
       "aliases": [],
@@ -298,6 +375,23 @@
       "preservationStatus": "located",
       "sourceKinds": [
         "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "blank-page-olu-surface-context",
+      "canonicalName": "Blank Page / OLU_Surface / OLU_Context",
+      "aliases": [],
+      "domain": "methodology",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
       ],
       "notes": []
     },
@@ -436,6 +530,23 @@
       "notes": []
     },
     {
+      "id": "change-set-1",
+      "canonicalName": "Change Set 1",
+      "aliases": [],
+      "domain": "research-governance",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "chatgpt-and-conscience",
       "canonicalName": "ChatGPT and Conscience",
       "aliases": [],
@@ -451,6 +562,23 @@
       "preservationStatus": "located",
       "sourceKinds": [
         "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "checkpoint-0",
+      "canonicalName": "Checkpoint 0",
+      "aliases": [],
+      "domain": "research-governance",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
       ],
       "notes": []
     },
@@ -726,6 +854,57 @@
       "notes": []
     },
     {
+      "id": "cycle-2-crystallization",
+      "canonicalName": "Cycle-2 Crystallization",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "cycle-3-failure",
+      "canonicalName": "Cycle-3 Failure",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "de-bruijn-serialization",
+      "canonicalName": "de Bruijn Serialization",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "decision-field-mmorpg",
       "canonicalName": "Decision Field MMORPG",
       "aliases": [],
@@ -781,6 +960,25 @@
       "notes": []
     },
     {
+      "id": "distinction-kernel-016",
+      "canonicalName": "Distinction Kernel 016",
+      "aliases": [
+        "SCIENTIFIC_RESULT_DISTINCTION_016"
+      ],
+      "domain": "research-result",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "dream-to-action",
       "canonicalName": "Dream to Action",
       "aliases": [],
@@ -797,6 +995,42 @@
       "preservationStatus": "located",
       "sourceKinds": [
         "github-public-repository"
+      ],
+      "notes": []
+    },
+    {
+      "id": "ecs-research-branch",
+      "canonicalName": "ECS",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "education-e1-e2-e3",
+      "canonicalName": "Education E1 / E2 / E3",
+      "aliases": [
+        "Education E1/E2/E3"
+      ],
+      "domain": "education-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
       ],
       "notes": []
     },
@@ -855,6 +1089,40 @@
       "notes": []
     },
     {
+      "id": "factored-library",
+      "canonicalName": "Factored Library",
+      "aliases": [],
+      "domain": "knowledge-system",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "fermat-fourfold-hodge-reduction",
+      "canonicalName": "Fermat-Fourfold Hodge Reduction",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "finite-table-checks",
       "canonicalName": "Finite-Table Checks",
       "aliases": [],
@@ -890,8 +1158,42 @@
       "notes": []
     },
     {
+      "id": "float64-carrier-experiments",
+      "canonicalName": "Float64 Carrier Experiments",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "fractal-unroll-mirror",
       "canonicalName": "Fractal Unroll / Mirror",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "fractal3d",
+      "canonicalName": "Fractal3D",
       "aliases": [],
       "domain": "research",
       "sourceLocations": [],
@@ -963,6 +1265,23 @@
       "preservationStatus": "located",
       "sourceKinds": [
         "play-project"
+      ],
+      "notes": []
+    },
+    {
+      "id": "gate-o2",
+      "canonicalName": "Gate O2",
+      "aliases": [],
+      "domain": "research-governance",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
       ],
       "notes": []
     },
@@ -1066,6 +1385,23 @@
       "notes": []
     },
     {
+      "id": "human-aims-cross-carrier-goals-draft-01",
+      "canonicalName": "Human Aims and Cross Carrier Goals, Draft 01",
+      "aliases": [],
+      "domain": "human-orientation",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "human-expression-archive",
       "canonicalName": "Human Expression Archive",
       "aliases": [],
@@ -1125,6 +1461,23 @@
       "canonicalName": "IFT",
       "aliases": [],
       "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "ift9-grm9-esa8-conditional-equality",
+      "canonicalName": "IFT9 → GRM9 → ESA8 Conditional Equality",
+      "aliases": [],
+      "domain": "research-result",
       "sourceLocations": [],
       "provenanceStatus": "known-from-library-history",
       "publicationStatus": "unresolved",
@@ -1246,12 +1599,46 @@
       "notes": []
     },
     {
+      "id": "learned-2d8a6332ed",
+      "canonicalName": "learned_2d8a6332ed",
+      "aliases": [],
+      "domain": "learned-artifact",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "lift-bridge-project",
       "canonicalName": "Lift–Bridge–Project",
       "aliases": [
         "Lift-Bridge-Project"
       ],
       "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "llvm-wasm-generator",
+      "canonicalName": "LLVM / WASM Generator Work",
+      "aliases": [],
+      "domain": "software-research",
       "sourceLocations": [],
       "provenanceStatus": "known-from-library-history",
       "publicationStatus": "unresolved",
@@ -1306,6 +1693,23 @@
         "Member Success Dashboard"
       ],
       "domain": "professional-operations",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "mfai",
+      "canonicalName": "MFAI",
+      "aliases": [],
+      "domain": "creative-research",
       "sourceLocations": [],
       "provenanceStatus": "known-from-library-history",
       "publicationStatus": "unresolved",
@@ -1434,6 +1838,23 @@
       "notes": []
     },
     {
+      "id": "moonshot-recovery",
+      "canonicalName": "MoonShot Recovery",
+      "aliases": [],
+      "domain": "research-governance",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "multifactorial-creativity",
       "canonicalName": "Multifactorial Creativity",
       "aliases": [],
@@ -1447,6 +1868,23 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "multilingual-phrase-saying-recovery",
+      "canonicalName": "Multilingual Phrase & Saying Recovery",
+      "aliases": [],
+      "domain": "archive-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
       ],
       "notes": []
     },
@@ -1489,6 +1927,23 @@
       "canonicalName": "NeuralFlow",
       "aliases": [],
       "domain": "model-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "o1-1-v1-1",
+      "canonicalName": "O1.1 v1.1",
+      "aliases": [],
+      "domain": "experiment",
       "sourceLocations": [],
       "provenanceStatus": "known-from-library-history",
       "publicationStatus": "unresolved",
@@ -1768,6 +2223,23 @@
       "notes": []
     },
     {
+      "id": "partial-hard",
+      "canonicalName": "Partial-Hard",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "philosophy-family",
       "canonicalName": "Philosophy",
       "aliases": [
@@ -1785,6 +2257,23 @@
       "notes": [
         "family seed only; individual arguments and lines remain preservation targets"
       ]
+    },
+    {
+      "id": "physics-hsp",
+      "canonicalName": "Physics / HSP",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
     },
     {
       "id": "physics-quantum-extra-dimensions",
@@ -1924,6 +2413,23 @@
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [],
+      "notes": []
+    },
+    {
+      "id": "quiet-mode-protocol",
+      "canonicalName": "Quiet Mode Protocol",
+      "aliases": [],
+      "domain": "methodology",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
       "notes": []
     },
     {
@@ -2099,6 +2605,23 @@
       "notes": []
     },
     {
+      "id": "rolling-research-airlock",
+      "canonicalName": "Rolling Research Airlock",
+      "aliases": [],
+      "domain": "research-governance",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "runtime-relation-index",
       "canonicalName": "RuntimeRelationIndex",
       "aliases": [],
@@ -2135,6 +2658,59 @@
       "notes": []
     },
     {
+      "id": "sat-research-branch",
+      "canonicalName": "SAT",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "sayings-dense-carrier-atlas",
+      "canonicalName": "Sayings / Dense Carrier Atlas",
+      "aliases": [],
+      "domain": "archive-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "scop-framing",
+      "canonicalName": "Surface / Context / Obligation / Parameter",
+      "aliases": [
+        "SCOP"
+      ],
+      "domain": "methodology",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "search-certify",
       "canonicalName": "Search Regime / SEARCH-CERTIFY",
       "aliases": [
@@ -2156,6 +2732,23 @@
     {
       "id": "semantic-algebra",
       "canonicalName": "Semantic Algebra",
+      "aliases": [],
+      "domain": "language-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "semantic-kernel-egraph-lineage",
+      "canonicalName": "Semantic Kernel / E-Graph Lineage",
       "aliases": [],
       "domain": "language-research",
       "sourceLocations": [],
@@ -2279,6 +2872,23 @@
       "notes": []
     },
     {
+      "id": "software-engineering-spec-review",
+      "canonicalName": "software-engineering-spec-review",
+      "aliases": [],
+      "domain": "methodology",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "spdm",
       "canonicalName": "SPDM",
       "aliases": [],
@@ -2311,6 +2921,23 @@
       "preservationStatus": "located",
       "sourceKinds": [
         "github-public-subproject"
+      ],
+      "notes": []
+    },
+    {
+      "id": "sprime-utf8-float64-1024",
+      "canonicalName": "S′ / SPrime UTF-8-in-Float64 + 1,024-Byte Sections",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-chat-history",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "cross-chat-context-seed"
       ],
       "notes": []
     },
