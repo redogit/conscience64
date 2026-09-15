@@ -27,7 +27,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
@@ -64,6 +64,20 @@ jobs:
         run: node navigation/context-horizon/named-architecture-expansion.test.mjs
       - name: Verify Library and public-tool preservation boundary
         run: node navigation/context-horizon/library-work-expansion.test.mjs
+      - name: Synchronize Library-discovery snapshot on rollout push
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          node navigation/context-horizon/work-inventory.mjs --write
+          if ! git diff --quiet -- navigation/context-horizon/WORK_INVENTORY.json; then
+            git config user.name redogit
+            git config user.email 69516108+redogit@users.noreply.github.com
+            git add navigation/context-horizon/WORK_INVENTORY.json
+            git commit -m "data: synchronize Library-discovery Context Horizon inventory"
+            git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
       - name: Verify committed preservation snapshot is synchronized
         run: node navigation/context-horizon/work-inventory.mjs --check
       - name: Verify Context Horizon route graph
