@@ -79,7 +79,7 @@ const EVENT_TYPES = new Set([
 ]);
 const TERMINAL_STATES = new Set([
   'succeeded','failed-input','failed-policy','failed-provider','failed-toolchain',
-  'failed-resource','failed-provenance','timed-out','cancelled','retry-exhausted'
+  'failed-resource','failed-capability','failed-provenance','timed-out','cancelled','retry-exhausted'
 ]);
 
 function stringArray(name, value) {
