@@ -85,3 +85,33 @@ assert.ok(findInInventory(generated,'operator-moonshot').aliases.includes('/Moon
 assert.ok(findInInventory(generated,'tiny-babel-tbcl').aliases.includes('/TBCL'));
 assert.ok(generated.generatedFrom.some(x=>x.path==='navigation/context-horizon/historical-context-seeds.json'));
 console.log('PASS historical, philosophical, professional, and creative works remain separate unresolved preservation targets');
+
+const olderProtocolTargets=[
+  ['rolling-research-airlock','research-governance'],
+  ['scop-framing','methodology'],
+  ['checkpoint-0','research-governance'],
+  ['adm-005-recovery-failure-probe','experiment'],
+  ['change-set-1','research-governance'],
+  ['software-engineering-spec-review','methodology'],
+  ['learned-2d8a6332ed','learned-artifact'],
+  ['o1-1-v1-1','experiment'],
+  ['gate-o2','research-governance'],
+  ['llvm-wasm-generator','software-research'],
+  ['fractal3d','research'],
+  ['factored-library','knowledge-system'],
+  ['distinction-kernel-016','research-result'],
+  ['fermat-fourfold-hodge-reduction','research'],
+  ['education-e1-e2-e3','education-research'],
+  ['ift9-grm9-esa8-conditional-equality','research-result'],
+  ['bgzf-compressed-text-ai','model-research'],
+  ['mfai','creative-research'],
+  ['quiet-mode-protocol','methodology'],
+  ['human-aims-cross-carrier-goals-draft-01','human-orientation']
+];
+for(const [id,domain] of olderProtocolTargets){
+  const work=findInInventory(generated,id);
+  assert.ok(work,`older protocol/experiment target missing: ${id}`);
+  assert.equal(work.domain,domain,`${id} domain changed`);
+  assert.equal(work.preservationStatus,'must-locate-or-retain-unresolved',`${id} should not be promoted without admitted source`);
+}
+console.log('PASS older protocols, negative experiments, learned artifacts, and human-aim drafts remain individually preserved');
