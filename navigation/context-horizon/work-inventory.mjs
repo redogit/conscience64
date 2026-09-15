@@ -177,6 +177,7 @@ export async function generateInventorySnapshot(repoRoot, {write = false} = {}) 
   const crossChatSeedPath = resolve(base, 'cross-chat-context-seeds.json');
   const currentChatArtifactSeedPath = resolve(base, 'current-chat-artifact-seeds.json');
   const namedArchitectureSeedPath = resolve(base, 'named-architecture-seeds.json');
+  const libraryDiscoverySeedPath = resolve(base, 'library-discovery-seeds.json');
   const externalPublicPath = resolve(base, 'external-public-sources.json');
   const sourcePaths = [
     'research/projects/CURRENT.json',
@@ -184,7 +185,7 @@ export async function generateInventorySnapshot(repoRoot, {write = false} = {}) 
     'play/projects.json',
     'play/mmo/web-links.json'
   ];
-  const [researchCurrent, researchProjects, playProjects, webLinks, seeds, historicalSeeds, crossChatSeeds, currentChatArtifactSeeds, namedArchitectureSeeds, externalPublic] = await Promise.all([
+  const [researchCurrent, researchProjects, playProjects, webLinks, seeds, historicalSeeds, crossChatSeeds, currentChatArtifactSeeds, namedArchitectureSeeds, libraryDiscoverySeeds, externalPublic] = await Promise.all([
     readFile(resolve(root,sourcePaths[0]),'utf8').then(JSON.parse),
     readFile(resolve(root,sourcePaths[1]),'utf8').then(JSON.parse),
     readFile(resolve(root,sourcePaths[2]),'utf8').then(JSON.parse),
@@ -194,6 +195,7 @@ export async function generateInventorySnapshot(repoRoot, {write = false} = {}) 
     readFile(crossChatSeedPath,'utf8').then(JSON.parse),
     readFile(currentChatArtifactSeedPath,'utf8').then(JSON.parse),
     readFile(namedArchitectureSeedPath,'utf8').then(JSON.parse),
+    readFile(libraryDiscoverySeedPath,'utf8').then(JSON.parse),
     readFile(externalPublicPath,'utf8').then(JSON.parse)
   ]);
   const generatedFrom = [
@@ -203,6 +205,7 @@ export async function generateInventorySnapshot(repoRoot, {write = false} = {}) 
     {path:'navigation/context-horizon/cross-chat-context-seeds.json'},
     {path:'navigation/context-horizon/current-chat-artifact-seeds.json'},
     {path:'navigation/context-horizon/named-architecture-seeds.json'},
+    {path:'navigation/context-horizon/library-discovery-seeds.json'},
     {path:'navigation/context-horizon/external-public-sources.json'}
   ];
   const sources = [
@@ -213,7 +216,8 @@ export async function generateInventorySnapshot(repoRoot, {write = false} = {}) 
   const crossChat = (crossChatSeeds?.works || []).map(work => unresolvedContextSeed(work,'known-from-chat-history','cross-chat-context-seed'));
   const currentChatArtifacts = (currentChatArtifactSeeds?.works || []).map(work => unresolvedContextSeed(work,'known-from-current-chat','current-chat-artifact-seed'));
   const namedArchitectures = (namedArchitectureSeeds?.works || []).map(work => unresolvedContextSeed(work,'known-from-prior-conversations','named-architecture-seed'));
-  const inventory = buildInventory({sources,seeds:[...(seeds.works || []), ...historical, ...crossChat, ...currentChatArtifacts, ...namedArchitectures],generatedFrom});
+  const libraryDiscovered = (libraryDiscoverySeeds?.works || []).map(work => unresolvedContextSeed(work,'known-from-library-history','library-discovery-seed'));
+  const inventory = buildInventory({sources,seeds:[...(seeds.works || []), ...historical, ...crossChat, ...currentChatArtifacts, ...namedArchitectures, ...libraryDiscovered],generatedFrom});
   if (write) {
     const output = resolve(base,'WORK_INVENTORY.json');
     await writeFile(output, JSON.stringify(inventory,null,2)+'\n','utf8');
