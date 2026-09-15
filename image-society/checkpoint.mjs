@@ -48,10 +48,10 @@ function collectCorrectionPatterns(events, succeeded) {
 export function buildCheckpoint({ ledger, artifacts, previousCheckpoint = null, budget = {} } = {}) {
   if (!ledger?.runManifest || !Array.isArray(ledger.events)) throw new TypeError('checkpoint requires a ledger');
   const artifactRows = artifacts ? allArtifacts(artifacts) : [];
-  const candidates = artifactRows
-    .filter(a => !['rejected', 'archived'].includes(a.status))
-    .map(a => a.artifact_id)
-    .sort();
+  const candidateStates = new Set(['experimental', 'candidate', 'authority-reviewed-candidate']);
+  const acceptedStates = new Set(['accepted-noncanonical', 'human-approved-asset', 'promoted-canonical']);
+  const candidates = artifactRows.filter(a => candidateStates.has(a.status)).map(a => a.artifact_id).sort();
+  const accepted = artifactRows.filter(a => acceptedStates.has(a.status)).map(a => a.artifact_id).sort();
   const rejected = artifactRows.filter(a => a.status === 'rejected').map(a => a.artifact_id).sort();
   const source_event_ids = ledger.events.map(e => e.event_id);
   const semantic_state = {
@@ -59,8 +59,10 @@ export function buildCheckpoint({ ledger, artifacts, previousCheckpoint = null, 
     run_id: ledger.runManifest.run_id,
     ledger_digest: ledgerDigest(ledger),
     through_event_count: ledger.events.length,
+    accepted_artifact_ids: accepted,
     candidate_artifact_ids: candidates,
     rejected_artifact_ids: rejected,
+    active_constraints: previousCheckpoint?.semantic_state?.active_constraints ?? [],
     unresolved_issues: collectUnresolved(ledger.events),
     successful_correction_patterns: collectCorrectionPatterns(ledger.events, true),
     failed_correction_patterns: collectCorrectionPatterns(ledger.events, false),
@@ -94,7 +96,9 @@ export function buildActiveContext(checkpoint, options = {}) {
     checkpoint_id: checkpoint.checkpoint_id,
     checkpoint_digest: checkpointDigest(checkpoint),
     run_id: state.run_id,
+    accepted_artifact_ids: [...state.accepted_artifact_ids],
     candidate_artifact_ids: [...state.candidate_artifact_ids],
+    active_constraints: clone(state.active_constraints),
     unresolved_issues: clone(state.unresolved_issues),
     recent_successful_corrections: clone(state.successful_correction_patterns.slice(-maxRecentCorrections)),
     recent_failed_corrections: clone(state.failed_correction_patterns.slice(-maxRecentCorrections)),
