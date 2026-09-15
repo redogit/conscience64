@@ -115,3 +115,21 @@ for(const [id,domain] of olderProtocolTargets){
   assert.equal(work.preservationStatus,'must-locate-or-retain-unresolved',`${id} should not be promoted without admitted source`);
 }
 console.log('PASS older protocols, negative experiments, learned artifacts, and human-aim drafts remain individually preserved');
+
+const crossChatTargets=[
+  ['aop-algorithmic-compiler','software-research'],
+  ['sprime-utf8-float64-1024','research'],
+  ['de-bruijn-serialization','research'],
+  ['4d-compass-compass-rose','research'],
+  ['blank-page-olu-surface-context','methodology'],
+  ['multilingual-phrase-saying-recovery','archive-research'],
+  ['sayings-dense-carrier-atlas','archive-research'],
+  ['float64-carrier-experiments','research']
+];
+for(const [id,domain] of crossChatTargets){
+  const work=findInInventory(generated,id);
+  assert.ok(work,`cross-chat preservation target missing: ${id}`);
+  assert.equal(work.domain,domain,`${id} domain changed`);
+  assert.equal(work.preservationStatus,'must-locate-or-retain-unresolved');
+}
+console.log('PASS cross-chat compiler, serialization, compass, carrier, and expression-recovery lines remain distinct');
