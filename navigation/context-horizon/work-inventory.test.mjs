@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import {buildInventory, findInInventory} from './work-inventory.mjs';
+import {fileURLToPath} from 'node:url';
+import {buildInventory, findInInventory, generateInventorySnapshot} from './work-inventory.mjs';
 
 const inventory = buildInventory({
   sources:[
@@ -37,3 +38,20 @@ assert.throws(()=>buildInventory({sources:[
   {id:'same-id',canonicalName:'B',domain:'game'}
 ]}),/conflicting domains/);
 console.log('PASS stable-ID merge only; alias conflicts stay ambiguous; domain conflicts fail closed');
+
+const repoRoot=fileURLToPath(new URL('../../',import.meta.url));
+const generated=await generateInventorySnapshot(repoRoot);
+const dream=findInInventory(generated,'dream-to-action');
+const maui=findInInventory(generated,'maui-brick-break');
+const hea=findInInventory(generated,'human-expression-archive');
+const df=findInInventory(generated,'decision-field-mmorpg');
+assert.equal(dream.preservationStatus,'located');
+assert.equal(dream.publicationStatus,'public');
+assert.ok(dream.sourceLocations.includes('github:redogit/Dream-To-Action'));
+assert.ok(maui.sourceLocations.includes('github:redogit/MauiBrickBreak'));
+assert.ok(hea.sourceLocations.includes('github:redogit/Other-Projects-/Human Expression Archive/'));
+assert.equal(hea.domain,'archive');
+assert.equal(df.domain,'game');
+assert.ok(generated.generatedFrom.some(x=>x.path==='navigation/context-horizon/external-public-sources.json'));
+assert.equal(generated.works.some(x=>x.canonicalName==='DnD'),false,'private repository identity must not enter the public inventory');
+console.log('PASS external public repositories resolve preservation seeds without exposing private repository identity');
