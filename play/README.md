@@ -46,7 +46,7 @@ The in-game roof observatory uses real astronomy as a structural reference. EHT 
 
 The architectural zoom is documented in [`mmo/LEVELS.md`](mmo/LEVELS.md): twelve levels from one action through human purpose, followed by a **Mystery 13th** that is the annual emergent result of the twelve rather than a preplanned Level 13.
 
-The cross-surface graph is documented in [`mmo/LINKAGES.md`](mmo/LINKAGES.md) and [`mmo/linkages.json`](mmo/linkages.json`).
+The cross-surface graph is documented in [`mmo/LINKAGES.md`](mmo/LINKAGES.md) and [`mmo/linkages.json`](mmo/linkages.json).
 
 ### Plug-and-play Arcade Forge
 
