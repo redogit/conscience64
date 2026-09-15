@@ -109,10 +109,19 @@ export function validateTurnEvent(value, { run_id, sequence_no } = {}) {
     output_artifact_ids: stringArray('output_artifact_ids', value.output_artifact_ids),
     parent_event_ids: stringArray('parent_event_ids', value.parent_event_ids),
     status: value.status,
-    attempt_count: integer('attempt_count', value.attempt_count ?? 1, 1)
+    attempt_count: integer('attempt_count', value.attempt_count ?? 1, 1),
+    actor: cloneJson(value.actor ?? { actor_type: 'system', actor_id: 'conscience64-image-society' }),
+    authority_state: cloneJson(value.authority_state ?? {
+      world_checked: false,
+      accessibility_checked: false,
+      continuity_checked: false,
+      human_reviewed: false,
+      canonical: false,
+      reality_classification: 'not-applicable'
+    })
   };
   for (const key of ['intent_id', 'created_at']) if (value[key] != null) out[key] = String(value[key]);
-  for (const key of ['actor','request_payload','response_payload','observations','corrections','evaluation','provenance','authority_state','budget_evidence']) {
+  for (const key of ['request_payload','response_payload','observations','corrections','evaluation','provenance','budget_evidence']) {
     if (value[key] != null) out[key] = cloneJson(value[key]);
   }
   return deepFreeze(out);
