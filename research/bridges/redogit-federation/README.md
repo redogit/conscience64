@@ -7,17 +7,35 @@
 
 This bridge connects Conscience64 to the public redogit federation/history surfaces without merging their authority, evidence, or project identities.
 
+## Active project routing
+
+[`active-projects.json`](active-projects.json) is the bridge-local active slice derived from Conscience64's current human-readable portfolio and current runnable/public surfaces.
+
+It connects only projects whose current role is explicitly active/current/deployed or whose current public/local implementation is runnable. Preserved lineages remain preserved, and the intentionally unlisted Fuzzball alpha is not exposed by the active federation.
+
+```text
+ACTIVE != UNIVERSALLY_VALID
+PRESERVED_LINEAGE != ACTIVE_RESEARCH
+UNLISTED_ACTIVE != PUBLICLY_LISTED
+CONNECTED != MERGED
+```
+
+The active slice currently includes Cross-Carrier Wave, Orbit Library infrastructure, Operator Moonshot, Hodge research, Research Analytics, Historical Recovery, MMO World Beta, Explorer World, Coordinate Space, Computational Chorus, the original utility playground, and the current internal search workspace. Their own project records remain authoritative for their status and claim ceilings.
+
 ## Why this exists
 
-The redogit profile now exposes two public coordination views:
+The redogit profile exposes public coordination views including:
 
-- **Federated History Playground** — ten optional doors for exploring, trying, learning, teaching, and leaving a source trail.
-- **Research + Production Federation** — separate lanes for research, production, play, teaching, and history.
+- **Federated History Playground** — optional doors for exploring, trying, learning, teaching, and leaving a source trail;
+- **Research + Production Federation** — separate lanes for research, production, play, teaching, and history;
+- **Active Federation** — the current/runnable/deployed slice only.
 
 Conscience64 already contains many of the concrete research, tool, game, analytics, coordinate, and recovery surfaces referenced by those views. This bridge provides explicit routing between them while keeping Conscience64's own evidence and authority rules unchanged.
 
 ## External public navigation
 
+- [Active Federation](https://github.com/redogit/redogit/blob/main/ACTIVE_FEDERATION.md)
+- [Active Federation browser view](https://github.com/redogit/redogit/blob/main/active-federation.html)
 - [Research + Production Federation](https://github.com/redogit/redogit/blob/main/RESEARCH_PRODUCTION_FEDERATION.md)
 - [Machine-readable research-production map](https://github.com/redogit/redogit/blob/main/research-production.json)
 - [Federated Work Index](https://github.com/redogit/redogit/blob/main/FEDERATED_WORK_INDEX.md)
@@ -83,4 +101,4 @@ and
 
 ## Update rule
 
-Update this bridge only when a public federation destination changes or a new explicit typed relation is needed. Do not use it to duplicate research records or to smuggle external claims into Conscience64 authority.
+Update this bridge only when a public federation destination changes, an owning project's default-branch state changes, or a new explicit typed relation is needed. Do not use it to duplicate research records or to smuggle external claims into Conscience64 authority.
