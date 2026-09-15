@@ -1,6 +1,18 @@
 name: Verify spatial UI
 
 on:
+  push:
+    branches: ['rollout/**']
+    paths:
+      - 'space-lens-gpu.js'
+      - 'space-lens-master.js'
+      - 'spatial-ui-test.mjs'
+      - 'index.html'
+      - 'navigation/**'
+      - 'research/projects/index.html'
+      - 'play/**'
+      - 'history/**'
+      - '.github/workflows/spatial-ui-check.yml'
   pull_request:
     paths:
       - 'space-lens-gpu.js'
