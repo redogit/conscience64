@@ -1,178 +1,166 @@
 # Conscience64 Image Society
 
-Image Society is the long-horizon coordination layer for image generation, critique, correction, comparison, continuity, accessibility, authority review, checkpointing, and promotion review.
+Image Society is the replayable collaboration layer for long-horizon image generation, critique, correction, comparison, continuity review, accessibility review, authority review, checkpointing, and promotion review.
 
-It is intentionally **not** a new source of world authority.
-
-## Core boundary
+It extends the existing visual stack without changing ECS/world authority:
 
 ```text
-GENERATED != OBSERVED != VERIFIED != ACCEPTED != WORLD_CANON
+Human intent / obligations
+        |
+        v
+Image Society
+        |
+        +--> role contracts
+        +--> append-only event ledger
+        +--> artifact lineage
+        +--> continuity / regression memory
+        +--> checkpoints / active context
+        +--> promotion gates
+        |
+        v
+provider / Renderer Society transport
+        |
+        v
+candidate visual artifacts
 ```
 
-Image Society composes existing Conscience64 components:
+The authority path remains one-way. Image Society can inspect and classify downstream visual work; it cannot rewrite the source ECS/world state merely because an image, critic, model, or renderer agrees with something.
 
-- `space-lens-image-gen.js` — provider-agnostic image generation transport;
-- Visual Carrier v2 — deterministic visual-carrier planning downstream of ECS;
-- Renderer Society — renderer discovery, routing, fan-out, execution isolation, provenance, and governance;
-- `skills/SOCIETY.md` — human-purpose / Society / Operator governance;
-- `play/mmo/REALITY_CANON.md` — canonical MMO visual/reality presentation boundary.
+## Core invariants
 
-No Image Society event, model vote, critic agreement, or generated image writes authority back into ECS/world state.
+- `GENERATED != OBSERVED != VERIFIED != ACCEPTED != WORLD_CANON`
+- `MODEL_OUTPUT != FACT`
+- `MODEL_AGREEMENT != INDEPENDENT_CORROBORATION`
+- `VISUAL_AGREEMENT != WORLD_AUTHORITY`
+- `QUALITY_MAY_INCREASE_WITHOUT_AUTHORITY_INCREASING`
+- `IMAGE_EDIT != AUTHORITY_TO_CHANGE_SOURCE_STATE`
+- `OBSERVATION != PROCESSED_SCIENCE_IMAGE != GAME_RECONSTRUCTION`
 
-## Approved package
+Canonical MMO promotion remains an explicit human-gated action.
 
-### Architecture
+## Runtime modules
 
-`docs/superpowers/specs/2026-09-14-image-society-design.md`
+- `canonical.mjs` — deterministic canonical JSON and SHA-256 identities.
+- `contracts.mjs` — bounded run, event, Visual Difference, and Continuity Pack normalization.
+- `ledger.mjs` — append-only replayable logical-event history.
+- `artifacts.mjs` — immutable content-addressed artifact metadata and parent lineage.
+- `checkpoint.mjs` — deterministic semantic checkpoint projection and bounded active context.
+- `gates.mjs` — explicit experimental/noncanonical/canonical promotion gates.
+- `regression.mjs` — stable defect records and replay outcomes.
+- `provider-adapter.mjs` — secret-free injected-provider boundary plus explicit capability negotiation.
+- `scheduler.mjs` — bounded concurrency, retry, budget, branch, resume, and checkpoint execution.
+- `prompts.mjs` — executable validation of the 12 role prompt contracts.
 
-Defines:
+## 1000-call qualification
 
-- event-sourced interaction ledger;
-- artifact lineage;
-- Image Intent and Scene Specification;
-- role society;
-- Visual Difference Contract;
-- Continuity Packs;
-- Reality Canon integration;
-- accessibility contract;
-- provider/renderer boundary;
-- reproducibility classes;
-- 1000-call wave model;
-- checkpoints and active-context compaction;
-- Regression Corpus;
-- explicit promotion gate.
+The checked-in example manifest defines a hard **1000 logical-call ceiling** with parallelism capped at 8. The CLI may narrow these values but cannot widen them.
 
-### Implementation blueprint
-
-`docs/superpowers/plans/2026-09-14-image-society-v1.md`
-
-Defines the test-driven implementation sequence, including a deterministic 1000-call mock scale test before real provider spending.
-
-### 1000-call operational runbook
-
-`image-society/RUNBOOK_1000_CALLS.md`
-
-Defines:
-
-- preconditions;
-- call and retry accounting;
-- concurrency policy;
-- wave allocations;
-- correction cycles;
-- checkpoint/resume procedures;
-- branching/consolidation;
-- budget controls;
-- provider drift handling;
-- refusal handling;
-- human promotion gates;
-- incident response;
-- mock qualification and progressive real-provider qualification.
-
-### Machine-readable contracts
-
-`image-society/schema/image-society.v1.schema.json`
-
-Contains contracts for:
-
-- Run Manifest;
-- Image Intent;
-- Image Turn Event;
-- Image Artifact;
-- Visual Difference Contract;
-- Continuity Pack;
-- Checkpoint;
-- Regression Defect;
-- Role Envelope.
-
-`image-society/schema/run-manifest.example.json` provides a bounded 1000-call example.
-
-### Role prompt contracts
-
-`image-society/prompts/role-prompts.v1.json`
-
-Defines bounded responsibilities for:
-
-- Director;
-- Scene Builder;
-- Generator;
-- Repairer;
-- Semantic Critic;
-- Composition Critic;
-- Continuity Critic;
-- Accessibility Critic;
-- Authority Critic;
-- Provenance Keeper;
-- Integrator;
-- Summarizer.
-
-Roles are responsibilities, not independent evidence sources. Shared-model role agreement is not independent corroboration.
-
-## 1000-call principle
-
-A 1000-call run is a **bounded experimental budget**, not a requirement to spend 1000 calls.
-
-The recommended qualification sequence is:
-
-```text
-1000-call deterministic mock run
-  -> 8 real calls
-  -> 32 real calls
-  -> 100 real calls
-  -> 250 real calls
-  -> 1000-call ceiling
+```bash
+node tools/run-image-society.mjs --mock
+node tools/run-image-society.mjs --mock --calls 100 --parallelism 4
 ```
 
-Progression occurs only when evidence supports the next scale.
+The current CLI deliberately executes only the deterministic `mock` provider. Real provider execution must be injected by an authorized runtime and should advance through the runbook qualification ladder rather than silently reusing mock evidence.
 
-## Authority and Reality Canon
+`MOCK_STRUCTURAL_ORCHESTRATION_ONLY != REAL_PROVIDER_QUALITY_OR_COST_EVIDENCE`
 
-For MMO/game images, Image Society preserves:
+## Provider capability negotiation
+
+Desired geometry is intent-level data rather than a hardcoded global size list.
+
+A provider adapter must either:
+
+1. support the requested dimensions/aspect ratio/format/variant count directly;
+2. fail explicitly with `failed-capability`; or
+3. when the intent explicitly allows it, apply a named adapter fallback with recorded requested and executed geometry.
+
+Silent substitution is prohibited. A capability failure occurs before provider execution and does not spend provider retries.
+
+The current browser `Conscience64ImageGen` size list remains one transport's capabilities, not Image Society's architecture ceiling.
+
+## Deterministic scheduling
+
+Logical call count is independent of retry count. Calls may execute concurrently in bounded waves, but terminal events are appended in logical-call order so provider completion timing does not scramble checkpoint identity.
+
+Resume uses preserved terminal records and continues at the next logical call ID. `executeBatch` and `executeRun` share the same scheduling path.
+
+## Checkpoints
+
+A checkpoint is a content-addressed projection of full ledger history, not a replacement for it. Its semantic state retains:
+
+- ledger digest and source-event links;
+- accepted/candidate/rejected artifact identities;
+- active constraints;
+- unresolved defects;
+- successful and failed correction patterns;
+- authority/accessibility/continuity notes;
+- budget evidence.
+
+Wall-clock creation time is excluded from the semantic digest. Active context is bounded separately while retaining checkpoint/source identities.
+
+## Roles
+
+The role package defines stable contracts for:
+
+1. Director
+2. Scene Builder
+3. Generator
+4. Repairer
+5. Semantic Critic
+6. Composition Critic
+7. Continuity Critic
+8. Accessibility Critic
+9. Authority Critic
+10. Provenance Keeper
+11. Integrator
+12. Summarizer
+
+Roles are responsibilities, not independent sources of truth. Multiple roles backed by the same model do not become independent corroboration.
+
+## Reality Canon
+
+For MMO/Red Wilds work, visual reasoning preserves the hierarchy:
 
 ```text
 ordinary physical world
-  -> observed natural world
-  -> scientific observation reference
-  -> processed scientific visualization
-  -> game reconstruction
-  -> anomaly/fantasy layer
+-> observed natural world
+-> scientific observation reference
+-> processed scientific visualization
+-> game reconstruction
+-> anomaly / fantasy
 ```
 
-Generated people are not presented as real identifiable people. Game reconstructions are not presented as photographs, telescope exposures, or scientific measurements. A visually convincing artifact does not gain evidentiary authority from realism.
+Generated people are not presented as real identifiable people. Game reconstructions are not presented as photographs, telescope exposures, or scientific measurements.
 
-## Accessibility
+## Files
 
-Accessibility is a review input and production-suitability gate where applicable. Accepted artifacts may carry:
+- `RUNBOOK_1000_CALLS.md` — operational wave/budget/recovery procedure.
+- `schema/image-society.v1.schema.json` — runtime-congruent interchange schema.
+- `schema/run-manifest.example.json` — bounded pilot manifest.
+- `prompts/role-prompts.v1.json` — role instructions and evidence boundaries.
+- `prompts/production-image-profile.v1.json` — high-fidelity photoreal production profile with flexible geometry.
+- `../docs/superpowers/specs/2026-09-14-image-society-design.md` — approved predecessor design.
+- `../docs/superpowers/specs/2026-09-14-image-society-runtime-reconciliation.md` — implementation-derived refinements.
 
-- alt text;
-- long descriptions;
-- text transcription;
-- regions of interest;
-- known limitations;
-- formal checks still requiring programmatic measurement.
+## Verification
 
-Model inspection does not substitute for formal measurements where those are required.
+```bash
+node --test image-society/*.test.mjs
+```
 
-## Promotion
+The suite covers canonical identities, run bounds, ledger preservation, event defaults, artifact lineage, Visual Difference, Continuity Packs, checkpoints, promotion gates, regression records, role contracts, explicit capability negotiation, resumability, concurrency, schema/runtime congruence, and a deterministic 1000-call scale exercise.
 
-Canonical visual promotion requires an explicit promotion event with the target gate passed and human approval recorded.
+The playground CI also enforces the CLI hard ceiling, re-runs the existing image-generation transport test, and then runs the existing MMO/ECS/visual-carrier/Renderer Society/Reality Canon and browser contracts.
+
+The qualification sequence for a real provider remains:
 
 ```text
-MODEL_VOTES != HUMAN_PROMOTION_APPROVAL
+1000-call deterministic mock
+-> 8 real calls
+-> 32 real calls
+-> 100 real calls
+-> 250 real calls
+-> 1000-call ceiling
 ```
 
-No scheduler, generator, critic, or integrator may bypass that rule.
-
-## Current evidence state
-
-This package currently records an approved architecture, implementation plan, runbook, schema, and role-prompt contracts.
-
-It does **not** yet constitute evidence that:
-
-- Image Society runtime code has been implemented;
-- a 1000-call mock run has executed;
-- real provider calls have executed;
-- any renderer/provider has been newly admitted;
-- any image has been promoted to canonical visual state.
-
-Those claims require implementation and executed test evidence from the implementation plan.
+Progression requires new evidence at each scale.
