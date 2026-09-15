@@ -72,6 +72,8 @@ export function validateRunManifest(value) {
   return deepFreeze(cloneJson(out));
 }
 
+export { RUN_SCHEMA, MAX_CALLS };
+
 const EVENT_TYPES = new Set([
   'plan','generate','variation','edit','critique','compare','continuity-review',
   'accessibility-review','authority-review','provenance-review','correction-propose',
@@ -116,52 +118,77 @@ export function validateTurnEvent(value, { run_id, sequence_no } = {}) {
   return deepFreeze(out);
 }
 
+export { EVENT_TYPES, TERMINAL_STATES };
+
 function requiredString(name, value) {
   const out = String(value ?? '').trim();
   if (!out) throw new TypeError(`${name} is required`);
   return out;
 }
 
+function requiredArrayField(name, value) {
+  if (!Array.isArray(value)) throw new TypeError(`${name} is required and must be an array of strings`);
+  return stringArray(name, value);
+}
+
 export function validateVisualDifference(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new TypeError('visual difference must be an object');
+  const recommendations = ['keep', 'revert', 'iterate-targeted-edit', 'branch', 'reject', 'human-review'];
+  const difference_id = requiredString('difference_id', value.difference_id);
+  const before_artifact_id = requiredString('before_artifact_id', value.before_artifact_id);
+  const requested_delta = requiredString('requested_delta', value.requested_delta);
+  const recommendation = requiredString('recommendation', value.recommendation);
+  if (!recommendations.includes(recommendation)) throw new TypeError(`recommendation must be one of ${recommendations.join(', ')}`);
   const out = {
     schema: 'conscience64/image-society/visual-difference/v1',
-    before_artifact_id: requiredString('before_artifact_id', value.before_artifact_id),
-    requested_delta: requiredString('requested_delta', value.requested_delta),
-    after_artifact_id: requiredString('after_artifact_id', value.after_artifact_id),
-    observed_delta: stringArray('observed_delta', value.observed_delta),
-    unintended_delta: stringArray('unintended_delta', value.unintended_delta),
-    remaining_gap: stringArray('remaining_gap', value.remaining_gap)
+    difference_id,
+    before_artifact_id,
+    requested_delta,
+    protected_invariants: requiredArrayField('protected_invariants', value.protected_invariants),
+    observed_intended_delta: requiredArrayField('observed_intended_delta', value.observed_intended_delta),
+    observed_unintended_delta: requiredArrayField('observed_unintended_delta', value.observed_unintended_delta),
+    remaining_error: requiredArrayField('remaining_error', value.remaining_error),
+    comparison_evidence: requiredArrayField('comparison_evidence', value.comparison_evidence),
+    recommendation
   };
-  if (value.recommendation != null) out.recommendation = String(value.recommendation);
-  if (value.source_event_ids != null) out.source_event_ids = stringArray('source_event_ids', value.source_event_ids);
+  if (value.after_artifact_id != null) out.after_artifact_id = String(value.after_artifact_id);
   return deepFreeze(out);
 }
+
+const CONTINUITY_AUTHORITY_CLASSES = ['source-authoritative', 'human-approved-working-rule', 'generated-working-rule', 'experimental'];
 
 export function validateContinuityPack(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new TypeError('continuity pack must be an object');
   if (!Array.isArray(value.entities)) throw new TypeError('entities must be an array');
   const entities = value.entities.map((entity, index) => {
     if (!entity || typeof entity !== 'object' || Array.isArray(entity)) throw new TypeError(`entities[${index}] must be an object`);
-    return {
+    const authority_class = entity.authority_class == null ? 'generated-working-rule' : String(entity.authority_class);
+    if (!CONTINUITY_AUTHORITY_CLASSES.includes(authority_class)) throw new TypeError(`entities[${index}].authority_class is unsupported`);
+    const out = {
       entity_id: requiredString(`entities[${index}].entity_id`, entity.entity_id),
-      name: entity.name == null ? undefined : String(entity.name),
-      protected_traits: stringArray(`entities[${index}].protected_traits`, entity.protected_traits),
-      variable_traits: stringArray(`entities[${index}].variable_traits`, entity.variable_traits),
+      protected_traits: requiredArrayField(`entities[${index}].protected_traits`, entity.protected_traits),
+      variable_traits: requiredArrayField(`entities[${index}].variable_traits`, entity.variable_traits),
       reference_artifact_ids: stringArray(`entities[${index}].reference_artifact_ids`, entity.reference_artifact_ids),
-      authority_class: entity.authority_class == null ? 'generated-working-rule' : String(entity.authority_class)
+      authority_class
     };
+    if (entity.name != null) out.name = String(entity.name);
+    return out;
   });
   const out = {
     schema: 'conscience64/image-society/continuity-pack/v1',
     pack_id: requiredString('pack_id', value.pack_id),
     version: requiredString('version', value.version),
     entities,
-    environment_rules: stringArray('environment_rules', value.environment_rules),
-    style_rules: stringArray('style_rules', value.style_rules),
-    prohibited_drifts: stringArray('prohibited_drifts', value.prohibited_drifts)
+    environment_rules: requiredArrayField('environment_rules', value.environment_rules),
+    material_rules: stringArray('material_rules', value.material_rules),
+    style_rules: requiredArrayField('style_rules', value.style_rules),
+    prohibited_drift: requiredArrayField('prohibited_drift', value.prohibited_drift),
+    source_refs: stringArray('source_refs', value.source_refs)
   };
+  if (value.sha256 != null) {
+    const digest = String(value.sha256).toLowerCase();
+    if (!/^[0-9a-f]{64}$/.test(digest)) throw new TypeError('sha256 must be 64 lowercase hexadecimal characters');
+    out.sha256 = digest;
+  }
   return deepFreeze(JSON.parse(JSON.stringify(out)));
 }
-
-export { RUN_SCHEMA, MAX_CALLS, EVENT_TYPES, TERMINAL_STATES };
