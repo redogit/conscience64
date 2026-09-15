@@ -35,4 +35,9 @@ try{
   await call('Emulation.setScriptExecutionDisabled',{value:true});for(const path of ['/research/projects/','/play/','/play/mmo/simple/','/history/','/navigation/context-horizon/']){await call('Page.navigate',{url:origin+path});await sleep(150);const {root:doc}=await call('DOM.getDocument',{depth:1,pierce:true});const {outerHTML}=await call('DOM.getOuterHTML',{nodeId:doc.nodeId});assert.match(outerHTML,/Context Horizon|All pages and preserved works/i,path);assert.match(outerHTML,/href=/,path);}await call('Emulation.setScriptExecutionDisabled',{value:false});
 
   console.log('PASS Context Horizon browser: peer routes, discriminator, keyboard focus, reduced motion, single Space Lens center, no-JS fallback, and epistemic isolation');
-}finally{try{socket?.close();}catch{}try{chrome?.kill('SIGKILL');}catch{}await new Promise(r=>server.close(r));await rm(profile,{recursive:true,force:true});}
+}finally{
+  try{socket?.close();}catch{}
+  if(chrome&&chrome.exitCode===null){const exited=new Promise(resolveExit=>chrome.once('exit',resolveExit));try{chrome.kill('SIGKILL');}catch{}await Promise.race([exited,sleep(3000)]);}
+  if(server.listening)await new Promise(resolveClose=>server.close(resolveClose));
+  let lastError=null;for(let i=0;i<8;i++){try{await rm(profile,{recursive:true,force:true});lastError=null;break;}catch(error){lastError=error;await sleep(150*(i+1));}}if(lastError)throw lastError;
+}
