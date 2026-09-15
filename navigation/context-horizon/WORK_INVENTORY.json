@@ -27,6 +27,9 @@
       "path": "navigation/context-horizon/current-chat-artifact-seeds.json"
     },
     {
+      "path": "navigation/context-horizon/named-architecture-seeds.json"
+    },
+    {
       "path": "navigation/context-horizon/external-public-sources.json"
     }
   ],
@@ -261,6 +264,26 @@
       "notes": []
     },
     {
+      "id": "arcade-forge",
+      "canonicalName": "Arcade Forge",
+      "aliases": [],
+      "domain": "game-tool",
+      "sourceLocations": [
+        "play/mmo/forge.html",
+        "play/mmo/forge.js"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
+      ],
+      "notes": []
+    },
+    {
       "id": "assumption-audit",
       "canonicalName": "Assumption Audit",
       "aliases": [],
@@ -482,6 +505,23 @@
       "notes": []
     },
     {
+      "id": "capability-wasm-v3",
+      "canonicalName": "capability-wasm-v3",
+      "aliases": [],
+      "domain": "software-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "carrier-theory",
       "canonicalName": "Carrier Theory",
       "aliases": [],
@@ -696,6 +736,27 @@
       "notes": []
     },
     {
+      "id": "compass4d-navigation",
+      "canonicalName": "Compass4D Navigation",
+      "aliases": [],
+      "domain": "navigation-system",
+      "sourceLocations": [
+        "space-lens-master.js"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
+      ],
+      "notes": [
+        "Navigation orientation; not a physical four-dimensional measurement."
+      ]
+    },
+    {
       "id": "composable-knowledge",
       "canonicalName": "Composable Knowledge",
       "aliases": [],
@@ -825,6 +886,28 @@
       "notes": []
     },
     {
+      "id": "context-horizon-13dpp",
+      "canonicalName": "Context Horizon 13D++",
+      "aliases": [],
+      "domain": "site-navigation",
+      "sourceLocations": [
+        "navigation/context-horizon/"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
+      ],
+      "notes": [
+        "PROXIMITY != TRUTH",
+        "RELATION != MERGE"
+      ]
+    },
+    {
       "id": "cross-carrier-field-theory",
       "canonicalName": "Cross Carrier Field Theory",
       "aliases": [],
@@ -891,6 +974,25 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "cuedoor-clean-room-lineage",
+      "canonicalName": "CueDoor Clean-Room Lineage",
+      "aliases": [
+        "CueDoor"
+      ],
+      "domain": "software-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
       ],
       "notes": []
     },
@@ -1053,6 +1155,26 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "ecs-video-carrier",
+      "canonicalName": "ECS Video Carrier",
+      "aliases": [],
+      "domain": "media-system",
+      "sourceLocations": [
+        "play/mmo/simple/ECS.md",
+        "play/mmo/simple/ecs.mjs"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
       ],
       "notes": []
     },
@@ -1365,6 +1487,25 @@
       "notes": []
     },
     {
+      "id": "governed-applicability-gate",
+      "canonicalName": "Governed Applicability Gate",
+      "aliases": [],
+      "domain": "methodology",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": [
+        "SEMANTIC_SCORE != APPLICABILITY"
+      ]
+    },
+    {
       "id": "historical-recovery",
       "canonicalName": "Historical Recovery",
       "aliases": [],
@@ -1532,6 +1673,31 @@
       "notes": []
     },
     {
+      "id": "knowledge-bridge",
+      "canonicalName": "Conscience64 Knowledge Bridge",
+      "aliases": [],
+      "domain": "knowledge-system",
+      "sourceLocations": [
+        "knowledge/README.md",
+        "knowledge/bridge.py",
+        "knowledge/ledger.py",
+        "knowledge/packet.py"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
+      ],
+      "notes": [
+        "INGESTED != ACCEPTED_AS_FACT",
+        "TRANSPORT_VALIDITY != EVIDENCE_VALIDITY"
+      ]
+    },
+    {
       "id": "knowledge-decay",
       "canonicalName": "Knowledge Decay",
       "aliases": [
@@ -1689,6 +1855,25 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "local-live-ingestion",
+      "canonicalName": "Local Live Ingestion",
+      "aliases": [],
+      "domain": "software-research",
+      "sourceLocations": [
+        "analytics/server.py"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
       ],
       "notes": []
     },
@@ -1964,6 +2149,23 @@
       "notes": []
     },
     {
+      "id": "nested-learning",
+      "canonicalName": "Nested Learning",
+      "aliases": [],
+      "domain": "model-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "neuralflow",
       "canonicalName": "NeuralFlow",
       "aliases": [],
@@ -2017,6 +2219,57 @@
       "notes": []
     },
     {
+      "id": "open-mind-ontology-of-mind",
+      "canonicalName": "Open Mind / Ontology of Mind",
+      "aliases": [],
+      "domain": "philosophy-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "operator-library",
+      "canonicalName": "Operator Library",
+      "aliases": [],
+      "domain": "knowledge-system",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "operator-mind",
+      "canonicalName": "Operator Mind",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "operator-moonshot",
       "canonicalName": "Operator Moonshot",
       "aliases": [
@@ -2052,6 +2305,23 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "operator-theory",
+      "canonicalName": "Operator Theory",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
       ],
       "notes": []
     },
@@ -2389,6 +2659,23 @@
       "notes": []
     },
     {
+      "id": "primitive-operator-experiments",
+      "canonicalName": "Primitive Operator Experiments",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "private-media-ingest-2026-09-14",
       "canonicalName": "Private Media Ingest 2026-09-14",
       "aliases": [],
@@ -2425,6 +2712,25 @@
       "notes": [
         "Source-track identity intentionally generalized; raw filename is not published."
       ]
+    },
+    {
+      "id": "public-research-updates",
+      "canonicalName": "Public Research Updates",
+      "aliases": [],
+      "domain": "publication-system",
+      "sourceLocations": [
+        "research/projects/public-updates/"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
+      ],
+      "notes": []
     },
     {
       "id": "pulsenet-gp",
@@ -2545,6 +2851,42 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "reality-canon",
+      "canonicalName": "Reality Canon",
+      "aliases": [],
+      "domain": "game-contract",
+      "sourceLocations": [
+        "play/mmo/REALITY_CANON.md"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-contract"
+      ],
+      "notes": []
+    },
+    {
+      "id": "recover-bound-build-test-review-admit",
+      "canonicalName": "Recover & Bound → Build & Test → Review & Admit",
+      "aliases": [],
+      "domain": "methodology",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
       ],
       "notes": []
     },
@@ -2805,6 +3147,25 @@
       "notes": []
     },
     {
+      "id": "redline-character-cooperation",
+      "canonicalName": "Redline Character Cooperation",
+      "aliases": [],
+      "domain": "game-contract",
+      "sourceLocations": [
+        "play/mmo-world/redline/"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
+      ],
+      "notes": []
+    },
+    {
       "id": "redogit",
       "canonicalName": "REDOGIT",
       "aliases": [
@@ -2841,6 +3202,43 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "remote-research-update-boundary",
+      "canonicalName": "Remote Research Update Boundary",
+      "aliases": [],
+      "domain": "system-design",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "renderer-society",
+      "canonicalName": "Renderer Society",
+      "aliases": [],
+      "domain": "software-research",
+      "sourceLocations": [
+        "play/mmo/simple/renderer-society/README.md",
+        "play/mmo/simple/renderer-society.mjs"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
       ],
       "notes": []
     },
@@ -2931,6 +3329,23 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "rule-trigger-gate-task",
+      "canonicalName": "Rule-Trigger Gate Task",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
       ],
       "notes": []
     },
@@ -3060,6 +3475,25 @@
       "notes": []
     },
     {
+      "id": "semantic-cross-reference-map",
+      "canonicalName": "Semantic Cross-Reference Map",
+      "aliases": [],
+      "domain": "knowledge-system",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": [
+        "RELATED != SUPPORTS"
+      ]
+    },
+    {
       "id": "semantic-kernel-egraph-lineage",
       "canonicalName": "Semantic Kernel / E-Graph Lineage",
       "aliases": [],
@@ -3131,6 +3565,25 @@
       "notes": []
     },
     {
+      "id": "shared-well-common-substrate",
+      "canonicalName": "Shared Well / Common Substrate",
+      "aliases": [
+        "Common Substrate"
+      ],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
       "id": "shared-well-human-compass",
       "canonicalName": "Shared Well / Human Compass",
       "aliases": [
@@ -3147,6 +3600,23 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "society-orchestration-architecture",
+      "canonicalName": "Society / Orchestration Architecture",
+      "aliases": [],
+      "domain": "research-governance",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
       ],
       "notes": []
     },
@@ -3198,6 +3668,46 @@
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "historical-context-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "source-ingress",
+      "canonicalName": "Source Ingress",
+      "aliases": [],
+      "domain": "research-system",
+      "sourceLocations": [
+        "research/source-ingress/"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
+      ],
+      "notes": []
+    },
+    {
+      "id": "space-lens",
+      "canonicalName": "Space Lens",
+      "aliases": [],
+      "domain": "site-navigation",
+      "sourceLocations": [
+        "index.html",
+        "space-lens-master.js",
+        "space-lens-field.js"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
       ],
       "notes": []
     },
@@ -3315,6 +3825,25 @@
       "notes": []
     },
     {
+      "id": "subject-conditioned-token-mass-proposal",
+      "canonicalName": "Subject-Conditioned Token-Mass Proposal Mechanism",
+      "aliases": [],
+      "domain": "research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": [
+        "Proposal-material mechanism; tokens are not truth."
+      ]
+    },
+    {
       "id": "taskworld",
       "canonicalName": "TaskWorld",
       "aliases": [],
@@ -3370,6 +3899,83 @@
       "sourceKinds": [
         "historical-context-seed",
         "research-project-record"
+      ],
+      "notes": []
+    },
+    {
+      "id": "unfinished-long-run",
+      "canonicalName": "Unfinished Long Run",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": [
+        "Preserved incomplete experiment; incomplete does not mean disposable."
+      ]
+    },
+    {
+      "id": "v0-3-rule-gate-branch",
+      "canonicalName": "v0.3 Rule-Gate Branch",
+      "aliases": [],
+      "domain": "experiment",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": [
+        "Preserved failed/experimental branch."
+      ]
+    },
+    {
+      "id": "validated-operator-reuse-nested-timescales",
+      "canonicalName": "Validated Operator Reuse Across Nested Learning Timescales",
+      "aliases": [
+        "speed-running nested learning"
+      ],
+      "domain": "model-research",
+      "sourceLocations": [],
+      "provenanceStatus": "known-from-prior-conversations",
+      "publicationStatus": "unresolved",
+      "state": "unresolved",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "must-locate-or-retain-unresolved",
+      "sourceKinds": [
+        "named-architecture-seed"
+      ],
+      "notes": []
+    },
+    {
+      "id": "visual-carrier-v2",
+      "canonicalName": "Visual Carrier v2",
+      "aliases": [],
+      "domain": "visual-system",
+      "sourceLocations": [
+        "play/mmo/simple/visual-carrier-v2/",
+        "play/mmo/simple/visual-carrier-v2.test.mjs"
+      ],
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "repository-subsystem"
       ],
       "notes": []
     },
