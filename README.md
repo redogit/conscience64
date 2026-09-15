@@ -10,6 +10,14 @@ Visible surface: **I / R / P / O**.
 
 The forward-only project manifest is [`research/projects/CURRENT.json`](research/projects/CURRENT.json). Historical/browser snapshots remain preserved rather than rewritten to look current.
 
+## External research + production federation bridge
+
+The [redogit Research + Production Federation bridge](research/bridges/redogit-federation/) connects this repository to the public federated history/research/production/play/teaching maps. Its [active-project registry](research/bridges/redogit-federation/active-projects.json) exposes only Conscience64 work whose current role is active/current/deployed or whose public/local implementation is currently runnable. Preserved lineages remain preserved, and deliberately unlisted surfaces remain unlisted.
+
+It is **navigation only**: it does not admit external claims into the Conscience64 research registry, world/game canon, Context Horizon authority, or evidence ledger.
+
+`FEDERATION_POINTER != RESEARCH_ADMISSION` · `CONNECTED != MERGED` · `UNLISTED_ACTIVE != PUBLICLY_LISTED`
+
 ## MMO World Beta
 
 **Featured launch surface:** [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/)

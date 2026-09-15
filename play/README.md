@@ -1,10 +1,28 @@
 # Conscience64 / Play
 
-Seven free browser projects built from ongoing ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
+Free browser play and creative tools built from ongoing ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
+
+## The priority: a world worth growing up with
+
+The game world is the main product goal. Research, mathematics, science, language work, accessibility work, and experimental systems are supporting materials for making the games deeper, stranger, more useful, and more durable — not prerequisites for playing them.
+
+The design target is simple:
+
+`EARLIER PLAY REMAINS VALID + NEW OPTIONAL DEPTH = GROWTH`
+
+A player should be able to begin by wandering, collecting, dancing, racing, building, making patterns, and hearing stories, then discover deeper crafting, ecology, strategy, science, creation tools, and long-form mysteries when they want them. Those are readiness layers, not age labels; ordinary play should not require collecting a child's age.
+
+The default public game surface is intended to be child-safe. Adult material does not belong in child-facing play. Gambling-like monetization, paid random rewards, loot-box pressure, manipulative streaks, fear-of-missing-out timers, pay-to-win design, and child-targeted purchase pressure are outside the game contract.
+
+The project is also allowed to become financially sustainable for the family, friends, collaborators, maintainers, artists, and infrastructure around it. Preferred revenue comes from clear value — straightforward ownership/permanent access, optional creator or pro tools, supporter/family packs, substantial expansions, donations, and other transparent offerings — rather than turning players into the product.
+
+See the full [Grow-With-You Game Contract](GROW_WITH_YOU_GAME_CONTRACT.md).
 
 | Project | Use it for | Current boundary |
 | --- | --- | --- |
 | [Conscience64 MMO RPG](https://redogit.github.io/conscience64/play/mmo/) | Live in a grounded world of neighborhoods, work, travel, games, people and real-sky observation before monsters, Fuzzball and impossible events intrude | Local-first MMO-world prototype today; networked MMO and real-world prize redemption are not yet active |
+| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Explore the earlier founding shard while the grounded successor evolves | Preserved predecessor; shared networking remains gated |
+| [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Cross strange regions, fight monsters, collect Echo Shards, follow story signals, and find Fuzzball | Browser-game prototype; world and progression remain bounded to implemented behavior |
 | [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes, source links, and writing-language metadata | Import/export a project file; optional browser storage |
 | [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Arrange lines of writing while preserving the original | Download the remix or export the project |
 | [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Explore a six-by-six pattern with shapes, rotation, mirroring, and undo | Download SVG/text or export the project |
@@ -15,6 +33,8 @@ Seven free browser projects built from ongoing ideas. Open the [project hub](htt
 ## MMO RPG
 
 The MMO prototype is intentionally about **fun, doing things, and being somebody** rather than maximizing grind or spending. Its world starts from recognizable ordinary life: apartments, markets, workshops, transit, parks, weathered materials, believable light, people doing everyday things, and a real-sky/astronomy reference layer. Monsters, impossible geometry, Fuzzball, strange research connections and other anomalies are layered above that baseline rather than replacing it.
+
+The grow-with-you direction means later systems should add optional depth rather than invalidate earlier ways to play. A player who loves exploring or building should not be forced into a more complicated progression system just because it exists. Different play styles are parallel paths rather than a single maturity ladder.
 
 The current visual/world direction is canonical in [`mmo/REALITY_CANON.md`](mmo/REALITY_CANON.md). If older MMO aesthetic notes conflict with it, the Reality Canon controls the current successor while predecessor history remains preserved.
 
@@ -49,6 +69,14 @@ The MMO uses the public read-only Conscience64 browser API as a cooperating cont
 ### Real-world prizes
 
 The prototype does **not** currently redeem real-world prizes. Any future prize program must have official rules, verified server-side achievements, eligibility and jurisdiction review, fraud controls, privacy-minimized fulfillment, and funding before activation. The current design does not require a purchase, wager, purchasable random chance, or cash-equivalent loot-box route for prize participation.
+
+## Sustainable game economics
+
+Making money is compatible with the project; predatory game economics are not.
+
+The working preference is to sell or accept support for things a person can understand before paying: ownership/permanent access, optional creator/pro capabilities, family/supporter packages, meaningful expansions, donations, or physical extras when fulfillment is ready. Ordinary progress should not depend on payment, random purchases, artificial scarcity, or pressure aimed at children.
+
+A successful business outcome is not just revenue. It is revenue that can support the people doing the work while leaving the game enjoyable for someone who simply wants to play.
 
 ## Local-first tools and data
 
@@ -89,7 +117,7 @@ node play/mmo/browser-test.mjs
 
 The MMO-specific browser smoke test checks the grounded neighborhood and observatory, 1100px and 320px layout behavior, astronomy labeling, local plug-in installation/discovery/play, exact bounded local rewards, and that HTML-like plug-in text does not execute as markup.
 
-These checks verify the current prototype surfaces only. Dedicated multiplayer, manual accessibility, security, load, recovery, and prize-verification gates remain separate v1.0 work and must not be inferred from passing local/browser tests.
+These checks verify the current prototype surfaces only. Dedicated multiplayer, manual accessibility, security, load, recovery, child-safety, moderation, and prize-verification gates remain separate v1.0 work and must not be inferred from passing local/browser tests.
 
 ## Origins and rights
 
