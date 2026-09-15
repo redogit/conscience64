@@ -1,0 +1,24 @@
+{
+  "schema": "conscience64/context-horizon-current-chat-artifact-seeds/v1",
+  "status": "public-safe-private-source-preservation-seeds",
+  "rule": "These records preserve artifact identity only. They intentionally omit personal filenames, local sandbox paths, private media identities, medical-image details, and other source-sensitive material. Artifact existence and lineage do not make the underlying source media public.",
+  "works": [
+    {"id":"red-wilds-alpha-0-1","canonicalName":"Red Wilds Alpha 0.1","domain":"game-artifact","state":"current","notes":["Playable alpha release artifact."]},
+    {"id":"red-wilds-generated-image-bundle","canonicalName":"Red Wilds Generated Image Bundle","domain":"visual-artifact","state":"current","notes":["Generated visual concept bundle; member-level recovery remains separate."]},
+    {"id":"red-wilds-ecs-media-corpus","canonicalName":"Red Wilds ECS Media Corpus","domain":"media-artifact","state":"current","notes":["Private generative corpus artifact; raw private sources are not published by this record."]},
+    {"id":"red-wilds-pil-variants","canonicalName":"Red Wilds PIL Variants","domain":"visual-artifact","state":"current"},
+    {"id":"red-wilds-wild-renderer-batch","canonicalName":"Red Wilds Wild Renderer Batch","domain":"visual-artifact","state":"current"},
+    {"id":"red-wilds-music-driven-1000","canonicalName":"Red Wilds Music-Driven 1000","domain":"media-artifact","state":"current"},
+    {"id":"red-wilds-three-perspective-videos","canonicalName":"Red Wilds Three-Perspective Videos","domain":"media-artifact","state":"current"},
+    {"id":"red-wilds-companion-visual-v2","canonicalName":"Red Wilds Companion Visual Batch V2","domain":"visual-artifact","state":"current"},
+    {"id":"red-wilds-companion-visual-v3","canonicalName":"Red Wilds Companion Visual Batch V3","domain":"visual-artifact","state":"current"},
+    {"id":"red-wilds-image-mutation-lab","canonicalName":"Red Wilds Image Mutation Lab","domain":"visual-artifact","state":"current","notes":["Image mutation/permutation/poly-parent recombination experiment."]},
+    {"id":"red-wilds-video-ingest-v4","canonicalName":"Red Wilds Video Ingest V4","domain":"media-artifact","state":"current","notes":["Video-derived generative-material and mutation batch; source filenames remain private."]},
+    {"id":"red-wilds-companion-v4","canonicalName":"Red Wilds Companion V4","domain":"media-artifact","state":"current"},
+    {"id":"red-wilds-three-perspective-contract","canonicalName":"Red Wilds Three-Perspective Video Contract","domain":"game-contract","state":"current","notes":["Exactly three synchronized viewpoints: Player POV, Character View, World View.","VIEWPOINT_CHANGE != WORLD_STATE_CHANGE"]},
+    {"id":"private-media-ingest-2026-09-14","canonicalName":"Private Media Ingest 2026-09-14","domain":"private-media-artifact","state":"current","notes":["Collection identity only; raw private media identities are intentionally omitted."]},
+    {"id":"private-music-source-2026-09-14","canonicalName":"Private Music Source 2026-09-14","domain":"private-media-artifact","state":"current","notes":["Source-track identity intentionally generalized; raw filename is not published."]},
+    {"id":"companion-style-profile-v3","canonicalName":"Companion Style Profile V3","domain":"game-profile","state":"current","notes":["User-defined companion render vocabulary/profile; source-sensitive wording is not required for preservation identity."]},
+    {"id":"companion-style-profile-v4","canonicalName":"Companion Style Profile V4","domain":"game-profile","state":"current","notes":["Successor companion render vocabulary/profile."]}
+  ]
+}
