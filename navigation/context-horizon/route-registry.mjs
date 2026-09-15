@@ -3,7 +3,7 @@ const OWN=new Set(['site','research','game','tool','history','creative']), EPI=n
 const REL=new Set(['opens','navigates-to','returns-to','related-to','references','visualizes','inspired-by','teaches-about','predecessor-of','successor-of','depends-on','history-of','part-of','index-of','creates-with','creates-content-for','has-reference-visuals','has-history','neighbor-game','cooperates-with','links-to']);
 const BAD=new Set(['owns','absorbs','proves','contains','replaces-semantically']);
 const A=v=>Object.freeze([...(Array.isArray(v)?v:[])].map(String));
-const D=p=>Object.freeze(Object.fromEntries(DIMENSION_KEYS.map(k=>[k,A(p?.[k])]));
+const D=p=>Object.freeze(Object.fromEntries(DIMENSION_KEYS.map(k=>[k,A(p?.[k])])));
 const E=(to,type)=>Object.freeze({to,type});
 const M=(id,href,title,kind,owner='site',epi='navigation',status='current',workIds=[],keywords=[],d={},relations=[])=>Object.freeze({id,href,title,kind,status,ownerDomain:owner,epistemicRole:epi,workIds:A(workIds),keywords:A(keywords),dimensions:D(d),relations:Object.freeze(relations),provenance:Object.freeze({source:'site-context-horizon-route-registry',status:'admitted'})});
 const gameD=(place,activity=[],object=[],systemTool=[],purpose=['explore'])=>({place:A([place]),activity:A(activity),personAgent:['player'],object:A(object),timeHistory:['current'],evidence:['none'],research:[],creation:[],systemTool:A(systemTool),worldGameState:['local'],purpose:A(purpose),relation:[]});
