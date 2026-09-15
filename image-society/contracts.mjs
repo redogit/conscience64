@@ -116,4 +116,52 @@ export function validateTurnEvent(value, { run_id, sequence_no } = {}) {
   return deepFreeze(out);
 }
 
+function requiredString(name, value) {
+  const out = String(value ?? '').trim();
+  if (!out) throw new TypeError(`${name} is required`);
+  return out;
+}
+
+export function validateVisualDifference(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new TypeError('visual difference must be an object');
+  const out = {
+    schema: 'conscience64/image-society/visual-difference/v1',
+    before_artifact_id: requiredString('before_artifact_id', value.before_artifact_id),
+    requested_delta: requiredString('requested_delta', value.requested_delta),
+    after_artifact_id: requiredString('after_artifact_id', value.after_artifact_id),
+    observed_delta: stringArray('observed_delta', value.observed_delta),
+    unintended_delta: stringArray('unintended_delta', value.unintended_delta),
+    remaining_gap: stringArray('remaining_gap', value.remaining_gap)
+  };
+  if (value.recommendation != null) out.recommendation = String(value.recommendation);
+  if (value.source_event_ids != null) out.source_event_ids = stringArray('source_event_ids', value.source_event_ids);
+  return deepFreeze(out);
+}
+
+export function validateContinuityPack(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new TypeError('continuity pack must be an object');
+  if (!Array.isArray(value.entities)) throw new TypeError('entities must be an array');
+  const entities = value.entities.map((entity, index) => {
+    if (!entity || typeof entity !== 'object' || Array.isArray(entity)) throw new TypeError(`entities[${index}] must be an object`);
+    return {
+      entity_id: requiredString(`entities[${index}].entity_id`, entity.entity_id),
+      name: entity.name == null ? undefined : String(entity.name),
+      protected_traits: stringArray(`entities[${index}].protected_traits`, entity.protected_traits),
+      variable_traits: stringArray(`entities[${index}].variable_traits`, entity.variable_traits),
+      reference_artifact_ids: stringArray(`entities[${index}].reference_artifact_ids`, entity.reference_artifact_ids),
+      authority_class: entity.authority_class == null ? 'generated-working-rule' : String(entity.authority_class)
+    };
+  });
+  const out = {
+    schema: 'conscience64/image-society/continuity-pack/v1',
+    pack_id: requiredString('pack_id', value.pack_id),
+    version: requiredString('version', value.version),
+    entities,
+    environment_rules: stringArray('environment_rules', value.environment_rules),
+    style_rules: stringArray('style_rules', value.style_rules),
+    prohibited_drifts: stringArray('prohibited_drifts', value.prohibited_drifts)
+  };
+  return deepFreeze(JSON.parse(JSON.stringify(out)));
+}
+
 export { RUN_SCHEMA, MAX_CALLS, EVENT_TYPES, TERMINAL_STATES };
