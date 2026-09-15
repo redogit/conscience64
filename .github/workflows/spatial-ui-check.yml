@@ -54,6 +54,12 @@ jobs:
           node --check navigation/context-horizon/browser-test.mjs
       - name: Verify Context Horizon preservation inventory
         run: node navigation/context-horizon/work-inventory.test.mjs
+      - name: Materialize current preservation snapshot for review
+        run: |
+          node navigation/context-horizon/work-inventory.mjs --write
+          echo '---BEGIN_CONTEXT_HORIZON_WORK_INVENTORY---'
+          cat navigation/context-horizon/WORK_INVENTORY.json
+          echo '---END_CONTEXT_HORIZON_WORK_INVENTORY---'
       - name: Verify Context Horizon route graph
         run: node navigation/context-horizon/route-registry.test.mjs
       - name: Verify Context Horizon ranking
