@@ -4,8 +4,11 @@ on:
   pull_request:
     paths:
       - 'space-lens-gpu.js'
+      - 'space-lens-master.js'
       - 'spatial-ui-test.mjs'
       - 'index.html'
+      - 'navigation/**'
+      - 'research/projects/index.html'
       - 'play/**'
       - 'history/**'
       - '.github/workflows/spatial-ui-check.yml'
@@ -26,11 +29,30 @@ jobs:
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
           git fetch --depth 1 origin "${GITHUB_SHA}"
           git checkout --detach FETCH_HEAD
-      - name: Syntax check GPU renderer
-        run: node --check space-lens-gpu.js
-      - name: Verify spatial and hidden-boundary contracts
+      - name: Syntax check spatial and Context Horizon modules
+        run: |
+          node --check space-lens-gpu.js
+          node --check space-lens-master.js
+          node --check navigation/context-horizon/work-inventory.mjs
+          node --check navigation/context-horizon/route-registry.mjs
+          node --check navigation/context-horizon/engine.mjs
+          node --check navigation/context-horizon/questions.mjs
+          node --check navigation/context-horizon/presenter.mjs
+          node --check navigation/context-horizon/page-adapter.mjs
+          node --check navigation/context-horizon/browser-test.mjs
+      - name: Verify Context Horizon preservation inventory
+        run: node navigation/context-horizon/work-inventory.test.mjs
+      - name: Verify Context Horizon route graph
+        run: node navigation/context-horizon/route-registry.test.mjs
+      - name: Verify Context Horizon ranking
+        run: node navigation/context-horizon/engine.test.mjs
+      - name: Verify Context Horizon questions
+        run: node navigation/context-horizon/questions.test.mjs
+      - name: Verify spatial, preservation, and hidden-boundary contracts
         run: node spatial-ui-test.mjs
       - name: Verify existing history contracts
         run: |
           node history/test.mjs
           node history/knowledge-test.mjs
+      - name: Exercise Context Horizon accessibility and fallback
+        run: node navigation/context-horizon/browser-test.mjs

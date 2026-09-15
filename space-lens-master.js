@@ -45,7 +45,6 @@ function parameterize({question='',answer='',confidence='',sourceLabels=[],selec
   const transformIntensity=clamp((tokens(question).filter(t=>/carrier|wave|transform|functional|cross|4d/.test(t)).length+domains.length-1)/7);
   const crossCarrierWave=clamp(.22+.46*carrierDiversity+.18*selection+.14*evidence);
   const crossDomainWave=clamp(.18+.48*domainDiversity+.18*transformIntensity+.16*evidence);
-  // Geometric coupling means the combined wave stays bounded unless both carrier and domain traversal are active.
   const crossCarrierDomainWave=clamp(Math.sqrt(crossCarrierWave*crossDomainWave)*(.72+.28*transformIntensity));
   const successAggregation=clamp(.27*evidence+.20*selection+.18*helpfulness+.14*recency+.09*crossCarrierWave+.06*crossDomainWave+.06*crossCarrierDomainWave);
   const vector=Object.freeze({x:carrierDiversity,y:domainDiversity,z:clamp(.55*evidence+.45*transformIntensity),w:recency});
@@ -81,4 +80,17 @@ function install(){addUI();wire();wireAnswer();route('');}
 addEventListener('conscience64-ready',()=>{addUI();wire();wireAnswer();});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 globalThis.SpaceLensMaster=Object.freeze({roles:ROLE,companions:DEFAULT_COMPANIONS,route,parameterize,current:()=>({route:structuredClone(lastRoute),orientation:structuredClone(lastOrientation)})});
+})();
+
+(()=>{
+'use strict';
+let loading=false,loaded=false;
+const scriptUrl=document.currentScript?.src||new URL('./space-lens-master.js',location.href).href;
+const adapterUrl=new URL('./navigation/context-horizon/page-adapter.mjs',scriptUrl).href;
+function loadContextHorizon(){
+  if(loading||loaded)return;loading=true;
+  import(adapterUrl).then(()=>{loaded=true;}).catch(error=>{console.warn('Context Horizon unavailable; ordinary navigation remains active.',error);}).finally(()=>{loading=false;});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadContextHorizon,{once:true});else queueMicrotask(loadContextHorizon);
+addEventListener('conscience64-ready',loadContextHorizon,{once:true});
 })();
