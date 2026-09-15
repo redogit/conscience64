@@ -48,6 +48,7 @@ jobs:
           node --check navigation/context-horizon/work-inventory.mjs
           node --check navigation/context-horizon/work-inventory.test.mjs
           node --check navigation/context-horizon/current-chat-artifacts.test.mjs
+          node --check navigation/context-horizon/named-architecture-expansion.test.mjs
           node --check navigation/context-horizon/route-registry.mjs
           node --check navigation/context-horizon/engine.mjs
           node --check navigation/context-horizon/questions.mjs
@@ -58,6 +59,8 @@ jobs:
         run: node navigation/context-horizon/work-inventory.test.mjs
       - name: Verify current-chat artifact preservation boundary
         run: node navigation/context-horizon/current-chat-artifacts.test.mjs
+      - name: Verify nested architecture preservation boundary
+        run: node navigation/context-horizon/named-architecture-expansion.test.mjs
       - name: Verify committed preservation snapshot is synchronized
         run: node navigation/context-horizon/work-inventory.mjs --check
       - name: Verify Context Horizon route graph
