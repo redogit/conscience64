@@ -1,0 +1,29 @@
+{
+  "bridge_id": "gsfl-v0.1-bidirectional-macro-2026-09-16",
+  "status": "REFERENCE_ONLY_SUCCESSOR",
+  "source": {
+    "gsfl_lifecycle": "COMPLETE_BOUNDED_V0_1",
+    "operator_projection_merge": "9bd5d535e317bd13af8f86315dfd04f89e81e4df",
+    "bidirectional_macro_merge": "29c882f78b9762dafc56737b6f9ef0d95cf3c83e"
+  },
+  "cycle": ["SEEK", "QUESTION", "REFRAME", "BUILD", "RETURN_INWARD"],
+  "phases": ["OUTWARD", "OUTWARD", "OUTWARD", "OUTWARD", "INWARD"],
+  "macro_count": 5,
+  "unique_operator_count": 19,
+  "operator_invocation_count": 21,
+  "verified_workflows": [35126495292, 35126495290],
+  "audit_sha256": "39e9d78e71fb5c88c0bca474e00a0c834fca62a90d5397e6282b9f98943b8267",
+  "conscience64_role": "navigation, provenance, research-method and recovery reference only",
+  "runtime_effect": "NONE",
+  "authority_effect": "NONE",
+  "boundaries": [
+    "CONSCIENCE64_REFERENCE != MACRO_IMPLEMENTATION_AUTHORITY",
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "MACRO != NEW_PRIMITIVE",
+    "OUTWARD_EXPLORATION != VALIDATION",
+    "INWARD_COHERENCE != PROOF",
+    "BUILD != TRUTH",
+    "PROJECTION != SOURCE_MUTATION",
+    "OPERATOR_EXECUTION != AUTHORITY_TRANSFER"
+  ]
+}
