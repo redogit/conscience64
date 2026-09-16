@@ -188,12 +188,16 @@ jobs:
           build_status=""
           build_commit=""
           for attempt in $(seq 1 60); do
-            curl --fail --silent --show-error \
+            latest_http="$(curl --silent --show-error --output /tmp/pages-latest.json --write-out '%{http_code}' \
               --header 'Accept: application/vnd.github+json' \
               --header "Authorization: Bearer ${GITHUB_TOKEN}" \
               --header 'X-GitHub-Api-Version: 2022-11-28' \
-              "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds/latest" \
-              > /tmp/pages-latest.json
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds/latest")"
+            if [ "$latest_http" = "404" ]; then
+              sleep 2
+              continue
+            fi
+            test "$latest_http" = "200"
             build_status="$(node -e "const x=JSON.parse(require('fs').readFileSync('/tmp/pages-latest.json','utf8'));process.stdout.write(x.status||'')")"
             build_commit="$(node -e "const x=JSON.parse(require('fs').readFileSync('/tmp/pages-latest.json','utf8'));process.stdout.write(x.commit||'')")"
             if [ "$build_commit" = "$GITHUB_SHA" ] && [ "$build_status" = "built" ]; then
