@@ -1,15 +1,20 @@
 # GSFL bridge — Generalized Semantic Fitting Language v0.1
 
-**Bridge status:** reference-only to merged external implementation  
+**Bridge status:** `REFERENCE_ONLY_COMPLETE_EXTERNAL_V0_1`  
+**Lifecycle:** `COMPLETE_BOUNDED_V0_1` for the declared bridge scope; future successors remain allowed  
 **Operative implementation:** `redogit/Other-Projects-/Generalized Semantic Fitting Language/`  
 **v0.1 implementation merge:** `aa9e9834d3317e28fb815a47c2573960dee6fd8e` via `redogit/Other-Projects-#49`  
 **v0.1 federation activation:** `c19d9c360a83f5bed18cee6e7d5e9dff74d8f803` via `redogit/Other-Projects-#51`  
+**v0.1 completion merge:** `cf9d5a35a39b1a7b92f30e24b2789f659e913f04` via `redogit/Other-Projects-#53`  
 **Predecessor semantic kernel:** GSFL v0 remains preserved  
 **Bridge date:** 2026-09-16
 
 GSFL v0.1 is the bounded **Human–Machine Cooperation Profile** over the preserved GSFL v0 semantic kernel. It foregrounds human understanding, bounded machine-learning claims, human/machine partner cooperation, tool provenance, corollaries, confounds, and deterministic proverbial fixtures.
 
+The bridge is complete for the declared v0.1 reference/provenance obligation: Conscience64 points to the verified external baseline without copying implementation or evidence authority. See `COMPLETE_STATUS.md`.
+
 ```text
+COMPLETE_BOUNDED_V0_1 != UNIVERSAL_COMPLETION
 HUMAN_APPROVAL != HUMAN_UNDERSTANDING
 MACHINE_OUTPUT != MACHINE_LEARNING_EVIDENCE
 IN_CONTEXT_ADAPTATION != WEIGHT_UPDATE
@@ -49,6 +54,7 @@ The merged v0.1 lineage records:
 - frozen v0.1 cooperation audit passing;
 - frozen v0.1 proverbial audit passing;
 - successful exact-head workflow `35117003853`, including all three evidence gates;
+- successful completion-normalization workflow `35121436434`, again including the full test suite and all three evidence gates;
 - a vocabulary audit with 46/57 reserved/domain terms in HUMAN, MACHINE_LEARNING, UNDERSTANDING, COOPERATION, PARTNER, or TOOL families;
 - a bounded proverb corpus of 14 fixtures: 12 synthetic and 2 common/traditional fixtures with exact-origin claims left unestablished.
 
