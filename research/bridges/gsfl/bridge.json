@@ -1,7 +1,8 @@
 {
   "bridge_id": "gsfl-v0.1-2026-09-16",
   "name": "Generalized Semantic Fitting Language v0.1",
-  "status": "REFERENCE_ONLY_ACTIVE_EXTERNAL_MAIN",
+  "status": "REFERENCE_ONLY_COMPLETE_EXTERNAL_V0_1",
+  "lifecycle": "COMPLETE_BOUNDED_V0_1",
   "predecessor": "GSFL v0 semantic kernel",
   "profile": "HUMAN_MACHINE_COOPERATION",
   "relation_types": [
@@ -15,10 +16,19 @@
   "operative_source": {
     "repository": "redogit/Other-Projects-",
     "path": "Generalized Semantic Fitting Language/",
-    "pull_request": 49,
-    "merged_commit": "aa9e9834d3317e28fb815a47c2573960dee6fd8e",
+    "implementation_pull_request": 49,
+    "implementation_merge": "aa9e9834d3317e28fb815a47c2573960dee6fd8e",
     "federation_activation_pull_request": 51,
-    "federation_activation_commit": "c19d9c360a83f5bed18cee6e7d5e9dff74d8f803"
+    "federation_activation_merge": "c19d9c360a83f5bed18cee6e7d5e9dff74d8f803",
+    "corollary_confound_ledger_merge": "9a25e9de410dba9fd0c3d9f9e62a9701477d8798",
+    "completion_pull_request": 53,
+    "completion_merge": "cf9d5a35a39b1a7b92f30e24b2789f659e913f04"
+  },
+  "verification": {
+    "tests": "35/35",
+    "frozen_audits": "3/3",
+    "completion_exact_head_workflow": 35121436434,
+    "open_gsfl_rollout_prs_after_completion": 0
   },
   "cooperation_surface": {
     "reserved_terms": 57,
@@ -33,7 +43,9 @@
     "single_true_meaning_claim": false
   },
   "conscience64_role": "research navigation and provenance bridge only",
+  "completion_scope": "complete for the declared v0.1 implementation, verification, publication, routing, evidence, and recovery baseline; future successors remain allowed",
   "boundaries": [
+    "COMPLETE_BOUNDED_V0_1 != UNIVERSAL_COMPLETION",
     "CONSCIENCE64_REFERENCE != GSFL_IMPLEMENTATION_AUTHORITY",
     "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
     "RELATED != AUTHORITY_TRANSFER",
