@@ -1,22 +1,24 @@
-export const PLUGIN_SCHEMA = 'conscience64.mmo.plugin/v1';
+import { PLUGIN_POLICY } from './plugin-policy.mjs';
+
+export const PLUGIN_SCHEMA = PLUGIN_POLICY.pluginSchema;
 export const STORAGE_KEY = 'conscience64.mmo-world.plugins/v1';
 export const LIMITS = Object.freeze({
-  fileBytes: 65536,
-  shelfEntries: 64,
-  shelfBytes: 262144,
-  nameChars: 80,
-  versionChars: 32,
-  descriptionChars: 300,
-  promptChars: 500,
-  itemChars: 120,
-  choices: 8,
-  answers: 16,
-  timingMinDelayMs: 250,
-  timingMaxDelayMs: 10000,
-  timingMaxSpanMs: 5000,
+  fileBytes: PLUGIN_POLICY.limits.fileBytes,
+  shelfEntries: PLUGIN_POLICY.limits.shelfEntries,
+  shelfBytes: PLUGIN_POLICY.limits.shelfBytes,
+  nameChars: PLUGIN_POLICY.limits.nameChars,
+  versionChars: PLUGIN_POLICY.limits.versionChars,
+  descriptionChars: PLUGIN_POLICY.limits.descriptionChars,
+  promptChars: PLUGIN_POLICY.limits.promptChars,
+  itemChars: PLUGIN_POLICY.limits.itemChars,
+  choices: PLUGIN_POLICY.limits.choices,
+  answers: PLUGIN_POLICY.limits.answers,
+  timingMinDelayMs: PLUGIN_POLICY.limits.timing.minDelayMs,
+  timingMaxDelayMs: PLUGIN_POLICY.limits.timing.maxDelayMs,
+  timingMaxSpanMs: PLUGIN_POLICY.limits.timing.maxSpanMs,
 });
-export const REWARD_CAPS = Object.freeze({ xp: 40, joy: 20, tokens: 4, discoveries: 1 });
-const ID_PATTERN = /^[a-z0-9][a-z0-9-]{2,63}$/;
+export const REWARD_CAPS = PLUGIN_POLICY.limits.rewardCaps;
+const ID_PATTERN = new RegExp(PLUGIN_POLICY.limits.idPattern);
 const VERSION_PATTERN = /^\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?$/;
 const COMMON_FIELDS = new Set(['schema','id','name','version','mechanic','prompt','reward','description']);
 const REWARD_FIELDS = new Set(Object.keys(REWARD_CAPS));
@@ -26,6 +28,20 @@ const MECHANIC_FIELDS = Object.freeze({
   creative: new Set(),
   timing: new Set(['minDelayMs','maxDelayMs','falseStartReward']),
 });
+
+const runtimeMechanics = Object.keys(MECHANIC_FIELDS);
+if (runtimeMechanics.length !== PLUGIN_POLICY.mechanics.length || runtimeMechanics.some((name, index) => name !== PLUGIN_POLICY.mechanics[index])) {
+  throw new Error('plugin runtime mechanics drifted from frozen plugin policy');
+}
+if (PLUGIN_POLICY.executionModel !== 'data-only' || PLUGIN_POLICY.security.importedTextIsDataOnly !== true) {
+  throw new Error('plugin policy must remain data-only');
+}
+for (const key of [
+  'executablePluginCode', 'htmlInterpretation', 'urlFields', 'networkAuthority', 'serverAuthority',
+  'accountAuthority', 'multiplayerAuthority', 'commerceAuthority', 'prizeAuthority', 'pluginSuppliedClockOrTimer',
+]) {
+  if (PLUGIN_POLICY.security[key] !== false) throw new Error(`plugin policy widened prohibited authority: ${key}`);
+}
 
 export class PluginValidationError extends Error {}
 export class PluginStoreError extends Error {}
@@ -37,10 +53,15 @@ const canonicalItem = value => value.normalize('NFC').trim().toLocaleLowerCase('
 function onlyKeys(object, allowed, label) {
   for (const key of Object.keys(object)) if (!allowed.has(key)) throw new PluginValidationError(`${label} contains unsupported field: ${key}`);
 }
-function boundedText(value, max, field) {
+function requiredText(value, field) {
   if (typeof value !== 'string') throw new PluginValidationError(`${field} must be text`);
   const text = value.normalize('NFC').trim();
-  if (!text || text.length > max) throw new PluginValidationError(`${field} length invalid`);
+  if (!text) throw new PluginValidationError(`${field} length invalid`);
+  return text;
+}
+function boundedText(value, max, field) {
+  const text = requiredText(value, field);
+  if (text.length > max) throw new PluginValidationError(`${field} length invalid`);
   return text;
 }
 function boundedRewardInt(value, key, label = 'reward') {
@@ -94,7 +115,7 @@ export function validatePlugin(input) {
   const allowed = new Set([...COMMON_FIELDS, ...MECHANIC_FIELDS[mechanic]]);
   onlyKeys(input, allowed, 'plugin');
 
-  const id = boundedText(input.id, 64, 'id');
+  const id = requiredText(input.id, 'id');
   if (!ID_PATTERN.test(id)) throw new PluginValidationError('plugin id invalid');
   const name = boundedText(input.name, LIMITS.nameChars, 'name');
   const version = boundedText(input.version, LIMITS.versionChars, 'version');
@@ -175,7 +196,7 @@ export function createPluginShelf(storage, options = {}) {
     return plugin;
   }
   function remove(id) {
-    const cleanId = boundedText(id, 64, 'id');
+    const cleanId = requiredText(id, 'id');
     if (!ID_PATTERN.test(cleanId)) throw new PluginStoreError('plugin id invalid');
     const rows = read().filter(row => row.id !== cleanId);
     persist(rows);
