@@ -83,8 +83,10 @@ jobs:
           node --check space-lens-human-builder.js
       - name: Check site data and browser API startup
         run: node tools/check_site.mjs
-      - name: Check explicit Pages publication contract
-        run: node tools/check_pages_sync.mjs
+      - name: Check explicit Pages publication contract and public link integrity
+        run: |
+          node tools/check_pages_sync.mjs
+          node tools/public-routes.test.mjs
       - name: Check Space Lens human-readable answers
         run: node tools/check_space_lens_qa.mjs
       - name: Check Space Lens persistent learning memory
