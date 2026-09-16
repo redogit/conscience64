@@ -1,7 +1,9 @@
 {
-  "bridge_id": "gsfl-v0-2026-09-16",
-  "name": "Generalized Semantic Fitting Language v0",
+  "bridge_id": "gsfl-v0.1-2026-09-16",
+  "name": "Generalized Semantic Fitting Language v0.1",
   "status": "REFERENCE_ONLY_ACTIVE_EXTERNAL_MAIN",
+  "predecessor": "GSFL v0 semantic kernel",
+  "profile": "HUMAN_MACHINE_COOPERATION",
   "relation_types": [
     "METHOD_TRANSFER",
     "CONCEPTUAL_CONVERGENCE",
@@ -13,17 +15,34 @@
   "operative_source": {
     "repository": "redogit/Other-Projects-",
     "path": "Generalized Semantic Fitting Language/",
-    "pull_request": 47,
-    "merged_commit": "a6a5f0c589314431160937a7791028df30a223de",
-    "federation_activation_commit": "7be08c2b6c54cb909b82756e0c26a60a7426588f"
+    "pull_request": 49,
+    "merged_commit": "aa9e9834d3317e28fb815a47c2573960dee6fd8e",
+    "federation_activation_pull_request": 51,
+    "federation_activation_commit": "c19d9c360a83f5bed18cee6e7d5e9dff74d8f803"
+  },
+  "cooperation_surface": {
+    "reserved_terms": 57,
+    "cooperation_terms": 46,
+    "cooperation_ratio": 0.80701754386,
+    "families": ["HUMAN", "MACHINE_LEARNING", "UNDERSTANDING", "COOPERATION", "PARTNER", "TOOL"]
+  },
+  "proverbial_fixture_surface": {
+    "fixture_count": 14,
+    "synthetic_count": 12,
+    "traditional_common_count": 2,
+    "single_true_meaning_claim": false
   },
   "conscience64_role": "research navigation and provenance bridge only",
   "boundaries": [
     "CONSCIENCE64_REFERENCE != GSFL_IMPLEMENTATION_AUTHORITY",
     "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
     "RELATED != AUTHORITY_TRANSFER",
-    "FIT != TRUTH",
-    "RECONSTRUCTION_SURROGATE != HUMAN_VALIDATION"
+    "HUMAN_APPROVAL != HUMAN_UNDERSTANDING",
+    "MACHINE_OUTPUT != MACHINE_LEARNING_EVIDENCE",
+    "IN_CONTEXT_ADAPTATION != WEIGHT_UPDATE",
+    "TOOL_USE != TOOL_AUTHORITY",
+    "PROVERB != EMPIRICAL_EVIDENCE",
+    "SYNTHETIC != TRADITIONAL"
   ],
   "registry_effect": "NONE",
   "historical_snapshot_effect": "NONE"
