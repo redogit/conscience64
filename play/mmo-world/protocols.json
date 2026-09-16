@@ -2,9 +2,34 @@
   "schema": "conscience64/mmo-protocols/v1",
   "version": "1.0.0-beta",
   "protocols": [
-    {"id":"DU-SD/1","purpose":"Internal service discovery","carrier":"DNS SRV plus A/AAAA and TXT metadata","status":"CONFIGURED_INTERNAL_ONLY","boundary":"No recursive resolver and no public listener in the supplied profile."},
-    {"id":"DU-CAP/1","purpose":"Bounded capability/version advertisement","carrier":"DNS TXT plus application JSON","status":"BETA","boundary":"Capability advertisement is not authorization, identity, health, or evidence of successful execution."},
-    {"id":"DU-WATCH/1","purpose":"Deterministic service-health observation","carrier":"Expected DNS answers and local metrics/probe output","status":"BETA","boundary":"A passing DNS probe establishes resolution behavior only; it does not prove the game server itself is healthy."},
-    {"id":"DU-BT/1","purpose":"User-initiated nearby companion connection","carrier":"Web Bluetooth BLE/GATT plus the browser Gamepad API for controllers paired by the operating system","serviceUuid":"d3a00001-7e4f-4d55-9b3e-434f4e534336","status":"CLIENT_CONNECTION_BETA","boundary":"No silent scanning, background pairing, characteristic reads, or writes. The user must initiate the browser chooser."}
+    {
+      "id": "DU-SD/1",
+      "purpose": "Internal service discovery",
+      "carrier": "DNS SRV plus A/AAAA and TXT metadata",
+      "status": "CONFIGURED_INTERNAL_ONLY",
+      "boundary": "No recursive resolver and no public listener in the supplied profile."
+    },
+    {
+      "id": "DU-CAP/1",
+      "purpose": "Bounded capability/version advertisement",
+      "carrier": "DNS TXT plus application JSON",
+      "status": "BETA",
+      "boundary": "Capability advertisement is not authorization, identity, health, or evidence of successful execution."
+    },
+    {
+      "id": "DU-WATCH/1",
+      "purpose": "Deterministic service-health observation",
+      "carrier": "Expected DNS answers and local metrics/probe output",
+      "status": "BETA",
+      "boundary": "A passing DNS probe establishes resolution behavior only; it does not prove the game server itself is healthy."
+    },
+    {
+      "id": "DU-BT/1",
+      "purpose": "User-initiated nearby companion connection",
+      "carrier": "Web Bluetooth BLE/GATT plus the browser Gamepad API for controllers paired by the operating system",
+      "serviceUuid": "d3a00001-7e4f-4d55-9b3e-434f4e534336",
+      "status": "CLIENT_CONNECTION_BETA",
+      "boundary": "No silent scanning, background pairing, characteristic reads, or writes. The user must initiate the browser chooser."
+    }
   ]
 }
