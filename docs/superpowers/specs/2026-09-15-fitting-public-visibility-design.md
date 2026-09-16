@@ -7,7 +7,7 @@ Add a reusable, provenance-preserving **Fitting Lab** to Conscience64 and make e
 The design has two coupled goals:
 
 1. turn the current confound-first / semantic-rotation / bidirectional-repair method into a reusable research subsystem; and
-2. make public material easier for humans, search engines, machines, researchers, and other repositories to find without weakening privacy, evidence, or authority boundaries.
+2. make admitted public material easier for humans, search engines, machines, researchers, and other repositories to find without weakening privacy, evidence, or authority boundaries.
 
 The governing rule is:
 
@@ -15,7 +15,7 @@ The governing rule is:
 PUBLIC_BY_ADMISSION != PUBLIC_BY_ACCIDENT
 ```
 
-A record becomes broadly visible only after an explicit public classification. Once admitted, the system should expose it through as many safe, reconstructible public channels as practical.
+A research record becomes broadly visible only after explicit public classification. Once admitted, the system should expose it through as many safe, reconstructible public channels as practical.
 
 ## Existing boundaries preserved
 
@@ -37,7 +37,7 @@ UNKNOWN != ABSENT
 TRANSFORM != SOURCE
 ```
 
-The existing public-update system remains fail-closed: private or unclassified records are not read merely to decide whether to expose them.
+The existing public-update system remains fail-closed: private or unclassified research records are not read merely to decide whether to expose them.
 
 ## Part I — Fitting Lab
 
@@ -245,7 +245,7 @@ A fitting engine may recommend a stronger status but may not promote it without 
 
 ### Principle
 
-Once an object is explicitly admitted as public, publish one canonical public record and derive multiple discoverability surfaces from that record.
+Once a research object is explicitly admitted as public, publish one canonical public record and derive multiple discoverability surfaces from that record.
 
 ```text
 ONE_ADMITTED_PUBLIC_RECORD
@@ -254,9 +254,11 @@ ONE_ADMITTED_PUBLIC_RECORD
 
 The projections are views, not new evidence and not independent sources.
 
+Already-public non-research site content may be linked by navigation/discovery surfaces under its existing publication gate, but it is not silently converted into a research record or included in research feeds without explicit research admission.
+
 ### Admission boundary
 
-The current public-update admission mechanism remains the publication gate.
+The current `research/projects/public-updates/` admission mechanism remains the canonical research-publication gate.
 
 Requirements:
 
@@ -264,7 +266,8 @@ Requirements:
 - unknown classification is failure;
 - private records are excluded before content read;
 - no client-side public/private filtering;
-- generated projections consume only admitted public records or already-public repository material;
+- generated research projections consume only explicitly admitted public research records;
+- ordinary already-public site pages may be indexed or linked only as site resources under their existing gates, not represented as admitted research unless separately admitted;
 - every generated projection records source identity and generation provenance.
 
 ### Visibility surfaces
@@ -280,7 +283,7 @@ Expose admitted research through readable project/update pages with:
 - related public records;
 - machine-readable identifiers.
 
-Fitting Lab results should have a public human-readable view only when the underlying fit record is public.
+Fitting Lab results should have a public human-readable view only when the underlying fit record is explicitly admitted as public.
 
 #### 2. Search-engine discovery
 
@@ -293,18 +296,18 @@ Add deterministic:
 - Open Graph metadata;
 - structured JSON-LD for public research/project/update pages where semantically appropriate.
 
-Sitemap generation must enumerate only known public URLs.
+Sitemap generation must enumerate only known public URLs. Site URLs and admitted research URLs remain distinguishable in generation metadata.
 
 #### 3. Syndication feeds
 
-Generate public-only:
+Generate public-only research feeds:
 
 - Atom feed;
-- RSS feed if practical without duplicating logic;
+- RSS feed only if it can share the same canonical builder without duplicated admission logic;
 - JSON Feed;
 - existing deterministic `latest.json` snapshot.
 
-All formats derive from the same admitted public record set.
+All research feed formats derive from the same admitted public record set.
 
 #### 4. Machine discovery manifest
 
@@ -320,7 +323,7 @@ It describes only public endpoints and schemas, including:
 
 - project index;
 - public-update JSON;
-- feeds;
+- public research feeds;
 - research analytics static surface;
 - Fitting Lab public schema/documentation;
 - API documentation;
@@ -331,9 +334,9 @@ It explicitly states that retrieval/publication is not independent evidence.
 
 #### 5. Public research index
 
-Create one stable public `/research/` landing page or equivalent that indexes all admitted public research surfaces, not only the current browser-corpus snapshot.
+Use the existing `research/projects/index.html` as the stable current human landing page rather than creating a competing research index.
 
-It must preserve the distinction between:
+Enhance it to navigate:
 
 ```text
 PRESERVED_BROWSER_REGISTRY
@@ -342,9 +345,11 @@ PUBLIC_UPDATE_FEED
 PUBLIC_FITTING_RECORDS
 ```
 
+Historical browser registries are linked, not rewritten.
+
 #### 6. Federation
 
-Extend the existing federation bridge so admitted Fitting Lab and public-update surfaces may be navigated from the current redogit federation without becoming research authority.
+Extend the existing federation bridge so explicitly admitted Fitting Lab and public-update surfaces may be navigated from the current redogit federation without becoming research authority.
 
 ```text
 FEDERATED != MERGED
@@ -361,7 +366,9 @@ Where repository administration supports it, configure:
 - Discussions only if moderation and purpose are explicitly established;
 - license metadata only where a repository-wide license is actually intended; existing scoped licenses must not be silently widened.
 
-Some repository settings may require GitHub UI/admin actions rather than code changes. They are recorded as administrative actions, not silently assumed complete.
+Some repository settings require GitHub UI/admin actions rather than code changes. They are recorded as administrative actions, not silently assumed complete.
+
+The current repository metadata has no homepage, no topics, no repository-wide license metadata, and Discussions disabled; implementation must treat those as observed configuration, not as permission to change licensing or moderation policy automatically.
 
 #### 8. Research identifiers and citation surface
 
@@ -369,7 +376,7 @@ Add a public citation/reuse surface only after scope is explicit. Candidate mech
 
 - `CITATION.cff` for repository citation;
 - release/tag snapshots for durable checkpoints;
-- archive/DOI integration such as Zenodo if the user explicitly connects/authorizes it;
+- archive/DOI integration such as Zenodo only if the user explicitly connects/authorizes it;
 - per-record stable UOIDs already used by Conscience64.
 
 A DOI or release does not upgrade scientific validity.
@@ -408,7 +415,7 @@ The visibility mesh must never automatically publish:
 - unadmitted generated drafts;
 - material whose publication rights are unclear.
 
-If classification is absent or ambiguous, the object remains non-public.
+If research classification is absent or ambiguous, the research object remains non-public.
 
 ## Data flow
 
@@ -421,7 +428,7 @@ source/research object
    -> HTML index/page
    -> JSON snapshot
    -> Atom/JSON Feed
-   -> sitemap
+   -> sitemap research entries
    -> structured metadata
    -> federation pointer
    -> public discovery manifest
@@ -430,7 +437,9 @@ source/research object
 -> deployed endpoint observation
 ```
 
-No outward projection reads the private side of a mixed payload.
+Ordinary site pages follow their existing public gates and may contribute site-only sitemap/navigation entries without being converted into research records.
+
+No outward research projection reads the private side of a mixed payload.
 
 ## Proposed repository structure
 
@@ -449,11 +458,13 @@ research/fitting/
   examples/
   tests/
 
-research/public/
+research/projects/public-updates/
   README.md
+  admissions.json
+  records/
+  data/
   discovery-schema.json
   build_public_discovery.py
-  data/
   tests/
 
 robots.txt
@@ -463,7 +474,9 @@ feed.json
 public-discovery.json
 ```
 
-The exact outward filenames may be adjusted during implementation to fit the existing Pages source and public-update structure, but the canonical/public-admission semantics may not change.
+The public-update directory remains the canonical admitted-research source. The discovery builder extends that source rather than creating a parallel publication authority.
+
+Root discovery files require explicit addition to the existing Pages synchronization path set before they are considered deployable.
 
 ## Hodge adapter boundary
 
@@ -512,9 +525,10 @@ Tests must cover:
 - fail-closed public admission;
 - no private file read on private admission;
 - deterministic projections;
-- all outward formats contain only admitted public records;
+- all research feed/update formats contain only admitted public research records;
+- already-public non-research pages cannot enter research feeds solely because they are public;
 - source hash/provenance consistency across projections;
-- sitemap contains only public known URLs;
+- sitemap contains only known public URLs and distinguishes site navigation from admitted research provenance;
 - feed ordering is deterministic;
 - generated links resolve inside the published source tree;
 - structured metadata validates syntactically;
@@ -530,6 +544,7 @@ Inject:
 - an unclassified record;
 - a private record referencing a public source;
 - a public record referencing a missing source;
+- an already-public site file that lacks research admission;
 - conflicting revisions;
 - duplicate semantic content with different provenance;
 - a malformed external URL;
@@ -554,12 +569,13 @@ The design is successfully implemented when:
 1. a Fitting Lab record can be reconstructed deterministically from its source and lineage;
 2. confounds, confounds-of-confounds, and repairs remain typed and independently inspectable;
 3. no fitting result can promote its own scientific/evidentiary status;
-4. an explicitly admitted public record appears consistently across all enabled public projections;
-5. a private or unclassified record appears in none of them and is not read by the public builder;
+4. an explicitly admitted public research record appears consistently across all enabled public research projections;
+5. a private or unclassified research record appears in none of them and is not read by the public builder;
 6. the public site has explicit search-engine discovery files and machine-readable public endpoints;
-7. public research can be navigated from a single current index without rewriting historical registries;
+7. public research can be navigated from the existing current project index without rewriting historical registries;
 8. generated visibility surfaces preserve provenance and claim ceilings;
-9. publication remains reproducible and compatible with Conscience64's existing verification gates.
+9. publication remains reproducible and compatible with Conscience64's existing verification gates;
+10. already-public site material cannot be mistaken for an admitted research record merely because discovery surfaces link to it.
 
 ## Non-goals
 
@@ -580,11 +596,11 @@ Implementation should proceed in independent, reviewable slices:
 
 1. Fitting Lab core and tests;
 2. Hodge adapter and bounded examples;
-3. public canonical discovery model using the existing admission boundary;
-4. sitemap/robots/feeds/structured metadata;
-5. public research landing/index integration;
+3. extension of the existing public-update canonical discovery model;
+4. sitemap/robots/feeds/structured metadata plus required Pages-sync path updates;
+5. existing public research project-index integration;
 6. federation pointers;
 7. repository-administration checklist for metadata/topics/homepage/discussions/license/citation/archive options;
 8. end-to-end public/private and Pages verification.
 
-No slice may bypass existing publication, evidence, privacy, or claim-ceiling checks simply to increase visibility.
+No slice may bypass existing publication, evidence, privacy, licensing, or claim-ceiling checks simply to increase visibility.
