@@ -1,0 +1,43 @@
+name: Verify live Pages aliases
+
+on:
+  page_build:
+  pull_request:
+    paths:
+      - '.github/workflows/pages-live-alias.yml'
+      - 'play/reference-rules.json'
+      - 'play/musilanguage/radio.htm'
+      - 'tools/generate-reference-aliases.mjs'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: conscience64-pages-live-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-live-alias:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify public historical alias from the network edge
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://redogit.github.io/conscience64/play/musilanguage/radio.htm'
+          status=''
+          for attempt in $(seq 1 30); do
+            status="$(curl --silent --show-error --location --output /tmp/radio.htm --write-out '%{http_code}' \
+              --header 'Cache-Control: no-cache' \
+              --header 'Pragma: no-cache' \
+              "${url}?edge_attempt=${attempt}&sha=${GITHUB_SHA}")"
+            if [ "$status" = '200' ]; then
+              break
+            fi
+            sleep 2
+          done
+          test "$status" = '200'
+          grep -F '<h1>This reference moved</h1>' /tmp/radio.htm
+          grep -F 'const target="radio.html";' /tmp/radio.htm
+          grep -F 'location.replace(target + location.search + location.hash);' /tmp/radio.htm
+          echo "PASS live Pages alias: ${url}"
