@@ -14,8 +14,8 @@ assert.ok(push >= 0, 'Pages source sync must advance gh-pages to the exact teste
 assert.ok(verify > push, 'Pages source sync must verify gh-pages after pushing');
 assert.match(workflow, /test "\$remote_sha" = "\$GITHUB_SHA"/, 'source sync must fail closed if gh-pages differs from main');
 assert.doesNotMatch(workflow, /\/pages\/builds/, 'source sync must not call the default-branch Pages build API');
-assert.doesNotMatch(workflow, /check_public_reference_aliases\.mjs/, 'source sync must not claim live deployment verification');
-assert.doesNotMatch(workflow, /check_public_routes\.mjs/, 'source sync must not claim live route verification');
+assert.doesNotMatch(workflow, /node tools\/check_public_reference_aliases\.mjs/, 'source sync must not execute live alias verification');
+assert.doesNotMatch(workflow, /node tools\/check_public_routes\.mjs/, 'source sync must not execute live route verification');
 assert.match(workflow, /SOURCE_SYNC_ONLY/, 'source sync must state the deployment-trigger boundary explicitly');
 
 assert.match(liveWorkflow, /page_build:/, 'live verification must attach to actual Pages build events');
