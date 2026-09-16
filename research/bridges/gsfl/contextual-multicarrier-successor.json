@@ -1,0 +1,34 @@
+{
+  "bridge_id": "gsfl-contextual-multicarrier-2026-09-16",
+  "status": "REFERENCE_ONLY_SUCCESSOR",
+  "source": {
+    "gsfl_lifecycle": "COMPLETE_BOUNDED_V0_1",
+    "operator_projection_merge": "9bd5d535e317bd13af8f86315dfd04f89e81e4df",
+    "bidirectional_macro_merge": "29c882f78b9762dafc56737b6f9ef0d95cf3c83e",
+    "contextual_multicarrier_merge": "d564d7b2b685dbd8702989b5458e89a97e5766e5"
+  },
+  "profile_id": "GSFL_CONTEXTUAL_MULTICARRIER_REASONING",
+  "carriers": ["SYMBOLIC", "ANALYTICAL", "COMPUTATIONAL", "ANALOGICAL"],
+  "role_binding": {
+    "contextual": true,
+    "multi_role": true,
+    "interpreter_local": true,
+    "time_local": true
+  },
+  "verified_workflows": [35140319126, 35140319101],
+  "audit_sha256": "d486da9798a729dd658723c27c45c88b9fef9f3907ac38d9597988be65c58cc8",
+  "conscience64_role": "navigation, provenance, research-method and recovery reference only",
+  "runtime_effect": "NONE",
+  "authority_effect": "NONE",
+  "boundaries": [
+    "CONSCIENCE64_REFERENCE != MULTICARRIER_IMPLEMENTATION_AUTHORITY",
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "WORD != FIXED_ROLE",
+    "CARRIER_AGREEMENT != INDEPENDENT_VERIFICATION",
+    "ANALOGY != EVIDENCE_TRANSFER",
+    "COMPUTATIONAL_WITNESS != GENERAL_PROOF",
+    "ANALYTICAL_COHERENCE != EMPIRICAL_VALIDATION",
+    "SYMBOLIC_COMPRESSION != TRUTH",
+    "PROMOTION != SOURCE_REWRITE"
+  ]
+}
