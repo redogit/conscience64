@@ -43,6 +43,9 @@ on:
       - 'tools/check_space_lens_human_builder.mjs'
       - 'tools/check_pages_sync.mjs'
       - 'tools/check_public_reference_aliases.mjs'
+      - 'tools/public-routes.mjs'
+      - 'tools/public-routes.test.mjs'
+      - 'tools/check_public_routes.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
@@ -71,7 +74,9 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
 
       - name: Verify Pages publication contract
-        run: node tools/check_pages_sync.mjs
+        run: |
+          node tools/check_pages_sync.mjs
+          node tools/public-routes.test.mjs
 
       - name: Verify local checkpoint restore boundaries
         run: |
@@ -222,3 +227,4 @@ jobs:
           pages_url="$(node -e "const x=JSON.parse(require('fs').readFileSync('/tmp/pages-site.json','utf8'));process.stdout.write(x.html_url||'')")"
           test -n "$pages_url"
           PAGES_URL="$pages_url" GITHUB_SHA="$GITHUB_SHA" node tools/check_public_reference_aliases.mjs
+          PAGES_URL="$pages_url" GITHUB_SHA="$GITHUB_SHA" node tools/check_public_routes.mjs
