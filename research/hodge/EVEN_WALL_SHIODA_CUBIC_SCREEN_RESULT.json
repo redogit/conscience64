@@ -1,0 +1,27 @@
+{
+  "schema":"conscience64/hodge-even-wall-shioda-cubic-screen/v1",
+  "target":{"wall":"W114","level":114},
+  "positive_control":{"alpha":[19,7,13,10,28,22],"expected":[19,7,13,10,28,22]},
+  "families":[
+    {"family":"phi3_3","invariant_monomial_support":26,"six_monomial_supports":230230,"invertible_supports":46220,"integer_level_114_covers":40734,"valid_degree3_pullbacks":1132940,"distinct_canonical_pullbacks":24,"w114_hits":0},
+    {"family":"phi4_3","invariant_monomial_support":20,"six_monomial_supports":38760,"invertible_supports":11025,"integer_level_114_covers":9409,"valid_degree3_pullbacks":243164,"distinct_canonical_pullbacks":13,"w114_hits":0},
+    {"family":"phi6_3","invariant_monomial_support":20,"six_monomial_supports":38760,"invertible_supports":19848,"integer_level_114_covers":18808,"valid_degree3_pullbacks":444240,"distinct_canonical_pullbacks":20,"w114_hits":0}
+  ],
+  "phi1_5_lifted_screens":[
+    {"family":"phi1_5","wall":"W70","level":210,"invariant_monomial_support":12,"six_monomial_supports":924,"invertible_supports":374,"integer_covers":366,"valid_degree3_pullbacks":19982,"distinct_canonical_pullbacks":52,"hits":0},
+    {"family":"phi1_5","wall":"W114","level":570,"invariant_monomial_support":12,"six_monomial_supports":924,"invertible_supports":374,"integer_covers":366,"valid_degree3_pullbacks":19982,"distinct_canonical_pullbacks":52,"hits":0}
+  ],
+  "canonical_power_lift_screens":[
+    {"family":"phi3_3","wall":"W70","level":210,"target":[3,60,72,126,183,186],"invariant_monomial_support":26,"six_monomial_supports":230230,"invertible_supports":46220,"integer_covers":41028,"valid_degree3_pullbacks":1144472,"distinct_canonical_pullbacks":42,"hits":0},
+    {"family":"phi3_3","wall":"W110","level":330,"target":[3,72,186,213,243,273],"invariant_monomial_support":26,"six_monomial_supports":230230,"invertible_supports":46220,"integer_covers":41028,"valid_degree3_pullbacks":1144472,"distinct_canonical_pullbacks":42,"hits":0},
+    {"family":"phi4_3","wall":"W70","level":210,"target":[3,60,72,126,183,186],"invariant_monomial_support":20,"six_monomial_supports":38760,"invertible_supports":11025,"integer_covers":9409,"valid_degree3_pullbacks":243164,"distinct_canonical_pullbacks":13,"hits":0},
+    {"family":"phi4_3","wall":"W110","level":330,"target":[3,72,186,213,243,273],"invariant_monomial_support":20,"six_monomial_supports":38760,"invertible_supports":11025,"integer_covers":9409,"valid_degree3_pullbacks":243164,"distinct_canonical_pullbacks":13,"hits":0},
+    {"family":"phi6_3","wall":"W70","level":210,"target":[3,60,72,126,183,186],"invariant_monomial_support":20,"six_monomial_supports":38760,"invertible_supports":19848,"integer_covers":18832,"valid_degree3_pullbacks":445440,"distinct_canonical_pullbacks":28,"hits":0},
+    {"family":"phi6_3","wall":"W110","level":330,"target":[3,72,186,213,243,273],"invariant_monomial_support":20,"six_monomial_supports":38760,"invertible_supports":19848,"integer_covers":18832,"valid_degree3_pullbacks":445440,"distinct_canonical_pullbacks":28,"hits":0},
+    {"family":"phi1_5","wall":"W70","level":210,"target":[3,60,72,126,183,186],"invariant_monomial_support":12,"six_monomial_supports":924,"invertible_supports":374,"integer_covers":366,"valid_degree3_pullbacks":19982,"distinct_canonical_pullbacks":52,"hits":0},
+    {"family":"phi1_5","wall":"W110","level":330,"target":[3,72,186,213,243,273],"invariant_monomial_support":12,"six_monomial_supports":924,"invertible_supports":374,"integer_covers":366,"valid_degree3_pullbacks":19982,"distinct_canonical_pullbacks":52,"hits":0},
+    {"family":"phi1_7","wall":"W70","level":210,"target":[3,60,72,126,183,186],"invariant_monomial_support":8,"six_monomial_supports":28,"invertible_supports":22,"integer_covers":21,"valid_degree3_pullbacks":1176,"distinct_canonical_pullbacks":17,"hits":0},
+    {"family":"phi1_11","wall":"W110","level":330,"target":[3,72,186,213,243,273],"invariant_monomial_support":6,"six_monomial_supports":1,"invertible_supports":1,"integer_covers":1,"valid_degree3_pullbacks":51,"distinct_canonical_pullbacks":5,"hits":0}
+  ],
+  "claim_ceiling":"Finite Shioda-character obstruction only: direct W114@114 screens in the three prime-order-3 cubic support families; phi1_5 screens at the previously used W70@210 and canonical W114@570 targets; and canonical pi_3 power-map lifts W70@210 and W110@330 screened against compatible Billi-Grossi-Marquand prime-order Delsarte support families. Other cubics, non-Delsarte targets, other lifts/descent maps, coherent sheaves, and matrix factorizations remain open."
+}

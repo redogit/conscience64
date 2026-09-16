@@ -3,9 +3,9 @@ name: Verify public playground projects
 on:
   push:
     branches: [main, 'rollout/**', 'release/**']
-    paths: ['play/**', '.github/workflows/playground.yml']
+    paths: ['play/**', 'image-society/**', 'tools/run-image-society.mjs', '.github/workflows/playground.yml']
   pull_request:
-    paths: ['play/**', '.github/workflows/playground.yml']
+    paths: ['play/**', 'image-society/**', 'tools/run-image-society.mjs', '.github/workflows/playground.yml']
   workflow_dispatch:
 
 permissions: {}
@@ -42,6 +42,24 @@ jobs:
         run: node play/mmo/simple/renderer-society-metamorphic.test.mjs
       - name: Verify renderer society three-perspective comparison fanout
         run: node play/mmo/simple/renderer-society-comparison.test.mjs
+      - name: Verify bounded Image Society contracts and 1000-call mock scale
+        run: node --test image-society/*.test.mjs
+      - name: Verify Image Society CLI hard ceilings
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/run-image-society.mjs --mock --calls 5000 --parallelism 64 > /tmp/image-society-result.json
+          node - <<'NODE'
+          const fs = require('fs');
+          const result = JSON.parse(fs.readFileSync('/tmp/image-society-result.json', 'utf8'));
+          if (result.effective_call_ceiling !== 1000) throw new Error('Image Society call ceiling widened unexpectedly');
+          if (result.effective_parallelism !== 8) throw new Error('Image Society parallelism ceiling widened unexpectedly');
+          if (result.call_count !== 1000) throw new Error('Image Society mock run did not execute exactly 1000 bounded calls');
+          if (result.missing_terminal_records.length !== 0) throw new Error('Image Society mock run lost terminal records');
+          if (result.evidence_class !== 'MOCK_STRUCTURAL_ORCHESTRATION_ONLY') throw new Error('Image Society evidence class drifted');
+          NODE
+      - name: Verify existing image-generation transport contract
+        run: node tools/test-image-gen.mjs
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
       - name: Verify grounded MMO reality canon
