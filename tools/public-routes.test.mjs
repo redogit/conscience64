@@ -58,11 +58,11 @@ for (const route of routes) {
     }
 
     const repoRelative = toPosix(relative(repoRoot, targetPath));
-    assert.ok(repoRelative && repoRelative !== '..' && !repoRelative.startsWith('../'), `local reference escapes repository: ${rawTarget} from ${route}`);
+    assert.ok(repoRelative !== '..' && !repoRelative.startsWith('../'), `local reference escapes repository: ${rawTarget} from ${route}`);
 
     let info;
     try { info = await stat(targetPath); }
-    catch { throw new Error(`missing local reference ${rawTarget} from ${route} -> ${repoRelative}`); }
+    catch { throw new Error(`missing local reference ${rawTarget} from ${route} -> ${repoRelative || '/'}`); }
     if (info.isDirectory()) {
       try { await access(resolve(targetPath, 'index.html')); }
       catch { throw new Error(`local directory reference has no index.html: ${rawTarget} from ${route}`); }
