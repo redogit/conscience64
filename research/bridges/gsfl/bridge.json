@@ -1,0 +1,30 @@
+{
+  "bridge_id": "gsfl-v0-2026-09-16",
+  "name": "Generalized Semantic Fitting Language v0",
+  "status": "REFERENCE_ONLY_ACTIVE_EXTERNAL_MAIN",
+  "relation_types": [
+    "METHOD_TRANSFER",
+    "CONCEPTUAL_CONVERGENCE",
+    "APPLICATION",
+    "SUPPORTS_TEST_DESIGN",
+    "OPEN_POSSIBLE_CONNECTION",
+    "PROVIDES_RECOVERY_PATTERN"
+  ],
+  "operative_source": {
+    "repository": "redogit/Other-Projects-",
+    "path": "Generalized Semantic Fitting Language/",
+    "pull_request": 47,
+    "merged_commit": "a6a5f0c589314431160937a7791028df30a223de",
+    "federation_activation_commit": "7be08c2b6c54cb909b82756e0c26a60a7426588f"
+  },
+  "conscience64_role": "research navigation and provenance bridge only",
+  "boundaries": [
+    "CONSCIENCE64_REFERENCE != GSFL_IMPLEMENTATION_AUTHORITY",
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "RELATED != AUTHORITY_TRANSFER",
+    "FIT != TRUTH",
+    "RECONSTRUCTION_SURROGATE != HUMAN_VALIDATION"
+  ],
+  "registry_effect": "NONE",
+  "historical_snapshot_effect": "NONE"
+}
