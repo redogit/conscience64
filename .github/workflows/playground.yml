@@ -62,6 +62,8 @@ jobs:
         run: node tools/test-image-gen.mjs
       - name: Verify data, translations, and static resources
         run: node play/test.mjs
+      - name: Verify bounded reference integrity
+        run: node play/reference-integrity.test.mjs
       - name: Verify grounded MMO reality canon
         run: node play/mmo/test-reality.mjs
       - name: Verify MMO data-only plug-in runtime
