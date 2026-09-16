@@ -1,8 +1,9 @@
 # GSFL bridge — Generalized Semantic Fitting Language v0
 
-**Bridge status:** reference-only while the operative implementation is under review  
+**Bridge status:** reference-only to merged external implementation  
 **Operative implementation:** `redogit/Other-Projects-/Generalized Semantic Fitting Language/`  
-**Current implementation review:** `redogit/Other-Projects-#47`  
+**Implementation merge:** `a6a5f0c589314431160937a7791028df30a223de` via `redogit/Other-Projects-#47`  
+**Other-Projects federation activation:** `7be08c2b6c54cb909b82756e0c26a60a7426588f`  
 **Bridge date:** 2026-09-16
 
 GSFL is the bounded language/implementation for **human-optimized semantic rotation with invariant-preserving fitters**.
@@ -29,7 +30,7 @@ RECONSTRUCTION_SURROGATE != HUMAN_VALIDATION
 
 ## Why this is a bridge, not another implementation
 
-`redogit/Other-Projects-` is the implementation home selected by the current project routing. Conscience64 retains research, recovery, navigation and cooperation context without silently becoming the source of truth for the new language.
+`redogit/Other-Projects-` is the implementation home selected by the current project routing. Conscience64 retains research, recovery, navigation and cooperation context without silently becoming the source of truth for the language.
 
 Therefore this directory does **not** copy `gsfl.py`, its tests, its frozen audit, or its example program.
 
@@ -50,17 +51,19 @@ RELATED != AUTHORITY_TRANSFER
 | Research Analytics | `APPLICATION` | GSFL classifications may later become events; transport validity remains separate from evidence validity. |
 | Historical Recovery | `PROVIDES_RECOVERY_PATTERN` | Reconstruction remains distinct from original source. |
 
-## Current bounded implementation evidence
+## Bounded implementation evidence
 
-The implementation PR records a local second-pass verification of:
+The merged implementation lineage records:
 
-- 13/13 tests passing;
+- 13/13 local tests passing after the second-pass review;
 - deterministic frozen audit reproduction;
 - byte-identical repeat execution of the N-observer fixture;
-- explicit negative controls for attractive mutation, invariant decay and lossy reconstruction.
+- explicit negative controls for attractive mutation, invariant decay and lossy reconstruction;
+- successful exact-head GSFL workflow run `35105111676`;
+- successful exact-head repository workflow run `35105111834`.
 
-The implementation branch also contains an exact-head GitHub Actions gate. Until that review is merged, this bridge records only a **pending external implementation relation**.
+Those results verify the declared software contract and finite fixture. They do not establish participant comprehension, universal semantic equivalence, or scientific truth.
 
-## Promotion rule
+## Registry boundary
 
-After `redogit/Other-Projects-#47` is merged and verified on `main`, this bridge may update its status to point at the merged commit. That update must not silently add GSFL to Conscience64's preserved project registry, regenerate historical snapshots, or import evidence into unrelated research claims.
+This bridge points to the merged GSFL implementation without adding GSFL to Conscience64's preserved project registry, regenerating historical snapshots, or importing GSFL evidence into unrelated research claims. Any future runtime bridge must remain explicit, testable and removable.
