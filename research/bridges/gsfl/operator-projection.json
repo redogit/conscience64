@@ -1,0 +1,31 @@
+{
+  "bridge_id": "gsfl-v0.1-operator-projection-2026-09-16",
+  "status": "REFERENCE_ONLY_OPERATOR_SUCCESSOR",
+  "source_gsfl": {
+    "lifecycle": "COMPLETE_BOUNDED_V0_1",
+    "completion_merge": "cf9d5a35a39b1a7b92f30e24b2789f659e913f04"
+  },
+  "operator_projection": {
+    "repository": "redogit/Other-Projects-",
+    "path": "Decision Field Operator Lab/gsfl-operator-profile.json",
+    "merge": "9bd5d535e317bd13af8f86315dfd04f89e81e4df",
+    "operator_count": 23,
+    "native_count": 19,
+    "canonical_delegate_count": 4,
+    "canonical_delegates": ["DISTINGUISH", "GROUND", "REPAIR", "SELECT"]
+  },
+  "verified_workflows": [35124011539, 35124011577],
+  "conscience64_role": "reference navigation and provenance only",
+  "authority_effect": "NONE",
+  "runtime_effect": "NONE",
+  "boundaries": [
+    "CONSCIENCE64_REFERENCE != OPERATOR_IMPLEMENTATION_AUTHORITY",
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "PROJECTION != SOURCE_MUTATION",
+    "OPERATOR_EXECUTION != AUTHORITY_TRANSFER",
+    "FIT != TRUTH",
+    "VERIFY != UNIVERSAL_TRUTH",
+    "TOOL_USE != TOOL_AUTHORITY",
+    "PROVERB != EMPIRICAL_EVIDENCE"
+  ]
+}
