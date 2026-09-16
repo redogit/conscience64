@@ -1,6 +1,8 @@
+import { DU_BT_SERVICE } from './protocol-policy.mjs';
+
 'use strict';
 
-export const DU_BT_SERVICE = 'd3a00001-7e4f-4d55-9b3e-434f4e534336';
+export { DU_BT_SERVICE };
 const bluetoothButton = document.getElementById('bluetooth-connect');
 const bluetoothStatus = document.getElementById('bluetooth-status');
 const gamepadStatus = document.getElementById('gamepad-status');
