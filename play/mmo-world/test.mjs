@@ -22,6 +22,7 @@ for (const [name, profile] of Object.entries(REGION_VARIETIES)) {
   assert.equal(nextRegionVariety(name, 7, 640064).generation, 8);
 }
 assert.throws(() => describeRegion('Unknown Place'), /Unknown region variety/);
+await import('./protocol-contract-parity.test.mjs');
 await import('./plugin-contract-parity.test.mjs');
 await import('./forge/test.mjs');
 console.log('PASS MMO World beta: simplified Explorer shard shell, explicit local checkpoint controls, bounded protocols, Bluetooth gesture, deterministic adjective varieties, and strict data-only Arcade Forge.');
