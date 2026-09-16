@@ -23,6 +23,7 @@ on:
       - 'research/history/**'
       - 'research/cross-carrier/2026-09-12/v2.2/**'
       - '.github/workflows/redogit-local.yml'
+      - '.github/workflows/pages-sync.yml'
   pull_request:
     paths:
       - 'redogit.json'
@@ -44,6 +45,7 @@ on:
       - 'research/history/**'
       - 'research/cross-carrier/2026-09-12/v2.2/**'
       - '.github/workflows/redogit-local.yml'
+      - '.github/workflows/pages-sync.yml'
   workflow_dispatch:
 
 permissions: {}
@@ -81,6 +83,8 @@ jobs:
           node --check space-lens-human-builder.js
       - name: Check site data and browser API startup
         run: node tools/check_site.mjs
+      - name: Check explicit Pages publication contract
+        run: node tools/check_pages_sync.mjs
       - name: Check Space Lens human-readable answers
         run: node tools/check_space_lens_qa.mjs
       - name: Check Space Lens persistent learning memory
