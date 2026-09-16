@@ -11,12 +11,15 @@ const mustExist = async url => {
 const resolverUrl = new URL('assets/reference-resolver.mjs', here);
 const rulesUrl = new URL('reference-rules.json', here);
 const notFoundUrl = new URL('../404.html', here);
+const generatorUrl = new URL('../tools/generate-reference-aliases.mjs', here);
 
 assert.equal(await mustExist(resolverUrl), true, 'missing generic reference resolver');
 assert.equal(await mustExist(rulesUrl), true, 'missing reference-rules single point of contact');
 assert.equal(await mustExist(notFoundUrl), true, 'missing root compatibility 404 surface');
+assert.equal(await mustExist(generatorUrl), true, 'missing static reference-alias generator');
 
 const { REFERENCE_RESOLVER_SCHEMA, resolveOneStepReference } = await import(resolverUrl);
+const { renderAliasPage } = await import(generatorUrl);
 const rules = JSON.parse(await readFile(rulesUrl, 'utf8'));
 assert.equal(REFERENCE_RESOLVER_SCHEMA, 'conscience64.reference-resolver/v1');
 assert.equal(rules.schema, 'conscience64.reference-rules/v1');
@@ -78,6 +81,19 @@ assert.match(notFound, /location\.replace/);
 assert.match(notFound, /search/);
 assert.match(notFound, /hash/);
 
+// Explicit historical aliases must be real HTTP resources, generated from the single rules source.
+for (const [alias, declaration] of Object.entries(rules.aliases || {})) {
+  const target = typeof declaration === 'string' ? declaration : declaration.target ?? declaration.resolved;
+  assert.equal(typeof target, 'string', `alias target missing: ${alias}`);
+  const aliasUrl = new URL(alias.replace(/^play\//, ''), here);
+  assert.equal(await mustExist(aliasUrl), true, `missing generated static alias: ${alias}`);
+  const actual = await readFile(aliasUrl, 'utf8');
+  assert.equal(actual, renderAliasPage(alias, target), `generated alias drifted from rules: ${alias}`);
+  assert.match(actual, /location\.replace/);
+  assert.match(actual, /location\.search/);
+  assert.match(actual, /location\.hash/);
+}
+
 // Immediate one-hop public surface: every local href/src in Musilanguage HTML must resolve.
 for (const page of ['musilanguage/index.html', 'musilanguage/radio.html', 'musilanguage/single.html', 'musilanguage/word-forge.html']) {
   const pageUrl = new URL(page, here);
@@ -91,4 +107,4 @@ for (const page of ['musilanguage/index.html', 'musilanguage/radio.html', 'musil
   }
 }
 
-console.log('PASS reference integrity: bounded forward/reverse reference resolution, ambiguity refusal, unsafe-scope refusal, and Musilanguage one-hop static references');
+console.log('PASS reference integrity: bounded resolution, static historical aliases, ambiguity refusal, unsafe-scope refusal, and Musilanguage one-hop references');
