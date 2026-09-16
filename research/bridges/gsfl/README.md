@@ -1,38 +1,26 @@
-# GSFL bridge — Generalized Semantic Fitting Language v0
+# GSFL bridge — Generalized Semantic Fitting Language v0.1
 
 **Bridge status:** reference-only to merged external implementation  
 **Operative implementation:** `redogit/Other-Projects-/Generalized Semantic Fitting Language/`  
-**Implementation merge:** `a6a5f0c589314431160937a7791028df30a223de` via `redogit/Other-Projects-#47`  
-**Other-Projects federation activation:** `7be08c2b6c54cb909b82756e0c26a60a7426588f`  
+**v0.1 implementation merge:** `aa9e9834d3317e28fb815a47c2573960dee6fd8e` via `redogit/Other-Projects-#49`  
+**v0.1 federation activation:** `c19d9c360a83f5bed18cee6e7d5e9dff74d8f803` via `redogit/Other-Projects-#51`  
+**Predecessor semantic kernel:** GSFL v0 remains preserved  
 **Bridge date:** 2026-09-16
 
-GSFL is the bounded language/implementation for **human-optimized semantic rotation with invariant-preserving fitters**.
-
-Its v0 pipeline is:
+GSFL v0.1 is the bounded **Human–Machine Cooperation Profile** over the preserved GSFL v0 semantic kernel. It foregrounds human understanding, bounded machine-learning claims, human/machine partner cooperation, tool provenance, corollaries, confounds, and deterministic proverbial fixtures.
 
 ```text
-Meaning
-  -> candidate rotations
-  -> invariant + reconstruction checks
-  -> task-relative fit
-  -> human surface
-  -> reconstruction
-  -> comparison with source meaning
+HUMAN_APPROVAL != HUMAN_UNDERSTANDING
+MACHINE_OUTPUT != MACHINE_LEARNING_EVIDENCE
+IN_CONTEXT_ADAPTATION != WEIGHT_UPDATE
+TOOL_USE != TOOL_AUTHORITY
+PROVERB != EMPIRICAL_EVIDENCE
+SYNTHETIC != TRADITIONAL
 ```
 
-The operative implementation deliberately distinguishes:
+## Why this remains a bridge
 
-```text
-VALID_ROTATION != MUTATION != SEMANTIC_DECAY
-FIT != TRUTH
-RECONSTRUCTION_SURROGATE != HUMAN_VALIDATION
-```
-
-## Why this is a bridge, not another implementation
-
-`redogit/Other-Projects-` is the implementation home selected by the current project routing. Conscience64 retains research, recovery, navigation and cooperation context without silently becoming the source of truth for the language.
-
-Therefore this directory does **not** copy `gsfl.py`, its tests, its frozen audit, or its example program.
+`redogit/Other-Projects-` remains the implementation home. Conscience64 carries only a typed research/provenance relation and does not copy the runtime, tests, frozen evidence, or proverbial corpus.
 
 ```text
 CONSCIENCE64_REFERENCE != GSFL_IMPLEMENTATION_AUTHORITY
@@ -42,28 +30,30 @@ RELATED != AUTHORITY_TRANSFER
 
 ## Typed relations
 
-| Conscience64 surface | Relation to GSFL | Boundary |
+| Conscience64 surface | Relation to GSFL v0.1 | Boundary |
 |---|---|---|
-| Cross-Carrier work | `METHOD_TRANSFER` / `CONCEPTUAL_CONVERGENCE` | A carrier transform is not automatically a valid semantic rotation. |
+| Cross-Carrier work | `METHOD_TRANSFER` / `CONCEPTUAL_CONVERGENCE` | A carrier transform is not automatically a valid semantic rotation or a human-understanding result. |
 | Tiny Babel / TBCL | `OPEN_POSSIBLE_CONNECTION` | No TBCL grammar/runtime promotion is performed by this bridge. |
-| Operator Moonshot | `SUPPORTS_TEST_DESIGN` | GSFL fit never promotes scientific evidence. |
-| Geometry / observer work | `APPLICATION` | The N-observer GSFL fixture is a semantic-surface test, not geometric or physical validation. |
-| Research Analytics | `APPLICATION` | GSFL classifications may later become events; transport validity remains separate from evidence validity. |
-| Historical Recovery | `PROVIDES_RECOVERY_PATTERN` | Reconstruction remains distinct from original source. |
+| Operator Moonshot | `SUPPORTS_TEST_DESIGN` | Human/machine fit or proverb fixtures never promote scientific evidence. |
+| Geometry / observer work | `APPLICATION` | The N-observer cooperation fixture tests semantic representation and partner/tool trace, not physical/geometric truth. |
+| Research Analytics | `APPLICATION` | Cooperation/confound events may be transported later; transport validity remains separate from evidence validity. |
+| Historical Recovery | `PROVIDES_RECOVERY_PATTERN` | Human, machine, tool, source, and interpretation lineage stay separate from original source authority. |
+| Human Expression Archive | `OPEN_POSSIBLE_CONNECTION` | Proverb fixtures are not silently admitted as cultural-source records; synthetic and traditional/common statuses stay distinct. |
 
 ## Bounded implementation evidence
 
-The merged implementation lineage records:
+The merged v0.1 lineage records:
 
-- 13/13 local tests passing after the second-pass review;
-- deterministic frozen audit reproduction;
-- byte-identical repeat execution of the N-observer fixture;
-- explicit negative controls for attractive mutation, invariant decay and lossy reconstruction;
-- successful exact-head GSFL workflow run `35105111676`;
-- successful exact-head repository workflow run `35105111834`.
+- 35/35 local tests passing across v0, cooperation, and proverbial fixtures;
+- frozen v0 semantic audit passing unchanged;
+- frozen v0.1 cooperation audit passing;
+- frozen v0.1 proverbial audit passing;
+- successful exact-head workflow `35117003853`, including all three evidence gates;
+- a vocabulary audit with 46/57 reserved/domain terms in HUMAN, MACHINE_LEARNING, UNDERSTANDING, COOPERATION, PARTNER, or TOOL families;
+- a bounded proverb corpus of 14 fixtures: 12 synthetic and 2 common/traditional fixtures with exact-origin claims left unestablished.
 
-Those results verify the declared software contract and finite fixture. They do not establish participant comprehension, universal semantic equivalence, or scientific truth.
+Those results verify declared software behavior and finite fixtures only. They do not establish that a human understood a surface, that a machine changed persistent weights, that a proverb is true, that a tool is authoritative, or that similar sayings are cross-culturally equivalent.
 
 ## Registry boundary
 
-This bridge points to the merged GSFL implementation without adding GSFL to Conscience64's preserved project registry, regenerating historical snapshots, or importing GSFL evidence into unrelated research claims. Any future runtime bridge must remain explicit, testable and removable.
+This bridge does not add GSFL to Conscience64's preserved project registry, regenerate historical snapshots, or import GSFL evidence into unrelated research claims. Future runtime bridges must remain explicit, testable, removable, and provenance-preserving.
