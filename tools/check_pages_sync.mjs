@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { collectPublicRoutes } from './public-routes.mjs';
 
 const workflow = await readFile(new URL('../.github/workflows/pages-sync.yml', import.meta.url), 'utf8');
 
@@ -29,4 +30,24 @@ assert.match(workflow, /test "\$build_commit" = "\$GITHUB_SHA"/, 'Pages build mu
 assert.match(workflow, /PAGES_URL="\$pages_url" GITHUB_SHA="\$GITHUB_SHA" node tools\/check_public_reference_aliases\.mjs/, 'Pages sync must verify the public declared aliases at the built site');
 assert.match(workflow, /PAGES_URL="\$pages_url" GITHUB_SHA="\$GITHUB_SHA" node tools\/check_public_routes\.mjs/, 'Pages sync must verify all canonical public routes at the built site');
 
-console.log('PASS Pages sync contract: exact source, bounded eventual-consistency observation, exact built commit, live aliases, and all canonical public routes');
+const routes = await collectPublicRoutes();
+const requiredRoutes = [
+  '',
+  'play/',
+  'play/mmo-world/',
+  'play/mmo-world/forge/',
+  'play/mmo/',
+  'play/mmo/simple/',
+  'play/explorer-world/',
+  'play/fuzzball-hidden/',
+  'play/musilanguage/',
+  'play/musilanguage/radio.html',
+  'play/musilanguage/radio.htm',
+  'analytics/',
+  'coordinate-space/',
+  'research/projects/'
+];
+for (const route of requiredRoutes) assert.ok(routes.includes(route), `canonical public route inventory missing ${route || '/'}`);
+assert.ok(routes.length >= 30, `canonical public route inventory is unexpectedly narrow: ${routes.length}`);
+
+console.log(`PASS Pages sync contract: exact source, bounded eventual-consistency observation, exact built commit, live aliases, and ${routes.length} canonical public routes`);
