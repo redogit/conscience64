@@ -1,4 +1,4 @@
-name: Verify live Pages aliases
+name: Verify live Pages surface
 
 on:
   page_build:
@@ -8,6 +8,9 @@ on:
       - 'play/reference-rules.json'
       - 'play/musilanguage/radio.htm'
       - 'tools/generate-reference-aliases.mjs'
+      - 'tools/check_public_reference_aliases.mjs'
+      - 'tools/public-routes.mjs'
+      - 'tools/check_public_routes.mjs'
   workflow_dispatch:
 
 permissions: {}
@@ -17,27 +20,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  verify-live-alias:
+  verify-live-surface:
     runs-on: ubuntu-latest
     steps:
-      - name: Verify public historical alias from the network edge
+      - name: Materialize current intended public surface
         shell: bash
         run: |
           set -euo pipefail
-          url='https://redogit.github.io/conscience64/play/musilanguage/radio.htm'
-          status=''
-          for attempt in $(seq 1 30); do
-            status="$(curl --silent --show-error --location --output /tmp/radio.htm --write-out '%{http_code}' \
-              --header 'Cache-Control: no-cache' \
-              --header 'Pragma: no-cache' \
-              "${url}?edge_attempt=${attempt}&sha=${GITHUB_SHA}")"
-            if [ "$status" = '200' ]; then
-              break
-            fi
-            sleep 2
-          done
-          test "$status" = '200'
-          grep -F '<h1>This reference moved</h1>' /tmp/radio.htm
-          grep -F 'const target="radio.html";' /tmp/radio.htm
-          grep -F 'location.replace(target + location.search + location.hash);' /tmp/radio.htm
-          echo "PASS live Pages alias: ${url}"
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin main
+          git checkout --detach FETCH_HEAD
+
+      - name: Verify declared aliases and canonical routes at the network edge
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
+          intended_sha="$(git rev-parse HEAD)"
+          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$intended_sha" node tools/check_public_reference_aliases.mjs
+          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$intended_sha" node tools/check_public_routes.mjs

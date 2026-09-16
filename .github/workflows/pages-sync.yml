@@ -52,7 +52,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 concurrency:
   group: conscience64-pages-source
@@ -73,7 +72,7 @@ jobs:
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
 
-      - name: Verify Pages publication contract
+      - name: Verify Pages source-sync contract
         run: |
           node tools/check_pages_sync.mjs
           node tools/public-routes.test.mjs
@@ -83,12 +82,12 @@ jobs:
           node history/test.mjs
           node history/knowledge-test.mjs
 
-      - name: Verify site data, browser API, and current project lineage before publishing
+      - name: Verify site data, browser API, and current project lineage before source sync
         run: |
           node tools/check_site.mjs
           node tools/check_project_current.mjs
 
-      - name: Verify Space Lens, portable voice/type, song, Chorus, analytics, and game layers before publishing
+      - name: Verify Space Lens, portable voice/type, song, Chorus, analytics, and game layers before source sync
         run: |
           node --check voice-anywhere.js
           node tools/check_voice_anywhere.mjs
@@ -118,16 +117,16 @@ jobs:
           node tools/check_space_lens_external_gate.mjs
           node tools/check_space_lens_human_builder.mjs
 
-      - name: Verify public playground projects before publishing
+      - name: Verify public playground projects before source sync
         run: node play/test.mjs
 
-      - name: Exercise public projects in Chrome before publishing
+      - name: Exercise public projects in Chrome before source sync
         run: |
           node play/browser-test.mjs
           node play/explorer-world/browser-test.mjs
           node play/mmo-world/forge/browser-test.mjs
 
-      - name: Verify Coordinate Space public release before publishing
+      - name: Verify Coordinate Space public release before source sync
         shell: bash
         run: |
           set -euo pipefail
@@ -169,7 +168,7 @@ jobs:
           node play/musilanguage/style-test.mjs
           "$RUNNER_TEMP/coordinate-space-venv/bin/python" play/musilanguage/music64-browser.py --live --output "$RUNNER_TEMP/music64-checks"
 
-      - name: Advance gh-pages to exact main commit and close Pages publication
+      - name: Advance gh-pages to exact main source commit
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -180,51 +179,4 @@ jobs:
           git push --force origin "$GITHUB_SHA:refs/heads/gh-pages"
           remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
           test "$remote_sha" = "$GITHUB_SHA"
-
-          status="$(curl --silent --show-error --output /tmp/pages-build.json --write-out '%{http_code}' \
-            --request POST \
-            --header 'Accept: application/vnd.github+json' \
-            --header "Authorization: Bearer ${GITHUB_TOKEN}" \
-            --header 'X-GitHub-Api-Version: 2022-11-28' \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds")"
-          cat /tmp/pages-build.json
-          test "$status" = "201"
-
-          build_status=""
-          build_commit=""
-          for attempt in $(seq 1 60); do
-            latest_http="$(curl --silent --show-error --output /tmp/pages-latest.json --write-out '%{http_code}' \
-              --header 'Accept: application/vnd.github+json' \
-              --header "Authorization: Bearer ${GITHUB_TOKEN}" \
-              --header 'X-GitHub-Api-Version: 2022-11-28' \
-              "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds/latest")"
-            if [ "$latest_http" = "404" ]; then
-              sleep 2
-              continue
-            fi
-            test "$latest_http" = "200"
-            build_status="$(node -e "const x=JSON.parse(require('fs').readFileSync('/tmp/pages-latest.json','utf8'));process.stdout.write(x.status||'')")"
-            build_commit="$(node -e "const x=JSON.parse(require('fs').readFileSync('/tmp/pages-latest.json','utf8'));process.stdout.write(x.commit||'')")"
-            if [ "$build_commit" = "$GITHUB_SHA" ] && [ "$build_status" = "built" ]; then
-              break
-            fi
-            if [ "$build_commit" = "$GITHUB_SHA" ] && [ "$build_status" = "errored" ]; then
-              cat /tmp/pages-latest.json
-              exit 1
-            fi
-            sleep 2
-          done
-          cat /tmp/pages-latest.json
-          test "$build_status" = "built"
-          test "$build_commit" = "$GITHUB_SHA"
-
-          curl --fail --silent --show-error \
-            --header 'Accept: application/vnd.github+json' \
-            --header "Authorization: Bearer ${GITHUB_TOKEN}" \
-            --header 'X-GitHub-Api-Version: 2022-11-28' \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" \
-            > /tmp/pages-site.json
-          pages_url="$(node -e "const x=JSON.parse(require('fs').readFileSync('/tmp/pages-site.json','utf8'));process.stdout.write(x.html_url||'')")"
-          test -n "$pages_url"
-          PAGES_URL="$pages_url" GITHUB_SHA="$GITHUB_SHA" node tools/check_public_reference_aliases.mjs
-          PAGES_URL="$pages_url" GITHUB_SHA="$GITHUB_SHA" node tools/check_public_routes.mjs
+          echo 'SOURCE_SYNC_ONLY: exact gh-pages source is synchronized. GITHUB_TOKEN pushes do not trigger GitHub Pages builds; live deployment is verified separately on real page_build events.'
