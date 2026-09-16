@@ -3,7 +3,12 @@
   "pluginSchema": "conscience64.mmo.plugin/v1",
   "version": "1.2.0",
   "executionModel": "data-only",
-  "mechanics": ["choice", "input", "creative", "timing"],
+  "mechanics": [
+    "choice",
+    "input",
+    "creative",
+    "timing"
+  ],
   "limits": {
     "fileBytes": 65536,
     "shelfEntries": 64,
@@ -22,7 +27,12 @@
       "maxSpanMs": 5000,
       "clock": "trusted-runtime-monotonic"
     },
-    "rewardCaps": {"xp": 40, "joy": 20, "tokens": 4, "discoveries": 1}
+    "rewardCaps": {
+      "xp": 40,
+      "joy": 20,
+      "tokens": 4,
+      "discoveries": 1
+    }
   },
   "validation": {
     "unknownTopLevelFields": "reject",
