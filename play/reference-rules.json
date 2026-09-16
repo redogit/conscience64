@@ -1,0 +1,25 @@
+{
+  "schema": "conscience64.reference-rules/v1",
+  "basePath": "/conscience64/",
+  "aliases": {
+    "play/musilanguage/radio.htm": {
+      "target": "play/musilanguage/radio.html",
+      "rule": "musilanguage-radio-legacy-htm",
+      "status": "HISTORICAL_ALIAS"
+    }
+  },
+  "transforms": [
+    {
+      "id": "legacy-htm-to-html",
+      "fromSuffix": ".htm",
+      "toSuffix": ".html",
+      "status": "FORMAT_VARIANT"
+    }
+  ],
+  "boundaries": [
+    "ONE_STEP_ONLY",
+    "TARGET_MUST_EXIST",
+    "AMBIGUOUS_DOES_NOT_REDIRECT",
+    "OUT_OF_SCOPE_DOES_NOT_REDIRECT"
+  ]
+}
