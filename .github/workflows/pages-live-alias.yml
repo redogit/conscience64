@@ -2,6 +2,9 @@ name: Verify live Pages surface
 
 on:
   page_build:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
   pull_request:
     paths:
       - '.github/workflows/pages-live-alias.yml'
@@ -21,6 +24,7 @@ concurrency:
 
 jobs:
   verify-live-surface:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Materialize current intended public surface
