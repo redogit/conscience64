@@ -23,6 +23,7 @@ jobs:
   verify-live-surface:
     runs-on: ubuntu-latest
     steps:
+      # Post-merge verification probe: this job always fetches current main and changes no public bytes.
       - name: Materialize current intended public surface
         shell: bash
         run: |
