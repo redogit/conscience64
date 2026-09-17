@@ -19,7 +19,18 @@ assert.doesNotMatch(workflow, /node tools\/check_public_reference_aliases\.mjs/,
 assert.doesNotMatch(workflow, /node tools\/check_public_routes\.mjs/, 'source sync must not execute live route verification');
 assert.match(workflow, /SOURCE_SYNC_ONLY/, 'source sync must state the deployment-trigger boundary explicitly');
 
-assert.match(liveWorkflow, /page_build:/, 'live verification must attach to actual Pages build events');
+assert.match(liveWorkflow, /page_build:/, 'live verification should retain the direct Pages-build observation trigger');
+assert.match(
+  liveWorkflow,
+  /workflow_run:\s*\n\s+workflows:\s*\["pages build and deployment"\]\s*\n\s+types:\s*\[completed\]/,
+  'live verification must follow completion of the actual Pages deployment workflow'
+);
+assert.match(
+  liveWorkflow,
+  /github\.event_name != 'workflow_run' \|\| github\.event\.workflow_run\.conclusion == 'success'/,
+  'workflow-run verification must execute only after a successful Pages deployment workflow'
+);
+assert.match(liveWorkflow, /permissions:\s*\{\}/, 'live verifier must retain zero repository write permissions');
 assert.match(liveWorkflow, /git fetch --depth=1 origin main/, 'live verification must materialize the current intended public route inventory');
 assert.match(liveWorkflow, /node tools\/check_public_reference_aliases\.mjs/, 'live verifier must check declared historical aliases');
 assert.match(liveWorkflow, /node tools\/check_public_routes\.mjs/, 'live verifier must check the complete canonical public route inventory');
@@ -49,4 +60,4 @@ const requiredRoutes = [
 for (const route of requiredRoutes) assert.ok(routes.includes(route), `canonical public route inventory missing ${route || '/'}`);
 assert.ok(routes.length >= 30, `canonical public route inventory is unexpectedly narrow: ${routes.length}`);
 
-console.log(`PASS Pages boundary contract: exact source sync, separate page_build verification, federation-trigger coverage, and ${routes.length} canonical public routes`);
+console.log(`PASS Pages boundary contract: exact source sync, deployment-following live verification, federation-trigger coverage, and ${routes.length} canonical public routes`);
