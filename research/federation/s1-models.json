@@ -1,0 +1,87 @@
+{
+  "schema": "conscience64/federation-pointer/v1",
+  "id": "s1-models-experiment-0",
+  "relation": "OBSERVE_VERIFIED_EXTERNAL_BASELINE",
+  "status": "BOUNDARY_VERIFIED_NAVIGATION_ONLY",
+  "conscience64": {
+    "issue": 94,
+    "role": "observer/navigation pointer",
+    "researchAdmission": false,
+    "independentEvidence": false
+  },
+  "owner": {
+    "repository": "redogit/Other-Projects-",
+    "pr": 46,
+    "verifiedRevision": "ab0b7c4724989f5d79a0bbfcd009582b40509140",
+    "implementationRevision": "4c5b3d0e599c029cc05478eaa5119b00d096e3c4",
+    "mergeCommit": "052b5989da596c2cd99313d4a29b0a386352467b",
+    "evidence": {
+      "path": "S1 Models Lab/evidence/EXPERIMENT_0_SUMMARY.json",
+      "blobSha": "51e1ccfddbddc50644df8f858b76cc9d89c3798e",
+      "schema": "s1-experiment-0-evidence/v0",
+      "claimCeiling": "bounded deterministic software verification only",
+      "scientificValidation": false,
+      "implementationCi": {
+        "workflow": "S1 Models Check",
+        "runId": 35125214829,
+        "conclusion": "success"
+      },
+      "implementationTests": {
+        "total": 46,
+        "passed": 46,
+        "failed": 0
+      },
+      "browserSmoke": {
+        "conclusion": "success",
+        "checks": [
+          "boot",
+          "move",
+          "save",
+          "replay",
+          "shell-reframe",
+          "observer",
+          "reframe",
+          "clear"
+        ]
+      },
+      "auditChecks": 18,
+      "boundedSweeps": {
+        "legalMovePathsThroughDepth3IncludingEmpty": 259,
+        "operatorOrderedPairs": 64,
+        "observerFrameQuotientCases": 28
+      }
+    }
+  },
+  "authorityTransfer": false,
+  "ingestAutomatically": false,
+  "boundaries": [
+    "FEDERATION_POINTER != RESEARCH_ADMISSION",
+    "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+    "SAME_EVENT != SAME_OBSERVATION",
+    "SOFTWARE_VERIFICATION != SCIENTIFIC_VALIDATION",
+    "FUNCTIONAL_BROWSER_SMOKE != RENDERED_USABILITY_OR_AT_VALIDATION"
+  ],
+  "prohibitedAutomaticMutations": [
+    "research-project-registry",
+    "hodge-authority",
+    "world-game-canon",
+    "geometry-lineage",
+    "knowledge-ledger"
+  ],
+  "ownerEvidenceBoundaries": [
+    "synthetic observer/reference surfaces",
+    "software verification only",
+    "real 4D != complex dimension 4",
+    "OBSERVATIONAL_REPAIR != OBJECT_REPAIR",
+    "FEATURE_AT_ONE_MESH != CONTINUUM_INVARIANT",
+    "no Hodge, physics, P-vs-NP, or other open-problem promotion",
+    "functional browser smoke != rendered usability or assistive-technology validation",
+    "screen-reader behavior, assistive-technology validation, rendered 3D usability, and participant acceptance remain separate evidence gates"
+  ],
+  "links": {
+    "ownerPullRequest": "https://github.com/redogit/Other-Projects-/pull/46",
+    "verifiedRevision": "https://github.com/redogit/Other-Projects-/tree/ab0b7c4724989f5d79a0bbfcd009582b40509140/S1%20Models%20Lab",
+    "implementationRevision": "https://github.com/redogit/Other-Projects-/commit/4c5b3d0e599c029cc05478eaa5119b00d096e3c4",
+    "frozenEvidence": "https://github.com/redogit/Other-Projects-/blob/ab0b7c4724989f5d79a0bbfcd009582b40509140/S1%20Models%20Lab/evidence/EXPERIMENT_0_SUMMARY.json"
+  }
+}

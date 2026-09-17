@@ -4,6 +4,7 @@ import { collectPublicRoutes } from './public-routes.mjs';
 
 const workflow = await readFile(new URL('../.github/workflows/pages-sync.yml', import.meta.url), 'utf8');
 const liveWorkflow = await readFile(new URL('../.github/workflows/pages-live-alias.yml', import.meta.url), 'utf8');
+const redogitWorkflow = await readFile(new URL('../.github/workflows/redogit-local.yml', import.meta.url), 'utf8');
 
 // Source synchronization and deployment verification are separate boundaries.
 assert.match(workflow, /permissions:\s*\n\s+contents:\s*write/, 'Pages source sync needs contents write permission');
@@ -23,6 +24,10 @@ assert.match(liveWorkflow, /git fetch --depth=1 origin main/, 'live verification
 assert.match(liveWorkflow, /node tools\/check_public_reference_aliases\.mjs/, 'live verifier must check declared historical aliases');
 assert.match(liveWorkflow, /node tools\/check_public_routes\.mjs/, 'live verifier must check the complete canonical public route inventory');
 
+assert.match(workflow, /research\/federation\/\*\*/, 'Pages source sync must run when a federation pointer or observation page changes');
+const redogitFederationTriggers = redogitWorkflow.match(/research\/federation\/\*\*/g) ?? [];
+assert.ok(redogitFederationTriggers.length >= 2, 'REDOGIT verification must run for federation changes on both push and pull_request');
+
 const routes = await collectPublicRoutes();
 const requiredRoutes = [
   '',
@@ -38,9 +43,10 @@ const requiredRoutes = [
   'play/musilanguage/radio.htm',
   'analytics/',
   'coordinate-space/',
-  'research/projects/'
+  'research/projects/',
+  'research/federation/s1-models/'
 ];
 for (const route of requiredRoutes) assert.ok(routes.includes(route), `canonical public route inventory missing ${route || '/'}`);
 assert.ok(routes.length >= 30, `canonical public route inventory is unexpectedly narrow: ${routes.length}`);
 
-console.log(`PASS Pages boundary contract: exact source sync, separate page_build verification, and ${routes.length} canonical public routes`);
+console.log(`PASS Pages boundary contract: exact source sync, separate page_build verification, federation-trigger coverage, and ${routes.length} canonical public routes`);
