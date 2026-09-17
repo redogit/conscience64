@@ -53,7 +53,6 @@ on:
 
 permissions:
   contents: write
-  pages: read
 
 concurrency:
   group: conscience64-pages-source
@@ -181,30 +180,4 @@ jobs:
           git push --force origin "$GITHUB_SHA:refs/heads/gh-pages"
           remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
           test "$remote_sha" = "$GITHUB_SHA"
-
-      - name: Observe exact Pages deployment and dispatch live verification
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          deployment_status=""
-          for attempt in $(seq 1 60); do
-            payload="$(curl -sSL               -H "Accept: application/vnd.github+json"               -H "Authorization: Bearer ${GITHUB_TOKEN}"               -H "X-GitHub-Api-Version: 2026-03-10"               "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/${GITHUB_SHA}" || true)"
-            deployment_status="$(printf '%s' "$payload" | python3 -c 'import json,sys
-try:
-    data=json.load(sys.stdin)
-    print(data.get("status",""))
-except Exception:
-    print("")')"
-            if [ "$deployment_status" = "succeed" ]; then
-              break
-            fi
-            sleep 2
-          done
-          test "$deployment_status" = "succeed"
-
-          dispatch_payload="{\"event_type\":\"pages-live-verify\",\"client_payload\":{\"expected_sha\":\"$GITHUB_SHA\"}}"
-          curl -fsSL -X POST             -H "Accept: application/vnd.github+json"             -H "Authorization: Bearer ${GITHUB_TOKEN}"             -H "X-GitHub-Api-Version: 2026-03-10"             "https://api.github.com/repos/${GITHUB_REPOSITORY}/dispatches"             -d "$dispatch_payload"
-
-          echo 'SOURCE_SYNC_ONLY: exact gh-pages source synchronized; exact Pages deployment observed; live verification dispatched separately.'
+          echo 'SOURCE_SYNC_ONLY: exact gh-pages source is synchronized. GITHUB_TOKEN pushes do not trigger GitHub Pages builds; live deployment is verified separately on real page_build events.'
