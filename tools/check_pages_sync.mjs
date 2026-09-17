@@ -19,7 +19,7 @@ assert.ok(verify > push, 'Pages source sync must verify gh-pages after pushing')
 assert.ok(deploymentStatus > verify, 'source sync must wait for the exact Pages deployment only after gh-pages matches main');
 assert.ok(repositoryDispatch > deploymentStatus, 'live verification dispatch must occur only after the exact Pages deployment is observed');
 assert.match(workflow, /test "\$deployment_status" = "succeed"/, 'source sync must fail closed unless the exact Pages deployment succeeds');
-assert.match(workflow, /"event_type":"pages-live-verify"/, 'source sync must use the bounded repository-dispatch event type');
+assert.match(workflow, /\\\"event_type\\\":\\\"pages-live-verify\\\"/, 'source sync must use the bounded repository-dispatch event type');
 assert.match(workflow, /"expected_sha":"\$GITHUB_SHA"/, 'source sync must carry the synchronized SHA into live verification');
 assert.match(workflow, /test "\$remote_sha" = "\$GITHUB_SHA"/, 'source sync must fail closed if gh-pages differs from main');
 assert.doesNotMatch(workflow, /\/pages\/builds/, 'source sync must not call the default-branch Pages build API');
