@@ -3,7 +3,7 @@ import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const PUBLIC_ROOTS = ['play', 'about', 'history', 'analytics', 'coordinate-space', 'research/projects'];
+const PUBLIC_ROOTS = ['play', 'about', 'history', 'analytics', 'coordinate-space', 'research/projects', 'research/federation'];
 
 const toPosix = value => value.split(sep).join('/');
 
