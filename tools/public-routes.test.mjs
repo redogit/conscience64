@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectPublicRoutes } from './public-routes.mjs';
+import { collectPublicRoutes, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const routes = await collectPublicRoutes();
@@ -30,6 +30,16 @@ const required = [
   'research/federation/s1-models/'
 ];
 for (const route of required) assert.ok(routeSet.has(route), `required public route missing: ${route || '/'}`);
+
+for (const route of routes) {
+  const mapped = publicRouteFile(route);
+  assert.equal(typeof mapped, 'string', `canonical route must map to a repository file: ${route || '/'}`);
+  const mappedPath = resolve(repoRoot, mapped);
+  const info = await stat(mappedPath);
+  assert.ok(info.isFile(), `canonical route mapping must resolve to a file: ${route || '/'} -> ${mapped}`);
+}
+assert.equal(publicRouteBytesEqual(Buffer.from('exact'), Buffer.from('exact')), true, 'equal route bytes must close');
+assert.equal(publicRouteBytesEqual(Buffer.from('exact'), Buffer.from('stale')), false, 'stale 200 bytes must remain unresolved');
 
 const federationPointerPath = resolve(repoRoot, 'research/federation/s1-models.json');
 const federationPagePath = resolve(repoRoot, 'research/federation/s1-models/index.html');

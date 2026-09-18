@@ -37,6 +37,22 @@ function addHtmlRoute(routes, path) {
   }
 }
 
+export function publicRouteFile(route) {
+  if (typeof route !== 'string' || route.startsWith('/') || route.includes('..') || route.includes('\\')) {
+    throw new Error(`unsafe public route: ${route}`);
+  }
+  if (route === '') return 'index.html';
+  if (route.endsWith('/')) return `${route}index.html`;
+  if (/\.html?$/i.test(route)) return route;
+  throw new Error(`canonical public route has no HTML source mapping: ${route}`);
+}
+
+export function publicRouteBytesEqual(expected, actual) {
+  const expectedBytes = Buffer.isBuffer(expected) ? expected : Buffer.from(expected);
+  const actualBytes = Buffer.isBuffer(actual) ? actual : Buffer.from(actual);
+  return expectedBytes.equals(actualBytes);
+}
+
 export async function collectPublicRoutes() {
   const routes = new Set();
   addHtmlRoute(routes, 'index.html');
