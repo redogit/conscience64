@@ -51,3 +51,6 @@ jobs:
             --root . \
             --revision "$GITHUB_SHA" \
             --dry-run
+
+# INTENTIONAL UNMERGED NEGATIVE CONTROL
+carrier_negative_control: [
