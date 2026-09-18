@@ -26,6 +26,7 @@ on:
       - '.github/workflows/redogit-local.yml'
       - '.github/workflows/pages-sync.yml'
       - '.github/workflows/pages-live-alias.yml'
+      - '.github/workflows/**'
   pull_request:
     paths:
       - 'redogit.json'
@@ -50,6 +51,7 @@ on:
       - '.github/workflows/redogit-local.yml'
       - '.github/workflows/pages-sync.yml'
       - '.github/workflows/pages-live-alias.yml'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 permissions: {}
@@ -72,6 +74,11 @@ jobs:
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Parse workflow YAML carriers
+        shell: bash
+        run: |
+          set -euo pipefail
+          ruby -e 'require "psych"; files=Dir[".github/workflows/*.{yml,yaml}"].sort; abort "no workflow YAML files" if files.empty?; files.each { |path| Psych.parse_file(path); puts "PASS workflow YAML: #{path}" }'
       - name: Check history restoration and revision lineage
         run: |
           node history/test.mjs
