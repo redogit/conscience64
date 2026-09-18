@@ -11,11 +11,11 @@ assert.match(workflow, /permissions:\\s*\\n\\s+contents:\\s*write/, 'Pages sourc
 assert.doesNotMatch(workflow, /pages:\\s*(read|write)/, 'source sync must not gain Pages deployment authority');
 assert.doesNotMatch(workflow, /actions:\\s*write/, 'source sync must not gain Actions dispatch authority');
 assert.match(workflow, /PUBLIC_RELEASE_APPROVAL\\.json/, 'source sync must depend on the explicit release-approval artifact');
-assert.match(workflow, /data\\.get\\('approved'\\) is True/, 'source sync must require explicit owner approval');
-assert.match(workflow, /data\\.get\\('approved_sha'\\) == os\\.environ\\['GITHUB_SHA'\\]/, 'approval must bind the exact source revision');
-assert.match(workflow, /privacy_safe'\\) is True/, 'approval must include privacy review');
-assert.match(workflow, /link_surface_reviewed'\\) is True/, 'approval must include link-surface review');
-assert.match(workflow, /dependent_surfaces_reviewed'\\) is True/, 'approval must include dependent-surface review');
+assert.ok(workflow.includes("data.get('approved') is True"), 'source sync must require explicit owner approval');
+assert.ok(workflow.includes("data.get('approved_sha') == os.environ['GITHUB_SHA']"), 'approval must bind the exact source revision');
+assert.ok(workflow.includes("privacy_safe') is True"), 'approval must include privacy review');
+assert.ok(workflow.includes("link_surface_reviewed') is True"), 'approval must include link-surface review');
+assert.ok(workflow.includes("dependent_surfaces_reviewed') is True"), 'approval must include dependent-surface review');
 assert.match(workflow, /PUBLICATION_HELD/, 'unapproved revisions must hold publication rather than mutate gh-pages');
 const leaseRead = workflow.indexOf('lease_sha="$(git ls-remote origin refs/heads/gh-pages');
 const push = workflow.indexOf('git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin "$GITHUB_SHA:refs/heads/gh-pages"');
