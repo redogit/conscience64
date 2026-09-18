@@ -3640,36 +3640,6 @@
       ]
     },
     {
-      "id": "rmao-world",
-      "canonicalName": "Ripping Many Arms Off",
-      "aliases": [
-        "Conscience64 MMO RPG",
-        "RMAO"
-      ],
-      "domain": "game",
-      "sourceLocations": [
-        "play/mmo/",
-        "play/mmo/RMAO_WORLD_CANON.md",
-        "play/mmo/rmao-world-contract.json"
-      ],
-      "provenanceStatus": "repository-located",
-      "publicationStatus": "public",
-      "state": "current",
-      "predecessors": [
-        "red-wilds"
-      ],
-      "successors": [],
-      "preservationStatus": "located",
-      "sourceKinds": [
-        "successor-canon",
-        "machine-contract",
-        "web-route"
-      ],
-      "notes": [
-        "Massive 3D roguelike MMORPG successor target; current 2D clients remain transition/predecessor implementations until promotion gates pass."
-      ]
-    },
-    {
       "id": "red-wilds-alpha-0-1",
       "canonicalName": "Red Wilds Alpha 0.1",
       "aliases": [],
@@ -4132,6 +4102,32 @@
       ],
       "notes": [
         "Package identity; external Swagger dependency remained absent in the inspected archive."
+      ]
+    },
+    {
+      "id": "rmao-world",
+      "canonicalName": "Ripping Many Arms Off",
+      "aliases": [
+        "Conscience64 MMO RPG",
+        "RMAO"
+      ],
+      "domain": "game",
+      "sourceLocations": [
+        "play/mmo/",
+        "play/mmo/RMAO_WORLD_CANON.md",
+        "play/mmo/rmao-world-contract.json"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [
+        "red-wilds"
+      ],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [],
+      "notes": [
+        "Massive 3D roguelike MMORPG successor target; current 2D clients remain transition/predecessor implementations until promotion gates pass."
       ]
     },
     {
