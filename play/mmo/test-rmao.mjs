@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 const read = p => readFile(new URL(p, import.meta.url), 'utf8');
-const [contractText, canon, current, release, links, ecs] = await Promise.all([
-  read('rmao-world-contract.json'), read('RMAO_WORLD_CANON.md'), read('CURRENT.md'),
+const [contractText, canon, dynamicRmal, current, release, links, ecs] = await Promise.all([
+  read('rmao-world-contract.json'), read('RMAO_WORLD_CANON.md'), read('DYNAMIC_RMAL_CHARACTERS.rmal'), read('CURRENT.md'),
   read('RELEASE_PLAN_2026-11-15.md'), read('web-links.json'), read('simple/ecs.mjs')
 ]);
 const c=JSON.parse(contractText);
@@ -16,6 +16,21 @@ assert.deepEqual(c.limbGraph.states,['attached','damaged','disabled','detached']
 assert.equal(c.authority.serverRequiredForLiveMMORPG,true);
 assert.equal(c.authority.clientPredictionIsAuthority,false);
 assert.equal(c.currentImplementation.massive3DVerified,false);
+assert.equal(c.dynamicRmal.version,'0.1');
+assert.equal(c.dynamicRmal.status,'reference-projection');
+assert.equal(c.characters.superSeraphine.id,'super-seraphine');
+assert.equal(c.characters.superSeraphine.privatePerson,false);
+assert.equal(c.characters.superSeraphine.familyProxy,false);
+assert.equal(c.characters.sproutling.realAgeMapping,false);
+assert.equal(c.characters.sproutling.realFamilyLink,false);
+assert.ok(c.invariants.includes('SUPER_SERAPHINE_CHARACTER != PRIVATE_PERSON'));
+assert.ok(c.invariants.includes('SPROUTLING != REAL_CHILD'));
+assert.match(dynamicRmal,/RMAL DYNAMIC 0\.1/);
+assert.match(dynamicRmal,/ENTITY SuperSeraphine/);
+assert.match(dynamicRmal,/TYPE Sproutling/);
+assert.match(dynamicRmal,/GAME_CHARACTER != PRIVATE_PERSON/);
+assert.match(dynamicRmal,/SPROUTLING != REAL_CHILD/);
+assert.match(dynamicRmal,/TRICKSTER_ROLE != ADMIN_AUTHORITY/);
 assert.match(canon,/CURRENT_2D_PROTOTYPE != MASSIVE_3D_WORLD/);
 assert.match(canon,/WorldSeed → Region → Sector → Chunk → Cell → Entity/);
 assert.match(current,/RIPPING MANY ARMS OFF/);
@@ -24,4 +39,4 @@ assert.match(links,/rmao-world/);
 assert.match(ecs,/world:rmao-world/);
 assert.doesNotMatch(current,/RED WILDS/);
 assert.doesNotMatch(release,/RED WILDS/);
-console.log('PASS RMAO successor contract: 3D target, roguelike scopes, limb graph, authority and claim ceilings');
+console.log('PASS RMAO successor contract: 3D target, roguelike scopes, Dynamic RMAL characters, privacy, authority and claim ceilings');
