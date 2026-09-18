@@ -2,9 +2,8 @@ name: Verify live Pages surface
 
 on:
   page_build:
-  workflow_run:
-    workflows: ["pages build and deployment"]
-    types: [completed]
+  repository_dispatch:
+    types: [pages-live-verify]
   pull_request:
     paths:
       - '.github/workflows/pages-live-alias.yml'
@@ -24,18 +23,24 @@ concurrency:
 
 jobs:
   verify-live-surface:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Materialize current intended public surface
         shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event.client_payload.expected_sha }}
         run: |
           set -euo pipefail
           git init "$GITHUB_WORKSPACE"
           cd "$GITHUB_WORKSPACE"
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
           git fetch --depth=1 origin main
-          git checkout --detach FETCH_HEAD
+          current_main="$(git rev-parse FETCH_HEAD)"
+          if [ -n "$EXPECTED_SHA" ]; then
+            [[ "$EXPECTED_SHA" =~ ^[0-9a-fA-F]{40}$ ]]
+            test "$EXPECTED_SHA" = "$current_main"
+          fi
+          git checkout --detach "$current_main"
 
       - name: Verify declared aliases and canonical routes at the network edge
         shell: bash
