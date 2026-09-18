@@ -119,3 +119,18 @@ Do not call a build “massive 3D MMORPG” unless evidence exists for the corre
 7. **accessibility gate:** non-graphic and non-visual state representations are exercised.
 
 Until a gate passes, its claim remains a target.
+
+## Dynamic RMAL character canon
+
+Character behavior is projected through [`DYNAMIC_RMAL_CHARACTERS.rmal`](DYNAMIC_RMAL_CHARACTERS.rmal). The implementation authority remains the RMAO carrier in `redogit/Other-Projects-`; this repository preserves a canon/reference projection only.
+
+**Super Seraphine** is a fictional magic trickster whose form and apparent role may change dynamically across any admitted fictional presentation. Her chaos is intentionally broad at the presentation/game-rule layer and intentionally bounded at the authority/privacy layer.
+
+**Sproutling** is the game-native fictional growth-form used where a small/young-form concept is useful. It has no real-age or real-family mapping.
+
+```text
+SUPER_SERAPHINE_CHARACTER != PRIVATE_PERSON
+SPROUTLING != REAL_CHILD
+TRICKSTER_ROLE != ADMIN_AUTHORITY
+PRESENTATION_SPOOF != SERVER_STATE
+```
