@@ -6,14 +6,14 @@ const inventory = buildInventory({
   sources:[
     {id:'hodge',canonicalName:'Hodge Conjecture Research Spine',domain:'research',sourceLocations:['research/projects/hodge-conjecture.md'],state:'current'},
     {id:'poem-one',canonicalName:'Unnamed recovered poem',domain:'poetry',sourceLocations:[],state:'unresolved'},
-    {id:'red-wilds',canonicalName:'Red Wilds',domain:'game',sourceLocations:['play/mmo/simple/'],state:'current'}
+    {id:'rmao-world',canonicalName:'Ripping Many Arms Off',domain:'game',sourceLocations:['play/mmo/simple/'],state:'current'}
   ],
   seeds:[]
 });
 assert.equal(findInInventory(inventory,'hodge').domain,'research');
 assert.equal(findInInventory(inventory,'poem-one').domain,'poetry');
-assert.equal(findInInventory(inventory,'red-wilds').domain,'game');
-assert.notEqual(findInInventory(inventory,'hodge').domain, findInInventory(inventory,'red-wilds').domain);
+assert.equal(findInInventory(inventory,'rmao-world').domain,'game');
+assert.notEqual(findInInventory(inventory,'hodge').domain, findInInventory(inventory,'rmao-world').domain);
 assert.equal(findInInventory(inventory,'poem-one').state,'unresolved');
 assert.equal(inventory.works.length,3);
 console.log('PASS preservation inventory keeps individual works distinct');
