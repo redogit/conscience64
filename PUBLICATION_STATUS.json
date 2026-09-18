@@ -4,5 +4,7 @@
   "public_projection": "paused",
   "approval_required": true,
   "canonical_authority": false,
-  "reason": "Owner-directed private-by-default publication policy pending explicit safety approval."
+  "reason": "Owner-directed private-by-default publication policy pending explicit safety approval.",
+  "commercial_access_authorized": false,
+  "commercial_policy": "No third-party commercial access is authorized at this time."
 }
