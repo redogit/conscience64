@@ -8,6 +8,8 @@ on:
   pull_request:
     paths:
       - '.github/workflows/pages-live-alias.yml'
+      - '.github/workflows/pages-sync.yml'
+      - 'PUBLIC_RELEASE_APPROVAL.json'
       - 'play/reference-rules.json'
       - 'play/musilanguage/radio.htm'
       - 'tools/generate-reference-aliases.mjs'
@@ -27,98 +29,116 @@ jobs:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     env:
-      EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
+      EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.event.pull_request.head.sha || github.sha }}
+      PAGES_URL: https://redogit.github.io/conscience64/
     steps:
-      - name: Materialize intended public surface
+      - name: Materialize exact intended source
         shell: bash
         run: |
           set -euo pipefail
           git init "$GITHUB_WORKSPACE"
           cd "$GITHUB_WORKSPACE"
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
-
-          ref="${EXPECTED_SHA:-main}"
-          if [ -n "$EXPECTED_SHA" ]; then
-            [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
-          fi
-
-          git fetch --depth=1 origin "$ref"
+          [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git fetch --depth=1 origin "$EXPECTED_SHA"
           git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
 
-          intended_sha="$(git rev-parse HEAD)"
-          if [ -n "$EXPECTED_SHA" ]; then
-            test "$intended_sha" = "$EXPECTED_SHA"
-          fi
-          echo "INTENDED_SHA=$intended_sha" >> "$GITHUB_ENV"
-
-      - name: Require exact published source before deployment observation
-        if: ${{ github.event_name == 'workflow_run' }}
+      - name: Resolve explicit publication state
         shell: bash
         run: |
           set -euo pipefail
           cd "$GITHUB_WORKSPACE"
-          remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
-          test "$remote_sha" = "$EXPECTED_SHA"
+          mode="$(
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path('PUBLIC_RELEASE_APPROVAL.json')
+          if not p.exists():
+              print('held')
+              raise SystemExit(0)
+          d = json.loads(p.read_text(encoding='utf-8'))
+          approved = (
+              d.get('schema') == 'redogit/public-release-approval/v1'
+              and d.get('approved') is True
+              and d.get('approved_sha') == os.environ['EXPECTED_SHA']
+              and d.get('review', {}).get('privacy_safe') is True
+              and d.get('review', {}).get('link_surface_reviewed') is True
+              and d.get('review', {}).get('dependent_surfaces_reviewed') is True
+          )
+          print('approved' if approved else 'held')
+          PY
+          )"
+          echo "PUBLICATION_MODE=$mode" >> "$GITHUB_ENV"
+          echo "PUBLICATION_MODE=$mode"
 
-      - name: Wait for exact Pages deployment to succeed
-        if: ${{ github.event_name == 'workflow_run' }}
+      - name: Verify published source matches approved or held state
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
+          git fetch --depth=1 origin gh-pages:refs/remotes/origin/gh-pages
+          published_sha="$(git rev-parse refs/remotes/origin/gh-pages)"
+          if [ "$PUBLICATION_MODE" = "approved" ]; then
+            test "$published_sha" = "$EXPECTED_SHA"
+          else
+            git show refs/remotes/origin/gh-pages:PUBLICATION_STATUS.json > "$RUNNER_TEMP/publication-status.json"
+            python3 - "$RUNNER_TEMP/publication-status.json" <<'PY'
+          import json, sys
+          d = json.load(open(sys.argv[1], encoding='utf-8'))
+          assert d['schema'] == 'redogit/publication-hold/v1'
+          assert d['public_projection'] == 'paused'
+          assert d['approval_required'] is True
+          assert d['canonical_authority'] is False
+          print('PASS - gh-pages is the deliberate privacy holding surface')
+          PY
+          fi
+
+      - name: Wait for exact approved deployment
+        if: ${{ env.PUBLICATION_MODE == 'approved' && github.event_name == 'workflow_run' }}
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           response="$RUNNER_TEMP/pages-deployment.json"
-          deployment_status=""
-
+          status=""
           for attempt in $(seq 1 90); do
-            http_code="$(
-              curl --silent --show-error --location \
-                --output "$response" \
-                --write-out '%{http_code}' \
-                -H "Accept: application/vnd.github+json" \
-                -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-                -H "X-GitHub-Api-Version: 2026-03-10" \
-                "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/${EXPECTED_SHA}"
-            )"
-
-            case "$http_code" in
-              200)
-                deployment_status="$(
-                  node -e 'const fs=require("fs"); const v=JSON.parse(fs.readFileSync(process.argv[1],"utf8")); process.stdout.write(typeof v.status==="string" ? v.status : "");' "$response"
-                )"
-                if [ "$deployment_status" = "succeed" ]; then
-                  break
-                fi
-                ;;
-              404)
-                deployment_status=""
-                ;;
-              *)
-                echo "Unexpected Pages deployment-status HTTP code: $http_code" >&2
-                cat "$response" >&2 || true
-                exit 1
-                ;;
-            esac
-
+            code="$(curl --silent --show-error --location --output "$response" --write-out '%{http_code}' -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "X-GitHub-Api-Version: 2026-03-10" "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/${EXPECTED_SHA}")"
+            if [ "$code" = "200" ]; then
+              status="$(node -e 'const fs=require("fs");const v=JSON.parse(fs.readFileSync(process.argv[1],"utf8"));process.stdout.write(typeof v.status==="string"?v.status:"")' "$response")"
+              [ "$status" = "succeed" ] && break
+            elif [ "$code" != "404" ]; then
+              cat "$response" >&2 || true
+              exit 1
+            fi
             sleep 2
           done
+          test "$status" = "succeed"
 
-          test "$deployment_status" = "succeed"
-
-      - name: Reconfirm exact published source after deployment observation
-        if: ${{ github.event_name == 'workflow_run' }}
+      - name: Verify approved canonical routes at network edge
+        if: ${{ env.PUBLICATION_MODE == 'approved' }}
         shell: bash
         run: |
           set -euo pipefail
           cd "$GITHUB_WORKSPACE"
-          remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
-          test "$remote_sha" = "$EXPECTED_SHA"
+          PAGES_URL="$PAGES_URL" GITHUB_SHA="$EXPECTED_SHA" node tools/check_public_reference_aliases.mjs
+          PAGES_URL="$PAGES_URL" GITHUB_SHA="$EXPECTED_SHA" node tools/check_public_routes.mjs
 
-      - name: Verify declared aliases and canonical routes at the network edge
+      - name: Verify held network surface exposes only the pause notice
+        if: ${{ env.PUBLICATION_MODE == 'held' }}
         shell: bash
         run: |
           set -euo pipefail
-          cd "$GITHUB_WORKSPACE"
-          test "$(git rev-parse HEAD)" = "$INTENDED_SHA"
-          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$INTENDED_SHA" node tools/check_public_reference_aliases.mjs
-          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$INTENDED_SHA" node tools/check_public_routes.mjs
+          body="$RUNNER_TEMP/held.html"
+          ok=false
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent --show-error --location "$PAGES_URL" -o "$body" && grep -Fq 'Public publication paused' "$body"; then
+              ok=true
+              break
+            fi
+            sleep 2
+          done
+          test "$ok" = true
+          grep -Fq 'PRIVATE_BY_DEFAULT' "$body"
+          echo 'PASS - live Pages surface is held and privacy-minimal'
