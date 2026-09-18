@@ -1,0 +1,8 @@
+{
+  "schema": "redogit/publication-hold/v1",
+  "repository": "redogit/conscience64",
+  "public_projection": "paused",
+  "approval_required": true,
+  "canonical_authority": false,
+  "reason": "Owner-directed private-by-default publication policy pending explicit safety approval."
+}

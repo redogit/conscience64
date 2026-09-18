@@ -1,9 +1,0 @@
-{
-  "search_tests_passed": 15,
-  "browser_ui": "passed",
-  "workspace_integration": "passed",
-  "public_browsing": "failed: proxy certificate authority untrusted",
-  "arbitrary_external_activation": "not enabled",
-  "prior_transport": "preserved; see connection_next",
-  "strict_corroboration_candidate": "unpromoted; 11 legacy failures remain"
-}

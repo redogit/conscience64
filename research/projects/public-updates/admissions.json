@@ -1,9 +1,0 @@
-{
-  "default": "deny",
-  "records": [
-    {"classification": "public", "record": "records/2026-09-13-human-expression-s1024.json"},
-    {"classification": "public", "record": "records/2026-09-14-coordinate-space-compass-repair.json"},
-    {"classification": "public", "record": "records/2026-09-14-fuzzball-hidden-alpha.json"}
-  ],
-  "schema": "conscience64/public-update-admissions/v1"
-}

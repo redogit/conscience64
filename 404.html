@@ -1,63 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Conscience64 — resolving reference</title>
-  <style>
-    body{font:16px/1.5 system-ui,sans-serif;max-width:46rem;margin:4rem auto;padding:0 1rem}code{word-break:break-word}.muted{color:#555}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Public publication paused</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:46rem;margin:10vh auto;padding:1.5rem;line-height:1.55}
+main{border:1px solid currentColor;border-radius:1rem;padding:1.5rem}
+code{font-family:ui-monospace,monospace}
+</style>
 </head>
 <body>
-  <main>
-    <h1>Reference not found</h1>
-    <p id="status" role="status">Checking one bounded compatibility step…</p>
-    <p class="muted"><a href="/conscience64/">Return to Conscience64</a></p>
-  </main>
-  <script type="module">
-    import { resolveOneStepReference } from '/conscience64/play/assets/reference-resolver.mjs';
-
-    const status = document.getElementById('status');
-    const rulesUrl = '/conscience64/play/reference-rules.json';
-
-    const encodePath = value => value.split('/').map(encodeURIComponent).join('/');
-    const probe = async (basePath, target) => {
-      try {
-        const response = await fetch(`${basePath}${encodePath(target)}`, {
-          method: 'HEAD',
-          cache: 'no-store',
-          redirect: 'follow'
-        });
-        return response.ok;
-      } catch {
-        return false;
-      }
-    };
-
-    try {
-      const response = await fetch(rulesUrl, { cache: 'no-store' });
-      if (!response.ok) throw new Error('reference rules unavailable');
-      const rules = await response.json();
-      const basePath = rules.basePath || '/conscience64/';
-      const pathname = decodeURIComponent(location.pathname);
-
-      if (!pathname.startsWith(basePath)) throw new Error('reference outside site boundary');
-      const reference = pathname.slice(basePath.length);
-      const result = await resolveOneStepReference(reference, rules, target => probe(basePath, target));
-
-      if (result.resolved && ['HISTORICAL_ALIAS', 'FORMAT_VARIANT'].includes(result.status)) {
-        const destination = `${basePath}${encodePath(result.resolved)}${location.search}${location.hash}`;
-        status.textContent = `Resolved ${reference} to ${result.resolved}.`;
-        location.replace(destination);
-      } else if (result.status === 'AMBIGUOUS') {
-        status.textContent = 'This reference has more than one valid one-step resolution, so it was not redirected.';
-      } else {
-        status.textContent = 'No verified one-step resolution exists for this reference.';
-      }
-    } catch (error) {
-      status.textContent = 'No verified one-step resolution exists for this reference.';
-      console.error('Conscience64 reference resolution:', error);
-    }
-  </script>
+<main>
+<h1>Public publication paused</h1>
+<p>This GitHub Pages surface is intentionally reduced while its owner reviews public-release safety.</p>
+<p>Project identity, research state, and source authority are not defined by this public URL. Publication is opt-in and requires explicit owner approval after review.</p>
+<p><code>PRIVATE_BY_DEFAULT → REVIEW → EXPLICIT_APPROVAL → PUBLIC_PROJECTION</code></p>
+</main>
 </body>
 </html>
