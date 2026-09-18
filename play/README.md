@@ -1,5 +1,8 @@
 # Conscience64 / Play
 
+> **Current publication state:** Play remains source/project work, but its GitHub Pages projection is paused pending explicit owner approval of an exact safety-reviewed revision. Existing MIT rights for material already covered by the scoped `play/` license remain intact; current no-commercial policy does not retroactively revoke those rights. See [../COMMERCIAL_ACCESS_POLICY.md](../COMMERCIAL_ACCESS_POLICY.md).
+
+
 Free browser play and creative tools built from ongoing ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
 
 ## The priority: a world worth growing up with
