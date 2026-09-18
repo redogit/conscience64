@@ -1,7 +1,16 @@
 # Conscience64 MMO RPG — Current State
 
+## Successor replacement — RIPPING MANY ARMS OFF
+
+`RIPPING MANY ARMS OFF` (RMAO) is now the active successor target: a massive chunk-streamed 3D roguelike MMORPG whose combat entities may carry arbitrary limb graphs and detachable arm nodes. `RMAO_WORLD_CANON.md` and `rmao-world-contract.json` define that target.
+
+**Current implementation boundary:** the checked-in browser clients are still predecessor/local prototypes. They do not become a massive 3D or authoritative networked MMORPG merely because the canon changed. 3D world streaming, server authority, shared persistence and limb-state replication must be implemented and verified before those claims are promoted.
+
+`CURRENT_2D_PROTOTYPE != MASSIVE_3D_WORLD`  
+`LOCAL_MULTIPLAYER != SERVER_AUTHORITY`
+
 **Current successor direction:** grounded reality first.  
-**Major-release target:** November 15, 2026 (`RED WILDS 1.0`).  
+**Major-release target:** November 15, 2026 (`RIPPING MANY ARMS OFF 1.0`).  
 **Evidence rule:** implemented state, configured verification, observed verification, roadmap, and hypotheses remain separate.
 
 ## Implemented now
@@ -176,6 +185,6 @@ They are **not**:
 
 When resuming work, load in this order:
 
-`CURRENT.md → REALITY_CANON.md → LINKAGES.md / linkages.json → LEVELS.md → RELEASE_PLAN_2026-11-15.md → implementation files → observed test results`
+`CURRENT.md → RMAO_WORLD_CANON.md / rmao-world-contract.json → REALITY_CANON.md → LINKAGES.md / linkages.json → LEVELS.md → RELEASE_PLAN_2026-11-15.md → implementation files → observed test results`
 
 Current state must not be reconstructed from roadmap prose alone.

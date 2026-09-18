@@ -32,6 +32,8 @@ Boundary:
 - **Play Hub:** `../index.html`
 - **MMO Main Page:** `index.html`
 - **Current state:** `CURRENT.md`
+- **RMAO successor world/system canon:** `RMAO_WORLD_CANON.md`
+- **RMAO machine contract:** `rmao-world-contract.json`
 - **Arcade Forge:** `forge.html`
 - **Reality canon:** `REALITY_CANON.md`
 - **Plug-in contract:** `plugin-contract.json`
@@ -145,7 +147,7 @@ The external scientific source retains the evidence role. The game visual retain
 
 ## Release chain
 
-`Current grounded local prototype → plug-in content growth → authoritative multiplayer → moderation / accessibility / security gates → RC → RED WILDS 1.0`
+`Current grounded local prototype → plug-in content growth → authoritative multiplayer → moderation / accessibility / security gates → RC → RIPPING MANY ARMS OFF 1.0`
 
 - **Current state:** `CURRENT.md`
 - **Major release plan:** `RELEASE_PLAN_2026-11-15.md`

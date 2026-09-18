@@ -53,7 +53,7 @@ The simple game links to `simple/visual-samples/`, a reference-only gallery buil
 
 - 26 image samples total;
 - 12 user-supplied references;
-- 14 generated Red Wilds concept images;
+- 14 generated Ripping Many Arms Off concept images;
 - five existing gallery pages preserve the earlier 19-sample snapshot;
 - a sixth page carries seven newer generated concepts as small WebP review previews.
 

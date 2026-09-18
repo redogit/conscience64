@@ -1,7 +1,7 @@
 # Conscience64 MMO RPG v1.0 — Major Release Plan
 
 **Target:** Sunday, November 15, 2026  
-**Release name:** `RED WILDS 1.0`  
+**Release name:** `RIPPING MANY ARMS OFF 1.0`  
 **Current starting point:** local browser prototype with four mini-games, player role/joy/progress state, future prize vault, private non-graphic shapeshifter companion, Conscience64 browser-API cooperation, Twelve Levels architecture, and the annual Mystery 13th rule.
 
 ## Release promise
@@ -29,10 +29,29 @@ The annual Mystery 13th is **not** a November launch feature to invent. It is th
 
 # v1.0 scope
 
+## RMAO successor gate
+
+The release name now refers to the **Ripping Many Arms Off** successor. The target architecture is a massive 3D roguelike MMORPG, but release language must remain evidence-bounded. A build may claim only the gates it has actually passed.
+
+Required successor mechanics:
+- deterministic 3D world hierarchy: `WorldSeed → Region → Sector → Chunk → Cell → Entity`;
+- chunk streaming with stable chunk IDs and reproducible generation hashes;
+- floating-origin or equivalent precision management for very large coordinates;
+- arbitrary creature limb graphs with `attached → damaged → disabled → detached` arm-state transitions;
+- arm removal must change game capability through data (reach, equipment slots, attacks, defense, carrying), not hard-coded cosmetic scripting;
+- roguelike run identity and run seed separated from persistent account/world history;
+- run loss may reset run-scoped state while preserving explicitly persistent discoveries/history;
+- authoritative server ownership of shared identity, inventory, combat resolution, limb state, loot, progression and persistent world state before the project claims a live MMORPG;
+- optional non-graphic presentation that preserves identical mechanics using disable/disarm/break visual language instead of explicit gore.
+
+`CLIENT_PREDICTION != COMBAT_AUTHORITY`  
+`RUN_RESET != HISTORY_ERASURE`  
+`LIMB_REMOVAL_GAMEPLAY != REAL_ANATOMY`
+
 ## Must ship
 
 ### World
-- Red Wilds as the first coherent world region.
+- Ripping Many Arms Off as the first coherent world region.
 - At least 6 meaningful places: Monster District, Impossible Speedway, Cipher Ruins, Maker Quarter, Common Ground, Fuzzball anomaly, plus connective exploration space.
 - World-event system with deterministic event IDs and versioned content.
 - Day/night or equivalent world-state variation with reduced-motion fallback.
@@ -297,7 +316,7 @@ Allowed changes:
 
 No new gameplay systems, economies, prize mechanics, or migrations.
 
-## Nov 15 — `RED WILDS 1.0`
+## Nov 15 — `RIPPING MANY ARMS OFF 1.0`
 
 Release sequence:
 1. create immutable v1.0 tag/release artifact;

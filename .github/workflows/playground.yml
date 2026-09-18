@@ -66,6 +66,8 @@ jobs:
         run: node play/reference-integrity.test.mjs
       - name: Verify grounded MMO reality canon
         run: node play/mmo/test-reality.mjs
+      - name: Verify RMAO 3D roguelike successor contract
+        run: node play/mmo/test-rmao.mjs
       - name: Verify MMO data-only plug-in runtime
         run: node play/mmo/test-plugins.mjs
       - name: Verify MMO portable local save runtime

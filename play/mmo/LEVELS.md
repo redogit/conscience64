@@ -28,7 +28,7 @@ Districts, towns, wild areas, buildings, arcades, maker spaces, laboratories, ra
 **Invariant:** each place has a reason to exist beyond visual decoration.
 
 ## 6. World
-The Red Wilds and future regions: changing ecology, monsters, stories, games, social spaces, jobs, creative systems, events, seasons, and exploration.
+Ripping Many Arms Off and future regions: changing ecology, monsters, stories, games, social spaces, jobs, creative systems, events, seasons, and exploration.
 
 **Invariant:** the world may surprise the player, but it must remain legible enough to act in.
 
