@@ -50,6 +50,7 @@ on:
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
       - '.github/workflows/pages-live-alias.yml'
+      - 'PUBLIC_RELEASE_APPROVAL.json'
   workflow_dispatch:
 
 permissions:
@@ -170,15 +171,39 @@ jobs:
           node play/musilanguage/style-test.mjs
           "$RUNNER_TEMP/coordinate-space-venv/bin/python" play/musilanguage/music64-browser.py --live --output "$RUNNER_TEMP/music64-checks"
 
-      - name: Advance gh-pages to exact main source commit
+      - name: Advance gh-pages only with exact owner approval
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           cd "$GITHUB_WORKSPACE"
+
+          approval_state="$(
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+
+          data = json.loads(Path('PUBLIC_RELEASE_APPROVAL.json').read_text(encoding='utf-8'))
+          exact = (
+              data.get('schema') == 'redogit/public-release-approval/v1'
+              and data.get('approved') is True
+              and data.get('approved_sha') == os.environ['GITHUB_SHA']
+              and data.get('review', {}).get('privacy_safe') is True
+              and data.get('review', {}).get('link_surface_reviewed') is True
+              and data.get('review', {}).get('dependent_surfaces_reviewed') is True
+          )
+          print('approved' if exact else 'held')
+          PY
+          )"
+
+          if [ "$approval_state" != "approved" ]; then
+            echo "PUBLICATION_HELD: exact commit has not received explicit owner safety approval."
+            exit 0
+          fi
+
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin "$GITHUB_SHA:refs/heads/gh-pages"
+          git push --force-with-lease origin "$GITHUB_SHA:refs/heads/gh-pages"
           remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
           test "$remote_sha" = "$GITHUB_SHA"
-          echo 'SOURCE_SYNC_ONLY: exact gh-pages source is synchronized. GITHUB_TOKEN pushes do not trigger GitHub Pages builds; live deployment is verified separately on real page_build events.'
+          echo 'SOURCE_SYNC_ONLY: exact approved gh-pages source is synchronized; live deployment is verified separately.'
