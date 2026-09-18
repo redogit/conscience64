@@ -59,8 +59,11 @@ assert.match(liveWorkflow, /node tools\/check_public_reference_aliases\.mjs/, 'l
 assert.match(liveWorkflow, /node tools\/check_public_routes\.mjs/, 'live verifier must check the complete canonical public route inventory');
 
 assert.match(workflow, /research\/federation\/\*\*/, 'Pages source sync must run when a federation pointer or observation page changes');
+assert.match(workflow, /\.github\/workflows\/pages-live-alias\.yml/, 'Pages source sync must run when the live verifier changes so the merged automatic path is re-exercised');
 const redogitFederationTriggers = redogitWorkflow.match(/research\/federation\/\*\*/g) ?? [];
 assert.ok(redogitFederationTriggers.length >= 2, 'REDOGIT verification must run for federation changes on both push and pull_request');
+const redogitLiveVerifierTriggers = redogitWorkflow.match(/\.github\/workflows\/pages-live-alias\.yml/g) ?? [];
+assert.ok(redogitLiveVerifierTriggers.length >= 2, 'REDOGIT verification must independently check live-verifier changes on both push and pull_request');
 
 const routes = await collectPublicRoutes();
 const requiredRoutes = [
