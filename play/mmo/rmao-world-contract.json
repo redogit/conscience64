@@ -71,6 +71,33 @@
     "LOCAL_MULTIPLAYER != SERVER_AUTHORITY",
     "CLIENT_PREDICTION != COMBAT_AUTHORITY",
     "RUN_RESET != HISTORY_ERASURE",
-    "LIMB_REMOVAL_GAMEPLAY != REAL_ANATOMY"
-  ]
+    "LIMB_REMOVAL_GAMEPLAY != REAL_ANATOMY",
+    "SUPER_SERAPHINE_CHARACTER != PRIVATE_PERSON",
+    "SPROUTLING != REAL_CHILD",
+    "TRICKSTER_ROLE != ADMIN_AUTHORITY",
+    "PRESENTATION_SPOOF != SERVER_STATE",
+    "CHAOS != HISTORY_ERASURE"
+  ],
+  "dynamicRmal": {
+    "version": "0.1",
+    "path": "DYNAMIC_RMAL_CHARACTERS.rmal",
+    "status": "reference-projection",
+    "implementationAuthority": "redogit/Other-Projects-/Decision Field MMORPG/DYNAMIC_RMAL_CHARACTERS.rmal"
+  },
+  "characters": {
+    "superSeraphine": {
+      "id": "super-seraphine",
+      "class": "magic-trickster",
+      "anyFictionalForm": true,
+      "anyNonAuthorityRole": true,
+      "authorityCeiling": "game-entity",
+      "privatePerson": false,
+      "familyProxy": false
+    },
+    "sproutling": {
+      "class": "fictional-growth-form",
+      "realAgeMapping": false,
+      "realFamilyLink": false
+    }
+  }
 }
