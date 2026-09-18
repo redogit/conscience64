@@ -203,7 +203,9 @@ jobs:
           fi
 
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force-with-lease origin "$GITHUB_SHA:refs/heads/gh-pages"
+          lease_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
+          test -n "$lease_sha"
+          git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin "$GITHUB_SHA:refs/heads/gh-pages"
           remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
           test "$remote_sha" = "$GITHUB_SHA"
           echo 'SOURCE_SYNC_ONLY: exact approved gh-pages source is synchronized; live deployment is verified separately.'
