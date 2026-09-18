@@ -4,6 +4,10 @@ Privacy-safe universal research space hosted as a static GitHub Pages applicatio
 
 Visible surface: **I / R / P / O**.
 
+## Commercial access boundary
+
+No third-party commercial access is currently authorized for owner-controlled original material unless explicitly granted. Existing MIT-covered `play/` material and any other already-applicable licenses retain their existing terms. See [`COMMERCIAL_ACCESS_POLICY.md`](COMMERCIAL_ACCESS_POLICY.md).
+
 ## September 13–14 consolidation
 
 [`research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md`](research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md) is the current two-day synthesis. It keeps recoverable user directions separate from implemented, verified, proposed, open, and unrecovered state. It is explicitly **not** presented as a byte-perfect transcript.
