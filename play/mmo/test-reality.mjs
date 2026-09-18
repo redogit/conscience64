@@ -14,7 +14,7 @@ assert.match(current, /two additional movement\/reaction activities/i);
 assert.match(current, /LOCAL_SAVE != SERVER_AUTHORITY/);
 assert.match(current, /TEST_CONFIGURED != TEST_OBSERVED_PASSING/);
 assert.match(current, /Not implemented yet/i);
-assert.match(current, /CURRENT\.md → REALITY_CANON\.md/);
+assert.match(current, /CURRENT\.md → RMAO_WORLD_CANON\.md \/ rmao-world-contract\.json → REALITY_CANON\.md/);
 assert.match(canon, /real before it becomes impossible/i);
 assert.match(canon, /OBSERVATION != PROCESSED_SCIENCE_IMAGE != GAME_RECONSTRUCTION/);
 assert.match(canon, /older MMO aesthetic or content note conflicts.*this file wins/is);

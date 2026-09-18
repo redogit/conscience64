@@ -52,9 +52,9 @@ export class ECSWorld {
 }
 
 export function importCurrentGame(){
-  const world=new ECSWorld('conscience64-red-wilds');
-  world.add('world:red-wilds','Identity',{kind:'world',key:'red-wilds'});
-  world.add('world:red-wilds','Boundaries',{...BOUNDARIES,video:VIDEO_BOUNDARY});
+  const world=new ECSWorld('conscience64-rmao-world');
+  world.add('world:rmao-world','Identity',{kind:'world',key:'rmao-world'});
+  world.add('world:rmao-world','Boundaries',{...BOUNDARIES,video:VIDEO_BOUNDARY});
   world.add('player:local','Identity',{kind:'player',key:'local-player'});
   world.add('player:local','PlayerState',freshPlayer());
 
@@ -81,7 +81,7 @@ export function importCurrentGame(){
     const invalidLocations=activities.filter(id=>!w.has(w.get(id,'LocatedAt').placeId,'Place'));
     const emptyPlaces=places.filter(pid=>!activities.some(aid=>w.get(aid,'LocatedAt').placeId===pid));
     const result={ok:places.length===8&&activities.length===12&&invalidLocations.length===0&&emptyPlaces.length===0,placeCount:places.length,activityCount:activities.length,invalidLocations,emptyPlaces};
-    w.add('world:red-wilds','ImportIntegrity',result);
+    w.add('world:rmao-world','ImportIntegrity',result);
     return result;
   },10);
 
@@ -109,7 +109,7 @@ export function importCurrentGame(){
       }
     }
     jobs.sort((a,b)=>a.id.localeCompare(b.id));
-    w.add('world:red-wilds','SceneVideoJobs',{schema:'conscience64.scene-video-jobs/v1',jobs});
+    w.add('world:rmao-world','SceneVideoJobs',{schema:'conscience64.scene-video-jobs/v1',jobs});
     return {jobCount:jobs.length};
   },20);
 
@@ -123,4 +123,4 @@ export function ecsGo(world,index){return setPlayerState(world,goSomewhere(playe
 export function ecsMake(world,name){return setPlayerState(world,addCreation(playerState(world),name));}
 export function ecsNext(world){return setPlayerState(world,nextActivity(playerState(world)));}
 export function ecsAnswer(world,choiceIndex){const out=answerActivity(playerState(world),choiceIndex);setPlayerState(world,out.player);return {...out,player:playerState(world)};}
-export function videoJobs(world){return clone(world.get('world:red-wilds','SceneVideoJobs')?.jobs||[]);}
+export function videoJobs(world){return clone(world.get('world:rmao-world','SceneVideoJobs')?.jobs||[]);}

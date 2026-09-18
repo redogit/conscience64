@@ -3626,14 +3626,18 @@
       ],
       "provenanceStatus": "repository-located",
       "publicationStatus": "public",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [
         "mmo-world-beta"
       ],
-      "successors": [],
+      "successors": [
+        "rmao-world"
+      ],
       "preservationStatus": "located",
       "sourceKinds": [],
-      "notes": []
+      "notes": [
+        "Superseded as current world authority on 2026-09-18 by rmao-world."
+      ]
     },
     {
       "id": "red-wilds-alpha-0-1",
@@ -3643,7 +3647,7 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
@@ -3651,7 +3655,8 @@
         "current-chat-artifact-seed"
       ],
       "notes": [
-        "Playable alpha release artifact."
+        "Playable alpha release artifact.",
+        "Preserved predecessor artifact; current world authority is rmao-world."
       ]
     },
     {
@@ -3662,14 +3667,16 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "current-chat-artifact-seed"
       ],
-      "notes": []
+      "notes": [
+        "Preserved predecessor artifact; current world authority is rmao-world."
+      ]
     },
     {
       "id": "red-wilds-companion-visual-v2",
@@ -3679,14 +3686,16 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "current-chat-artifact-seed"
       ],
-      "notes": []
+      "notes": [
+        "Preserved predecessor artifact; current world authority is rmao-world."
+      ]
     },
     {
       "id": "red-wilds-companion-visual-v3",
@@ -3696,14 +3705,16 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "current-chat-artifact-seed"
       ],
-      "notes": []
+      "notes": [
+        "Preserved predecessor artifact; current world authority is rmao-world."
+      ]
     },
     {
       "id": "red-wilds-ecs-media-corpus",
@@ -3713,7 +3724,7 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
@@ -3721,7 +3732,8 @@
         "current-chat-artifact-seed"
       ],
       "notes": [
-        "Private generative corpus artifact; raw private sources are not published by this record."
+        "Private generative corpus artifact; raw private sources are not published by this record.",
+        "Preserved predecessor artifact; current world authority is rmao-world."
       ]
     },
     {
@@ -3732,7 +3744,7 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
@@ -3740,7 +3752,8 @@
         "current-chat-artifact-seed"
       ],
       "notes": [
-        "Generated visual concept bundle; member-level recovery remains separate."
+        "Generated visual concept bundle; member-level recovery remains separate.",
+        "Preserved predecessor artifact; current world authority is rmao-world."
       ]
     },
     {
@@ -3751,7 +3764,7 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
@@ -3759,7 +3772,8 @@
         "current-chat-artifact-seed"
       ],
       "notes": [
-        "Image mutation/permutation/poly-parent recombination experiment."
+        "Image mutation/permutation/poly-parent recombination experiment.",
+        "Preserved predecessor artifact; current world authority is rmao-world."
       ]
     },
     {
@@ -3770,14 +3784,16 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "current-chat-artifact-seed"
       ],
-      "notes": []
+      "notes": [
+        "Preserved predecessor artifact; current world authority is rmao-world."
+      ]
     },
     {
       "id": "red-wilds-pil-variants",
@@ -3787,14 +3803,16 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "current-chat-artifact-seed"
       ],
-      "notes": []
+      "notes": [
+        "Preserved predecessor artifact; current world authority is rmao-world."
+      ]
     },
     {
       "id": "red-wilds-three-perspective-contract",
@@ -3804,7 +3822,7 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
@@ -3813,7 +3831,8 @@
       ],
       "notes": [
         "Exactly three synchronized viewpoints: Player POV, Character View, World View.",
-        "VIEWPOINT_CHANGE != WORLD_STATE_CHANGE"
+        "VIEWPOINT_CHANGE != WORLD_STATE_CHANGE",
+        "Preserved predecessor artifact; current world authority is rmao-world."
       ]
     },
     {
@@ -3824,14 +3843,16 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "current-chat-artifact-seed"
       ],
-      "notes": []
+      "notes": [
+        "Preserved predecessor artifact; current world authority is rmao-world."
+      ]
     },
     {
       "id": "red-wilds-video-ingest-v4",
@@ -3841,7 +3862,7 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
@@ -3849,7 +3870,8 @@
         "current-chat-artifact-seed"
       ],
       "notes": [
-        "Video-derived generative-material and mutation batch; source filenames remain private."
+        "Video-derived generative-material and mutation batch; source filenames remain private.",
+        "Preserved predecessor artifact; current world authority is rmao-world."
       ]
     },
     {
@@ -3860,14 +3882,16 @@
       "sourceLocations": [],
       "provenanceStatus": "known-from-current-chat",
       "publicationStatus": "unresolved",
-      "state": "current",
+      "state": "predecessor",
       "predecessors": [],
       "successors": [],
       "preservationStatus": "must-locate-or-retain-unresolved",
       "sourceKinds": [
         "current-chat-artifact-seed"
       ],
-      "notes": []
+      "notes": [
+        "Preserved predecessor artifact; current world authority is rmao-world."
+      ]
     },
     {
       "id": "redline-character-cooperation",
@@ -4078,6 +4102,32 @@
       ],
       "notes": [
         "Package identity; external Swagger dependency remained absent in the inspected archive."
+      ]
+    },
+    {
+      "id": "rmao-world",
+      "canonicalName": "Ripping Many Arms Off",
+      "aliases": [
+        "Conscience64 MMO RPG",
+        "RMAO"
+      ],
+      "domain": "game",
+      "sourceLocations": [
+        "play/mmo/",
+        "play/mmo/RMAO_WORLD_CANON.md",
+        "play/mmo/rmao-world-contract.json"
+      ],
+      "provenanceStatus": "repository-located",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [
+        "red-wilds"
+      ],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [],
+      "notes": [
+        "Massive 3D roguelike MMORPG successor target; current 2D clients remain transition/predecessor implementations until promotion gates pass."
       ]
     },
     {

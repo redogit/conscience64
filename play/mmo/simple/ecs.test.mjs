@@ -7,7 +7,7 @@ import {
 } from './ecs.mjs';
 
 const world=initializeECS();
-const integrity=world.get('world:red-wilds','ImportIntegrity');
+const integrity=world.get('world:rmao-world','ImportIntegrity');
 assert.equal(integrity.ok,true);
 assert.equal(integrity.placeCount,8);
 assert.equal(integrity.activityCount,12);

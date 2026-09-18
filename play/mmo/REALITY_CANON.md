@@ -4,6 +4,10 @@
 **Applies to:** `play/mmo/` world presentation, activity writing, plug-in examples, release review, and future game art.  
 **Precedence:** when an older MMO aesthetic or content note conflicts with this file, this file wins. Historical files remain preserved as predecessor state; they are not rewritten into having always used this direction.
 
+## System-canon relation
+
+`RMAO_WORLD_CANON.md` controls the successor world/system target. This file still controls grounded visual and reality presentation. The successor may be violent and impossible while materials, scale, lighting, provenance, and the observation-vs-fiction boundary remain explicit.
+
 ## Core direction
 
 The world should feel **real before it becomes impossible**.
@@ -128,7 +132,7 @@ Do not fake or imply access to facts the game does not have.
 
 ## Release invariant
 
-For `RED WILDS 1.0`, every major world surface should answer four questions:
+For `RIPPING MANY ARMS OFF 1.0`, every major world surface should answer four questions:
 
 1. What ordinary place or activity anchors this scene?
 2. Which materials/light/physical cues make it believable?

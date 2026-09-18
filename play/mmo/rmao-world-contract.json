@@ -1,0 +1,76 @@
+{
+  "schema": "conscience64.rmao-world/v1",
+  "worldId": "rmao-world",
+  "displayName": "Ripping Many Arms Off",
+  "release": "RIPPING MANY ARMS OFF 1.0",
+  "genre": [
+    "massive-3d-world",
+    "roguelike",
+    "mmorpg"
+  ],
+  "predecessor": {
+    "status": "superseded-current-authority",
+    "legacyWorldId": "red-wilds"
+  },
+  "spatial": {
+    "dimensions": 3,
+    "hierarchy": [
+      "world",
+      "region",
+      "sector",
+      "chunk",
+      "cell",
+      "entity"
+    ],
+    "deterministic": true,
+    "chunkStreamingRequired": true,
+    "largeCoordinatePrecisionRequired": true
+  },
+  "roguelike": {
+    "runIdRequired": true,
+    "runSeedRequired": true,
+    "stateScopes": [
+      "run",
+      "player-persistent",
+      "world-persistent",
+      "ephemeral"
+    ],
+    "historyErasureOnRunReset": false
+  },
+  "limbGraph": {
+    "arbitraryArmCount": true,
+    "states": [
+      "attached",
+      "damaged",
+      "disabled",
+      "detached"
+    ],
+    "capabilityConsequencesRequired": true,
+    "nonGraphicPresentationRequired": true
+  },
+  "authority": {
+    "serverRequiredForLiveMMORPG": true,
+    "serverOwns": [
+      "identity",
+      "shard-membership",
+      "combat-resolution",
+      "limb-state",
+      "inventory",
+      "loot",
+      "persistent-progression",
+      "world-persistence"
+    ],
+    "clientPredictionIsAuthority": false
+  },
+  "currentImplementation": {
+    "massive3DVerified": false,
+    "authoritativeMMOVerified": false
+  },
+  "invariants": [
+    "CURRENT_2D_PROTOTYPE != MASSIVE_3D_WORLD",
+    "LOCAL_MULTIPLAYER != SERVER_AUTHORITY",
+    "CLIENT_PREDICTION != COMBAT_AUTHORITY",
+    "RUN_RESET != HISTORY_ERASURE",
+    "LIMB_REMOVAL_GAMEPLAY != REAL_ANATOMY"
+  ]
+}
