@@ -49,6 +49,7 @@ on:
       - 'tools/check_public_routes.mjs'
       - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
+      - '.github/workflows/pages-live-alias.yml'
   workflow_dispatch:
 
 permissions:
