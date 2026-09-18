@@ -64,6 +64,9 @@ const redogitFederationTriggers = redogitWorkflow.match(/research\/federation\/\
 assert.ok(redogitFederationTriggers.length >= 2, 'REDOGIT verification must run for federation changes on both push and pull_request');
 const redogitLiveVerifierTriggers = redogitWorkflow.match(/\.github\/workflows\/pages-live-alias\.yml/g) ?? [];
 assert.ok(redogitLiveVerifierTriggers.length >= 2, 'REDOGIT verification must independently check live-verifier changes on both push and pull_request');
+const redogitWorkflowWildcards = redogitWorkflow.match(/\.github\/workflows\/\*\*/g) ?? [];
+assert.ok(redogitWorkflowWildcards.length >= 2, 'REDOGIT verification must run for every workflow carrier change on both push and pull_request');
+assert.match(redogitWorkflow, /Psych\.parse_file/, 'REDOGIT must parse workflow YAML carriers before semantic contract checks');
 
 const routes = await collectPublicRoutes();
 const requiredRoutes = [
