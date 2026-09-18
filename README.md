@@ -1,5 +1,8 @@
 # Conscience64
 
+> **Publication hold — 2026-09-18:** the GitHub Pages projection is intentionally reduced to a privacy holding surface. Links below describe project routes/targets but are not currently an authorization to publish those surfaces. Public release requires exact-revision owner approval through `PUBLIC_RELEASE_APPROVAL.json`.
+
+
 Privacy-safe universal research space hosted as a static GitHub Pages application.
 
 Visible surface: **I / R / P / O**.
