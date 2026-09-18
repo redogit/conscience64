@@ -37,7 +37,9 @@ assert.match(
   /github\.event_name != 'workflow_run' \|\| github\.event\.workflow_run\.conclusion == 'success'/,
   'automatic live verification must execute only after successful source sync'
 );
-assert.match(liveWorkflow, /permissions:\s*\{\}/, 'live verifier must retain zero repository permissions');
+assert.match(liveWorkflow, /permissions:\s*\{\}/, 'live verifier must retain zero configured repository permissions');
+assert.doesNotMatch(liveWorkflow, /pages:\s*(read|write)/, 'live verifier must not gain Pages permission');
+assert.doesNotMatch(liveWorkflow, /actions:\s*write/, 'live verifier must not gain Actions write permission');
 assert.match(
   liveWorkflow,
   /EXPECTED_SHA:\s*\$\{\{ github\.event_name == 'workflow_run' && github\.event\.workflow_run\.head_sha \|\| '' \}\}/,
@@ -47,7 +49,8 @@ assert.match(liveWorkflow, /ref="\$\{EXPECTED_SHA:-main\}"/, 'automatic verifica
 assert.match(liveWorkflow, /git fetch --depth=1 origin "\$ref"/, 'live verification must materialize only the selected intended public surface');
 assert.match(liveWorkflow, /pages\/deployments\/\$\{EXPECTED_SHA\}/, 'live verifier must observe the exact commit-scoped Pages deployment');
 assert.match(liveWorkflow, /X-GitHub-Api-Version:\s*2026-03-10/, 'live verifier must pin the current GitHub REST API version');
-assert.doesNotMatch(liveWorkflow, /Authorization:\s*Bearer/, 'live verifier must observe this public Pages deployment without repository credentials');
+assert.match(liveWorkflow, /GITHUB_TOKEN:\s*\$\{\{ github\.token \}\}/, 'live verifier may authenticate the public deployment-status observation only with its zero-permission workflow token');
+assert.match(liveWorkflow, /Authorization:\s*Bearer \$\{GITHUB_TOKEN\}/, 'deployment-status observation must use authenticated rate-limit identity');
 assert.match(liveWorkflow, /test "\$deployment_status" = "succeed"/, 'live verifier must fail closed unless the exact Pages deployment succeeds');
 const ghPagesReads = liveWorkflow.match(/git ls-remote origin refs\/heads\/gh-pages/g) ?? [];
 assert.ok(ghPagesReads.length >= 2, 'live verifier must bind gh-pages to the expected SHA before and after deployment observation');
@@ -80,4 +83,4 @@ const requiredRoutes = [
 for (const route of requiredRoutes) assert.ok(routes.includes(route), `canonical public route inventory missing ${route || '/'}`);
 assert.ok(routes.length >= 30, `canonical public route inventory is unexpectedly narrow: ${routes.length}`);
 
-console.log(`PASS Pages boundary contract: exact source sync, repo-owned completion handoff, zero-permission exact deployment observation, federation-trigger coverage, and ${routes.length} canonical public routes`);
+console.log(`PASS Pages boundary contract: exact source sync, repo-owned completion handoff, authenticated zero-permission exact deployment observation, federation-trigger coverage, and ${routes.length} canonical public routes`);
