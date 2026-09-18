@@ -1,10 +1,10 @@
 name: Verify live Pages surface
 
 on:
-  page_build:
   workflow_run:
-    workflows: ["pages build and deployment"]
+    workflows: ["Sync Conscience64 Pages source"]
     types: [completed]
+    branches: [main]
   pull_request:
     paths:
       - '.github/workflows/pages-live-alias.yml'
@@ -26,22 +26,96 @@ jobs:
   verify-live-surface:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    env:
+      EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
     steps:
-      - name: Materialize current intended public surface
+      - name: Materialize intended public surface
         shell: bash
         run: |
           set -euo pipefail
           git init "$GITHUB_WORKSPACE"
           cd "$GITHUB_WORKSPACE"
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
-          git fetch --depth=1 origin main
+
+          ref="${EXPECTED_SHA:-main}"
+          if [ -n "$EXPECTED_SHA" ]; then
+            [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
+          fi
+
+          git fetch --depth=1 origin "$ref"
           git checkout --detach FETCH_HEAD
+
+          intended_sha="$(git rev-parse HEAD)"
+          if [ -n "$EXPECTED_SHA" ]; then
+            test "$intended_sha" = "$EXPECTED_SHA"
+          fi
+          echo "INTENDED_SHA=$intended_sha" >> "$GITHUB_ENV"
+
+      - name: Require exact published source before deployment observation
+        if: ${{ github.event_name == 'workflow_run' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
+          remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
+          test "$remote_sha" = "$EXPECTED_SHA"
+
+      - name: Wait for exact Pages deployment to succeed
+        if: ${{ github.event_name == 'workflow_run' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          response="$RUNNER_TEMP/pages-deployment.json"
+          deployment_status=""
+
+          for attempt in $(seq 1 90); do
+            http_code="$(
+              curl --silent --show-error --location \
+                --output "$response" \
+                --write-out '%{http_code}' \
+                -H "Accept: application/vnd.github+json" \
+                -H "X-GitHub-Api-Version: 2026-03-10" \
+                "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/${EXPECTED_SHA}"
+            )"
+
+            case "$http_code" in
+              200)
+                deployment_status="$(
+                  node -e 'const fs=require("fs"); const v=JSON.parse(fs.readFileSync(process.argv[1],"utf8")); process.stdout.write(typeof v.status==="string" ? v.status : "");' "$response"
+                )"
+                if [ "$deployment_status" = "succeed" ]; then
+                  break
+                fi
+                ;;
+              404)
+                deployment_status=""
+                ;;
+              *)
+                echo "Unexpected Pages deployment-status HTTP code: $http_code" >&2
+                cat "$response" >&2 || true
+                exit 1
+                ;;
+            esac
+
+            sleep 2
+          done
+
+          test "$deployment_status" = "succeed"
+
+      - name: Reconfirm exact published source after deployment observation
+        if: ${{ github.event_name == 'workflow_run' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
+          remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
+          test "$remote_sha" = "$EXPECTED_SHA"
 
       - name: Verify declared aliases and canonical routes at the network edge
         shell: bash
         run: |
           set -euo pipefail
           cd "$GITHUB_WORKSPACE"
-          intended_sha="$(git rev-parse HEAD)"
-          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$intended_sha" node tools/check_public_reference_aliases.mjs
-          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$intended_sha" node tools/check_public_routes.mjs
+          test "$(git rev-parse HEAD)" = "$INTENDED_SHA"
+          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$INTENDED_SHA" node tools/check_public_reference_aliases.mjs
+          PAGES_URL='https://redogit.github.io/conscience64/' GITHUB_SHA="$INTENDED_SHA" node tools/check_public_routes.mjs
