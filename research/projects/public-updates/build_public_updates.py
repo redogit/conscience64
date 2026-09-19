@@ -102,6 +102,11 @@ def build_snapshot(repo_root: Path, admissions_path: Path) -> dict:
         classification = entry["classification"]
         if classification not in ALLOWED_CLASSIFICATIONS:
             raise PublicationError(f"admission {index}: unknown classification {classification!r}")
+        derived_from_private_history = entry.get("derived_from_private_history", False)
+        if not isinstance(derived_from_private_history, bool):
+            raise PublicationError(f"admission {index}: derived_from_private_history must be boolean")
+        if classification == "public" and derived_from_private_history:
+            raise PublicationError(f"admission {index}: public admission derived from private history is forbidden")
         if "record" not in entry:
             raise PublicationError(f"admission {index}: missing record path")
         record_rel = safe_relative(entry["record"], field="record")
