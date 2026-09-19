@@ -39,3 +39,16 @@ DESIGN != IMPLEMENTATION
 SOURCE_GRAPH_MEASURED != PUBLICATION_APPROVED
 POINTER != RESEARCH_ADMISSION
 ```
+
+
+## Private-history boundary
+
+The current local privacy rule also applies to recovery/navigation work:
+
+```text
+PRIVATE_HISTORY != PUBLIC_EVIDENCE
+LEARNED_METHOD != DISCLOSURE
+DERIVED_FROM_PRIVATE_HISTORY != SAFE_TO_PUBLISH
+```
+
+The Libraries-of-Libraries bridge may preserve that the boundary exists; it must not export the protected narrative behind it.
