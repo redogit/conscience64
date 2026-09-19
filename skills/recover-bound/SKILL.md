@@ -2,7 +2,7 @@
 name: recover-bound
 title: Recover & Bound
 description: Recover the smallest truthful current state, bind authority/provenance/evidence scope, and identify the next discriminating question before material work begins.
-version: 1.1.0
+version: 1.2.0
 status: active-project-skill
 society_status: advisory-structure; does not canonically activate Operator Moonshot Society
 ---
@@ -62,6 +62,32 @@ where `G` = goal, `A` = affected reality, `O` = obligations, `C` = constraints/c
 11. **Gate applicability explicitly** — before turning a discovered helper into an Operator proposal, require an explicit applicability contract covering the Situation's required capabilities, preserved obligations, carrier availability, evidence kinds, authority/scope limits, cost, accessibility, and privacy as applicable. Missing contract data remains `UNRESOLVED`.
 12. **Stop at missing evidence** — do not manufacture dependencies that belong to a human, sensor, external source, or unavailable carrier.
 13. **Emit the smallest next-state packet** — enough to begin bounded work, plus pointers to deeper material.
+
+## Private language-learning boundary
+
+When historical or personal material is explicitly private and supplied only so the system can learn how the user framed and solved problems, recovery must preserve the privacy boundary before extracting method.
+
+Allowed use is limited to abstract problem-solving structure: distinctions, search strategy, testing/repair sequence, protected obligations, and reusable language structure that no longer carries private facts.
+
+For that material:
+
+- do not quote it into project or public artifacts;
+- do not correlate identities from names, handles, relationships, or associations;
+- do not profile people from tone, history, language, or behavior;
+- do not promote the private history as project evidence;
+- do not export names, handles, links, relationships, or private events;
+- do not treat a rewritten or sanitized private narrative as newly public;
+- re-ground any later project claim in current authorized project/public evidence.
+
+Required distinctions:
+
+- `PRIVATE_HISTORY != PUBLIC_EVIDENCE`
+- `PRIVATE_HISTORY != PROJECT_ARTIFACT`
+- `LANGUAGE_PATTERN != PERSONAL_PROFILE`
+- `LEARNED_METHOD != DISCLOSURE`
+- `DERIVED_FROM_PRIVATE_HISTORY != SAFE_TO_PUBLISH`
+
+See `research/history/PRIVATE_LANGUAGE_LEARNING_BOUNDARY.md`.
 
 ## Semantic helper routing
 
