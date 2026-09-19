@@ -374,6 +374,86 @@ export async function collectImportMetaUrlPublicAssets() {
     .sort((a, b) => a.localeCompare(b));
 }
 
+
+async function resolveLiteralWorkerAsset(source, constructorName, raw) {
+  const value = String(raw ?? '').trim();
+  if (!value || value.startsWith('#') || value.startsWith('//')) return null;
+  if (/^(?:https?:|data:|mailto:|tel:|javascript:|blob:)/i.test(value)) return null;
+
+  const pathOnly = value.split('#', 1)[0].split('?', 1)[0];
+  if (!pathOnly) return null;
+
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathOnly);
+  } catch {
+    throw new Error(`invalid URL encoding in literal ${constructorName} asset: ${value} from ${source}`);
+  }
+
+  const sourcePath = resolve(repoRoot, source);
+  let targetPath;
+  if (decoded.startsWith('/conscience64/')) {
+    targetPath = resolve(repoRoot, decoded.slice('/conscience64/'.length));
+  } else {
+    if (decoded.startsWith('/')) {
+      throw new Error(`project-breaking root-absolute literal ${constructorName} asset ${value} from ${source}`);
+    }
+    targetPath = resolve(dirname(sourcePath), decoded);
+  }
+
+  const repoRelative = toPosix(relative(repoRoot, targetPath));
+  if (repoRelative === '..' || repoRelative.startsWith('../')) {
+    throw new Error(`literal ${constructorName} asset escapes repository: ${value} from ${source}`);
+  }
+
+  let info;
+  try {
+    info = await stat(targetPath);
+  } catch {
+    throw new Error(`missing literal ${constructorName} asset ${value} from ${source} -> ${repoRelative || '/'}`);
+  }
+
+  if (info.isDirectory()) throw new Error(`literal ${constructorName} asset resolves to a directory: ${value} from ${source}`);
+  if (!info.isFile()) throw new Error(`literal ${constructorName} asset is not a regular file: ${repoRelative}`);
+
+  return Object.freeze({
+    source,
+    asset: repoRelative,
+    kind: constructorName === 'SharedWorker' ? 'js-shared-worker' : 'js-worker',
+    raw: value
+  });
+}
+
+export async function collectLiteralWorkerPublicAssetReferences() {
+  const closure = await collectStaticPublicAssetDependencyClosure();
+  const importMetaAssets = await collectImportMetaUrlPublicAssets();
+  const sources = [...new Set([...closure.roots, ...closure.dependencies, ...importMetaAssets])]
+    .filter(source => /\.(?:js|mjs)$/i.test(source))
+    .sort((a, b) => a.localeCompare(b));
+
+  const records = [];
+  for (const source of sources) {
+    const text = await readFile(resolve(repoRoot, source), 'utf8');
+    for (const match of text.matchAll(/\bnew\s+(Worker|SharedWorker)\s*\(\s*["']([^"']+)["']/g)) {
+      const record = await resolveLiteralWorkerAsset(source, match[1], match[2]);
+      if (record) records.push(record);
+    }
+  }
+
+  records.sort((a, b) =>
+    a.asset.localeCompare(b.asset) ||
+    a.source.localeCompare(b.source) ||
+    a.kind.localeCompare(b.kind) ||
+    a.raw.localeCompare(b.raw)
+  );
+  return records;
+}
+
+export async function collectLiteralWorkerPublicAssets() {
+  return [...new Set((await collectLiteralWorkerPublicAssetReferences()).map(record => record.asset))]
+    .sort((a, b) => a.localeCompare(b));
+}
+
 export async function collectPublicRoutes() {
   const routes = new Set();
   addHtmlRoute(routes, 'index.html');
