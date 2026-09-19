@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectPublicRoutes, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
+import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectPublicRoutes, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const routes = await collectPublicRoutes();
@@ -40,6 +40,24 @@ for (const route of routes) {
 }
 assert.equal(publicRouteBytesEqual(Buffer.from('exact'), Buffer.from('exact')), true, 'equal route bytes must close');
 assert.equal(publicRouteBytesEqual(Buffer.from('exact'), Buffer.from('stale')), false, 'stale 200 bytes must remain unresolved');
+
+const assetReferences = await collectDirectPublicAssetReferences();
+const directAssets = await collectDirectPublicAssets();
+assert.ok(assetReferences.length > 0, 'expected canonical HTML to expose direct local non-HTML asset references');
+assert.ok(directAssets.length > 0, 'expected a non-empty direct public asset inventory');
+assert.equal(new Set(directAssets).size, directAssets.length, 'direct public asset inventory must be deduplicated');
+assert.deepEqual([...directAssets].sort((a, b) => a.localeCompare(b)), directAssets, 'direct public asset inventory must be deterministic');
+for (const record of assetReferences) {
+  assert.ok(routeSet.has(record.route), `asset provenance route must be canonical: ${record.route || '/'}`);
+  assert.equal(typeof record.raw, 'string');
+  assert.match(record.attribute, /^(?:href|src|poster|srcset)$/);
+  assert.ok(directAssets.includes(record.asset), `asset record must appear in direct inventory: ${record.asset}`);
+}
+for (const asset of directAssets) {
+  assert.ok(!/\.html?$/i.test(asset), `direct asset inventory must exclude HTML navigation: ${asset}`);
+  const info = await stat(resolve(repoRoot, asset));
+  assert.ok(info.isFile(), `direct asset must resolve to a repository file: ${asset}`);
+}
 
 const federationPointerPath = resolve(repoRoot, 'research/federation/s1-models.json');
 const federationPagePath = resolve(repoRoot, 'research/federation/s1-models/index.html');
