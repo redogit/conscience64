@@ -11,19 +11,34 @@ Visible surface: **I / R / P / O**.
 
 No third-party commercial access is currently authorized for owner-controlled original material unless explicitly granted. Existing MIT-covered `play/` material and any other already-applicable licenses retain their existing terms. See [`COMMERCIAL_ACCESS_POLICY.md`](COMMERCIAL_ACCESS_POLICY.md).
 
+## September 19, 2026 — Libraries of Libraries bridge
+
+Conscience64 now exposes a local, navigation-only bridge to the [Libraries of Libraries successor](https://github.com/redogit/redogit/blob/main/LIBRARIES_OF_LIBRARIES_RMAL_BUILD_2026-09-19.md).
+
+Local pointer: [`research/bridges/libraries-of-libraries/README.md`](research/bridges/libraries-of-libraries/README.md)
+
+```text
+CONNECTION != OWNERSHIP
+POINTER != RESEARCH_ADMISSION
+RELATION != AUTHORITY_TRANSFER
+```
+
+Conscience64 keeps its own research authority, evidence, claim ceilings, runtime state, and privacy boundaries. Historical files and folders using federation terminology remain preserved as historical provenance rather than being silently rewritten.
+
 ## September 13–14 consolidation
 
 [`research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md`](research/updates/2026-09-13-14/INPUT_AND_STATE_LEDGER.md) is the current two-day synthesis. It keeps recoverable user directions separate from implemented, verified, proposed, open, and unrecovered state. It is explicitly **not** presented as a byte-perfect transcript.
 
 The forward-only project manifest is [`research/projects/CURRENT.json`](research/projects/CURRENT.json). Historical/browser snapshots remain preserved rather than rewritten to look current.
 
-## External research + production federation bridge
+## External project bridge
 
-The [redogit Research + Production Federation bridge](research/bridges/redogit-federation/) connects this repository to the public federated history/research/production/play/teaching maps. Its [active-project registry](research/bridges/redogit-federation/active-projects.json) exposes only Conscience64 work whose current role is active/current/deployed or whose public/local implementation is currently runnable. Preserved lineages remain preserved, and deliberately unlisted surfaces remain unlisted.
+The existing [historical redogit bridge](research/bridges/redogit-federation/) retains its path for provenance. Its [active-project registry](research/bridges/redogit-federation/active-projects.json) exposes only Conscience64 work whose current role is active/current/deployed or whose public/local implementation is currently runnable. Preserved lineages remain preserved, and deliberately unlisted surfaces remain unlisted.
 
-It is **navigation only**: it does not admit external claims into the Conscience64 research registry, world/game canon, Context Horizon authority, or evidence ledger.
+The current successor pointer is [Libraries of Libraries](research/bridges/libraries-of-libraries/README.md). Both surfaces are **navigation only**: neither admits external claims into the Conscience64 research registry, world/game canon, Context Horizon authority, or evidence ledger.
 
-`FEDERATION_POINTER != RESEARCH_ADMISSION` · `CONNECTED != MERGED` · `UNLISTED_ACTIVE != PUBLICLY_LISTED`
+`POINTER != RESEARCH_ADMISSION` · `CONNECTED != MERGED` · `UNLISTED_ACTIVE != PUBLICLY_LISTED`
+
 
 ## MMO World Beta
 
