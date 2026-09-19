@@ -23,6 +23,8 @@ Two evidence classes remain separate:
 
 `DESIGN != IMPLEMENTATION` · `SOURCE_GRAPH_MEASURED != PUBLICATION_APPROVED` · `ZERO_RESULT != UNIVERSAL_ABSENCE`
 
+A separate active privacy rule now enforces `PRIVATE_HISTORY != PUBLIC_EVIDENCE`: private historical material may inform abstract method internally, but it cannot be quoted, identity-correlated, profiled, promoted as project evidence, or admitted publicly when marked `derived_from_private_history: true`.
+
 ## September 19, 2026 — Libraries of Libraries bridge
 
 Conscience64 now exposes a local, navigation-only bridge to the [Libraries of Libraries successor](https://github.com/redogit/redogit/blob/main/LIBRARIES_OF_LIBRARIES_RMAL_BUILD_2026-09-19.md).
