@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
+import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, collectSecondHopPublicAssetDependencies, collectSecondHopPublicAssetDependencyReferences, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const routes = await collectPublicRoutes();
@@ -74,6 +74,20 @@ for (const record of oneHopReferences) {
 for (const dependency of oneHopDependencies) {
   const info = await stat(resolve(repoRoot, dependency));
   assert.ok(info.isFile(), `one-hop dependency must resolve to a repository file: ${dependency}`);
+}
+
+const secondHopReferences = await collectSecondHopPublicAssetDependencyReferences();
+const secondHopDependencies = await collectSecondHopPublicAssetDependencies();
+assert.equal(new Set(secondHopDependencies).size, secondHopDependencies.length, 'second-hop dependency inventory must be deduplicated');
+assert.deepEqual([...secondHopDependencies].sort((a, b) => a.localeCompare(b)), secondHopDependencies, 'second-hop dependency inventory must be deterministic');
+for (const record of secondHopReferences) {
+  assert.ok(oneHopDependencies.includes(record.source), `second-hop source must be a first-hop dependency: ${record.source}`);
+  assert.ok(secondHopDependencies.includes(record.dependency), `second-hop record must appear in inventory: ${record.dependency}`);
+  assert.match(record.kind, /^(?:js-import|js-dynamic-import|css-url|css-import)$/);
+}
+for (const dependency of secondHopDependencies) {
+  const info = await stat(resolve(repoRoot, dependency));
+  assert.ok(info.isFile(), `second-hop dependency must resolve to a repository file: ${dependency}`);
 }
 
 const federationPointerPath = resolve(repoRoot, 'research/federation/s1-models.json');
@@ -170,4 +184,4 @@ for (const route of routes) {
 }
 
 assert.ok(localReferences > 0, 'expected public HTML to contain local href/src references');
-console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, and ${oneHopDependencies.length} unique one-hop dependencies resolve in-repository; S'1 federation pointer remains navigation-only`);
+console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, ${oneHopDependencies.length} unique one-hop dependencies, ${secondHopReferences.length} second-hop dependency references, and ${secondHopDependencies.length} unique second-hop dependencies resolve in-repository; S'1 federation pointer remains navigation-only`);
