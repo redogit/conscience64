@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectPublicRoutes, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
+import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const routes = await collectPublicRoutes();
@@ -57,6 +57,23 @@ for (const asset of directAssets) {
   assert.ok(!/\.html?$/i.test(asset), `direct asset inventory must exclude HTML navigation: ${asset}`);
   const info = await stat(resolve(repoRoot, asset));
   assert.ok(info.isFile(), `direct asset must resolve to a repository file: ${asset}`);
+}
+
+const oneHopReferences = await collectOneHopPublicAssetDependencyReferences();
+const oneHopDependencies = await collectOneHopPublicAssetDependencies();
+assert.ok(oneHopReferences.length > 0, 'expected direct JS/CSS assets to expose at least one static one-hop dependency');
+assert.ok(oneHopDependencies.length > 0, 'expected a non-empty one-hop public asset dependency inventory');
+assert.equal(new Set(oneHopDependencies).size, oneHopDependencies.length, 'one-hop dependency inventory must be deduplicated');
+assert.deepEqual([...oneHopDependencies].sort((a, b) => a.localeCompare(b)), oneHopDependencies, 'one-hop dependency inventory must be deterministic');
+for (const record of oneHopReferences) {
+  assert.ok(directAssets.includes(record.source), `one-hop dependency source must be a direct asset: ${record.source}`);
+  assert.ok(oneHopDependencies.includes(record.dependency), `one-hop dependency record must appear in inventory: ${record.dependency}`);
+  assert.match(record.kind, /^(?:js-import|js-dynamic-import|css-url|css-import)$/);
+  assert.equal(typeof record.raw, 'string');
+}
+for (const dependency of oneHopDependencies) {
+  const info = await stat(resolve(repoRoot, dependency));
+  assert.ok(info.isFile(), `one-hop dependency must resolve to a repository file: ${dependency}`);
 }
 
 const federationPointerPath = resolve(repoRoot, 'research/federation/s1-models.json');
@@ -153,4 +170,4 @@ for (const route of routes) {
 }
 
 assert.ok(localReferences > 0, 'expected public HTML to contain local href/src references');
-console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, and ${directAssets.length} unique direct assets resolve in-repository; S'1 federation pointer remains navigation-only`);
+console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, and ${oneHopDependencies.length} unique one-hop dependencies resolve in-repository; S'1 federation pointer remains navigation-only`);

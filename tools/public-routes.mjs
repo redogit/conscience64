@@ -137,6 +137,97 @@ export async function collectDirectPublicAssets() {
     .sort((a, b) => a.localeCompare(b));
 }
 
+async function resolveOneHopDependency(source, kind, raw, requireExplicitRelative) {
+  const value = String(raw ?? '').trim();
+  if (!value || value.startsWith('#') || value.startsWith('//')) return null;
+  if (/^(?:https?:|data:|mailto:|tel:|javascript:|blob:)/i.test(value)) return null;
+  if (requireExplicitRelative && !value.startsWith('.') && !value.startsWith('/conscience64/')) return null;
+
+  const pathOnly = value.split('#', 1)[0].split('?', 1)[0];
+  if (!pathOnly) return null;
+
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathOnly);
+  } catch {
+    throw new Error(`invalid URL encoding in one-hop dependency: ${value} from ${source}`);
+  }
+
+  const sourcePath = resolve(repoRoot, source);
+  let targetPath;
+  if (decoded.startsWith('/conscience64/')) {
+    targetPath = resolve(repoRoot, decoded.slice('/conscience64/'.length));
+  } else {
+    if (decoded.startsWith('/')) {
+      throw new Error(`project-breaking root-absolute one-hop dependency ${raw} from ${source}`);
+    }
+    targetPath = resolve(dirname(sourcePath), decoded);
+  }
+
+  const repoRelative = toPosix(relative(repoRoot, targetPath));
+  if (repoRelative === '..' || repoRelative.startsWith('../')) {
+    throw new Error(`one-hop dependency escapes repository: ${raw} from ${source}`);
+  }
+
+  let info;
+  try {
+    info = await stat(targetPath);
+  } catch {
+    throw new Error(`missing one-hop dependency ${raw} from ${source} -> ${repoRelative || '/'}`);
+  }
+  if (info.isDirectory()) throw new Error(`one-hop dependency resolves to a directory: ${raw} from ${source}`);
+  if (!info.isFile()) throw new Error(`one-hop dependency is not a regular file: ${repoRelative}`);
+
+  return Object.freeze({
+    source,
+    dependency: repoRelative,
+    kind,
+    raw: value
+  });
+}
+
+export async function collectOneHopPublicAssetDependencyReferences() {
+  const records = [];
+  for (const source of await collectDirectPublicAssets()) {
+    if (/\.(?:js|mjs)$/i.test(source)) {
+      const text = await readFile(resolve(repoRoot, source), 'utf8');
+
+      for (const match of text.matchAll(/\b(?:import|export)\s+(?:[^'"]*?\s+from\s+)?["']([^"']+)["']/g)) {
+        const record = await resolveOneHopDependency(source, 'js-import', match[1], true);
+        if (record) records.push(record);
+      }
+      for (const match of text.matchAll(/\bimport\s*\(\s*["']([^"']+)["']\s*\)/g)) {
+        const record = await resolveOneHopDependency(source, 'js-dynamic-import', match[1], true);
+        if (record) records.push(record);
+      }
+    } else if (/\.css$/i.test(source)) {
+      const text = await readFile(resolve(repoRoot, source), 'utf8');
+
+      for (const match of text.matchAll(/\burl\(\s*(['"]?)([^'")]+)\1\s*\)/gi)) {
+        const record = await resolveOneHopDependency(source, 'css-url', match[2].trim(), false);
+        if (record) records.push(record);
+      }
+      for (const match of text.matchAll(/@import\s+["']([^"']+)["']/gi)) {
+        const record = await resolveOneHopDependency(source, 'css-import', match[1], false);
+        if (record) records.push(record);
+      }
+    }
+  }
+
+  records.sort((a, b) =>
+    a.dependency.localeCompare(b.dependency) ||
+    a.source.localeCompare(b.source) ||
+    a.kind.localeCompare(b.kind) ||
+    a.raw.localeCompare(b.raw)
+  );
+  return records;
+}
+
+export async function collectOneHopPublicAssetDependencies() {
+  return [...new Set((await collectOneHopPublicAssetDependencyReferences()).map(record => record.dependency))]
+    .sort((a, b) => a.localeCompare(b));
+}
+
 export async function collectPublicRoutes() {
   const routes = new Set();
   addHtmlRoute(routes, 'index.html');
