@@ -81,7 +81,7 @@ Each tool object has exactly these identity-bearing fields:
 
 ## Why explicit stable IDs
 
-Three approaches were considered:
+Two approaches were considered:
 
 ### A. Explicit stable IDs — selected
 
@@ -108,10 +108,6 @@ CONTINUING_OBJECT_ID != STATE_HASH
 ```
 
 Content hashes may still be used later for exact state/version evidence.
-
-### C. UUIDs — not selected
-
-UUIDs would provide opaque stable identifiers but reduce inspectability without solving a problem this small set currently has.
 
 ## Relations are separate objects
 
