@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, collectSecondHopPublicAssetDependencies, collectSecondHopPublicAssetDependencyReferences, collectStaticPublicAssetDependencyClosure, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
+import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, collectSecondHopPublicAssetDependencies, collectSecondHopPublicAssetDependencyReferences, collectImportMetaUrlPublicAssetReferences, collectImportMetaUrlPublicAssets, collectStaticPublicAssetDependencyClosure, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const routes = await collectPublicRoutes();
@@ -118,6 +118,22 @@ for (const dependency of staticClosure.dependencies) {
   assert.ok(info.isFile(), `fixed-point dependency must resolve to a repository file: ${dependency}`);
 }
 
+const importMetaUrlReferences = await collectImportMetaUrlPublicAssetReferences();
+const importMetaUrlAssets = await collectImportMetaUrlPublicAssets();
+assert.equal(new Set(importMetaUrlAssets).size, importMetaUrlAssets.length, 'import.meta.url asset inventory must be deduplicated');
+assert.deepEqual([...importMetaUrlAssets].sort((a, b) => a.localeCompare(b)), importMetaUrlAssets, 'import.meta.url asset inventory must be deterministic');
+const admittedStaticSources = new Set([...directAssets, ...staticClosure.dependencies]);
+for (const record of importMetaUrlReferences) {
+  assert.ok(admittedStaticSources.has(record.source), `import.meta.url source must already be in the closed static public graph: ${record.source}`);
+  assert.equal(record.kind, 'js-import-meta-url');
+  assert.equal(typeof record.raw, 'string');
+  assert.ok(importMetaUrlAssets.includes(record.asset), `import.meta.url record must appear in inventory: ${record.asset}`);
+}
+for (const asset of importMetaUrlAssets) {
+  const info = await stat(resolve(repoRoot, asset));
+  assert.ok(info.isFile(), `import.meta.url asset must resolve to a repository file: ${asset}`);
+}
+
 const federationPointerPath = resolve(repoRoot, 'research/federation/s1-models.json');
 const federationPagePath = resolve(repoRoot, 'research/federation/s1-models/index.html');
 const pointer = JSON.parse(await readFile(federationPointerPath, 'utf8'));
@@ -212,4 +228,4 @@ for (const route of routes) {
 }
 
 assert.ok(localReferences > 0, 'expected public HTML to contain local href/src references');
-console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, ${oneHopDependencies.length} unique one-hop dependencies, ${secondHopReferences.length} second-hop dependency references, ${secondHopDependencies.length} unique second-hop dependencies, and fixed-point static closure spans ${staticClosure.layers.length} layers / ${staticClosure.dependencies.length} unique dependency files; S'1 federation pointer remains navigation-only`);
+console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, ${oneHopDependencies.length} unique one-hop dependencies, ${secondHopReferences.length} second-hop dependency references, ${secondHopDependencies.length} unique second-hop dependencies, and fixed-point static closure spans ${staticClosure.layers.length} layers / ${staticClosure.dependencies.length} unique dependency files, and ${importMetaUrlReferences.length} literal import.meta.url references / ${importMetaUrlAssets.length} unique import.meta.url assets resolve in-repository; S'1 federation pointer remains navigation-only`);

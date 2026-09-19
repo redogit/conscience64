@@ -296,6 +296,84 @@ export async function collectStaticPublicAssetDependencyClosure({ maxDepth = 64 
   throw new Error(`static public asset dependency traversal did not converge within ${maxDepth} layers`);
 }
 
+
+async function resolveImportMetaUrlAsset(source, raw) {
+  const value = String(raw ?? '').trim();
+  if (!value || value.startsWith('#') || value.startsWith('//')) return null;
+  if (/^(?:https?:|data:|mailto:|tel:|javascript:|blob:)/i.test(value)) return null;
+
+  const pathOnly = value.split('#', 1)[0].split('?', 1)[0];
+  if (!pathOnly) return null;
+
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathOnly);
+  } catch {
+    throw new Error(`invalid URL encoding in import.meta.url asset: ${value} from ${source}`);
+  }
+
+  const sourcePath = resolve(repoRoot, source);
+  let targetPath;
+  if (decoded.startsWith('/conscience64/')) {
+    targetPath = resolve(repoRoot, decoded.slice('/conscience64/'.length));
+  } else {
+    if (decoded.startsWith('/')) {
+      throw new Error(`project-breaking root-absolute import.meta.url asset ${value} from ${source}`);
+    }
+    targetPath = resolve(dirname(sourcePath), decoded);
+  }
+
+  const repoRelative = toPosix(relative(repoRoot, targetPath));
+  if (repoRelative === '..' || repoRelative.startsWith('../')) {
+    throw new Error(`import.meta.url asset escapes repository: ${value} from ${source}`);
+  }
+
+  let info;
+  try {
+    info = await stat(targetPath);
+  } catch {
+    throw new Error(`missing import.meta.url asset ${value} from ${source} -> ${repoRelative || '/'}`);
+  }
+
+  if (info.isDirectory()) throw new Error(`import.meta.url asset resolves to a directory: ${value} from ${source}`);
+  if (!info.isFile()) throw new Error(`import.meta.url asset is not a regular file: ${repoRelative}`);
+
+  return Object.freeze({
+    source,
+    asset: repoRelative,
+    kind: 'js-import-meta-url',
+    raw: value
+  });
+}
+
+export async function collectImportMetaUrlPublicAssetReferences() {
+  const closure = await collectStaticPublicAssetDependencyClosure();
+  const sources = [...new Set([...closure.roots, ...closure.dependencies])]
+    .filter(source => /\.(?:js|mjs)$/i.test(source))
+    .sort((a, b) => a.localeCompare(b));
+
+  const records = [];
+  for (const source of sources) {
+    const text = await readFile(resolve(repoRoot, source), 'utf8');
+    for (const match of text.matchAll(/\bnew\s+URL\s*\(\s*["']([^"']+)["']\s*,\s*import\.meta\.url\s*\)/g)) {
+      const record = await resolveImportMetaUrlAsset(source, match[1]);
+      if (record) records.push(record);
+    }
+  }
+
+  records.sort((a, b) =>
+    a.asset.localeCompare(b.asset) ||
+    a.source.localeCompare(b.source) ||
+    a.raw.localeCompare(b.raw)
+  );
+  return records;
+}
+
+export async function collectImportMetaUrlPublicAssets() {
+  return [...new Set((await collectImportMetaUrlPublicAssetReferences()).map(record => record.asset))]
+    .sort((a, b) => a.localeCompare(b));
+}
+
 export async function collectPublicRoutes() {
   const routes = new Set();
   addHtmlRoute(routes, 'index.html');
