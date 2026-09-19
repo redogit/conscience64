@@ -11,6 +11,18 @@ Visible surface: **I / R / P / O**.
 
 No third-party commercial access is currently authorized for owner-controlled original material unless explicitly granted. Existing MIT-covered `play/` material and any other already-applicable licenses retain their existing terms. See [`COMMERCIAL_ACCESS_POLICY.md`](COMMERCIAL_ACCESS_POLICY.md).
 
+
+## September 19, 2026 — current continuation
+
+Current local continuation: [USDAY, Interlingua, and public-source graph](research/updates/2026-09-19-usday-interlingua-source-graph.md).
+
+Two evidence classes remain separate:
+
+- **design:** USDAY-first cooperation, Pairity-before-parity, and the corrected [Interlingua Linguistics Agreement System](docs/superpowers/specs/2026-09-19-interlingua-linguistics-agreement-system-design.md);
+- **executed software evidence:** the held public-source graph now has 93 direct assets, a 3-layer / 16-file fixed-point static dependency closure, one literal `import.meta.url` asset, and zero literal Worker/SharedWorker assets under the declared relation.
+
+`DESIGN != IMPLEMENTATION` · `SOURCE_GRAPH_MEASURED != PUBLICATION_APPROVED` · `ZERO_RESULT != UNIVERSAL_ABSENCE`
+
 ## September 19, 2026 — Libraries of Libraries bridge
 
 Conscience64 now exposes a local, navigation-only bridge to the [Libraries of Libraries successor](https://github.com/redogit/redogit/blob/main/LIBRARIES_OF_LIBRARIES_RMAL_BUILD_2026-09-19.md).
