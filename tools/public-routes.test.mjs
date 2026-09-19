@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, collectSecondHopPublicAssetDependencies, collectSecondHopPublicAssetDependencyReferences, collectImportMetaUrlPublicAssetReferences, collectImportMetaUrlPublicAssets, collectStaticPublicAssetDependencyClosure, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
+import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, collectSecondHopPublicAssetDependencies, collectSecondHopPublicAssetDependencyReferences, collectImportMetaUrlPublicAssetReferences, collectImportMetaUrlPublicAssets, collectLiteralWorkerPublicAssetReferences, collectLiteralWorkerPublicAssets, collectStaticPublicAssetDependencyClosure, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const routes = await collectPublicRoutes();
@@ -134,6 +134,22 @@ for (const asset of importMetaUrlAssets) {
   assert.ok(info.isFile(), `import.meta.url asset must resolve to a repository file: ${asset}`);
 }
 
+const workerReferences = await collectLiteralWorkerPublicAssetReferences();
+const workerAssets = await collectLiteralWorkerPublicAssets();
+assert.equal(new Set(workerAssets).size, workerAssets.length, 'literal Worker asset inventory must be deduplicated');
+assert.deepEqual([...workerAssets].sort((a, b) => a.localeCompare(b)), workerAssets, 'literal Worker asset inventory must be deterministic');
+const admittedWorkerSources = new Set([...directAssets, ...staticClosure.dependencies, ...importMetaUrlAssets]);
+for (const record of workerReferences) {
+  assert.ok(admittedWorkerSources.has(record.source), `Worker source must already be in the admitted public source graph: ${record.source}`);
+  assert.match(record.kind, /^(?:js-worker|js-shared-worker)$/);
+  assert.equal(typeof record.raw, 'string');
+  assert.ok(workerAssets.includes(record.asset), `Worker record must appear in inventory: ${record.asset}`);
+}
+for (const asset of workerAssets) {
+  const info = await stat(resolve(repoRoot, asset));
+  assert.ok(info.isFile(), `literal Worker asset must resolve to a repository file: ${asset}`);
+}
+
 const federationPointerPath = resolve(repoRoot, 'research/federation/s1-models.json');
 const federationPagePath = resolve(repoRoot, 'research/federation/s1-models/index.html');
 const pointer = JSON.parse(await readFile(federationPointerPath, 'utf8'));
@@ -228,4 +244,4 @@ for (const route of routes) {
 }
 
 assert.ok(localReferences > 0, 'expected public HTML to contain local href/src references');
-console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, ${oneHopDependencies.length} unique one-hop dependencies, ${secondHopReferences.length} second-hop dependency references, ${secondHopDependencies.length} unique second-hop dependencies, and fixed-point static closure spans ${staticClosure.layers.length} layers / ${staticClosure.dependencies.length} unique dependency files, and ${importMetaUrlReferences.length} literal import.meta.url references / ${importMetaUrlAssets.length} unique import.meta.url assets resolve in-repository; S'1 federation pointer remains navigation-only`);
+console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, ${oneHopDependencies.length} unique one-hop dependencies, ${secondHopReferences.length} second-hop dependency references, ${secondHopDependencies.length} unique second-hop dependencies, and fixed-point static closure spans ${staticClosure.layers.length} layers / ${staticClosure.dependencies.length} unique dependency files, and ${importMetaUrlReferences.length} literal import.meta.url references / ${importMetaUrlAssets.length} unique import.meta.url assets resolve in-repository, and ${workerReferences.length} literal Worker/SharedWorker references / ${workerAssets.length} unique Worker assets resolve in-repository; S'1 federation pointer remains navigation-only`);
