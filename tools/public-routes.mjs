@@ -241,6 +241,61 @@ export async function collectSecondHopPublicAssetDependencies() {
     .sort((a, b) => a.localeCompare(b));
 }
 
+export async function collectStaticPublicAssetDependencyClosure({ maxDepth = 64 } = {}) {
+  if (!Number.isInteger(maxDepth) || maxDepth < 1) {
+    throw new Error('maxDepth must be a positive integer');
+  }
+
+  const roots = await collectDirectPublicAssets();
+  const rootSet = new Set(roots);
+  const seenFiles = new Set(roots);
+  const processedSources = new Set();
+  const layers = [];
+  let frontier = [...roots];
+
+  for (let depth = 1; depth <= maxDepth; depth++) {
+    const sources = frontier
+      .filter(source => !processedSources.has(source))
+      .sort((a, b) => a.localeCompare(b));
+
+    for (const source of sources) processedSources.add(source);
+
+    const references = await collectStaticDependencyReferencesFromSources(sources);
+    const dependencies = [...new Set(references.map(record => record.dependency))]
+      .sort((a, b) => a.localeCompare(b));
+    const newDependencies = dependencies
+      .filter(dependency => !seenFiles.has(dependency))
+      .sort((a, b) => a.localeCompare(b));
+
+    for (const dependency of newDependencies) seenFiles.add(dependency);
+
+    layers.push(Object.freeze({
+      depth,
+      sources: Object.freeze([...sources]),
+      references: Object.freeze([...references]),
+      dependencies: Object.freeze([...dependencies]),
+      newDependencies: Object.freeze([...newDependencies])
+    }));
+
+    if (newDependencies.length === 0) {
+      const closureDependencies = [...seenFiles]
+        .filter(file => !rootSet.has(file))
+        .sort((a, b) => a.localeCompare(b));
+
+      return Object.freeze({
+        closed: true,
+        roots: Object.freeze([...roots]),
+        layers: Object.freeze([...layers]),
+        dependencies: Object.freeze(closureDependencies)
+      });
+    }
+
+    frontier = newDependencies;
+  }
+
+  throw new Error(`static public asset dependency traversal did not converge within ${maxDepth} layers`);
+}
+
 export async function collectPublicRoutes() {
   const routes = new Set();
   addHtmlRoute(routes, 'index.html');
