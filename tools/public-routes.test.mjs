@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { access, readFile, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, collectSecondHopPublicAssetDependencies, collectSecondHopPublicAssetDependencyReferences, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
+import { collectDirectPublicAssetReferences, collectDirectPublicAssets, collectOneHopPublicAssetDependencies, collectOneHopPublicAssetDependencyReferences, collectPublicRoutes, collectSecondHopPublicAssetDependencies, collectSecondHopPublicAssetDependencyReferences, collectStaticPublicAssetDependencyClosure, publicRouteBytesEqual, publicRouteFile } from './public-routes.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const routes = await collectPublicRoutes();
@@ -88,6 +88,34 @@ for (const record of secondHopReferences) {
 for (const dependency of secondHopDependencies) {
   const info = await stat(resolve(repoRoot, dependency));
   assert.ok(info.isFile(), `second-hop dependency must resolve to a repository file: ${dependency}`);
+}
+
+const staticClosure = await collectStaticPublicAssetDependencyClosure();
+assert.equal(staticClosure.closed, true, 'static public dependency traversal must reach a fixed point');
+assert.deepEqual(staticClosure.roots, directAssets, 'fixed-point traversal roots must equal the admitted direct asset inventory');
+assert.ok(staticClosure.layers.length >= 2, 'fixed-point traversal must preserve at least the two observed dependency depths');
+assert.deepEqual(staticClosure.layers[0].dependencies, oneHopDependencies, 'depth 1 must preserve the admitted one-hop dependency view');
+assert.deepEqual(staticClosure.layers[1].dependencies, secondHopDependencies, 'depth 2 must preserve the admitted second-hop dependency view');
+assert.equal(staticClosure.layers.at(-1).newDependencies.length, 0, 'terminal dependency layer must introduce zero new files');
+assert.equal(new Set(staticClosure.dependencies).size, staticClosure.dependencies.length, 'fixed-point dependency closure must be deduplicated');
+assert.deepEqual([...staticClosure.dependencies].sort((a, b) => a.localeCompare(b)), staticClosure.dependencies, 'fixed-point dependency closure must be deterministic');
+const processedSources = new Set();
+const seenFiles = new Set(directAssets);
+for (let index = 0; index < staticClosure.layers.length; index++) {
+  const layer = staticClosure.layers[index];
+  assert.equal(layer.depth, index + 1, 'dependency layer depths must be consecutive');
+  for (const source of layer.sources) {
+    assert.equal(processedSources.has(source), false, `source must not be reprocessed across layers: ${source}`);
+    processedSources.add(source);
+  }
+  for (const dependency of layer.newDependencies) {
+    assert.equal(seenFiles.has(dependency), false, `new dependency must truly be new at its layer: ${dependency}`);
+    seenFiles.add(dependency);
+  }
+}
+for (const dependency of staticClosure.dependencies) {
+  const info = await stat(resolve(repoRoot, dependency));
+  assert.ok(info.isFile(), `fixed-point dependency must resolve to a repository file: ${dependency}`);
 }
 
 const federationPointerPath = resolve(repoRoot, 'research/federation/s1-models.json');
@@ -184,4 +212,4 @@ for (const route of routes) {
 }
 
 assert.ok(localReferences > 0, 'expected public HTML to contain local href/src references');
-console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, ${oneHopDependencies.length} unique one-hop dependencies, ${secondHopReferences.length} second-hop dependency references, and ${secondHopDependencies.length} unique second-hop dependencies resolve in-repository; S'1 federation pointer remains navigation-only`);
+console.log(`PASS public route inventory: ${routes.length} canonical routes, ${localReferences} local HTML references, ${assetReferences.length} direct asset references, ${directAssets.length} unique direct assets, ${oneHopReferences.length} one-hop dependency references, ${oneHopDependencies.length} unique one-hop dependencies, ${secondHopReferences.length} second-hop dependency references, ${secondHopDependencies.length} unique second-hop dependencies, and fixed-point static closure spans ${staticClosure.layers.length} layers / ${staticClosure.dependencies.length} unique dependency files; S'1 federation pointer remains navigation-only`);
