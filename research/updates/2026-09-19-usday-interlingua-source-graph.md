@@ -171,3 +171,43 @@ ZERO_RESULT != UNIVERSAL_ABSENCE
 ```
 
 This update does not change the publication hold.
+
+
+## D. Private-history language-learning boundary
+
+Merged PR #154 adds an active local privacy rule for private historical material supplied only to learn the user's problem-solving language or method.
+
+Git anchor:
+
+`d03abc4d77300ae4e9fa2445805468b499602f27`
+
+Standing distinctions:
+
+```text
+PRIVATE_HISTORY != PUBLIC_EVIDENCE
+PRIVATE_HISTORY != PROJECT_ARTIFACT
+LANGUAGE_PATTERN != PERSONAL_PROFILE
+LEARNED_METHOD != DISCLOSURE
+DERIVED_FROM_PRIVATE_HISTORY != SAFE_TO_PUBLISH
+```
+
+Allowed use is abstract internal method only after private facts and identity-bearing detail are removed.
+
+A public-update candidate marked:
+
+```json
+{"derived_from_private_history": true}
+```
+
+must fail closed.
+
+A rewritten or sanitized private narrative is not a public-source bypass.
+
+```text
+BOUNDARY MAY BE REMEMBERED
+PRIVATE STORY MUST NOT BE EXPORTED
+METHOD MAY INFORM INTERNAL REASONING
+PROJECT CLAIMS REQUIRE PROJECT EVIDENCE
+```
+
+PR #154 added no private historical narrative, handles, identities, relationships or links to the repository.
