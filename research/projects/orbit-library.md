@@ -68,3 +68,23 @@ This is navigation and candidate intake, not runtime promotion. Existing Orbit a
 ## Internal workspace successor — September 13, 2026
 
 The [complete update](../cross-carrier/2026-09-13/internal-update/README.md) represents global search, isolated XY interaction, the geometric black-hole projection, quarantined working-packet import, and earlier transport materials. Its [inventory](../cross-carrier/2026-09-13/internal-update/MATERIALS.json) accounts for all 736 source-bundle members. Results and unresolved failures remain separate; no cross-project authority or mathematical proof transfers through this link.
+
+
+## September 19, 2026 — Libraries of Libraries successor bridge
+
+Orbit now points outward to the [Libraries of Libraries successor](https://github.com/redogit/redogit/blob/main/LIBRARIES_OF_LIBRARIES_RMAL_BUILD_2026-09-19.md) as a navigation/reconstruction relation only.
+
+The successor preserves the older Orbit rule:
+
+```text
+current navigation != historical source != evidence authority
+```
+
+and adds the explicit boundary:
+
+```text
+CONNECTION != OWNERSHIP
+RELATION != AUTHORITY_TRANSFER
+```
+
+The historical federation-named bridge paths remain unchanged as provenance. Orbit does not become authority over the Libraries of Libraries, and the Libraries of Libraries does not become authority over this project.
