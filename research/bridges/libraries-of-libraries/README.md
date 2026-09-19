@@ -20,3 +20,22 @@ RECONSTRUCTION != SOURCE
 Conscience64 remains authoritative for its own current research records, evidence, software behavior, game/world state, and local claim ceilings.
 
 The historical `research/bridges/redogit-federation/` path remains preserved as provenance. This successor does not rename or rewrite that predecessor.
+
+
+## September 19 current continuation
+
+Local current-state record:
+
+- [USDAY / Interlingua / public-source graph](../../updates/2026-09-19-usday-interlingua-source-graph.md)
+- [USDAY-first predecessor design](../../../docs/superpowers/specs/2026-09-19-usday-interlinuia-democracy-design.md)
+- [Interlingua Linguistics Agreement System successor](../../../docs/superpowers/specs/2026-09-19-interlingua-linguistics-agreement-system-design.md)
+
+The design records do not become implementation evidence.
+
+The source-graph record does not change publication authority.
+
+```text
+DESIGN != IMPLEMENTATION
+SOURCE_GRAPH_MEASURED != PUBLICATION_APPROVED
+POINTER != RESEARCH_ADMISSION
+```
