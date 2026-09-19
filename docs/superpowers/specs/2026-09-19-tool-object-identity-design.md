@@ -40,6 +40,47 @@ OBJECT_ID != semantic similarity
 
 Changing, adding, or removing a relation must not change either endpoint's object ID.
 
+## Accessibility-first object identity
+
+For this design, accessibility is not an optional presentation layer. A person must be able to identify, select, invoke, compare, and return to a tool object without seeing or reconstructing its associations.
+
+```text
+OBJECT FIRST
+RELATIONS SECOND
+VISUAL POSITION NEVER REQUIRED
+```
+
+A non-visual interaction must be able to answer directly:
+
+```text
+What is this?       -> object_id
+What kind is it?    -> kind
+What is its name?   -> canonical_name
+```
+
+The object must therefore be:
+
+- stable;
+- speakable;
+- readable;
+- directly addressable;
+- selectable without graph traversal;
+- invokable without discovering neighbors;
+- comparable by intrinsic fields;
+- returnable/recoverable by `object_id` alone.
+
+Required distinction:
+
+```text
+OBJECT_IDENTITY
+!= VISUAL_LOCATION
+!= GRAPH_POSITION
+!= ASSOCIATION
+!= NEIGHBORHOOD
+```
+
+Relations may be presented afterward, only when useful. They are never required to know what the object is.
+
 ## Initial tool-object set
 
 Only the tools needed by the current path are admitted:
@@ -211,7 +252,10 @@ The implementation is not complete until tests prove:
 7. file-path changes in a relation/locator fixture do not change tool ID;
 8. no semantic similarity or association inference is used to resolve an object;
 9. unknown object IDs remain unknown instead of being inferred from related objects;
-10. the existing semantic/applicability tools continue to operate without identity changes.
+10. the existing semantic/applicability tools continue to operate without identity changes;
+11. every tool can be resolved and addressed from `object_id` alone with no relation or graph traversal;
+12. a non-visual listing exposes `object_id`, `canonical_name`, and `kind` directly and in deterministic order;
+13. selection/invocation APIs accept `object_id` directly and do not require visual coordinates, neighbor discovery, or relation context.
 
 ## Boundaries
 
