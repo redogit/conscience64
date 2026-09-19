@@ -68,6 +68,18 @@ class PublicUpdateTests(unittest.TestCase):
         write_json(pub / "admissions.json", {"schema": builder.ADMISSIONS_SCHEMA, "records": [{"record": "records/r1.json"}]})
         with self.assertRaises(builder.PublicationError): builder.build_snapshot(root, pub / "admissions.json")
 
+    def test_public_admission_derived_from_private_history_fails_closed(self):
+        temp, root, pub = self.make_root(); self.addCleanup(temp.cleanup)
+        source = root / "research/updates/source.md"; source.write_text("sanitized method summary\n", encoding="utf-8")
+        write_json(pub / "records/r1.json", self.record(summary="Method learned from private history"))
+        write_json(pub / "admissions.json", {"schema": builder.ADMISSIONS_SCHEMA, "records": [{
+            "record": "records/r1.json",
+            "classification": "public",
+            "derived_from_private_history": True,
+        }]})
+        with self.assertRaisesRegex(builder.PublicationError, "private history"):
+            builder.build_snapshot(root, pub / "admissions.json")
+
     def test_unknown_classification_fails_closed(self):
         temp, root, pub = self.make_root(); self.addCleanup(temp.cleanup)
         write_json(pub / "admissions.json", {"schema": builder.ADMISSIONS_SCHEMA, "records": [{"record": "records/r1.json", "classification": "maybe"}]})
@@ -110,6 +122,30 @@ class PublicUpdateTests(unittest.TestCase):
         self.assertEqual(report["result"], "validated")
         self.assertEqual(report["included_records"][0]["id"], "x")
         self.assertIn("snapshot_sha256", report); self.assertIn("endpoint", report)
+
+    def test_private_language_learning_boundary_is_explicit_in_recovery(self):
+        repo_root = HERE.parents[2]
+        boundary_path = repo_root / "research/history/PRIVATE_LANGUAGE_LEARNING_BOUNDARY.md"
+        self.assertTrue(boundary_path.is_file(), "private language-learning boundary is missing")
+        boundary = boundary_path.read_text(encoding="utf-8")
+        for required in (
+            "PRIVATE_HISTORY != PUBLIC_EVIDENCE",
+            "PRIVATE_HISTORY != PROJECT_ARTIFACT",
+            "LANGUAGE_PATTERN != PERSONAL_PROFILE",
+            "LEARNED_METHOD != DISCLOSURE",
+            "DERIVED_FROM_PRIVATE_HISTORY != SAFE_TO_PUBLISH",
+        ):
+            self.assertIn(required, boundary)
+
+        recover = (repo_root / "skills/recover-bound/SKILL.md").read_text(encoding="utf-8")
+        for required in (
+            "Private language-learning boundary",
+            "do not quote",
+            "do not correlate identities",
+            "do not profile people",
+            "do not promote the private history as project evidence",
+        ):
+            self.assertIn(required, recover)
 
     def test_static_surface_uses_text_construction(self):
         app = (HERE / "app.js").read_text(encoding="utf-8")
