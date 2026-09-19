@@ -1,4 +1,4 @@
-import { readdir, readFile } from 'node:fs/promises';
+import { readdir, readFile, stat } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -51,6 +51,90 @@ export function publicRouteBytesEqual(expected, actual) {
   const expectedBytes = Buffer.isBuffer(expected) ? expected : Buffer.from(expected);
   const actualBytes = Buffer.isBuffer(actual) ? actual : Buffer.from(actual);
   return expectedBytes.equals(actualBytes);
+}
+
+function referencePath(raw) {
+  const value = String(raw ?? '').trim();
+  if (!value || value.startsWith('#') || value.startsWith('//')) return null;
+  if (/^(?:https?:|data:|mailto:|tel:|javascript:|blob:)/i.test(value)) return null;
+  const pathOnly = value.split('#', 1)[0].split('?', 1)[0];
+  if (!pathOnly) return null;
+  try {
+    return decodeURIComponent(pathOnly);
+  } catch {
+    throw new Error(`invalid URL encoding in direct public reference: ${value}`);
+  }
+}
+
+async function resolveDirectAssetReference(route, attribute, raw) {
+  const decoded = referencePath(raw);
+  if (!decoded) return null;
+
+  const pagePath = resolve(repoRoot, publicRouteFile(route));
+  let targetPath;
+  if (decoded.startsWith('/conscience64/')) {
+    targetPath = resolve(repoRoot, decoded.slice('/conscience64/'.length));
+  } else {
+    if (decoded.startsWith('/')) {
+      throw new Error(`project-breaking root-absolute direct public reference ${raw} from ${route || '/'}`);
+    }
+    targetPath = resolve(dirname(pagePath), decoded);
+  }
+
+  const repoRelative = toPosix(relative(repoRoot, targetPath));
+  if (repoRelative === '..' || repoRelative.startsWith('../')) {
+    throw new Error(`direct public reference escapes repository: ${raw} from ${route || '/'}`);
+  }
+
+  let info;
+  try {
+    info = await stat(targetPath);
+  } catch {
+    throw new Error(`missing direct public reference ${raw} from ${route || '/'} -> ${repoRelative || '/'}`);
+  }
+
+  if (info.isDirectory() || /\.html?$/i.test(repoRelative)) return null;
+  if (!info.isFile()) throw new Error(`direct public asset is not a regular file: ${repoRelative}`);
+
+  return Object.freeze({
+    asset: repoRelative,
+    route,
+    attribute,
+    raw: String(raw)
+  });
+}
+
+export async function collectDirectPublicAssetReferences() {
+  const records = [];
+  for (const route of await collectPublicRoutes()) {
+    const html = await readFile(resolve(repoRoot, publicRouteFile(route)), 'utf8');
+
+    for (const match of html.matchAll(/\b(href|src|poster)\s*=\s*["']([^"']+)["']/gi)) {
+      const record = await resolveDirectAssetReference(route, match[1].toLowerCase(), match[2]);
+      if (record) records.push(record);
+    }
+
+    for (const match of html.matchAll(/\bsrcset\s*=\s*["']([^"']+)["']/gi)) {
+      for (const item of match[1].split(',')) {
+        const raw = item.trim().split(/\s+/, 1)[0];
+        const record = await resolveDirectAssetReference(route, 'srcset', raw);
+        if (record) records.push(record);
+      }
+    }
+  }
+
+  records.sort((a, b) =>
+    a.asset.localeCompare(b.asset) ||
+    a.route.localeCompare(b.route) ||
+    a.attribute.localeCompare(b.attribute) ||
+    a.raw.localeCompare(b.raw)
+  );
+  return records;
+}
+
+export async function collectDirectPublicAssets() {
+  return [...new Set((await collectDirectPublicAssetReferences()).map(record => record.asset))]
+    .sort((a, b) => a.localeCompare(b));
 }
 
 export async function collectPublicRoutes() {
