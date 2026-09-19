@@ -9,6 +9,7 @@ Only records listed in `admissions.json` with `classification: "public"` are ser
 - Default is deny.
 - Missing or unknown classification is a hard failure.
 - A `private` admission is excluded **before the record file is read**.
+- A candidate marked `derived_from_private_history: true` cannot be admitted as `public`; rewriting or sanitizing private history does not make it public.
 - Public and private material are never mixed into one payload for client-side filtering.
 - This feed does not expose `analytics/server.py`, its POST endpoint, its SSE endpoint, or its append-only local ledger.
 
@@ -49,3 +50,5 @@ The public record contains a deliberately written summary and a source path. The
 ## Private research
 
 No remote private-reader implementation is active here. See `PRIVATE_READER_BOUNDARY.md` for the required TLS, authentication, authorization, retention, redaction and revocation gates before one can be enabled.
+
+Private historical material used only to learn the user's problem-solving language is governed separately by [the Private Language-Learning Boundary](../../history/PRIVATE_LANGUAGE_LEARNING_BOUNDARY.md). The private material itself is not a public-update source and must not be quoted, identity-correlated, profiled, or promoted into project evidence.
