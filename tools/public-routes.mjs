@@ -186,9 +186,9 @@ async function resolveOneHopDependency(source, kind, raw, requireExplicitRelativ
   });
 }
 
-export async function collectOneHopPublicAssetDependencyReferences() {
+async function collectStaticDependencyReferencesFromSources(sources) {
   const records = [];
-  for (const source of await collectDirectPublicAssets()) {
+  for (const source of sources) {
     if (/\.(?:js|mjs)$/i.test(source)) {
       const text = await readFile(resolve(repoRoot, source), 'utf8');
 
@@ -223,8 +223,21 @@ export async function collectOneHopPublicAssetDependencyReferences() {
   return records;
 }
 
+export async function collectOneHopPublicAssetDependencyReferences() {
+  return collectStaticDependencyReferencesFromSources(await collectDirectPublicAssets());
+}
+
 export async function collectOneHopPublicAssetDependencies() {
   return [...new Set((await collectOneHopPublicAssetDependencyReferences()).map(record => record.dependency))]
+    .sort((a, b) => a.localeCompare(b));
+}
+
+export async function collectSecondHopPublicAssetDependencyReferences() {
+  return collectStaticDependencyReferencesFromSources(await collectOneHopPublicAssetDependencies());
+}
+
+export async function collectSecondHopPublicAssetDependencies() {
+  return [...new Set((await collectSecondHopPublicAssetDependencyReferences()).map(record => record.dependency))]
     .sort((a, b) => a.localeCompare(b));
 }
 
