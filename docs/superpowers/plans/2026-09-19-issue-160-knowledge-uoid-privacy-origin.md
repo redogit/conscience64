@@ -34,6 +34,8 @@
 - Existing ordinary packet identities and existing ledger entries remain valid.
 - This slice does not implement semantic-search propagation, RMADAY/JUST LOAD IT, ECS/client state, agent/tool handoffs, or export/sync propagation. Those remain later Issue #160 slices.
 - No private historical text is committed as a fixture or test value.
+- Issue #160 is the durable contribution ledger for this work: preserve the user's abstract problem-framing and method contribution there, without quoting or storing the private history that produced it.
+- Comments are discussion surfaces, not the canonical contribution carrier for this slice.
 - No new dependencies.
 
 ## Review Focus
@@ -550,7 +552,23 @@ Mark only these gates complete:
 
 Leave semantic search, provenance-wide propagation, RMADAY/JUST LOAD IT, ECS, handoffs, and export/sync gates unchecked.
 
-Add exact commit IDs and test commands to the issue comment/update.
+Update the **issue body** as the canonical contribution carrier; do not rely on a comment as the only durable record. Add a compact contribution section that preserves only the abstract contribution:
+
+```text
+CONTRIBUTION ROLE: user
+CONTRIBUTION CLASS: problem framing + method
+ABSTRACT CONTRIBUTIONS:
+- private history may inform problem-solving method but must not propagate
+- issues are the durable carrier for the abstract problem/contribution; comments are discussion
+- UOID may identify an admitted abstract method carrier but must not content-address the protected private narrative
+- later project claims must be re-grounded in current authorized project/public evidence
+PRIVATE SOURCE INCLUDED: no
+IDENTITY-BEARING DETAIL INCLUDED: no
+```
+
+Add exact commit IDs and test commands to the issue body/update.
+
+Do not copy raw user wording from the private-history discussion into the issue merely to prove attribution; preserve the abstraction and contributor role only.
 
 ## Execution Boundary
 
