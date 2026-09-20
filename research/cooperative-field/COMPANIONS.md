@@ -19,6 +19,14 @@ native skill
 
 No companion self-promotes.
 
+This file is the **live companion set**, not the complete historical name registry. For recovered names, attribution classes, historical aliases, and project/tool names that are not promoted to companion status, use [NAME_LINEAGE.md](NAME_LINEAGE.md).
+
+```text
+NAME IN MEMORY != LIVE COMPANION
+HISTORICAL NAME != CURRENT CANONICAL NAME
+ASSISTANT-LABEL != USER-CONFIRMED
+```
+
 ~~~text
 AGENT != AUTHORITY
 SKILL != PERMISSION
