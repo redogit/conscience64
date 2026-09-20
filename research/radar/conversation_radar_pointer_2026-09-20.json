@@ -89,5 +89,19 @@
       "next": "compatible period-lift / simultaneous second-order comparison"
     }
   },
-  "snapshotCutoffUtc": "2026-09-20T17:16:31Z"
+  "snapshotCutoffUtc": "2026-09-20T17:16:31Z",
+  "currentnessRelations": {
+    "rmaplRuntime": {
+      "consciencePullRequest": 200,
+      "conscienceMergeCommit": "33a0edadfb467720c23ab11891e07526f4a75bfe",
+      "verifiedOwnerRuntimeRevision": "e42f652b380eb1d68d14679d44b9328dfb2faa55",
+      "relation": "runtime-currentness-pointer",
+      "authorityTransfer": false
+    },
+    "radarOwner": {
+      "otherProjectsPullRequest": 91,
+      "mergeCommit": "9217c9269db118e03bf7e980adb60acf2e6252e7",
+      "relation": "additive-radar-contract"
+    }
+  }
 }
