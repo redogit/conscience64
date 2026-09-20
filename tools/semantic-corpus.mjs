@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import {readdir,readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
+import {hasRestrictedOriginMarker} from './private-origin-boundary.mjs';
 
 export const CORPUS_SCHEMA='conscience64.semantic-corpus/v1';
 export const CORPUS_BOUNDARIES=Object.freeze([
@@ -21,14 +22,11 @@ const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
 const uniq=xs=>[...new Set(xs.filter(Boolean))];
 const cleanTag=s=>String(s??'').toLowerCase().replace(/[^a-z0-9._-]+/g,'-').replace(/^-|-$/g,'');
 
-const PRIVATE_METHOD_CLASSIFICATION='private-history-method-only';
 
 function structuredPrivateOrigin(value){
   if(!value||typeof value!=='object')return false;
+  if(hasRestrictedOriginMarker(value))return true;
   if(Array.isArray(value))return value.some(structuredPrivateOrigin);
-  if(value.derived_from_private_history===true)return true;
-  const origin=value.privacy_origin;
-  if(origin&&typeof origin==='object'&&!Array.isArray(origin)&&origin.classification===PRIVATE_METHOD_CLASSIFICATION)return true;
   return Object.values(value).some(structuredPrivateOrigin);
 }
 
