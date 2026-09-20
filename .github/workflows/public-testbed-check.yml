@@ -1,0 +1,48 @@
+name: Verify public experimental test bed
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public-testbed/**'
+      - 'tools/build-public-testbed.mjs'
+      - 'tools/check-public-testbed.mjs'
+      - 'tools/private-origin-boundary.mjs'
+      - '.github/workflows/public-testbed-check.yml'
+  pull_request:
+    paths:
+      - 'public-testbed/**'
+      - 'tools/build-public-testbed.mjs'
+      - 'tools/check-public-testbed.mjs'
+      - 'tools/private-origin-boundary.mjs'
+      - '.github/workflows/public-testbed-check.yml'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      VERIFY_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Materialize exact source revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          [[ "$VERIFY_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git fetch --depth=1 origin "$VERIFY_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$VERIFY_SHA"
+
+      - name: Check projection tooling syntax
+        run: |
+          node --check tools/build-public-testbed.mjs
+          node --check tools/check-public-testbed.mjs
+          node --check public-testbed/site/app.js
+
+      - name: Build and counterprobe isolated test bed
+        run: node tools/check-public-testbed.mjs --revision "$VERIFY_SHA"
