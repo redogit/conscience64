@@ -48,3 +48,24 @@ HISTORICAL != IRRELEVANT
 ```
 
 The first grounded Failure Museum record is the PR #171 synthetic-merge RED result, retained as an evidence-carrier mismatch and repaired by PR #172. The first return path is the preserved pre-testbed `gh-pages` predecessor retained beneath projection commit `2068472a...`.
+
+
+## Public-safe working principles
+
+The projection carries six method labels as navigation aids, not as authority:
+
+- **USDAY** — cooperative work remains visible as progression, evidence, correction, and Remainder.
+- **Interlingua** — shared operational language connects terms without forcing identity.
+- **Pairity** — inspect opposing/complementary pairs before claiming parity or equivalence.
+- **Visible paths** — active, tested, failed, blocked, deferred, and return paths remain inspectable.
+- **Wonderment** — unresolved questions remain open rather than manufactured into answers.
+- **One-degree experiment** — change one independently controllable degree per discriminating observation when practical.
+
+```text
+COOPERATION != AUTHORITY
+SHARED_LANGUAGE != FORCED_IDENTITY
+PAIRITY != PARITY
+CURRENT_PATH != ONLY_PATH
+WONDER != CLAIM
+ONE_DEGREE_TEST != UNIVERSAL_PROOF
+```
