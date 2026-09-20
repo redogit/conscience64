@@ -32,6 +32,12 @@ const privacyQuery=querySemanticRecords([
 ],'violet lantern privacy-only vector',{limit:5,threshold:.01});
 assert.ok(!privacyQuery.matches.some(m=>m.id==='private-query-blocked'||m.id==='private-method-blocked'));
 assert.ok(!privacyQuery.matches.some(m=>String(m.title).includes('PRIVATE_QUERY_CANARY')));
+const privateCollision=querySemanticRecords([
+  {id:'query:__transient__',title:'PRIVATE_QUERY_ID_CANARY',description:'blocked record',derived_from_private_history:true}
+],'ordinary public lookup',{limit:5,threshold:.01,includeGraph:true});
+assert.ok(privateCollision.graph.nodes.some(n=>n.id==='query:__transient__'));
+assert.ok(!privateCollision.graph.nodes.some(n=>n.title==='PRIVATE_QUERY_ID_CANARY'));
+assert.equal(privateCollision.graph.stats.skippedPrivateOrigin,1);
 
 const corpus=await recordsFromRepository('.',{maxFiles:5000,maxFileBytes:256000,maxTextChars:4000});
 const live=querySemanticRecords(corpus.records,'semantic cross reference provenance evidence routing',{limit:10,threshold:.06});
