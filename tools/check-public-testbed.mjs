@@ -134,6 +134,9 @@ try{
   assert.match(carrierPage,/Object identity is invariant; coordinates are negotiable\./);
   assert.match(carrierPage,/17ce340776455735a1af814031b88b887a5cf421/);
   assert.match(carrierPage,/MULTI_KEY_RELATION != MATHEMATICAL_MANIFOLD/);
+  assert.match(carrierPage,/cca44e23ca663600cc3466f45d7dc509c466b796/);
+  assert.match(carrierPage,/186\/186/);
+  assert.match(carrierPage,/Sidecar removal is <code>UNKNOWN<\/code>/);
   assert.doesNotMatch(carrierPage,/<script\b/i,'Carrier–Surface public page must remain passive');
   assert.match(s1Page,/S Prime candidate-state model/);
   assert.match(s1Page,/Survivor/);
@@ -142,6 +145,11 @@ try{
   assert.match(s1Page,/29effa0cfb52a019d51d81fae47aa8e056ab71cf/);
   assert.match(s1Page,/ab0b7c4724989f5d79a0bbfcd009582b40509140/);
   assert.match(s1Page,/CURRENT WORKING MODEL ≠ PINNED IMPLEMENTATION/);
+  assert.match(s1Page,/Executable Carrier–Surface bridge/);
+  assert.match(s1Page,/cca44e23ca663600cc3466f45d7dc509c466b796/);
+  assert.match(s1Page,/35523193624/);
+  assert.match(s1Page,/186\/186/);
+  assert.match(s1Page,/PROJECTION_SUCCESS != RECONSTRUCTION_SUCCESS/);
   assert.doesNotMatch(s1Page,/<script\b/i,'S′ model public page must remain passive');
   assert.ok(!html.includes('http://')&&!html.includes('https://'),'testbed shell must have no external runtime dependency');
   assert.match(css,/:focus-visible/);
