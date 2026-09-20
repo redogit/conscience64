@@ -4,180 +4,68 @@
   "title": "Conscience64 Knowledge Packet Producer Schema",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "project",
-    "kind",
-    "content",
-    "source",
-    "visibility"
-  ],
+  "required": ["project", "kind", "content", "source", "visibility"],
   "properties": {
-    "project": {
-      "type": "string",
-      "minLength": 1
-    },
+    "project": {"type": "string", "minLength": 1},
     "kind": {
       "type": "string",
       "enum": [
-        "OBSERVATION",
-        "TESTED",
-        "VERIFIED",
-        "NEGATIVE_RESULT",
-        "HYPOTHESIS",
-        "INTERPRETATION",
-        "CONTRADICTION",
-        "BOUNDARY",
-        "REVISION",
-        "PROMOTION",
-        "REOPENED",
-        "REFERENCE",
-        "METHOD",
-        "DEFINITION",
-        "DESIGN"
+        "OBSERVATION", "TESTED", "VERIFIED", "NEGATIVE_RESULT", "HYPOTHESIS",
+        "INTERPRETATION", "CONTRADICTION", "BOUNDARY", "REVISION", "PROMOTION",
+        "REOPENED", "REFERENCE", "METHOD", "DEFINITION", "DESIGN"
       ]
     },
-    "content": {
-      "type": "string",
-      "minLength": 1
-    },
-    "source": {
-      "type": "string",
-      "minLength": 1
-    },
-    "visibility": {
-      "type": "string",
-      "enum": [
-        "public",
-        "restricted"
-      ]
-    },
-    "evidence": {
-      "type": "string",
-      "minLength": 1
-    },
-    "independence": {
-      "type": "string",
-      "minLength": 1
-    },
-    "claim_ceiling": {
-      "type": "string",
-      "minLength": 1
-    },
-    "scope": {
-      "type": "string",
-      "minLength": 1
-    },
-    "source_revision": {
-      "type": "string",
-      "minLength": 1
-    },
-    "observed_at": {
-      "type": "string",
-      "format": "date-time"
-    },
+    "content": {"type": "string", "minLength": 1},
+    "source": {"type": "string", "minLength": 1},
+    "visibility": {"type": "string", "enum": ["public", "restricted"]},
+    "evidence": {"type": "string", "minLength": 1},
+    "independence": {"type": "string", "minLength": 1},
+    "claim_ceiling": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "source_revision": {"type": "string", "minLength": 1},
+    "observed_at": {"type": "string", "format": "date-time"},
     "parents": {
       "type": "array",
-      "items": {
-        "type": "string",
-        "pattern": "^uoid:sha256:[0-9a-f]{64}$"
-      },
+      "items": {"type": "string", "pattern": "^uoid:sha256:[0-9a-f]{64}$"},
       "uniqueItems": true
     },
     "tags": {
       "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
+      "items": {"type": "string", "minLength": 1},
       "uniqueItems": true
     },
-    "metadata": {
-      "type": "object"
-    },
+    "metadata": {"type": "object"},
     "privacy_origin": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "classification",
-        "independently_regrounded"
-      ],
+      "required": ["classification", "independently_regrounded"],
       "properties": {
-        "classification": {
-          "const": "private-history-method-only"
-        },
-        "independently_regrounded": {
-          "type": "boolean",
-          "const": false
-        }
+        "classification": {"const": "private-history-method-only"},
+        "independently_regrounded": {"type": "boolean", "const": false}
       }
     }
   },
   "allOf": [
     {
-      "if": {
-        "required": [
-          "privacy_origin"
-        ]
-      },
+      "if": {"required": ["privacy_origin"]},
       "then": {
-        "required": [
-          "evidence",
-          "independence",
-          "claim_ceiling",
-          "scope"
-        ],
+        "required": ["evidence", "independence", "claim_ceiling", "scope"],
         "properties": {
-          "kind": {
-            "const": "METHOD"
-          },
-          "source": {
-            "const": "private-history:withheld"
-          },
-          "visibility": {
-            "const": "restricted"
-          },
-          "evidence": {
-            "const": "method-only; not project evidence"
-          },
-          "independence": {
-            "const": "private-origin; requires independent re-grounding"
-          },
-          "claim_ceiling": {
-            "const": "abstract method only; no source or identity claim"
-          },
-          "scope": {
-            "const": "private-origin method abstraction"
-          }
+          "kind": {"const": "METHOD"},
+          "source": {"const": "private-history:withheld"},
+          "visibility": {"const": "restricted"},
+          "evidence": {"const": "method-only; not project evidence"},
+          "independence": {"const": "private-origin; requires independent re-grounding"},
+          "claim_ceiling": {"const": "abstract method only; no source or identity claim"},
+          "scope": {"const": "private-origin method abstraction"}
         },
-        "not": {
-          "anyOf": [
-            {
-              "required": [
-                "parents"
-              ]
-            },
-            {
-              "required": [
-                "tags"
-              ]
-            },
-            {
-              "required": [
-                "metadata"
-              ]
-            },
-            {
-              "required": [
-                "source_revision"
-              ]
-            },
-            {
-              "required": [
-                "observed_at"
-              ]
-            }
-          ]
-        }
+        "not": {"anyOf": [
+          {"required": ["parents"]},
+          {"required": ["tags"]},
+          {"required": ["metadata"]},
+          {"required": ["source_revision"]},
+          {"required": ["observed_at"]}
+        ]}
       }
     }
   ]
