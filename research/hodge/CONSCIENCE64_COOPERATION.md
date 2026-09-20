@@ -184,6 +184,31 @@ When a source, computation, or bridge is corrected:
 
 This is forward-only. History is not rewritten to make the current model look cleaner.
 
+## RMAPL / Ω conditional-repair reference
+
+The canonical executable implementation and frozen bounded evidence are owned by `redogit/Other-Projects-` through the verified RMAPL/Ω reference-runtime line (PR #77 during integration).
+
+Canonical paths:
+
+- `Decision Field Operator Lab/omega.py`
+- `Decision Field Operator Lab/omega_adapters.py`
+- `Decision Field Operator Lab/rmapl.py`
+- `Decision Field Operator Lab/rmapl_runtime.py`
+- `Decision Field Operator Lab/evidence/RMAPL_OMEGA_RESULTS.json`
+- `docs/superpowers/specs/2026-09-20-rmapl-omega-conditional-repair-design.md`
+
+Conscience64 may consume those records for navigation, provenance, residual routing, and bounded Hodge candidate handling. It does not duplicate the runtime or inherit evidence authority by reference.
+
+```text
+CONSCIENCE64_REFERENCE != IMPLEMENTATION_AUTHORITY
+CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
+RMAPL_PROFILE != RMAL_CORE_FRONTEND
+OMEGA_VIEW != NATIVE_HODGE_OBJECT
+METHOD_TRANSFER != EVIDENCE_TRANSFER
+```
+
+The existing Hodge bridge claim ceilings remain unchanged. In particular, an Ω projection of a deformation/Hodge candidate record is still only a typed view of the bounded source evidence; it is not a new Hodge-class, algebraicity, completeness, or proof witness.
+
 ## Current cooperative conclusion
 
 Conscience64 can strengthen the Hodge research process by making relations, provenance, missing sectors, claim ceilings, and correction paths easier to navigate. It supplies no independent proof weight by itself.
