@@ -61,7 +61,7 @@
     {
       "id": "projection-isolation-v0",
       "title": "Projection Isolation v0",
-      "status": "tested",
+      "status": "closed",
       "currentness": "CURRENT_CANONICAL",
       "changed_degree": "projection builder input is restricted to public-testbed source files",
       "invariants": [
@@ -70,16 +70,23 @@
         "exact source revision is carried in the generated projection manifest",
         "claim boundaries and remainder stay visible"
       ],
-      "evidence": "generated projection manifest plus deterministic source checks",
-      "result": "exact-head source isolation verified in PR #178; public projection switching is the current successor step",
-      "zero_result": "no claim of publication or edge deployment is made by this source-only slice",
-      "remainder": [
-        "verify gh-pages tree contains only the generated projection",
-        "verify the deployed network edge matches the exact source revision",
-        "expand visible path states only after publication isolation is proven"
-      ],
-      "provenance": "issue:166;pr:178",
-      "claim_boundary": "SOURCE_PROJECTION_VERIFIED != PUBLICATION_APPROVED"
+      "evidence": "generated projection manifest; exact gh-pages byte comparison; network-edge leakage counterprobes",
+      "result": "generated public-testbed projection isolated, published to gh-pages, exact expected branch bytes matched, and live edge verified",
+      "zero_result": "no claim of repository-wide publication, scientific validation, authority transfer, or commercial licensing is made by this closure",
+      "remainder": [],
+      "provenance": "issue:166;pr:178;pr:180;source:f05fc0550ba0e945ea64e9b8447b972b1c4a11fd;sync-run:35504735243;live-run:35504744495",
+      "claim_boundary": "SOURCE_PROJECTION_VERIFIED != PUBLICATION_APPROVED",
+      "closure": {
+        "scope": "issue:166",
+        "state": "CLOSED",
+        "verified_gates": [
+          "source isolation",
+          "gh-pages projection byte identity",
+          "live network-edge verification",
+          "repository-route leakage counterprobes"
+        ],
+        "continuation_rule": "new work requires a new observed remainder; do not reopen this closed pair by default"
+      }
     }
   ]
 }
