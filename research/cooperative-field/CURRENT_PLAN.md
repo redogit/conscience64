@@ -392,6 +392,41 @@ Freeze all but one measurable physical subsystem per experiment.
 
 Freeze hull and major assumptions; vary one intake/screening geometry at a time and measure consequence.
 
+## Supporting application and product lines
+
+These remain part of the body of work but are not all active frontiers. Their currentness and implementation authority must be resolved target-locally before modification.
+
+- **Member Success — Master Librarian Dashboard** — member-health/high-risk/playbook-speed operational analytics lineage.
+- **RIVIR external API JavaScript** — IRPO-applied API/client lineage; paid/costly endpoint testing remains gated by cost.
+- **Computational Chorus** — accessible/playful computational-music projection lineage.
+- **Explorer World / MMO World Beta / Arcade Forge** — game/play surfaces separate from RMAO world authority unless explicitly bridged.
+- **Human-Knowledge Working-Set Lab** — human/knowledge working-set and reconstruction lineage.
+- **From Knowledge to Life** — knowledge-to-action/application lineage.
+- **Water-Care Engineering / low-attention pool cleaner** — physical engineering/application lineage.
+- **MauiBrickBreak** — preserved software/game lineage.
+- **vvvv decision experience** — remembered interaction/decision-surface lineage.
+- **Co-Animate** — preserved collaborative creativity project lineage.
+- **American Way / American Dream project** — preserved human/application lineage.
+- **Shared Well / Pursuit of Happiness — IRPO** — orientation/application lineage; philosophy/orientation remains separate from evidence.
+
+Use [NAME_LINEAGE.md](NAME_LINEAGE.md) for attribution and [LOCATIONS.md](LOCATIONS.md) for recovered/unresolved homes.
+
+## Completion surfaces
+
+The current plan is interpreted together with:
+
+- [STANDING_RULES.md](STANDING_RULES.md) for governing constraints;
+- [NAME_LINEAGE.md](NAME_LINEAGE.md) for names and attribution;
+- [EVIDENCE_LEDGER.md](EVIDENCE_LEDGER.md) for preserved-result navigation;
+- [MEMORY_INTEGRATION.md](MEMORY_INTEGRATION.md) for memory admission/privacy;
+- [LOCATIONS.md](LOCATIONS.md) for target-local authority and unresolved locations.
+
+```text
+PLAN != EVIDENCE
+NAME != PROMOTION
+MEMORY != CURRENT IMPLEMENTATION
+```
+
 ## Daily/local centralization
 
 ~~~text
