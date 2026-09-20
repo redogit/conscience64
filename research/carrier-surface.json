@@ -56,6 +56,45 @@
     "ownerPullRequest": "https://github.com/redogit/Other-Projects-/pull/87",
     "ownerHead": "https://github.com/redogit/Other-Projects-/tree/5f99adca0cdb4d9c6c66f5124fe3567fbdb9eff2",
     "s1ModelMap": "../federation/s1-models/",
-    "ownerMain": "https://github.com/redogit/Other-Projects-/tree/17ce340776455735a1af814031b88b887a5cf421"
+    "ownerMain": "https://github.com/redogit/Other-Projects-/tree/17ce340776455735a1af814031b88b887a5cf421",
+    "s1ExecutableBridge": "https://github.com/redogit/Other-Projects-/blob/cca44e23ca663600cc3466f45d7dc509c466b796/Decision%20Field%20Operator%20Lab/docs/S1_CARRIER_SURFACE_BRIDGE.md"
+  },
+  "s1ExecutableBridge": {
+    "status": "VERIFIED_OWNER_LOCAL_SOFTWARE",
+    "ownerRepository": "redogit/Other-Projects-",
+    "ownerPullRequest": 88,
+    "ownerMergeCommit": "cca44e23ca663600cc3466f45d7dc509c466b796",
+    "reviewedHead": "97812032aa56c03a47307695e9dc9144533d738c",
+    "workflowRun": 35523193624,
+    "carrierTypes": [
+      "candidate-state",
+      "survivor",
+      "semantic-work-unit",
+      "multi-timescale"
+    ],
+    "transport": "S′ semantic object -> Carrier–Surface -> RMAPL Omega v0 -> Carrier–Surface -> S′ semantic object",
+    "roundTrip": "PASS on protected kernel for all four carriers",
+    "negativeControls": {
+      "sidecarRemoved": "UNKNOWN",
+      "protectedIdentityTamper": "SEMANTIC_DECAY",
+      "invalidSchedule": "schedule-order"
+    },
+    "oneDegreeRepair": {
+      "changedPath": "schedule.tau_w",
+      "before": 20,
+      "after": 4,
+      "admitted": false
+    },
+    "evidence": {
+      "path": "Decision Field Operator Lab/evidence/S1_CARRIER_SURFACE_RESULTS.json",
+      "gitBlobSha1": "390c34850621daeba3cddddbac6969b87ad17562",
+      "scientificValidation": false
+    },
+    "boundaries": [
+      "CURRENT_WORKING_MODEL != OWNER-PINNED_IMPLEMENTATION",
+      "PROJECTION_SUCCESS != RECONSTRUCTION_SUCCESS",
+      "REPAIRED != ADMITTED",
+      "METHOD_TRANSFER != EVIDENCE_TRANSFER"
+    ]
   }
 }

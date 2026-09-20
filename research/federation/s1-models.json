@@ -92,7 +92,7 @@
     "observedAt": "2026-09-20",
     "ownerCurrent": {
       "repository": "redogit/Other-Projects-",
-      "observedMainRevision": "217546ce9839b31befc8a2d31815ce3d75287680",
+      "observedMainRevision": "cca44e23ca663600cc3466f45d7dc509c466b796",
       "nativeS1LatestLineageCommit": "29effa0cfb52a019d51d81fae47aa8e056ab71cf",
       "closureEvidence": {
         "path": "S1 Models Lab/evidence/RIGOR_V1_CLOSURE_SUMMARY.json",
@@ -250,7 +250,60 @@
       "ownerLab": "https://github.com/redogit/Other-Projects-/tree/main/S1%20Models%20Lab",
       "latestNativeLineage": "https://github.com/redogit/Other-Projects-/commit/29effa0cfb52a019d51d81fae47aa8e056ab71cf",
       "closureEvidence": "https://github.com/redogit/Other-Projects-/blob/main/S1%20Models%20Lab/evidence/RIGOR_V1_CLOSURE_SUMMARY.json",
-      "carrierSurface": "../carrier-surface/"
+      "carrierSurface": "../carrier-surface/",
+      "executableCarrierBridge": "https://github.com/redogit/Other-Projects-/blob/cca44e23ca663600cc3466f45d7dc509c466b796/Decision%20Field%20Operator%20Lab/docs/S1_CARRIER_SURFACE_BRIDGE.md",
+      "executableCarrierEvidence": "https://github.com/redogit/Other-Projects-/blob/cca44e23ca663600cc3466f45d7dc509c466b796/Decision%20Field%20Operator%20Lab/evidence/S1_CARRIER_SURFACE_RESULTS.json"
+    },
+    "executableCarrierBridge": {
+      "status": "VERIFIED_OWNER_LOCAL_SOFTWARE",
+      "repository": "redogit/Other-Projects-",
+      "pullRequest": 88,
+      "mergeCommit": "cca44e23ca663600cc3466f45d7dc509c466b796",
+      "reviewedHead": "97812032aa56c03a47307695e9dc9144533d738c",
+      "workflowRun": 35523193624,
+      "implementationTests": {
+        "total": 186,
+        "passed": 186,
+        "failed": 0
+      },
+      "carrierTypes": [
+        "candidate-state",
+        "survivor",
+        "semantic-work-unit",
+        "multi-timescale"
+      ],
+      "transport": [
+        "s1-semantic-object/v1",
+        "s1-carrier-surface/v1",
+        "rmapl-omega/v0",
+        "s1-carrier-surface/v1",
+        "s1-semantic-object/v1"
+      ],
+      "negativeControls": {
+        "strippedReconstructionSidecar": "UNKNOWN",
+        "protectedIdentityTamper": "SEMANTIC_DECAY",
+        "scheduleOrderViolation": "schedule-order"
+      },
+      "oneDegreeRepair": {
+        "path": "schedule.tau_w",
+        "before": 20,
+        "after": 4,
+        "status": "REPAIRED",
+        "admitted": false
+      },
+      "evidence": {
+        "path": "Decision Field Operator Lab/evidence/S1_CARRIER_SURFACE_RESULTS.json",
+        "gitBlobSha1": "390c34850621daeba3cddddbac6969b87ad17562",
+        "schema": "s1-carrier-surface-audit/v1",
+        "scientificValidation": false
+      },
+      "boundaries": [
+        "PROJECTION_SUCCESS != RECONSTRUCTION_SUCCESS",
+        "ROTATION != MUTATION != SEMANTIC_DECAY",
+        "REPAIRED != ADMITTED",
+        "METHOD_TRANSFER != EVIDENCE_TRANSFER",
+        "SOFTWARE_VERIFICATION != SCIENTIFIC_VALIDATION"
+      ]
     }
   }
 }
