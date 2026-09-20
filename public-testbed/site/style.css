@@ -35,3 +35,5 @@ footer{border-top:1px solid var(--line);margin-top:2.5rem;padding:1rem 0 2rem;co
 code{overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media (max-width:36rem){.experiment-card dl{grid-template-columns:1fr}.experiment-card dd{margin-bottom:.65rem}}
+
+.path-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}.path-card{border:1px solid var(--line);background:var(--panel);border-radius:.75rem;padding:1rem}.path-card h3{margin-top:0}.path-card dl{display:grid;grid-template-columns:minmax(7rem,10rem) 1fr;gap:.3rem .75rem}.path-card dt{font-weight:700;color:var(--muted)}.path-card dd{margin:0;overflow-wrap:anywhere}.relation-list{display:grid;gap:.45rem}
