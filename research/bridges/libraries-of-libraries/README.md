@@ -64,10 +64,10 @@ Current state:
 
 ```text
 INBOUND  = VERIFIED_BOUNDED_PRIVATE_METHOD_HANDOFF
-OUTBOUND = VERIFIED_BOUNDED_PRIVATE_METHOD_OUTWARD_BOUNDARIES
+OUTBOUND = VERIFIED_BOUNDED_PRIVATE_METHOD_STRUCTURED_RESPONSE_RUNTIME
 ```
 
-PR #170 verifies the inbound private-method handoff through the loopback Knowledge Bridge. Commit `deba0e9b19ef1fe106ba6dea1323eb0896dd5010` verifies bounded outward private-method privacy enforcement across ECS/client, agent/tool handoff, export/sync, and structured publication. Neither result establishes the generic structured response-packet runtime.
+PR #170 verifies the inbound private-method handoff through the loopback Knowledge Bridge. Commit `deba0e9b19ef1fe106ba6dea1323eb0896dd5010` verifies bounded outward private-method privacy enforcement. PR #176 / merge `ee740af81d95533c907a65166564e661807c50eb` adds one actual restricted structured return path: `POST /v1/handoff-response` plus authorized exact `GET /v1/handoff-response/<response_id>`, linked to the admitted private-method packet UOID. This remains private-method-only; a generic response runtime for arbitrary request classes is not claimed.
 
 ```text
 BIDIRECTIONAL_PROTOCOL != BIDIRECTIONAL_RUNTIME_IMPLEMENTATION_EVERYWHERE

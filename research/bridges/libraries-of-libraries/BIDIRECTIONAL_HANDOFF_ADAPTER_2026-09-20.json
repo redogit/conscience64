@@ -13,15 +13,25 @@
     "privacy_origin_required": "private-history-method-only"
   },
   "outbound": {
-    "status": "VERIFIED_BOUNDED_PRIVATE_METHOD_OUTWARD_BOUNDARIES",
-    "evidence_anchor": "deba0e9b19ef1fe106ba6dea1323eb0896dd5010",
-    "carriers": [
-      "ecs-client",
-      "agent-tool-handoff",
-      "export-sync-publication"
+    "status": "VERIFIED_BOUNDED_PRIVATE_METHOD_STRUCTURED_RESPONSE_RUNTIME",
+    "privacy_boundary_anchor": "deba0e9b19ef1fe106ba6dea1323eb0896dd5010",
+    "response_runtime_anchor": "ee740af81d95533c907a65166564e661807c50eb",
+    "request_class": "PRIVATE_METHOD_HANDOFF",
+    "request_identity": "KNOWLEDGE_PACKET_UOID",
+    "response_schema": "conscience64.handoff-response/v1",
+    "endpoints": [
+      "POST /v1/handoff-response",
+      "GET /v1/handoff-response/<response_id>"
     ],
-    "structured_response_packet_runtime": false,
-    "note": "Private-method origin/boundary propagation and outward blocking are verified; a generic structured response-packet runtime is still not established."
+    "statuses": [
+      "ACCEPTED",
+      "REJECTED",
+      "NEEDS_EVIDENCE",
+      "UNRESOLVED"
+    ],
+    "structured_response_packet_runtime": true,
+    "generic_response_packet_runtime": false,
+    "note": "One restricted target-local response runtime is verified for admitted private-method requests only; this is not a generic response runtime for arbitrary request classes."
   },
   "privacy": {
     "monotonic": true,
@@ -36,5 +46,5 @@
     "PRIVATE SOURCE MUST NOT PROPAGATE",
     "VERIFICATION != UNIVERSAL_PRIVACY_PROOF"
   ],
-  "claim_ceiling": "CONSCIENCE64_LOCAL_ADAPTER_WITH_VERIFIED_BOUNDED_INBOUND_AND_OUTWARD_PRIVACY_NO_GENERIC_RESPONSE_RUNTIME"
+  "claim_ceiling": "CONSCIENCE64_LOCAL_ADAPTER_WITH_VERIFIED_PRIVATE_METHOD_REQUEST_RESPONSE_RUNTIME_ONLY"
 }
