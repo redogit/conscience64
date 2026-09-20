@@ -17,6 +17,8 @@ assert.ok(workflow.includes("privacy_safe') is True"), 'approval must include pr
 assert.ok(workflow.includes("link_surface_reviewed') is True"), 'approval must include link-surface review');
 assert.ok(workflow.includes("dependent_surfaces_reviewed') is True"), 'approval must include dependent-surface review');
 assert.ok(workflow.includes('PUBLICATION_HELD'), 'unapproved revisions must hold publication rather than mutate gh-pages');
+assert.ok(workflow.includes('node tools/check_private_publication_surface.mjs'), 'Pages source sync must reject structured private-origin carriers before publication');
+assert.match(workflow, /tools\/check_private_publication_surface\.mjs/, 'Pages source sync must rerun when the private-publication guard changes');
 
 const leaseRead = workflow.indexOf('lease_sha="$(git ls-remote origin refs/heads/gh-pages');
 const push = workflow.indexOf('git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin "$GITHUB_SHA:refs/heads/gh-pages"');
