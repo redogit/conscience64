@@ -67,6 +67,8 @@ const carrierPage=await get('carrier-surface/');
 assert.match(carrierPage,/Object identity is invariant; coordinates are negotiable\./);
 assert.match(carrierPage,/17ce340776455735a1af814031b88b887a5cf421/);
 assert.match(carrierPage,/MULTI_KEY_RELATION != MATHEMATICAL_MANIFOLD/);
+assert.match(carrierPage,/cca44e23ca663600cc3466f45d7dc509c466b796/);
+assert.match(carrierPage,/186\/186/);
 
 const s1Page=await get('s1-models/');
 assert.match(s1Page,/S Prime candidate-state model/);
@@ -75,6 +77,11 @@ assert.match(s1Page,/SemanticWorkUnit/);
 assert.match(s1Page,/Grand Unified Perceptron \/ multi-timescale cell/);
 assert.match(s1Page,/29effa0cfb52a019d51d81fae47aa8e056ab71cf/);
 assert.match(s1Page,/CURRENT WORKING MODEL ≠ PINNED IMPLEMENTATION/);
+assert.match(s1Page,/Executable Carrier–Surface bridge/);
+assert.match(s1Page,/cca44e23ca663600cc3466f45d7dc509c466b796/);
+assert.match(s1Page,/35523193624/);
+assert.match(s1Page,/186\/186/);
+assert.match(s1Page,/PROJECTION_SUCCESS != RECONSTRUCTION_SUCCESS/);
 
 
 for(const forbidden of [
@@ -87,4 +94,4 @@ for(const forbidden of [
   await get(forbidden,{expect:404});
 }
 
-console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; Carrier–Surface + current S′ routes present; repository routes absent; six path states + named principles + lineage + aliases + unresolved relation visible`);
+console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; Carrier–Surface + current S′ executable bridge routes present; repository routes absent; six path states + named principles + lineage + aliases + unresolved relation visible`);
