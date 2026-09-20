@@ -224,6 +224,42 @@ Recovered knowledge remains subject to accessibility, rights, and community-auth
 
 Accessibility is part of preservation: semantic structure, keyboard access, screen-reader usability, Unicode preservation, non-color-only distinctions, transcripts/captions where applicable, and low reconstruction burden are first-class requirements.
 
+## Private-origin method recovery
+
+Private historical material is not a recoverable project carrier. Only an already-extracted abstract method may enter the bounded recovery envelope.
+
+The machine-readable recovery envelope is implemented by `tools/private-origin-boundary.mjs`. Its accepted state is deliberately narrow:
+
+```text
+schema = conscience64.private-method-recovery/v1
+kind = METHOD
+source = private-history:withheld
+visibility = restricted
+privacy_origin.classification = private-history-method-only
+privacy_origin.independently_regrounded = false
+claim_ceiling = abstract method only; no source or identity claim
+requires_independent_regrounding = true
+publication_allowed = false
+payload = abstract method only
+```
+
+Restore validates the exact envelope shape. Extra story/source/identity fields, changed source, public visibility, false claims of re-grounding, publication enablement, claim-ceiling promotion, or weakened recovery boundaries fail closed.
+
+The restored object carries the method plus the boundary needed to continue working. It does not restore the source narrative.
+
+```text
+RECOVER RULE + AUTHORIZED ABSTRACTION
+!=
+RECONSTRUCT PRIVATE SOURCE
+
+PRIVATE METHOD MAY INFORM SOLVING
+PRIVATE SOURCE MUST NOT PROPAGATE
+RECOVERY != SOURCE RESTORATION
+METHOD CARRIER != PROJECT EVIDENCE
+```
+
+This is structural enforcement of a marked method-only carrier. It does not determine whether arbitrary method prose was correctly abstracted upstream.
+
 ## Governing invariant
 
 ```text

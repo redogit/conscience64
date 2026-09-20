@@ -6,6 +6,7 @@ on:
     paths:
       - 'tools/semantic-crossref.mjs'
       - 'tools/private-origin-boundary.mjs'
+      - 'tools/private-origin-boundary.test.mjs'
       - 'tools/semantic-crossref.test.mjs'
       - 'tools/semantic-corpus.mjs'
       - 'tools/semantic-corpus.test.mjs'
@@ -29,6 +30,7 @@ on:
     paths:
       - 'tools/semantic-crossref.mjs'
       - 'tools/private-origin-boundary.mjs'
+      - 'tools/private-origin-boundary.test.mjs'
       - 'tools/semantic-crossref.test.mjs'
       - 'tools/semantic-corpus.mjs'
       - 'tools/semantic-corpus.test.mjs'
@@ -75,6 +77,7 @@ jobs:
       - name: Verify semantic mapper, corpus, query, applicability, and hypothesis-builder syntax
         run: |
           node --check tools/private-origin-boundary.mjs
+          node --check tools/private-origin-boundary.test.mjs
           node --check tools/semantic-crossref.mjs
           node --check tools/semantic-corpus.mjs
           node --check tools/semantic-routing.mjs
@@ -84,6 +87,8 @@ jobs:
           node --check tools/run-hypothesis-algorithm-builder.mjs
           node --check tools/query-semantic-corpus.mjs
           node --check tools/build-semantic-corpus-map.mjs
+      - name: Verify private-origin reconstruction boundary
+        run: node tools/private-origin-boundary.test.mjs
       - name: Verify deterministic semantic cross-reference behavior and stress bound
         run: node tools/semantic-crossref.test.mjs
       - name: Verify real repository corpus ingestion and bounded semantic routing
