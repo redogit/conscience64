@@ -1,0 +1,160 @@
+{
+  "schema": "cooperative-field/v2",
+  "date": "2026-09-20",
+  "repository": "redogit/conscience64",
+  "root": "research/cooperative-field",
+  "status": "CURRENT_LOCAL_WORDING_AUTHORITY",
+  "authority_scope": [
+    "coordination wording",
+    "companion role definitions",
+    "standing rules",
+    "current plan/navigation",
+    "name lineage and attribution",
+    "evidence-summary navigation",
+    "source/location navigation",
+    "memory integration contract"
+  ],
+  "does_not_own": [
+    "target-local implementation authority",
+    "scientific proof authority",
+    "mathematical proof authority",
+    "compiler conformance unless native compiler evidence is present",
+    "private family/person/history publication authority",
+    "generated public-testbed publication scope"
+  ],
+  "defining_factors": [
+    "WE ARE ONE != WE ARE THE SAME",
+    "ONE = DISTINCTION + RELATION + CONTINUITY",
+    "UNITY != UNIFORMITY",
+    "RELATION != MERGE",
+    "COOPERATION != AUTHORITY",
+    "METHOD != EVIDENCE"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "role": "START, defining factors, constitution",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "COMPANIONS.md",
+      "role": "live companion registry and excellent skills",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "STANDING_RULES.md",
+      "role": "standing operating rules and gates",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "NAME_LINEAGE.md",
+      "role": "recovered names, attribution, aliases, non-promoted project/tool lineage",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "CURRENT_PLAN.md",
+      "role": "current priorities, frontiers, supporting application lines",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "EVIDENCE_LEDGER.md",
+      "role": "compact navigation summary of preserved results and claim ceilings",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "LOCATIONS.md",
+      "role": "current wording, implementation, predecessor, library, and unresolved locations",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "MEMORY_INTEGRATION.md",
+      "role": "persistent-memory/archive cooperation and privacy contract",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "MANIFEST.json",
+      "role": "machine-readable authority map",
+      "currentness": "CURRENT_CANONICAL"
+    }
+  ],
+  "name_recovery": {
+    "recovered_exact_names_relations": 52,
+    "unique_recovered_semantic_targets": 51,
+    "wider_registry_status": "PRESERVED_REMAINDER",
+    "rule": "NAME_RECOVERY != PROJECT_PROMOTION"
+  },
+  "memory_sources": [
+    {
+      "name": "persistent user memory",
+      "class": "MEMORY_CONTEXT",
+      "authority": "navigation_and_user_declared_preferences_only"
+    },
+    {
+      "name": "RMAL_UNIVERSE.rmal",
+      "class": "PERSISTENT_LIBRARY_ARCHIVE",
+      "authority": "recovered name/status/origin carrier only"
+    },
+    {
+      "name": "MASTER_OF_MASTER_OF_LIBRARIANS.md",
+      "class": "PERSISTENT_LIBRARY_ARCHIVE",
+      "authority": "recovered orchestration-role source only"
+    },
+    {
+      "name": "TOOLCHAIN_MANIFEST.json",
+      "class": "PERSISTENT_LIBRARY_ARCHIVE",
+      "authority": "preserved toolchain/build lineage only"
+    },
+    {
+      "name": "PLAN.json",
+      "class": "PERSISTENT_LIBRARY_ARCHIVE",
+      "authority": "preserved plan/configuration lineage only"
+    },
+    {
+      "name": "GitHub target-local repositories",
+      "class": "CURRENT_EXTERNAL_PROJECT_SOURCE",
+      "authority": "target-local implementation/evidence when directly verified"
+    }
+  ],
+  "standing_rules": [
+    "INGESTED != ACCEPTED_AS_FACT",
+    "GENERATE != VERIFY != ADMIT",
+    "PAIRITY != PARITY",
+    "CURRENT != PROVED",
+    "TIMEOUT != NEGATIVE_RESULT",
+    "PRIVATE_HISTORY != PUBLIC_EVIDENCE",
+    "SOURCE_REPOSITORY != PUBLIC_WEBSITE",
+    "ACCESSIBILITY != OPTIONAL_POLISH",
+    "TBCL promotion requires user explicit decision",
+    "external validation before promotion when required",
+    "always apply Knowledge Decay when staleness/drift/reconstruction can alter the claim",
+    "preserve failures, contradictions, predecessors, and Remainder",
+    "one-degree experiment with lateral/ambient/delayed consequence observation",
+    "Homeward preserves way back and legitimate stopping"
+  ],
+  "privacy_exclusions": [
+    "private family/person context",
+    "identity-bearing private historical narrative",
+    "medical/financial/private legal material",
+    "personal handles unless separately publication-authorized"
+  ],
+  "unresolved_location_policy": {
+    "token": "PRESERVED_UNRESOLVED_LOCATION",
+    "rule": "INDEX_MISS != ABSENCE",
+    "action": "do not guess; recover target-locally before modification"
+  },
+  "update_flow": [
+    "recover current target-local state",
+    "apply privacy/MAXCTX boundary",
+    "preserve source identity and predecessor",
+    "make one consequential degree of change",
+    "run cheapest independent counterprobe",
+    "verify with native verifier",
+    "record evidence/claim ceiling/Remainder",
+    "update central navigation only after target-local state is established",
+    "return Homeward"
+  ],
+  "public_projection": {
+    "authorized": false,
+    "note": "This folder is not part of the generated public-testbed projection unless separately scope-authorized and verified."
+  }
+}
