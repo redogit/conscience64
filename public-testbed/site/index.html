@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Conscience64 Public Experimental Test Bed</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to experiments</a>
+  <header class="shell-header">
+    <p class="eyebrow">Conscience64 · public experimental projection · 31173</p>
+    <h1>Public Experimental Test Bed</h1>
+    <p>
+      A narrow, reconstructible surface for experiments. Experimental state is visible;
+      source authority, scientific truth, and publication permission remain separate.
+    </p>
+    <div class="boundary-strip" aria-label="Core boundaries">
+      <span>PUBLIC EXPERIMENT ≠ VERIFIED TRUTH</span>
+      <span>CURRENT ≠ TRUE</span>
+      <span>ALIAS ≠ LINEAGE</span>
+      <span>PRIVATE SOURCE MUST NOT PROPAGATE</span>
+    </div>
+  </header>
+
+  <nav aria-label="Test bed rooms" class="room-nav">
+    <a href="#current">Current experiment</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#provenance">Provenance</a>
+    <a href="#remainder">Remainder</a>
+  </nav>
+
+  <main id="main">
+    <section id="current" aria-labelledby="current-title">
+      <h2 id="current-title">Current experiment</h2>
+      <div id="experiment-card" class="experiment-card" aria-live="polite">
+        <p>Loading the bounded experiment record…</p>
+      </div>
+    </section>
+
+    <section id="rooms" aria-labelledby="rooms-title">
+      <h2 id="rooms-title">Navigation rooms</h2>
+      <p>Each room exposes a different relation without collapsing it into authority.</p>
+      <div id="room-grid" class="room-grid"></div>
+    </section>
+
+    <section id="provenance" aria-labelledby="provenance-title">
+      <h2 id="provenance-title">Evidence Telescope</h2>
+      <dl class="provenance-grid">
+        <div><dt>Exact source revision</dt><dd id="source-revision">Loading…</dd></div>
+        <div><dt>Projection authority</dt><dd id="projection-authority">experimental-non-authoritative</dd></div>
+        <div><dt>Projection source root</dt><dd id="projection-root">public-testbed/</dd></div>
+        <div><dt>Manifest identity</dt><dd id="manifest-identity">Loading…</dd></div>
+      </dl>
+    </section>
+
+    <section id="remainder" aria-labelledby="remainder-title">
+      <h2 id="remainder-title">Wonder Room — Remainder</h2>
+      <ul id="remainder-list">
+        <li>Loading unresolved work…</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="way-back-title">
+      <h2 id="way-back-title">Way back</h2>
+      <p>
+        Every live projection must identify the exact repository source revision and generated
+        projection manifest. A public view is a projection, never a replacement for repository history.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p id="status-line">SOURCE PROJECTION ONLY — publication and network-edge verification are separate gates.</p>
+  </footer>
+
+  <noscript>
+    <p class="noscript">
+      JavaScript is disabled. This surface remains an experimental projection. Inspect
+      <code>testbed.json</code> and <code>projection-manifest.json</code> directly for the data and provenance.
+    </p>
+  </noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
