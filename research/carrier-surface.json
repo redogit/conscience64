@@ -12,12 +12,13 @@
     "pullRequest": 87,
     "branch": "docs/open-carrier-surface-kernel-20260920",
     "observedHead": "5f99adca0cdb4d9c6c66f5124fe3567fbdb9eff2",
-    "state": "OPEN_AT_CONNECTION_TIME",
+    "state": "MERGED",
     "files": [
       "Decision Field Operator Lab/docs/CARRIER_SURFACE_KERNEL.md",
       "Decision Field Operator Lab/docs/carrier_surface_traversal.schema.json",
       "Decision Field Operator Lab/docs/CARRIER_SURFACE_PUBLICATION.md"
-    ]
+    ],
+    "mergeCommit": "17ce340776455735a1af814031b88b887a5cf421"
   },
   "governingInvariant": "Object identity is invariant; coordinates are negotiable.",
   "core": [
@@ -54,6 +55,7 @@
   "links": {
     "ownerPullRequest": "https://github.com/redogit/Other-Projects-/pull/87",
     "ownerHead": "https://github.com/redogit/Other-Projects-/tree/5f99adca0cdb4d9c6c66f5124fe3567fbdb9eff2",
-    "s1ModelMap": "../federation/s1-models/"
+    "s1ModelMap": "../federation/s1-models/",
+    "ownerMain": "https://github.com/redogit/Other-Projects-/tree/17ce340776455735a1af814031b88b887a5cf421"
   }
 }
