@@ -64,10 +64,10 @@ Current state:
 
 ```text
 INBOUND  = VERIFIED_BOUNDED_PRIVATE_METHOD_HANDOFF
-OUTBOUND = REFERENCE_OR_GIT_HANDOFF_ONLY
+OUTBOUND = VERIFIED_BOUNDED_PRIVATE_METHOD_OUTWARD_BOUNDARIES
 ```
 
-PR #170 verifies the inbound private-method handoff through the loopback Knowledge Bridge. It does **not** establish a generic structured outbound response-packet runtime.
+PR #170 verifies the inbound private-method handoff through the loopback Knowledge Bridge. Commit `deba0e9b19ef1fe106ba6dea1323eb0896dd5010` verifies bounded outward private-method privacy enforcement across ECS/client, agent/tool handoff, export/sync, and structured publication. Neither result establishes the generic structured response-packet runtime.
 
 ```text
 BIDIRECTIONAL_PROTOCOL != BIDIRECTIONAL_RUNTIME_IMPLEMENTATION_EVERYWHERE
