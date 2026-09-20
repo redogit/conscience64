@@ -88,6 +88,7 @@ Decision Field Operator Lab/omega_adapters.py
 Decision Field Operator Lab/rmapl.py
 Decision Field Operator Lab/rmapl_runtime.py
 Decision Field Operator Lab/omega_relations.py
+Decision Field Operator Lab/test_omega_relations_decision_field.py
 Decision Field Operator Lab/RELATIONAL_FIELD_CARRIER_2026-09-20.md
 Decision Field Operator Lab/RMAPL_V0_GRAMMAR.md
 Decision Field Operator Lab/evidence/RMAPL_OMEGA_RESULTS.json
@@ -120,7 +121,10 @@ Current bounded all-directional relation carrier:
 schema = rmapl-omega-relational-field/v0
 implementation = Decision Field Operator Lab/omega_relations.py
 documentation = Decision Field Operator Lab/RELATIONAL_FIELD_CARRIER_2026-09-20.md
-target-local merge = Other-Projects- PR #80 / 4625c2a5c889a8344f6f0821883c67d5eed72b0c
+relation-carrier merge = Other-Projects- PR #80 / 4625c2a5c889a8344f6f0821883c67d5eed72b0c
+first native witness = Other-Projects- PR #81 / 16a6823aa563e86455ec709700d06f0b9e22b467
+current verified main = 16a6823aa563e86455ec709700d06f0b9e22b467
+post-merge run = 35508603278 / PASS / 119 of 119 tests
 authority = method-only
 Omega v0 = unchanged
 ~~~
