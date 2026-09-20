@@ -52,3 +52,25 @@ DERIVED_FROM_PRIVATE_HISTORY != SAFE_TO_PUBLISH
 ```
 
 The Libraries-of-Libraries bridge may preserve that the boundary exists; it must not export the protected narrative behind it.
+
+
+## Bidirectional handoff adapter
+
+Machine-readable local adapter:
+
+- [`BIDIRECTIONAL_HANDOFF_ADAPTER_2026-09-20.json`](BIDIRECTIONAL_HANDOFF_ADAPTER_2026-09-20.json)
+
+Current state:
+
+```text
+INBOUND  = VERIFIED_BOUNDED_PRIVATE_METHOD_HANDOFF
+OUTBOUND = REFERENCE_OR_GIT_HANDOFF_ONLY
+```
+
+PR #170 verifies the inbound private-method handoff through the loopback Knowledge Bridge. It does **not** establish a generic structured outbound response-packet runtime.
+
+```text
+BIDIRECTIONAL_PROTOCOL != BIDIRECTIONAL_RUNTIME_IMPLEMENTATION_EVERYWHERE
+HANDOFF != AUTHORITY_TRANSFER
+AUTHORIZED_READ != PUBLICATION_PERMISSION
+```
