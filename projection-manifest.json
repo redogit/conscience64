@@ -1,0 +1,40 @@
+{
+  "schema": "conscience64.public-testbed-projection/v0",
+  "source_revision": "f05fc0550ba0e945ea64e9b8447b972b1c4a11fd",
+  "source_root": "public-testbed/",
+  "publication_scope": "public-testbed-only",
+  "authority": "experimental-non-authoritative",
+  "projection_sha256": "4cc3641bac9f73b73a0e2217eac3bfb1d1b905fe984d89ca7813a7a8e9ba9ad0",
+  "files": [
+    {
+      "path": "app.js",
+      "bytes": 2853,
+      "sha256": "d7c91a841453cd626cbcbb68630d27139adccc4ade8e064ca8987bdd561810f2",
+      "source": "public-testbed/site/app.js"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3560,
+      "sha256": "90f59a2fdc0b86d8fb150090ab25c31bfd6402670ea328e212e9fc098f690a74",
+      "source": "public-testbed/site/index.html"
+    },
+    {
+      "path": "style.css",
+      "bytes": 2283,
+      "sha256": "aed131ef1f78ac5f939d7d8433db9a2b876166c15757b71523ff4f99d37fb7c0",
+      "source": "public-testbed/site/style.css"
+    },
+    {
+      "path": "testbed.json",
+      "bytes": 2892,
+      "sha256": "2a0995f31d289cdce2c9c143072a53cc3a20af97c078c00b51fc78093b9d8c74",
+      "source": "public-testbed/testbed.json"
+    }
+  ],
+  "boundaries": [
+    "CONSCIENCE64_REPOSITORY != PUBLIC_TESTBED_PROJECTION",
+    "PUBLIC_TESTBED != WHOLE_REPOSITORY",
+    "PUBLIC_EXPERIMENT != VERIFIED_TRUTH",
+    "PRIVATE SOURCE MUST NOT PROPAGATE"
+  ]
+}

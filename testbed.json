@@ -1,0 +1,85 @@
+{
+  "schema": "conscience64.public-testbed-source/v0",
+  "marker": "31173",
+  "title": "Conscience64 Public Experimental Test Bed",
+  "authority": "experimental-non-authoritative",
+  "publication_scope": "public-testbed-only",
+  "claim_boundary": "PUBLIC_EXPERIMENT != VERIFIED_TRUTH",
+  "method_boundary": "PRIVATE METHOD MAY INFORM SOLVING; PRIVATE SOURCE MUST NOT PROPAGATE",
+  "progression_model": {
+    "currency_meaning": "knowledge-currentness",
+    "states": [
+      "CURRENT_EPOCH",
+      "CURRENT_CANONICAL",
+      "HISTORICAL_PREDECESSOR",
+      "HISTORICAL_SUPERSEDED",
+      "COEXISTING_LINEAGE",
+      "PRESERVED_UNRESOLVED",
+      "PRESERVED"
+    ],
+    "boundaries": [
+      "CURRENT != TRUE",
+      "SUPERSEDED != FALSE",
+      "HISTORICAL != IRRELEVANT",
+      "ALIAS != LINEAGE",
+      "SIMILARITY != DESCENT"
+    ]
+  },
+  "rooms": [
+    {
+      "id": "path-constellation",
+      "name": "Path Constellation",
+      "purpose": "Progression and verified lineage"
+    },
+    {
+      "id": "compass",
+      "name": "Compass",
+      "purpose": "Currentness and navigation"
+    },
+    {
+      "id": "failure-museum",
+      "name": "Failure Museum",
+      "purpose": "Failed, superseded, and zero-result retention"
+    },
+    {
+      "id": "evidence-telescope",
+      "name": "Evidence Telescope",
+      "purpose": "Provenance and claim boundaries"
+    },
+    {
+      "id": "language-garden",
+      "name": "Language Garden",
+      "purpose": "Aliases and terminology without forced identity"
+    },
+    {
+      "id": "wonder-room",
+      "name": "Wonder Room",
+      "purpose": "Preserved unresolved relations and open holes"
+    }
+  ],
+  "experiments": [
+    {
+      "id": "projection-isolation-v0",
+      "title": "Projection Isolation v0",
+      "status": "tested",
+      "currentness": "CURRENT_CANONICAL",
+      "changed_degree": "projection builder input is restricted to public-testbed source files",
+      "invariants": [
+        "full repository is not a projection input",
+        "private-origin carriers are not admitted",
+        "exact source revision is carried in the generated projection manifest",
+        "claim boundaries and remainder stay visible"
+      ],
+      "evidence": "generated projection manifest plus deterministic source checks",
+      "result": "exact-head source isolation verified in PR #178; public projection switching is the current successor step",
+      "zero_result": "no claim of publication or edge deployment is made by this source-only slice",
+      "remainder": [
+        "verify gh-pages tree contains only the generated projection",
+        "verify the deployed network edge matches the exact source revision",
+        "expand visible path states only after publication isolation is proven"
+      ],
+      "provenance": "issue:166;pr:178",
+      "claim_boundary": "SOURCE_PROJECTION_VERIFIED != PUBLICATION_APPROVED"
+    }
+  ]
+}
