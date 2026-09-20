@@ -36,8 +36,12 @@ assert.equal(data.publication_scope,'public-testbed-only');
 assert.equal(data.authority,'experimental-non-authoritative');
 assert.ok(!containsRestrictedOrigin(data));
 assert.equal(data.rooms.length,6);
-assert.ok(data.experiments?.[0]?.remainder?.length>0);
-assert.ok(data.experiments?.[0]?.claim_boundary);
+const experiment=data.experiments?.[0];
+assert.equal(experiment?.status,'closed');
+assert.deepEqual(experiment?.remainder,[]);
+assert.equal(experiment?.closure?.scope,'issue:166');
+assert.match(experiment?.result||'',/live edge verified/i);
+assert.ok(experiment?.claim_boundary);
 
 const html=await get('');
 assert.match(html,/Public Experimental Test Bed/);
