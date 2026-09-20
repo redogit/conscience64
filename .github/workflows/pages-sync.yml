@@ -1,211 +1,109 @@
-name: Sync Conscience64 Pages source
+name: Sync Conscience64 public test bed
 
 on:
   push:
     branches: [main]
     paths:
-      - 'index.html'
-      - 'about/**'
-      - 'history/**'
-      - 'app.js'
-      - 'voice-anywhere.js'
-      - 'research-song.js'
-      - 'space-lens-memory.js'
-      - 'space-lens-qa.js'
-      - 'space-lens-local-search.js'
-      - 'space-lens-web-search.js'
-      - 'space-lens-external-gate.js'
-      - 'space-lens-human-builder.js'
-      - 'space-lens-master.js'
-      - 'space-lens-field.js'
-      - 'space-lens-voice.js'
-      - 'space-lens-help.js'
-      - 'data-manifest.json'
-      - 'data-*.txt'
-      - 'API.md'
-      - 'BUILD_AUDIT.json'
-      - 'README.md'
-      - 'SITE_DATA_RECOVERY.md'
-      - 'research/projects/**'
-      - 'research/federation/**'
-      - 'research/cross-carrier/2026-09-13/internal-update/**'
-      - 'play/**'
-      - 'coordinate-space/**'
-      - 'analytics/**'
-      - 'infra/internal-dns/**'
-      - 'tools/check_site.mjs'
-      - 'tools/check_project_current.mjs'
-      - 'tools/check_voice_anywhere.mjs'
-      - 'tools/check_space_lens_qa.mjs'
-      - 'tools/check_space_lens_memory.mjs'
-      - 'tools/check_space_lens_local_search.mjs'
-      - 'tools/check_space_lens_web_search.mjs'
-      - 'tools/check_space_lens_external_gate.mjs'
-      - 'tools/check_space_lens_human_builder.mjs'
+      - 'public-testbed/**'
+      - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'tools/build-public-testbed.mjs'
+      - 'tools/check-public-testbed.mjs'
+      - 'tools/check-public-testbed-edge.mjs'
+      - 'tools/private-origin-boundary.mjs'
       - 'tools/check_pages_sync.mjs'
-      - 'tools/check_public_reference_aliases.mjs'
-      - 'tools/public-routes.mjs'
-      - 'tools/public-routes.test.mjs'
-      - 'tools/check_public_routes.mjs'
-      - '.nojekyll'
       - '.github/workflows/pages-sync.yml'
       - '.github/workflows/pages-live-alias.yml'
-      - 'PUBLIC_RELEASE_APPROVAL.json'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: conscience64-pages-source
+  group: conscience64-public-testbed-source
   cancel-in-progress: true
 
 jobs:
-  publish-source:
+  publish-testbed:
     runs-on: ubuntu-latest
     steps:
-      - name: Materialize exact main commit
+      - name: Materialize exact main source revision
         shell: bash
         run: |
           set -euo pipefail
           git init "$GITHUB_WORKSPACE"
           cd "$GITHUB_WORKSPACE"
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          [[ "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]]
           git fetch --depth=1 origin "$GITHUB_SHA"
           git checkout --detach FETCH_HEAD
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
 
-      - name: Verify Pages source-sync contract
-        run: |
-          node tools/check_pages_sync.mjs
-          node tools/public-routes.test.mjs
-
-      - name: Verify local checkpoint restore boundaries
-        run: |
-          node history/test.mjs
-          node history/knowledge-test.mjs
-
-      - name: Verify site data, browser API, and current project lineage before source sync
-        run: |
-          node tools/check_site.mjs
-          node tools/check_project_current.mjs
-
-      - name: Verify Space Lens, portable voice/type, song, Chorus, analytics, and game layers before source sync
-        run: |
-          node --check voice-anywhere.js
-          node tools/check_voice_anywhere.mjs
-          node --check research-song.js
-          (cd analytics && python3 -m unittest -v test_server.py test_recorded_events.py)
-          node analytics/test.mjs
-          node --check play/computational-chorus/chorus.mjs
-          node --check play/explorer-world/world.mjs
-          node --check play/explorer-world/game.mjs
-          node --check play/mmo-world/companion.mjs
-          node play/mmo-world/test.mjs
-          python3 infra/internal-dns/verify_config.py
-          node --check space-lens-memory.js
-          node --check space-lens-qa.js
-          node --check space-lens-local-search.js
-          node --check space-lens-web-search.js
-          node --check space-lens-external-gate.js
-          node --check space-lens-human-builder.js
-          node --check space-lens-master.js
-          node --check space-lens-field.js
-          node --check space-lens-voice.js
-          node --check space-lens-help.js
-          node tools/check_space_lens_qa.mjs
-          node tools/check_space_lens_memory.mjs
-          node tools/check_space_lens_local_search.mjs
-          node tools/check_space_lens_web_search.mjs
-          node tools/check_space_lens_external_gate.mjs
-          node tools/check_space_lens_human_builder.mjs
-
-      - name: Verify public playground projects before source sync
-        run: node play/test.mjs
-
-      - name: Exercise public projects in Chrome before source sync
-        run: |
-          node play/browser-test.mjs
-          node play/explorer-world/browser-test.mjs
-          node play/mmo-world/forge/browser-test.mjs
-
-      - name: Verify Coordinate Space public release before source sync
+      - name: Verify public-testbed scope authorization
         shell: bash
         run: |
           set -euo pipefail
-          python3 -m venv "$RUNNER_TEMP/coordinate-space-venv"
-          PY="$RUNNER_TEMP/coordinate-space-venv/bin/python"
-          "$PY" -m pip install -r coordinate-space/requirements.txt playwright==1.57.0
-          "$PY" - <<'PY'
+          python3 - <<'PY'
+          import json
           from pathlib import Path
-          import hashlib, json
-          root=Path('coordinate-space')
-          manifest=json.loads((root/'release_manifest.json').read_text(encoding='utf-8'))
-          print('COORDINATE_RELEASE_DIGEST_AUDIT')
-          for name, expected in manifest['files'].items():
-              raw=(root/name).read_bytes()
-              actual={'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}
-              if actual != expected:
-                  print(json.dumps({'file':name,'expected':expected,'actual':actual},sort_keys=True))
+          d=json.loads(Path('PUBLIC_TESTBED_APPROVAL.json').read_text(encoding='utf-8'))
+          assert d.get('schema') == 'redogit/public-testbed-approval/v1'
+          assert d.get('approved') is True
+          assert d.get('scope') == 'public-testbed-only'
+          assert d.get('issue') == 166
+          review=d.get('review',{})
+          for key in (
+              'source_isolation_required',
+              'privacy_boundary_required',
+              'experimental_label_required',
+              'accessibility_required',
+              'network_edge_verification_required',
+          ):
+              assert review.get(key) is True, key
+          assert d.get('commercial_license_granted') is False
+          print('PASS public-testbed-only scope authorization')
           PY
-          "$PY" coordinate-space/verify_release.py
-          "$PY" coordinate-space/test_public.py
-          "$PY" coordinate-space/example.py
-          node coordinate-space/test_codec.mjs
-          "$PY" coordinate-space/browser_checks.py
 
-      - name: Verify Musilanguage radio and real Conscience64 integration
+      - name: Verify isolated projection contract
+        run: |
+          set -euo pipefail
+          node tools/check_pages_sync.mjs
+          node tools/check-public-testbed.mjs --revision "$GITHUB_SHA"
+
+      - name: Build exact public-testbed projection
         shell: bash
         run: |
           set -euo pipefail
-          node --check play/musilanguage/engine.js
-          node --check play/musilanguage/radio.js
-          "$RUNNER_TEMP/coordinate-space-venv/bin/python" play/musilanguage/radio-test.py
+          OUT="$RUNNER_TEMP/public-testbed-projection"
+          node tools/build-public-testbed.mjs --root . --out "$OUT" --revision "$GITHUB_SHA"
+          test -f "$OUT/index.html"
+          test -f "$OUT/projection-manifest.json"
+          test ! -e "$OUT/README.md"
+          test ! -e "$OUT/research"
+          test ! -e "$OUT/play"
+          echo "PROJECTION_DIR=$OUT" >> "$GITHUB_ENV"
 
-      - name: Verify listener-local MUSIC64 words, float edits, style profiles, and real companion bridge
-        shell: bash
-        run: |
-          set -euo pipefail
-          node --check play/musilanguage/style-profiles.js
-          node play/musilanguage/music64-test.mjs
-          node play/musilanguage/style-test.mjs
-          "$RUNNER_TEMP/coordinate-space-venv/bin/python" play/musilanguage/music64-browser.py --live --output "$RUNNER_TEMP/music64-checks"
-
-      - name: Advance gh-pages only with exact owner approval
+      - name: Publish projection tree with rollback lineage
         shell: bash
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          cd "$GITHUB_WORKSPACE"
-
-          approval_state="$(
-            python3 - <<'PY'
-          import json, os
-          from pathlib import Path
-
-          data = json.loads(Path('PUBLIC_RELEASE_APPROVAL.json').read_text(encoding='utf-8'))
-          exact = (
-              data.get('schema') == 'redogit/public-release-approval/v1'
-              and data.get('approved') is True
-              and data.get('approved_sha') == os.environ['GITHUB_SHA']
-              and data.get('review', {}).get('privacy_safe') is True
-              and data.get('review', {}).get('link_surface_reviewed') is True
-              and data.get('review', {}).get('dependent_surfaces_reviewed') is True
-          )
-          print('approved' if exact else 'held')
-          PY
-          )"
-
-          if [ "$approval_state" != "approved" ]; then
-            echo "PUBLICATION_HELD: exact commit has not received explicit owner safety approval."
-            exit 0
-          fi
-
+          PUB="$RUNNER_TEMP/pages-publish"
+          git init "$PUB"
+          cd "$PUB"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin gh-pages
+          git checkout --detach FETCH_HEAD
+          lease_sha="$(git rev-parse HEAD)"
+          git rm -r -f .
+          cp -a "$PROJECTION_DIR"/. .
+          git add -A
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish public test bed from ${GITHUB_SHA}"
+          projection_commit="$(git rev-parse HEAD)"
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          lease_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
-          test -n "$lease_sha"
-          git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin "$GITHUB_SHA:refs/heads/gh-pages"
+          git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin HEAD:refs/heads/gh-pages
           remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
-          test "$remote_sha" = "$GITHUB_SHA"
-          echo 'SOURCE_SYNC_ONLY: exact approved gh-pages source is synchronized; live deployment is verified separately.'
+          test "$remote_sha" = "$projection_commit"
+          echo "PUBLIC_TESTBED_SYNC source=$GITHUB_SHA projection_commit=$projection_commit predecessor=$lease_sha"
