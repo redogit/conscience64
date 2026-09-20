@@ -25,6 +25,11 @@ CONSCIENCE64_REFERENCE != IMPLEMENTATION_AUTHORITY
 5. FITTER / Carrier–Surface — PR #90 authority-floor repair is merged; quotient/path validation is eligible but unexecuted.
 6. Activate at most one external radar method when an observed residual requires it.
 
+
+## Currentness relation
+
+Conscience64 PR #200 is merged at `33a0edadfb467720c23ab11891e07526f4a75bfe` and advances the cooperative-field RMAPL runtime pointer to verified owner revision `e42f652b380eb1d68d14679d44b9328dfb2faa55`. That is a runtime-currentness relation, not radar authority or evidence transfer. The radar owner contract is the later additive documentation merge `9217c9269db118e03bf7e980adb60acf2e6252e7`.
+
 ## Internet-radar method candidates
 
 - Quotient lenses / independent translation validation for Carrier–Surface.
