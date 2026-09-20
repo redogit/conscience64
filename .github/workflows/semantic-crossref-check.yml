@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'tools/semantic-crossref.mjs'
+      - 'tools/private-origin-boundary.mjs'
       - 'tools/semantic-crossref.test.mjs'
       - 'tools/semantic-corpus.mjs'
       - 'tools/semantic-corpus.test.mjs'
@@ -27,6 +28,7 @@ on:
   pull_request:
     paths:
       - 'tools/semantic-crossref.mjs'
+      - 'tools/private-origin-boundary.mjs'
       - 'tools/semantic-crossref.test.mjs'
       - 'tools/semantic-corpus.mjs'
       - 'tools/semantic-corpus.test.mjs'
@@ -72,6 +74,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "$VERIFY_SHA"
       - name: Verify semantic mapper, corpus, query, applicability, and hypothesis-builder syntax
         run: |
+          node --check tools/private-origin-boundary.mjs
           node --check tools/semantic-crossref.mjs
           node --check tools/semantic-corpus.mjs
           node --check tools/semantic-routing.mjs
