@@ -1,3 +1,5 @@
+import {hasRestrictedOriginMarker} from './private-origin-boundary.mjs';
+
 export const CROSSREF_SCHEMA='conscience64.semantic-crossref/v1';
 export const CROSSREF_BOUNDARIES=Object.freeze([
   'RELATED != SUPPORTS',
@@ -122,8 +124,10 @@ export function buildSemanticCrossReferenceMap(records,options={}){
     includeReasons:options.includeReasons!==false
   };
 
+  const admittedRecords=records.filter(record=>!hasRestrictedOriginMarker(record));
+  const skippedPrivateOrigin=records.length-admittedRecords.length;
   const ids=new Set();
-  const nodes=records.map((record,index)=>{
+  const nodes=admittedRecords.map((record,index)=>{
     const id=chooseId(record,index,cfg.idFields);
     if(ids.has(id))throw new Error(`duplicate record id: ${id}`);ids.add(id);
     const title=String(record?.title??record?.name??record?.label??id);
@@ -261,7 +265,7 @@ export function buildSemanticCrossReferenceMap(records,options={}){
     generatedBy:'buildSemanticCrossReferenceMap',
     boundaries:[...CROSSREF_BOUNDARIES],
     config:{threshold:cfg.threshold,maxEdgesPerNode:cfg.maxEdgesPerNode,maxTokenDfRatio:cfg.maxTokenDfRatio,maxPosting:cfg.maxPosting,weights:cfg.weights,embeddingField:cfg.embeddingField,embeddingLshBits:cfg.embeddingLshBits,embeddingLshTables:cfg.embeddingLshTables,includeReasons:cfg.includeReasons},
-    stats:{recordCount:nodes.length,candidatePairCount:candidates.size,derivedEdgeCount:derived.length,explicitEdgeCount:explicit.length,edgeCount:derived.length+explicit.length,skippedPostings},
+    stats:{inputRecordCount:records.length,recordCount:nodes.length,skippedPrivateOrigin,candidatePairCount:candidates.size,derivedEdgeCount:derived.length,explicitEdgeCount:explicit.length,edgeCount:derived.length+explicit.length,skippedPostings},
     nodes:publicNodes,
     edges:[...explicit,...derived]
   };
