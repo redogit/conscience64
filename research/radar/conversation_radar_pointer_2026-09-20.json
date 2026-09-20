@@ -1,0 +1,45 @@
+{
+  "schema": "conscience64/conversation-radar-pointer/v1",
+  "date": "2026-09-20",
+  "status": "CURRENT_WORKING_POINTER",
+  "relation": "REFERENCE_WITHOUT_AUTHORITY_TRANSFER",
+  "owner": {
+    "repository": "redogit/Other-Projects-",
+    "pullRequest": 91,
+    "state": "OPEN_AT_POINTER_CREATION",
+    "contractPath": "Decision Field Operator Lab/docs/CONVERSATION_WIDE_RADAR_LOCALITY_PARITY_2026-09-20.md",
+    "machinePath": "Decision Field Operator Lab/docs/conversation_radar_locality_parity_2026-09-20.json"
+  },
+  "currentQueue": [
+    "Decision Field: evidence-gated horizon closure only",
+    "FDE: matched plasticity ON/OFF only",
+    "FIG-5: recover exact source/solver/oracle/order identities then execute frozen increasing-n contract",
+    "Hodge/W114: test geometric hypotheses behind current joint polynomial map",
+    "FITTER/Carrier-Surface: finish fixed authority-floor repair",
+    "Activate at most one external radar method after an observed residual requires it"
+  ],
+  "boundaries": [
+    "PAIRITY != PARITY",
+    "RELATION != IDENTITY",
+    "METHOD_TRANSFER != EVIDENCE_TRANSFER",
+    "CONSCIENCE64_REFERENCE != IMPLEMENTATION_AUTHORITY",
+    "CURRENT != TRUE"
+  ],
+  "neighboringWork": [
+    {
+      "repo": "redogit/Other-Projects-",
+      "pr": 89,
+      "action": "do-not-modify"
+    },
+    {
+      "repo": "redogit/Other-Projects-",
+      "pr": 90,
+      "action": "do-not-modify"
+    },
+    {
+      "repo": "redogit/conscience64",
+      "pr": 193,
+      "action": "keep-draft-do-not-auto-merge"
+    }
+  ]
+}
