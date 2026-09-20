@@ -33,6 +33,7 @@ try{
   assert.equal(a.authority,'experimental-non-authoritative');
   assert.match(a.projection_sha256,/^[0-9a-f]{64}$/);
   assert.ok(a.files.every(file=>file.source.startsWith('public-testbed/')));
+  assert.ok(a.files.reduce((sum,file)=>sum+file.bytes,0)<128_000,'public testbed source projection exceeded 128 KB static source ceiling');
   assert.ok(a.boundaries.includes('PUBLIC_TESTBED != WHOLE_REPOSITORY'));
 
   const projected=await filesUnder(outA);
@@ -62,7 +63,33 @@ try{
   assert.equal(exp.id,'projection-isolation-v0');
   assert.ok(Array.isArray(exp.invariants)&&exp.invariants.length>=3);
   assert.ok(Array.isArray(exp.remainder)&&exp.remainder.length>=1);
-  assert.match(exp.zero_result,/no claim/i);
+  assert.ok(typeof exp.zero_result==='string'&&exp.zero_result.length>0);
+
+  const requiredStatuses=['active','blocked','deferred','failed','return','tested'];
+  assert.deepEqual([...new Set(source.paths.map(p=>p.status))].sort(),requiredStatuses);
+  const currentness=new Set(source.progression_model.states);
+  for(const pathState of source.paths){
+    for(const field of ['id','title','status','currentness','progression_position','relation','evidence','result','provenance','claim_boundary','remainder']){
+      assert.ok(Object.hasOwn(pathState,field),`path ${pathState.id} missing ${field}`);
+    }
+    assert.ok(currentness.has(pathState.currentness),`unknown currentness: ${pathState.currentness}`);
+    assert.ok(String(pathState.provenance).length>0);
+    assert.ok(String(pathState.claim_boundary).includes('!='));
+  }
+  const failed=source.paths.find(p=>p.status==='failed');
+  assert.equal(failed.currentness,'HISTORICAL_SUPERSEDED');
+  assert.match(failed.provenance,/pr:171;pr:172/);
+  const blocked=source.paths.find(p=>p.status==='blocked');
+  assert.match(blocked.claim_boundary,/PUBLIC_TESTBED != WHOLE_REPOSITORY/);
+  const tested=source.paths.find(p=>p.id==='network-edge-isolation');
+  assert.match(tested.zero_result,/0 declared forbidden repository routes/);
+  const returned=source.paths.find(p=>p.status==='return');
+  assert.match(returned.provenance,/gh-pages:3dcb37a5/);
+  assert.ok(source.aliases.every(a=>a.relation==='ALIAS_ONLY'));
+  assert.ok(source.aliases.some(a=>a.term==='CURRENCY'&&/knowledge currentness/.test(a.meaning)));
+  assert.ok(source.verified_lineage.some(e=>e.from==='pr:171'&&e.to==='pr:172'&&e.relation==='VERIFIER_REPAIR'));
+  assert.ok(source.verified_lineage.some(e=>e.from==='pr:178'&&e.to==='pr:179'&&e.relation==='VERIFIED_SUCCESSOR'));
+  assert.ok(source.unresolved_relations.some(e=>e.relation==='PRESERVED_UNRESOLVED'));
 
   const html=await readFile('public-testbed/site/index.html','utf8');
   const css=await readFile('public-testbed/site/style.css','utf8');
@@ -73,12 +100,23 @@ try{
   assert.match(html,/Content-Security-Policy/);
   assert.match(html,/31173/);
   assert.match(html,/PUBLIC EXPERIMENT ≠ VERIFIED TRUTH/);
+  assert.match(html,/Path Constellation — visible states/);
+  assert.match(html,/Language Garden — aliases without forced identity/);
+  assert.match(html,/id="lineage-list"/);
   assert.ok(!html.includes('http://')&&!html.includes('https://'),'testbed shell must have no external runtime dependency');
   assert.match(css,/:focus-visible/);
   assert.match(css,/prefers-reduced-motion/);
   assert.ok(!js.includes('innerHTML'),'testbed client must construct text safely');
   assert.match(js,/textContent/);
   assert.match(js,/projection-manifest\.json/);
+  assert.match(js,/function renderPaths/);
+  assert.match(js,/function renderAliases/);
+  assert.match(js,/State: /);
+  assert.match(js,/Unresolved relation:/);
+  assert.match(css,/data-status="failed"/);
+  assert.match(css,/data-status="blocked"/);
+  assert.match(css,/data-status="deferred"/);
+  assert.match(css,/data-status="return"/);
 
   const unsafeRoot=path.join(workspace,'unsafe-root');
   await cp('public-testbed',path.join(unsafeRoot,'public-testbed'),{recursive:true});
@@ -109,7 +147,7 @@ try{
     /symlink/
   );
 
-  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, deterministic isolated build, privacy/symlink counterprobes, accessibility shell, visible progression + remainder`);
+  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, six visible path states, verified lineage, aliases, unresolved relation, zero-result retention, deterministic isolation, privacy/symlink counterprobes, accessibility shell, static-size ceiling`);
 }finally{
   await rm(workspace,{recursive:true,force:true});
 }
