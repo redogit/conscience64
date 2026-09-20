@@ -53,6 +53,21 @@ function renderPaths(data){
   }
 }
 
+
+function renderPrinciples(data){
+  const root=byId('principle-grid');
+  root.replaceChildren();
+  for(const principle of data.principles||[]){
+    const article=node('article',undefined,'principle-card');
+    article.append(
+      node('h3',principle.name),
+      node('p',principle.meaning),
+      node('p',`Boundary: ${principle.boundary}`,'principle-boundary')
+    );
+    root.append(article);
+  }
+}
+
 function renderAliases(data){
   const root=byId('alias-list');
   root.replaceChildren();
@@ -103,6 +118,7 @@ async function main(){
     ]);
     renderRooms(data);
     renderPaths(data);
+    renderPrinciples(data);
     renderAliases(data);
     renderExperiment(data.experiments?.[0]||{title:'No experiment',status:'preserved-unresolved',remainder:['No current experiment record.']});
     const remainder=byId('remainder-list');
