@@ -1,10 +1,10 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "9a17f941808993049466e9b75ee8ec99253b5add",
+  "source_revision": "ceaab06b44cccba1d7a46299368717fdea429237",
   "source_root": "public-testbed/",
   "publication_scope": "public-testbed-only",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "e54b69dff1964e218d1f99d7d28f5ace05649723ff677f25840ebe502f10e4a3",
+  "projection_sha256": "22a1e9ddb6e061ab6216657ecec728532f1e5cae9aab204e96ada9b867201a27",
   "files": [
     {
       "path": "app.js",
@@ -13,10 +13,22 @@
       "source": "public-testbed/site/app.js"
     },
     {
+      "path": "carrier-surface/index.html",
+      "bytes": 3952,
+      "sha256": "e3f52e6ee5b84adb20f59e0dd6d14b557e56954e33e5fc44fe9b0affa17cd857",
+      "source": "public-testbed/site/carrier-surface/index.html"
+    },
+    {
       "path": "index.html",
-      "bytes": 4702,
-      "sha256": "59c6f5f2c6b9a36fa43f36fd6b23aaac576645f16c56455f26527984ab878439",
+      "bytes": 5633,
+      "sha256": "8853912caf401780433eefd766fa2858570642a3e9d4cb9816e423ce933540bd",
       "source": "public-testbed/site/index.html"
+    },
+    {
+      "path": "s1-models/index.html",
+      "bytes": 6031,
+      "sha256": "afcd3e261d9303b6f37ffc4f8b41f6df4925012bf9fdd709e1eb7b730755d8bc",
+      "source": "public-testbed/site/s1-models/index.html"
     },
     {
       "path": "style.css",
