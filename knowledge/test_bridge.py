@@ -9,8 +9,10 @@ from urllib.request import Request, urlopen
 
 try:
     bridge = importlib.import_module('knowledge.bridge')
+    packet_module = importlib.import_module('knowledge.packet')
 except ModuleNotFoundError:
     bridge = None
+    packet_module = None
 
 WRITE_TOKEN = 'write-token-1234567890'
 READ_TOKEN = 'read-token-12345678901'
@@ -27,6 +29,17 @@ def packet(content, visibility='public', kind='REFERENCE'):
         'independence': 'same-source',
         'claim_ceiling': 'retrieval only',
     }
+
+
+
+def private_method_packet(method='ABSTRACT_METHOD_HANDOFF_CANARY'):
+    if packet_module is None:
+        raise RuntimeError('knowledge.packet is not implemented yet')
+    normalized = packet_module.make_private_method_packet(
+        project='conscience64',
+        method=method,
+    )
+    return {key: value for key, value in normalized.items() if key != 'packet_uoid'}
 
 
 class BridgeIntegrationTests(unittest.TestCase):
@@ -113,6 +126,69 @@ class BridgeIntegrationTests(unittest.TestCase):
         status, body = self.request('GET', '/v1/knowledge/search?q=decision', token='bad-read-token')
         self.assertEqual(status, 401)
         self.assertEqual(body['error'], 'unauthorized')
+
+    def test_private_method_handoff_preserves_boundary_and_stays_concealed(self):
+        private = private_method_packet()
+        status, saved = self.request('POST', '/v1/knowledge', private, WRITE_TOKEN)
+        self.assertEqual(status, 202)
+        self.assertEqual(saved['kind'], 'METHOD')
+        self.assertEqual(saved['source'], packet_module.PRIVATE_METHOD_SOURCE)
+        self.assertEqual(saved['visibility'], 'restricted')
+        self.assertEqual(
+            saved['privacy_origin'],
+            {
+                'classification': packet_module.PRIVATE_METHOD_CLASSIFICATION,
+                'independently_regrounded': False,
+            },
+        )
+        self.assertEqual(saved['claim_ceiling'], packet_module.PRIVATE_METHOD_CLAIM_CEILING)
+        uoid = saved['packet_uoid']
+
+        status, body = self.request('GET', '/v1/knowledge/' + uoid)
+        self.assertEqual(status, 404)
+        self.assertEqual(body['error'], 'not_found')
+
+        status, public_sync = self.request('GET', '/v1/knowledge/sync?after=0&limit=10')
+        self.assertEqual(status, 200)
+        self.assertEqual(public_sync['items'], [])
+
+        status, public_search = self.request(
+            'GET',
+            '/v1/knowledge/search?q=ABSTRACT_METHOD_HANDOFF_CANARY&limit=10',
+        )
+        self.assertEqual(status, 200)
+        self.assertEqual(public_search['items'], [])
+
+        status, authorized = self.request('GET', '/v1/knowledge/' + uoid, token=READ_TOKEN)
+        self.assertEqual(status, 200)
+        self.assertEqual(authorized['content'], 'ABSTRACT_METHOD_HANDOFF_CANARY')
+        self.assertEqual(authorized['privacy_origin'], saved['privacy_origin'])
+        self.assertEqual(authorized['source'], packet_module.PRIVATE_METHOD_SOURCE)
+
+    def test_private_method_handoff_rejects_boundary_laundering(self):
+        mutations = [
+            ('visibility', 'public', 'restricted'),
+            ('source', 'private-history:raw-source', 'non-identifying source'),
+        ]
+        for field, value, detail in mutations:
+            with self.subTest(field=field):
+                private = private_method_packet()
+                private[field] = value
+                status, body = self.request('POST', '/v1/knowledge', private, WRITE_TOKEN)
+                self.assertEqual(status, 400)
+                self.assertEqual(body['error'], 'invalid_request')
+                self.assertIn(detail, body['detail'])
+
+        private = private_method_packet()
+        private['privacy_origin']['independently_regrounded'] = True
+        status, body = self.request('POST', '/v1/knowledge', private, WRITE_TOKEN)
+        self.assertEqual(status, 400)
+        self.assertEqual(body['error'], 'invalid_request')
+        self.assertIn('pre-regrounding only', body['detail'])
+
+        status, health = self.request('GET', '/v1/health')
+        self.assertEqual(status, 200)
+        self.assertEqual(health['entries'], 0)
 
     def test_batch_validation_is_atomic_over_http(self):
         bad = packet('bad')
