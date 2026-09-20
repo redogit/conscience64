@@ -126,6 +126,23 @@ Current target-local executable witness:
 
 The sidecar carries removable typed relations, self/neighbor/shared/ambient/delayed consequence, currentness, reference-only evidence, and an explicit way-back reference.
 
+First native-domain witness:
+
+- Other-Projects- PR #81 merged as `16a6823aa563e86455ec709700d06f0b9e22b467`;
+- post-merge Decision Field Operator Lab run `35508603278` passed;
+- 119/119 tests passed on the native-witness line;
+- native `DecisionField` -> Ω -> relation sidecar -> exact `DecisionField` reconstruction was exercised;
+- `NEIGHBOR`, `HOLE`, and `PAIRITY` relation metadata were exercised without native mutation or evidence promotion;
+- Ω v0 remained unchanged.
+
+Claim state:
+
+```text
+GENERIC_RELATIONAL_CARRIER = COMPLETE_BOUNDED_BASELINE
+FIRST_NATIVE_WITNESS = VERIFIED
+ADDITIONAL_DOMAIN_WITNESS = OBLIGATION_DRIVEN
+```
+
 RELATION != MERGE
 CONSCIENCE64_REFERENCE != IMPLEMENTATION_AUTHORITY
 RELATION_REFERENCE != EVIDENCE_TRANSFER
