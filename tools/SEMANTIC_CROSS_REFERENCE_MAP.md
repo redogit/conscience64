@@ -66,6 +66,29 @@ Default exclusions include `.git`, `node_modules`, runtime/build/cache directori
 
 Private material is **not** automatically pulled into this corpus. Supplying another root or protected material requires an explicit scope decision.
 
+
+### Private-origin exclusion
+
+Structured carriers marked as private-history-derived are excluded before they become semantic records. The repository adapter recognizes the marker in JSON/JSONL objects and Markdown front matter, and the core graph mapper independently rejects marked records supplied directly by callers.
+
+```text
+derived_from_private_history = true
+or
+privacy_origin.classification = private-history-method-only
+```
+
+For an excluded carrier, semantic ingestion does not retain its content, path-derived record, SHA-256 provenance, explicit links, similarity reasons, graph node, graph edge, or query result. A public record that explicitly links to an excluded record does not recreate that edge.
+
+This is a **marker-enforcement boundary**, not a classifier that can infer sensitive provenance from arbitrary unmarked prose. Correct origin marking and upstream privacy controls remain required.
+
+```text
+PRIVATE METHOD MAY INFORM SOLVING
+PRIVATE SOURCE MUST NOT PROPAGATE
+PRIVATE_ORIGIN != SEARCHABLE_CORPUS
+PRIVATE_ORIGIN != SEARCHABLE_GRAPH
+PRIVATE_ORIGIN != QUERY_RESULT
+```
+
 ## Multi-hop navigation
 
 `semantic-routing.mjs` adds bounded graph navigation without pretending that a route is a proof chain.
@@ -166,6 +189,9 @@ The mapper does not include full source text or source records in graph nodes by
 - `BRIDGE_CANDIDATE != APPLICABILITY`
 - `CORPUS_RECORD != EVIDENCE`
 - `FILE_LINK != SUPPORT`
+- `PRIVATE_ORIGIN != SEARCHABLE_CORPUS`
+- `PRIVATE_ORIGIN != SEARCHABLE_GRAPH`
+- `PRIVATE_ORIGIN != QUERY_RESULT`
 
 A useful semantic connection is a retrieval/navigation/discovery signal. It does not prove that one record supports, refutes, causes, validates, authorizes, or successfully transfers to another.
 
