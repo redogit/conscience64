@@ -23,9 +23,10 @@ h2{margin-top:2.4rem}
 .boundary-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
 .boundary-strip span,.state-tag{border:1px solid var(--line);border-radius:999px;padding:.35rem .6rem;font-size:.82rem;font-weight:700}
 .room-nav{display:flex;flex-wrap:wrap;gap:1rem;border-block:1px solid var(--line);padding:.85rem 0}
-.room-grid,.path-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
-.room-card,.path-card,.experiment-card,.provenance-grid>div{border:1px solid var(--line);background:var(--panel);border-radius:.75rem;padding:1rem}
-.room-card h3,.path-card h3{margin-top:0}
+.room-grid,.path-grid,.principle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.room-card,.path-card,.principle-card,.experiment-card,.provenance-grid>div{border:1px solid var(--line);background:var(--panel);border-radius:.75rem;padding:1rem}
+.room-card h3,.path-card h3,.principle-card h3{margin-top:0}
+.principle-boundary{font-weight:700;color:var(--muted)}
 .path-card[data-status="failed"]{border-style:dashed}
 .path-card[data-status="blocked"]{border-style:double;border-width:3px}
 .path-card[data-status="deferred"]{border-style:dotted;border-width:2px}

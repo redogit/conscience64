@@ -19,6 +19,20 @@ async function filesUnder(root,rel=''){
   }
   return out;
 }
+
+function rgb(hex){
+  const raw=hex.replace('#','');
+  return [0,2,4].map(i=>parseInt(raw.slice(i,i+2),16)/255);
+}
+function luminance(hex){
+  return rgb(hex).map(v=>v<=0.04045?v/12.92:((v+0.055)/1.055)**2.4)
+    .reduce((sum,v,i)=>sum+v*[0.2126,0.7152,0.0722][i],0);
+}
+function contrast(a,b){
+  const [hi,lo]=[luminance(a),luminance(b)].sort((x,y)=>y-x);
+  return (hi+0.05)/(lo+0.05);
+}
+
 const revision=revisionFromArgs();
 const workspace=await mkdtemp(path.join(tmpdir(),'c64-public-testbed-'));
 try{
@@ -90,6 +104,14 @@ try{
   assert.ok(source.verified_lineage.some(e=>e.from==='pr:171'&&e.to==='pr:172'&&e.relation==='VERIFIER_REPAIR'));
   assert.ok(source.verified_lineage.some(e=>e.from==='pr:178'&&e.to==='pr:179'&&e.relation==='VERIFIED_SUCCESSOR'));
   assert.ok(source.unresolved_relations.some(e=>e.relation==='PRESERVED_UNRESOLVED'));
+  assert.deepEqual(
+    source.principles.map(p=>p.name).sort(),
+    ['Interlingua','One-degree experiment','Pairity','USDAY','Visible paths','Wonderment']
+  );
+  assert.ok(source.principles.every(p=>p.meaning&&String(p.boundary).includes('!=')));
+  assert.ok(source.principles.some(p=>p.name==='Pairity'&&p.boundary==='PAIRITY != PARITY'));
+  assert.ok(source.principles.some(p=>p.name==='USDAY'&&/cooperative work/.test(p.meaning)));
+  assert.ok(source.principles.some(p=>p.name==='Interlingua'&&/shared operational language/.test(p.meaning)));
 
   const html=await readFile('public-testbed/site/index.html','utf8');
   const css=await readFile('public-testbed/site/style.css','utf8');
@@ -102,6 +124,8 @@ try{
   assert.match(html,/PUBLIC EXPERIMENT ≠ VERIFIED TRUTH/);
   assert.match(html,/Path Constellation — visible states/);
   assert.match(html,/Language Garden — aliases without forced identity/);
+  assert.match(html,/Working principles/);
+  assert.match(html,/id="principle-grid"/);
   assert.match(html,/id="lineage-list"/);
   assert.ok(!html.includes('http://')&&!html.includes('https://'),'testbed shell must have no external runtime dependency');
   assert.match(css,/:focus-visible/);
@@ -111,12 +135,18 @@ try{
   assert.match(js,/projection-manifest\.json/);
   assert.match(js,/function renderPaths/);
   assert.match(js,/function renderAliases/);
+  assert.match(js,/function renderPrinciples/);
+  assert.match(js,/Boundary: /);
   assert.match(js,/State: /);
   assert.match(js,/Unresolved relation:/);
   assert.match(css,/data-status="failed"/);
   assert.match(css,/data-status="blocked"/);
   assert.match(css,/data-status="deferred"/);
   assert.match(css,/data-status="return"/);
+  const vars=Object.fromEntries([...css.matchAll(/--([a-z]+):(#(?:[0-9a-f]{6}))/gi)].map(m=>[m[1],m[2]]));
+  assert.ok(contrast(vars.text,vars.bg)>=7,'primary text/background contrast must be at least 7:1');
+  assert.ok(contrast(vars.muted,vars.panel)>=4.5,'muted text/panel contrast must be at least 4.5:1');
+  assert.ok(contrast(vars.focus,vars.bg)>=3,'focus indicator/background contrast must be at least 3:1');
 
   const unsafeRoot=path.join(workspace,'unsafe-root');
   await cp('public-testbed',path.join(unsafeRoot,'public-testbed'),{recursive:true});
@@ -147,7 +177,7 @@ try{
     /symlink/
   );
 
-  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, six visible path states, verified lineage, aliases, unresolved relation, zero-result retention, deterministic isolation, privacy/symlink counterprobes, accessibility shell, static-size ceiling`);
+  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, six visible path states, USDAY/Interlingua/Pairity/visible-path/wonderment/one-degree principles, verified lineage, aliases, unresolved relation, zero-result retention, deterministic isolation, privacy/symlink counterprobes, WCAG-oriented contrast gates, accessibility shell, static-size ceiling`);
 }finally{
   await rm(workspace,{recursive:true,force:true});
 }

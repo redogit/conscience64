@@ -46,6 +46,11 @@ assert.ok(data.paths.some(p=>p.status==='return'&&String(p.provenance).includes(
 assert.ok(data.aliases.every(a=>a.relation==='ALIAS_ONLY'));
 assert.ok(data.verified_lineage.some(e=>e.relation==='VERIFIER_REPAIR'));
 assert.ok(data.unresolved_relations.some(e=>e.relation==='PRESERVED_UNRESOLVED'));
+assert.deepEqual(
+  data.principles.map(p=>p.name).sort(),
+  ['Interlingua','One-degree experiment','Pairity','USDAY','Visible paths','Wonderment']
+);
+assert.ok(data.principles.every(p=>String(p.boundary).includes('!=')));
 
 const html=await get('');
 assert.match(html,/Public Experimental Test Bed/);
@@ -54,6 +59,7 @@ assert.match(html,/PUBLIC EXPERIMENT ≠ VERIFIED TRUTH/);
 assert.match(html,/PRIVATE SOURCE MUST NOT PROPAGATE/);
 assert.match(html,/Path Constellation — visible states/);
 assert.match(html,/Language Garden — aliases without forced identity/);
+assert.match(html,/Working principles/);
 
 for(const rel of ['app.js','style.css'])await get(rel);
 
@@ -67,4 +73,4 @@ for(const forbidden of [
   await get(forbidden,{expect:404});
 }
 
-console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; repository routes absent; six path states + lineage + aliases + unresolved relation visible`);
+console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; repository routes absent; six path states + named principles + lineage + aliases + unresolved relation visible`);
