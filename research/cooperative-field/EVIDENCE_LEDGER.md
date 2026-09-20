@@ -106,11 +106,29 @@ Preserved merged state from the 2026-09-20 line includes:
 - Conscience64 PR #185 merged as 1be2f8207cb40913795bce89c9e9372065edd0ef as a pointer/reference only;
 - central redogit references were synchronized without implementation/evidence transfer.
 
+Current verified runtime successor:
+
+- Other-Projects PR #90 merged as `e42f652b380eb1d68d14679d44b9328dfb2faa55` after the merged S′ Carrier–Surface baseline;
+- post-merge Decision Field Operator Lab run `35525090965` passed;
+- 193/193 tests passed;
+- operator-field audit passed;
+- contextual multicarrier audit passed 14/14;
+- S′ Carrier–Surface replay passed for four carriers;
+- RMAPL Ω audit passed 9/9;
+- frozen default stress replay passed 5,376 cases / 13/13 checks;
+- FITTER now preserves a fixed runtime authority floor: native identity, source references, evidence, claim ceiling, and provenance;
+- ordinary non-authority fitting remains permitted under the existing PRESERVES contract;
+- no Ω schema change, evidence promotion, fresh RMALC validation, or scientific authority follows.
+
+Historical PR #77 / #80 / #81 entries remain predecessor lineage; `16a6823aa563e86455ec709700d06f0b9e22b467` is the first native relation witness, not the current runtime head.
+
 Boundaries:
 
 RMAPL_PROFILE != RMAL_CORE_FRONTEND
 OMEGA_VIEW != NATIVE_OBJECT
 METHOD_TRANSFER != EVIDENCE_TRANSFER
+FIT != EVIDENCE_PROMOTION
+FITTER != AUTHORITY_REWRITER
 BOUNDED_MAX != GLOBAL_COMPLETENESS
 
 ## All-directional relation sidecar
