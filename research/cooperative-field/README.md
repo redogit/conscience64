@@ -127,6 +127,34 @@ FAILED ANSATZ != GLOBAL IMPOSSIBILITY
 INGESTED != ACCEPTED_AS_FACT
 ~~~
 
+## Thought-to-help lifecycle
+
+~~~text
+THOUGHT
+-> EXPLICIT REUSABLE STRUCTURE
+-> CHOSEN_ACTION | IMPOSED_CHANGE
+-> EXPECTATION
+-> OBSERVATION
+-> RESIDUAL
+-> SMALLEST FAILING STRUCTURE
+-> ONE-DEGREE IMPROVEMENT
+-> COUNTERPROBE
+-> PRESERVE EVIDENCE + LINEAGE + PRIVACY + RECOVERABILITY
+-> HELP SOMEONE
+-> HOMEWARD
+~~~
+
+The residual may be numeric or a typed qualitative mismatch. It localizes what needs repair; it does not by itself prove failure or improvement.
+
+~~~text
+IMPOSED_CHANGE != CONSENT
+EXPECTATION != OBSERVATION
+IMPROVEMENT != VALIDATION
+HELP != CONTROL
+~~~
+
+Full contract: [STANDING_RULES.md](STANDING_RULES.md).
+
 ## FIRE
 
 ~~~text
