@@ -28,6 +28,7 @@
   <nav aria-label="Test bed rooms" class="room-nav">
     <a href="#current">Current experiment</a>
     <a href="#rooms">Rooms</a>
+    <a href="#paths">Path states</a>
     <a href="#provenance">Provenance</a>
     <a href="#remainder">Remainder</a>
   </nav>
@@ -44,6 +45,14 @@
       <h2 id="rooms-title">Navigation rooms</h2>
       <p>Each room exposes a different relation without collapsing it into authority.</p>
       <div id="room-grid" class="room-grid"></div>
+    </section>
+
+    <section id="paths" aria-labelledby="paths-title">
+      <h2 id="paths-title">Path Constellation — visible states</h2>
+      <p>Currentness guides navigation. It does not raise truth or authority.</p>
+      <div id="path-state-list" class="path-grid" aria-live="polite"></div>
+      <h3>Relations</h3>
+      <ul id="relation-list" class="relation-list"></ul>
     </section>
 
     <section id="provenance" aria-labelledby="provenance-title">
