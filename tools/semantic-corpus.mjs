@@ -7,7 +7,8 @@ export const CORPUS_BOUNDARIES=Object.freeze([
   'CORPUS_RECORD != EVIDENCE',
   'FILE_LINK != SUPPORT',
   'PATH_PROXIMITY != SEMANTIC_AUTHORITY',
-  'PRIVATE_MATERIAL_REQUIRES_EXPLICIT_SCOPE'
+  'PRIVATE_MATERIAL_REQUIRES_EXPLICIT_SCOPE',
+  'PRIVATE_ORIGIN != SEARCHABLE_CORPUS'
 ]);
 
 const DEFAULT_EXTENSIONS=new Set(['.md','.txt','.json','.jsonl','.mjs','.js','.py','.html','.css','.yml','.yaml','.toml','.sh','.ps1']);
@@ -19,6 +20,42 @@ const toPosix=p=>p.split(path.sep).join('/');
 const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
 const uniq=xs=>[...new Set(xs.filter(Boolean))];
 const cleanTag=s=>String(s??'').toLowerCase().replace(/[^a-z0-9._-]+/g,'-').replace(/^-|-$/g,'');
+
+const PRIVATE_METHOD_CLASSIFICATION='private-history-method-only';
+
+function structuredPrivateOrigin(value){
+  if(!value||typeof value!=='object')return false;
+  if(Array.isArray(value))return value.some(structuredPrivateOrigin);
+  if(value.derived_from_private_history===true)return true;
+  const origin=value.privacy_origin;
+  if(origin&&typeof origin==='object'&&!Array.isArray(origin)&&origin.classification===PRIVATE_METHOD_CLASSIFICATION)return true;
+  return Object.values(value).some(structuredPrivateOrigin);
+}
+
+function markdownFrontMatterPrivateOrigin(text){
+  if(!/^---\r?\n/.test(text))return false;
+  const end=text.search(/\r?\n---\r?\n/);
+  if(end<0)return false;
+  const front=text.slice(0,end);
+  if(/^\s*derived_from_private_history\s*:\s*true\s*(?:#.*)?$/mi.test(front))return true;
+  return /^\s*classification\s*:\s*private-history-method-only\s*(?:#.*)?$/mi.test(front)
+    && /^\s*privacy_origin\s*:\s*(?:#.*)?$/mi.test(front);
+}
+
+export function hasPrivateOriginMarker(text,ext){
+  if(ext==='.json'){
+    try{return structuredPrivateOrigin(JSON.parse(text));}catch{return false;}
+  }
+  if(ext==='.jsonl'){
+    for(const line of text.split(/\r?\n/)){
+      if(!line.trim())continue;
+      try{if(structuredPrivateOrigin(JSON.parse(line)))return true;}catch{}
+    }
+    return false;
+  }
+  if(ext==='.md')return markdownFrontMatterPrivateOrigin(text);
+  return false;
+}
 
 function titleFrom(text,ext,fallback){
   if(ext==='.md'){
@@ -68,7 +105,7 @@ export async function recordsFromRepository(root='.',options={}){
   const includeHidden=Boolean(options.includeHidden);
   const records=[];
   const pendingLinks=new Map();
-  const stats={schema:CORPUS_SCHEMA,included:0,skippedLarge:0,skippedDecode:0,skippedExcluded:0,skippedUnsupported:0,totalBytes:0,truncated:0,maxFiles,maxFileBytes,maxTextChars};
+  const stats={schema:CORPUS_SCHEMA,included:0,skippedLarge:0,skippedDecode:0,skippedExcluded:0,skippedUnsupported:0,skippedPrivateOrigin:0,totalBytes:0,truncated:0,maxFiles,maxFileBytes,maxTextChars};
 
   async function walk(absDir,relDir=''){
     if(records.length>=maxFiles)return;
@@ -92,6 +129,7 @@ export async function recordsFromRepository(root='.',options={}){
       const bytes=await readFile(abs);
       let text;try{text=decoder.decode(bytes);}catch{stats.skippedDecode++;continue;}
       if(text.charCodeAt(0)===0xfeff)text=text.slice(1);
+      if(hasPrivateOriginMarker(text,ext)){stats.skippedPrivateOrigin++;continue;}
       const digest=sha256(bytes);
       const base=path.basename(entry.name,ext);
       const project=rel.includes('/')?rel.split('/')[0]:'root';
