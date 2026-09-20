@@ -11,11 +11,11 @@
     "machinePath": "Decision Field Operator Lab/docs/conversation_radar_locality_parity_2026-09-20.json"
   },
   "currentQueue": [
-    "Decision Field: evidence-gated horizon closure only",
+    "Decision Field Step 3: preserve CANDIDATE_NOT_ADMITTED != FALSE != KNOWN as recoverable lineage without admission",
     "FDE: matched plasticity ON/OFF only",
-    "FIG-5: recover exact source/solver/oracle/order identities then execute frozen increasing-n contract",
+    "FIG-5: recover exact authority/linkage witness for n_star; family remains PREREGISTERED_NOT_EXECUTED",
     "Hodge/W114: test geometric hypotheses behind current joint polynomial map",
-    "FITTER/Carrier-Surface: finish fixed authority-floor repair",
+    "Carrier-Surface/FITTER: PR #90 authority floor merged; quotient/path validation eligible but unexecuted",
     "Activate at most one external radar method after an observed residual requires it"
   ],
   "boundaries": [
@@ -29,17 +29,37 @@
     {
       "repo": "redogit/Other-Projects-",
       "pr": 89,
-      "action": "do-not-modify"
+      "action": "recover-n_star-authority-linkage-only; do-not-execute-family",
+      "head": "827259030339a51103b886686a303ed39a21b184"
     },
     {
       "repo": "redogit/Other-Projects-",
       "pr": 90,
-      "action": "do-not-modify"
+      "action": "merged-prerequisite-satisfied"
     },
     {
       "repo": "redogit/conscience64",
       "pr": 193,
       "action": "keep-draft-do-not-auto-merge"
     }
-  ]
+  ],
+  "localParity": {
+    "decisionField": {
+      "checkpoint": "DF-NEWFILES-SYNC-S2-20260920",
+      "next": "non-admission preservation",
+      "normalUnitTests": "49/49",
+      "optimizedUnitTests": "49/49",
+      "legacyFixtures": "4096/4096",
+      "pnpChecks": "1872/1872",
+      "hodgeChecks": "335/335",
+      "nativeOmegaRoundTrips": "4/4"
+    },
+    "fig5": {
+      "status": "PREREGISTERED_NOT_EXECUTED",
+      "localV010Identity": "RECOVERED_HASH_PINNED",
+      "sourceFactNumVars": 10,
+      "nStar": "UNRESOLVED_BINDING",
+      "delta": "UNRESOLVED"
+    }
+  }
 }
