@@ -1,35 +1,35 @@
-name: Verify live Pages surface
+name: Verify live public test bed
 
 on:
   workflow_run:
-    workflows: ["Sync Conscience64 Pages source"]
+    workflows: ["Sync Conscience64 public test bed"]
     types: [completed]
     branches: [main]
   pull_request:
     paths:
-      - '.github/workflows/pages-live-alias.yml'
+      - 'public-testbed/**'
+      - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'tools/build-public-testbed.mjs'
+      - 'tools/check-public-testbed.mjs'
+      - 'tools/check-public-testbed-edge.mjs'
+      - 'tools/private-origin-boundary.mjs'
+      - 'tools/check_pages_sync.mjs'
       - '.github/workflows/pages-sync.yml'
-      - 'PUBLIC_RELEASE_APPROVAL.json'
-      - 'play/reference-rules.json'
-      - 'play/musilanguage/radio.htm'
-      - 'tools/generate-reference-aliases.mjs'
-      - 'tools/check_public_reference_aliases.mjs'
-      - 'tools/public-routes.mjs'
-      - 'tools/check_public_routes.mjs'
+      - '.github/workflows/pages-live-alias.yml'
   workflow_dispatch:
 
 permissions: {}
 
 concurrency:
-  group: conscience64-pages-live-${{ github.ref }}
+  group: conscience64-public-testbed-live-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  verify-live-surface:
+  verify-live-testbed:
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     env:
-      EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.event.pull_request.head.sha || github.sha }}
+      EXPECTED_SOURCE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.event.pull_request.head.sha || github.sha }}
       PAGES_URL: https://redogit.github.io/conscience64/
     steps:
       - name: Materialize exact intended source
@@ -39,106 +39,59 @@ jobs:
           git init "$GITHUB_WORKSPACE"
           cd "$GITHUB_WORKSPACE"
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
-          [[ "$EXPECTED_SHA" =~ ^[0-9a-f]{40}$ ]]
-          git fetch --depth=1 origin "$EXPECTED_SHA"
+          [[ "$EXPECTED_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git fetch --depth=1 origin "$EXPECTED_SOURCE_SHA"
           git checkout --detach FETCH_HEAD
-          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SOURCE_SHA"
 
-      - name: Resolve explicit publication state
+      - name: Verify static projection and workflow contracts
+        run: |
+          set -euo pipefail
+          node --check tools/check-public-testbed-edge.mjs
+          node tools/check_pages_sync.mjs
+          node tools/check-public-testbed.mjs --revision "$EXPECTED_SOURCE_SHA"
+
+      - name: Rebuild exact expected projection and compare gh-pages tree
+        if: ${{ github.event_name == 'workflow_run' }}
         shell: bash
         run: |
           set -euo pipefail
-          cd "$GITHUB_WORKSPACE"
-          mode="$(
-            python3 - <<'PY'
-          import json, os
-          from pathlib import Path
-          p = Path('PUBLIC_RELEASE_APPROVAL.json')
-          if not p.exists():
-              print('held')
-              raise SystemExit(0)
-          d = json.loads(p.read_text(encoding='utf-8'))
-          approved = (
-              d.get('schema') == 'redogit/public-release-approval/v1'
-              and d.get('approved') is True
-              and d.get('approved_sha') == os.environ['EXPECTED_SHA']
-              and d.get('review', {}).get('privacy_safe') is True
-              and d.get('review', {}).get('link_surface_reviewed') is True
-              and d.get('review', {}).get('dependent_surfaces_reviewed') is True
-          )
-          print('approved' if approved else 'held')
-          PY
-          )"
-          echo "PUBLICATION_MODE=$mode" >> "$GITHUB_ENV"
-          echo "PUBLICATION_MODE=$mode"
+          EXPECTED="$RUNNER_TEMP/expected-public-testbed"
+          node tools/build-public-testbed.mjs --root . --out "$EXPECTED" --revision "$EXPECTED_SOURCE_SHA"
 
-      - name: Verify published source matches approved or held state
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd "$GITHUB_WORKSPACE"
           git fetch --depth=1 origin gh-pages:refs/remotes/origin/gh-pages
           published_sha="$(git rev-parse refs/remotes/origin/gh-pages)"
-          if [ "$PUBLICATION_MODE" = "approved" ]; then
-            test "$published_sha" = "$EXPECTED_SHA"
-          else
-            git show refs/remotes/origin/gh-pages:PUBLICATION_STATUS.json > "$RUNNER_TEMP/publication-status.json"
-            python3 - "$RUNNER_TEMP/publication-status.json" <<'PY'
-          import json, sys
-          d = json.load(open(sys.argv[1], encoding='utf-8'))
-          assert d['schema'] == 'redogit/publication-hold/v1'
-          assert d['public_projection'] == 'paused'
-          assert d['approval_required'] is True
-          assert d['canonical_authority'] is False
-          print('PASS - gh-pages is the deliberate privacy holding surface')
-          PY
-          fi
+          echo "PUBLISHED_PROJECTION_SHA=$published_sha" >> "$GITHUB_ENV"
 
-      - name: Wait for exact approved deployment
-        if: ${{ env.PUBLICATION_MODE == 'approved' && github.event_name == 'workflow_run' }}
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          response="$RUNNER_TEMP/pages-deployment.json"
-          status=""
-          for attempt in $(seq 1 90); do
-            code="$(curl --silent --show-error --location --output "$response" --write-out '%{http_code}' -H "Accept: application/vnd.github+json" -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "X-GitHub-Api-Version: 2026-03-10" "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/${EXPECTED_SHA}")"
-            if [ "$code" = "200" ]; then
-              status="$(node -e 'const fs=require("fs");const v=JSON.parse(fs.readFileSync(process.argv[1],"utf8"));process.stdout.write(typeof v.status==="string"?v.status:"")' "$response")"
-              [ "$status" = "succeed" ] && break
-            elif [ "$code" != "404" ]; then
-              cat "$response" >&2 || true
-              exit 1
-            fi
-            sleep 2
-          done
-          test "$status" = "succeed"
+          git ls-tree -r --name-only refs/remotes/origin/gh-pages | sort > "$RUNNER_TEMP/published-files.txt"
+          (cd "$EXPECTED" && find . -type f -print | sed 's#^./##' | sort) > "$RUNNER_TEMP/expected-files.txt"
+          diff -u "$RUNNER_TEMP/expected-files.txt" "$RUNNER_TEMP/published-files.txt"
 
-      - name: Verify approved canonical routes at network edge
-        if: ${{ env.PUBLICATION_MODE == 'approved' }}
+          while IFS= read -r rel; do
+            git show "refs/remotes/origin/gh-pages:$rel" > "$RUNNER_TEMP/published-file"
+            cmp "$EXPECTED/$rel" "$RUNNER_TEMP/published-file"
+          done < "$RUNNER_TEMP/expected-files.txt"
+
+          node - "$EXPECTED/projection-manifest.json" "$EXPECTED_SOURCE_SHA" <<'NODE'
+          const fs=require('node:fs');
+          const manifest=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+          if(manifest.source_revision!==process.argv[3])throw new Error('projection manifest source revision mismatch');
+          if(manifest.publication_scope!=='public-testbed-only')throw new Error('projection scope widened');
+          console.log(`PASS exact gh-pages projection bytes source=${manifest.source_revision} projection=${manifest.projection_sha256}`);
+          NODE
+
+      - name: Verify deployed network edge
+        if: ${{ github.event_name == 'workflow_run' }}
         shell: bash
         run: |
           set -euo pipefail
-          cd "$GITHUB_WORKSPACE"
-          PAGES_URL="$PAGES_URL" GITHUB_SHA="$EXPECTED_SHA" node tools/check_public_reference_aliases.mjs
-          PAGES_URL="$PAGES_URL" GITHUB_SHA="$EXPECTED_SHA" node tools/check_public_routes.mjs
-
-      - name: Verify held network surface exposes only the pause notice
-        if: ${{ env.PUBLICATION_MODE == 'held' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          body="$RUNNER_TEMP/held.html"
           ok=false
-          for attempt in $(seq 1 60); do
-            if curl --fail --silent --show-error --location "$PAGES_URL" -o "$body" && grep -Fq 'Public publication paused' "$body"; then
+          for attempt in $(seq 1 90); do
+            if PAGES_URL="$PAGES_URL" EXPECTED_SOURCE_SHA="$EXPECTED_SOURCE_SHA" node tools/check-public-testbed-edge.mjs; then
               ok=true
               break
             fi
             sleep 2
           done
           test "$ok" = true
-          grep -Fq 'PRIVATE_BY_DEFAULT' "$body"
-          echo 'PASS - live Pages surface is held and privacy-minimal'
+          echo "PASS live public test bed source=$EXPECTED_SOURCE_SHA projection_commit=$PUBLISHED_PROJECTION_SHA"

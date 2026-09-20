@@ -26,19 +26,43 @@
     ]
   },
   "rooms": [
-    {"id":"path-constellation","name":"Path Constellation","purpose":"Progression and verified lineage"},
-    {"id":"compass","name":"Compass","purpose":"Currentness and navigation"},
-    {"id":"failure-museum","name":"Failure Museum","purpose":"Failed, superseded, and zero-result retention"},
-    {"id":"evidence-telescope","name":"Evidence Telescope","purpose":"Provenance and claim boundaries"},
-    {"id":"language-garden","name":"Language Garden","purpose":"Aliases and terminology without forced identity"},
-    {"id":"wonder-room","name":"Wonder Room","purpose":"Preserved unresolved relations and open holes"}
+    {
+      "id": "path-constellation",
+      "name": "Path Constellation",
+      "purpose": "Progression and verified lineage"
+    },
+    {
+      "id": "compass",
+      "name": "Compass",
+      "purpose": "Currentness and navigation"
+    },
+    {
+      "id": "failure-museum",
+      "name": "Failure Museum",
+      "purpose": "Failed, superseded, and zero-result retention"
+    },
+    {
+      "id": "evidence-telescope",
+      "name": "Evidence Telescope",
+      "purpose": "Provenance and claim boundaries"
+    },
+    {
+      "id": "language-garden",
+      "name": "Language Garden",
+      "purpose": "Aliases and terminology without forced identity"
+    },
+    {
+      "id": "wonder-room",
+      "name": "Wonder Room",
+      "purpose": "Preserved unresolved relations and open holes"
+    }
   ],
   "experiments": [
     {
       "id": "projection-isolation-v0",
       "title": "Projection Isolation v0",
-      "status": "active",
-      "currentness": "CURRENT_EPOCH",
+      "status": "tested",
+      "currentness": "CURRENT_CANONICAL",
       "changed_degree": "projection builder input is restricted to public-testbed source files",
       "invariants": [
         "full repository is not a projection input",
@@ -47,13 +71,14 @@
         "claim boundaries and remainder stay visible"
       ],
       "evidence": "generated projection manifest plus deterministic source checks",
-      "result": "pending exact-head verification",
+      "result": "exact-head source isolation verified in PR #178; public projection switching is the current successor step",
       "zero_result": "no claim of publication or edge deployment is made by this source-only slice",
       "remainder": [
-        "switch Pages source sync to the isolated projection",
-        "verify the published projection at the network edge"
+        "verify gh-pages tree contains only the generated projection",
+        "verify the deployed network edge matches the exact source revision",
+        "expand visible path states only after publication isolation is proven"
       ],
-      "provenance": "issue:166",
+      "provenance": "issue:166;pr:178",
       "claim_boundary": "SOURCE_PROJECTION_VERIFIED != PUBLICATION_APPROVED"
     }
   ]
