@@ -1,0 +1,38 @@
+{
+  "freeze": {
+    "alpha": [1, 7, 78, 79, 86, 91],
+    "target": "x1^6*x2^77*x3^78*x4^85*x5^90",
+    "boundaries": [
+      "SOFTWARE_VERIFICATION != MATHEMATICAL_PROOF",
+      "METHOD_TRANSFER != EVIDENCE_TRANSFER",
+      "FAILED_ANSATZ != NONALGEBRAIC_CLASS",
+      "TIMEOUT != NEGATIVE_RESULT",
+      "OPEN != FALSE",
+      "CURRENT != PROVED",
+      "RELATION != SUPPORT",
+      "INTERLINGUA_TRANSLATION != PROOF"
+    ]
+  },
+  "center": "MOT-1",
+  "route": "motivic",
+  "one_degree_rule": "Change exactly one independently varying quantity.",
+  "observe": "No new mathematical observation supplied by this control-cycle invocation.",
+  "verify": "PENDING",
+  "counterprobe": "EXACT_HECKE_CHARACTER_MATCH + EXPLICIT_ARTIN_TWIST != EXPLICIT_CHOW_ISOMORPHISM",
+  "recenter": "MOT-1",
+  "distill": {
+    "schema": "conscience64/w114-research-loop/v1",
+    "counts": {
+      "routes": 4,
+      "obligations": 4,
+      "open_or_timeout": 4,
+      "trace_steps": 0
+    },
+    "next_probe": {
+      "obligation_id": "MOT-1",
+      "route_id": "motivic",
+      "text": "Construct one explicit nonzero correspondence from the residual gap motive to the standard-part motive tensored with the quadratic Artin motive.",
+      "finite_check": "Write a concrete cycle/correspondence and independently verify source, target, Galois behavior, and induced realization map."
+    }
+  }
+}
