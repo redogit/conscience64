@@ -24,7 +24,7 @@ assert.equal(manifest.authority,'experimental-non-authoritative');
 assert.match(manifest.projection_sha256,/^[0-9a-f]{64}$/);
 assert.deepEqual(
   manifest.files.map(f=>f.path).sort(),
-  ['app.js','index.html','style.css','testbed.json']
+  ['app.js','carrier-surface/index.html','index.html','s1-models/index.html','style.css','testbed.json']
 );
 assert.ok(manifest.files.every(f=>String(f.source).startsWith('public-testbed/')));
 assert.ok(!containsRestrictedOrigin(manifest));
@@ -63,6 +63,20 @@ assert.match(html,/Working principles/);
 
 for(const rel of ['app.js','style.css'])await get(rel);
 
+const carrierPage=await get('carrier-surface/');
+assert.match(carrierPage,/Object identity is invariant; coordinates are negotiable\./);
+assert.match(carrierPage,/17ce340776455735a1af814031b88b887a5cf421/);
+assert.match(carrierPage,/MULTI_KEY_RELATION != MATHEMATICAL_MANIFOLD/);
+
+const s1Page=await get('s1-models/');
+assert.match(s1Page,/S Prime candidate-state model/);
+assert.match(s1Page,/Survivor/);
+assert.match(s1Page,/SemanticWorkUnit/);
+assert.match(s1Page,/Grand Unified Perceptron \/ multi-timescale cell/);
+assert.match(s1Page,/29effa0cfb52a019d51d81fae47aa8e056ab71cf/);
+assert.match(s1Page,/CURRENT WORKING MODEL ≠ PINNED IMPLEMENTATION/);
+
+
 for(const forbidden of [
   'README.md',
   'data-manifest.json',
@@ -73,4 +87,4 @@ for(const forbidden of [
   await get(forbidden,{expect:404});
 }
 
-console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; repository routes absent; six path states + named principles + lineage + aliases + unresolved relation visible`);
+console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; Carrier–Surface + current S′ routes present; repository routes absent; six path states + named principles + lineage + aliases + unresolved relation visible`);
