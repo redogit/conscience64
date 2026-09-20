@@ -32,6 +32,69 @@ LOCAL-SUCCESS != WHOLE-SYSTEM-SUCCESS
 
 Observe self, neighbor, shared, ambient, and delayed consequences.
 
+## Reusable thought-to-help lifecycle
+
+Canonical user direction:
+
+> Turn thoughts into explicit, reusable structures; navigate both chosen actions and imposed changes; compare expectations with observations; use residuals to improve the smallest failing structure; challenge the improvement; preserve its evidence, lineage, privacy, and recoverability; then use it to help someone.
+
+Operational form:
+
+~~~text
+THOUGHT
+-> EXPLICIT REUSABLE STRUCTURE
+-> CLASSIFY CHANGE
+   { CHOSEN_ACTION | IMPOSED_CHANGE }
+-> EXPECTATION
+-> OBSERVATION
+-> RESIDUAL
+-> SMALLEST FAILING STRUCTURE
+-> ONE-DEGREE IMPROVEMENT
+-> COUNTERPROBE / CHALLENGE
+-> VERIFY / ADMIT / REJECT / UNRESOLVED
+-> PRESERVE {
+     evidence,
+     lineage,
+     privacy,
+     recoverability,
+     predecessor,
+     residual_before,
+     residual_after,
+     remainder
+   }
+-> HELP SOMEONE
+-> HOMEWARD
+~~~
+
+Rules:
+
+- A thought is a candidate structure, not automatically a fact.
+- A chosen action preserves the human choice/authorization that selected it.
+- An imposed change preserves its external source, timing, constraints, and affected relations.
+- IMPOSED_CHANGE != CONSENT.
+- Expectation must be explicit enough to compare with observation.
+- Residual means the consequential difference between expectation and observation.
+- For numeric domains, residual may be computed numerically.
+- For qualitative domains, residual is a typed mismatch set such as unmet invariant, unexpected loss, unexpected gain, new externality, contradiction, or unknown.
+- Use the residual to localize the smallest structure whose failure can explain the mismatch.
+- Change one independent degree in that smallest failing structure when practical.
+- Challenge the improvement with the cheapest independent counterprobe likely to break it.
+- Preserve the predecessor and both pre/post residuals; improvement does not erase the failure that motivated it.
+- Admit the improvement only to the evidence scope it earned.
+- Use the admitted capability to help a person only within authorization, privacy, safety, and claim boundaries.
+- HELP != CONTROL.
+- CAPABILITY != PERMISSION.
+- If the obligation is satisfied, stop and return Homeward.
+
+~~~text
+EXPECTATION != OBSERVATION
+RESIDUAL != FAILURE_BY_ITSELF
+IMPROVEMENT != VALIDATION
+CHALLENGE != HOSTILITY
+HELP != CONTROL
+CAPABILITY != PERMISSION
+~~~
+
 ## Study the thing in its web
 
 Retain scope, assumptions, cost, risk, consequence, affected parties, protections, evidence, counterevidence, provenance, correction path, and explicit Remainder.
