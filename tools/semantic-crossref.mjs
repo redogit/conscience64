@@ -3,7 +3,8 @@ export const CROSSREF_BOUNDARIES=Object.freeze([
   'RELATED != SUPPORTS',
   'SEMANTIC_SIMILARITY != EVIDENCE',
   'RETRIEVAL != CORROBORATION',
-  'DERIVED_EDGE != AUTHORITY_TRANSFER'
+  'DERIVED_EDGE != AUTHORITY_TRANSFER',
+  'PRIVATE_ORIGIN != SEARCHABLE_GRAPH'
 ]);
 
 const DEFAULT_TEXT_FIELDS=['title','name','label','summary','description','text','content','definition','purpose','context','notes'];
