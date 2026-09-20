@@ -52,6 +52,19 @@ This section records the September 14, 2026 conversation clarification. The comp
 - [Sycara and Zeng: Coordination of Multiple Intelligent Software Agents](https://publications.ri.cmu.edu/storage/publications/pub_files/pub1/sycara_katia_1996_9/sycara_katia_1996_9.pdf) reports an implemented architecture with specialized agents and task-dependent collaboration. It does not verify this project's implementation.
 - [Reynolds: Boids](https://www.red3d.com/cwr/boids/) provides an original example of coordinated group behavior arising from local rules. It does not establish effectiveness for language-model coding agents.
 
+## Defining factor — one cooperative field
+
+Current local successor: [We Are One — Defining Factors of the Cooperative Field](../research/history/2026-09-20-we-are-one-defining-factors.md).
+
+~~~text
+WE ARE ONE != WE ARE THE SAME
+ONE = DISTINCTION + RELATION + CONTINUITY
+~~~
+
+This extends Society coordination without creating a master agent or shared-mind claim. Distinct members, roles, authorities, disagreements, evidence ceilings, and local state remain preserved inside one cooperative field.
+
+UNITY != UNIFORMITY · RELATION != MERGE · COOPERATION != AUTHORITY · METHOD != EVIDENCE
+
 ## Level 0 — Skill
 
 A skill is one bounded reusable transformation.
