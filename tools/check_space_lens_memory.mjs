@@ -44,4 +44,58 @@ assert.equal(m.sourceBoost('orbit-library'),2);
 
 m.forgetTeaching('What is Fuzzball?');
 assert.equal(m.recall('What is Fuzzball?'),null);
-console.log('PASS Space Lens memory: persistence, feedback, teachings, source learning, alias, export/import, clear');
+
+// Issue #160 RED: a marked private-history method-only teaching must retain
+// a non-identifying boundary, propagate that boundary into recalled/history
+// state, and fail closed on outward export until independently re-grounded.
+m.clear();
+const privateOrigin={
+  classification:'private-history-method-only',
+  source:'private-history:withheld',
+  independentlyRegrounded:false,
+  requiresIndependentRegrounding:true,
+  publicationAllowed:false,
+  claimCeiling:'abstract method only; no source or identity claim'
+};
+m.teach(
+  'How should a bounded private method be carried?',
+  'ABSTRACT_METHOD_CANARY',
+  '',
+  {privacyOrigin:privateOrigin}
+);
+const privateTeaching=m.recall('How should a bounded private method be carried?');
+assert.deepEqual(privateTeaching.privacyOrigin,privateOrigin);
+m.record('How should a bounded private method be carried?',{
+  answer:'ABSTRACT_METHOD_CANARY',
+  confidence:'learned locally',
+  sources:[]
+});
+const persisted=JSON.parse(store.get('conscience64.spaceLensMemory.v1'));
+const privateKey=m.normalize('How should a bounded private method be carried?');
+assert.deepEqual(persisted.teachings[privateKey].privacyOrigin,privateOrigin);
+assert.deepEqual(persisted.queries[privateKey].privacyOrigin,privateOrigin);
+assert.throws(
+  ()=>m.exportText(),
+  /private-origin memory requires independent re-grounding before export/i
+);
+
+// Marker laundering must fail closed rather than weakening the fixed boundary.
+assert.throws(
+  ()=>m.teach(
+    'Malformed private method',
+    'ABSTRACT_METHOD_CANARY',
+    '',
+    {privacyOrigin:{...privateOrigin,publicationAllowed:true}}
+  ),
+  /private-method privacy origin/i
+);
+
+const malformed=structuredClone(persisted);
+malformed.teachings[privateKey].privacyOrigin={...privateOrigin,source:'private-history:raw-source'};
+m.clear();
+assert.throws(
+  ()=>m.importText(JSON.stringify(malformed)),
+  /private-method privacy origin/i
+);
+
+console.log('PASS Space Lens memory: persistence, feedback, teachings, source learning, alias, export/import, clear, private-origin fail-closed boundary');
