@@ -4,7 +4,8 @@ export const SEMANTIC_QUERY_BOUNDARIES=Object.freeze([
   'QUERY_MATCH != SUPPORT',
   'HELPER_CANDIDATE != APPLICABLE_HELPER',
   'RELATED != SUPPORTS',
-  'TRANSIENT_QUERY != CORPUS_RECORD'
+  'TRANSIENT_QUERY != CORPUS_RECORD',
+  'PRIVATE_ORIGIN != QUERY_RESULT'
 ]);
 
 const arr=v=>v==null?[]:(Array.isArray(v)?v:[v]);
@@ -63,7 +64,7 @@ export function querySemanticRecords(records,query,options={}){
         epistemicStatus:row.epistemicStatus,
         signals:row.signals??null,
         reasons:row.reasons??null,
-        boundaries:['QUERY_MATCH != SUPPORT','HELPER_CANDIDATE != APPLICABLE_HELPER','RELATED != SUPPORTS']
+        boundaries:['QUERY_MATCH != SUPPORT','HELPER_CANDIDATE != APPLICABLE_HELPER','RELATED != SUPPORTS','PRIVATE_ORIGIN != QUERY_RESULT']
       };
     });
   if(Array.isArray(options.projects)&&options.projects.length)matches=matches.filter(m=>options.projects.includes(m.project));
