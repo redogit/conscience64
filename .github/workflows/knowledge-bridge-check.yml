@@ -22,6 +22,8 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    env:
+      VERIFY_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - name: Materialize exact commit without external Actions
         shell: bash
@@ -30,9 +32,9 @@ jobs:
           git init "$GITHUB_WORKSPACE"
           cd "$GITHUB_WORKSPACE"
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
-          git fetch --depth=1 origin "$GITHUB_SHA"
+          git fetch --depth=1 origin "$VERIFY_SHA"
           git checkout --detach FETCH_HEAD
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse HEAD)" = "$VERIFY_SHA"
 
       - name: Compile knowledge bridge modules
         run: |
@@ -49,5 +51,5 @@ jobs:
           set -euo pipefail
           python3 -m knowledge.teach_repo \
             --root . \
-            --revision "$GITHUB_SHA" \
+            --revision "$VERIFY_SHA" \
             --dry-run
