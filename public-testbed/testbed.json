@@ -71,15 +71,139 @@
         "claim boundaries and remainder stay visible"
       ],
       "evidence": "generated projection manifest plus deterministic source checks",
-      "result": "exact-head source isolation verified in PR #178; public projection switching is the current successor step",
-      "zero_result": "no claim of publication or edge deployment is made by this source-only slice",
+      "result": "exact-head source isolation verified in PR #178; live public-testbed projection externally verified after PR #179",
+      "zero_result": "projection isolation does not by itself establish visible path-state completeness",
       "remainder": [
-        "verify gh-pages tree contains only the generated projection",
-        "verify the deployed network edge matches the exact source revision",
-        "expand visible path states only after publication isolation is proven"
+        "verify visible active/tested/failed/blocked/deferred/return paths and exact way-back navigation"
       ],
+      "provenance": "issue:166;pr:178;pr:179",
+      "claim_boundary": "LIVE_PROJECTION_VERIFIED != VISIBLE_PATH_STATE_COMPLETE"
+    }
+  ],
+  "navigation_model": {
+    "currency_meaning": "knowledge-currentness",
+    "path_states": [
+      "active",
+      "tested",
+      "failed",
+      "blocked",
+      "deferred",
+      "return"
+    ],
+    "root_path_id": "projection-source-isolation-v0",
+    "current_path_id": "visible-path-state-v0",
+    "way_back_required": true,
+    "boundaries": [
+      "CURRENT != TRUE",
+      "SUPERSEDED != FALSE",
+      "ALIAS != LINEAGE",
+      "UNRESOLVED != ABSENT",
+      "RETURN_PATH != CURRENT_PATH"
+    ]
+  },
+  "paths": [
+    {
+      "id": "projection-source-isolation-v0",
+      "title": "Projection source isolation",
+      "state": "tested",
+      "currentness": "HISTORICAL_PREDECESSOR",
       "provenance": "issue:166;pr:178",
       "claim_boundary": "SOURCE_PROJECTION_VERIFIED != PUBLICATION_APPROVED"
+    },
+    {
+      "id": "public-projection-v0",
+      "title": "Live public-testbed projection",
+      "state": "tested",
+      "currentness": "CURRENT_CANONICAL",
+      "way_back": "projection-source-isolation-v0",
+      "provenance": "issue:166;pr:179",
+      "claim_boundary": "LIVE_PUBLIC_TESTBED != WHOLE_REPOSITORY"
+    },
+    {
+      "id": "visible-path-state-v0",
+      "title": "Visible path-state completeness",
+      "state": "active",
+      "currentness": "CURRENT_EPOCH",
+      "way_back": "public-projection-v0",
+      "provenance": "issue:166;pr:182",
+      "claim_boundary": "VISIBLE_PATH_STATE != CLAIM_VALIDITY"
+    },
+    {
+      "id": "unsafe-private-origin-admission",
+      "title": "Private-origin admission counterprobe",
+      "state": "failed",
+      "currentness": "PRESERVED",
+      "way_back": "public-projection-v0",
+      "provenance": "issue:166;counterprobe:private-origin",
+      "claim_boundary": "FAILED_ADMISSION != PRIVATE_SOURCE_PUBLICATION"
+    },
+    {
+      "id": "whole-repository-publication",
+      "title": "Whole-repository publication",
+      "state": "blocked",
+      "currentness": "PRESERVED",
+      "way_back": "public-projection-v0",
+      "provenance": "issue:166",
+      "claim_boundary": "PUBLIC_TESTBED != WHOLE_REPOSITORY"
+    },
+    {
+      "id": "richer-experiment-catalog",
+      "title": "Richer experiment catalog",
+      "state": "deferred",
+      "currentness": "PRESERVED_UNRESOLVED",
+      "way_back": "visible-path-state-v0",
+      "provenance": "issue:166",
+      "claim_boundary": "DEFERRED != REJECTED"
+    },
+    {
+      "id": "projection-rollback",
+      "title": "Projection rollback path",
+      "state": "return",
+      "currentness": "COEXISTING_LINEAGE",
+      "way_back": "public-projection-v0",
+      "provenance": "issue:166;pr:179",
+      "claim_boundary": "RETURN_PATH != CURRENT_PATH"
     }
-  ]
+  ],
+  "relations": {
+    "lineage": [
+      {
+        "parent": "projection-source-isolation-v0",
+        "child": "public-projection-v0",
+        "kind": "PROGRESSION_SUCCESSOR",
+        "evidence": "pr:178;pr:179"
+      },
+      {
+        "parent": "public-projection-v0",
+        "child": "visible-path-state-v0",
+        "kind": "PROGRESSION_SUCCESSOR",
+        "evidence": "issue:166;pr:182"
+      }
+    ],
+    "aliases": [
+      {
+        "canonical": "public-testbed",
+        "aliases": [
+          "Public Experimental Test Bed"
+        ],
+        "boundary": "ALIAS != LINEAGE"
+      },
+      {
+        "canonical": "knowledge-currentness",
+        "aliases": [
+          "CURRENCY"
+        ],
+        "boundary": "CURRENCY != MONEY"
+      }
+    ],
+    "unresolved": [
+      {
+        "from": "visible-path-state-v0",
+        "to": "richer-experiment-catalog",
+        "relation": "NEXT_AFTER_VERIFICATION",
+        "currentness": "PRESERVED_UNRESOLVED",
+        "reason": "not admitted until visible path-state completeness is independently verified"
+      }
+    ]
+  }
 }
