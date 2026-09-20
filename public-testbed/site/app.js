@@ -45,7 +45,9 @@ function renderExperiment(experiment){
 
   const remainder=byId('remainder-list');
   remainder.replaceChildren();
-  for(const item of experiment.remainder||[])remainder.append(node('li',item));
+  const unresolved=experiment.remainder||[];
+  if(unresolved.length===0)remainder.append(node('li','No unresolved remainder within this bounded experiment.'));
+  else for(const item of unresolved)remainder.append(node('li',item));
 }
 
 async function loadJson(path){
