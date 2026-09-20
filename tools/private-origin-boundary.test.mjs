@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import {
   PRIVATE_METHOD_RECOVERY_SCHEMA,
+  PRIVATE_METHOD_OUTWARD_SCHEMA,
   hasRestrictedOriginMarker,
+  projectPrivateMethodForInternalCarrier,
+  assertPrivateOriginExportAllowed,
   makePrivateMethodRecoveryEnvelope,
   restorePrivateMethodRecoveryEnvelope,
   validatePrivateMethodRecoveryEnvelope
@@ -51,5 +54,24 @@ assert.throws(()=>validatePrivateMethodRecoveryEnvelope(boundaryChanged),/bounda
 
 assert.throws(()=>restorePrivateMethodRecoveryEnvelope(JSON.stringify(injected)),/fields/);
 assert.throws(()=>makePrivateMethodRecoveryEnvelope('   '),/method/);
+
+const ecsProjection=projectPrivateMethodForInternalCarrier(envelope,'ecs-client');
+assert.equal(ecsProjection.schema,PRIVATE_METHOD_OUTWARD_SCHEMA);
+assert.equal(ecsProjection.carrier,'ecs-client');
+assert.equal(ecsProjection.method,method);
+assert.equal(ecsProjection.authority,'method-only');
+assert.equal(ecsProjection.publication_allowed,false);
+assert.equal(ecsProjection.requires_independent_regrounding,true);
+assert.ok(!Object.hasOwn(ecsProjection,'source'));
+assert.ok(!Object.hasOwn(ecsProjection,'private_story'));
+
+const handoffProjection=projectPrivateMethodForInternalCarrier(envelope,'agent-tool-handoff');
+assert.equal(handoffProjection.carrier,'agent-tool-handoff');
+assert.deepEqual(handoffProjection.privacy_origin,ecsProjection.privacy_origin);
+assert.throws(()=>projectPrivateMethodForInternalCarrier(envelope,'public-export'),/unsupported/);
+
+assert.throws(()=>assertPrivateOriginExportAllowed(ecsProjection),/blocked until independent re-grounding/);
+assert.throws(()=>assertPrivateOriginExportAllowed(handoffProjection),/blocked until independent re-grounding/);
+assert.equal(assertPrivateOriginExportAllowed({kind:'public',publication_allowed:true}).kind,'public');
 
 console.log('PASS private-method recovery: rule + abstract method round-trip; source/story injection, publication promotion, false regrounding, and boundary weakening rejected.');
