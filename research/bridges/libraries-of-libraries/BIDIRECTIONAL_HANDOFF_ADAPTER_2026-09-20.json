@@ -13,9 +13,15 @@
     "privacy_origin_required": "private-history-method-only"
   },
   "outbound": {
-    "status": "REFERENCE_OR_GIT_HANDOFF_ONLY",
+    "status": "VERIFIED_BOUNDED_PRIVATE_METHOD_OUTWARD_BOUNDARIES",
+    "evidence_anchor": "deba0e9b19ef1fe106ba6dea1323eb0896dd5010",
+    "carriers": [
+      "ecs-client",
+      "agent-tool-handoff",
+      "export-sync-publication"
+    ],
     "structured_response_packet_runtime": false,
-    "note": "Target-local response may be recorded through Git/reference handoff; generic structured response-packet runtime is not yet established."
+    "note": "Private-method origin/boundary propagation and outward blocking are verified; a generic structured response-packet runtime is still not established."
   },
   "privacy": {
     "monotonic": true,
@@ -30,5 +36,5 @@
     "PRIVATE SOURCE MUST NOT PROPAGATE",
     "VERIFICATION != UNIVERSAL_PRIVACY_PROOF"
   ],
-  "claim_ceiling": "CONSCIENCE64_LOCAL_ADAPTER_WITH_VERIFIED_BOUNDED_INBOUND_ONLY"
+  "claim_ceiling": "CONSCIENCE64_LOCAL_ADAPTER_WITH_VERIFIED_BOUNDED_INBOUND_AND_OUTWARD_PRIVACY_NO_GENERIC_RESPONSE_RUNTIME"
 }
