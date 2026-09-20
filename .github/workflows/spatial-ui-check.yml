@@ -6,7 +6,9 @@ on:
     paths:
       - 'space-lens-gpu.js'
       - 'space-lens-master.js'
+      - 'space-lens-memory.js'
       - 'spatial-ui-test.mjs'
+      - 'tools/check_space_lens_memory.mjs'
       - 'index.html'
       - 'navigation/**'
       - 'research/projects/index.html'
@@ -17,7 +19,9 @@ on:
     paths:
       - 'space-lens-gpu.js'
       - 'space-lens-master.js'
+      - 'space-lens-memory.js'
       - 'spatial-ui-test.mjs'
+      - 'tools/check_space_lens_memory.mjs'
       - 'index.html'
       - 'navigation/**'
       - 'research/projects/index.html'
@@ -32,6 +36,8 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    env:
+      VERIFY_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - name: Materialize exact commit without external Actions
         shell: bash
@@ -39,12 +45,15 @@ jobs:
           set -euo pipefail
           git init .
           git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
-          git fetch --depth 1 origin "${GITHUB_SHA}"
+          git fetch --depth 1 origin "${VERIFY_SHA}"
           git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "${VERIFY_SHA}"
       - name: Syntax check spatial and Context Horizon modules
         run: |
           node --check space-lens-gpu.js
           node --check space-lens-master.js
+          node --check space-lens-memory.js
+          node --check tools/check_space_lens_memory.mjs
           node --check navigation/context-horizon/work-inventory.mjs
           node --check navigation/context-horizon/work-inventory.test.mjs
           node --check navigation/context-horizon/current-chat-artifacts.test.mjs
@@ -81,5 +90,7 @@ jobs:
         run: |
           node history/test.mjs
           node history/knowledge-test.mjs
+      - name: Verify Space Lens local-memory boundary
+        run: node tools/check_space_lens_memory.mjs
       - name: Exercise Context Horizon accessibility and fallback
         run: node navigation/context-horizon/browser-test.mjs
