@@ -238,19 +238,40 @@ way-back reference
 reference-only evidence
 ~~~
 
-Next experiment:
+First native-domain witness: **completed**.
 
 ~~~text
-choose one native domain
--> identify one real need for relational metadata
--> project native state through Ω
--> bind the relation sidecar
--> run bounded RMAPL repair/fitting
--> reconstruct native state
--> measure self + lateral + ambient + delayed loss/remainder
+DecisionField native object
+-> exact Ω projection
+-> rmapl-omega-relational-field/v0 sidecar
+-> NEIGHBOR + HOLE / minimum-span relation metadata
+-> self + neighbor + shared + ambient + delayed consequence
+-> exact Ω way back
+-> exact native DecisionField reconstruction
 ~~~
 
-Only promote additional shared fields after repeated native witnesses.
+Target-local evidence:
+
+~~~text
+Other-Projects- PR #81 / 16a6823aa563e86455ec709700d06f0b9e22b467
+post-merge run 35508603278 = PASS
+119 / 119 tests
+native object unchanged
+Omega view unchanged
+relation evidence = reference-only
+~~~
+
+Current bounded status:
+
+~~~text
+GENERIC RELATIONAL CARRIER = COMPLETE_BOUNDED_BASELINE
+FIRST NATIVE WITNESS = VERIFIED
+OMEGA v0 = UNCHANGED
+ADDITIONAL DOMAIN WITNESS = OPTIONAL / OBLIGATION-DRIVEN
+DELTA_required(generic relation-carrier integration) = 0
+~~~
+
+Do not add another generic field merely to broaden the schema. A new field requires a target-local native witness showing that the current sidecar cannot carry a consequential obligation.
 
 ~~~text
 RELATION != MERGE
