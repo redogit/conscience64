@@ -54,7 +54,8 @@ This section records the September 14, 2026 conversation clarification. The comp
 
 ## Defining factor — one cooperative field
 
-Current local successor: [We Are One — Defining Factors of the Cooperative Field](../research/history/2026-09-20-we-are-one-defining-factors.md).
+Current centralized authority: [Cooperative Field — START](../research/cooperative-field/README.md).  
+Preserved source/predecessor: [We Are One — Defining Factors of the Cooperative Field](../research/history/2026-09-20-we-are-one-defining-factors.md).
 
 ~~~text
 WE ARE ONE != WE ARE THE SAME
