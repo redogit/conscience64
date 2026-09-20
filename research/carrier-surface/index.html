@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Carrier–Surface: a public Conscience64 page for invariant-preserving transport between addresses, representations, surfaces, and carriers.">
+<title>Carrier–Surface · Conscience64</title>
+<style>
+:root{color-scheme:light dark;font-family:system-ui,sans-serif;line-height:1.58}
+body{max-width:76rem;margin:auto;padding:1.25rem}h1,h2{line-height:1.16}a{text-underline-offset:.18em}
+a:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.hero,.card{border:1px solid color-mix(in srgb,currentColor 24%,transparent);border-radius:.8rem;padding:1rem}
+.hero{margin:1rem 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem}
+code,pre{overflow-wrap:anywhere}.flow{font-weight:700;line-height:1.8}.boundary{border-inline-start:.3rem solid currentColor;padding-inline-start:1rem}
+</style>
+</head>
+<body>
+<nav aria-label="Research navigation"><a href="../projects/">Research records</a> · <a href="../federation/s1-models/">Current S′ model map</a> · <a href="../../">Conscience64 home</a></nav>
+<main>
+<h1>Carrier–Surface</h1>
+<div class="hero">
+<p><strong>Governing invariant:</strong></p>
+<blockquote><strong>Object identity is invariant; coordinates are negotiable.</strong></blockquote>
+<p>Carrier–Surface is a small transport contract for moving the same identified thing between coordinate systems, schemas, representations, files, graphs, languages, decision fields, and other Surfaces without silently treating a representation change as an identity change.</p>
+</div>
+
+<section aria-labelledby="core"><h2 id="core">Smallest reusable core</h2>
+<p class="flow"><code>Thing + Address + Relation + Carrier + Transform + Invariant + Provenance</code></p>
+<div class="grid">
+<article class="card"><h3>Address</h3><p>A multidimensional key or coordinate. One object may have several valid addresses.</p></article>
+<article class="card"><h3>Surface</h3><p>An addressable relation or representation domain. A discrete multi-key relation can be a useful substrate, but it is not automatically a mathematical manifold.</p></article>
+<article class="card"><h3>Carrier</h3><p>The transport mechanism between Surfaces. It may change coordinates or representation while carrying declared invariants and provenance.</p></article>
+<article class="card"><h3>Preimage</h3><p>Reverse lookup may produce a set of addresses rather than one unique inverse. Ambiguity is retained instead of manufactured away.</p></article>
+</div></section>
+
+<section aria-labelledby="traversal"><h2 id="traversal">Canonical traversal</h2>
+<p class="flow"><code>RESOLVE → ENCODE → CARRY → DECODE → RECONSTRUCT → COMPARE → TRACE → RETURN_HOME</code></p>
+<p>If reconstruction fails the declared invariants, the result is classified as mutation, semantic decay, or unknown rather than being called a successful semantic rotation.</p>
+</section>
+
+<section aria-labelledby="rotation"><h2 id="rotation">Semantic rotation</h2>
+<pre>A → Carrier → B → Carrier⁻¹ → A′
+compare(A, A′, declared invariants)</pre>
+<p>A valid rotation is judged against the declared invariant set. Exact bytes are not always required; exact meaning is not assumed merely because bytes round-trip.</p>
+</section>
+
+<section aria-labelledby="s1"><h2 id="s1">Connection to the current S′ models</h2>
+<p>Carrier–Surface is the shared transport substrate for the <a href="../federation/s1-models/">current S′ / S Prime model map</a>. It connects S′ model representations without becoming an S′ model itself and without transferring evidence authority between them.</p>
+</section>
+
+<section aria-labelledby="owner"><h2 id="owner">Owner implementation/specification</h2>
+<p>The current public owner-side specification is in <a href="https://github.com/redogit/Other-Projects-/pull/87">Other-Projects PR #87</a>, observed at head <code>5f99adca0cdb4d9c6c66f5124fe3567fbdb9eff2</code>. Conscience64 is the public explanation/navigation surface; the owner repository remains the implementation/specification authority.</p>
+<p><a href="../carrier-surface.json">Open the machine-readable Conscience64 pointer</a>.</p>
+</section>
+
+<section aria-labelledby="boundary"><h2 id="boundary">Claim boundary</h2>
+<p class="boundary"><code>PUBLICLY_VISIBLE != SCIENTIFICALLY_VALIDATED</code><br>
+<code>PUBLICATION != EVIDENCE_PROMOTION</code><br>
+<code>METHOD_TRANSFER != EVIDENCE_TRANSFER</code><br>
+<code>RELATION != MERGE</code><br>
+<code>MULTI_KEY_RELATION != MATHEMATICAL_MANIFOLD</code></p>
+</section>
+</main>
+</body>
+</html>
