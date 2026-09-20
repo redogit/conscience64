@@ -48,7 +48,13 @@ for(const text of [
   'TBCL promotion requires the user',
   'Knowledge Decay',
   'Homeward',
-  'US_DAY + SOL_DAY + RMA_DAY'
+  'US_DAY + SOL_DAY + RMA_DAY',
+  'THOUGHT',
+  'CHOSEN_ACTION | IMPOSED_CHANGE',
+  'EXPECTATION != OBSERVATION',
+  'SMALLEST FAILING STRUCTURE',
+  'HELP != CONTROL',
+  'CAPABILITY != PERMISSION'
 ]) assert.ok(rules.includes(text),`standing rules missing: ${text}`);
 
 for(const text of [
@@ -120,5 +126,8 @@ assert.ok(manifest.privacy_exclusions.includes('personal handles unless separate
 assert.equal(manifest.unresolved_location_policy.token,'PRESERVED_UNRESOLVED_LOCATION');
 assert.equal(manifest.name_recovery.recovered_exact_names_relations,52);
 assert.equal(manifest.name_recovery.unique_recovered_semantic_targets,51);
+assert.equal(manifest.thought_to_help_lifecycle.status,'CURRENT_CANONICAL_PROCESS');
+assert.ok(manifest.thought_to_help_lifecycle.boundaries.includes('IMPOSED_CHANGE != CONSENT'));
+assert.ok(manifest.thought_to_help_lifecycle.boundaries.includes('HELP != CONTROL'));
 
 console.log(`PASS cooperative field: ${required.length} authority files; defining factors, standing rules, names, plan, evidence, locations, memory contract and manifest consistent`);
