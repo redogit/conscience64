@@ -129,7 +129,8 @@
     "always apply Knowledge Decay when staleness/drift/reconstruction can alter the claim",
     "preserve failures, contradictions, predecessors, and Remainder",
     "one-degree experiment with lateral/ambient/delayed consequence observation",
-    "Homeward preserves way back and legitimate stopping"
+    "Homeward preserves way back and legitimate stopping",
+    "thought-to-help lifecycle uses residuals to repair the smallest failing structure and challenges the improvement"
   ],
   "privacy_exclusions": [
     "private family/person context",
@@ -156,5 +157,42 @@
   "public_projection": {
     "authorized": false,
     "note": "This folder is not part of the generated public-testbed projection unless separately scope-authorized and verified."
+  },
+  "thought_to_help_lifecycle": {
+    "status": "CURRENT_CANONICAL_PROCESS",
+    "flow": [
+      "thought",
+      "explicit reusable structure",
+      "classify change as chosen action or imposed change",
+      "declare expectation",
+      "record observation",
+      "compute or type the residual",
+      "localize smallest failing structure",
+      "apply one-degree improvement",
+      "challenge with cheapest independent counterprobe",
+      "verify and classify result",
+      "preserve evidence, lineage, privacy, recoverability, predecessor, residuals, and remainder",
+      "use admitted capability to help someone within authorization and claim ceiling",
+      "return Homeward"
+    ],
+    "residual": {
+      "numeric": "observation - expectation where the domain supports a meaningful numeric comparison",
+      "qualitative": [
+        "unmet invariant",
+        "unexpected loss",
+        "unexpected gain",
+        "new externality",
+        "contradiction",
+        "unknown"
+      ]
+    },
+    "boundaries": [
+      "IMPOSED_CHANGE != CONSENT",
+      "EXPECTATION != OBSERVATION",
+      "RESIDUAL != FAILURE_BY_ITSELF",
+      "IMPROVEMENT != VALIDATION",
+      "HELP != CONTROL",
+      "CAPABILITY != PERMISSION"
+    ]
   }
 }
