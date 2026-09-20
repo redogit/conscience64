@@ -22,6 +22,20 @@ assert.ok(CROSSREF_BOUNDARIES.includes('SEMANTIC_SIMILARITY != EVIDENCE'));
 assert.ok(semanticNeighbors(g,'pool').some(e=>e.neighbor==='water'));
 assert.ok(crossReferenceComponents(g).some(c=>c.includes('pool')&&c.includes('water')));
 
+assert.ok(CROSSREF_BOUNDARIES.includes('PRIVATE_ORIGIN != SEARCHABLE_GRAPH'));
+
+const privacyGraph=buildSemanticCrossReferenceMap([
+  {id:'public-safe',title:'Public safe carrier',description:'bounded safe method',relations:[{target:'private-derived',relation:'REFERENCES'}]},
+  {id:'private-derived',title:'PRIVATE_GRAPH_CANARY_8B1',description:'bounded safe method',derived_from_private_history:true},
+  {id:'private-method',title:'PRIVATE_GRAPH_CANARY_8B2',description:'bounded safe method',privacy_origin:{classification:'private-history-method-only',independently_regrounded:false}}
+],{threshold:.01,maxEdgesPerNode:4});
+assert.equal(privacyGraph.stats.inputRecordCount,3);
+assert.equal(privacyGraph.stats.recordCount,1);
+assert.equal(privacyGraph.stats.skippedPrivateOrigin,2);
+assert.deepEqual(privacyGraph.nodes.map(n=>n.id),['public-safe']);
+assert.equal(privacyGraph.edges.length,0);
+assert.ok(!JSON.stringify(privacyGraph).includes('PRIVATE_GRAPH_CANARY'));
+
 const deterministic=buildSemanticCrossReferenceMap(records,{threshold:.16,maxEdgesPerNode:6});
 assert.equal(JSON.stringify(g),JSON.stringify(deterministic));
 
