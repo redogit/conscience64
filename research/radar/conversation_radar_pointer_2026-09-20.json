@@ -12,9 +12,10 @@
   },
   "currentQueue": [
     "Decision Field Step 3: preserve CANDIDATE_NOT_ADMITTED != FALSE != KNOWN as recoverable lineage without admission",
-    "FDE: matched plasticity ON/OFF only",
+    "FDE collision lane: matched plasticity ON/OFF only",
+    "FDE relation-index lane: V1.2 bounded selection/rotation succeeded; automatic index generation beyond human candidate pool remains UNPROVEN",
     "FIG-5: recover exact authority/linkage witness for n_star; family remains PREREGISTERED_NOT_EXECUTED",
-    "Hodge/W114: test geometric hypotheses behind current joint polynomial map",
+    "Hodge/W114: perform compatible period-lift / simultaneous second-order comparison; GEOMETRIC_ADMISSION remains NOT_PERFORMED",
     "Carrier-Surface/FITTER: PR #90 authority floor merged; quotient/path validation eligible but unexecuted",
     "Activate at most one external radar method after an observed residual requires it"
   ],
@@ -60,6 +61,30 @@
       "sourceFactNumVars": 10,
       "nStar": "UNRESOLVED_BINDING",
       "delta": "UNRESOLVED"
+    },
+    "fde": {
+      "collisionLane": {
+        "status": "COUNTERPROBED",
+        "next": "matched plasticity ON/OFF"
+      },
+      "relationIndexLane": {
+        "version": "V1.2",
+        "cases": 60,
+        "candidateCount": 15,
+        "selectionSuccessRate": 1,
+        "rotatedSelectionSuccessRate": 1,
+        "boundary": "human-bounded candidate pool",
+        "unproven": "automatic relation-index generation"
+      }
+    },
+    "hodge": {
+      "checkpoint": "W114-PARITY10-20260920-04",
+      "commonKernelDimension": 479,
+      "jointQuadraticRank": 29,
+      "witnessDifference": "1/57",
+      "geometricAdmission": "NOT_PERFORMED",
+      "next": "compatible period-lift / simultaneous second-order comparison"
     }
-  }
+  },
+  "snapshotCutoffUtc": "2026-09-20T17:16:31Z"
 }
