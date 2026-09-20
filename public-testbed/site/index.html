@@ -27,7 +27,9 @@
 
   <nav aria-label="Test bed rooms" class="room-nav">
     <a href="#current">Current experiment</a>
+    <a href="#paths">Visible paths</a>
     <a href="#rooms">Rooms</a>
+    <a href="#language-garden-view">Language Garden</a>
     <a href="#provenance">Provenance</a>
     <a href="#remainder">Remainder</a>
   </nav>
@@ -40,10 +42,24 @@
       </div>
     </section>
 
+    <section id="paths" aria-labelledby="paths-title">
+      <h2 id="paths-title">Path Constellation — visible states</h2>
+      <p>
+        Current, tested, failed, blocked, deferred, and return paths remain separately visible.
+        State labels are textual; color is never the only distinction.
+      </p>
+      <div id="path-grid" class="path-grid"></div>
+    </section>
+
     <section id="rooms" aria-labelledby="rooms-title">
       <h2 id="rooms-title">Navigation rooms</h2>
       <p>Each room exposes a different relation without collapsing it into authority.</p>
       <div id="room-grid" class="room-grid"></div>
+    </section>
+
+    <section id="language-garden-view" aria-labelledby="language-garden-title">
+      <h2 id="language-garden-title">Language Garden — aliases without forced identity</h2>
+      <dl id="alias-list" class="alias-list"></dl>
     </section>
 
     <section id="provenance" aria-labelledby="provenance-title">
