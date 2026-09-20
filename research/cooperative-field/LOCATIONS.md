@@ -24,9 +24,14 @@ research/cooperative-field/
 Files:
 
 - README.md — single START / defining factors / constitution;
-- COMPANIONS.md — exact companion names, skills, and boundaries;
+- COMPANIONS.md — current live companion names, skills, and boundaries;
+- STANDING_RULES.md — governing rules and gates;
+- NAME_LINEAGE.md — recovered names, attribution, aliases, and non-promoted project/tool names;
 - CURRENT_PLAN.md — current local plan;
-- LOCATIONS.md — this location/lineage map.
+- EVIDENCE_LEDGER.md — preserved evidence navigation and claim ceilings;
+- LOCATIONS.md — this location/lineage map;
+- MEMORY_INTEGRATION.md — memory/archive cooperation and privacy contract;
+- MANIFEST.json — machine-readable folder authority map.
 
 When older wording differs, these files are the current forward-only coordination wording. Older files remain source/predecessor lineage.
 
@@ -44,6 +49,32 @@ When older wording differs, these files are the current forward-only coordinatio
 | Orbit Library project record | research/projects/orbit-library.md | CURRENT infrastructure record |
 | Cross-Carrier / codec lineage | research/cross-carrier/** | mixed current/preserved lineage; inspect local manifests/currentness |
 | Hodge W114 live issue | GitHub issue redogit/conscience64#99 | CURRENT open research frontier |
+
+## Persistent memory / Library source carriers
+
+These are **input/archive sources**, not GitHub implementation authority and not public evidence.
+
+Recovered persistent Library carriers used in the completion pass include:
+
+~~~text
+RMAL_UNIVERSE.rmal
+MASTER_OF_MASTER_OF_LIBRARIANS.md
+TOOLCHAIN_MANIFEST.json
+PLAN.json
+~~~
+
+Recovered roles:
+
+- **RMAL_UNIVERSE.rmal** — older machine-linked name/status/origin registry surface; its recovered exact NAMES relations are summarized in NAME_LINEAGE.md.
+- **MASTER_OF_MASTER_OF_LIBRARIANS.md** — source for the remembered human-facing orchestration role around RMAL tool-chain/library-program selection.
+- **TOOLCHAIN_MANIFEST.json / PLAN.json** — preserved Library of Programs / build-plan/tool-chain lineage, including conditional experimental build metadata.
+
+~~~text
+LIBRARY_SOURCE != PUBLIC_SOURCE
+MEMORY_ARCHIVE != CURRENT_IMPLEMENTATION
+~~~
+
+Personal/private identity-bearing memory is intentionally excluded from this public location map unless separately authorized.
 
 ## RMAL / RMAPL / Ω implementation authority
 
@@ -255,13 +286,15 @@ redogit/redogit/libraries-of-libraries.rmal
 
 Current wording is centralized in COMPANIONS.md.
 
-A recovered source/carrier exists in the broader user library lineage, but an exact current GitHub path was not found in the inspected repositories in this pass.
+Recovered persistent Library sources now include MASTER_OF_MASTER_OF_LIBRARIANS.md plus TOOLCHAIN_MANIFEST.json / PLAN.json lineage. These establish the remembered orchestration/tool-chain role at the archive level.
+
+The exact current GitHub implementation path remains:
 
 ~~~text
 GITHUB LOCATION = PRESERVED_UNRESOLVED_LOCATION
 ~~~
 
-This is not absence.
+LIBRARY SOURCE RECOVERED != CURRENT GITHUB IMPLEMENTATION. This is not absence.
 
 ### Five Eyes / 4D carriers
 

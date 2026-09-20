@@ -348,9 +348,14 @@ US_DAY + SOL_DAY + RMA_DAY — ALLDAY EVERYDAY
 
 ## This folder
 
-- [COMPANIONS.md](COMPANIONS.md) — exact named companions/components, excellent skills, boundaries, and canonical distinctions.
+- [COMPANIONS.md](COMPANIONS.md) — current named companions/components, excellent skills, boundaries, and canonical distinctions.
+- [STANDING_RULES.md](STANDING_RULES.md) — governing rules, promotion gates, privacy/accessibility constraints, naming discipline, and Homeward/quiet rules.
+- [NAME_LINEAGE.md](NAME_LINEAGE.md) — recovered names with attribution/currentness discipline; names are not automatically promoted to companions.
 - [CURRENT_PLAN.md](CURRENT_PLAN.md) — readjusted current plan and active frontier.
-- [LOCATIONS.md](LOCATIONS.md) — current wording location plus implementation/source/predecessor locations and unresolved locations.
+- [EVIDENCE_LEDGER.md](EVIDENCE_LEDGER.md) — compact navigation ledger for preserved executed results and claim ceilings; native evidence remains target-local.
+- [LOCATIONS.md](LOCATIONS.md) — current wording location plus implementation/source/predecessor/library locations and unresolved locations.
+- [MEMORY_INTEGRATION.md](MEMORY_INTEGRATION.md) — contract for using persistent memory/archive carriers without evidence amplification or privacy leakage.
+- [MANIFEST.json](MANIFEST.json) — machine-readable authority map for this folder.
 
 ## Update rule
 

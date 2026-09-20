@@ -120,6 +120,8 @@ jobs:
         run: node tools/check_space_lens_human_builder.mjs
       - name: Check compact REDOGIT surface
         run: python3 tools/redogit_selfcheck.py
+      - name: Check centralized Cooperative Field authority
+        run: node tools/check_cooperative_field.mjs
       - name: Replay SQL v5 finite constructor
         shell: bash
         run: |
