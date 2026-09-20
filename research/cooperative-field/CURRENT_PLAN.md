@@ -217,20 +217,46 @@ Calibration ceiling remains bounded; navigation geometry is not ontology.
 
 ## Active frontier E — RMAPL / Ω
 
-Do not enlarge the generic schema preemptively.
+Do not enlarge the generic Ω schema preemptively.
+
+Current bounded executable witness:
+
+~~~text
+Other-Projects- PR #80 / 4625c2a5c889a8344f6f0821883c67d5eed72b0c
+rmapl-omega-relational-field/v0
+Omega v0 remains unchanged
+authority = method-only
+~~~
+
+The sidecar now carries:
+
+~~~text
+typed removable relations
+self / neighbor / shared / ambient / delayed consequence
+currentness
+way-back reference
+reference-only evidence
+~~~
 
 Next experiment:
 
 ~~~text
 choose one native domain
 -> identify one real need for relational metadata
--> project through Ω
+-> project native state through Ω
+-> bind the relation sidecar
 -> run bounded RMAPL repair/fitting
 -> reconstruct native state
--> measure loss/remainder
+-> measure self + lateral + ambient + delayed loss/remainder
 ~~~
 
-Only promote shared fields after repeated native witnesses.
+Only promote additional shared fields after repeated native witnesses.
+
+~~~text
+RELATION != MERGE
+METHOD_TRANSFER != EVIDENCE_TRANSFER
+OMEGA_VIEW != NATIVE_OBJECT
+~~~
 
 ## Active frontier F — P vs NP
 
