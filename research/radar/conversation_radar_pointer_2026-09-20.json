@@ -6,9 +6,12 @@
   "owner": {
     "repository": "redogit/Other-Projects-",
     "pullRequest": 91,
-    "state": "OPEN_AT_POINTER_CREATION",
+    "state": "MERGED",
     "contractPath": "Decision Field Operator Lab/docs/CONVERSATION_WIDE_RADAR_LOCALITY_PARITY_2026-09-20.md",
-    "machinePath": "Decision Field Operator Lab/docs/conversation_radar_locality_parity_2026-09-20.json"
+    "machinePath": "Decision Field Operator Lab/docs/conversation_radar_locality_parity_2026-09-20.json",
+    "reviewedHead": "a275bfa3e5c86306abbbf70b7750f87be8b6a368",
+    "mergeCommit": "9217c9269db118e03bf7e980adb60acf2e6252e7",
+    "contractUrl": "https://github.com/redogit/Other-Projects-/blob/9217c9269db118e03bf7e980adb60acf2e6252e7/Decision%20Field%20Operator%20Lab/docs/CONVERSATION_WIDE_RADAR_LOCALITY_PARITY_2026-09-20.md"
   },
   "currentQueue": [
     "Decision Field Step 3: preserve CANDIDATE_NOT_ADMITTED != FALSE != KNOWN as recoverable lineage without admission",
