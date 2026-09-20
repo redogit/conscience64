@@ -23,15 +23,22 @@ h2{margin-top:2.4rem}
 .boundary-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
 .boundary-strip span,.state-tag{border:1px solid var(--line);border-radius:999px;padding:.35rem .6rem;font-size:.82rem;font-weight:700}
 .room-nav{display:flex;flex-wrap:wrap;gap:1rem;border-block:1px solid var(--line);padding:.85rem 0}
-.room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
-.room-card,.experiment-card,.provenance-grid>div{border:1px solid var(--line);background:var(--panel);border-radius:.75rem;padding:1rem}
-.room-card h3{margin-top:0}
-.experiment-card dl{display:grid;grid-template-columns:minmax(9rem,13rem) 1fr;gap:.35rem 1rem}
+.room-grid,.path-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.room-card,.path-card,.experiment-card,.provenance-grid>div{border:1px solid var(--line);background:var(--panel);border-radius:.75rem;padding:1rem}
+.room-card h3,.path-card h3{margin-top:0}
+.path-card[data-status="failed"]{border-style:dashed}
+.path-card[data-status="blocked"]{border-style:double;border-width:3px}
+.path-card[data-status="deferred"]{border-style:dotted;border-width:2px}
+.path-card[data-status="return"]{border-style:dashed;border-width:2px}
+.experiment-card dl,.path-card dl{display:grid;grid-template-columns:minmax(9rem,13rem) 1fr;gap:.35rem 1rem}
 .experiment-card dt,.provenance-grid dt{font-weight:700;color:var(--muted)}
 .experiment-card dd,.provenance-grid dd{margin:0;overflow-wrap:anywhere}
 .provenance-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.75rem}
+.alias-list{display:grid;grid-template-columns:minmax(9rem,14rem) 1fr;gap:.5rem 1rem}
+.alias-list dt{font-weight:800}
+.alias-list dd{margin:0 0 .5rem}
 footer{border-top:1px solid var(--line);margin-top:2.5rem;padding:1rem 0 2rem;color:var(--muted)}
 .noscript{width:min(72rem,calc(100% - 2rem));margin:1rem auto;border:2px solid var(--focus);padding:1rem}
 code{overflow-wrap:anywhere}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-@media (max-width:36rem){.experiment-card dl{grid-template-columns:1fr}.experiment-card dd{margin-bottom:.65rem}}
+@media (max-width:36rem){.experiment-card dl,.path-card dl,.alias-list{grid-template-columns:1fr}.experiment-card dd,.path-card dd{margin-bottom:.65rem}}
