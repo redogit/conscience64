@@ -1,4 +1,5 @@
 import {massSemanticCrossReferenceMap,semanticNeighbors} from './semantic-crossref.mjs';
+import {hasRestrictedOriginMarker} from './private-origin-boundary.mjs';
 
 export const SEMANTIC_QUERY_BOUNDARIES=Object.freeze([
   'QUERY_MATCH != SUPPORT',
@@ -27,7 +28,8 @@ export function querySemanticRecords(records,query,options={}){
   if(!Array.isArray(records))throw new TypeError('records must be an array');
   const queryText=situationToQueryText(query);
   if(!queryText)throw new Error('semantic query text is empty');
-  const ids=new Set(records.map((r,i)=>String(r?.id??r?.key??r?.uid??r?.stable_id??r?.stableId??`record:${i}`)));
+  const visibleForIdentity=records.filter(record=>!hasRestrictedOriginMarker(record));
+  const ids=new Set(visibleForIdentity.map((r,i)=>String(r?.id??r?.key??r?.uid??r?.stable_id??r?.stableId??`record:${i}`)));
   let queryId='query:__transient__';let suffix=0;
   while(ids.has(queryId))queryId=`query:__transient__:${++suffix}`;
   const tags=Array.isArray(query?.tags)?query.tags:[];
