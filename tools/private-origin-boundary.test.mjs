@@ -72,6 +72,10 @@ assert.throws(()=>projectPrivateMethodForInternalCarrier(envelope,'public-export
 
 assert.throws(()=>assertPrivateOriginExportAllowed(ecsProjection),/blocked until independent re-grounding/);
 assert.throws(()=>assertPrivateOriginExportAllowed(handoffProjection),/blocked until independent re-grounding/);
+assert.throws(
+  ()=>assertPrivateOriginExportAllowed({summary:'renamed safe summary',payload:{renamed_method:handoffProjection}}),
+  /blocked until independent re-grounding/
+);
 assert.equal(assertPrivateOriginExportAllowed({kind:'public',publication_allowed:true}).kind,'public');
 
 console.log('PASS private-method recovery: rule + abstract method round-trip; source/story injection, publication promotion, false regrounding, and boundary weakening rejected.');
