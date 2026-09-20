@@ -113,6 +113,24 @@ OMEGA_VIEW != NATIVE_OBJECT
 METHOD_TRANSFER != EVIDENCE_TRANSFER
 BOUNDED_MAX != GLOBAL_COMPLETENESS
 
+## All-directional relation sidecar
+
+Current target-local executable witness:
+
+- Other-Projects- PR #80 merged as 4625c2a5c889a8344f6f0821883c67d5eed72b0c;
+- schema: rmapl-omega-relational-field/v0;
+- implementation: Decision Field Operator Lab/omega_relations.py;
+- documentation: Decision Field Operator Lab/RELATIONAL_FIELD_CARRIER_2026-09-20.md;
+- Omega v0 remains unchanged;
+- Conscience64 records only location/currentness and does not acquire implementation authority.
+
+The sidecar carries removable typed relations, self/neighbor/shared/ambient/delayed consequence, currentness, reference-only evidence, and an explicit way-back reference.
+
+RELATION != MERGE
+CONSCIENCE64_REFERENCE != IMPLEMENTATION_AUTHORITY
+RELATION_REFERENCE != EVIDENCE_TRANSFER
+METHOD_TRANSFER != EVIDENCE_TRANSFER
+
 ## RMAL bidirectional response successor
 
 Preserved merged state:
