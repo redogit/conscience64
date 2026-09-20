@@ -51,7 +51,7 @@ try{
   assert.ok(a.boundaries.includes('PUBLIC_TESTBED != WHOLE_REPOSITORY'));
 
   const projected=await filesUnder(outA);
-  assert.deepEqual(projected,['app.js','index.html','projection-manifest.json','style.css','testbed.json']);
+  assert.deepEqual(projected,['app.js','carrier-surface/index.html','index.html','projection-manifest.json','s1-models/index.html','style.css','testbed.json']);
   assert.ok(!projected.some(p=>p.startsWith('research/')||p.startsWith('play/')||p==='README.md'));
 
   for(const rel of projected){
@@ -127,6 +127,22 @@ try{
   assert.match(html,/Working principles/);
   assert.match(html,/id="principle-grid"/);
   assert.match(html,/id="lineage-list"/);
+  assert.match(html,/\.\/s1-models\//);
+  assert.match(html,/\.\/carrier-surface\//);
+  const carrierPage=await readFile('public-testbed/site/carrier-surface/index.html','utf8');
+  const s1Page=await readFile('public-testbed/site/s1-models/index.html','utf8');
+  assert.match(carrierPage,/Object identity is invariant; coordinates are negotiable\./);
+  assert.match(carrierPage,/17ce340776455735a1af814031b88b887a5cf421/);
+  assert.match(carrierPage,/MULTI_KEY_RELATION != MATHEMATICAL_MANIFOLD/);
+  assert.doesNotMatch(carrierPage,/<script\b/i,'Carrier–Surface public page must remain passive');
+  assert.match(s1Page,/S Prime candidate-state model/);
+  assert.match(s1Page,/Survivor/);
+  assert.match(s1Page,/SemanticWorkUnit/);
+  assert.match(s1Page,/Grand Unified Perceptron \/ multi-timescale cell/);
+  assert.match(s1Page,/29effa0cfb52a019d51d81fae47aa8e056ab71cf/);
+  assert.match(s1Page,/ab0b7c4724989f5d79a0bbfcd009582b40509140/);
+  assert.match(s1Page,/CURRENT WORKING MODEL ≠ PINNED IMPLEMENTATION/);
+  assert.doesNotMatch(s1Page,/<script\b/i,'S′ model public page must remain passive');
   assert.ok(!html.includes('http://')&&!html.includes('https://'),'testbed shell must have no external runtime dependency');
   assert.match(css,/:focus-visible/);
   assert.match(css,/prefers-reduced-motion/);
