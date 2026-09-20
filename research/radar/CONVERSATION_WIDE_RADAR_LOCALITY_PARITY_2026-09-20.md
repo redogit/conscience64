@@ -19,9 +19,9 @@ CONSCIENCE64_REFERENCE != IMPLEMENTATION_AUTHORITY
 ## Current routed obligations
 
 1. Decision Field — Step 2 horizon closure is locally implemented and parity-checked; Step 3 only is non-admission preservation: `CANDIDATE_NOT_ADMITTED != FALSE != KNOWN`.
-2. FDE — matched plasticity ON/OFF only; collision-mixing negative result and relation/index witness remain separate.
+2. FDE — preserve two branches: collision lane next = matched plasticity ON/OFF; relation-index V1.2 selected/reselected the correct index across 60 bounded synthetic cases, but automatic index generation beyond the human candidate pool remains unproven.
 3. FIG-5 — local v0.10 identity and `num_vars=10` are recovered, but `n_star` remains an unresolved binding; recover one exact authority/linkage witness and do not execute the family yet.
-4. Hodge/W114 — test geometric hypotheses behind the current joint polynomial map.
+4. Hodge/W114 — current `W114-PARITY10-20260920-04` narrows the remaining geometry seam to a compatible period-lift / simultaneous second-order comparison; geometric admission remains unperformed.
 5. FITTER / Carrier–Surface — PR #90 authority-floor repair is merged; quotient/path validation is eligible but unexecuted.
 6. Activate at most one external radar method when an observed residual requires it.
 
