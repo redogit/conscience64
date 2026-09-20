@@ -55,6 +55,29 @@ try{
   ]);
   assert.equal(source.progression_model.currency_meaning,'knowledge-currentness');
   assert.ok(source.progression_model.boundaries.includes('ALIAS != LINEAGE'));
+  assert.deepEqual(source.navigation_model?.path_states,[
+    'active','tested','failed','blocked','deferred','return'
+  ]);
+  assert.equal(source.navigation_model?.currency_meaning,'knowledge-currentness');
+  assert.equal(source.navigation_model?.way_back_required,true);
+  const paths=source.paths||[];
+  assert.ok(paths.length>=7,'visible path model must include the live progression and counterprobe/return paths');
+  assert.deepEqual(new Set(paths.map(x=>x.state)),new Set(source.navigation_model.path_states));
+  const currentPath=paths.find(x=>x.id===source.navigation_model.current_path_id);
+  assert.ok(currentPath,'current path id must resolve');
+  assert.equal(currentPath.state,'active');
+  assert.equal(currentPath.currentness,'CURRENT_EPOCH');
+  for(const p of paths){
+    for(const field of ['id','title','state','currentness','provenance','claim_boundary']){
+      assert.ok(Object.hasOwn(p,field),`path ${p.id||'<missing>'} missing ${field}`);
+    }
+    if(p.id!==source.navigation_model.root_path_id)assert.ok(p.way_back,`path ${p.id} missing way_back`);
+  }
+  assert.ok(Array.isArray(source.relations?.lineage)&&source.relations.lineage.length>=2);
+  assert.ok(Array.isArray(source.relations?.aliases)&&source.relations.aliases.length>=1);
+  assert.ok(Array.isArray(source.relations?.unresolved)&&source.relations.unresolved.length>=1);
+  assert.ok(source.relations.unresolved.every(x=>x.currentness==='PRESERVED_UNRESOLVED'));
+  assert.ok(source.relations.aliases.every(x=>!Object.hasOwn(x,'parent')&&!Object.hasOwn(x,'child')),'aliases must not be encoded as lineage edges');
   const exp=source.experiments[0];
   for(const field of ['id','title','status','currentness','changed_degree','evidence','result','zero_result','remainder','provenance','claim_boundary']){
     assert.ok(Object.hasOwn(exp,field),`experiment missing ${field}`);
@@ -79,6 +102,11 @@ try{
   assert.ok(!js.includes('innerHTML'),'testbed client must construct text safely');
   assert.match(js,/textContent/);
   assert.match(js,/projection-manifest\.json/);
+  assert.match(html,/href="#paths"/);
+  assert.match(html,/id="paths"/);
+  assert.match(html,/id="path-state-list"/);
+  assert.match(js,/renderPaths/);
+  assert.match(js,/way_back/);
 
   const unsafeRoot=path.join(workspace,'unsafe-root');
   await cp('public-testbed',path.join(unsafeRoot,'public-testbed'),{recursive:true});
