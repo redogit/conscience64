@@ -1,0 +1,34 @@
+{
+  "schema": "conscience64/bidirectional-handoff-adapter/v1",
+  "date": "2026-09-20",
+  "local_authority": "redogit/conscience64",
+  "central_protocol": "redogit/redogit:BIDIRECTIONAL_HANDOFF_PROTOCOL_2026-09-20.json",
+  "inbound": {
+    "status": "VERIFIED_BOUNDED_PRIVATE_METHOD_HANDOFF",
+    "request_classes": [
+      "PRIVATE_METHOD_HANDOFF"
+    ],
+    "evidence_anchor": "1cbf372207674070332b455c8851ee7993d6cf81",
+    "transport": "LOOPBACK_KNOWLEDGE_BRIDGE",
+    "privacy_origin_required": "private-history-method-only"
+  },
+  "outbound": {
+    "status": "REFERENCE_OR_GIT_HANDOFF_ONLY",
+    "structured_response_packet_runtime": false,
+    "note": "Target-local response may be recorded through Git/reference handoff; generic structured response-packet runtime is not yet established."
+  },
+  "privacy": {
+    "monotonic": true,
+    "public_promotion_requires_independent_regrounding": true,
+    "source_propagation": "DENY"
+  },
+  "boundaries": [
+    "REQUEST != COMMAND",
+    "RESPONSE != AUTHORITY_TRANSFER",
+    "HANDOFF != AUTHORITY_TRANSFER",
+    "AUTHORIZED READ != PUBLICATION PERMISSION",
+    "PRIVATE SOURCE MUST NOT PROPAGATE",
+    "VERIFICATION != UNIVERSAL_PRIVACY_PROOF"
+  ],
+  "claim_ceiling": "CONSCIENCE64_LOCAL_ADAPTER_WITH_VERIFIED_BOUNDED_INBOUND_ONLY"
+}
