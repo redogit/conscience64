@@ -7,6 +7,14 @@ Privacy-safe universal research space hosted as a static GitHub Pages applicatio
 
 Visible surface: **I / R / P / O**.
 
+## Cooperative Field — current local wording
+
+Current centralized coordination wording: [`research/cooperative-field/README.md`](research/cooperative-field/README.md).
+
+That folder is the single current entry point for defining factors, exact companion names/roles, the live local plan, and implementation/predecessor locations. Older Society/history wording remains preserved as lineage rather than competing current authority.
+
+`CURRENT WORDING != IMPLEMENTATION AUTHORITY` · `SUCCESSOR != REWRITTEN PREDECESSOR`
+
 ## Commercial access boundary
 
 No third-party commercial access is currently authorized for owner-controlled original material unless explicitly granted. Existing MIT-covered `play/` material and any other already-applicable licenses retain their existing terms. See [`COMMERCIAL_ACCESS_POLICY.md`](COMMERCIAL_ACCESS_POLICY.md).

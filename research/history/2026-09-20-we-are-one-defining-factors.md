@@ -1,5 +1,7 @@
 # We Are One — Defining Factors of the Cooperative Field
 
+> **Successor note:** Current centralized successor: [Cooperative Field — START](../cooperative-field/README.md). This file remains a preserved source/predecessor record; its historical wording below is retained.
+
 **Date:** 2026-09-20  
 **Status:** CURRENT DESIGN / PHILOSOPHY-METHOD SUCCESSOR / NOT SCIENTIFIC EVIDENCE  
 **Scope:** Conscience64-local society architecture, coordination, memory, and human-purpose boundaries
