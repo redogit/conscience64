@@ -120,6 +120,34 @@ That means Conscience64 can retrieve and cross-reference its repository corpus w
 
 Do not use this teacher for arbitrary untracked local directories. Restricted/private research should be sent explicitly as `visibility=restricted` packets through the authenticated local bridge.
 
+
+## Private-history method-only packets
+
+A private historical source may inform an abstract problem-solving method, but the source itself is not a Knowledge Bridge payload.
+
+Use `make_private_method_packet(project=..., method=...)` for this bounded carrier. It emits a restricted `METHOD` packet with:
+
+```text
+source = private-history:withheld
+visibility = restricted
+evidence = method-only; not project evidence
+independence = private-origin; requires independent re-grounding
+claim_ceiling = abstract method only; no source or identity claim
+privacy_origin.classification = private-history-method-only
+privacy_origin.independently_regrounded = false
+```
+
+The method-only carrier forbids `parents`, `tags`, `metadata`, `source_revision`, and `observed_at` so those auxiliary channels cannot become private-source pointers. Its UOID therefore identifies the admitted abstract method carrier, not the protected source narrative.
+
+```text
+PRIVATE METHOD MAY INFORM SOLVING
+PRIVATE SOURCE MUST NOT PROPAGATE
+UOID != PUBLICATION PERMISSION
+METHOD CARRIER != PROJECT EVIDENCE
+```
+
+This first boundary is intentionally pre-regrounding and restricted. A later project/public claim must be independently grounded in current authorized project evidence through a separate admission path; changing the marker to claim re-grounding is rejected here.
+
 ## HTTP surface
 
 ```text
