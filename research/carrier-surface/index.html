@@ -54,6 +54,17 @@ compare(A, A′, declared invariants)</pre>
 <p><a href="../carrier-surface.json">Open the machine-readable Conscience64 pointer</a>.</p>
 </section>
 
+<section aria-labelledby="s1-exec"><h2 id="s1-exec">S′ executable bridge</h2>
+<p>The Carrier–Surface method now has an owner-local executable bridge over the current S′ semantic model layer, merged through <a href="https://github.com/redogit/Other-Projects-/pull/88">Other-Projects PR #88</a> at <code>cca44e23ca663600cc3466f45d7dc509c466b796</code>.</p>
+<pre>S′ semantic object
+→ Carrier–Surface
+→ RMAPL Ω v0
+→ Carrier–Surface
+→ S′ semantic object</pre>
+<p>Four Surfaces are exercised: candidate-state, Survivor, SemanticWorkUnit, and multi-timescale. Exact-head verification passed 186/186 unit tests. Removing the reconstruction sidecar produces <code>UNKNOWN</code>; protected identity tampering produces <code>SEMANTIC_DECAY</code>; a one-degree schedule repair remains unadmitted.</p>
+<p><a href="https://github.com/redogit/Other-Projects-/blob/cca44e23ca663600cc3466f45d7dc509c466b796/Decision%20Field%20Operator%20Lab/docs/S1_CARRIER_SURFACE_BRIDGE.md">Read the executable bridge contract</a>.</p>
+</section>
+
 <section aria-labelledby="boundary"><h2 id="boundary">Claim boundary</h2>
 <p class="boundary"><code>PUBLICLY_VISIBLE != SCIENTIFICALLY_VALIDATED</code><br>
 <code>PUBLICATION != EVIDENCE_PROMOTION</code><br>
