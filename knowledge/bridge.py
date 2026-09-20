@@ -107,6 +107,8 @@ class KnowledgeBridgeHandler(BaseHTTPRequestHandler):
                 if not isinstance(body, dict):
                     raise ValueError("handoff response must be a JSON object")
                 in_reply_to = body.get("in_reply_to")
+                if body.get("from") != "redogit/conscience64":
+                    raise ValueError("handoff response must be target-local")
                 request_packet = self.server.ledger.get(
                     in_reply_to, include_restricted=True
                 )
