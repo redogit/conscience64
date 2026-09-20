@@ -83,5 +83,174 @@
     "verifiedRevision": "https://github.com/redogit/Other-Projects-/tree/ab0b7c4724989f5d79a0bbfcd009582b40509140/S1%20Models%20Lab",
     "implementationRevision": "https://github.com/redogit/Other-Projects-/commit/4c5b3d0e599c029cc05478eaa5119b00d096e3c4",
     "frozenEvidence": "https://github.com/redogit/Other-Projects-/blob/ab0b7c4724989f5d79a0bbfcd009582b40509140/S1%20Models%20Lab/evidence/EXPERIMENT_0_SUMMARY.json"
+  },
+  "currentModelMap": {
+    "schema": "conscience64/s1-model-federation/v2",
+    "id": "s1-model-family-current",
+    "relation": "CONNECT_WITHOUT_AUTHORITY_TRANSFER",
+    "status": "CURRENT_PUBLIC_MODEL_MAP",
+    "observedAt": "2026-09-20",
+    "ownerCurrent": {
+      "repository": "redogit/Other-Projects-",
+      "observedMainRevision": "217546ce9839b31befc8a2d31815ce3d75287680",
+      "nativeS1LatestLineageCommit": "29effa0cfb52a019d51d81fae47aa8e056ab71cf",
+      "closureEvidence": {
+        "path": "S1 Models Lab/evidence/RIGOR_V1_CLOSURE_SUMMARY.json",
+        "blobSha": "cd84f615a3042b25d35c476476d51119b02ba1f9",
+        "implementationRevision": "3040d235d8bfb55e3302effff5528ee71ecb5fad",
+        "implementationTests": {
+          "total": 92,
+          "passed": 92,
+          "failed": 0
+        },
+        "implementationCi": {
+          "workflow": "S1 Models Check",
+          "runId": 35312567016,
+          "conclusion": "success"
+        },
+        "scientificValidation": false,
+        "claimCeiling": "bounded deterministic software verification only"
+      }
+    },
+    "nativePinnedSurfaces": [
+      {
+        "id": "s1-mirror",
+        "name": "S'1_Mirror",
+        "role": "immutable control"
+      },
+      {
+        "id": "s1-experience",
+        "name": "S'1_Experience",
+        "role": "append-only local experience learner; not ML"
+      },
+      {
+        "id": "s1-observer-field",
+        "name": "S'1_ObserverField",
+        "role": "distributed observer field with one task and one repairable calibration degree per sampled observer"
+      },
+      {
+        "id": "s1-suggest",
+        "name": "S'1_Suggest",
+        "role": "suggestion-only transition carrier derived from validated experience"
+      },
+      {
+        "id": "s1-ops-v0",
+        "name": "S'1-Ops v0",
+        "role": "versioned operator algebra over preserved model records"
+      },
+      {
+        "id": "s1-observer-sidecars",
+        "name": "S'1 same-event observer sidecars",
+        "role": "projection/slice/metric/topology-proxy/sonification observations sharing one source event without truth-authority transfer"
+      },
+      {
+        "id": "s1-image-surface",
+        "name": "S'1 image-as-surface adapter",
+        "role": "recoverable image-grid carrier embedded into S'1 replay/reframe machinery"
+      },
+      {
+        "id": "s1-dimensional-ladder",
+        "name": "S'1 Dimensional Ladder v0",
+        "role": "bounded adjacent-dimension Euclidean fixtures and counterexamples"
+      },
+      {
+        "id": "s1-carrier-ops-v1",
+        "name": "S'1 Carrier/Ops v1",
+        "role": "recursive closed carrier representation with tamper-checked canonical descriptors"
+      },
+      {
+        "id": "s1-rigor-v1",
+        "name": "S'1 Quantified Rigor v1",
+        "role": "bounded quantitative rotation/observer verification sidecar"
+      }
+    ],
+    "currentWorkingSemanticModels": [
+      {
+        "id": "s-prime-candidate-state",
+        "name": "S Prime candidate-state model",
+        "kernel": "S -> S'",
+        "role": "candidate transformed state only; proposal is distinct from certification, learning, authorization, admission, and reconstruction",
+        "status": "CURRENT_WORKING_METHOD"
+      },
+      {
+        "id": "survivor",
+        "name": "Survivor",
+        "role": "surviving counterexample/witness that determines the next lawful cut while preserving failed alternatives and knowledge gained",
+        "status": "CURRENT_WORKING_METHOD"
+      },
+      {
+        "id": "semantic-work-unit",
+        "name": "SemanticWorkUnit",
+        "role": "shared reconstruction object carrying spec, state, obligations, invariants, decision field, carriers, transforms, observers, candidates, proof obligations, certificates, counterexamples, repairs, evidence, provenance, resources, claim ceiling, and unresolved remainder",
+        "status": "CURRENT_WORKING_ARCHITECTURE"
+      },
+      {
+        "id": "grand-unified-perceptron-multitimescale",
+        "name": "Grand Unified Perceptron / multi-timescale cell",
+        "role": "ScheduleContract binding with tau_s < tau_w < tau_T < tau_K and local deterministic transition obligations",
+        "status": "CURRENT_WORKING_MODEL"
+      }
+    ],
+    "connectedSharedKernelBindings": [
+      {
+        "id": "carrier-surface",
+        "name": "Carrier–Surface Kernel",
+        "relation": "shared transport substrate; not itself an S'1 model",
+        "path": "../carrier-surface/"
+      },
+      {
+        "id": "rmal-trace-first",
+        "name": "RMAL Trace-First Carrier Pattern",
+        "relation": "Object -> Surface -> Carrier -> Trace -> Residual -> Repair -> Reprojection"
+      },
+      {
+        "id": "rmal-tfeml",
+        "name": "RMAL-TFEML",
+        "relation": "execution-first trace-as-memory lineage; Conscience64 PR #194 is still open"
+      },
+      {
+        "id": "cross-carrier-wave",
+        "name": "Cross-Carrier Wave",
+        "relation": "typed bounded carrier orbit with independent-path provenance"
+      },
+      {
+        "id": "r3",
+        "name": "R3 / recursive scientific reconstruction",
+        "relation": "candidate/counterprobe/repair/evidence orchestration"
+      },
+      {
+        "id": "knowledge-decay",
+        "name": "Knowledge Decay",
+        "relation": "future reconstructability obligation"
+      },
+      {
+        "id": "five-observer",
+        "name": "Five-observer / 4D affine scaffold",
+        "relation": "multi-view observer frame; no universal reconstruction claim"
+      },
+      {
+        "id": "fde",
+        "name": "FractalDeflectiveDataflowEngine V1",
+        "relation": "adjacent current-working execution object using the trace-first carrier pattern; not classified here as an S'1 model"
+      }
+    ],
+    "boundaries": [
+      "FEDERATION_POINTER != RESEARCH_ADMISSION",
+      "CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE",
+      "CURRENT_WORKING_MODEL != OWNER-PINNED_IMPLEMENTATION",
+      "S_PRIME_CANDIDATE != ADMITTED_SUCCESSOR",
+      "SAME_EVENT != SAME_OBSERVATION",
+      "SOFTWARE_VERIFICATION != SCIENTIFIC_VALIDATION",
+      "METHOD_TRANSFER != EVIDENCE_TRANSFER",
+      "OBJECT_IDENTITY_INVARIANT != REPRESENTATION_IDENTITY",
+      "ADJACENT_ARCHITECTURE != S1_MODEL"
+    ],
+    "evidenceTransfer": "DENY_BY_DEFAULT",
+    "links": {
+      "ownerLab": "https://github.com/redogit/Other-Projects-/tree/main/S1%20Models%20Lab",
+      "latestNativeLineage": "https://github.com/redogit/Other-Projects-/commit/29effa0cfb52a019d51d81fae47aa8e056ab71cf",
+      "closureEvidence": "https://github.com/redogit/Other-Projects-/blob/main/S1%20Models%20Lab/evidence/RIGOR_V1_CLOSURE_SUMMARY.json",
+      "carrierSurface": "../carrier-surface/"
+    }
   }
 }
