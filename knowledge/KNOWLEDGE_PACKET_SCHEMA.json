@@ -34,6 +34,39 @@
       "items": {"type": "string", "minLength": 1},
       "uniqueItems": true
     },
-    "metadata": {"type": "object"}
-  }
+    "metadata": {"type": "object"},
+    "privacy_origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification", "independently_regrounded"],
+      "properties": {
+        "classification": {"const": "private-history-method-only"},
+        "independently_regrounded": {"type": "boolean", "const": false}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"required": ["privacy_origin"]},
+      "then": {
+        "required": ["evidence", "independence", "claim_ceiling", "scope"],
+        "properties": {
+          "kind": {"const": "METHOD"},
+          "source": {"const": "private-history:withheld"},
+          "visibility": {"const": "restricted"},
+          "evidence": {"const": "method-only; not project evidence"},
+          "independence": {"const": "private-origin; requires independent re-grounding"},
+          "claim_ceiling": {"const": "abstract method only; no source or identity claim"},
+          "scope": {"const": "private-origin method abstraction"}
+        },
+        "not": {"anyOf": [
+          {"required": ["parents"]},
+          {"required": ["tags"]},
+          {"required": ["metadata"]},
+          {"required": ["source_revision"]},
+          {"required": ["observed_at"]}
+        ]}
+      }
+    }
+  ]
 }
