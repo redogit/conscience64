@@ -1,0 +1,16 @@
+{
+  "schema": "redogit/public-testbed-approval/v1",
+  "approved": true,
+  "scope": "public-testbed-only",
+  "issue": 166,
+  "approved_by": "repository-owner-direction",
+  "review": {
+    "source_isolation_required": true,
+    "privacy_boundary_required": true,
+    "experimental_label_required": true,
+    "accessibility_required": true,
+    "network_edge_verification_required": true
+  },
+  "commercial_license_granted": false,
+  "rule": "This authorizes only the generated public-testbed projection. It does not authorize publication of the repository, private-origin carriers, or other repositories."
+}
