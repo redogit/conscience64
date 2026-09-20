@@ -12,7 +12,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit
 
+from .handoff import HandoffResponseLedger
 from .ledger import KnowledgeLedger, LedgerCorruption
+from .packet import is_private_method_origin
 
 SERVICE_VERSION = "1.0.0"
 LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
@@ -31,9 +33,10 @@ class BodyTooLarge(RuntimeError):
 class KnowledgeBridgeServer(ThreadingHTTPServer):
     daemon_threads = True
 
-    def __init__(self, address, handler, *, ledger, write_token, read_token, max_body_bytes, max_batch):
+    def __init__(self, address, handler, *, ledger, response_ledger, write_token, read_token, max_body_bytes, max_batch):
         super().__init__(address, handler)
         self.ledger = ledger
+        self.response_ledger = response_ledger
         self.write_token = write_token
         self.read_token = read_token
         self.max_body_bytes = max_body_bytes
@@ -94,12 +97,29 @@ class KnowledgeBridgeHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         route = urlsplit(self.path).path
-        if route not in {"/v1/knowledge", "/v1/knowledge/batch"}:
+        if route not in {"/v1/knowledge", "/v1/knowledge/batch", "/v1/handoff-response"}:
             self._json(HTTPStatus.NOT_FOUND, {"error": "not_found"})
             return
         try:
             self._require_write_auth()
             body = self._read_json()
+            if route == "/v1/handoff-response":
+                if not isinstance(body, dict):
+                    raise ValueError("handoff response must be a JSON object")
+                in_reply_to = body.get("in_reply_to")
+                if body.get("from") != "redogit/conscience64":
+                    raise ValueError("handoff response must be target-local")
+                request_packet = self.server.ledger.get(
+                    in_reply_to, include_restricted=True
+                )
+                if request_packet is None or not is_private_method_origin(request_packet):
+                    raise ValueError(
+                        "handoff response requires admitted private-method request"
+                    )
+                saved = self.server.response_ledger.append(body)
+                self._json(HTTPStatus.ACCEPTED, saved)
+                return
+
             if route == "/v1/knowledge":
                 if not isinstance(body, dict):
                     raise ValueError("knowledge packet must be a JSON object")
@@ -128,10 +148,40 @@ class KnowledgeBridgeHandler(BaseHTTPRequestHandler):
         if route == "/v1/health":
             try:
                 count = self.server.ledger.validate()
-                self._json(HTTPStatus.OK, {"status": "ok", "entries": count, "version": SERVICE_VERSION})
+                response_count = self.server.response_ledger.validate()
+                self._json(HTTPStatus.OK, {
+                    "status": "ok",
+                    "entries": count,
+                    "handoff_responses": response_count,
+                    "version": SERVICE_VERSION,
+                })
             except LedgerCorruption as exc:
                 self._json(HTTPStatus.INTERNAL_SERVER_ERROR, {
                     "status": "degraded", "error": "ledger_corruption", "detail": str(exc)
+                })
+            return
+
+        handoff_prefix = "/v1/handoff-response/"
+        if route.startswith(handoff_prefix) and len(route) > len(handoff_prefix):
+            try:
+                include_restricted = self._restricted_read_allowed()
+                response_id = unquote(route[len(handoff_prefix):])
+                item = self.server.response_ledger.get(
+                    response_id, include_restricted=include_restricted
+                )
+                if item is None:
+                    self._json(HTTPStatus.NOT_FOUND, {"error": "not_found"})
+                else:
+                    self._json(HTTPStatus.OK, item)
+            except Unauthorized:
+                self._json(HTTPStatus.UNAUTHORIZED, {"error": "unauthorized"})
+            except (ValueError, TypeError) as exc:
+                self._json(HTTPStatus.BAD_REQUEST, {
+                    "error": "invalid_request", "detail": str(exc)
+                })
+            except LedgerCorruption as exc:
+                self._json(HTTPStatus.INTERNAL_SERVER_ERROR, {
+                    "error": "ledger_corruption", "detail": str(exc)
                 })
             return
 
@@ -193,6 +243,7 @@ def build_server(
     port: int = DEFAULT_PORT,
     ledger_path: Path | str = "knowledge/knowledge.jsonl",
     *,
+    response_ledger_path: Path | str | None = None,
     write_token: str = "",
     read_token: str = "",
     max_body_bytes: int = 1024 * 1024,
@@ -211,10 +262,17 @@ def build_server(
     if len(read_token) < 16:
         raise ValueError("read token must be at least 16 characters")
 
+    if response_ledger_path is None:
+        knowledge_path = Path(ledger_path)
+        response_ledger_path = knowledge_path.with_name(
+            knowledge_path.stem + ".handoff-responses.runtime.jsonl"
+        )
+
     return KnowledgeBridgeServer(
         (host, port),
         KnowledgeBridgeHandler,
         ledger=KnowledgeLedger(ledger_path),
+        response_ledger=HandoffResponseLedger(response_ledger_path),
         write_token=write_token,
         read_token=read_token,
         max_body_bytes=max_body_bytes,
@@ -227,6 +285,13 @@ def main() -> None:
     parser.add_argument("--host", default=os.getenv("C64_KNOWLEDGE_HOST", DEFAULT_HOST))
     parser.add_argument("--port", type=int, default=int(os.getenv("C64_KNOWLEDGE_PORT", str(DEFAULT_PORT))))
     parser.add_argument("--ledger", default=os.getenv("C64_KNOWLEDGE_LEDGER", "knowledge/knowledge.jsonl"))
+    parser.add_argument(
+        "--response-ledger",
+        default=os.getenv(
+            "C64_HANDOFF_RESPONSE_LEDGER",
+            "knowledge/handoff-responses.runtime.jsonl",
+        ),
+    )
     parser.add_argument("--write-token", default=os.getenv("C64_KNOWLEDGE_WRITE_TOKEN", ""))
     parser.add_argument("--read-token", default=os.getenv("C64_KNOWLEDGE_READ_TOKEN", ""))
     parser.add_argument("--max-body-bytes", type=int, default=int(os.getenv("C64_KNOWLEDGE_MAX_BODY_BYTES", str(1024 * 1024))))
@@ -237,6 +302,7 @@ def main() -> None:
         args.host,
         args.port,
         args.ledger,
+        response_ledger_path=args.response_ledger,
         write_token=args.write_token,
         read_token=args.read_token,
         max_body_bytes=args.max_body_bytes,
@@ -245,6 +311,7 @@ def main() -> None:
     host, port = server.server_address
     print(f"Conscience64 knowledge bridge: http://{host}:{port}")
     print(f"ledger: {Path(args.ledger).resolve()}")
+    print(f"handoff response ledger: {Path(args.response_ledger).resolve()}")
     print("scope: v1 loopback-only")
     print("claim boundary: INGESTED != ACCEPTED_AS_FACT")
     server.serve_forever()

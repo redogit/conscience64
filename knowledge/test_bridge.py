@@ -165,6 +165,102 @@ class BridgeIntegrationTests(unittest.TestCase):
         self.assertEqual(authorized['privacy_origin'], saved['privacy_origin'])
         self.assertEqual(authorized['source'], packet_module.PRIVATE_METHOD_SOURCE)
 
+    def test_private_method_target_can_return_restricted_structured_response(self):
+        private = private_method_packet()
+        status, saved = self.request('POST', '/v1/knowledge', private, WRITE_TOKEN)
+        self.assertEqual(status, 202)
+
+        response = {
+            'in_reply_to': saved['packet_uoid'],
+            'from': 'redogit/conscience64',
+            'to': 'redogit/redogit',
+            'status': 'NEEDS_EVIDENCE',
+            'decision_reason': 'Current authorized project evidence is required before promotion.',
+            'successor_refs': [],
+            'evidence_refs': [],
+            'unresolved': [],
+            'privacy': {
+                'classification': 'restricted',
+                'privacy_origin': {
+                    'classification': packet_module.PRIVATE_METHOD_CLASSIFICATION,
+                    'independently_regrounded': False,
+                },
+            },
+            'claim_ceiling': packet_module.PRIVATE_METHOD_CLAIM_CEILING,
+            'way_back': [saved['packet_uoid']],
+        }
+        status, returned = self.request('POST', '/v1/handoff-response', response, WRITE_TOKEN)
+        self.assertEqual(status, 202)
+        self.assertEqual(returned['in_reply_to'], saved['packet_uoid'])
+        self.assertEqual(returned['status'], 'NEEDS_EVIDENCE')
+        self.assertEqual(returned['response_seq'], 1)
+
+        status, hidden = self.request('GET', '/v1/handoff-response/' + returned['response_id'])
+        self.assertEqual(status, 404)
+        self.assertEqual(hidden['error'], 'not_found')
+
+        status, authorized = self.request(
+            'GET',
+            '/v1/handoff-response/' + returned['response_id'],
+            token=READ_TOKEN,
+        )
+        self.assertEqual(status, 200)
+        self.assertEqual(authorized['response_id'], returned['response_id'])
+
+    def test_handoff_response_requires_existing_private_method_request(self):
+        unknown = {
+            'in_reply_to': 'uoid:sha256:' + 'b' * 64,
+            'from': 'redogit/conscience64',
+            'to': 'redogit/redogit',
+            'status': 'REJECTED',
+            'decision_reason': 'No admitted request exists for this identifier.',
+            'successor_refs': [],
+            'evidence_refs': [],
+            'unresolved': [],
+            'privacy': {
+                'classification': 'restricted',
+                'privacy_origin': {
+                    'classification': packet_module.PRIVATE_METHOD_CLASSIFICATION,
+                    'independently_regrounded': False,
+                },
+            },
+            'claim_ceiling': packet_module.PRIVATE_METHOD_CLAIM_CEILING,
+            'way_back': ['uoid:sha256:' + 'b' * 64],
+        }
+        status, body = self.request('POST', '/v1/handoff-response', unknown, WRITE_TOKEN)
+        self.assertEqual(status, 400)
+        self.assertEqual(body['error'], 'invalid_request')
+        self.assertIn('admitted private-method request', body['detail'])
+
+    def test_handoff_response_cannot_impersonate_another_target(self):
+        private = private_method_packet()
+        status, saved = self.request('POST', '/v1/knowledge', private, WRITE_TOKEN)
+        self.assertEqual(status, 202)
+
+        response = {
+            'in_reply_to': saved['packet_uoid'],
+            'from': 'redogit/Other-Projects-',
+            'to': 'redogit/redogit',
+            'status': 'REJECTED',
+            'decision_reason': 'Target-local authority is required.',
+            'successor_refs': [],
+            'evidence_refs': [],
+            'unresolved': [],
+            'privacy': {
+                'classification': 'restricted',
+                'privacy_origin': {
+                    'classification': packet_module.PRIVATE_METHOD_CLASSIFICATION,
+                    'independently_regrounded': False,
+                },
+            },
+            'claim_ceiling': packet_module.PRIVATE_METHOD_CLAIM_CEILING,
+            'way_back': [saved['packet_uoid']],
+        }
+        status, body = self.request('POST', '/v1/handoff-response', response, WRITE_TOKEN)
+        self.assertEqual(status, 400)
+        self.assertEqual(body['error'], 'invalid_request')
+        self.assertIn('target-local', body['detail'])
+
     def test_private_method_handoff_rejects_boundary_laundering(self):
         mutations = [
             ('visibility', 'public', 'restricted'),
