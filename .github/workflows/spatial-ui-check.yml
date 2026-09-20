@@ -6,7 +6,9 @@ on:
     paths:
       - 'space-lens-gpu.js'
       - 'space-lens-master.js'
+      - 'space-lens-memory.js'
       - 'spatial-ui-test.mjs'
+      - 'tools/check_space_lens_memory.mjs'
       - 'index.html'
       - 'navigation/**'
       - 'research/projects/index.html'
@@ -17,7 +19,9 @@ on:
     paths:
       - 'space-lens-gpu.js'
       - 'space-lens-master.js'
+      - 'space-lens-memory.js'
       - 'spatial-ui-test.mjs'
+      - 'tools/check_space_lens_memory.mjs'
       - 'index.html'
       - 'navigation/**'
       - 'research/projects/index.html'
@@ -45,6 +49,8 @@ jobs:
         run: |
           node --check space-lens-gpu.js
           node --check space-lens-master.js
+          node --check space-lens-memory.js
+          node --check tools/check_space_lens_memory.mjs
           node --check navigation/context-horizon/work-inventory.mjs
           node --check navigation/context-horizon/work-inventory.test.mjs
           node --check navigation/context-horizon/current-chat-artifacts.test.mjs
@@ -81,5 +87,7 @@ jobs:
         run: |
           node history/test.mjs
           node history/knowledge-test.mjs
+      - name: Verify Space Lens local-memory boundary
+        run: node tools/check_space_lens_memory.mjs
       - name: Exercise Context Horizon accessibility and fallback
         run: node navigation/context-horizon/browser-test.mjs
