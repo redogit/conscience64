@@ -1,0 +1,59 @@
+{
+  "schema": "conscience64/carrier-surface-pointer/v1",
+  "id": "carrier-surface-kernel",
+  "status": "PUBLIC_WORKING_METHOD",
+  "conscience64": {
+    "role": "public explanation and navigation surface",
+    "implementationAuthority": false,
+    "scientificAuthority": false
+  },
+  "owner": {
+    "repository": "redogit/Other-Projects-",
+    "pullRequest": 87,
+    "branch": "docs/open-carrier-surface-kernel-20260920",
+    "observedHead": "5f99adca0cdb4d9c6c66f5124fe3567fbdb9eff2",
+    "state": "OPEN_AT_CONNECTION_TIME",
+    "files": [
+      "Decision Field Operator Lab/docs/CARRIER_SURFACE_KERNEL.md",
+      "Decision Field Operator Lab/docs/carrier_surface_traversal.schema.json",
+      "Decision Field Operator Lab/docs/CARRIER_SURFACE_PUBLICATION.md"
+    ]
+  },
+  "governingInvariant": "Object identity is invariant; coordinates are negotiable.",
+  "core": [
+    "Thing",
+    "Address",
+    "Relation",
+    "Carrier",
+    "Transform",
+    "Invariant",
+    "Provenance"
+  ],
+  "traversal": [
+    "RESOLVE",
+    "ENCODE",
+    "CARRY",
+    "DECODE",
+    "RECONSTRUCT",
+    "COMPARE",
+    "TRACE",
+    "RETURN_HOME"
+  ],
+  "boundaries": [
+    "PUBLICLY_VISIBLE != SCIENTIFICALLY_VALIDATED",
+    "PUBLICATION != EVIDENCE_PROMOTION",
+    "METHOD_TRANSFER != EVIDENCE_TRANSFER",
+    "RELATION != MERGE",
+    "MULTI_KEY_RELATION != MATHEMATICAL_MANIFOLD",
+    "REVERSE_LOOKUP != UNIQUE_INVERSE"
+  ],
+  "s1Relation": {
+    "pointer": "../federation/s1-models/",
+    "relation": "shared transport substrate for S′ model representations; not itself an S′ model"
+  },
+  "links": {
+    "ownerPullRequest": "https://github.com/redogit/Other-Projects-/pull/87",
+    "ownerHead": "https://github.com/redogit/Other-Projects-/tree/5f99adca0cdb4d9c6c66f5124fe3567fbdb9eff2",
+    "s1ModelMap": "../federation/s1-models/"
+  }
+}
