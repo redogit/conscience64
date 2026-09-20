@@ -82,3 +82,29 @@ export function restorePrivateMethodRecoveryEnvelope(raw){
     boundaries:[...value.boundaries]
   };
 }
+
+
+export const PRIVATE_METHOD_OUTWARD_SCHEMA='conscience64.private-method-outward/v1';
+const INTERNAL_PRIVATE_METHOD_CARRIERS=new Set(['ecs-client','agent-tool-handoff']);
+
+export function projectPrivateMethodForInternalCarrier(envelope,carrier){
+  validatePrivateMethodRecoveryEnvelope(envelope);
+  if(!INTERNAL_PRIVATE_METHOD_CARRIERS.has(carrier))throw new Error('unsupported private-method internal carrier');
+  return {
+    schema:PRIVATE_METHOD_OUTWARD_SCHEMA,
+    carrier,
+    kind:'METHOD',
+    method:envelope.method,
+    privacy_origin:{classification:'private-history-method-only',independently_regrounded:false},
+    claim_ceiling:envelope.claim_ceiling,
+    requires_independent_regrounding:true,
+    authority:'method-only',
+    publication_allowed:false
+  };
+}
+
+export function assertPrivateOriginExportAllowed(value){
+  if(hasRestrictedOriginMarker(value))throw new Error('private-origin export blocked until independent re-grounding');
+  if(value&&typeof value==='object'&&value.publication_allowed===false&&value.requires_independent_regrounding===true)throw new Error('private-origin export blocked until independent re-grounding');
+  return value;
+}
