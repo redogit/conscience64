@@ -1,89 +1,63 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
-import { collectPublicRoutes } from './public-routes.mjs';
+import {readFile} from 'node:fs/promises';
 
-const workflow = await readFile(new URL('../.github/workflows/pages-sync.yml', import.meta.url), 'utf8');
-const liveWorkflow = await readFile(new URL('../.github/workflows/pages-live-alias.yml', import.meta.url), 'utf8');
-const redogitWorkflow = await readFile(new URL('../.github/workflows/redogit-local.yml', import.meta.url), 'utf8');
+const workflow=await readFile(new URL('../.github/workflows/pages-sync.yml',import.meta.url),'utf8');
+const liveWorkflow=await readFile(new URL('../.github/workflows/pages-live-alias.yml',import.meta.url),'utf8');
+const approval=JSON.parse(await readFile(new URL('../PUBLIC_TESTBED_APPROVAL.json',import.meta.url),'utf8'));
 
-// Source synchronization and deployment verification are separate boundaries.
-assert.ok(workflow.includes('permissions:\n  contents: write'), 'Pages source sync needs contents write permission');
-assert.ok(!workflow.includes('pages: read') && !workflow.includes('pages: write'), 'source sync must not gain Pages deployment authority');
-assert.ok(!workflow.includes('actions: write'), 'source sync must not gain Actions dispatch authority');
-assert.ok(workflow.includes('PUBLIC_RELEASE_APPROVAL.json'), 'source sync must depend on the explicit release-approval artifact');
-assert.ok(workflow.includes("data.get('approved') is True"), 'source sync must require explicit owner approval');
-assert.ok(workflow.includes("data.get('approved_sha') == os.environ['GITHUB_SHA']"), 'approval must bind the exact source revision');
-assert.ok(workflow.includes("privacy_safe') is True"), 'approval must include privacy review');
-assert.ok(workflow.includes("link_surface_reviewed') is True"), 'approval must include link-surface review');
-assert.ok(workflow.includes("dependent_surfaces_reviewed') is True"), 'approval must include dependent-surface review');
-assert.ok(workflow.includes('PUBLICATION_HELD'), 'unapproved revisions must hold publication rather than mutate gh-pages');
+assert.equal(approval.schema,'redogit/public-testbed-approval/v1');
+assert.equal(approval.approved,true);
+assert.equal(approval.scope,'public-testbed-only');
+assert.equal(approval.issue,166);
+assert.equal(approval.commercial_license_granted,false);
+for(const key of [
+  'source_isolation_required',
+  'privacy_boundary_required',
+  'experimental_label_required',
+  'accessibility_required',
+  'network_edge_verification_required'
+])assert.equal(approval.review?.[key],true,'missing testbed approval review gate: '+key);
 
-const leaseRead = workflow.indexOf('lease_sha="$(git ls-remote origin refs/heads/gh-pages');
-const push = workflow.indexOf('git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin "$GITHUB_SHA:refs/heads/gh-pages"');
-const verify = workflow.indexOf('remote_sha="$(git ls-remote origin refs/heads/gh-pages');
-assert.ok(leaseRead >= 0, 'approved publication must observe the current gh-pages head before mutation');
-assert.ok(push > leaseRead, 'approved publication must use an explicit lease bound to the observed gh-pages head');
-assert.ok(verify > push, 'approved publication must verify gh-pages after pushing');
-assert.ok(workflow.includes('test "$remote_sha" = "$GITHUB_SHA"'), 'approved publication must fail closed if gh-pages differs from the exact approved revision');
-assert.ok(!workflow.includes('/pages/deployments/'), 'source sync must not observe Pages deployment status');
-assert.ok(!workflow.includes('/dispatches'), 'source sync must not dispatch another workflow or repository event');
-assert.ok(!workflow.includes('node tools/check_public_reference_aliases.mjs'), 'source sync must not execute live alias verification');
-assert.ok(!workflow.includes('node tools/check_public_routes.mjs'), 'source sync must not execute live route verification');
-assert.ok(workflow.includes('SOURCE_SYNC_ONLY'), 'approved source sync must state the deployment-trigger boundary explicitly');
+assert.ok(workflow.includes('permissions:\n  contents: write'),'testbed sync needs branch write authority');
+assert.ok(!workflow.includes('pages: write')&&!workflow.includes('actions: write'),'testbed sync must not gain deployment/dispatch authority');
+assert.ok(workflow.includes("'public-testbed/**'"),'testbed sources must trigger projection sync');
+assert.ok(workflow.includes("'PUBLIC_TESTBED_APPROVAL.json'"),'scope authorization changes must trigger projection sync');
+assert.ok(workflow.includes('node tools/check-public-testbed.mjs --revision "$GITHUB_SHA"'),'source sync must verify isolated projection at exact source SHA');
+assert.ok(workflow.includes('node tools/build-public-testbed.mjs --root . --out "$OUT" --revision "$GITHUB_SHA"'),'source sync must build only the testbed projection');
+assert.ok(workflow.includes('test ! -e "$OUT/README.md"'),'source sync must counterprobe repository-root leakage');
+assert.ok(workflow.includes('git fetch --depth=1 origin gh-pages'),'source sync must observe prior projection for rollback lineage');
+assert.ok(workflow.includes('lease_sha="$(git rev-parse HEAD)"'),'source sync must bind the predecessor branch revision');
+assert.ok(workflow.includes('git rm -r -f .'),'source sync must clear the previous projection tree before copy');
+assert.ok(workflow.includes('cp -a "$PROJECTION_DIR"/. .'),'source sync must copy the generated projection, not repository files');
+assert.ok(workflow.includes('git commit -m "Publish public test bed from ${GITHUB_SHA}"'),'source sync must create a distinct projection commit');
+assert.ok(workflow.includes('git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin HEAD:refs/heads/gh-pages'),'publication must preserve lease safety while advancing only projection HEAD');
+assert.ok(!workflow.includes('$GITHUB_SHA:refs/heads/gh-pages'),'source main commit must never be pushed directly to gh-pages');
+assert.ok(!workflow.includes('PUBLIC_RELEASE_APPROVAL.json'),'testbed publication must not depend on the obsolete self-referential exact-SHA approval artifact');
 
-assert.ok(!liveWorkflow.includes('page_build:'), 'live verification must not rely on page_build');
-assert.ok(liveWorkflow.includes('workflows: ["Sync Conscience64 Pages source"]'), 'live verification must follow the source-sync workflow');
-assert.ok(liveWorkflow.includes('types: [completed]'), 'live verification must follow completed source-sync runs');
-assert.ok(liveWorkflow.includes('branches: [main]'), 'live verification must bind main');
-assert.ok(liveWorkflow.includes("github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'"), 'automatic live verification must execute only after successful source sync');
-assert.ok(liveWorkflow.includes('permissions: {}'), 'live verifier must retain zero configured repository permissions');
-assert.ok(!liveWorkflow.includes('pages: read') && !liveWorkflow.includes('pages: write'), 'live verifier must not gain Pages permission');
-assert.ok(!liveWorkflow.includes('actions: write'), 'live verifier must not gain Actions write permission');
-assert.ok(liveWorkflow.includes('EXPECTED_SHA:'), 'live verifier must bind an intended exact source SHA');
-assert.ok(liveWorkflow.includes('PUBLICATION_MODE=$mode'), 'live verifier must resolve approved versus held publication state');
-assert.ok(liveWorkflow.includes('PUBLIC_RELEASE_APPROVAL.json'), 'live verifier must read the explicit approval artifact');
-assert.ok(liveWorkflow.includes('refs/remotes/origin/gh-pages'), 'live verifier must inspect the actual gh-pages revision');
-assert.ok(liveWorkflow.includes('test "$published_sha" = "$EXPECTED_SHA"'), 'approved live state must bind gh-pages to the exact approved revision');
-assert.ok(liveWorkflow.includes('PUBLICATION_STATUS.json'), 'held live state must verify the publication-hold artifact');
-assert.ok(liveWorkflow.includes("d['public_projection'] == 'paused'"), 'held live state must require the paused projection state');
-assert.ok(liveWorkflow.includes("d['approval_required'] is True"), 'held live state must require explicit approval');
-assert.ok(liveWorkflow.includes("d['canonical_authority'] is False"), 'held public URL must not be canonical authority');
-assert.ok(liveWorkflow.includes('pages/deployments/${EXPECTED_SHA}'), 'approved live state must observe the exact commit-scoped Pages deployment');
-assert.ok(liveWorkflow.includes("env.PUBLICATION_MODE == 'approved'"), 'deployment and canonical route checks must be approval-gated');
-assert.ok(liveWorkflow.includes('node tools/check_public_reference_aliases.mjs'), 'approved live verifier must check declared aliases');
-assert.ok(liveWorkflow.includes('node tools/check_public_routes.mjs'), 'approved live verifier must check canonical public routes');
-assert.ok(liveWorkflow.includes('Public publication paused'), 'held live verifier must require the minimal pause notice at the network edge');
-assert.ok(liveWorkflow.includes('PRIVATE_BY_DEFAULT'), 'held live verifier must require the public privacy boundary marker');
+for(const forbidden of [
+  "'research/projects/**'",
+  "'play/**'",
+  "'coordinate-space/**'",
+  "'analytics/**'",
+  "'data-*.txt'"
+])assert.ok(!workflow.includes(forbidden),'repository-wide publication trigger survived: '+forbidden);
 
-assert.match(workflow, /research\/federation\/\*\*/, 'Pages source sync must run when a federation pointer or observation page changes');
-assert.match(workflow, /\.github\/workflows\/pages-live-alias\.yml/, 'Pages source sync must run when the live verifier changes so the merged automatic path is re-exercised');
-const redogitFederationTriggers = redogitWorkflow.match(/research\/federation\/\*\*/g) ?? [];
-assert.ok(redogitFederationTriggers.length >= 2, 'REDOGIT verification must run for federation changes on both push and pull_request');
-const redogitLiveVerifierTriggers = redogitWorkflow.match(/\.github\/workflows\/pages-live-alias\.yml/g) ?? [];
-assert.ok(redogitLiveVerifierTriggers.length >= 2, 'REDOGIT verification must independently check live-verifier changes on both push and pull_request');
-const redogitWorkflowWildcards = redogitWorkflow.match(/\.github\/workflows\/\*\*/g) ?? [];
-assert.ok(redogitWorkflowWildcards.length >= 2, 'REDOGIT verification must run for every workflow carrier change on both push and pull_request');
-assert.match(redogitWorkflow, /Psych\.parse_file/, 'REDOGIT must parse workflow YAML carriers before semantic contract checks');
+assert.ok(liveWorkflow.includes('workflows: ["Sync Conscience64 public test bed"]'),'live verifier must follow the narrow source-sync workflow');
+assert.ok(liveWorkflow.includes('types: [completed]'),'live verifier must follow completed sync runs');
+assert.ok(liveWorkflow.includes('branches: [main]'),'live verifier must bind main source');
+assert.ok(liveWorkflow.includes('permissions: {}'),'live verifier must retain zero configured repository permissions');
+assert.ok(liveWorkflow.includes('EXPECTED_SOURCE_SHA:'),'live verifier must bind the exact main source revision');
+assert.ok(liveWorkflow.includes('node tools/check-public-testbed.mjs --revision "$EXPECTED_SOURCE_SHA"'),'live verifier must reconstruct source projection');
+assert.ok(liveWorkflow.includes('git ls-tree -r --name-only refs/remotes/origin/gh-pages'),'live verifier must inventory actual projection branch bytes');
+assert.ok(liveWorkflow.includes('cmp "$EXPECTED/$rel" "$RUNNER_TEMP/published-file"'),'live verifier must compare exact expected and published bytes');
+assert.ok(liveWorkflow.includes('node tools/check-public-testbed-edge.mjs'),'live verifier must inspect the network edge');
+assert.ok(!liveWorkflow.includes('PUBLICATION_STATUS.json'),'pause-only surface must no longer be live authority');
+assert.ok(!liveWorkflow.includes('PUBLIC_RELEASE_APPROVAL.json'),'live verifier must use testbed scope + exact manifest provenance, not self-referential approval');
 
-const routes = await collectPublicRoutes();
-const requiredRoutes = [
-  '',
-  'play/',
-  'play/mmo-world/',
-  'play/mmo-world/forge/',
-  'play/mmo/',
-  'play/mmo/simple/',
-  'play/explorer-world/',
-  'play/fuzzball-hidden/',
-  'play/musilanguage/',
-  'play/musilanguage/radio.html',
-  'play/musilanguage/radio.htm',
-  'analytics/',
-  'coordinate-space/',
-  'research/projects/',
-  'research/federation/s1-models/'
-];
-for (const route of requiredRoutes) assert.ok(routes.includes(route), `canonical public route inventory missing ${route || '/'}`);
-assert.ok(routes.length >= 30, `canonical public route inventory is unexpectedly narrow: ${routes.length}`);
+const builder=await readFile(new URL('./build-public-testbed.mjs',import.meta.url),'utf8');
+const edge=await readFile(new URL('./check-public-testbed-edge.mjs',import.meta.url),'utf8');
+assert.ok(builder.includes("source_root:'public-testbed/'"));
+assert.ok(builder.includes("publication_scope:'public-testbed-only'"));
+assert.ok(edge.includes("'README.md'")&&edge.includes("'research/projects/README.md'")&&edge.includes("'play/index.html'"),'network edge must counterprobe repository-route leakage');
 
-console.log(`PASS Pages boundary contract: exact source sync, repo-owned completion handoff, authenticated zero-permission exact deployment observation, federation-trigger coverage, and ${routes.length} canonical public routes`);
+console.log('PASS Pages testbed contract: scope-authorized isolated source -> rollback-linked projection commit -> exact branch-byte comparison -> network-edge leakage counterprobes');
