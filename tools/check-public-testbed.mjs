@@ -137,7 +137,7 @@ try{
     /symlink/
   );
 
-  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, deterministic isolated build, privacy/symlink counterprobes, accessibility shell, visible progression + remainder`);
+  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, deterministic isolated build, privacy/symlink counterprobes, accessibility shell, visible progression + path states + way back + remainder`);
 }finally{
   await rm(workspace,{recursive:true,force:true});
 }
