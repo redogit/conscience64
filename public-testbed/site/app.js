@@ -22,6 +22,47 @@ function renderRooms(data){
   }
 }
 
+
+function renderPaths(data){
+  const root=byId('path-grid');
+  root.replaceChildren();
+  for(const pathState of data.paths||[]){
+    const article=node('article',undefined,'path-card');
+    article.dataset.status=pathState.status;
+    const heading=node('h3',pathState.title);
+    const state=node('span',`State: ${pathState.status}`,'state-tag');
+    state.setAttribute('aria-label',`Path state: ${pathState.status}`);
+    const dl=node('dl');
+    addRow(dl,'Currentness',pathState.currentness);
+    addRow(dl,'Progression',pathState.progression_position);
+    addRow(dl,'Relation',pathState.relation);
+    addRow(dl,'Evidence',pathState.evidence);
+    addRow(dl,'Result',pathState.result);
+    if(pathState.zero_result)addRow(dl,'Zero / negative result',pathState.zero_result);
+    addRow(dl,'Provenance',pathState.provenance);
+    addRow(dl,'Claim boundary',pathState.claim_boundary);
+    addRow(dl,'Remainder',pathState.remainder);
+    article.append(heading,state,dl);
+    root.append(article);
+  }
+
+  const lineage=byId('lineage-list');
+  lineage.replaceChildren();
+  for(const edge of data.verified_lineage||[]){
+    lineage.append(node('li',`${edge.from} → ${edge.to} · ${edge.relation} · ${edge.evidence}`));
+  }
+}
+
+function renderAliases(data){
+  const root=byId('alias-list');
+  root.replaceChildren();
+  for(const alias of data.aliases||[]){
+    const dt=node('dt',alias.term);
+    const dd=node('dd',`${alias.meaning} · ${alias.relation} · ${alias.claim_boundary}`);
+    root.append(dt,dd);
+  }
+}
+
 function renderExperiment(experiment){
   const card=byId('experiment-card');
   card.replaceChildren();
@@ -61,7 +102,13 @@ async function main(){
       loadJson('./projection-manifest.json')
     ]);
     renderRooms(data);
+    renderPaths(data);
+    renderAliases(data);
     renderExperiment(data.experiments?.[0]||{title:'No experiment',status:'preserved-unresolved',remainder:['No current experiment record.']});
+    const remainder=byId('remainder-list');
+    for(const relation of data.unresolved_relations||[]){
+      remainder.append(node('li',`Unresolved relation: ${relation.from} → ${relation.to} · ${relation.relation} · ${relation.reason}`));
+    }
     byId('source-revision').textContent=manifest.source_revision;
     byId('manifest-identity').textContent=manifest.projection_sha256;
     byId('projection-authority').textContent=data.authority;

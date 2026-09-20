@@ -71,15 +71,131 @@
         "claim boundaries and remainder stay visible"
       ],
       "evidence": "generated projection manifest plus deterministic source checks",
-      "result": "exact-head source isolation verified in PR #178; public projection switching is the current successor step",
-      "zero_result": "no claim of publication or edge deployment is made by this source-only slice",
+      "result": "exact-head source isolation (PR #178), gh-pages byte identity, and live network-edge isolation (PR #179 successor) verified",
+      "zero_result": "declared repository-route leakage counterprobes returned zero admitted repository routes",
       "remainder": [
-        "verify gh-pages tree contains only the generated projection",
-        "verify the deployed network edge matches the exact source revision",
-        "expand visible path states only after publication isolation is proven"
+        "admit the next experiment only with its own changed degree, evidence boundary, counterprobe, and rollback path",
+        "continue measuring accessibility, performance, and clarity as the test bed grows"
       ],
-      "provenance": "issue:166;pr:178",
-      "claim_boundary": "SOURCE_PROJECTION_VERIFIED != PUBLICATION_APPROVED"
+      "provenance": "issue:166;pr:178;pr:179;source:f05fc0550ba0e945ea64e9b8447b972b1c4a11fd;projection:2068472a799e0631ae3e50d6b1c6c55e6b995d9d",
+      "claim_boundary": "LIVE_PROJECTION_VERIFIED != EXPERIMENTAL_CLAIM_VALIDATED"
+    }
+  ],
+  "paths": [
+    {
+      "id": "current-public-testbed",
+      "title": "Current public test bed",
+      "status": "active",
+      "currentness": "CURRENT_EPOCH",
+      "progression_position": "issue-166 / visible-state successor",
+      "relation": "CURRENT_CANONICAL",
+      "evidence": "narrow source family and live projection infrastructure are admitted",
+      "result": "current work is extending visible state without widening publication scope",
+      "provenance": "issue:166;pr:178;pr:179",
+      "claim_boundary": "CURRENT != TRUE",
+      "remainder": "next experiment still requires separate admission"
+    },
+    {
+      "id": "network-edge-isolation",
+      "title": "Network-edge isolation",
+      "status": "tested",
+      "currentness": "CURRENT_CANONICAL",
+      "progression_position": "issue-166 / degree-2 evidence",
+      "relation": "VERIFIED_LINEAGE",
+      "evidence": "live verifier matched source f05fc0550... to projection 2068472a... and projection identity 4cc3641b...",
+      "result": "projected source files were present and declared repository routes were absent",
+      "zero_result": "0 declared forbidden repository routes were admitted at the tested edge",
+      "provenance": "pr:179;source:f05fc0550ba0e945ea64e9b8447b972b1c4a11fd;projection:2068472a799e0631ae3e50d6b1c6c55e6b995d9d",
+      "claim_boundary": "EDGE_CHECK_PASS != UNIVERSAL_ABSENCE",
+      "remainder": "repeat edge counterprobes after every projection change"
+    },
+    {
+      "id": "synthetic-merge-red",
+      "title": "Synthetic-merge RED evidence",
+      "status": "failed",
+      "currentness": "HISTORICAL_SUPERSEDED",
+      "progression_position": "issue-160 verifier discovery",
+      "relation": "HISTORICAL_PREDECESSOR",
+      "evidence": "PR #171 RED run materialized GitHub synthetic merge instead of contributor head",
+      "result": "RED result was retained but rejected as exact-head evidence; PR #172 repaired verifier provenance",
+      "provenance": "pr:171;pr:172",
+      "claim_boundary": "INVALID_RED != DISCARDED_HISTORY",
+      "remainder": "retain as a Failure Museum example of evidence-carrier mismatch"
+    },
+    {
+      "id": "whole-repository-publication",
+      "title": "Whole-repository Pages publication",
+      "status": "blocked",
+      "currentness": "PRESERVED",
+      "progression_position": "publication scope boundary",
+      "relation": "CLAIM_BOUNDARY",
+      "evidence": "PUBLIC_TESTBED_APPROVAL authorizes scope public-testbed-only and commercial_license_granted=false",
+      "result": "repository-wide Pages publication is not authorized",
+      "provenance": "issue:166;PUBLIC_TESTBED_APPROVAL.json",
+      "claim_boundary": "PUBLIC_TESTBED != WHOLE_REPOSITORY",
+      "remainder": "none unless the repository owner explicitly defines a new scope"
+    },
+    {
+      "id": "next-experiment-admission",
+      "title": "Next experiment admission",
+      "status": "deferred",
+      "currentness": "PRESERVED_UNRESOLVED",
+      "progression_position": "post-isolation frontier",
+      "relation": "PRESERVED_UNRESOLVED",
+      "evidence": "no additional experiment has yet passed a separate one-degree admission cycle",
+      "result": "deferred rather than silently promoted",
+      "provenance": "issue:166",
+      "claim_boundary": "IDEA != ADMITTED_EXPERIMENT",
+      "remainder": "select one real problem, one changed degree, one counterprobe, and one usefulness witness"
+    },
+    {
+      "id": "prior-gh-pages-projection",
+      "title": "Prior gh-pages state",
+      "status": "return",
+      "currentness": "HISTORICAL_PREDECESSOR",
+      "progression_position": "projection rollback lineage",
+      "relation": "RETURN_PATH",
+      "evidence": "projection commit 2068472a... preserved predecessor 3dcb37a5... as its parent",
+      "result": "a concrete way back remains in branch history",
+      "provenance": "gh-pages:3dcb37a5ad6d7d439054a5b743fc7530271ac8c2;projection:2068472a799e0631ae3e50d6b1c6c55e6b995d9d",
+      "claim_boundary": "RETURN_PATH != CURRENT_AUTHORITY",
+      "remainder": "rollback still requires deliberate review before use"
+    }
+  ],
+  "aliases": [
+    {
+      "term": "CURRENCY",
+      "meaning": "knowledge currentness / supersession state",
+      "relation": "ALIAS_ONLY",
+      "claim_boundary": "CURRENCY_HERE != MONETARY_CURRENCY"
+    },
+    {
+      "term": "public test bed",
+      "meaning": "authorized narrow experimental projection",
+      "relation": "ALIAS_ONLY",
+      "claim_boundary": "PUBLIC_TEST_BED != WHOLE_REPOSITORY"
+    }
+  ],
+  "verified_lineage": [
+    {
+      "from": "pr:171",
+      "to": "pr:172",
+      "relation": "VERIFIER_REPAIR",
+      "evidence": "exact-head verifier successor was merged"
+    },
+    {
+      "from": "pr:178",
+      "to": "pr:179",
+      "relation": "VERIFIED_SUCCESSOR",
+      "evidence": "source isolation preceded publication switching"
+    }
+  ],
+  "unresolved_relations": [
+    {
+      "from": "next-experiment-admission",
+      "to": "future-project-canon",
+      "relation": "PRESERVED_UNRESOLVED",
+      "reason": "no experiment result is admitted to project canon merely by appearing in the public test bed"
     }
   ]
 }
