@@ -38,12 +38,22 @@ assert.ok(!containsRestrictedOrigin(data));
 assert.equal(data.rooms.length,6);
 assert.ok(data.experiments?.[0]?.remainder?.length>0);
 assert.ok(data.experiments?.[0]?.claim_boundary);
+assert.deepEqual([...new Set(data.paths.map(p=>p.status))].sort(),['active','blocked','deferred','failed','return','tested']);
+assert.ok(data.paths.every(p=>p.currentness&&p.provenance&&p.claim_boundary&&p.remainder));
+assert.ok(data.paths.some(p=>p.status==='tested'&&String(p.zero_result).includes('0 declared forbidden repository routes')));
+assert.ok(data.paths.some(p=>p.status==='failed'&&p.currentness==='HISTORICAL_SUPERSEDED'));
+assert.ok(data.paths.some(p=>p.status==='return'&&String(p.provenance).includes('gh-pages:3dcb37a5')));
+assert.ok(data.aliases.every(a=>a.relation==='ALIAS_ONLY'));
+assert.ok(data.verified_lineage.some(e=>e.relation==='VERIFIER_REPAIR'));
+assert.ok(data.unresolved_relations.some(e=>e.relation==='PRESERVED_UNRESOLVED'));
 
 const html=await get('');
 assert.match(html,/Public Experimental Test Bed/);
 assert.match(html,/31173/);
 assert.match(html,/PUBLIC EXPERIMENT ≠ VERIFIED TRUTH/);
 assert.match(html,/PRIVATE SOURCE MUST NOT PROPAGATE/);
+assert.match(html,/Path Constellation — visible states/);
+assert.match(html,/Language Garden — aliases without forced identity/);
 
 for(const rel of ['app.js','style.css'])await get(rel);
 
@@ -57,4 +67,4 @@ for(const forbidden of [
   await get(forbidden,{expect:404});
 }
 
-console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; repository routes absent`);
+console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; repository routes absent; six path states + lineage + aliases + unresolved relation visible`);
