@@ -22,6 +22,36 @@ function renderRooms(data){
   }
 }
 
+function renderPaths(data){
+  const root=byId('path-state-list');
+  root.replaceChildren();
+  for(const path of data.paths||[]){
+    const article=node('article',undefined,'path-card');
+    const heading=node('h3',path.title);
+    const state=node('span',path.state,'state-tag');
+    state.setAttribute('aria-label',`Path state: ${path.state}`);
+    const dl=node('dl');
+    addRow(dl,'Currentness',path.currentness);
+    addRow(dl,'Way back',path.way_back||'root');
+    addRow(dl,'Claim boundary',path.claim_boundary);
+    addRow(dl,'Provenance',path.provenance);
+    article.append(heading,state,dl);
+    root.append(article);
+  }
+
+  const relations=byId('relation-list');
+  relations.replaceChildren();
+  for(const edge of data.relations?.lineage||[]){
+    relations.append(node('li',`Lineage: ${edge.parent} → ${edge.child} (${edge.kind})`));
+  }
+  for(const alias of data.relations?.aliases||[]){
+    relations.append(node('li',`Alias: ${alias.canonical} = ${alias.aliases.join(', ')} · ${alias.boundary}`));
+  }
+  for(const unresolved of data.relations?.unresolved||[]){
+    relations.append(node('li',`Unresolved: ${unresolved.from} → ${unresolved.to} · ${unresolved.reason}`));
+  }
+}
+
 function renderExperiment(experiment){
   const card=byId('experiment-card');
   card.replaceChildren();
@@ -61,6 +91,7 @@ async function main(){
       loadJson('./projection-manifest.json')
     ]);
     renderRooms(data);
+    renderPaths(data);
     renderExperiment(data.experiments?.[0]||{title:'No experiment',status:'preserved-unresolved',remainder:['No current experiment record.']});
     byId('source-revision').textContent=manifest.source_revision;
     byId('manifest-identity').textContent=manifest.projection_sha256;
