@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {mkdtemp,mkdir,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
-import {recordsFromRepository,CORPUS_BOUNDARIES} from './semantic-corpus.mjs';
+import {recordsFromRepository,CORPUS_BOUNDARIES,hasPrivateOriginMarker} from './semantic-corpus.mjs';
 import {massSemanticCrossReferenceMap} from './semantic-crossref.mjs';
 import {semanticRoute,crossReferenceSubgraph,crossProjectBridgeCandidates,ROUTING_BOUNDARIES} from './semantic-routing.mjs';
 
@@ -16,13 +16,25 @@ try{
   await writeFile(path.join(dir,'node_modules','skip.md'),'# Must not be indexed\n');
   await writeFile(path.join(dir,'large.txt'),'x'.repeat(5000));
   await writeFile(path.join(dir,'bad.txt'),Buffer.from([0xff,0xfe,0xfd]));
+  await writeFile(path.join(dir,'private-derived.json'),JSON.stringify({derived_from_private_history:true,content:'PRIVATE_CANARY_DERIVED_7A1'}));
+  await writeFile(path.join(dir,'private-method.json'),JSON.stringify({privacy_origin:{classification:'private-history-method-only',independently_regrounded:false},content:'PRIVATE_CANARY_METHOD_7A2'}));
+  await writeFile(path.join(dir,'private-method.md'),'---\nprivacy_origin:\n  classification: private-history-method-only\n---\nPRIVATE_CANARY_MARKDOWN_7A3\n');
 
   const corpus=await recordsFromRepository(dir,{maxFileBytes:1000,maxTextChars:500,maxFiles:100});
   assert.equal(corpus.records.length,3);
   assert.ok(CORPUS_BOUNDARIES.includes('CORPUS_RECORD != EVIDENCE'));
   assert.equal(corpus.stats.skippedLarge,1);
   assert.equal(corpus.stats.skippedDecode,1);
+  assert.equal(corpus.stats.skippedPrivateOrigin,3);
+  assert.ok(CORPUS_BOUNDARIES.includes('PRIVATE_ORIGIN != SEARCHABLE_CORPUS'));
   assert.ok(!corpus.records.some(r=>r.provenance.path.includes('node_modules')));
+  const serialized=JSON.stringify(corpus);
+  assert.ok(!serialized.includes('PRIVATE_CANARY_DERIVED_7A1'));
+  assert.ok(!serialized.includes('PRIVATE_CANARY_METHOD_7A2'));
+  assert.ok(!serialized.includes('PRIVATE_CANARY_MARKDOWN_7A3'));
+  assert.ok(!corpus.records.some(r=>r.provenance.path.startsWith('private-')));
+  assert.equal(hasPrivateOriginMarker('{"derived_from_private_history":false}', '.json'),false);
+  assert.equal(hasPrivateOriginMarker('This prose mentions derived_from_private_history: true but has no front matter.', '.md'),false);
   const alpha=corpus.records.find(r=>r.id==='file:README.md');
   assert.ok(alpha);
   assert.ok(alpha.relations.some(r=>r.target==='file:docs/beta.md'&&r.relation==='LINKS_TO'));
