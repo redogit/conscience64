@@ -56,12 +56,16 @@ try{
   assert.equal(source.progression_model.currency_meaning,'knowledge-currentness');
   assert.ok(source.progression_model.boundaries.includes('ALIAS != LINEAGE'));
   const exp=source.experiments[0];
-  for(const field of ['id','title','status','currentness','changed_degree','evidence','result','zero_result','remainder','provenance','claim_boundary']){
+  for(const field of ['id','title','status','currentness','changed_degree','evidence','result','zero_result','remainder','closure','provenance','claim_boundary']){
     assert.ok(Object.hasOwn(exp,field),`experiment missing ${field}`);
   }
   assert.equal(exp.id,'projection-isolation-v0');
   assert.ok(Array.isArray(exp.invariants)&&exp.invariants.length>=3);
-  assert.ok(Array.isArray(exp.remainder)&&exp.remainder.length>=1);
+  assert.equal(exp.status,'closed');
+  assert.ok(Array.isArray(exp.remainder)&&exp.remainder.length===0,'closed experiment must carry no unresolved remainder');
+  assert.equal(exp.closure?.scope,'issue:166');
+  assert.ok(Array.isArray(exp.closure?.verified_gates)&&exp.closure.verified_gates.length>=3);
+  assert.match(exp.result,/live edge verified/i);
   assert.match(exp.zero_result,/no claim/i);
 
   const html=await readFile('public-testbed/site/index.html','utf8');
@@ -109,7 +113,7 @@ try{
     /symlink/
   );
 
-  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, deterministic isolated build, privacy/symlink counterprobes, accessibility shell, visible progression + remainder`);
+  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, deterministic isolated build, privacy/symlink counterprobes, accessibility shell, visible progression + closed remainder`);
 }finally{
   await rm(workspace,{recursive:true,force:true});
 }
