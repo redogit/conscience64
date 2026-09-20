@@ -123,8 +123,12 @@ implementation = Decision Field Operator Lab/omega_relations.py
 documentation = Decision Field Operator Lab/RELATIONAL_FIELD_CARRIER_2026-09-20.md
 relation-carrier merge = Other-Projects- PR #80 / 4625c2a5c889a8344f6f0821883c67d5eed72b0c
 first native witness = Other-Projects- PR #81 / 16a6823aa563e86455ec709700d06f0b9e22b467
-current verified main = 16a6823aa563e86455ec709700d06f0b9e22b467
-post-merge run = 35508603278 / PASS / 119 of 119 tests
+current verified RMAPL/Ω main = e42f652b380eb1d68d14679d44b9328dfb2faa55
+current runtime successor = Other-Projects- PR #90 / FITTER authority floor
+post-merge run = 35525090965 / PASS / 193 of 193 tests
+S′ Carrier-Surface replay = PASS / 4 carriers
+RMAPL Ω audit = PASS / 9 of 9 bounded checks
+frozen default stress = PASS / 5,376 cases / 13 of 13 checks
 authority = method-only
 Omega v0 = unchanged
 ~~~
