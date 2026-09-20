@@ -148,11 +148,64 @@ METHOD CARRIER != PROJECT EVIDENCE
 
 This first boundary is intentionally pre-regrounding and restricted. A later project/public claim must be independently grounded in current authorized project evidence through a separate admission path; changing the marker to claim re-grounding is rejected here.
 
+
+## Structured private-method handoff responses
+
+The loopback bridge has one bounded target-local return path for an already-admitted private-method request.
+
+For this adapter, the inbound Knowledge Packet `packet_uoid` is the handoff identity. A response must link back through:
+
+```text
+in_reply_to = <private METHOD packet_uoid>
+from = redogit/conscience64
+privacy.classification = restricted
+privacy.privacy_origin.classification = private-history-method-only
+privacy.privacy_origin.independently_regrounded = false
+claim_ceiling = abstract method only; no source or identity claim
+```
+
+Allowed target decisions are:
+
+```text
+ACCEPTED
+REJECTED
+NEEDS_EVIDENCE
+UNRESOLVED
+```
+
+The response is stored in a separate append-only response ledger with a deterministic `response_id`. Exact re-ingestion is idempotent.
+
+The pre-regrounding private-method response cannot claim `successor_refs` or `evidence_refs`. It preserves the request UOID in `way_back`.
+
+```text
+REQUEST != COMMAND
+RESPONSE != AUTHORITY_TRANSFER
+ACCEPTED != VERIFIED
+PRIVATE SOURCE MUST NOT PROPAGATE
+AUTHORIZED READ != PUBLICATION PERMISSION
+STRUCTURED_RETURN_PATH != UNIVERSAL_BIDIRECTIONAL_RUNTIME
+```
+
+The response surface is deliberately narrow:
+
+```text
+POST /v1/handoff-response
+GET  /v1/handoff-response/<response_id>
+```
+
+POST requires the write bearer token and an existing admitted private-method request. GET is concealed without authorized restricted-read access. There is no response search, public sync, remote transport, or automatic project-evidence promotion in this slice.
+
+Default response ledger:
+
+`knowledge/handoff-responses.runtime.jsonl`
+
 ## HTTP surface
 
 ```text
 POST /v1/knowledge
 POST /v1/knowledge/batch
+POST /v1/handoff-response
+GET  /v1/handoff-response/<response_id>
 GET  /v1/knowledge/<packet_uoid>
 GET  /v1/knowledge/sync?after=<ledger_seq>&limit=<n>
 GET  /v1/knowledge/search?q=<text>&project=<id>&kind=<kind>&limit=<n>
