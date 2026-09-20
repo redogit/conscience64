@@ -1,33 +1,33 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "0cd54ab2fe41b6269dbd3a5006fbbdbcb129c493",
+  "source_revision": "9a17f941808993049466e9b75ee8ec99253b5add",
   "source_root": "public-testbed/",
   "publication_scope": "public-testbed-only",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "5b1151220dd0c26b8a76d3bc38f9b07f252fa3b55b303118ae17dd03cb6e36ea",
+  "projection_sha256": "e54b69dff1964e218d1f99d7d28f5ace05649723ff677f25840ebe502f10e4a3",
   "files": [
     {
       "path": "app.js",
-      "bytes": 4667,
-      "sha256": "1e5911c7fa6e0477a123005b13c928397ddfcfbdf51f2c7a9066c3ad6f99ad1e",
+      "bytes": 5100,
+      "sha256": "fa0bbbaadb4b7d5bbedd8597c649e4e90f7df49da774d4c39f2f0455c2834d41",
       "source": "public-testbed/site/app.js"
     },
     {
       "path": "index.html",
-      "bytes": 4342,
-      "sha256": "6fef0ce610533db9672a54520cdfe786f1bcad7cd8e582982bebededf4f0befc",
+      "bytes": 4702,
+      "sha256": "59c6f5f2c6b9a36fa43f36fd6b23aaac576645f16c56455f26527984ab878439",
       "source": "public-testbed/site/index.html"
     },
     {
       "path": "style.css",
-      "bytes": 2794,
-      "sha256": "c85d0438e61a8d6b6f9fb74c1e4b41765fab39e3bfdda002008f3a99c2a7f5f3",
+      "bytes": 2901,
+      "sha256": "3390ab2afc05e2da9b63e765e4df5cb70b97a1e3ce9d72bc339fea4e13e80f76",
       "source": "public-testbed/site/style.css"
     },
     {
       "path": "testbed.json",
-      "bytes": 8189,
-      "sha256": "1dd691f2619acff1bb335624e9a7ecf7d646b66b8d1053b878d96841ce6e5c64",
+      "bytes": 9805,
+      "sha256": "0d99faae9e7a3fe20c79c604234c9898a89eb70e9b39e61a9b141cd1fd972798",
       "source": "public-testbed/testbed.json"
     }
   ],

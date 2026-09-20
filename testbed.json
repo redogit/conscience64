@@ -196,6 +196,50 @@
       "to": "future-project-canon",
       "relation": "PRESERVED_UNRESOLVED",
       "reason": "no experiment result is admitted to project canon merely by appearing in the public test bed"
+    },
+    {
+      "from": "public-working-principles",
+      "to": "future-experiment-method",
+      "relation": "PRESERVED_UNRESOLVED",
+      "reason": "principles guide experimental structure but do not pre-authorize any future experiment or claim"
+    }
+  ],
+  "principles": [
+    {
+      "id": "usday",
+      "name": "USDAY",
+      "meaning": "cooperative work stays visible as progression, evidence, correction, and Remainder",
+      "boundary": "COOPERATION != AUTHORITY"
+    },
+    {
+      "id": "interlingua",
+      "name": "Interlingua",
+      "meaning": "shared operational language connects terms and roles without forcing distinct things into one identity",
+      "boundary": "SHARED_LANGUAGE != FORCED_IDENTITY"
+    },
+    {
+      "id": "pairity",
+      "name": "Pairity",
+      "meaning": "inspect opposing or complementary pairs before claiming parity, equivalence, or collapse",
+      "boundary": "PAIRITY != PARITY"
+    },
+    {
+      "id": "visible-paths",
+      "name": "Visible paths",
+      "meaning": "active, tested, failed, blocked, deferred, and return paths remain inspectable",
+      "boundary": "CURRENT_PATH != ONLY_PATH"
+    },
+    {
+      "id": "wonderment",
+      "name": "Wonderment",
+      "meaning": "unresolved questions remain available for exploration instead of being manufactured into answers",
+      "boundary": "WONDER != CLAIM"
+    },
+    {
+      "id": "one-degree",
+      "name": "One-degree experiment",
+      "meaning": "change one independently controllable degree per discriminating observation when practical",
+      "boundary": "ONE_DEGREE_TEST != UNIVERSAL_PROOF"
     }
   ]
 }
