@@ -105,8 +105,17 @@ export function projectPrivateMethodForInternalCarrier(envelope,carrier){
   };
 }
 
+export function containsRestrictedOrigin(value,seen=new WeakSet()){
+  if(!value||typeof value!=='object')return false;
+  if(seen.has(value))return false;
+  seen.add(value);
+  if(hasRestrictedOriginMarker(value))return true;
+  if(value.publication_allowed===false&&value.requires_independent_regrounding===true)return true;
+  if(Array.isArray(value))return value.some(item=>containsRestrictedOrigin(item,seen));
+  return Object.values(value).some(item=>containsRestrictedOrigin(item,seen));
+}
+
 export function assertPrivateOriginExportAllowed(value){
-  if(hasRestrictedOriginMarker(value))throw new Error('private-origin export blocked until independent re-grounding');
-  if(value&&typeof value==='object'&&value.publication_allowed===false&&value.requires_independent_regrounding===true)throw new Error('private-origin export blocked until independent re-grounding');
+  if(containsRestrictedOrigin(value))throw new Error('private-origin export blocked until independent re-grounding');
   return value;
 }
