@@ -1,9 +1,10 @@
+import {makePrivateMethodRecoveryEnvelope} from '../../../tools/private-origin-boundary.mjs';
 import assert from 'node:assert/strict';
 import {
   ACTIVITIES,PLACES,freshPlayer,goSomewhere,addCreation,answerActivity,nextActivity
 } from './core.mjs';
 import {
-  PERSPECTIVES,VIDEO_BOUNDARY,initializeECS,playerState,ecsGo,ecsMake,ecsNext,ecsAnswer,videoJobs
+  PERSPECTIVES,VIDEO_BOUNDARY,initializeECS,playerState,ecsGo,ecsMake,ecsNext,ecsAnswer,videoJobs,setPrivateMethodState
 } from './ecs.mjs';
 
 const world=initializeECS();
@@ -48,5 +49,17 @@ const worldA=initializeECS();
 const worldB=initializeECS();
 assert.equal(JSON.stringify(worldA.snapshot()),JSON.stringify(worldB.snapshot()));
 assert.deepEqual(videoJobs(worldA).map(j=>j.id),videoJobs(worldB).map(j=>j.id));
+
+const privateMethod=makePrivateMethodRecoveryEnvelope('Compare one independent counter-probe and preserve the unresolved remainder.');
+const projected=setPrivateMethodState(worldA,privateMethod);
+assert.equal(projected.carrier,'ecs-client');
+assert.equal(projected.authority,'method-only');
+assert.equal(projected.publication_allowed,false);
+assert.ok(!Object.hasOwn(projected,'source'));
+const privateSnapshot=JSON.stringify(worldA.snapshot());
+assert.ok(privateSnapshot.includes('PrivateMethodState'));
+assert.ok(privateSnapshot.includes('private-history-method-only'));
+assert.ok(!privateSnapshot.includes('private-history:withheld'));
+assert.ok(!privateSnapshot.includes('PRIVATE_STORY'));
 
 console.log('PASS simple MMO ECS: 8 places, 12 activities, 3 perspectives, 24 deterministic video jobs, core/ECS behavior equivalence');

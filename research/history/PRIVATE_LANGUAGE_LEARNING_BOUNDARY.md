@@ -67,6 +67,25 @@ and the public-update builder must fail closed.
 
 A later artifact may use a generally learned method only when its actual claims, examples, evidence, and provenance are independently grounded in current authorized project/public sources. The private history remains neither cited nor promoted.
 
+## Outward carrier rule
+
+After method extraction, every outward carrier must preserve the same authority boundary.
+
+```text
+ECS / CLIENT
+  -> abstract method + non-identifying privacy-origin marker only
+
+AGENT / TOOL HANDOFF
+  -> same bounded projection; no source pointer or private story
+
+EXPORT / SYNC / PUBLICATION
+  -> fail closed while the private-origin marker remains pre-regrounding
+```
+
+The shared executable contract is `tools/private-origin-boundary.mjs`. ECS uses its `ecs-client` projection directly. Agent/tool handoffs use the sibling `agent-tool-handoff` projection. Export/sync guards recurse through wrappers so relabeling or nesting a marked carrier does not make it exportable.
+
+A later public/project artifact must be independently re-grounded through a separate current-evidence admission path. The private-origin carrier itself is never promoted by toggling its marker.
+
 ## Recovery rule
 
 Recovery may preserve that a private boundary exists, but not the protected narrative behind it.

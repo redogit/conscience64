@@ -80,6 +80,21 @@ class PublicUpdateTests(unittest.TestCase):
         with self.assertRaisesRegex(builder.PublicationError, "private history"):
             builder.build_snapshot(root, pub / "admissions.json")
 
+    def test_public_admission_with_structured_private_origin_fails_closed(self):
+        temp, root, pub = self.make_root(); self.addCleanup(temp.cleanup)
+        source = root / "research/updates/source.md"; source.write_text("abstract method only\n", encoding="utf-8")
+        write_json(pub / "records/r1.json", self.record(summary="Abstract method"))
+        write_json(pub / "admissions.json", {"schema": builder.ADMISSIONS_SCHEMA, "records": [{
+            "record": "records/r1.json",
+            "classification": "public",
+            "privacy_origin": {
+                "classification": "private-history-method-only",
+                "independently_regrounded": False,
+            },
+        }]})
+        with self.assertRaisesRegex(builder.PublicationError, "private history"):
+            builder.build_snapshot(root, pub / "admissions.json")
+
     def test_unknown_classification_fails_closed(self):
         temp, root, pub = self.make_root(); self.addCleanup(temp.cleanup)
         write_json(pub / "admissions.json", {"schema": builder.ADMISSIONS_SCHEMA, "records": [{"record": "records/r1.json", "classification": "maybe"}]})

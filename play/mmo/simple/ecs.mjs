@@ -2,6 +2,7 @@ import {
   ACTIVITIES, PLACES, CONTEXT, BOUNDARIES, freshPlayer,
   goSomewhere, addCreation, answerActivity, nextActivity
 } from './core.mjs';
+import {projectPrivateMethodForInternalCarrier} from '../../../tools/private-origin-boundary.mjs';
 
 export const ECS_SCHEMA='conscience64.mmo.ecs/v1';
 export const VIDEO_BOUNDARY='VIDEO_RENDER != WORLD_AUTHORITY';
@@ -124,3 +125,8 @@ export function ecsMake(world,name){return setPlayerState(world,addCreation(play
 export function ecsNext(world){return setPlayerState(world,nextActivity(playerState(world)));}
 export function ecsAnswer(world,choiceIndex){const out=answerActivity(playerState(world),choiceIndex);setPlayerState(world,out.player);return {...out,player:playerState(world)};}
 export function videoJobs(world){return clone(world.get('world:rmao-world','SceneVideoJobs')?.jobs||[]);}
+export function setPrivateMethodState(world,envelope){
+  const state=projectPrivateMethodForInternalCarrier(envelope,'ecs-client');
+  world.add('player:local','PrivateMethodState',state);
+  return clone(state);
+}

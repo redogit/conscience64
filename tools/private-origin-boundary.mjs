@@ -2,7 +2,9 @@ export const PRIVATE_ORIGIN_BOUNDARIES=Object.freeze([
   'PRIVATE METHOD MAY INFORM SOLVING',
   'PRIVATE SOURCE MUST NOT PROPAGATE',
   'PRIVATE_ORIGIN != SEARCHABLE_CORPUS',
-  'PRIVATE_ORIGIN != SEARCHABLE_GRAPH'
+  'PRIVATE_ORIGIN != SEARCHABLE_GRAPH',
+  'PRIVATE_ORIGIN != PUBLICATION_PERMISSION',
+  'PRIVATE_ORIGIN != EXPORTABLE_CARRIER'
 ]);
 
 export function hasRestrictedOriginMarker(value){
@@ -81,4 +83,39 @@ export function restorePrivateMethodRecoveryEnvelope(raw){
     publication_allowed:value.publication_allowed,
     boundaries:[...value.boundaries]
   };
+}
+
+
+export const PRIVATE_METHOD_OUTWARD_SCHEMA='conscience64.private-method-outward/v1';
+const INTERNAL_PRIVATE_METHOD_CARRIERS=new Set(['ecs-client','agent-tool-handoff']);
+
+export function projectPrivateMethodForInternalCarrier(envelope,carrier){
+  validatePrivateMethodRecoveryEnvelope(envelope);
+  if(!INTERNAL_PRIVATE_METHOD_CARRIERS.has(carrier))throw new Error('unsupported private-method internal carrier');
+  return {
+    schema:PRIVATE_METHOD_OUTWARD_SCHEMA,
+    carrier,
+    kind:'METHOD',
+    method:envelope.method,
+    privacy_origin:{classification:'private-history-method-only',independently_regrounded:false},
+    claim_ceiling:envelope.claim_ceiling,
+    requires_independent_regrounding:true,
+    authority:'method-only',
+    publication_allowed:false
+  };
+}
+
+export function containsRestrictedOrigin(value,seen=new WeakSet()){
+  if(!value||typeof value!=='object')return false;
+  if(seen.has(value))return false;
+  seen.add(value);
+  if(hasRestrictedOriginMarker(value))return true;
+  if(value.publication_allowed===false&&value.requires_independent_regrounding===true)return true;
+  if(Array.isArray(value))return value.some(item=>containsRestrictedOrigin(item,seen));
+  return Object.values(value).some(item=>containsRestrictedOrigin(item,seen));
+}
+
+export function assertPrivateOriginExportAllowed(value){
+  if(containsRestrictedOrigin(value))throw new Error('private-origin export blocked until independent re-grounding');
+  return value;
 }

@@ -105,7 +105,19 @@ def build_snapshot(repo_root: Path, admissions_path: Path) -> dict:
         derived_from_private_history = entry.get("derived_from_private_history", False)
         if not isinstance(derived_from_private_history, bool):
             raise PublicationError(f"admission {index}: derived_from_private_history must be boolean")
-        if classification == "public" and derived_from_private_history:
+        privacy_origin = entry.get("privacy_origin")
+        if privacy_origin is not None:
+            if not isinstance(privacy_origin, dict):
+                raise PublicationError(f"admission {index}: privacy_origin must be an object")
+            unknown_origin = sorted(set(privacy_origin) - {"classification", "independently_regrounded"})
+            if unknown_origin:
+                raise PublicationError(f"admission {index}: privacy_origin contains unsupported fields")
+            if privacy_origin.get("classification") != "private-history-method-only":
+                raise PublicationError(f"admission {index}: unknown privacy_origin classification")
+            if privacy_origin.get("independently_regrounded") is not False:
+                raise PublicationError(f"admission {index}: private-history method admission must remain pre-regrounding")
+        private_origin_blocked = derived_from_private_history or privacy_origin is not None
+        if classification == "public" and private_origin_blocked:
             raise PublicationError(f"admission {index}: public admission derived from private history is forbidden")
         if "record" not in entry:
             raise PublicationError(f"admission {index}: missing record path")
