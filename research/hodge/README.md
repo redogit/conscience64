@@ -10,6 +10,7 @@ This directory supports the active [Hodge Conjecture Research Spine](../projects
 4. [`CONSCIENCE64_COOPERATION.md`](CONSCIENCE64_COOPERATION.md) — companion/reflow/provenance contract.
 5. [`claim_matrix.json`](claim_matrix.json) — machine-readable live claim and bridge ledger.
 6. [`HODGE_COMPASS_API.md`](HODGE_COMPASS_API.md) — fast provenance/query API connection; method-only with evidence transfer denied by default.
+7. [`W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md`](W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md) — forward correction separating the full order-114 Kummer carrier from the Aoki/Yamamoto quadratic gap sign.
 
 ## Core target
 
