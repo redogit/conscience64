@@ -32,7 +32,7 @@ assert.ok(workflow.includes('git fetch --depth=1 origin gh-pages'),'source sync 
 assert.ok(workflow.includes('lease_sha="$(git rev-parse HEAD)"'),'source sync must bind the predecessor branch revision');
 assert.ok(workflow.includes('git rm -r -f .'),'source sync must clear the previous projection tree before copy');
 assert.ok(workflow.includes('cp -a "$PROJECTION_DIR"/. .'),'source sync must copy the generated projection, not repository files');
-assert.ok(workflow.includes('git commit -m "Publish public test bed from ${GITHUB_SHA}"'),'source sync must create a distinct projection commit');
+assert.ok(workflow.includes('git commit -m "Publish public test bed + Musilanguage from ${GITHUB_SHA}"'),'source sync must create a distinct curated projection commit');
 assert.ok(workflow.includes('git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin HEAD:refs/heads/gh-pages'),'publication must preserve lease safety while advancing only projection HEAD');
 assert.ok(!workflow.includes('$GITHUB_SHA:refs/heads/gh-pages'),'source main commit must never be pushed directly to gh-pages');
 assert.ok(!workflow.includes('PUBLIC_RELEASE_APPROVAL.json'),'testbed publication must not depend on the obsolete self-referential exact-SHA approval artifact');
