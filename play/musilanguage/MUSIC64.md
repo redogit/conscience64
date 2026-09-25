@@ -1,10 +1,12 @@
-# Word Forge / MUSIC64 — listener-local music floats
+# Musilanguage Studio / MUSIC64 — linguistic music generation
 
-Open [Word Forge](word-forge.html). The existing [four-track radio](radio.html) and [original single](single.html) retain their scores and renderer.
+**Current public application:** https://redogit.github.io/conscience64/play/musilanguage/
+
+The current public surface is one **Musilanguage Studio**. Earlier **Carry the Fire**, **Musilanguage Radio**, and **Word Forge / MUSIC64** surfaces remain preserved in repository and Git history; they are predecessors, not deleted work and not separate current Pages applications.
 
 ## Use
 
-Enter up to 1,024 UTF-8 bytes, choose one of **64 style profiles across eight broad families**, and press **Forge & play**. The compact MUSIC64 float still carries one of four core families; the richer profile lives in the recipe so older addresses remain valid. Exact UTF-8 rank sampling is an alternative source. It samples syntactically valid strings, not necessarily meaningful words; it does not enumerate all strings or all float patterns.
+Enter up to 1,024 UTF-8 bytes, choose one of **64 style profiles across eight broad families**, and press **Forge & play**. Then shape the six procedural instrument buses—guitar, bass, keys/harp, strings, lead, and drums—alongside tempo, meter, mode, tonic, motif treatment, and intensity. The compact MUSIC64 float still carries one of four core ensemble families; the richer profile and instrument mix remain higher-level recipe/rendering state so existing `m64v1:` addresses are not silently reinterpreted. Exact UTF-8 rank sampling is an alternative source. It samples syntactically valid strings, not necessarily meaningful words; it does not enumerate all strings or all float patterns.
 
 **Make my floats stumble** flips 1–6 note/rhythm bits per cell in a private copy. **Hear original → mistake → repair** compares four bars three times. **Repair** restores the anchor bits exactly. **Keep my take** adopts the altered cells as this listener's next anchor, not as objectively better music. **Undo** retains at most 16 prior takes in this tab's memory. The shared songs, source text, UTF-8 transport, selected style profile and research are unchanged.
 
@@ -24,6 +26,22 @@ Optional continuous exploration runs locally while this page is open. It renders
 - Folk / unusual pulse
 
 Profiles can change default tempo, meter and motif treatment and then alter the rendered score through deterministic track balance, event density, swing, syncopation, register and a small number of explicit pattern additions. They are creative approximations and **not claims of cultural authenticity** or replacements for the living traditions whose genre names inspired some labels.
+
+### Instrument buses
+
+The current Studio exposes the renderer’s six buses directly:
+
+- **guitar / distorted strings**
+- **bass / low voice**
+- **keys / harp / plucked voice**
+- **strings / sustained ensemble**
+- **lead / melodic voice**
+- **drums / percussion**
+
+A style profile supplies the starting balance. The listener may mute, foreground, or rebalance any bus. This changes rendering and exported audio, not the source UTF-8 text or MUSIC64 cell identities.
+
+The current profile set is intentionally broad but finite. “All types of music” is treated as an **open generative direction**, not a claim that 64 profiles exhaust every genre, instrument tradition, tuning system, or musical culture.
+
 
 The `styleProfile` is recipe metadata and is intentionally **not packed into the 52-bit MUSIC64/v1 cell**. This preserves compatibility with existing float addresses. Listener-local note/rhythm mistakes preserve the selected profile. The profile test requires 64 definitions, eight families, and at least 56 distinct early-score signatures; the current set yields 64 distinct tested signatures. Distinct event signatures are software evidence, not a guarantee that every listener will perceive every profile as categorically different.
 
