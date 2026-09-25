@@ -282,6 +282,13 @@ def default_state() -> ResearchState:
                     "Arithmetic realizations agree at the recorded character level.",
                     "REALIZATION_MATCH != CHOW_MORPHISM"
                 ),
+                Evidence(
+                    "corrected level-57 quadratic sign", EvidenceKind.EXACT_IDENTITY,
+                    "After exact standard normalization, the Aoki/Yamamoto sign is "
+                    "chi_114(3*(7-zeta_3))^57. The full order-114 Kummer formula with "
+                    "(7-zeta_3)^57 remains unchanged.",
+                    "CORRECTED_SIGN_NORMALIZATION != CHOW_MORPHISM"
+                ),
             ],
             ["MOT-1"],
         ),
@@ -290,10 +297,12 @@ def default_state() -> ResearchState:
         "MOT-1": Obligation(
             "MOT-1",
             "Construct one explicit nonzero correspondence from the residual gap motive "
-            "to the standard-part motive tensored with the quadratic Artin motive.",
+            "to the standard-part motive tensored with the corrected quadratic Artin "
+            "sign motive A(3*(7-zeta_3)).",
             "motivic",
             "Write a concrete cycle/correspondence and independently verify source, target, "
-            "Galois behavior, and induced realization map.",
+            "Galois behavior, corrected sign normalization, and induced realization map; "
+            "keep the separate full order-114 Kummer carrier explicit.",
         ),
         "MF-1": Obligation(
             "MF-1",
