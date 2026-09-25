@@ -7,7 +7,9 @@ const approval=JSON.parse(await readFile(new URL('../PUBLIC_TESTBED_APPROVAL.jso
 
 assert.equal(approval.schema,'redogit/public-testbed-approval/v1');
 assert.equal(approval.approved,true);
-assert.equal(approval.scope,'public-testbed-only');
+assert.equal(approval.scope,'public-testbed-plus-musilanguage');
+assert.ok(approval.authorized_routes?.includes('/play/musilanguage/'));
+assert.ok(approval.authorized_source_families?.some(x=>x.startsWith('play/musilanguage/')));
 assert.equal(approval.issue,166);
 assert.equal(approval.commercial_license_granted,false);
 for(const key of [
@@ -21,6 +23,7 @@ for(const key of [
 assert.ok(workflow.includes('permissions:\n  contents: write'),'testbed sync needs branch write authority');
 assert.ok(!workflow.includes('pages: write')&&!workflow.includes('actions: write'),'testbed sync must not gain deployment/dispatch authority');
 assert.ok(workflow.includes("'public-testbed/**'"),'testbed sources must trigger projection sync');
+assert.ok(workflow.includes("'play/musilanguage/**'"),'Musilanguage sources must trigger projection sync');
 assert.ok(workflow.includes("'PUBLIC_TESTBED_APPROVAL.json'"),'scope authorization changes must trigger projection sync');
 assert.ok(workflow.includes('node tools/check-public-testbed.mjs --revision "$GITHUB_SHA"'),'source sync must verify isolated projection at exact source SHA');
 assert.ok(workflow.includes('node tools/build-public-testbed.mjs --root . --out "$OUT" --revision "$GITHUB_SHA"'),'source sync must build only the testbed projection');
@@ -56,8 +59,10 @@ assert.ok(!liveWorkflow.includes('PUBLIC_RELEASE_APPROVAL.json'),'live verifier 
 
 const builder=await readFile(new URL('./build-public-testbed.mjs',import.meta.url),'utf8');
 const edge=await readFile(new URL('./check-public-testbed-edge.mjs',import.meta.url),'utf8');
-assert.ok(builder.includes("source_root:'public-testbed/'"));
-assert.ok(builder.includes("publication_scope:'public-testbed-only'"));
+assert.ok(builder.includes("source_root:'public-testbed/ + curated play/musilanguage/'"));
+assert.ok(builder.includes("publication_scope:'public-testbed-plus-musilanguage'"));
 assert.ok(edge.includes("'README.md'")&&edge.includes("'research/projects/README.md'")&&edge.includes("'play/index.html'"),'network edge must counterprobe repository-route leakage');
+assert.ok(edge.includes("get('play/musilanguage/')"),'network edge must positively verify Musilanguage');
+assert.ok(edge.includes("'play/musilanguage/radio.html'")&&edge.includes("'play/musilanguage/single.html'"),'network edge must reject predecessor public music routes');
 
-console.log('PASS Pages testbed contract: scope-authorized isolated source -> rollback-linked projection commit -> exact branch-byte comparison -> network-edge leakage counterprobes');
+console.log('PASS Pages contract: isolated public testbed + curated Musilanguage -> rollback-linked projection commit -> exact byte comparison -> positive route + leakage counterprobes');
