@@ -6,6 +6,15 @@ import {containsRestrictedOrigin} from './private-origin-boundary.mjs';
 
 export const PUBLIC_TESTBED_SCHEMA='conscience64.public-testbed-projection/v0';
 const ALLOWED_EXTENSIONS=new Set(['.html','.css','.js','.json','.txt','.svg']);
+const MUSILANGUAGE_FILES=[
+  'index.html',
+  'engine.js',
+  'utf8-space.js',
+  'style-profiles.js',
+  'music64.js',
+  'listener-floats.js',
+  'word-forge.js'
+];
 
 const sha256=raw=>createHash('sha256').update(raw).digest('hex');
 const toPosix=p=>p.split(path.sep).join('/');
@@ -84,20 +93,35 @@ export async function buildPublicTestbed({root='.',out,sourceRevision}){
   const testbedOut=path.join(out,'testbed.json');
   await writeFile(testbedOut,descriptorRaw);
   projected.push({path:'testbed.json',bytes:descriptorRaw.length,sha256:sha256(descriptorRaw),source:'public-testbed/testbed.json'});
+
+  const musicRoot=path.join(rootAbs,'play','musilanguage');
+  for(const rel of MUSILANGUAGE_FILES){
+    const src=path.join(musicRoot,rel);
+    const info=await lstat(src);
+    if(info.isSymbolicLink()||!info.isFile())throw new Error(`invalid curated Musilanguage source: ${rel}`);
+    const dstRel=toPosix(path.join('play','musilanguage',rel));
+    const dst=path.join(out,...dstRel.split('/'));
+    await mkdir(path.dirname(dst),{recursive:true});
+    await cp(src,dst,{force:false,errorOnExist:true});
+    const raw=await readFile(src);
+    projected.push({path:dstRel,bytes:raw.length,sha256:sha256(raw),source:`play/musilanguage/${rel}`});
+  }
+
   projected.sort((a,b)=>a.path.localeCompare(b.path));
 
   const identityInput=JSON.stringify({sourceRevision,files:projected.map(({path,bytes,sha256})=>({path,bytes,sha256}))});
   const manifest={
     schema:PUBLIC_TESTBED_SCHEMA,
     source_revision:sourceRevision,
-    source_root:'public-testbed/',
-    publication_scope:'public-testbed-only',
+    source_root:'public-testbed/ + curated play/musilanguage/',
+    publication_scope:'public-testbed-plus-musilanguage',
     authority:'experimental-non-authoritative',
     projection_sha256:sha256(Buffer.from(identityInput)),
     files:projected,
     boundaries:[
       'CONSCIENCE64_REPOSITORY != PUBLIC_TESTBED_PROJECTION',
-      'PUBLIC_TESTBED != WHOLE_REPOSITORY',
+      'PUBLIC_TESTBED_PLUS_MUSILANGUAGE != WHOLE_REPOSITORY',
+      'MUSILANGUAGE_PUBLIC != WHOLE_PLAY',
       'PUBLIC_EXPERIMENT != VERIFIED_TRUTH',
       'PRIVATE SOURCE MUST NOT PROPAGATE'
     ]
