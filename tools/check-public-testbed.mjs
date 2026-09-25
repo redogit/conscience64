@@ -42,17 +42,30 @@ try{
   const b=await buildPublicTestbed({root:'.',out:outB,sourceRevision:revision});
   assert.deepEqual(a,b,'public testbed build must be deterministic');
   assert.equal(a.source_revision,revision);
-  assert.equal(a.source_root,'public-testbed/');
-  assert.equal(a.publication_scope,'public-testbed-only');
+  assert.equal(a.source_root,'public-testbed/ + curated play/musilanguage/');
+  assert.equal(a.publication_scope,'public-testbed-plus-musilanguage');
   assert.equal(a.authority,'experimental-non-authoritative');
   assert.match(a.projection_sha256,/^[0-9a-f]{64}$/);
-  assert.ok(a.files.every(file=>file.source.startsWith('public-testbed/')));
-  assert.ok(a.files.reduce((sum,file)=>sum+file.bytes,0)<128_000,'public testbed source projection exceeded 128 KB static source ceiling');
-  assert.ok(a.boundaries.includes('PUBLIC_TESTBED != WHOLE_REPOSITORY'));
+  assert.ok(a.files.every(file=>file.source.startsWith('public-testbed/')||file.source.startsWith('play/musilanguage/')));
+  assert.ok(a.files.reduce((sum,file)=>sum+file.bytes,0)<512_000,'public projection exceeded 512 KB curated static source ceiling');
+  assert.ok(a.boundaries.includes('PUBLIC_TESTBED_PLUS_MUSILANGUAGE != WHOLE_REPOSITORY'));
 
   const projected=await filesUnder(outA);
-  assert.deepEqual(projected,['app.js','carrier-surface/index.html','index.html','projection-manifest.json','s1-models/index.html','style.css','testbed.json']);
-  assert.ok(!projected.some(p=>p.startsWith('research/')||p.startsWith('play/')||p==='README.md'));
+  assert.deepEqual(projected,[
+    'app.js','carrier-surface/index.html','index.html',
+    'play/musilanguage/engine.js',
+    'play/musilanguage/index.html',
+    'play/musilanguage/listener-floats.js',
+    'play/musilanguage/music64.js',
+    'play/musilanguage/style-profiles.js',
+    'play/musilanguage/utf8-space.js',
+    'play/musilanguage/word-forge.js',
+    'projection-manifest.json','s1-models/index.html','style.css','testbed.json'
+  ]);
+  assert.ok(!projected.some(p=>p.startsWith('research/')||p==='README.md'||(p.startsWith('play/')&&!p.startsWith('play/musilanguage/'))));
+  assert.ok(!projected.includes('play/musilanguage/radio.html'));
+  assert.ok(!projected.includes('play/musilanguage/single.html'));
+  assert.ok(!projected.includes('play/musilanguage/word-forge.html'));
 
   for(const rel of projected){
     const first=await readFile(path.join(outA,rel));
@@ -116,6 +129,8 @@ try{
   const html=await readFile('public-testbed/site/index.html','utf8');
   const css=await readFile('public-testbed/site/style.css','utf8');
   const js=await readFile('public-testbed/site/app.js','utf8');
+  const musicHtml=await readFile('play/musilanguage/index.html','utf8');
+  const musicJs=await readFile('play/musilanguage/word-forge.js','utf8');
   assert.match(html,/<html lang="en">/);
   assert.match(html,/class="skip-link"/);
   assert.match(html,/<main id="main">/);
@@ -152,6 +167,17 @@ try{
   assert.match(s1Page,/PROJECTION_SUCCESS != RECONSTRUCTION_SUCCESS/);
   assert.doesNotMatch(s1Page,/<script\b/i,'S′ model public page must remain passive');
   assert.ok(!html.includes('http://')&&!html.includes('https://'),'testbed shell must have no external runtime dependency');
+  assert.match(musicHtml,/Musilanguage Studio/);
+  assert.match(musicHtml,/id="instruments"/);
+  assert.match(musicHtml,/id="mix-guitar"/);
+  assert.match(musicHtml,/id="mix-drums"/);
+  assert.match(musicHtml,/64 arrangement profiles/);
+  assert.match(musicHtml,/History lives inside the instrument/);
+  assert.match(musicHtml,/Content-Security-Policy/);
+  assert.doesNotMatch(musicHtml,/src="https?:\/\//i,'Musilanguage runtime scripts must remain local');
+  assert.match(musicJs,/function currentLevels\(/);
+  assert.match(musicJs,/musilanguage-studio-session\/v2/);
+  assert.match(musicJs,/Custom instrument mix/);
   assert.match(css,/:focus-visible/);
   assert.match(css,/prefers-reduced-motion/);
   assert.ok(!js.includes('innerHTML'),'testbed client must construct text safely');
@@ -174,6 +200,7 @@ try{
 
   const unsafeRoot=path.join(workspace,'unsafe-root');
   await cp('public-testbed',path.join(unsafeRoot,'public-testbed'),{recursive:true});
+  await cp('play/musilanguage',path.join(unsafeRoot,'play','musilanguage'),{recursive:true});
   const unsafeDescriptor=JSON.parse(await readFile(path.join(unsafeRoot,'public-testbed','testbed.json'),'utf8'));
   unsafeDescriptor.privacy_origin={classification:'private-history-method-only',independently_regrounded:false};
   await writeFile(path.join(unsafeRoot,'public-testbed','testbed.json'),JSON.stringify(unsafeDescriptor));
@@ -184,6 +211,7 @@ try{
 
   const nestedRoot=path.join(workspace,'nested-root');
   await cp('public-testbed',path.join(nestedRoot,'public-testbed'),{recursive:true});
+  await cp('play/musilanguage',path.join(nestedRoot,'play','musilanguage'),{recursive:true});
   await writeFile(
     path.join(nestedRoot,'public-testbed','site','private.json'),
     JSON.stringify({wrapper:{derived_from_private_history:true},canary:'PRIVATE_TESTBED_CANARY'})
@@ -195,13 +223,14 @@ try{
 
   const linkRoot=path.join(workspace,'link-root');
   await cp('public-testbed',path.join(linkRoot,'public-testbed'),{recursive:true});
+  await cp('play/musilanguage',path.join(linkRoot,'play','musilanguage'),{recursive:true});
   await symlink('index.html',path.join(linkRoot,'public-testbed','site','alias.html'));
   await assert.rejects(
     buildPublicTestbed({root:linkRoot,out:path.join(workspace,'link-out'),sourceRevision:revision}),
     /symlink/
   );
 
-  console.log(`PASS public testbed source v0: ${a.files.length} projected source files, exact revision ${revision}, six visible path states, USDAY/Interlingua/Pairity/visible-path/wonderment/one-degree principles, verified lineage, aliases, unresolved relation, zero-result retention, deterministic isolation, privacy/symlink counterprobes, WCAG-oriented contrast gates, accessibility shell, static-size ceiling`);
+  console.log(`PASS public projection: ${a.files.length} curated files, exact revision ${revision}, public testbed + one Musilanguage Studio route, predecessor music pages excluded, privacy/symlink counterprobes, WCAG-oriented testbed gates, static-size ceiling`);
 }finally{
   await rm(workspace,{recursive:true,force:true});
 }

@@ -79,6 +79,30 @@
       ],
       "provenance": "issue:166;pr:178;pr:179;source:f05fc0550ba0e945ea64e9b8447b972b1c4a11fd;projection:2068472a799e0631ae3e50d6b1c6c55e6b995d9d",
       "claim_boundary": "LIVE_PROJECTION_VERIFIED != EXPERIMENTAL_CLAIM_VALIDATED"
+    },
+    {
+      "id": "musilanguage-public-app-v1",
+      "title": "Musilanguage unified public application",
+      "status": "active",
+      "currentness": "CURRENT_EPOCH",
+      "changed_degree": "add one curated public application route from play/musilanguage while keeping all other play and repository routes excluded",
+      "invariants": [
+        "only the explicit Musilanguage runtime allowlist is projected",
+        "single/radio/Word Forge predecessor pages remain source history rather than separate public apps",
+        "instrument mixing changes rendering only; source text and MUSIC64 cells remain distinct",
+        "language-to-music mapping is artistic/generative and not semantic truth",
+        "network-edge isolation remains required"
+      ],
+      "evidence": "owner direction dated 2026-09-25 plus generated projection manifest, source checks, and live edge checks",
+      "result": "current source defines one Musilanguage Studio route with 64 style profiles, six instrument buses, reversible variation, MIDI/WAV export, and in-app history",
+      "zero_result": "no authorization is granted to the rest of play/, about/, research/, or repository files",
+      "remainder": [
+        "merge and run exact-head projection verification",
+        "verify the live /play/musilanguage/ edge after gh-pages advances",
+        "continue accessibility and cross-browser audio testing independently"
+      ],
+      "provenance": "owner-direction:2026-09-25;play/musilanguage lineage:ddb5b5c9,f2921bd8,21595039",
+      "claim_boundary": "PUBLIC_MUSILANGUAGE_APP != WHOLE_PLAY_PUBLICATION"
     }
   ],
   "paths": [
@@ -90,10 +114,10 @@
       "progression_position": "issue-166 / visible-state successor",
       "relation": "CURRENT_CANONICAL",
       "evidence": "narrow source family and live projection infrastructure are admitted",
-      "result": "current work is extending visible state without widening publication scope",
+      "result": "current work keeps the testbed isolated while adding the separately owner-authorized curated Musilanguage Studio route",
       "provenance": "issue:166;pr:178;pr:179",
       "claim_boundary": "CURRENT != TRUE",
-      "remainder": "next experiment still requires separate admission"
+      "remainder": "future routes still require separate explicit admission"
     },
     {
       "id": "network-edge-isolation",
@@ -129,11 +153,11 @@
       "currentness": "PRESERVED",
       "progression_position": "publication scope boundary",
       "relation": "CLAIM_BOUNDARY",
-      "evidence": "PUBLIC_TESTBED_APPROVAL authorizes scope public-testbed-only and commercial_license_granted=false",
-      "result": "repository-wide Pages publication is not authorized",
+      "evidence": "PUBLIC_TESTBED_APPROVAL authorizes the testbed plus only the curated /play/musilanguage/ application route; commercial_license_granted=false",
+      "result": "repository-wide Pages publication and the rest of play/ remain unauthorized",
       "provenance": "issue:166;PUBLIC_TESTBED_APPROVAL.json",
       "claim_boundary": "PUBLIC_TESTBED != WHOLE_REPOSITORY",
-      "remainder": "none unless the repository owner explicitly defines a new scope"
+      "remainder": "additional routes require new explicit owner scope"
     },
     {
       "id": "next-experiment-admission",
@@ -160,6 +184,19 @@
       "provenance": "gh-pages:3dcb37a5ad6d7d439054a5b743fc7530271ac8c2;projection:2068472a799e0631ae3e50d6b1c6c55e6b995d9d",
       "claim_boundary": "RETURN_PATH != CURRENT_AUTHORITY",
       "remainder": "rollback still requires deliberate review before use"
+    },
+    {
+      "id": "musilanguage-public-application",
+      "title": "Musilanguage Studio public route",
+      "status": "active",
+      "currentness": "CURRENT_EPOCH",
+      "progression_position": "2026-09-25 explicit owner publication successor",
+      "relation": "CURRENT_CANONICAL",
+      "evidence": "curated allowlist is encoded in projection builder and approval artifact",
+      "result": "one public linguistic-music generator replaces separate public predecessor music surfaces",
+      "provenance": "PUBLIC_TESTBED_APPROVAL.json;play/musilanguage/index.html;owner-direction:2026-09-25",
+      "claim_boundary": "ONE_PUBLIC_APP != DELETION_OF_HISTORY",
+      "remainder": "live edge verification after merge"
     }
   ],
   "aliases": [

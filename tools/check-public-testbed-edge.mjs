@@ -18,15 +18,25 @@ async function get(rel,{json=false,expect=200}={}){
 const manifest=await get('projection-manifest.json',{json:true});
 assert.equal(manifest.schema,'conscience64.public-testbed-projection/v0');
 assert.equal(manifest.source_revision,expected);
-assert.equal(manifest.source_root,'public-testbed/');
-assert.equal(manifest.publication_scope,'public-testbed-only');
+assert.equal(manifest.source_root,'public-testbed/ + curated play/musilanguage/');
+assert.equal(manifest.publication_scope,'public-testbed-plus-musilanguage');
 assert.equal(manifest.authority,'experimental-non-authoritative');
 assert.match(manifest.projection_sha256,/^[0-9a-f]{64}$/);
 assert.deepEqual(
   manifest.files.map(f=>f.path).sort(),
-  ['app.js','carrier-surface/index.html','index.html','s1-models/index.html','style.css','testbed.json']
+  [
+    'app.js','carrier-surface/index.html','index.html',
+    'play/musilanguage/engine.js',
+    'play/musilanguage/index.html',
+    'play/musilanguage/listener-floats.js',
+    'play/musilanguage/music64.js',
+    'play/musilanguage/style-profiles.js',
+    'play/musilanguage/utf8-space.js',
+    'play/musilanguage/word-forge.js',
+    's1-models/index.html','style.css','testbed.json'
+  ]
 );
-assert.ok(manifest.files.every(f=>String(f.source).startsWith('public-testbed/')));
+assert.ok(manifest.files.every(f=>String(f.source).startsWith('public-testbed/')||String(f.source).startsWith('play/musilanguage/')));
 assert.ok(!containsRestrictedOrigin(manifest));
 
 const data=await get('testbed.json',{json:true});
@@ -70,6 +80,19 @@ assert.match(carrierPage,/MULTI_KEY_RELATION != MATHEMATICAL_MANIFOLD/);
 assert.match(carrierPage,/cca44e23ca663600cc3466f45d7dc509c466b796/);
 assert.match(carrierPage,/186\/186/);
 
+const music=await get('play/musilanguage/');
+assert.match(music,/Musilanguage Studio/);
+assert.match(music,/id="instruments"/);
+assert.match(music,/History lives inside the instrument/);
+for(const rel of [
+  'play/musilanguage/engine.js',
+  'play/musilanguage/utf8-space.js',
+  'play/musilanguage/style-profiles.js',
+  'play/musilanguage/music64.js',
+  'play/musilanguage/listener-floats.js',
+  'play/musilanguage/word-forge.js'
+])await get(rel);
+
 const s1Page=await get('s1-models/');
 assert.match(s1Page,/S Prime candidate-state model/);
 assert.match(s1Page,/Survivor/);
@@ -89,9 +112,12 @@ for(const forbidden of [
   'data-manifest.json',
   'research/projects/README.md',
   'play/index.html',
-  'about/index.html'
+  'about/index.html',
+  'play/musilanguage/radio.html',
+  'play/musilanguage/single.html',
+  'play/musilanguage/word-forge.html'
 ]){
   await get(forbidden,{expect:404});
 }
 
-console.log(`PASS public testbed edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; Carrier–Surface + current S′ executable bridge routes present; repository routes absent; six path states + named principles + lineage + aliases + unresolved relation visible`);
+console.log(`PASS public edge: source=${expected} projection=${manifest.projection_sha256} files=${manifest.files.length}; testbed + unified Musilanguage Studio present; predecessor music pages and non-authorized repository routes absent`);
