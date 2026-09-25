@@ -152,3 +152,51 @@ SOURCE_TEXT != VERIFIED_CLAIM
 RELATION_TRAVERSAL != EVIDENCE_TRANSFER
 SEARCH_HIT != HODGE_EVIDENCE
 ```
+
+
+## Admitted W114 proof graph
+
+`redogit/Other-Projects-` PR #95 is merged to main at:
+
+`c9395343e135d73842299039fcfdd5240434dbfe`
+
+The API now ships `Hodge Compass API/hodge_proof_graph_seed.json`, distilled from the current target-native Hodge spine, W114 research loop, evidence firewall, issue #99, and Hodge Span Lab.
+
+The graph preserves the current route states:
+
+```text
+W114
+├─ motivic / Hecke→Chow          CURRENT_CANONICAL
+│  └─ MOT-1
+├─ matrix factorization          COEXISTING_LINEAGE
+│  ├─ MF-1
+│  └─ MF-2
+├─ higher-level certificate lift PRESERVED_UNRESOLVED
+│  └─ LIFT-1
+└─ direct cubic Delsarte/Shioda  HISTORICAL_SUPERSEDED
+```
+
+It also links W114 to:
+- `tool:hodge-span-lab` for exact supplied-span diagnostics;
+- `compass:observer-return-loop` as a method/counterprobe surface only;
+- `hodge:method:evidence-firewall` for target-native admission control;
+- the cycle-span / representation-sector deficit frontier and calibration objects.
+
+Every seeded relation has `evidence_transfer=DENY`.
+
+### Stable-ID hardening
+
+The admitted index now rejects any attempt to reuse:
+- a `SemanticObjectID`,
+- an explicit `OccurrenceID`, or
+- an explicit relation ID
+
+with different immutable metadata.
+
+```text
+SAME_STABLE_ID + DIFFERENT_METADATA = REJECT
+```
+
+This prevents Normal/Work duplication, later manifests, or regenerated catalogs from silently rewriting object identity.
+
+The graph is a navigation and proof-obligation surface. It does not alter the mathematical status of any route or obligation.
