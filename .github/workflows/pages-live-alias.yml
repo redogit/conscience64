@@ -8,6 +8,7 @@ on:
   pull_request:
     paths:
       - 'public-testbed/**'
+      - 'play/musilanguage/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
@@ -76,7 +77,7 @@ jobs:
           const fs=require('node:fs');
           const manifest=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
           if(manifest.source_revision!==process.argv[3])throw new Error('projection manifest source revision mismatch');
-          if(manifest.publication_scope!=='public-testbed-only')throw new Error('projection scope widened');
+          if(manifest.publication_scope!=='public-testbed-plus-musilanguage')throw new Error('projection scope mismatch');
           console.log(`PASS exact gh-pages projection bytes source=${manifest.source_revision} projection=${manifest.projection_sha256}`);
           NODE
 
@@ -94,4 +95,4 @@ jobs:
             sleep 2
           done
           test "$ok" = true
-          echo "PASS live public test bed source=$EXPECTED_SOURCE_SHA projection_commit=$PUBLISHED_PROJECTION_SHA"
+          echo "PASS live public test bed + Musilanguage source=$EXPECTED_SOURCE_SHA projection_commit=$PUBLISHED_PROJECTION_SHA"
