@@ -1,6 +1,6 @@
 # Conscience64 / Play
 
-> **Current publication state:** Play remains source/project work, but its GitHub Pages projection is paused pending explicit owner approval of an exact safety-reviewed revision. Existing MIT rights for material already covered by the scoped `play/` license remain intact; current no-commercial policy does not retroactively revoke those rights. See [../COMMERCIAL_ACCESS_POLICY.md](../COMMERCIAL_ACCESS_POLICY.md).
+> **Current publication state — 2026-09-25:** the repository-wide Play surface remains non-public on GitHub Pages, **except for the explicitly owner-authorized curated Musilanguage Studio route** at `play/musilanguage/`. The Pages builder projects only the Musilanguage runtime allowlist; older single/radio/Word Forge pages remain preserved source history and are not separate public routes. Existing MIT rights for material already covered by the scoped `play/` license remain intact; current no-commercial policy does not retroactively revoke those rights. See [../COMMERCIAL_ACCESS_POLICY.md](../COMMERCIAL_ACCESS_POLICY.md).
 
 
 Free browser play and creative tools built from ongoing ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
@@ -32,6 +32,32 @@ See the full [Grow-With-You Game Contract](GROW_WITH_YOU_GAME_CONTRACT.md).
 | [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan one next step and record dated checkpoints | Export the current draft and prior checkpoints |
 | [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Inspect exact line additions and removals between two texts | Open UTF-8 files; export both versions and comparison |
 | [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Turn bounded research notation into exact, speakable, mnemonic, and musical forms | Mnemonics/sonification are memory aids, not proof |
+| [Musilanguage Studio](https://redogit.github.io/conscience64/play/musilanguage/) | Turn language, symbols, emoji, or exact UTF-8 into multi-style instrumental music; shape six instrument buses; export MIDI/WAV; inspect the preserved lineage inside the app | Artistic/generative mapping; 64 style profiles and procedural instruments do not imply cultural authenticity or semantic truth |
+
+## Musilanguage Studio — one public music application
+
+The current public Musilanguage surface is intentionally **one application**:
+
+```text
+language / symbols / UTF-8
+-> MUSIC64 cells
+-> 64 style profiles
+-> six procedural instrument buses
+-> listener-controlled mix / reversible variation
+-> playback / MIDI / WAV
+-> preserved in-app history
+```
+
+The six rendered buses are guitar/distorted strings, bass/low voice, keys/harp/plucked voice, strings/sustained ensemble, lead/melodic voice, and drums/percussion. A style supplies an initial arrangement; the listener can mute, foreground, or rebalance each bus without changing the source text or MUSIC64 cells.
+
+Earlier public-facing Musilanguage forms—**Carry the Fire**, **Musilanguage Radio**, and **Word Forge / MUSIC64**—remain preserved in Git history and repository source. They are predecessors, not deleted work, and their lineage is visible inside the unified Studio.
+
+```text
+ONE PUBLIC APP != ONE HISTORICAL VERSION
+INSTRUMENT MIX != SOURCE MUTATION
+LANGUAGE-TO-MUSIC != SEMANTIC TRANSLATION
+STYLE PROFILE != CULTURAL AUTHENTICITY CLAIM
+```
 
 ## MMO RPG
 
