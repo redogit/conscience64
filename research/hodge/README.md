@@ -9,6 +9,7 @@ This directory supports the active [Hodge Conjecture Research Spine](../projects
 3. [`RESEARCH_INTEGRATION_MAP.md`](RESEARCH_INTEGRATION_MAP.md) — typed imports from the broader research corpus.
 4. [`CONSCIENCE64_COOPERATION.md`](CONSCIENCE64_COOPERATION.md) — companion/reflow/provenance contract.
 5. [`claim_matrix.json`](claim_matrix.json) — machine-readable live claim and bridge ledger.
+6. [`HODGE_COMPASS_API.md`](HODGE_COMPASS_API.md) — fast provenance/query API connection; method-only with evidence transfer denied by default.
 
 ## Core target
 
