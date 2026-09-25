@@ -61,7 +61,8 @@ jobs:
           ):
               assert review.get(key) is True, key
           assert d.get('commercial_license_granted') is False
-          assert '/play/musilanguage/' in d.get('authorized_routes',[])\n          print('PASS public-testbed + curated Musilanguage scope authorization')
+          assert '/play/musilanguage/' in d.get('authorized_routes',[])
+          print('PASS public-testbed + curated Musilanguage scope authorization')
           PY
 
       - name: Verify isolated projection contract
