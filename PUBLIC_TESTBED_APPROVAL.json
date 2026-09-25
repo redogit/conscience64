@@ -1,7 +1,7 @@
 {
   "schema": "redogit/public-testbed-approval/v1",
   "approved": true,
-  "scope": "public-testbed-only",
+  "scope": "public-testbed-plus-musilanguage",
   "issue": 166,
   "approved_by": "repository-owner-direction",
   "review": {
@@ -12,5 +12,16 @@
     "network_edge_verification_required": true
   },
   "commercial_license_granted": false,
-  "rule": "This authorizes only the generated public-testbed projection. It does not authorize publication of the repository, private-origin carriers, or other repositories."
+  "rule": "This authorizes the generated public-testbed projection plus the curated Musilanguage application route. It does not authorize publication of the repository, the rest of play/, private-origin carriers, or other repositories.",
+  "authorized_routes": [
+    "/",
+    "/carrier-surface/",
+    "/s1-models/",
+    "/play/musilanguage/"
+  ],
+  "authorized_source_families": [
+    "public-testbed/**",
+    "play/musilanguage/{index.html,engine.js,utf8-space.js,style-profiles.js,music64.js,listener-floats.js,word-forge.js}"
+  ],
+  "approved_at": "2026-09-25"
 }
