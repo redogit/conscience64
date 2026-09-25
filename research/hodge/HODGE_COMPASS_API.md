@@ -108,3 +108,47 @@ That is a local benchmark, not a universal performance guarantee.
 - W114 issue #99: unchanged;
 - evidence transfer: denied by default;
 - private history: local-only ingestion.
+
+
+## v1.1 admitted executable surface
+
+`redogit/Other-Projects-` PR #94 is merged to main at:
+
+`783e09cf7c5f9c511360fee9c5b47270ebcb77bf`
+
+v1.1 adds:
+
+- local UTF-8 source-content ingestion into SQLite/FTS5;
+- exact SHA-256 occurrence identity under stable source SemanticObjectIDs;
+- idempotent re-indexing of unchanged source bytes;
+- changed source bytes preserved as new occurrences rather than silent replacement;
+- up to 64 indexed searches per batch request;
+- bounded typed relation traversal with `permission` and `evidence_transfer` retained;
+- a W114 batch query pack;
+- a reproducible source-catalog refresher.
+
+The merged source catalog snapshot contains 168 discoverable artifacts:
+- 41 target-native `conscience64` Hodge/CI sources;
+- 127 Hodge/query/connected-method sources in `Other-Projects-`.
+
+### Fast local content path
+
+Once both repositories are checked out, the API can index the actual contents of `research/hodge/` and the connected method surfaces locally. Routine proof-work retrieval can then avoid network discovery.
+
+```text
+source bytes
+-> SHA-256 occurrence
+-> stable SemanticObjectID
+-> SQLite WAL / FTS5
+-> batch query
+-> typed relation traversal
+-> exact Hodge / observer probe
+```
+
+This changes retrieval speed and precision only. It does **not** change the mathematical authority boundary.
+
+```text
+SOURCE_TEXT != VERIFIED_CLAIM
+RELATION_TRAVERSAL != EVIDENCE_TRANSFER
+SEARCH_HIT != HODGE_EVIDENCE
+```
