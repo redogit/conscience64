@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'public-testbed/**'
+      - 'play/musilanguage/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
@@ -48,7 +49,7 @@ jobs:
           d=json.loads(Path('PUBLIC_TESTBED_APPROVAL.json').read_text(encoding='utf-8'))
           assert d.get('schema') == 'redogit/public-testbed-approval/v1'
           assert d.get('approved') is True
-          assert d.get('scope') == 'public-testbed-only'
+          assert d.get('scope') == 'public-testbed-plus-musilanguage'
           assert d.get('issue') == 166
           review=d.get('review',{})
           for key in (
@@ -60,7 +61,7 @@ jobs:
           ):
               assert review.get(key) is True, key
           assert d.get('commercial_license_granted') is False
-          print('PASS public-testbed-only scope authorization')
+          assert '/play/musilanguage/' in d.get('authorized_routes',[])\n          print('PASS public-testbed + curated Musilanguage scope authorization')
           PY
 
       - name: Verify isolated projection contract
@@ -69,7 +70,7 @@ jobs:
           node tools/check_pages_sync.mjs
           node tools/check-public-testbed.mjs --revision "$GITHUB_SHA"
 
-      - name: Build exact public-testbed projection
+      - name: Build exact curated public projection
         shell: bash
         run: |
           set -euo pipefail
@@ -79,7 +80,9 @@ jobs:
           test -f "$OUT/projection-manifest.json"
           test ! -e "$OUT/README.md"
           test ! -e "$OUT/research"
-          test ! -e "$OUT/play"
+          test -f "$OUT/play/musilanguage/index.html"
+          test ! -e "$OUT/play/index.html"
+          test ! -e "$OUT/play/mmo"
           echo "PROJECTION_DIR=$OUT" >> "$GITHUB_ENV"
 
       - name: Publish projection tree with rollback lineage
@@ -100,10 +103,10 @@ jobs:
           git add -A
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Publish public test bed from ${GITHUB_SHA}"
+          git commit -m "Publish public test bed + Musilanguage from ${GITHUB_SHA}"
           projection_commit="$(git rev-parse HEAD)"
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin HEAD:refs/heads/gh-pages
           remote_sha="$(git ls-remote origin refs/heads/gh-pages | awk '{print $1}')"
           test "$remote_sha" = "$projection_commit"
-          echo "PUBLIC_TESTBED_SYNC source=$GITHUB_SHA projection_commit=$projection_commit predecessor=$lease_sha"
+          echo "PUBLIC_PROJECTION_SYNC source=$GITHUB_SHA projection_commit=$projection_commit predecessor=$lease_sha"
