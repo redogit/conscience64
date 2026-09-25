@@ -1,10 +1,10 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "a3025af9be205c2037d7f891766d5641851c3637",
-  "source_root": "public-testbed/",
-  "publication_scope": "public-testbed-only",
+  "source_revision": "a3e6616ab16447c47628d04defad290521b45e35",
+  "source_root": "public-testbed/ + curated play/musilanguage/",
+  "publication_scope": "public-testbed-plus-musilanguage",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "64ae80bbbe5802865e21acdd015362077e4add4a28c5cf13e7d8a4895bb988ca",
+  "projection_sha256": "63e7a63f008ea78a62923e44d03db0d1623c2805aed4ddc10ec87a03c2b48a90",
   "files": [
     {
       "path": "app.js",
@@ -20,9 +20,51 @@
     },
     {
       "path": "index.html",
-      "bytes": 5633,
-      "sha256": "8853912caf401780433eefd766fa2858570642a3e9d4cb9816e423ce933540bd",
+      "bytes": 6089,
+      "sha256": "0d03438cdb924f0ce45cd68a750e60788db8aaddbbee97b319f8109d7895b3c9",
       "source": "public-testbed/site/index.html"
+    },
+    {
+      "path": "play/musilanguage/engine.js",
+      "bytes": 24031,
+      "sha256": "d8c9e2589c4198918d9a1d96261b91273c5e61c4402bc52f9989a62a9ad4c269",
+      "source": "play/musilanguage/engine.js"
+    },
+    {
+      "path": "play/musilanguage/index.html",
+      "bytes": 16721,
+      "sha256": "40ce6cb09fe320b314dff92afe12359aa309b4269c9a11ab099446af89254082",
+      "source": "play/musilanguage/index.html"
+    },
+    {
+      "path": "play/musilanguage/listener-floats.js",
+      "bytes": 4220,
+      "sha256": "acdc2a6af567cfe95654995f66b0895b4c39d59f66de793a3d7fe64969c6c876",
+      "source": "play/musilanguage/listener-floats.js"
+    },
+    {
+      "path": "play/musilanguage/music64.js",
+      "bytes": 10357,
+      "sha256": "7902e56af03820b5723ce66ca2b8e5481f86af73aa2280829e55c7bbb208657f",
+      "source": "play/musilanguage/music64.js"
+    },
+    {
+      "path": "play/musilanguage/style-profiles.js",
+      "bytes": 9417,
+      "sha256": "be5efaccc1709e19ae18d7c258b7523c325e0ece23acd5756976fdd0bad8dc70",
+      "source": "play/musilanguage/style-profiles.js"
+    },
+    {
+      "path": "play/musilanguage/utf8-space.js",
+      "bytes": 3466,
+      "sha256": "2ec64ccd0b2364a5002c287ae7035089437115724a9040597998a6895ada4c71",
+      "source": "play/musilanguage/utf8-space.js"
+    },
+    {
+      "path": "play/musilanguage/word-forge.js",
+      "bytes": 17436,
+      "sha256": "93a16e854265b2876db2ab6298838fcbf9902d901957aa78101130362862b200",
+      "source": "play/musilanguage/word-forge.js"
     },
     {
       "path": "s1-models/index.html",
@@ -38,14 +80,15 @@
     },
     {
       "path": "testbed.json",
-      "bytes": 9805,
-      "sha256": "0d99faae9e7a3fe20c79c604234c9898a89eb70e9b39e61a9b141cd1fd972798",
+      "bytes": 12247,
+      "sha256": "9448f1ab04874164f96558e7ebc9e31f0e72ee36f770d336327342fcfef5b6ad",
       "source": "public-testbed/testbed.json"
     }
   ],
   "boundaries": [
     "CONSCIENCE64_REPOSITORY != PUBLIC_TESTBED_PROJECTION",
-    "PUBLIC_TESTBED != WHOLE_REPOSITORY",
+    "PUBLIC_TESTBED_PLUS_MUSILANGUAGE != WHOLE_REPOSITORY",
+    "MUSILANGUAGE_PUBLIC != WHOLE_PLAY",
     "PUBLIC_EXPERIMENT != VERIFIED_TRUTH",
     "PRIVATE SOURCE MUST NOT PROPAGATE"
   ]
