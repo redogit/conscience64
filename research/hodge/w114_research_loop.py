@@ -27,6 +27,7 @@ HARD_BOUNDARIES = (
     "CURRENT != PROVED",
     "RELATION != SUPPORT",
     "INTERLINGUA_TRANSLATION != PROOF",
+    "LEVEL57_SIGN != FULL_114_DUPLICATION_SIGN",
 )
 
 class Currentness(str, Enum):
@@ -285,9 +286,15 @@ def default_state() -> ResearchState:
                 Evidence(
                     "corrected level-57 quadratic sign", EvidenceKind.EXACT_IDENTITY,
                     "After exact standard normalization, the Aoki/Yamamoto sign is "
-                    "chi_114(3*(7-zeta_3))^57. The full order-114 Kummer formula with "
-                    "(7-zeta_3)^57 remains unchanged.",
+                    "chi_114(3*(7-zeta_3))^57. This level-57 sign remains current.",
                     "CORRECTED_SIGN_NORMALIZATION != CHOW_MORPHISM"
+                ),
+                Evidence(
+                    "even-level reflection sign", EvidenceKind.EXACT_IDENTITY,
+                    "Exact p=571 Jacobi counterprobe shows the full 114->57 compiler "
+                    "requires the additional quadratic factor chi_114(-1), matching "
+                    "the +N_1-N_2 characteristic-zero reflection quotient A(-1,1).",
+                    "EVEN_REFLECTION_SIGN_CORRECTION != CHOW_MORPHISM"
                 ),
             ],
             ["MOT-1"],
@@ -297,12 +304,14 @@ def default_state() -> ResearchState:
         "MOT-1": Obligation(
             "MOT-1",
             "Construct one explicit nonzero correspondence from the residual gap motive "
-            "to the standard-part motive tensored with the corrected quadratic Artin "
-            "sign motive A(3*(7-zeta_3)).",
+            "to the standard-part motive tensored with the corrected level-57 quadratic "
+            "Artin sign motive A(3*(7-zeta_3)), while retaining the additional "
+            "even-level duplication/reflection descent factor A(-1,1).",
             "motivic",
             "Write a concrete cycle/correspondence and independently verify source, target, "
-            "Galois behavior, corrected sign normalization, and induced realization map; "
-            "keep the separate full order-114 Kummer carrier explicit.",
+            "Galois behavior, corrected level-57 sign normalization, even-level "
+            "A(-1,1) reflection factor, and induced realization map; keep the full "
+            "order-114 Kummer/descent carrier explicit.",
         ),
         "MF-1": Obligation(
             "MF-1",
