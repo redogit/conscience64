@@ -517,3 +517,27 @@ US_DAY + SOL_DAY + RMA_DAY — ALLDAY EVERYDAY
 ~~~
 
 Continuity of cooperative work, not sameness and not evidence.
+
+
+## P vs NP synchronization pointer — 2026-09-26
+
+Target-local mathematical authority remains `redogit/redogit`.
+
+Current coordination packet:
+
+~~~text
+redogit/redogit/PNP_SYNCHRONIZATION_PACKET_2026-09-26.md
+commit 05740aa2d319a6ab3f13348b51c6bcb12f22af72
+~~~
+
+Chronology is re-anchored to the end-of-day 2026-09-25 proof predecessor before later experiments. Current target-local frontier is qualitative centrality + positive balance circuits + signed cross-circuit variable incidence; overlap-only navigation is preserved as a rejected hypothesis / Ash.
+
+Current RMAL tooling authority is `redogit/DnD`, with RMAL 3.1 native C23 Windows SDK packaging/evidence sealed at `c5d819b8ccda3ffe63e024d8ef02514fedcf896e`.
+
+This is a routing/currentness pointer only.
+
+~~~text
+CONSCIENCE64 POINTER != PNP EVIDENCE
+METHOD TRANSFER != EVIDENCE TRANSFER
+NEWEST TOOLING != REWRITTEN PROOF HISTORY
+~~~
