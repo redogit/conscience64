@@ -1,6 +1,6 @@
 {
-  "schema": "cooperative-field/v2",
-  "date": "2026-09-20",
+  "schema": "cooperative-field/v3",
+  "date": "2026-09-26",
   "repository": "redogit/conscience64",
   "root": "research/cooperative-field",
   "status": "CURRENT_LOCAL_WORDING_AUTHORITY",
@@ -39,6 +39,11 @@
     {
       "path": "COMPANIONS.md",
       "role": "live companion registry and excellent skills",
+      "currentness": "CURRENT_CANONICAL"
+    },
+    {
+      "path": "AGENT_SKILL_REGISTRY.md",
+      "role": "single current agent/skill routing registry; installed workflow references + project-local Society skills + current research-method layer",
       "currentness": "CURRENT_CANONICAL"
     },
     {
@@ -193,6 +198,26 @@
       "IMPROVEMENT != VALIDATION",
       "HELP != CONTROL",
       "CAPABILITY != PERMISSION"
+    ]
+  },
+  "agent_skill_routing": {
+    "authority": "AGENT_SKILL_REGISTRY.md",
+    "installed_workflows": "load current installed plugin/library versions at execution time; do not vendor/copy generic Mathbox or Superpowers skill bodies",
+    "project_local_skills": [
+      "../../skills/recover-bound/SKILL.md",
+      "../../skills/build-test/SKILL.md",
+      "../../skills/review-admit/SKILL.md"
+    ],
+    "predecessor_surfaces": [
+      "../../skills/README.md",
+      "../../skills/SOCIETY.md"
+    ],
+    "rules": [
+      "ONE CURRENT GROUPING != ONE AGENT",
+      "SKILL != AUTHORITY",
+      "AGENT != EVIDENCE",
+      "PARALLEL EXECUTION != INDEPENDENT EVIDENCE",
+      "GENERATION != VERIFICATION != ADMISSION"
     ]
   }
 }
