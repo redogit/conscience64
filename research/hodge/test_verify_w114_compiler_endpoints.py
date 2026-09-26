@@ -9,7 +9,7 @@ class CompilerEndpointTests(unittest.TestCase):
     def test_duplication_word(self):
         x=m.duplication_check()
         self.assertEqual(x["chi_114_2_exponent"],100)
-        self.assertEqual(x["word"],"D2_7 + D2_22 - D2_23 - D2_56 + N_1 - N_2")
+        self.assertEqual(x["word"],"D2_7 + D2_22 - D2_23 - D2_56 + N_1 - N_2")\n        self.assertEqual(x["even_reflection_factor"],"A(-1,1)")\n        self.assertEqual(x["reflection_quadratic_parity"],1)
     def test_corrected_artin_target(self):
         x=m.artin_target_check()
         self.assertEqual(x["corrected_factorization"]["3"],60)
