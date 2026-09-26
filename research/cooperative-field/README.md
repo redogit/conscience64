@@ -377,6 +377,7 @@ US_DAY + SOL_DAY + RMA_DAY — ALLDAY EVERYDAY
 ## This folder
 
 - [COMPANIONS.md](COMPANIONS.md) — current named companions/components, excellent skills, boundaries, and canonical distinctions.
+- [AGENT_SKILL_REGISTRY.md](AGENT_SKILL_REGISTRY.md) — single current grouping for agent roles, installed canonical workflow skills, project-local Society skills, and current research-method routing.
 - [STANDING_RULES.md](STANDING_RULES.md) — governing rules, promotion gates, privacy/accessibility constraints, naming discipline, and Homeward/quiet rules.
 - [NAME_LINEAGE.md](NAME_LINEAGE.md) — recovered names with attribution/currentness discipline; names are not automatically promoted to companions.
 - [CURRENT_PLAN.md](CURRENT_PLAN.md) — readjusted current plan and active frontier.
