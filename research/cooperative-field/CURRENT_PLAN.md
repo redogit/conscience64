@@ -541,3 +541,30 @@ CONSCIENCE64 POINTER != PNP EVIDENCE
 METHOD TRANSFER != EVIDENCE TRANSFER
 NEWEST TOOLING != REWRITTEN PROOF HISTORY
 ~~~
+
+
+## P vs NP bounded handoff 002 — 2026-09-26
+
+Target-local successor:
+
+~~~text
+redogit/redogit/PNP_SYNCHRONIZATION_HANDOFF_002_2026-09-26.md
+commit 76e5f289a5a9e967f57f4499989ddfba12cda1c8
+~~~
+
+Consequential method/currentness delta only:
+
+- positive balance circuits are individually polynomially decidable under the circuit promise;
+- cross-circuit tree composition must carry projected satisfying relations, not local SAT bits;
+- logarithmic exact relation boundaries remain a scoped polynomial terminal;
+- circuit-overlap-only and universal compact-interface assumptions are Ash;
+- beta-acyclicity feeds the existing non-increasing DP rule rather than adding a new layer;
+- next one-degree test is the autarky-reduction/object-removal seam against the current normalization fixed point.
+
+No P-vs-NP mathematical evidence is transferred into Conscience64.
+
+~~~text
+CONSCIENCE64 POINTER != PNP EVIDENCE
+HANDOFF != AUTHORITY_TRANSFER
+NO NEW METHOD LAYER REQUIRED
+~~~
