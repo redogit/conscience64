@@ -568,3 +568,29 @@ CONSCIENCE64 POINTER != PNP EVIDENCE
 HANDOFF != AUTHORITY_TRANSFER
 NO NEW METHOD LAYER REQUIRED
 ~~~
+
+
+## P vs NP bounded handoff 003 — seam separation / correction-set object
+
+Target-local mathematical successor:
+
+~~~text
+redogit/redogit/PNP_SYNCHRONIZATION_HANDOFF_003_2026-09-26.md
+commit 458861465a08e21dc448625bbc5d64ed74859f4d
+~~~
+
+Consequential currentness delta only:
+
+- smallest fully parent-valid rho-identical / Boolean-different pair found;
+- exact hidden fiber coordinate identified by E' - E = A_V T;
+- first witness is normalizer-visible through blocked/cheap resolution structure;
+- exact Boolean boundary object is rescue-set / correction-set / MUS-transversal structure;
+- positive-circuit and interface lines now converge on higher-deficiency MUS compatibility;
+- current hard question: hard-shear existence after normalization and polynomial MUS signature.
+
+No P-vs-NP evidence is transferred into Conscience64.
+
+~~~text
+CONSCIENCE64 POINTER != PNP EVIDENCE
+METHOD TRANSFER != EVIDENCE TRANSFER
+~~~
