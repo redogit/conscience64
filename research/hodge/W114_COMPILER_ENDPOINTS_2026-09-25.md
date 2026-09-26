@@ -119,19 +119,42 @@ to the exponent of (chi_{114}(2)).
 
 This is the exact duplication compiler edge.
 
-## 3. Corrected complete finite Artin target
+## 3. Forward-corrected complete finite Artin target
 
-The exact historical finite twist was
+The pre-2026-09-26 compiler packet recorded the finite twist
 
 [
 A(2,100)otimes A(3,3)otimes A(19,38)otimes A(q,57),
 qquad q=7-zeta_3.
 ]
 
-The later sign-normalization repair proved that the load-bearing quadratic sign is
-(A(3q,57)), not (A(q,57)).
+The level-57 sign-normalization repair remains valid: the Aoki/Yamamoto gap sign is
 
-Using Kummer-motive multiplicativity,
+[
+A(3q,57)=A(3(7-zeta_3),57).
+]
+
+However, the exact (114	o57) word also contains the even-level reflection quotient
+
+[
++N_1-N_2.
+]
+
+A characteristic-zero Fermat reflection contributes the Kummer factor (A(-1,a)).
+Therefore the signed quotient contributes
+
+[
+A(-1,1)otimes A(-1,2)^{ee}=A(-1,1)
+]
+
+on the quadratic quotient. This factor was invisible in the (p=229) calibration
+because (chi_{114}(-1)=1) there.
+
+The committed exact (p=571) Jacobi-sum counterprobe detects precisely this missing
+factor: the old global twist is off by (-1=chi_{114}(-1)), while adding
+(chi_{114}(-1)) closes the discrepancy in two independent cyclotomic reductions.
+
+Using Kummer-motive multiplicativity for the already-corrected level-57 part,
 
 [
 A(3,60)otimes A(3q,57)
@@ -143,23 +166,30 @@ A(3,3)otimes A(q,57),
 
 because (117equiv3pmod{114}).
 
-Therefore the same exact full finite twist has the corrected factorization
+Hence the current full finite compiler target is
 
 [
 oxed{
 A_{m full}
 =
-A(2,100)
-otimes A(3,60)
-otimes A(19,38)
-otimes A(3(7-zeta_3),57).
+A(-1,1)otimes
+A(2,100)otimes
+A(3,60)otimes
+A(19,38)otimes
+A(3(7-zeta_3),57).
 }
 ]
 
-The last factor is quadratic. The preceding three are the standard
-(2/3/19) Kummer/Artin sector.
+The factor (A(3(7-zeta_3),57)) is the corrected level-57 gap sign.
+The additional (A(-1,1)) belongs specifically to the even-level (114	o57)
+reflection/descent seam.
 
-Thus the compiler target is now completely named.
+Over a base containing a (114)-th root of (-1) (for example after adjoining
+(zeta_{228})) the (A(-1,1)) factor trivializes. It must nevertheless remain
+explicit in the current MOT-1 descent/Galois bookkeeping.
+
+Thus the compiler target is now completely named subject to the remaining
+composition audit.
 
 ## 4. Compiler state
 
@@ -200,6 +230,7 @@ That is now the single load-bearing construction.
 ```text
 EXPLICIT_SOURCE_AND_TARGET != COMPOSED_CHOW_CORRESPONDENCE
 EXACT_DUPLICATION_WORD != COMPILED_MOTIVE_MAP
+LEVEL57_SIGN != FULL_114_DUPLICATION_SIGN
 ARTIN_TARGET_EXPLICIT != MOT_1_CLOSED
 MOT_1 REMAINS OPEN
 ```
