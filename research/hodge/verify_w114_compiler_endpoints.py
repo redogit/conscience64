@@ -65,6 +65,9 @@ def duplication_check():
       "free_vector":clean(lhs),
       "word":"D2_7 + D2_22 - D2_23 - D2_56 + N_1 - N_2",
       "chi_114_2_exponent":exponent_2,
+      "even_reflection_factor":"A(-1,1)",
+      "reflection_exponent_mod114":(1-2)%114,
+      "reflection_quadratic_parity":(1-2)%2,
     }
 
 def plane_check():
