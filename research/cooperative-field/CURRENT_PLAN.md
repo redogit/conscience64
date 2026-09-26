@@ -594,3 +594,28 @@ No P-vs-NP evidence is transferred into Conscience64.
 CONSCIENCE64 POINTER != PNP EVIDENCE
 METHOD TRANSFER != EVIDENCE TRANSFER
 ~~~
+
+
+## P vs NP bounded handoff 004 — positive-circuit signature quotient
+
+Target-local mathematical successor:
+
+~~~text
+redogit/redogit/PNP_SYNCHRONIZATION_HANDOFF_004_2026-09-26.md
+commit 04e4bcf8a567ceeede3b7478a474d12e8b210acc
+~~~
+
+Consequential currentness delta only:
+
+- selected positive-circuit cover is insufficient as a complete correction signature;
+- full positive-circuit hit signature is an exact complete quotient for correction-set status;
+- signature equality/difference is polynomially queryable using the nonnegative kernel cone;
+- boundary rescue can be closed polynomially to the union of surviving positive circuits;
+- unresolved work is evaluating SAT/sign-centrality on that normalized surviving circuit core.
+
+No P-vs-NP mathematical evidence is transferred into Conscience64.
+
+~~~text
+CONSCIENCE64 POINTER != PNP EVIDENCE
+METHOD TRANSFER != EVIDENCE TRANSFER
+~~~
