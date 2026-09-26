@@ -94,28 +94,28 @@ def plane_check():
     }
 
 def artin_target_check():
-    # Historical exact full twist:
-    # A(2,100) A(3,3) A(19,38) A(q,57), q=7-zeta_3.
-    # Corrected split uses A(3q,57) and shifts the 3 exponent by -57.
-    old={"2":100,"3":3,"19":38,"q":57}
-    corrected={"2":100,"3":60,"19":38,"3q":57}
-    # A(3,60) tensor A(3q,57)
-    # = A(3,60+57) tensor A(q,57)
-    # = A(3,3) tensor A(q,57) mod 114.
+    # The pre-2026-09-26 full twist omitted the even-level N_1-N_2
+    # Kummer(-1) descent factor. verify_w114_even_reflection_sign.py
+    # rejects that global identity at p=571 while preserving p=229.
+    historical={"2":100,"3":3,"19":38,"q":57}
+    level57_corrected={"2":100,"3":60,"19":38,"3q":57}
+    forward_corrected={"-1":1,"2":100,"3":60,"19":38,"3q":57}
     if (60+57)%114 != 3: raise AssertionError
+    if (1-2)%2 != 1: raise AssertionError
     return {
-      "historical_exact_exponents":old,
-      "corrected_factorization":corrected,
-      "identity":"A(3,60) tensor A(3q,57) = A(3,3) tensor A(q,57)",
+      "historical_pre_even_reflection_correction":historical,
+      "level57_sign_corrected_factorization":level57_corrected,
+      "forward_corrected_factorization":forward_corrected,
+      "level57_identity":"A(3,60) tensor A(3q,57) = A(3,3) tensor A(q,57)",
+      "even_reflection_identity":"A(-1,1) tensor A(-1,2)^vee = A(-1,1) on the quadratic quotient",
       "q":"7-zeta_3",
-      "quadratic_factor":"A(3*(7-zeta_3),57)",
-      "quadratic_order":2,
+      "level57_quadratic_factor":"A(3*(7-zeta_3),57)",
+      "even_level_quadratic_factor":"A(-1,1)",
       "full_target":(
-        "A(2,100) tensor A(3,60) tensor A(19,38) "
+        "A(-1,1) tensor A(2,100) tensor A(3,60) tensor A(19,38) "
         "tensor A(3*(7-zeta_3),57)"
       ),
     }
-
 def run():
     return {
       "schema":"conscience64/w114-compiler-endpoints/v1",
