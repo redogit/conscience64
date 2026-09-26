@@ -194,34 +194,37 @@ At this prime:
 
 So the finite-prime counterprobe agrees with the exact cyclotomic identity.
 
-## 6. What survives unchanged
+## 6. What survives this correction — and the later 2026-09-26 refinement
 
-The correction does **not** invalidate the preserved full order-114
-Hecke/Kummer expression
+The 2026-09-25 correction established the **level-57** identity
 
-\[
-\boxed{
-\varepsilon_{\rm full}
-=
-\chi_{114}(2)^{100}
-\chi_{114}(3)^3
-\chi_{114}(19)^{38}
-\chi_{114}(7-\zeta_3)^{57}.
-}
-\]
+`epsilon_Aoki = chi_114(3*(7-zeta_3))^57`.
 
-It only separates that expression into standard normalization and
-the Aoki/Yamamoto quadratic sign:
+That result remains current.
 
-\[
-\chi(3)^3\chi(19)^{38}\chi(q)^{57}
-=
-\underbrace{\chi(3q)^{57}}_{\text{gap sign}}
-\underbrace{\chi(3)^{60}\chi(19)^{38}}_{\text{standard normalization}}.
-\]
+At the time of this note, the full `114 -> 57` finite twist was still carried as
 
-So the old arithmetic carrier remains useful; its interpretation is corrected.
+`chi_114(2)^100 * chi_114(3)^3 * chi_114(19)^38 * chi_114(7-zeta_3)^57`.
 
+A later exact `p=571` counterprobe, recorded in
+`W114_EVEN_REFLECTION_SIGN_CORRECTION_2026-09-26.md`, shows that this
+**full even-level formula was missing one descent factor**:
+
+`chi_114(-1)`.
+
+Thus the current full `114 -> 57` compiler twist is
+
+`chi_114(-1) * chi_114(2)^100 * chi_114(3)^3 * chi_114(19)^38 * chi_114(7-zeta_3)^57`.
+
+The new factor comes from the even-level `+N_1-N_2` reflection seam and is
+separate from the level-57 Aoki/Yamamoto gap sign.
+
+Accordingly the level-57 factorization
+
+`chi(3)^3 * chi(19)^38 * chi(q)^57 = chi(3q)^57 * chi(3)^60 * chi(19)^38`
+
+is preserved exactly, while the complete `114 -> 57` compiler carries the
+additional `A(-1,1)` descent factor.
 ## 7. MOT-1 impact
 
 The load-bearing residual Artin sign in the standard-normalized level-57 gap is now
@@ -248,6 +251,7 @@ MOT-1 remains open.
 
     CORRECTED_SIGN_NORMALIZATION != CHOW_CORRESPONDENCE
     RING_CLASS_FIELD_IDENTIFICATION != HODGE_PROOF
+    LEVEL57_SIGN != FULL_114_DUPLICATION_SIGN
     FULL_ORDER_114_KUMMER_FORMULA != QUADRATIC_GAP_SIGN_ALONE
     STANDARD_RELATION_EQUIVALENCE != EVIDENCE_TRANSFER
     HISTORICAL_PACKET_PRESERVED != HISTORICAL_CLAIM_STILL_CURRENT
