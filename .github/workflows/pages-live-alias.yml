@@ -10,6 +10,8 @@ on:
       - 'public-testbed/**'
       - 'play/musilanguage/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'PUBLIC_DREAM_ROUTES_APPROVAL.json'
+      - 'tools/add-dream-pages.py'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
       - 'tools/check-public-testbed-edge.mjs'
@@ -51,6 +53,7 @@ jobs:
           node --check tools/check-public-testbed-edge.mjs
           node tools/check_pages_sync.mjs
           node tools/check-public-testbed.mjs --revision "$EXPECTED_SOURCE_SHA"
+          python3 tools/add-dream-pages.py --test
 
       - name: Rebuild exact expected projection and compare gh-pages tree
         if: ${{ github.event_name == 'workflow_run' }}
@@ -59,6 +62,7 @@ jobs:
           set -euo pipefail
           EXPECTED="$RUNNER_TEMP/expected-public-testbed"
           node tools/build-public-testbed.mjs --root . --out "$EXPECTED" --revision "$EXPECTED_SOURCE_SHA"
+          python3 tools/add-dream-pages.py --out "$EXPECTED"
 
           git fetch --depth=1 origin gh-pages:refs/remotes/origin/gh-pages
           published_sha="$(git rev-parse refs/remotes/origin/gh-pages)"
@@ -96,3 +100,7 @@ jobs:
           done
           test "$ok" = true
           echo "PASS live public test bed + Musilanguage source=$EXPECTED_SOURCE_SHA projection_commit=$PUBLISHED_PROJECTION_SHA"
+
+      - name: Verify public Dream app and About Me announcement over anonymous HTTPS
+        if: ${{ github.event_name == 'workflow_run' }}
+        run: python3 tools/add-dream-pages.py --live
