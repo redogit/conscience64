@@ -7,6 +7,8 @@ on:
       - 'public-testbed/**'
       - 'play/musilanguage/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'PUBLIC_DREAM_ROUTES_APPROVAL.json'
+      - 'tools/add-dream-pages.py'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
       - 'tools/check-public-testbed-edge.mjs'
@@ -65,11 +67,12 @@ jobs:
           print('PASS public-testbed + curated Musilanguage scope authorization')
           PY
 
-      - name: Verify isolated projection contract
+      - name: Verify isolated projection contract and separate Dream authorization
         run: |
           set -euo pipefail
           node tools/check_pages_sync.mjs
           node tools/check-public-testbed.mjs --revision "$GITHUB_SHA"
+          python3 tools/add-dream-pages.py --test
 
       - name: Build exact curated public projection
         shell: bash
@@ -84,6 +87,8 @@ jobs:
           test -f "$OUT/play/musilanguage/index.html"
           test ! -e "$OUT/play/index.html"
           test ! -e "$OUT/play/mmo"
+          python3 tools/add-dream-pages.py --out "$OUT"
+          test ! -e "$OUT/about/index.html"
           echo "PROJECTION_DIR=$OUT" >> "$GITHUB_ENV"
 
       - name: Publish projection tree with rollback lineage
