@@ -1,10 +1,10 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "49fbedea159d7f748087ee5f76f10510b6e3c39a",
+  "source_revision": "c71b512505ddc2757ec1f7ee88996fa8f754e819",
   "source_root": "public-testbed/ + curated play hub + curated play/musilanguage/ + curated play/neon-veil/",
   "publication_scope": "public-testbed-plus-curated-play",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "c1ec6333cae60e37bd40b645d968eb0229ab4fe62cda54b5748419634a9e4d74",
+  "projection_sha256": "722e89d9824c0f3ed739080929f0b6b7d7af97fcf78a06ff50762ddd2523115c",
   "files": [
     {
       "path": "app.js",
