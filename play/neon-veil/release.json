@@ -1,6 +1,9 @@
 {
   "schema": "neon-veil/public-release/v1",
-  "release": "2026-09-29-public-preview",
+  "release": "2026-09-29-public-release-r11",
+  "channel": "public-release",
+  "central_play_route": "https://redogit.github.io/conscience64/play/",
+  "release_route": "https://redogit.github.io/conscience64/play/neon-veil/",
   "source_checkpoint": "NEON_VEIL_T05_RECEIPT_SAFETY_CHECKPOINT.zip",
   "source_checkpoint_sha256": "8d26afb7e271398ee2f01586db034b39e8d4a9357bfc996246245eabb9335517",
   "public_backend": false,

@@ -1,6 +1,6 @@
 # Conscience64 / Play
 
-> **Current publication state — 2026-09-29:** the repository-wide Play surface remains non-public on GitHub Pages except for explicitly owner-authorized curated routes. The current routes are Musilanguage Studio at `play/musilanguage/` and the NEON//VEIL public release hub at `play/neon-veil/`. The Pages builder projects only their allowlisted bytes. Existing MIT rights for material already covered by the scoped `play/` license remain intact; the downloadable NEON//VEIL game packages carry their own included license notice and are not relicensed merely by being distributed from this directory. See [../COMMERCIAL_ACCESS_POLICY.md](../COMMERCIAL_ACCESS_POLICY.md).
+> **Current publication state — 2026-09-29:** the repository-wide Play source remains non-public on GitHub Pages except for explicitly owner-authorized curated routes. The Pages projection now includes a dedicated central hub at `/play/`, sourced only from `play/public-index.html`, plus Musilanguage Studio at `/play/musilanguage/` and the NEON//VEIL public release at `/play/neon-veil/`. The repository's broader `play/index.html` and other Play source remain outside the projection. Existing MIT rights for material already covered by the scoped `play/` license remain intact; the downloadable NEON//VEIL game packages carry their own included license notice and are not relicensed merely by being distributed from this directory. See [../COMMERCIAL_ACCESS_POLICY.md](../COMMERCIAL_ACCESS_POLICY.md).
 
 
 Free browser play and creative tools built from ongoing ideas. Open the [project hub](https://redogit.github.io/conscience64/play/).
@@ -23,7 +23,7 @@ See the full [Grow-With-You Game Contract](GROW_WITH_YOU_GAME_CONTRACT.md).
 
 | Project | Use it for | Current boundary |
 | --- | --- | --- |
-| [NEON//VEIL](https://redogit.github.io/conscience64/play/neon-veil/) | Download the current cyber-fantasy public preview for your system and play solo or join an explicitly trusted LAN host | GitHub Pages is the release/launcher hub, not a public simulation server; the current world remains local-first and feature breadth is still frozen |
+| [NEON//VEIL](https://redogit.github.io/conscience64/play/neon-veil/) | Download the current cyber-fantasy public release for your system and play solo or join an explicitly trusted LAN host | GitHub Pages is the release/launcher hub, not a public simulation server; the current world remains local-first and feature breadth is still frozen |
 | [Conscience64 MMO RPG](https://redogit.github.io/conscience64/play/mmo/) | Live in a grounded world of neighborhoods, work, travel, games, people and real-sky observation before monsters, Fuzzball and impossible events intrude | Local-first MMO-world prototype today; networked MMO and real-world prize redemption are not yet active |
 | [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Explore the earlier founding shard while the grounded successor evolves | Preserved predecessor; shared networking remains gated |
 | [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Cross strange regions, fight monsters, collect Echo Shards, follow story signals, and find Fuzzball | Browser-game prototype; world and progression remain bounded to implemented behavior |
