@@ -26,3 +26,9 @@ The intended dedicated Dream-To-Action Pages site is not enabled. The profile re
 The source sync and live reconstruction both apply this same addition. Live checks still probe the original forbidden routes and then anonymously request each new URL, verify exact source bytes and the new provenance manifest, and record status/time. A source commit alone does not establish successful live delivery.
 
 To update a release, explicitly review and advance the source commit/hash pins and source approval together. Do not silently mirror a moving branch or collect visitor records. A later change to an About Me source file does not automatically change the pinned public copy.
+
+## September 29 profile-source advance
+
+The owner requested a bounded P-versus-NP Step 11 update to GitHub About Me and related sections. This publication pins the exact reviewed profile source `redogit/redogit@f938a81f02abe94c8ee25bc06995103b475767cd`, with `docs/about.html` blob `88ba3daa2d4b716f2ab1086f95c6bfbc6fa0ce8c` and `docs/recent-work.html` blob `3c29b77dd353165125521c316eaa711a3a354a3e`. The new page sections link to the scoped [Dean fixed-list C5 proof receipt](https://github.com/redogit/redogit/blob/f938a81f02abe94c8ee25bc06995103b475767cd/PNP_DEAN_FIXED_LIST_C5_CHAIN_2026-09-29.md). They preserve the historical Dream announcement and purpose, the application release hash, and the separate private-route exclusions. The older source revisions above remain provenance, not the current pin.
+
+Source pinning is a publication request, not proof of delivered bytes. The sync and live checks must verify the projection before it is called live.
