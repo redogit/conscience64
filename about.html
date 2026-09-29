@@ -23,7 +23,7 @@ blockquote{margin:18px 0;padding:2px 0 2px 18px;border-left:4px solid var(--fire
 <div><span class="badge">REDOGIT</span><span class="badge">ABOUT ME</span><span class="badge">2026-09-29</span></div>
 <h1>Do it.<br>Redo it <span class="fire">better.</span></h1>
 <p class="lede">I am a data specialist, reverse engineer, builder, and mostly a guy who keeps taking things apart until I can see what actually has to remain true. I care about preserving the thing, the reason, the method, the failure, and the way back—not just getting a pretty result once.</p>
-<nav><a href="#current-work">Current work</a><a href="#dean-fixed-list-progress">Dean list check</a><a href="#dean-cycle-discovery">Certificate search</a><a href="#announcements">Announcements</a><a href="#dream-to-action">Dream to Action</a><a href="https://redogit.github.io/redogit/">Terms first</a><a href="https://redogit.github.io/redogit/recent-work.html">Recent work</a><a href="https://redogit.github.io/redogit/condensed-wisdom.html">Condensed wisdom</a><a href="https://redogit.github.io/redogit/live-design.html">P vs NP live design</a><a href="https://redogit.github.io/conscience64/play/musilanguage/">Musilanguage Studio</a></nav>
+<nav><a href="#current-work">Current work</a><a href="#dean-fixed-list-progress">Dean list check</a><a href="#dean-cycle-discovery">Certificate search</a><a href="#dean-clique-overlap">Overlap seam</a><a href="#announcements">Announcements</a><a href="#dream-to-action">Dream to Action</a><a href="https://redogit.github.io/redogit/">Terms first</a><a href="https://redogit.github.io/redogit/recent-work.html">Recent work</a><a href="https://redogit.github.io/redogit/condensed-wisdom.html">Condensed wisdom</a><a href="https://redogit.github.io/redogit/live-design.html">P vs NP live design</a><a href="https://redogit.github.io/conscience64/play/musilanguage/">Musilanguage Studio</a></nav>
 </header>
 
 <section id="current-work" aria-labelledby="current-work-title">
@@ -57,6 +57,12 @@ blockquote{margin:18px 0;padding:2px 0 2px 18px;border-left:4px solid var(--fire
 <p>I can take a list of odd cycles and check it against the Dean's given edges. The counting rule has to account for every vertex: an unlisted person might still be selectable. My older spanning support-frame bound is sound with that missing condition in place.</p>
 <p>On the same five-cycle chain, one valid frame misses the NO target and another proves it. Finding a frame is not enough; I have to find one that settles the obligation and count that work. The exact search for a decisive odd-cycle list is NP-complete by a reduction from triangle partition. That is one named certificate search. It is not a proof that no other polynomial method exists. A connected chain of four-person cliques also shows where this cycle-only certificate stops.</p>
 <p><a href="https://github.com/redogit/redogit/blob/main/PNP_DEAN_CYCLE_CERTIFICATE_DISCOVERY_2026-09-29.md">Read the checker, reduction, counterexample, and claim boundary →</a></p>
+</article>
+
+<article class="card" id="dean-clique-overlap">
+<h3>P versus NP — one missing count can be the shared person</h3>
+<p>I pressed on the four-person clique chain that the cycle receipt could not settle. The clique frame proves NO at the same declared target: each group of four can keep at most one. Then I joined a clique and a triangle through one shared person. Simply adding their omission counts gave a false NO on an input that has a valid selection.</p>
+<p>The repair keeps that person's identity through both constraints and subtracts the overlap before deciding. That is the seam I was trying to find: a small carrier is useful only when it preserves the relation that makes its count sound. Clique and odd-cycle inequalities also appear in optimization and conflict scheduling; the exact [Step 13 receipt](https://github.com/redogit/redogit/blob/main/PNP_DEAN_CLIQUE_OVERLAP_2026-09-29.md) marks what transfers and what remains open.</p>
 </article>
 
 <h3>Libraries of Libraries — carry less, lose less</h3>
