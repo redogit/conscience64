@@ -9,12 +9,15 @@ on:
     paths:
       - 'public-testbed/**'
       - 'play/musilanguage/**'
+      - 'play/neon-veil/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'PUBLIC_NEON_VEIL_APPROVAL.json'
       - 'PUBLIC_DREAM_ROUTES_APPROVAL.json'
       - 'tools/add-dream-pages.py'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
       - 'tools/check-public-testbed-edge.mjs'
+      - 'tools/check-neon-veil-release.py'
       - 'tools/private-origin-boundary.mjs'
       - 'tools/check_pages_sync.mjs'
       - '.github/workflows/pages-sync.yml'
@@ -53,6 +56,7 @@ jobs:
           node --check tools/check-public-testbed-edge.mjs
           node tools/check_pages_sync.mjs
           node tools/check-public-testbed.mjs --revision "$EXPECTED_SOURCE_SHA"
+          python3 tools/check-neon-veil-release.py .
           python3 tools/add-dream-pages.py --test
 
       - name: Rebuild exact expected projection and compare gh-pages tree
@@ -81,7 +85,7 @@ jobs:
           const fs=require('node:fs');
           const manifest=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
           if(manifest.source_revision!==process.argv[3])throw new Error('projection manifest source revision mismatch');
-          if(manifest.publication_scope!=='public-testbed-plus-musilanguage')throw new Error('projection scope mismatch');
+          if(manifest.publication_scope!=='public-testbed-plus-curated-play')throw new Error('projection scope mismatch');
           console.log(`PASS exact gh-pages projection bytes source=${manifest.source_revision} projection=${manifest.projection_sha256}`);
           NODE
 
@@ -99,7 +103,7 @@ jobs:
             sleep 2
           done
           test "$ok" = true
-          echo "PASS live public test bed + Musilanguage source=$EXPECTED_SOURCE_SHA projection_commit=$PUBLISHED_PROJECTION_SHA"
+          echo "PASS live public test bed + Musilanguage + NEON//VEIL source=$EXPECTED_SOURCE_SHA projection_commit=$PUBLISHED_PROJECTION_SHA"
 
       - name: Verify public Dream app and About Me announcement over anonymous HTTPS
         if: ${{ github.event_name == 'workflow_run' }}

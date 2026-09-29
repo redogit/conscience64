@@ -6,12 +6,15 @@ on:
     paths:
       - 'public-testbed/**'
       - 'play/musilanguage/**'
+      - 'play/neon-veil/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'PUBLIC_NEON_VEIL_APPROVAL.json'
       - 'PUBLIC_DREAM_ROUTES_APPROVAL.json'
       - 'tools/add-dream-pages.py'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
       - 'tools/check-public-testbed-edge.mjs'
+      - 'tools/check-neon-veil-release.py'
       - 'tools/private-origin-boundary.mjs'
       - 'tools/check_pages_sync.mjs'
       - '.github/workflows/pages-sync.yml'
@@ -64,7 +67,15 @@ jobs:
               assert review.get(key) is True, key
           assert d.get('commercial_license_granted') is False
           assert '/play/musilanguage/' in d.get('authorized_routes',[])
-          print('PASS public-testbed + curated Musilanguage scope authorization')
+          n=json.loads(Path('PUBLIC_NEON_VEIL_APPROVAL.json').read_text(encoding='utf-8'))
+          assert n.get('schema') == 'redogit/public-play-route-approval/v1'
+          assert n.get('approved') is True
+          assert n.get('route') == '/play/neon-veil/'
+          assert n.get('public_backend_authorized') is False
+          assert n.get('commercial_license_granted') is False
+          for key in ('source_isolation_required','privacy_boundary_required','accessibility_required','network_edge_verification_required','package_hash_verification_required'):
+              assert n.get('review',{}).get(key) is True, key
+          print('PASS public-testbed + curated Musilanguage + separately authorized NEON//VEIL route')
           PY
 
       - name: Verify isolated projection contract and separate Dream authorization
@@ -72,6 +83,7 @@ jobs:
           set -euo pipefail
           node tools/check_pages_sync.mjs
           node tools/check-public-testbed.mjs --revision "$GITHUB_SHA"
+          python3 tools/check-neon-veil-release.py .
           python3 tools/add-dream-pages.py --test
 
       - name: Build exact curated public projection
@@ -85,6 +97,14 @@ jobs:
           test ! -e "$OUT/README.md"
           test ! -e "$OUT/research"
           test -f "$OUT/play/musilanguage/index.html"
+          test -f "$OUT/play/neon-veil/index.html"
+          test -f "$OUT/play/neon-veil/release.json"
+          test -f "$OUT/play/neon-veil/downloads/NEON_VEIL_WINDOWS_2026-09-29.zip"
+          test -f "$OUT/play/neon-veil/downloads/NEON_VEIL_LINUX_2026-09-29.zip"
+          test -f "$OUT/play/neon-veil/downloads/NEON_VEIL_MACOS_2026-09-29.zip"
+          test -f "$OUT/play/neon-veil/downloads/NEON_VEIL_ANDROID_2026-09-29.zip"
+          test -f "$OUT/play/neon-veil/downloads/NEON_VEIL_IPHONE_IPAD_2026-09-29.zip"
+          test ! -e "$OUT/play/neon-veil/README.md"
           test ! -e "$OUT/play/index.html"
           test ! -e "$OUT/play/mmo"
           python3 tools/add-dream-pages.py --out "$OUT"
@@ -109,7 +129,7 @@ jobs:
           git add -A
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Publish public test bed + Musilanguage from ${GITHUB_SHA}"
+          git commit -m "Publish curated public routes from ${GITHUB_SHA}"
           projection_commit="$(git rev-parse HEAD)"
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push --force-with-lease=refs/heads/gh-pages:"$lease_sha" origin HEAD:refs/heads/gh-pages
