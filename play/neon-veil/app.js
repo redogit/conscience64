@@ -1,0 +1,8 @@
+(()=>{
+'use strict';
+const links=[...document.querySelectorAll('[data-platform]')];
+function detect(){const ua=navigator.userAgent||'',p=navigator.platform||'';if(/iPhone|iPad|iPod/.test(ua))return'iphone-ipad';if(/Android/.test(ua))return'android';if(/Win/.test(p)||/Windows/.test(ua))return'windows';if(/Mac/.test(p)||/Macintosh/.test(ua))return'macos';if(/Linux/.test(p)||/Linux/.test(ua))return'linux';return''}
+const platform=detect();if(platform){const a=links.find(x=>x.dataset.platform===platform);if(a){a.classList.add('recommended');document.getElementById('recommendation').textContent='Recommended for this browser: '+a.querySelector('strong').textContent+'.';}}
+function privateHost(input){let s=input.trim();if(!s)return null;if(!/^https?:\/\//i.test(s))s='http://'+s;let u;try{u=new URL(s)}catch{return null}if(u.protocol!=='http:')return null;const port=Number(u.port||80);if(port<1024||port>65535)return null;const h=u.hostname;const ok=h==='localhost'||h==='127.0.0.1'||/^10\.(?:\d{1,3}\.){2}\d{1,3}$/.test(h)||/^192\.168\.\d{1,3}\.\d{1,3}$/.test(h)||(()=>{const m=h.match(/^172\.(\d{1,3})\.\d{1,3}\.\d{1,3}$/);return!!m&&+m[1]>=16&&+m[1]<=31})();if(!ok)return null;return u.origin+'/'}
+const form=document.getElementById('joinForm'),status=document.getElementById('joinStatus'),join=document.getElementById('joinLink');form.addEventListener('submit',e=>{e.preventDefault();const url=privateHost(document.getElementById('host').value);if(!url){join.hidden=true;join.removeAttribute('href');status.textContent='Use localhost, 127.0.0.1, or a private IPv4 address with a port from 1024 to 65535.';return}join.href=url;join.hidden=false;status.textContent='Ready: '+url+' — nothing has been contacted yet.';});
+})();

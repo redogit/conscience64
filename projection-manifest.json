@@ -1,10 +1,10 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "3ca7f28d3fee2e00caee03a6ee22ee95ec41eb5f",
-  "source_root": "public-testbed/ + curated play/musilanguage/",
-  "publication_scope": "public-testbed-plus-musilanguage",
+  "source_revision": "00525987bd25bd17f9beb52ba922cf7690c3bb87",
+  "source_root": "public-testbed/ + curated play/musilanguage/ + curated play/neon-veil/",
+  "publication_scope": "public-testbed-plus-curated-play",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "71393265188f880ac5f256786e01c9150c9c14616d20d45523392fcd479ea220",
+  "projection_sha256": "bfb37460da25ed2c8d834d3804cf5fba88ff6c613ae05b6bc7540472c31db948",
   "files": [
     {
       "path": "app.js",
@@ -67,6 +67,60 @@
       "source": "play/musilanguage/word-forge.js"
     },
     {
+      "path": "play/neon-veil/app.js",
+      "bytes": 1733,
+      "sha256": "e7439aafa179a3047cb0ecf307b860436cf1ea2e54667d4324c5e473018ddf8d",
+      "source": "play/neon-veil/app.js"
+    },
+    {
+      "path": "play/neon-veil/downloads/NEON_VEIL_ANDROID_2026-09-29.zip",
+      "bytes": 137170,
+      "sha256": "49af08b5044fbd3dea85660c1e86919f55316e1dd8a52c5ba49314e0bafaeaaa",
+      "source": "play/neon-veil/downloads/NEON_VEIL_ANDROID_2026-09-29.zip"
+    },
+    {
+      "path": "play/neon-veil/downloads/NEON_VEIL_IPHONE_IPAD_2026-09-29.zip",
+      "bytes": 8982,
+      "sha256": "efe84a5ef13e5ef4640f01a02b61c71c636bfab9561c018f8c7f3b898589ee69",
+      "source": "play/neon-veil/downloads/NEON_VEIL_IPHONE_IPAD_2026-09-29.zip"
+    },
+    {
+      "path": "play/neon-veil/downloads/NEON_VEIL_LINUX_2026-09-29.zip",
+      "bytes": 137078,
+      "sha256": "0c994d75798225573a211614400a2d4e9602bceddbbee90389884dde5841595d",
+      "source": "play/neon-veil/downloads/NEON_VEIL_LINUX_2026-09-29.zip"
+    },
+    {
+      "path": "play/neon-veil/downloads/NEON_VEIL_MACOS_2026-09-29.zip",
+      "bytes": 137654,
+      "sha256": "a0d5ec2e349bdcd15c5b32e4e1fea8b626dce8a0f3da3290d600f05cbe58d852",
+      "source": "play/neon-veil/downloads/NEON_VEIL_MACOS_2026-09-29.zip"
+    },
+    {
+      "path": "play/neon-veil/downloads/NEON_VEIL_WINDOWS_2026-09-29.zip",
+      "bytes": 137028,
+      "sha256": "36bee8ee441f461d19347a79dec552bd92c329ae0477ca1dd103ee9a17457678",
+      "source": "play/neon-veil/downloads/NEON_VEIL_WINDOWS_2026-09-29.zip"
+    },
+    {
+      "path": "play/neon-veil/index.html",
+      "bytes": 4401,
+      "sha256": "d49c790ae89e61208550321d0da717b52c539d28430a122d82df05eac1f9a842",
+      "source": "play/neon-veil/index.html"
+    },
+    {
+      "path": "play/neon-veil/release.json",
+      "bytes": 1419,
+      "sha256": "115fe9da3f50926640784a72f87665dffe8a01de7bba70fcc44965b413fe8a6a",
+      "source": "play/neon-veil/release.json"
+    },
+    {
+      "path": "play/neon-veil/style.css",
+      "bytes": 1838,
+      "sha256": "8f9f73c88f4abfc3f18f0b9ed2d33f93def33a3a9f23a66f9320c750d607002e",
+      "source": "play/neon-veil/style.css"
+    },
+    {
       "path": "s1-models/index.html",
       "bytes": 7088,
       "sha256": "88a416ae549849369ee8ab280aacfe6e92878f99270d9f7648022c61e9b01e25",
@@ -80,15 +134,17 @@
     },
     {
       "path": "testbed.json",
-      "bytes": 12247,
-      "sha256": "9448f1ab04874164f96558e7ebc9e31f0e72ee36f770d336327342fcfef5b6ad",
+      "bytes": 12534,
+      "sha256": "c15c5e4311efd9c0262a83a7d473f3dab118b587f13bc3543495c6877f5370e2",
       "source": "public-testbed/testbed.json"
     }
   ],
   "boundaries": [
     "CONSCIENCE64_REPOSITORY != PUBLIC_TESTBED_PROJECTION",
-    "PUBLIC_TESTBED_PLUS_MUSILANGUAGE != WHOLE_REPOSITORY",
+    "PUBLIC_TESTBED_PLUS_CURATED_PLAY != WHOLE_REPOSITORY",
     "MUSILANGUAGE_PUBLIC != WHOLE_PLAY",
+    "NEON_VEIL_PUBLIC != WHOLE_PLAY",
+    "PUBLIC_RELEASE != PUBLIC_AUTHORITATIVE_BACKEND",
     "PUBLIC_EXPERIMENT != VERIFIED_TRUTH",
     "PRIVATE SOURCE MUST NOT PROPAGATE"
   ]
