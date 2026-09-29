@@ -11,11 +11,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HOST = 'https://redogit.github.io/conscience64/'
 APP_COMMIT = '667e989dcad401829bb097726b3a14cc0aa90f2c'
-PROFILE_COMMIT = 'd9e6851196fbbf8cbcb7d43c19fa4737b7fa3d2d'
+PROFILE_COMMIT = '8660c1c839275e7b013a08eb9a40c0fed306bcd7'
 APP_HASH = '231fdadb14093df1028abe015f3c4d583b1031da5ae03048abff5244c3eac807'
 ITEMS = {
     'dream-to-action/index.html': (f'https://raw.githubusercontent.com/redogit/Dream-To-Action/{APP_COMMIT}/index.html', 'sha256', APP_HASH),
-    'about.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/about.html', 'git-blob', '2a6dffdf2cd2f89c87ba0255657b40d2ca0c09e5'),
+    'about.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/about.html', 'git-blob', '664005571647b5a5a5c0c0016db16db460658d66'),
     'recent-work.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/recent-work.html', 'git-blob', '3858d52acc2cf8d5acce89aa513621a730044902'),
 }
 ALLOWED = set(ITEMS) | {'dream-publication.json'}
@@ -86,7 +86,7 @@ def manifest(blobs: dict[str, bytes]) -> bytes:
         'boundary': 'This overlay is separately authorized. projection-manifest.json still describes only the original testbed/Musilanguage subprojection. Canonical source authority remains in the two source repositories. No participant or private-origin records are included.',
         'original_private_about_route': 'about/index.html remains excluded; this about.html is the explicitly selected public profile source.',
         'rights': 'No new license; source project policies still apply.',
-        'recorded_date': '2026-09-28'
+        'recorded_date': '2026-09-29'
     }
     return (json.dumps(data, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
 
