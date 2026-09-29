@@ -1,7 +1,7 @@
 # Work ↔ Conscience64 coverage bridge — 2026-09-29
 
 **Status:** navigation and discrepancy record in repository source. This file is outside the curated GitHub Pages projection.  
-**Scope checked:** Conscience64 `main` source, its published-source `gh-pages/projection-manifest.json`, and the named lines in the current Work comparison. This is not an exhaustive search of every repository, chat, or private carrier.
+**Scope checked:** Conscience64 `main` source, the base [`gh-pages/projection-manifest.json`](https://github.com/redogit/conscience64/blob/gh-pages/projection-manifest.json), the separately authorized [`gh-pages/dream-publication.json`](https://github.com/redogit/conscience64/blob/gh-pages/dream-publication.json), and the named lines in the current Work comparison. This is not an exhaustive search of every repository, chat, or private carrier.
 
 ## Shared relation, separate authority
 
@@ -27,7 +27,7 @@ These rows are **coverage pointers**, not a tenth research project, a change to 
 
 ## Pages boundary checked
 
-The current `gh-pages` projection manifest names `public-testbed/**` plus curated `play/musilanguage/` and `play/neon-veil/`. Repository paths including `research/**`, `about/**`, the old `play/` hub, and the other utility/game routes are not in that projection. Source links to those paths must be labeled as source/local material. This source-tree check does not claim an independent live-network test.
+The base `gh-pages` projection manifest names `public-testbed/**` plus curated `play/musilanguage/` and `play/neon-veil/`. A [separately authorized overlay](../../PUBLIC_DREAM_ROUTES.md) adds exactly `dream-to-action/index.html`, public `about.html`, public `recent-work.html`, and `dream-publication.json`; the base manifest never purported to inventory that overlay. Repository paths including `research/**`, source-only `about/index.html`, the old `play/` hub, and other utility/game routes are outside both approved sets. Source links to those paths must be labeled as source/local material. This source-tree check does not claim an independent live-network test.
 
 ## Smallest next reconciliation
 
