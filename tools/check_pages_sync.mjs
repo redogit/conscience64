@@ -5,6 +5,7 @@ const workflow=await readFile(new URL('../.github/workflows/pages-sync.yml',impo
 const liveWorkflow=await readFile(new URL('../.github/workflows/pages-live-alias.yml',import.meta.url),'utf8');
 const approval=JSON.parse(await readFile(new URL('../PUBLIC_TESTBED_APPROVAL.json',import.meta.url),'utf8'));
 const neonApproval=JSON.parse(await readFile(new URL('../PUBLIC_NEON_VEIL_APPROVAL.json',import.meta.url),'utf8'));
+const playHubApproval=JSON.parse(await readFile(new URL('../PUBLIC_PLAY_HUB_APPROVAL.json',import.meta.url),'utf8'));
 
 assert.equal(approval.schema,'redogit/public-testbed-approval/v1');
 assert.equal(approval.approved,true);
@@ -13,6 +14,13 @@ assert.ok(approval.authorized_routes?.includes('/play/musilanguage/'));
 assert.ok(approval.authorized_source_families?.some(x=>x.startsWith('play/musilanguage/')));
 assert.equal(approval.issue,166);
 assert.equal(approval.commercial_license_granted,false);
+assert.equal(playHubApproval.schema,'redogit/public-play-hub-approval/v1');
+assert.equal(playHubApproval.approved,true);
+assert.equal(playHubApproval.route,'/play/');
+assert.deepEqual(playHubApproval.authorized_child_routes,['/play/neon-veil/','/play/musilanguage/']);
+assert.deepEqual(playHubApproval.authorized_source_families,['play/public-index.html']);
+assert.equal(playHubApproval.public_backend_authorized,false);
+assert.equal(playHubApproval.commercial_license_granted,false);
 assert.equal(neonApproval.schema,'redogit/public-play-route-approval/v1');
 assert.equal(neonApproval.approved,true);
 assert.equal(neonApproval.route,'/play/neon-veil/');
@@ -31,6 +39,8 @@ for(const key of [
 assert.ok(workflow.includes('permissions:\n  contents: write'),'testbed sync needs branch write authority');
 assert.ok(!workflow.includes('pages: write')&&!workflow.includes('actions: write'),'testbed sync must not gain deployment/dispatch authority');
 assert.ok(workflow.includes("'public-testbed/**'"),'testbed sources must trigger projection sync');
+assert.ok(workflow.includes("'play/public-index.html'"),'central Play hub source must trigger projection sync');
+assert.ok(workflow.includes("'PUBLIC_PLAY_HUB_APPROVAL.json'"),'central Play hub authorization must trigger projection sync');
 assert.ok(workflow.includes("'play/musilanguage/**'"),'Musilanguage sources must trigger projection sync');
 assert.ok(workflow.includes("'play/neon-veil/**'"),'NEON sources must trigger projection sync');
 assert.ok(workflow.includes("'PUBLIC_NEON_VEIL_APPROVAL.json'"),'NEON route authorization changes must trigger projection sync');
@@ -56,6 +66,8 @@ for(const forbidden of [
   "'data-*.txt'"
 ])assert.ok(!workflow.includes(forbidden),'repository-wide publication trigger survived: '+forbidden);
 
+assert.ok(liveWorkflow.includes("'play/public-index.html'"),'live PR verifier must watch central Play hub source');
+assert.ok(liveWorkflow.includes("'PUBLIC_PLAY_HUB_APPROVAL.json'"),'live PR verifier must watch central Play hub approval');
 assert.ok(liveWorkflow.includes('workflows: ["Sync Conscience64 public test bed"]'),'live verifier must follow the narrow source-sync workflow');
 assert.ok(liveWorkflow.includes('types: [completed]'),'live verifier must follow completed sync runs');
 assert.ok(liveWorkflow.includes('branches: [main]'),'live verifier must bind main source');
@@ -70,9 +82,10 @@ assert.ok(!liveWorkflow.includes('PUBLIC_RELEASE_APPROVAL.json'),'live verifier 
 
 const builder=await readFile(new URL('./build-public-testbed.mjs',import.meta.url),'utf8');
 const edge=await readFile(new URL('./check-public-testbed-edge.mjs',import.meta.url),'utf8');
-assert.ok(builder.includes("source_root:'public-testbed/ + curated play/musilanguage/ + curated play/neon-veil/'"));
+assert.ok(builder.includes("source_root:'public-testbed/ + curated play hub + curated play/musilanguage/ + curated play/neon-veil/'"));
 assert.ok(builder.includes("publication_scope:'public-testbed-plus-curated-play'"));
-assert.ok(edge.includes("'README.md'")&&edge.includes("'research/projects/README.md'")&&edge.includes("'play/index.html'"),'network edge must counterprobe repository-route leakage');
+assert.ok(edge.includes("'README.md'")&&edge.includes("'research/projects/README.md'")&&edge.includes("'play/README.md'")&&edge.includes("'play/mmo/index.html'"),'network edge must counterprobe repository-route leakage');
+assert.ok(edge.includes("get('play/')"),'network edge must positively verify central Play hub');
 assert.ok(edge.includes("get('play/musilanguage/')"),'network edge must positively verify Musilanguage');
 assert.ok(edge.includes("get('play/neon-veil/')"),'network edge must positively verify NEON//VEIL');
 assert.ok(edge.includes("play/neon-veil/downloads/"),'network edge must verify NEON package bytes');

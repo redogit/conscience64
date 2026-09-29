@@ -15,6 +15,7 @@ const MUSILANGUAGE_FILES=[
   'listener-floats.js',
   'word-forge.js'
 ];
+const PLAY_HUB_SOURCE='public-index.html';
 const NEON_VEIL_FILES=[
   'index.html',
   'style.css',
@@ -105,6 +106,16 @@ export async function buildPublicTestbed({root='.',out,sourceRevision}){
   await writeFile(testbedOut,descriptorRaw);
   projected.push({path:'testbed.json',bytes:descriptorRaw.length,sha256:sha256(descriptorRaw),source:'public-testbed/testbed.json'});
 
+  const playHubSrc=path.join(rootAbs,'play',PLAY_HUB_SOURCE);
+  const playHubInfo=await lstat(playHubSrc);
+  if(playHubInfo.isSymbolicLink()||!playHubInfo.isFile())throw new Error('invalid curated Play hub source');
+  const playHubDstRel='play/index.html';
+  const playHubDst=path.join(out,'play','index.html');
+  await mkdir(path.dirname(playHubDst),{recursive:true});
+  await cp(playHubSrc,playHubDst,{force:false,errorOnExist:true});
+  const playHubRaw=await readFile(playHubSrc);
+  projected.push({path:playHubDstRel,bytes:playHubRaw.length,sha256:sha256(playHubRaw),source:'play/public-index.html'});
+
   const musicRoot=path.join(rootAbs,'play','musilanguage');
   for(const rel of MUSILANGUAGE_FILES){
     const src=path.join(musicRoot,rel);
@@ -137,7 +148,7 @@ export async function buildPublicTestbed({root='.',out,sourceRevision}){
   const manifest={
     schema:PUBLIC_TESTBED_SCHEMA,
     source_revision:sourceRevision,
-    source_root:'public-testbed/ + curated play/musilanguage/ + curated play/neon-veil/',
+    source_root:'public-testbed/ + curated play hub + curated play/musilanguage/ + curated play/neon-veil/',
     publication_scope:'public-testbed-plus-curated-play',
     authority:'experimental-non-authoritative',
     projection_sha256:sha256(Buffer.from(identityInput)),

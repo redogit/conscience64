@@ -8,9 +8,11 @@ on:
   pull_request:
     paths:
       - 'public-testbed/**'
+      - 'play/public-index.html'
       - 'play/musilanguage/**'
       - 'play/neon-veil/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'PUBLIC_PLAY_HUB_APPROVAL.json'
       - 'PUBLIC_NEON_VEIL_APPROVAL.json'
       - 'PUBLIC_DREAM_ROUTES_APPROVAL.json'
       - 'tools/add-dream-pages.py'

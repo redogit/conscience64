@@ -5,9 +5,11 @@ on:
     branches: [main]
     paths:
       - 'public-testbed/**'
+      - 'play/public-index.html'
       - 'play/musilanguage/**'
       - 'play/neon-veil/**'
       - 'PUBLIC_TESTBED_APPROVAL.json'
+      - 'PUBLIC_PLAY_HUB_APPROVAL.json'
       - 'PUBLIC_NEON_VEIL_APPROVAL.json'
       - 'PUBLIC_DREAM_ROUTES_APPROVAL.json'
       - 'tools/add-dream-pages.py'
@@ -67,6 +69,16 @@ jobs:
               assert review.get(key) is True, key
           assert d.get('commercial_license_granted') is False
           assert '/play/musilanguage/' in d.get('authorized_routes',[])
+          h=json.loads(Path('PUBLIC_PLAY_HUB_APPROVAL.json').read_text(encoding='utf-8'))
+          assert h.get('schema') == 'redogit/public-play-hub-approval/v1'
+          assert h.get('approved') is True
+          assert h.get('route') == '/play/'
+          assert h.get('authorized_source_families') == ['play/public-index.html']
+          assert h.get('authorized_child_routes') == ['/play/neon-veil/','/play/musilanguage/']
+          assert h.get('public_backend_authorized') is False
+          assert h.get('commercial_license_granted') is False
+          for key in ('source_isolation_required','privacy_boundary_required','accessibility_required','network_edge_verification_required','package_hash_verification_required'):
+              assert h.get('review',{}).get(key) is True, key
           n=json.loads(Path('PUBLIC_NEON_VEIL_APPROVAL.json').read_text(encoding='utf-8'))
           assert n.get('schema') == 'redogit/public-play-route-approval/v1'
           assert n.get('approved') is True
@@ -75,7 +87,7 @@ jobs:
           assert n.get('commercial_license_granted') is False
           for key in ('source_isolation_required','privacy_boundary_required','accessibility_required','network_edge_verification_required','package_hash_verification_required'):
               assert n.get('review',{}).get(key) is True, key
-          print('PASS public-testbed + curated Musilanguage + separately authorized NEON//VEIL route')
+          print('PASS public-testbed + authorized central Play hub + curated Musilanguage + NEON//VEIL release')
           PY
 
       - name: Verify isolated projection contract and separate Dream authorization
@@ -96,6 +108,8 @@ jobs:
           test -f "$OUT/projection-manifest.json"
           test ! -e "$OUT/README.md"
           test ! -e "$OUT/research"
+          test -f "$OUT/play/index.html"
+          grep -q 'NEON//VEIL · Public Release' "$OUT/play/index.html"
           test -f "$OUT/play/musilanguage/index.html"
           test -f "$OUT/play/neon-veil/index.html"
           test -f "$OUT/play/neon-veil/release.json"
@@ -105,7 +119,8 @@ jobs:
           test -f "$OUT/play/neon-veil/downloads/NEON_VEIL_ANDROID_2026-09-29.zip"
           test -f "$OUT/play/neon-veil/downloads/NEON_VEIL_IPHONE_IPAD_2026-09-29.zip"
           test ! -e "$OUT/play/neon-veil/README.md"
-          test ! -e "$OUT/play/index.html"
+          test ! -e "$OUT/play/README.md"
+          test ! -e "$OUT/play/mmo/index.html"
           test ! -e "$OUT/play/mmo"
           python3 tools/add-dream-pages.py --out "$OUT"
           test ! -e "$OUT/about/index.html"

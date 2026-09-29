@@ -1,0 +1,25 @@
+{
+  "schema": "redogit/public-play-hub-approval/v1",
+  "approved": true,
+  "route": "/play/",
+  "approved_by": "repository-owner-direction",
+  "approved_at": "2026-09-29",
+  "source_direction": "Publish a simple central Conscience64 Play page for the public NEON//VEIL release, exposing only explicitly authorized public child routes and the five system-specific NEON//VEIL packages.",
+  "public_backend_authorized": false,
+  "commercial_license_granted": false,
+  "review": {
+    "source_isolation_required": true,
+    "privacy_boundary_required": true,
+    "accessibility_required": true,
+    "network_edge_verification_required": true,
+    "package_hash_verification_required": true
+  },
+  "authorized_source_families": [
+    "play/public-index.html"
+  ],
+  "authorized_child_routes": [
+    "/play/neon-veil/",
+    "/play/musilanguage/"
+  ],
+  "rule": "This authorizes only the curated GitHub Pages /play/ hub generated from play/public-index.html. It does not authorize repository source play/index.html, the rest of play/, private planning/evidence, public game authority, or any additional route."
+}
