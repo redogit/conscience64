@@ -45,3 +45,9 @@ The owner approved the next bounded clique/overlap progression and related publi
 ## September 29 Step 14 profile-source advance
 
 The owner approved the proposed bounded mixed-frame discovery step. The public About Me and Recent Work pages now pin reviewed profile commit redogit/redogit@f7116cd4963f486d92661139cf5a492755da256a, with About blob 145012148e03a933eb18d45ce0d2d2e9ee26965c and Recent Work blob 336a7c84f7ecb5da4d9e452e0e42819b95b2e20b. They link to the exact [Step 14 weighted mixed-frame and integrality-gap receipt](https://github.com/redogit/redogit/blob/f7116cd4963f486d92661139cf5a492755da256a/PNP_DEAN_MIXED_FRAME_DISCOVERY_2026-09-29.md). The earlier profile pins remain chronological provenance. The Dream application hash, announcement, purpose, allowed paths, privacy boundary, and excluded private About route stay fixed. Live delivery requires the workflow's exact-content and anonymous-edge checks.
+
+## September 29 profile-link repair source advance
+
+The current pin for `/about.html` and `/recent-work.html` is the merged [profile PR #50](https://github.com/redogit/redogit/pull/50), `redogit/redogit@4685dec29d25fb4fa006c88141a6304cf14a872c`. Its About blob is `6b68187879d8019658a73b6cccfcb348a07ea075`; its Recent Work blob is `96def128c617202057900c9d840e7e7e2f23ae2f`. The two HTML files replace links to unavailable profile Pages routes with labeled GitHub sources or the approved Conscience64 Recent Work route, and render the Step 13 source as a working HTML link. The earlier Step 14 source remains provenance and its research note remains present in the successor files.
+
+Only the two approved profile HTML routes change. The pinned Dream Operations 0.2 app, announcement/purpose, curated Play routes, privacy and rights boundaries, and original projection remain fixed. Source and hash pinning is not a live-site claim; the sync and anonymous-edge checks must pass after merge.
