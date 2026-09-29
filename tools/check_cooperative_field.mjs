@@ -5,6 +5,7 @@ const root='research/cooperative-field';
 const required=[
   'README.md',
   'COMPANIONS.md',
+  'AGENT_SKILL_REGISTRY.md',
   'STANDING_RULES.md',
   'NAME_LINEAGE.md',
   'CURRENT_PLAN.md',
@@ -18,12 +19,12 @@ for(const name of required) await access(`${root}/${name}`);
 
 const read=async name=>readFile(`${root}/${name}`,'utf8');
 const [
-  start, companions, rules, names, plan, evidence, locations, memory, manifestText
+  start, companions, registry, rules, names, plan, evidence, locations, memory, manifestText
 ]=await Promise.all(required.map(read));
 
 const manifest=JSON.parse(manifestText);
 
-assert.equal(manifest.schema,'cooperative-field/v2');
+assert.equal(manifest.schema,'cooperative-field/v3');
 assert.equal(manifest.root,root);
 assert.equal(manifest.status,'CURRENT_LOCAL_WORDING_AUTHORITY');
 assert.deepEqual(
@@ -38,6 +39,14 @@ for(const text of [
   'CONTINUITY',
   'METHOD != EVIDENCE'
 ]) assert.ok(start.includes(text),`START missing defining factor: ${text}`);
+
+for(const text of [
+  'ONE REGISTRY != ONE AGENT',
+  'SKILL != AUTHORITY',
+  'AGENT != EVIDENCE',
+  'PARALLEL EXECUTION != INDEPENDENT EVIDENCE',
+  'NO COMPLETION CLAIM WITHOUT FRESH VERIFICATION EVIDENCE.'
+]) assert.ok(registry.includes(text),`agent/skill registry missing: ${text}`);
 
 for(const text of [
   'PAIRITY != PARITY',
@@ -129,5 +138,9 @@ assert.equal(manifest.name_recovery.unique_recovered_semantic_targets,51);
 assert.equal(manifest.thought_to_help_lifecycle.status,'CURRENT_CANONICAL_PROCESS');
 assert.ok(manifest.thought_to_help_lifecycle.boundaries.includes('IMPOSED_CHANGE != CONSENT'));
 assert.ok(manifest.thought_to_help_lifecycle.boundaries.includes('HELP != CONTROL'));
+assert.equal(manifest.agent_skill_routing.authority,'AGENT_SKILL_REGISTRY.md');
+assert.equal(manifest.agent_skill_routing.project_local_skills.length,3);
+assert.ok(manifest.agent_skill_routing.rules.includes('SKILL != AUTHORITY'));
+assert.ok(manifest.agent_skill_routing.rules.includes('AGENT != EVIDENCE'));
 
 console.log(`PASS cooperative field: ${required.length} authority files; defining factors, standing rules, names, plan, evidence, locations, memory contract and manifest consistent`);
