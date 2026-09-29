@@ -9,7 +9,7 @@ The machine-readable lineage is deliberately forward-only:
 - [`projects.json`](projects.json) is the preserved seven-project registry snapshot already carried by the browser corpus and `Conscience64API`;
 - [`CURRENT.json`](CURRENT.json) is the current manifest that composes that snapshot with later human-readable successor records without pretending the compressed browser corpus was regenerated.
 
-The Markdown project records remain the human-readable lineage surface. There are currently **nine** human-readable project records: seven in the preserved registry snapshot plus Hodge Conjecture Research Spine and Research Analytics as explicit successors.
+The Markdown project records remain the human-readable lineage surface. There are currently **nine** human-readable project records: seven in the preserved registry snapshot plus Hodge Conjecture Research Spine and Research Analytics as explicit successors. The [Work ↔ Conscience64 coverage bridge](../updates/2026-09-29-work-github-coverage.md) records adjacent Work-stage lines and their boundaries; it does not add a project or change those counts.
 
 Every project is reflowed through the same small interface:
 
