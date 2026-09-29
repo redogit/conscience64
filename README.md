@@ -1,9 +1,9 @@
 # Conscience64
 
-> **Public projection — updated 2026-09-29:** GitHub Pages remains an isolated generated projection. It includes the `public-testbed/**` experiment surface plus two separately owner-authorized curated Play routes: `play/musilanguage/` and `play/neon-veil/`. The repository as a whole, the rest of `play/`, private-origin carriers, developer evidence, and other repositories remain outside Pages publication. NEON//VEIL Pages is a launcher/download surface; world authority remains local or explicitly trusted-LAN, not a public GitHub backend.
+> **Public projection — updated 2026-09-29:** GitHub Pages uses an isolated generated base projection of `public-testbed/**` plus two separately authorized Play routes, `play/musilanguage/` and `play/neon-veil/`. A separate, exactly pinned and authorized [Dream to Action / public profile overlay](PUBLIC_DREAM_ROUTES.md) adds four selected paths. The repository trees, the rest of `play/`, private-origin carriers, and developer evidence remain outside Pages. NEON//VEIL Pages distributes downloads and prepares local or explicitly trusted-LAN connections; it is not a public game backend.
 
 
-Privacy-safe universal research space hosted as a static GitHub Pages application.
+Repository source for the Conscience64 research space and its separately curated static GitHub Pages projection.
 
 Visible surface: **I / R / P / O**.
 
@@ -62,40 +62,28 @@ The current successor pointer is [Libraries of Libraries](research/bridges/libra
 `POINTER != RESEARCH_ADMISSION` · `CONNECTED != MERGED` · `UNLISTED_ACTIVE != PUBLICLY_LISTED`
 
 
-## MMO World Beta
+## MMO World Beta — repository source
 
-**Featured launch surface:** [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/)
+[MMO World Beta](play/mmo-world/) and its local [Arcade Forge](play/mmo-world/forge/) remain in repository source. The Explorer shard and its documented local features can be inspected or run from that source; these paths are **not** in the current curated `gh-pages` projection. The shared-world layer remains gated. Server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not claimed complete.
 
-The MMO World page directly runs the already smoke-tested Explorer World shard while the shared-world layer remains gated. It is intentionally honest about the current boundary: playable browser world now; server-authoritative accounts, shared multiplayer state, moderation services, commerce, and admission enforcement are not yet claimed complete. The beta also exposes optional user-initiated Bluetooth/gamepad support, deterministic descriptive world varieties, a local data-only [Arcade Forge](https://redogit.github.io/conscience64/play/mmo-world/forge/), and the DU-SD/1, DU-CAP/1, DU-WATCH/1, and DU-BT/1 protocol contracts.
+Arcade Forge is a data-only local preview: imported recipes cannot execute code or HTML, add network/server/account/prize authority, or modify canonical Explorer progression. Any later public route needs its own explicit scope review and Pages verification.
 
-Arcade Forge admits the useful data-only mini-game recipe idea from the retired parallel MMO branch without reviving that architecture. Imported plug-ins cannot execute code or HTML, add URL/network/server/account/prize authority, or modify canonical Explorer progression. Their reward values are preview metadata only.
+## Research analytics — repository source
 
-Advertising should point to this stable Conscience64 URL and grow interest gradually rather than bypassing safety, recovery, stability, moderation/support-capacity, or operating-cost gates.
+[Research Analytics](analytics/) is an evidence-bounded event-stream view in repository source for observations, tests, verification, contradictions, interpretations, boundary changes, revisions, promotions, and reopened questions. Its browser validates events and labels fallback/demo data. The current curated Pages projection does not contain `analytics/`; neither this source nor a prior deployment record is a live authoritative ledger or backend.
 
-## Research analytics
+The companion LLVM bridge emits the same JSON contract from compiled experiments. CI builds the bridge, validates its emitted event, rejects unknown event kinds, and runs the browser contract checks.
 
-[Research Analytics](https://redogit.github.io/conscience64/analytics/) is an evidence-bounded event-stream view for observations, tests, verification, contradictions, interpretations, boundary changes, revisions, promotions, and reopened questions. The browser validates every event before rendering it and labels fallback/demo data explicitly. GitHub Pages is only the static view; it is not represented as the authoritative ledger or a live event backend.
+## Play: current Pages routes and repository source
 
-The companion LLVM bridge emits the same JSON contract from compiled experiments. CI builds the bridge, validates its emitted event, rejects unknown event kinds, and runs the browser contract checks before analytics changes are published.
+The [base public experiment](https://redogit.github.io/conscience64/) has two explicitly curated Play routes. The separately authorized [Dream to Action app](https://redogit.github.io/conscience64/dream-to-action/) is an additional pinned overlay described in [its publication record](PUBLIC_DREAM_ROUTES.md).
 
-## Try the free projects
-
-The [public playground](https://redogit.github.io/conscience64/play/) turns ongoing ideas into a growing set of usable browser projects:
-
-| Tool | What you can do |
+| Published route | Scope |
 | --- | --- |
-| [NEON//VEIL](https://redogit.github.io/conscience64/play/neon-veil/) | Download the system-specific public preview and start a local-first cyber-fantasy world solo or join a host you explicitly trust on your LAN; GitHub Pages distributes the release but is not the game server |
-| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Enter the playable Explorer shard, explore deterministic descriptive varieties, open the local data-only Arcade Forge, and optionally connect a Bluetooth companion or OS-paired gamepad |
-| [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Play the current single-player browser shard directly |
-| [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Explore exact, speakable, mnemonic, and procedural musical projections |
-| [Musilanguage Studio](https://redogit.github.io/conscience64/play/musilanguage/) | Generate multi-style instrumental music from language, symbols, emoji, or exact UTF-8; rebalance six instrument buses; export MIDI/WAV; inspect predecessor history inside the app |
-| [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes with source links |
-| [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Rearrange writing while keeping the original |
-| [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Make geometric art and export SVG or text |
-| [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan a next step and preserve dated checkpoints |
-| [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Compare exact text changes and preserve both inputs |
+| [NEON//VEIL preview](https://redogit.github.io/conscience64/play/neon-veil/) | Platform-specific downloads and a launcher/connection hub; solo world authority is local, and joining requires an explicitly trusted LAN host. No public game backend. |
+| [Musilanguage Studio](https://redogit.github.io/conscience64/play/musilanguage/) | Generate and edit instrumental music from language, symbols, emoji, or exact UTF-8; export MIDI/WAV and inspect predecessor history inside the app. |
 
-English, Spanish, French, and Arabic interfaces are available across the original utility set; Unicode writing, keyboard controls, optional local saving, and no-account operation remain core accessibility/privacy goals. The new tools have an MIT license scoped to `play/`. See [the usage and provenance notes](play/README.md). Their [public-tool catalog](play/projects.json) is separate from the research registry below.
+The following remain usable **repository source/local projects**, not routes in the current `gh-pages` projection: [MMO World Beta](play/mmo-world/), [Explorer World](play/explorer-world/), [Computational Chorus](play/computational-chorus/), [Orbit Shelf](play/orbit/), [Word Weave](play/weave/), [Pattern Garden](play/garden/), [Small Steps](play/steps/), and [Source Compare](play/compare/). Their [source catalog](play/projects.json) is separate from the research registry. See [usage, origin, and license notes](play/README.md) for the applicable source and accessibility limits.
 
 ## Internal workspace update
 
@@ -109,7 +97,7 @@ The [Society skills guide](skills/README.md) explains how agents use skills and 
 
 The research portfolio has a compact project map that preserves both accomplishments and failures instead of presenting only successes.
 
-See [`research/projects/README.md`](research/projects/README.md) for the current nine human-readable records and their claim ceilings: Cross-Carrier Wave, Orbit Library, Tiny Babel/TBCL, Operator Moonshot, Hodge Conjecture Research Spine, Research Analytics, Model Experiments, Geometry/4D/Codecs, and Historical Recovery.
+See [`research/projects/README.md`](research/projects/README.md) for the current nine human-readable records and their claim ceilings. The [Work ↔ Conscience64 coverage bridge](research/updates/2026-09-29-work-github-coverage.md) marks related Work-stage lines and source/Pages boundaries without treating them as additional verified project records. The nine are: Cross-Carrier Wave, Orbit Library, Tiny Babel/TBCL, Operator Moonshot, Hodge Conjecture Research Spine, Research Analytics, Model Experiments, Geometry/4D/Codecs, and Historical Recovery.
 
 The registry lineage is intentionally split rather than silently rewritten:
 
@@ -201,8 +189,8 @@ The repaired transport is a documented browser projection of the verified origin
 
 ## GitHub Pages
 
-GitHub Pages publishes a **generated curated projection**, not the repository tree. The admitted source families are `public-testbed/testbed.json`, `public-testbed/site/**`, the seven-file allowlist for the unified `play/musilanguage/` runtime, and the separately approved `play/neon-veil/` launcher plus its five named system-specific ZIPs. `tools/build-public-testbed.mjs` reconstructs the projection, records the exact `main` source revision and every projected file hash, and the source-sync workflow commits only those generated bytes to `gh-pages` while preserving the previous `gh-pages` commit as rollback lineage.
+GitHub Pages publishes a **generated curated base projection plus a separately approved, exact-source Dream/profile overlay**, not the repository tree. The base source families are `public-testbed/testbed.json`, `public-testbed/site/**`, the seven-file allowlist for the unified `play/musilanguage/` runtime, and the separately approved `play/neon-veil/` launcher plus its five named system-specific ZIPs. The overlay admits only `dream-to-action/index.html`, `about.html`, `recent-work.html`, and `dream-publication.json`, subject to [pinned source identities and privacy checks](PUBLIC_DREAM_ROUTES.md). `tools/build-public-testbed.mjs` reconstructs the base and records the exact `main` source revision and its projected file hashes; `tools/add-dream-pages.py` adds the four pinned overlay files with a separate manifest. The source-sync workflow commits only that combined generated output to `gh-pages` while preserving the previous `gh-pages` commit as rollback lineage.
 
-The live verifier independently rebuilds the expected projection from the exact source revision, byte-compares it with the `gh-pages` tree, verifies the five NEON//VEIL package hashes over HTTPS, and then checks the network edge. `play/musilanguage/` and `play/neon-veil/` are positively required; repository routes such as `README.md`, `research/**`, `about/**`, `play/index.html`, NEON development documentation, and the old Musilanguage `single.html`, `radio.html`, and `word-forge.html` routes are required to remain absent.
+The live verifier independently rebuilds the expected base and overlay, byte-compares the full result with the `gh-pages` tree, verifies the five NEON//VEIL package hashes over HTTPS, and checks the network edge, including the selected Dream/profile routes. `play/musilanguage/` and `play/neon-veil/` are positively required; repository routes such as `README.md`, `research/**`, `about/index.html`, `play/index.html`, NEON development documentation, and the old Musilanguage `single.html`, `radio.html`, and `word-forge.html` routes are required to remain absent.
 
-`PUBLIC TEST BED + CURATED PLAY != WHOLE REPOSITORY` · `PUBLIC RELEASE != PUBLIC AUTHORITATIVE BACKEND` · `ONE PUBLIC APP != DELETION OF HISTORY` · `PUBLIC EXPERIMENT != VERIFIED TRUTH` · `PRIVATE SOURCE MUST NOT PROPAGATE`
+`PUBLIC TEST BED + CURATED PLAY != WHOLE REPOSITORY` · `PUBLIC RELEASE != PUBLIC AUTHORITATIVE BACKEND` · `CURATED RELEASE != DELETION OF HISTORY` · `PUBLIC EXPERIMENT != VERIFIED TRUTH` · `PRIVATE SOURCE MUST NOT PROPAGATE`
