@@ -40,3 +40,8 @@ The owner approved the next bounded Dean progression in the same fashion. The cu
 ## September 29 Step 13 profile-source advance
 
 The owner approved the next bounded clique/overlap progression and related public GitHub update. The public About Me and Recent Work pages now pin reviewed profile commit `redogit/redogit@30a124a475985108bbd33ec2ddb01eaab56d6789`, with About blob `2e7b7bb514b54238e7a5cc3b3bc52e70c6286ef9` and Recent Work blob `5494a3cc609ce853498328853581683b4ce9a758`. They link to the exact [Step 13 clique/overlap receipt](https://github.com/redogit/redogit/blob/30a124a475985108bbd33ec2ddb01eaab56d6789/PNP_DEAN_CLIQUE_OVERLAP_2026-09-29.md). The earlier profile pins remain chronological provenance. The Dream application hash, announcement, purpose, allowed paths, privacy boundary, and excluded private About route stay fixed. Live delivery must still be verified independently of this source pin.
+
+
+## September 29 Step 14 profile-source advance
+
+The owner approved the proposed bounded mixed-frame discovery step. The public About Me and Recent Work pages now pin reviewed profile commit redogit/redogit@f7116cd4963f486d92661139cf5a492755da256a, with About blob 145012148e03a933eb18d45ce0d2d2e9ee26965c and Recent Work blob 336a7c84f7ecb5da4d9e452e0e42819b95b2e20b. They link to the exact [Step 14 weighted mixed-frame and integrality-gap receipt](https://github.com/redogit/redogit/blob/f7116cd4963f486d92661139cf5a492755da256a/PNP_DEAN_MIXED_FRAME_DISCOVERY_2026-09-29.md). The earlier profile pins remain chronological provenance. The Dream application hash, announcement, purpose, allowed paths, privacy boundary, and excluded private About route stay fixed. Live delivery requires the workflow's exact-content and anonymous-edge checks.
