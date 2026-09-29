@@ -42,13 +42,15 @@ try{
   const b=await buildPublicTestbed({root:'.',out:outB,sourceRevision:revision});
   assert.deepEqual(a,b,'public testbed build must be deterministic');
   assert.equal(a.source_revision,revision);
-  assert.equal(a.source_root,'public-testbed/ + curated play/musilanguage/');
-  assert.equal(a.publication_scope,'public-testbed-plus-musilanguage');
+  assert.equal(a.source_root,'public-testbed/ + curated play/musilanguage/ + curated play/neon-veil/');
+  assert.equal(a.publication_scope,'public-testbed-plus-curated-play');
   assert.equal(a.authority,'experimental-non-authoritative');
   assert.match(a.projection_sha256,/^[0-9a-f]{64}$/);
-  assert.ok(a.files.every(file=>file.source.startsWith('public-testbed/')||file.source.startsWith('play/musilanguage/')));
-  assert.ok(a.files.reduce((sum,file)=>sum+file.bytes,0)<512_000,'public projection exceeded 512 KB curated static source ceiling');
-  assert.ok(a.boundaries.includes('PUBLIC_TESTBED_PLUS_MUSILANGUAGE != WHOLE_REPOSITORY'));
+  assert.ok(a.files.every(file=>file.source.startsWith('public-testbed/')||file.source.startsWith('play/musilanguage/')||file.source.startsWith('play/neon-veil/')));
+  assert.ok(a.files.reduce((sum,file)=>sum+file.bytes,0)<2_000_000,'public projection exceeded 2 MB curated static source ceiling');
+  assert.ok(a.boundaries.includes('PUBLIC_TESTBED_PLUS_CURATED_PLAY != WHOLE_REPOSITORY'));
+  assert.ok(a.boundaries.includes('NEON_VEIL_PUBLIC != WHOLE_PLAY'));
+  assert.ok(a.boundaries.includes('PUBLIC_RELEASE != PUBLIC_AUTHORITATIVE_BACKEND'));
 
   const projected=await filesUnder(outA);
   assert.deepEqual(projected,[
@@ -60,9 +62,19 @@ try{
     'play/musilanguage/style-profiles.js',
     'play/musilanguage/utf8-space.js',
     'play/musilanguage/word-forge.js',
+    'play/neon-veil/app.js',
+    'play/neon-veil/downloads/NEON_VEIL_ANDROID_2026-09-29.zip',
+    'play/neon-veil/downloads/NEON_VEIL_IPHONE_IPAD_2026-09-29.zip',
+    'play/neon-veil/downloads/NEON_VEIL_LINUX_2026-09-29.zip',
+    'play/neon-veil/downloads/NEON_VEIL_MACOS_2026-09-29.zip',
+    'play/neon-veil/downloads/NEON_VEIL_WINDOWS_2026-09-29.zip',
+    'play/neon-veil/index.html',
+    'play/neon-veil/release.json',
+    'play/neon-veil/style.css',
     'projection-manifest.json','s1-models/index.html','style.css','testbed.json'
   ]);
-  assert.ok(!projected.some(p=>p.startsWith('research/')||p==='README.md'||(p.startsWith('play/')&&!p.startsWith('play/musilanguage/'))));
+  assert.ok(!projected.some(p=>p.startsWith('research/')||p==='README.md'||(p.startsWith('play/')&&!p.startsWith('play/musilanguage/')&&!p.startsWith('play/neon-veil/'))));
+  assert.ok(!projected.includes('play/neon-veil/README.md'));
   assert.ok(!projected.includes('play/musilanguage/radio.html'));
   assert.ok(!projected.includes('play/musilanguage/single.html'));
   assert.ok(!projected.includes('play/musilanguage/word-forge.html'));
@@ -131,6 +143,9 @@ try{
   const js=await readFile('public-testbed/site/app.js','utf8');
   const musicHtml=await readFile('play/musilanguage/index.html','utf8');
   const musicJs=await readFile('play/musilanguage/word-forge.js','utf8');
+  const neonHtml=await readFile('play/neon-veil/index.html','utf8');
+  const neonJs=await readFile('play/neon-veil/app.js','utf8');
+  const neonRelease=JSON.parse(await readFile('play/neon-veil/release.json','utf8'));
   assert.match(html,/<html lang="en">/);
   assert.match(html,/class="skip-link"/);
   assert.match(html,/<main id="main">/);
@@ -178,6 +193,19 @@ try{
   assert.match(musicJs,/function currentLevels\(/);
   assert.match(musicJs,/musilanguage-studio-session\/v2/);
   assert.match(musicJs,/Custom instrument mix/);
+  assert.match(neonHtml,/NEON\/\/VEIL/);
+  assert.match(neonHtml,/GitHub Pages is the release\/launcher hub, not the simulation server/);
+  assert.match(neonHtml,/Content-Security-Policy/);
+  assert.doesNotMatch(neonHtml,/src="https?:\/\//i,'NEON route runtime must remain local');
+  assert.doesNotMatch(neonJs,/\bfetch\s*\(/,'NEON launcher hub must not probe LAN hosts or add a backend');
+  assert.equal(neonRelease.schema,'neon-veil/public-release/v1');
+  assert.equal(neonRelease.public_backend,false);
+  assert.equal(neonRelease.trusted_lan_only,true);
+  assert.equal(neonRelease.packages.length,5);
+  for(const pkg of neonRelease.packages){
+    assert.match(pkg.sha256,/^[0-9a-f]{64}$/);
+    assert.ok(neonHtml.includes(pkg.file),`NEON page missing package link: ${pkg.file}`);
+  }
   assert.match(css,/:focus-visible/);
   assert.match(css,/prefers-reduced-motion/);
   assert.ok(!js.includes('innerHTML'),'testbed client must construct text safely');
@@ -201,6 +229,7 @@ try{
   const unsafeRoot=path.join(workspace,'unsafe-root');
   await cp('public-testbed',path.join(unsafeRoot,'public-testbed'),{recursive:true});
   await cp('play/musilanguage',path.join(unsafeRoot,'play','musilanguage'),{recursive:true});
+  await cp('play/neon-veil',path.join(unsafeRoot,'play','neon-veil'),{recursive:true});
   const unsafeDescriptor=JSON.parse(await readFile(path.join(unsafeRoot,'public-testbed','testbed.json'),'utf8'));
   unsafeDescriptor.privacy_origin={classification:'private-history-method-only',independently_regrounded:false};
   await writeFile(path.join(unsafeRoot,'public-testbed','testbed.json'),JSON.stringify(unsafeDescriptor));
@@ -212,6 +241,7 @@ try{
   const nestedRoot=path.join(workspace,'nested-root');
   await cp('public-testbed',path.join(nestedRoot,'public-testbed'),{recursive:true});
   await cp('play/musilanguage',path.join(nestedRoot,'play','musilanguage'),{recursive:true});
+  await cp('play/neon-veil',path.join(nestedRoot,'play','neon-veil'),{recursive:true});
   await writeFile(
     path.join(nestedRoot,'public-testbed','site','private.json'),
     JSON.stringify({wrapper:{derived_from_private_history:true},canary:'PRIVATE_TESTBED_CANARY'})
@@ -224,13 +254,14 @@ try{
   const linkRoot=path.join(workspace,'link-root');
   await cp('public-testbed',path.join(linkRoot,'public-testbed'),{recursive:true});
   await cp('play/musilanguage',path.join(linkRoot,'play','musilanguage'),{recursive:true});
+  await cp('play/neon-veil',path.join(linkRoot,'play','neon-veil'),{recursive:true});
   await symlink('index.html',path.join(linkRoot,'public-testbed','site','alias.html'));
   await assert.rejects(
     buildPublicTestbed({root:linkRoot,out:path.join(workspace,'link-out'),sourceRevision:revision}),
     /symlink/
   );
 
-  console.log(`PASS public projection: ${a.files.length} curated files, exact revision ${revision}, public testbed + one Musilanguage Studio route, predecessor music pages excluded, privacy/symlink counterprobes, WCAG-oriented testbed gates, static-size ceiling`);
+  console.log(`PASS public projection: ${a.files.length} curated files, exact revision ${revision}, public testbed + Musilanguage + NEON//VEIL routes, predecessor/non-authorized routes excluded, privacy/symlink counterprobes, WCAG-oriented gates, static-size ceiling`);
 }finally{
   await rm(workspace,{recursive:true,force:true});
 }

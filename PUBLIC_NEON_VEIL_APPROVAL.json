@@ -1,0 +1,24 @@
+{
+  "schema": "redogit/public-play-route-approval/v1",
+  "approved": true,
+  "route": "/play/neon-veil/",
+  "approved_by": "repository-owner-direction",
+  "approved_at": "2026-09-29",
+  "source_direction": "Publicly release NEON//VEIL on GitHub Pages with a new authorized Conscience64 Play area, system-specific ZIP downloads, and simple solo/LAN setup instructions.",
+  "source_checkpoint": "NEON_VEIL_T05_RECEIPT_SAFETY_CHECKPOINT.zip",
+  "source_checkpoint_sha256": "8d26afb7e271398ee2f01586db034b39e8d4a9357bfc996246245eabb9335517",
+  "public_backend_authorized": false,
+  "commercial_license_granted": false,
+  "review": {
+    "source_isolation_required": true,
+    "privacy_boundary_required": true,
+    "accessibility_required": true,
+    "network_edge_verification_required": true,
+    "package_hash_verification_required": true
+  },
+  "authorized_source_families": [
+    "play/neon-veil/{index.html,style.css,app.js,release.json}",
+    "play/neon-veil/downloads/{NEON_VEIL_WINDOWS_2026-09-29.zip,NEON_VEIL_LINUX_2026-09-29.zip,NEON_VEIL_MACOS_2026-09-29.zip,NEON_VEIL_ANDROID_2026-09-29.zip,NEON_VEIL_IPHONE_IPAD_2026-09-29.zip}"
+  ],
+  "rule": "This authorizes only the curated /play/neon-veil/ launcher/download route and its five named platform packages. It does not authorize repository-wide Play publication, private planning/evidence, a public game backend, port-forwarding, or any other repository route."
+}

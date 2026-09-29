@@ -114,10 +114,10 @@
       "progression_position": "issue-166 / visible-state successor",
       "relation": "CURRENT_CANONICAL",
       "evidence": "narrow source family and live projection infrastructure are admitted",
-      "result": "current work keeps the testbed isolated while adding the separately owner-authorized curated Musilanguage Studio route",
+      "result": "current work keeps the testbed isolated while separately projecting curated Musilanguage Studio and NEON//VEIL release routes",
       "provenance": "issue:166;pr:178;pr:179",
       "claim_boundary": "CURRENT != TRUE",
-      "remainder": "future routes still require separate explicit admission"
+      "remainder": "future routes still require separate explicit admission; NEON world authority remains local/trusted-LAN rather than GitHub-hosted"
     },
     {
       "id": "network-edge-isolation",
@@ -153,11 +153,11 @@
       "currentness": "PRESERVED",
       "progression_position": "publication scope boundary",
       "relation": "CLAIM_BOUNDARY",
-      "evidence": "PUBLIC_TESTBED_APPROVAL authorizes the testbed plus only the curated /play/musilanguage/ application route; commercial_license_granted=false",
-      "result": "repository-wide Pages publication and the rest of play/ remain unauthorized",
-      "provenance": "issue:166;PUBLIC_TESTBED_APPROVAL.json",
+      "evidence": "Separate owner authorizations admit only the generated public test bed, the curated Musilanguage Studio route, and the curated NEON//VEIL release route with five named platform packages.",
+      "result": "repository-wide Pages publication and every non-authorized Play/research route remain blocked",
+      "provenance": "issue:166;PUBLIC_TESTBED_APPROVAL.json;PUBLIC_NEON_VEIL_APPROVAL.json;owner-direction:2026-09-29",
       "claim_boundary": "PUBLIC_TESTBED != WHOLE_REPOSITORY",
-      "remainder": "additional routes require new explicit owner scope"
+      "remainder": "additional routes still require new explicit owner scope and their own source isolation, privacy, accessibility, and edge verification"
     },
     {
       "id": "next-experiment-admission",

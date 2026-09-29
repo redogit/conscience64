@@ -15,6 +15,17 @@ const MUSILANGUAGE_FILES=[
   'listener-floats.js',
   'word-forge.js'
 ];
+const NEON_VEIL_FILES=[
+  'index.html',
+  'style.css',
+  'app.js',
+  'release.json',
+  'downloads/NEON_VEIL_WINDOWS_2026-09-29.zip',
+  'downloads/NEON_VEIL_LINUX_2026-09-29.zip',
+  'downloads/NEON_VEIL_MACOS_2026-09-29.zip',
+  'downloads/NEON_VEIL_ANDROID_2026-09-29.zip',
+  'downloads/NEON_VEIL_IPHONE_IPAD_2026-09-29.zip'
+];
 
 const sha256=raw=>createHash('sha256').update(raw).digest('hex');
 const toPosix=p=>p.split(path.sep).join('/');
@@ -107,21 +118,36 @@ export async function buildPublicTestbed({root='.',out,sourceRevision}){
     projected.push({path:dstRel,bytes:raw.length,sha256:sha256(raw),source:`play/musilanguage/${rel}`});
   }
 
+  const neonRoot=path.join(rootAbs,'play','neon-veil');
+  for(const rel of NEON_VEIL_FILES){
+    const src=path.join(neonRoot,...rel.split('/'));
+    const info=await lstat(src);
+    if(info.isSymbolicLink()||!info.isFile())throw new Error(`invalid curated NEON//VEIL source: ${rel}`);
+    const dstRel=toPosix(path.join('play','neon-veil',rel));
+    const dst=path.join(out,...dstRel.split('/'));
+    await mkdir(path.dirname(dst),{recursive:true});
+    await cp(src,dst,{force:false,errorOnExist:true});
+    const raw=await readFile(src);
+    projected.push({path:dstRel,bytes:raw.length,sha256:sha256(raw),source:`play/neon-veil/${rel}`});
+  }
+
   projected.sort((a,b)=>a.path.localeCompare(b.path));
 
   const identityInput=JSON.stringify({sourceRevision,files:projected.map(({path,bytes,sha256})=>({path,bytes,sha256}))});
   const manifest={
     schema:PUBLIC_TESTBED_SCHEMA,
     source_revision:sourceRevision,
-    source_root:'public-testbed/ + curated play/musilanguage/',
-    publication_scope:'public-testbed-plus-musilanguage',
+    source_root:'public-testbed/ + curated play/musilanguage/ + curated play/neon-veil/',
+    publication_scope:'public-testbed-plus-curated-play',
     authority:'experimental-non-authoritative',
     projection_sha256:sha256(Buffer.from(identityInput)),
     files:projected,
     boundaries:[
       'CONSCIENCE64_REPOSITORY != PUBLIC_TESTBED_PROJECTION',
-      'PUBLIC_TESTBED_PLUS_MUSILANGUAGE != WHOLE_REPOSITORY',
+      'PUBLIC_TESTBED_PLUS_CURATED_PLAY != WHOLE_REPOSITORY',
       'MUSILANGUAGE_PUBLIC != WHOLE_PLAY',
+      'NEON_VEIL_PUBLIC != WHOLE_PLAY',
+      'PUBLIC_RELEASE != PUBLIC_AUTHORITATIVE_BACKEND',
       'PUBLIC_EXPERIMENT != VERIFIED_TRUTH',
       'PRIVATE SOURCE MUST NOT PROPAGATE'
     ]
