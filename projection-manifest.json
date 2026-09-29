@@ -1,10 +1,10 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "2cae26dbe88535122e312a91f62123bf7283e14d",
+  "source_revision": "83bfdf696db4bc806edf59b5a046ee32b988fac4",
   "source_root": "public-testbed/ + curated play/musilanguage/",
   "publication_scope": "public-testbed-plus-musilanguage",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "7121567bfa440e9741df7d670ab1a0cf467a08cdc8fa2bb277853b6e66da4881",
+  "projection_sha256": "56451c9b4a3f56409344b5f49f134ba92da951f82f8c3a8fc3b70db5ec8cc0eb",
   "files": [
     {
       "path": "app.js",

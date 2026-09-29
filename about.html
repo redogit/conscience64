@@ -23,7 +23,7 @@ blockquote{margin:18px 0;padding:2px 0 2px 18px;border-left:4px solid var(--fire
 <div><span class="badge">REDOGIT</span><span class="badge">ABOUT ME</span><span class="badge">2026-09-29</span></div>
 <h1>Do it.<br>Redo it <span class="fire">better.</span></h1>
 <p class="lede">I am a data specialist, reverse engineer, builder, and mostly a guy who keeps taking things apart until I can see what actually has to remain true. I care about preserving the thing, the reason, the method, the failure, and the way back—not just getting a pretty result once.</p>
-<nav><a href="#current-work">Current work</a><a href="#dean-fixed-list-progress">Dean list check</a><a href="#announcements">Announcements</a><a href="#dream-to-action">Dream to Action</a><a href="https://redogit.github.io/redogit/">Terms first</a><a href="https://redogit.github.io/redogit/recent-work.html">Recent work</a><a href="https://redogit.github.io/redogit/condensed-wisdom.html">Condensed wisdom</a><a href="https://redogit.github.io/redogit/live-design.html">P vs NP live design</a><a href="https://redogit.github.io/conscience64/play/musilanguage/">Musilanguage Studio</a></nav>
+<nav><a href="#current-work">Current work</a><a href="#dean-fixed-list-progress">Dean list check</a><a href="#dean-cycle-discovery">Certificate search</a><a href="#announcements">Announcements</a><a href="#dream-to-action">Dream to Action</a><a href="https://redogit.github.io/redogit/">Terms first</a><a href="https://redogit.github.io/redogit/recent-work.html">Recent work</a><a href="https://redogit.github.io/redogit/condensed-wisdom.html">Condensed wisdom</a><a href="https://redogit.github.io/redogit/live-design.html">P vs NP live design</a><a href="https://redogit.github.io/conscience64/play/musilanguage/">Musilanguage Studio</a></nav>
 </header>
 
 <section id="current-work" aria-labelledby="current-work-title">
@@ -50,6 +50,13 @@ blockquote{margin:18px 0;padding:2px 0 2px 18px;border-left:4px solid var(--fire
 <p>I am taking this proof one approved step at a time. The candidates, the Dean's exclusion list, and the required count are input. I do not fix the list after it arrives. I test what a selection can satisfy and retain the exact reason a proposed shortcut fails.</p>
 <p>This step returned to my earlier five-cycle and boundary-transfer work. In an explicit connected chain, the largest compatible selection has two candidates per five-cycle. Holding the earlier target fixed, matching already proves NO after the first bridge. At the separately stated first impossible target, matching is inconclusive but the odd-cycle count proves NO. Changing the target quietly would make the result say something it did not prove.</p>
 <p>The older table is historical because its generator was not recovered. The new chain has its own declared edges and proof. It is a bounded result, not a polynomial method for every Dean list. <a href="https://github.com/redogit/redogit/blob/main/PNP_DEAN_FIXED_LIST_C5_CHAIN_2026-09-29.md">Read the exact proof and cost boundary →</a></p>
+</article>
+
+<article class="card" id="dean-cycle-discovery">
+<h3>P versus NP — checking the witness is not finding it</h3>
+<p>I can take a list of odd cycles and check it against the Dean's given edges. The counting rule has to account for every vertex: an unlisted person might still be selectable. My older spanning support-frame bound is sound with that missing condition in place.</p>
+<p>On the same five-cycle chain, one valid frame misses the NO target and another proves it. Finding a frame is not enough; I have to find one that settles the obligation and count that work. The exact search for a decisive odd-cycle list is NP-complete by a reduction from triangle partition. That is one named certificate search. It is not a proof that no other polynomial method exists. A connected chain of four-person cliques also shows where this cycle-only certificate stops.</p>
+<p><a href="https://github.com/redogit/redogit/blob/main/PNP_DEAN_CYCLE_CERTIFICATE_DISCOVERY_2026-09-29.md">Read the checker, reduction, counterexample, and claim boundary →</a></p>
 </article>
 
 <h3>Libraries of Libraries — carry less, lose less</h3>

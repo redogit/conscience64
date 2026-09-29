@@ -3,13 +3,13 @@
   "scope": "pinned-public-dream-app-and-public-profile-pages",
   "host": "https://redogit.github.io/conscience64/",
   "application_commit": "667e989dcad401829bb097726b3a14cc0aa90f2c",
-  "profile_commit": "f938a81f02abe94c8ee25bc06995103b475767cd",
+  "profile_commit": "0ad242d5f76fed87fb928b7d1035819156a1dcaf",
   "files": [
     {
       "path": "about.html",
-      "source_url": "https://raw.githubusercontent.com/redogit/redogit/f938a81f02abe94c8ee25bc06995103b475767cd/docs/about.html",
-      "sha256": "091acdbee0bb36465393459f08a27091516575c0efc0259dacd17c09104fe5cc",
-      "bytes": 25030
+      "source_url": "https://raw.githubusercontent.com/redogit/redogit/0ad242d5f76fed87fb928b7d1035819156a1dcaf/docs/about.html",
+      "sha256": "a2ce752467b700bdf8090557df223adcf0f8ea09352d9e5b9bc789d7e5dba6fa",
+      "bytes": 26147
     },
     {
       "path": "dream-to-action/index.html",
@@ -19,9 +19,9 @@
     },
     {
       "path": "recent-work.html",
-      "source_url": "https://raw.githubusercontent.com/redogit/redogit/f938a81f02abe94c8ee25bc06995103b475767cd/docs/recent-work.html",
-      "sha256": "2c64b40daacfc814bb134b59f1e25ed6b07dc6af591d82bc75e3f3f6ad34eac0",
-      "bytes": 8960
+      "source_url": "https://raw.githubusercontent.com/redogit/redogit/0ad242d5f76fed87fb928b7d1035819156a1dcaf/docs/recent-work.html",
+      "sha256": "7c7f6f386757dc49bfd52ecdc59f350638aaee8f90e2e09c04c565f6b00cfae2",
+      "bytes": 9376
     }
   ],
   "boundary": "This overlay is separately authorized. projection-manifest.json still describes only the original testbed/Musilanguage subprojection. Canonical source authority remains in the two source repositories. No participant or private-origin records are included.",
