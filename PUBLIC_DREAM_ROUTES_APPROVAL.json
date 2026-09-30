@@ -15,16 +15,16 @@
     "dream-publication.json"
   ],
   "application_source": "redogit/Dream-To-Action@667e989dcad401829bb097726b3a14cc0aa90f2c:index.html",
-  "profile_source": "redogit/redogit@e76004c44d4fc470f3d82a3c6ad795d92b4fecbc:docs/about.html,docs/recent-work.html",
-  "previous_profile_source": "redogit/redogit@67f7f98c46f6d1b85553d70f11b8268e79d0f884:docs/about.html,docs/recent-work.html",
+  "profile_source": "redogit/redogit@3a6607a005d3376b2949b1e4ab3a43f37bf52a32:docs/about.html,docs/recent-work.html",
+  "previous_profile_source": "redogit/redogit@e76004c44d4fc470f3d82a3c6ad795d92b4fecbc:docs/about.html,docs/recent-work.html",
   "preceding_profile_source": "redogit/redogit@c4919bcbc783c20567428f570d68fc1fcb61b09a:docs/about.html,docs/recent-work.html",
   "earlier_profile_source": "redogit/redogit@5011206ca13a5ea630ce4005138614b9e10496f0:docs/about.html,docs/recent-work.html",
   "older_profile_source": "redogit/redogit@4685dec29d25fb4fa006c88141a6304cf14a872c:docs/about.html,docs/recent-work.html",
   "oldest_profile_source": "redogit/redogit@f7116cd4963f486d92661139cf5a492755da256a:docs/about.html,docs/recent-work.html",
-  "about_git_blob": "116abd77939fb46990f6673db7a51ef9ce1f591b",
-  "recent_work_git_blob": "f0394335d7c9b11e340b79dbbde26ed6cb171092",
-  "profile_update_scope": "Steps 26-29 add one short summary and source link in the existing public About Me and Recent Work sections. The source proves compact expression construction/evaluation for private components capped at three, an explicit reduction isolating global optimization, a bipartite matching/cover branch, and one C9-to-P9 edge repair. No universal P-versus-NP claim. Only the two pinned page contents and their provenance advance; authorized routes, application bytes, privacy, rights, and unrelated projection bytes retain their prior scope.",
-  "current_profile_source_review": "Profile source e76004c44d4fc470f3d82a3c6ad795d92b4fecbc: eight-file diff and exact fetched-back blobs. All 16,645 finite assertions passed in the JavaScript/V8 tool runtime; the published execution record explicitly states that the local shell was unavailable and no new Mathbox runner manifest was validated. Publish only docs/about.html and docs/recent-work.html through the existing overlay, then verify exact live bytes through the existing workflows.",
+  "about_git_blob": "4aa3c2937d4708db1de0df87784d6d684e5836cb",
+  "recent_work_git_blob": "5551e7b99d7ecf17531a19e8675beccb254207dd",
+  "profile_update_scope": "Steps 30-34 add one short summary and source link in the existing public About Me and Recent Work sections. The source characterizes bit-flip parity, proves and implements cap-one bipartite deletion discovery plus exact matching/cover branches, and records explicit parameter and decomposition controls. The default repair cap remains one vertex. No universal P-versus-NP claim. Only the two pinned page contents and provenance advance; authorized routes, application bytes, privacy, rights, and unrelated projection bytes retain their prior scope.",
+  "current_profile_source_review": "Profile source 3a6607a005d3376b2949b1e4ab3a43f37bf52a32: eleven-file diff and exact fetched-back blobs. All 1,100 labeled graphs through five vertices were checked; 1,033 cap-one admitted graphs solved exactly and 67 rejected from this route. The CPython 3.12.14 bounded run and Mathbox version-2 manifest validation passed. The receipt states the absent local Git checkout and remote base; exact script/result hashes are retained. Publish only docs/about.html and docs/recent-work.html through the existing overlay, then verify exact live bytes.",
   "application_sha256": "231fdadb14093df1028abe015f3c4d583b1031da5ae03048abff5244c3eac807",
   "host": "https://redogit.github.io/conscience64/",
   "commercial_license_granted": false,
@@ -46,6 +46,7 @@
   "step17_profile_source": "redogit/redogit@5dcf72319a35dec83df8b217efe038a0acb53c91:docs/about.html,docs/recent-work.html",
   "step18_profile_source": "redogit/redogit@cd6d3329109cf114a3466332487dc69a7aff2104:docs/about.html,docs/recent-work.html",
   "step19_25_profile_source": "redogit/redogit@67f7f98c46f6d1b85553d70f11b8268e79d0f884:docs/about.html,docs/recent-work.html",
-  "checkpoint_request": "Proceed from checkpoint",
-  "checkpoint_request_date": "2026-09-30"
+  "checkpoint_request": "continue.",
+  "checkpoint_request_date": "2026-09-30",
+  "step26_29_profile_source": "redogit/redogit@e76004c44d4fc470f3d82a3c6ad795d92b4fecbc:docs/about.html,docs/recent-work.html"
 }
