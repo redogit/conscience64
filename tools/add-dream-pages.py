@@ -11,12 +11,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HOST = 'https://redogit.github.io/conscience64/'
 APP_COMMIT = '667e989dcad401829bb097726b3a14cc0aa90f2c'
-PROFILE_COMMIT = '3a6607a005d3376b2949b1e4ab3a43f37bf52a32'
+PROFILE_COMMIT = '73ff5ba84b0604d618b2689f979a24239babb0e5'
 APP_HASH = '231fdadb14093df1028abe015f3c4d583b1031da5ae03048abff5244c3eac807'
 ITEMS = {
     'dream-to-action/index.html': (f'https://raw.githubusercontent.com/redogit/Dream-To-Action/{APP_COMMIT}/index.html', 'sha256', APP_HASH),
-    'about.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/about.html', 'git-blob', '4aa3c2937d4708db1de0df87784d6d684e5836cb'),
-    'recent-work.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/recent-work.html', 'git-blob', '5551e7b99d7ecf17531a19e8675beccb254207dd'),
+    'about.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/about.html', 'git-blob', '3ae3fe1efe3241b2cdc8a37847e7a4ced7d9ca88'),
+    'recent-work.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/recent-work.html', 'git-blob', 'fc767e39f3d08c8bc81034fbf520e677cf166f8f'),
 }
 ALLOWED = set(ITEMS) | {'dream-publication.json'}
 
