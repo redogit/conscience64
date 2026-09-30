@@ -1,6 +1,6 @@
 {
   "schema": "conscience64/research-project-registry/v1",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "surface": "I/R/P/O",
   "forwardOnly": true,
   "learnedInvariants": [
@@ -160,32 +160,6 @@
         "test": "Frozen data/baselines, ablation, multi-seed reruns, held-out performance, and stability checks.",
         "unknown": "Value after training, scaling, native implementation, domain shift, and stronger baselines remains unresolved."
       }
-    },
-    {
-      "id": "bgzf-compressed-text-ai",
-      "name": "BGZF / ZIP Compressed-Text AI",
-      "status": "ACTIVE_BOUNDED_RESEARCH_SUCCESSOR",
-      "path": "research/projects/bgzf-compressed-text-ai.md",
-      "I": "Compressed-domain text computation over ZIP/DEFLATE/BGZF using exact and learned compositional carriers without materializing the complete plaintext.",
-      "R": "Logical text identity, compressor grammar shape, compressed size, computational cost, and semantic generalization are distinct obligations.",
-      "P": "Require recompression invariance, bounded DEFLATE history, associative carrier composition, held-out real-corpus tests, and explicit unresolved selective-expansion boundaries.",
-      "O": "Five successive experiments verified recompression-invariant exact carriers, a 32 KiB symbolic frontier, and a small learned associative affine operator; real semantic tests exposed a nonlinear generalization plateau.",
-      "highlight": "Static runtime plus the 8-state learned model is 905,760 bytes and remains inside the 1.44 MiB envelope.",
-      "lowlight": "Naive frontier compaction creates a speed ridge, and widening the affine operator does not close the real semantic gap to a tiny byte-CNN.",
-      "claimCeiling": "Bounded implementation/research evidence; no general language understanding, untouched-bit inference, or universal superiority claim.",
-      "checks": {
-        "assumption": "A useful task admits a compact compositional carrier whose invariants survive equivalent recompressions.",
-        "test": "Equivalent ZIP encodings, bounded-history equivalence, synthetic long-range counterprobes, real identity-disjoint corpora, and strict binary/model size checks.",
-        "unknown": "Whether an associative nonlinear or selectively expanding carrier can match stronger byte models while retaining representation invariance."
-      },
-      "updates": [
-        {
-          "id": "2026-09-30:five-experiment-descent",
-          "path": "research/compressed-text-ai/2026-09-30/README.md",
-          "status": "BOUNDED_SUCCESS_WITH_OPEN_PLATEAUS",
-          "authorityTransfer": false
-        }
-      ]
     },
     {
       "id": "geometry-codecs",
