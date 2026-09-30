@@ -108,3 +108,34 @@ for (const page of ['musilanguage/index.html', 'musilanguage/radio.html', 'musil
 }
 
 console.log('PASS reference integrity: bounded resolution, static historical aliases, ambiguity refusal, unsafe-scope refusal, and Musilanguage one-hop references');
+
+
+// NEON//VEIL release catalog integrity: repository catalog, curated public hub,
+// release manifest, and exact platform package paths must agree.
+{
+  const projects = JSON.parse(await readFile(new URL('projects.json', here), 'utf8'));
+  const neon = projects.projects.find(project => project.id === 'neon-veil');
+  assert.ok(neon, 'NEON//VEIL missing from play/projects.json');
+  assert.equal(neon.entry, 'neon-veil/index.html');
+
+  const publicHub = await readFile(new URL('public-index.html', here), 'utf8');
+  assert.match(publicHub, /NEON\/\/VEIL · Public Release/);
+  assert.match(publicHub, /\.\/neon-veil\//);
+
+  const release = JSON.parse(await readFile(new URL('neon-veil/release.json', here), 'utf8'));
+  assert.equal(release.schema, 'neon-veil/public-release/v1');
+  assert.equal(release.public_backend, false);
+  assert.equal(release.trusted_lan_only, true);
+  assert.equal(release.packages.length, 5);
+  const platforms = new Set(release.packages.map(item => item.platform));
+  assert.deepEqual([...platforms].sort(), ['android','iphone-ipad','linux','macos','windows']);
+  for (const pkg of release.packages) {
+    assert.equal(typeof pkg.sha256, 'string');
+    assert.match(pkg.sha256, /^[0-9a-f]{64}$/);
+    assert.ok(Number.isInteger(pkg.bytes) && pkg.bytes > 0);
+    assert.equal(await mustExist(new URL('neon-veil/downloads/' + pkg.file, here)), true,
+      'missing NEON//VEIL package: ' + pkg.file);
+    assert.ok(publicHub.includes(pkg.file), 'central public hub missing package: ' + pkg.file);
+  }
+  console.log('PASS NEON//VEIL release catalog integrity');
+}
