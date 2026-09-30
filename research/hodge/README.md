@@ -70,3 +70,11 @@ CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
 ## Claim ceiling
 
 The Hodge conjecture is not established by the current project. The directory is a research framework, evidence ledger, calibration suite, and targeted search program.
+
+## Current W114 bounded composition checkpoint
+
+[2026-09-30 signed composition audit](W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md)
+reconciles the later n=3 projective closure and constructs a typed D2 product
+transfer with full quotient normalizations. It preserves failed counterprobes
+and separates that nonzero transfer block from the unconstructed W114 plane
+push and residual-to-Artin cycle. **MOT-1 REMAINS OPEN.**

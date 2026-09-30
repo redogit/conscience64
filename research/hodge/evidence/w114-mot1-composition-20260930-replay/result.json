@@ -1,0 +1,6740 @@
+{
+  "artin_curve_carrier": {
+    "artin_exponent_relation": "113-2*28 == 57 (mod 114)",
+    "claim_ceiling": [
+      "EXACT_CHARACTER_IDENTITY != MOT_1_CLOSED",
+      "PROP_4_7_MOTIVIC_TWIST != ONE_COMPOSED_W114_CORRESPONDENCE",
+      "ARTIN_SIGN_CARRIER_EXPLICIT != STANDARD_PART_CORRESPONDENCE_EXPLICIT"
+    ],
+    "coefficient_c": "3*(7-zeta_3)",
+    "degree": 114,
+    "factor_P": [
+      7,
+      106
+    ],
+    "factor_P_product_exponent": 113,
+    "factor_Q": [
+      79,
+      63
+    ],
+    "factor_Q_product_exponent": 28,
+    "motivic_formula": "T_P(c) tensor T_Q(c)^(-2) ~= Lambda<c>^(chi_114^57), where T_(a,b)(c)=h(F_114^(2)<c>)^(a,b) tensor (h(F_114^(2))^(a,b))^vee.",
+    "quadratic_identification": "chi_114^57 factors through mu_2, so by the Kummer-motive factor-through rule this is the quadratic Artin motive for k(sqrt(c))/k.",
+    "resulting_character_exponent": 57,
+    "resulting_character_order": 2,
+    "schema": "conscience64/w114-explicit-artin-carrier/v1"
+  },
+  "base_commit": "3b213dfee92c8015ca3add613357c6819f9f24c7",
+  "claim_ceiling": [
+    "MOT-1 REMAINS OPEN",
+    "HODGE_CONJECTURE_REMAINS_OPEN",
+    "THEOREM_USE != INDEPENDENT_REPROOF",
+    "EXACT_ARITHMETIC != CHOW_MORPHISM",
+    "NONZERO_TRANSFER_BLOCK != NONZERO_W114_CORRESPONDENCE",
+    "SPLIT_PRIME_REALIZATION_CHECK != GLOBAL_REALIZATION_PROOF"
+  ],
+  "corrected_artin": {
+    "corrected_factorization": {
+      "19": 38,
+      "2": 100,
+      "3": 60,
+      "3q": 57
+    },
+    "full_target": "A(2,100) tensor A(3,60) tensor A(19,38) tensor A(3*(7-zeta_3),57)",
+    "historical_exact_exponents": {
+      "19": 38,
+      "2": 100,
+      "3": 3,
+      "q": 57
+    },
+    "identity": "A(3,60) tensor A(3q,57) = A(3,3) tensor A(q,57)",
+    "q": "7-zeta_3",
+    "quadratic_factor": "A(3*(7-zeta_3),57)",
+    "quadratic_order": 2
+  },
+  "counterprobes": [
+    {
+      "candidate": {
+        "a": 7,
+        "boundary": {
+          "X_coordinate_hyperplanes": [
+            7,
+            7
+          ],
+          "X_diagonal": 14,
+          "curve_u0": [
+            64
+          ],
+          "curve_u1": 7,
+          "quotient_kernel": [
+            0
+          ]
+        },
+        "curve_characters": [
+          [
+            7,
+            57
+          ]
+        ],
+        "d": 114,
+        "deg_C_to_T": 1,
+        "deg_Q": 57,
+        "deg_X_to_T": 114,
+        "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+        "forward_scale": "1",
+        "geometry": {
+          "C": "x^114+y^2=1, x!=0",
+          "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+          "Q": "(u,v)->(u,v^57) in each curve factor",
+          "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+          "X": "sum(t_i^114)=2; prod(t_i)!=0",
+          "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+        },
+        "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+        "inverse_scale": "1/114",
+        "n": 2,
+        "source": "Y(114;7;57)",
+        "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+        "surface_character": [
+          7,
+          7
+        ],
+        "symmetrizer_order": 1,
+        "target": "X(114;2;7;twist=2)",
+        "theorem_dependencies": [
+          "OY 3.5, 3.6, 4.11(iv), 7.2",
+          "Chow-to-DM full faithfulness (3.5)"
+        ]
+      },
+      "id": "omit-quotient-n2",
+      "reason": "inverse normalization gives 57, expected 1",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "a": 4,
+        "boundary": {
+          "X_coordinate_hyperplanes": [
+            4,
+            4,
+            4
+          ],
+          "X_diagonal": 12,
+          "curve_u0": [
+            23,
+            42
+          ],
+          "curve_u1": 4,
+          "quotient_kernel": [
+            0,
+            0
+          ]
+        },
+        "curve_characters": [
+          [
+            4,
+            19
+          ],
+          [
+            4,
+            38
+          ]
+        ],
+        "d": 57,
+        "deg_C_to_T": 114,
+        "deg_Q": 361,
+        "deg_X_to_T": 3249,
+        "forward_cycle": "1/3249 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+        "forward_scale": "1/3249",
+        "geometry": {
+          "C": "x^57+y^3=1, x!=0",
+          "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+          "Q": "(u,v)->(u,v^19) in each curve factor",
+          "T": "t^57=prod(s_i); sum(s_i)=3; prod(s_i)!=0",
+          "X": "sum(t_i^57)=3; prod(t_i)!=0",
+          "X_to_T": "s_i=t_i^57, t=prod_i t_i"
+        },
+        "inverse_cycle": "1/20577 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+        "inverse_scale": "1/57",
+        "n": 3,
+        "source": "Y(57;4;19,38)",
+        "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+        "surface_character": [
+          4,
+          4,
+          4
+        ],
+        "symmetrizer_order": 2,
+        "target": "X(57;3;4;twist=3)",
+        "theorem_dependencies": [
+          "OY 3.5, 3.6, 4.11(iv), 7.2",
+          "Chow-to-DM full faithfulness (3.5)"
+        ]
+      },
+      "id": "omit-quotient-n3",
+      "reason": "inverse normalization gives 361, expected 1",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "a": 11,
+        "boundary": {
+          "X_coordinate_hyperplanes": [
+            11,
+            11,
+            11
+          ],
+          "X_diagonal": 33,
+          "curve_u0": [
+            30,
+            49
+          ],
+          "curve_u1": 11,
+          "quotient_kernel": [
+            0,
+            0
+          ]
+        },
+        "curve_characters": [
+          [
+            11,
+            19
+          ],
+          [
+            11,
+            38
+          ]
+        ],
+        "d": 57,
+        "deg_C_to_T": 114,
+        "deg_Q": 361,
+        "deg_X_to_T": 3249,
+        "forward_cycle": "1/3249 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+        "forward_scale": "1/3249",
+        "geometry": {
+          "C": "x^57+y^3=1, x!=0",
+          "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+          "Q": "(u,v)->(u,v^19) in each curve factor",
+          "T": "t^57=prod(s_i); sum(s_i)=3; prod(s_i)!=0",
+          "X": "sum(t_i^57)=3; prod(t_i)!=0",
+          "X_to_T": "s_i=t_i^57, t=prod_i t_i"
+        },
+        "inverse_cycle": "1/20577 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+        "inverse_scale": "1/41154",
+        "n": 3,
+        "source": "Y(57;11;19,38)",
+        "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+        "surface_character": [
+          11,
+          11,
+          11
+        ],
+        "symmetrizer_order": 2,
+        "target": "X(57;3;11;twist=3)",
+        "theorem_dependencies": [
+          "OY 3.5, 3.6, 4.11(iv), 7.2",
+          "Chow-to-DM full faithfulness (3.5)"
+        ]
+      },
+      "id": "omit-symmetrizer-two",
+      "reason": "inverse normalization gives 1/2, expected 1",
+      "rejected": true
+    },
+    {
+      "candidate": [
+        [
+          7,
+          1
+        ],
+        [
+          22,
+          1
+        ],
+        [
+          23,
+          1
+        ],
+        [
+          56,
+          -1
+        ]
+      ],
+      "id": "reverse-D2-23-sign",
+      "reason": "signed word fails exact free-vector identity",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "N": [
+          1,
+          2
+        ],
+        "base": "Q(zeta_114)"
+      },
+      "id": "finite-field-norm-to-char-zero",
+      "reason": "Artin-Schreier norm primitive in OY 4.5 has finite-field base, not Q(zeta_114)",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "source": [
+          "P_f"
+        ]
+      },
+      "id": "bare-plane-as-transfer-block-source",
+      "reason": "composition source does not equal previous target",
+      "rejected": true
+    },
+    {
+      "candidate": [
+        {
+          "cycle": "id_P_f tensor spectator identities tensor (1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X)",
+          "direction": "inverse",
+          "generator": "D2_7",
+          "occurrence_id": "D2:7:signed-position:1",
+          "primitive": {
+            "a": 7,
+            "boundary": {
+              "X_coordinate_hyperplanes": [
+                7,
+                7
+              ],
+              "X_diagonal": 14,
+              "curve_u0": [
+                64
+              ],
+              "curve_u1": 7,
+              "quotient_kernel": [
+                0
+              ]
+            },
+            "curve_characters": [
+              [
+                7,
+                57
+              ]
+            ],
+            "d": 114,
+            "deg_C_to_T": 1,
+            "deg_Q": 57,
+            "deg_X_to_T": 114,
+            "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+            "forward_scale": "1",
+            "geometry": {
+              "C": "x^114+y^2=1, x!=0",
+              "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+              "Q": "(u,v)->(u,v^57) in each curve factor",
+              "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+              "X": "sum(t_i^114)=2; prod(t_i)!=0",
+              "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+            },
+            "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+            "inverse_scale": "1/6498",
+            "n": 2,
+            "source": "Y(114;7;57)",
+            "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+            "surface_character": [
+              7,
+              7
+            ],
+            "symmetrizer_order": 1,
+            "target": "X(114;2;7;twist=2)",
+            "theorem_dependencies": [
+              "OY 3.5, 3.6, 4.11(iv), 7.2",
+              "Chow-to-DM full faithfulness (3.5)"
+            ]
+          },
+          "sign": 1,
+          "source": [
+            "P_f",
+            "X(114;2;7;twist=2)",
+            "X(114;2;22;twist=2)",
+            "Y(114;23;57)",
+            "Y(114;56;57)"
+          ],
+          "target": [
+            "P_f",
+            "Y(114;7;57)",
+            "X(114;2;22;twist=2)",
+            "Y(114;23;57)",
+            "Y(114;56;57)"
+          ]
+        },
+        {
+          "cycle": "id_P_f tensor spectator identities tensor (1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X)",
+          "direction": "inverse",
+          "generator": "D2_22",
+          "occurrence_id": "D2:22:signed-position:2",
+          "primitive": {
+            "a": 22,
+            "boundary": {
+              "X_coordinate_hyperplanes": [
+                22,
+                22
+              ],
+              "X_diagonal": 44,
+              "curve_u0": [
+                79
+              ],
+              "curve_u1": 22,
+              "quotient_kernel": [
+                0
+              ]
+            },
+            "curve_characters": [
+              [
+                22,
+                57
+              ]
+            ],
+            "d": 114,
+            "deg_C_to_T": 1,
+            "deg_Q": 57,
+            "deg_X_to_T": 114,
+            "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+            "forward_scale": "1",
+            "geometry": {
+              "C": "x^114+y^2=1, x!=0",
+              "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+              "Q": "(u,v)->(u,v^57) in each curve factor",
+              "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+              "X": "sum(t_i^114)=2; prod(t_i)!=0",
+              "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+            },
+            "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+            "inverse_scale": "1/6498",
+            "n": 2,
+            "source": "Y(114;22;57)",
+            "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+            "surface_character": [
+              22,
+              22
+            ],
+            "symmetrizer_order": 1,
+            "target": "X(114;2;22;twist=2)",
+            "theorem_dependencies": [
+              "OY 3.5, 3.6, 4.11(iv), 7.2",
+              "Chow-to-DM full faithfulness (3.5)"
+            ]
+          },
+          "sign": 1,
+          "source": [
+            "W114"
+          ],
+          "target": [
+            "P_f",
+            "Y(114;7;57)",
+            "Y(114;22;57)",
+            "Y(114;23;57)",
+            "Y(114;56;57)"
+          ]
+        },
+        {
+          "cycle": "id_P_f tensor spectator identities tensor (1 e_X [closure(Y_open x_T X_open)] e_sym e_Y)",
+          "direction": "forward",
+          "generator": "D2_23",
+          "occurrence_id": "D2:23:signed-position:3",
+          "primitive": {
+            "a": 23,
+            "boundary": {
+              "X_coordinate_hyperplanes": [
+                23,
+                23
+              ],
+              "X_diagonal": 46,
+              "curve_u0": [
+                80
+              ],
+              "curve_u1": 23,
+              "quotient_kernel": [
+                0
+              ]
+            },
+            "curve_characters": [
+              [
+                23,
+                57
+              ]
+            ],
+            "d": 114,
+            "deg_C_to_T": 1,
+            "deg_Q": 57,
+            "deg_X_to_T": 114,
+            "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+            "forward_scale": "1",
+            "geometry": {
+              "C": "x^114+y^2=1, x!=0",
+              "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+              "Q": "(u,v)->(u,v^57) in each curve factor",
+              "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+              "X": "sum(t_i^114)=2; prod(t_i)!=0",
+              "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+            },
+            "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+            "inverse_scale": "1/6498",
+            "n": 2,
+            "source": "Y(114;23;57)",
+            "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+            "surface_character": [
+              23,
+              23
+            ],
+            "symmetrizer_order": 1,
+            "target": "X(114;2;23;twist=2)",
+            "theorem_dependencies": [
+              "OY 3.5, 3.6, 4.11(iv), 7.2",
+              "Chow-to-DM full faithfulness (3.5)"
+            ]
+          },
+          "sign": -1,
+          "source": [
+            "P_f",
+            "Y(114;7;57)",
+            "Y(114;22;57)",
+            "Y(114;23;57)",
+            "Y(114;56;57)"
+          ],
+          "target": [
+            "P_f",
+            "Y(114;7;57)",
+            "Y(114;22;57)",
+            "X(114;2;23;twist=2)",
+            "Y(114;56;57)"
+          ]
+        },
+        {
+          "cycle": "id_P_f tensor spectator identities tensor (1 e_X [closure(Y_open x_T X_open)] e_sym e_Y)",
+          "direction": "forward",
+          "generator": "D2_56",
+          "occurrence_id": "D2:56:signed-position:4",
+          "primitive": {
+            "a": 56,
+            "boundary": {
+              "X_coordinate_hyperplanes": [
+                56,
+                56
+              ],
+              "X_diagonal": 112,
+              "curve_u0": [
+                113
+              ],
+              "curve_u1": 56,
+              "quotient_kernel": [
+                0
+              ]
+            },
+            "curve_characters": [
+              [
+                56,
+                57
+              ]
+            ],
+            "d": 114,
+            "deg_C_to_T": 1,
+            "deg_Q": 57,
+            "deg_X_to_T": 114,
+            "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+            "forward_scale": "1",
+            "geometry": {
+              "C": "x^114+y^2=1, x!=0",
+              "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+              "Q": "(u,v)->(u,v^57) in each curve factor",
+              "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+              "X": "sum(t_i^114)=2; prod(t_i)!=0",
+              "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+            },
+            "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+            "inverse_scale": "1/6498",
+            "n": 2,
+            "source": "Y(114;56;57)",
+            "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+            "surface_character": [
+              56,
+              56
+            ],
+            "symmetrizer_order": 1,
+            "target": "X(114;2;56;twist=2)",
+            "theorem_dependencies": [
+              "OY 3.5, 3.6, 4.11(iv), 7.2",
+              "Chow-to-DM full faithfulness (3.5)"
+            ]
+          },
+          "sign": -1,
+          "source": [
+            "P_f",
+            "Y(114;7;57)",
+            "Y(114;22;57)",
+            "X(114;2;23;twist=2)",
+            "Y(114;56;57)"
+          ],
+          "target": [
+            "P_f",
+            "Y(114;7;57)",
+            "Y(114;22;57)",
+            "X(114;2;23;twist=2)",
+            "X(114;2;56;twist=2)"
+          ]
+        }
+      ],
+      "id": "relabel-transfer-target-as-W114",
+      "reason": "composition source does not equal previous target",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "a": 19,
+        "n": 3
+      },
+      "id": "n3-boundary-survives",
+      "reason": "boundary or multiplication hypothesis fails",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "a": 7,
+        "boundary": {
+          "X_coordinate_hyperplanes": [
+            7,
+            7
+          ],
+          "X_diagonal": 14,
+          "curve_u0": [
+            64
+          ],
+          "curve_u1": 7,
+          "quotient_kernel": [
+            0
+          ]
+        },
+        "curve_characters": [
+          [
+            7,
+            57
+          ]
+        ],
+        "d": 114,
+        "deg_C_to_T": 1,
+        "deg_Q": 57,
+        "deg_X_to_T": 114,
+        "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+        "forward_scale": "1",
+        "geometry": {
+          "C": "x^114+y^2=1, x!=0",
+          "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+          "Q": "identity",
+          "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+          "X": "sum(t_i^114)=2; prod(t_i)!=0",
+          "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+        },
+        "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+        "inverse_scale": "1/6498",
+        "n": 2,
+        "source": "Y(114;7;57)",
+        "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+        "surface_character": [
+          7,
+          7
+        ],
+        "symmetrizer_order": 1,
+        "target": "X(114;2;7;twist=2)",
+        "theorem_dependencies": [
+          "OY 3.5, 3.6, 4.11(iv), 7.2",
+          "Chow-to-DM full faithfulness (3.5)"
+        ]
+      },
+      "id": "erase-fermat-quotient-geometry",
+      "reason": "transfer metadata mismatch: geometry",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "prime": 571,
+        "radicand": "7-zeta_3"
+      },
+      "id": "old-q-only-gap-sign",
+      "reason": "at p=571, q is a square but corrected 3q is a nonsquare",
+      "rejected": true
+    },
+    {
+      "candidate": {
+        "claimed_scalar": 1,
+        "prime": 571,
+        "word": "N_1-N_2"
+      },
+      "id": "drop-same-psi-minus-one-phase",
+      "reason": "same-psi N1-N2 leaves chi_114(-1), equal to -1 at p=571",
+      "rejected": true
+    }
+  ],
+  "galois_covariance": [
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        29,
+        11,
+        17,
+        28,
+        40,
+        46
+      ],
+      "sectors": [
+        {
+          "a": 7,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 22,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 23,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 56,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 4,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 11,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 16,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 17,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 1
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        31,
+        55,
+        28,
+        26,
+        29,
+        2
+      ],
+      "sectors": [
+        {
+          "a": 35,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 110,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 1,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 52,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 20,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 55,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 23,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 28,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 5
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        32,
+        20,
+        5,
+        25,
+        52,
+        37
+      ],
+      "sectors": [
+        {
+          "a": 49,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 40,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 47,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 50,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 28,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 20,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 55,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 5,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 7
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        34,
+        7,
+        16,
+        23,
+        41,
+        50
+      ],
+      "sectors": [
+        {
+          "a": 77,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 14,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 25,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 46,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 44,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 7,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 5,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 16,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 11
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        35,
+        29,
+        50,
+        22,
+        7,
+        28
+      ],
+      "sectors": [
+        {
+          "a": 91,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 58,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 71,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 44,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 52,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 29,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 37,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 50,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 13
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        37,
+        16,
+        4,
+        20,
+        53,
+        41
+      ],
+      "sectors": [
+        {
+          "a": 5,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 32,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 49,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 40,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 11,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 16,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 44,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 4,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 17
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        40,
+        25,
+        49,
+        17,
+        8,
+        32
+      ],
+      "sectors": [
+        {
+          "a": 47,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 50,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 73,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 34,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 35,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 25,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 26,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 49,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 23
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        41,
+        47,
+        26,
+        16,
+        31,
+        10
+      ],
+      "sectors": [
+        {
+          "a": 61,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 94,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 5,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 32,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 43,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 47,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 1,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 26,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 25
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        43,
+        34,
+        37,
+        14,
+        20,
+        23
+      ],
+      "sectors": [
+        {
+          "a": 89,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 68,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 97,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 28,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 2,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 34,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 8,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 37,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 29
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        44,
+        56,
+        14,
+        13,
+        43,
+        1
+      ],
+      "sectors": [
+        {
+          "a": 103,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 112,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 29,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 26,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 10,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 56,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 40,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 14,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 31
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        46,
+        43,
+        25,
+        11,
+        32,
+        14
+      ],
+      "sectors": [
+        {
+          "a": 17,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 86,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 7,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 22,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 26,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 43,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 47,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 25,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 35
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        47,
+        8,
+        2,
+        10,
+        55,
+        49
+      ],
+      "sectors": [
+        {
+          "a": 31,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 16,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 53,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 20,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 34,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 8,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 22,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 2,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 37
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        49,
+        52,
+        13,
+        8,
+        44,
+        5
+      ],
+      "sectors": [
+        {
+          "a": 59,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 104,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 31,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 16,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 50,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 52,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 29,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 13,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 41
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        50,
+        17,
+        47,
+        7,
+        10,
+        40
+      ],
+      "sectors": [
+        {
+          "a": 73,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 34,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 77,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 14,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 1,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 17,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 4,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 47,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 43
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        52,
+        4,
+        1,
+        5,
+        56,
+        53
+      ],
+      "sectors": [
+        {
+          "a": 101,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 8,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 55,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 10,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 17,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 4,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 11,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 1,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 47
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        53,
+        26,
+        35,
+        4,
+        22,
+        31
+      ],
+      "sectors": [
+        {
+          "a": 1,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 52,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 101,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 8,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 25,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 26,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 43,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 35,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 49
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        55,
+        13,
+        46,
+        2,
+        11,
+        44
+      ],
+      "sectors": [
+        {
+          "a": 29,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 26,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 79,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 4,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 41,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 13,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 50,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 46,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 53
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        56,
+        35,
+        23,
+        1,
+        34,
+        22
+      ],
+      "sectors": [
+        {
+          "a": 43,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 70,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 11,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 2,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 49,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 35,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 25,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 23,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 55
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        1,
+        22,
+        34,
+        56,
+        23,
+        35
+      ],
+      "sectors": [
+        {
+          "a": 71,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 44,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 103,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 112,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 8,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 22,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 32,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 34,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 59
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        2,
+        44,
+        11,
+        55,
+        46,
+        13
+      ],
+      "sectors": [
+        {
+          "a": 85,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 88,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 35,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 110,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 16,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 44,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 7,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 11,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 61
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        4,
+        31,
+        22,
+        53,
+        35,
+        26
+      ],
+      "sectors": [
+        {
+          "a": 113,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 62,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 13,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 106,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 32,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 31,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 14,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 22,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 65
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        5,
+        53,
+        56,
+        52,
+        1,
+        4
+      ],
+      "sectors": [
+        {
+          "a": 13,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 106,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 59,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 104,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 40,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 53,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 46,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 56,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 67
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        7,
+        40,
+        10,
+        50,
+        47,
+        17
+      ],
+      "sectors": [
+        {
+          "a": 41,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 80,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 37,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 100,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 56,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 40,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 53,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 10,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 71
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        8,
+        5,
+        44,
+        49,
+        13,
+        52
+      ],
+      "sectors": [
+        {
+          "a": 55,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 10,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 83,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 98,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 7,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 5,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 28,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 44,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 73
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        10,
+        49,
+        55,
+        47,
+        2,
+        8
+      ],
+      "sectors": [
+        {
+          "a": 83,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 98,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 61,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 94,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 23,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 49,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 35,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 55,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 77
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        11,
+        14,
+        32,
+        46,
+        25,
+        43
+      ],
+      "sectors": [
+        {
+          "a": 97,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 28,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 107,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 92,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 31,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 14,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 10,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 32,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 79
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        13,
+        1,
+        43,
+        44,
+        14,
+        56
+      ],
+      "sectors": [
+        {
+          "a": 11,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 2,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 85,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 88,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 47,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 1,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 17,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 43,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 83
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        14,
+        23,
+        20,
+        43,
+        37,
+        34
+      ],
+      "sectors": [
+        {
+          "a": 25,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 46,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 17,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 86,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 55,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 23,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 49,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 20,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 85
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        16,
+        10,
+        31,
+        41,
+        26,
+        47
+      ],
+      "sectors": [
+        {
+          "a": 53,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 20,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 109,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 82,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 14,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 10,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 56,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 31,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 89
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        17,
+        32,
+        8,
+        40,
+        49,
+        25
+      ],
+      "sectors": [
+        {
+          "a": 67,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 64,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 41,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 80,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 22,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 32,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 31,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 8,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 91
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        20,
+        41,
+        53,
+        37,
+        4,
+        16
+      ],
+      "sectors": [
+        {
+          "a": 109,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 82,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 65,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 74,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 46,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 41,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 13,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 53,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 97
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        22,
+        28,
+        7,
+        35,
+        50,
+        29
+      ],
+      "sectors": [
+        {
+          "a": 23,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 56,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 43,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 70,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 5,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 28,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 20,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 7,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 101
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        23,
+        50,
+        41,
+        34,
+        16,
+        7
+      ],
+      "sectors": [
+        {
+          "a": 37,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 100,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 89,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 68,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 13,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 50,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 52,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 41,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 103
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        25,
+        37,
+        52,
+        32,
+        5,
+        20
+      ],
+      "sectors": [
+        {
+          "a": 65,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 74,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 67,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 64,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 29,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 37,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 2,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 52,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 107
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        26,
+        2,
+        29,
+        31,
+        28,
+        55
+      ],
+      "sectors": [
+        {
+          "a": 79,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 4,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 113,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 62,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 37,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 2,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 34,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        },
+        {
+          "a": 29,
+          "d": 57,
+          "factor_permutation": [
+            0,
+            1
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            19,
+            38
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3)",
+      "u": 109
+    },
+    {
+      "all_transfer_boundaries_pass": true,
+      "claim": "covariance only; no Q-descent or residual Chow arrow inferred",
+      "plane_character": [
+        28,
+        46,
+        40,
+        29,
+        17,
+        11
+      ],
+      "sectors": [
+        {
+          "a": 107,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 92,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 91,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 58,
+          "d": 114,
+          "factor_permutation": [
+            0
+          ],
+          "n": 2,
+          "ordered_quotient_characters": [
+            57
+          ]
+        },
+        {
+          "a": 53,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 46,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 41,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        },
+        {
+          "a": 40,
+          "d": 57,
+          "factor_permutation": [
+            1,
+            0
+          ],
+          "n": 3,
+          "ordered_quotient_characters": [
+            38,
+            19
+          ]
+        }
+      ],
+      "sign_exponent": 57,
+      "sign_radicand": "3*(7-zeta_3^2)",
+      "u": 113
+    }
+  ],
+  "input_sha256": {
+    "HODGE_COMPASS_API.md": "7a2032ac0a7a593bf77c85d4a9d9f6a70d57842abc1335f8f18b4e524fc1bb75",
+    "W114_COMPILER_ENDPOINTS_2026-09-25.md": "628ad5dbced7cf8fb2c49e07e4217d6cd845a7bc9d15d575a4532419814b1c6b",
+    "W114_DUPLICATION_REFLECTION_PRIMITIVES_2026-09-25.md": "2747c560421628932ed8f3f0cc0c8805c4a523b661ea0758c44c661104efef83",
+    "W114_EXPLICIT_ARTIN_CARRIER_2026-09-25.md": "f32681bbd429ee903296eba8cbe76a9cd6d8146e9e511e1cab4cd996869ab7e8",
+    "W114_EXPLICIT_KATSURA_SHIODA_CORRESPONDENCE_2026-09-25.md": "a1d809f357e20a7fd86a1f1d57ad52fed0ebaca5582aed9a8843ab2c3d999463",
+    "W114_MOTIVIC_STANDARD_WORD_2026-09-25.md": "d4a11a5c5b6ec1797c655b472268281cb4551f16d9ec8add9692b565735d9890",
+    "W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md": "17560686c0c348a57b8511e2c0c41c886110fa99737d82f7d30e9554e7b647a6",
+    "W114_N3_TRANSFER_CORRESPONDENCE_2026-09-25.md": "074c8ae6cb47f0ea69ec087dd268e66730430c9cf783fd4356a1c196acd03221",
+    "W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md": "efd343543f406fe148e2d8fcdfb16f92f9565c117364689aef36b6b57eea9472",
+    "verify_w114_compiler_endpoints.py": "0dddebfae507dd7c33695b96ac10fe33285c10c054bf3b1d2f05b4ad309a22e7",
+    "verify_w114_duplication_reflection_primitives.py": "4657029b972b64634e1aa3d726c2162648529898c6bfb40aa1c4acf12ff7f2f8",
+    "verify_w114_explicit_artin_carrier.py": "233b7a79b1f2ddaba5663ff25ec3551e16b02131586c1fe4ca3d987baa69221f",
+    "verify_w114_explicit_ks_correspondence.py": "8c415ae7450f86a4a00f12507fe94210c53b6cbd8582b9cdee6f8234c40a7780",
+    "verify_w114_n3_projective_closure.py": "9e9d70b3d0b3e9984a918fa8fc7c794df3130b80d12ee82601bcd4ad752d22e6",
+    "verify_w114_n3_transfer_correspondence.py": "c8c8df5e8fbd2004f37854990626d4e0fef39f80765155d44ed724aba4442970",
+    "verify_w114_sign_normalization.py": "e4abfa95e57eb8a948cdf2e82c79b3200be2b34cc80d2d4cb5cc3c348377243c",
+    "w114_research_loop.py": "c69dd76aade86ff43be3369066b925a969b23357b39a69298b261b14d12de311"
+  },
+  "issue": "https://github.com/redogit/conscience64/issues/99",
+  "mot1_status": "OPEN",
+  "n3_compactification": "LATER_ARTIFACT_CLOSES_BOUNDARY_SEAM_UNDER_OY_THEOREM; NOT_INDEPENDENT_REPROOF",
+  "phase": "VERIFY_BOUNDED; ADMIT_W114_DENIED",
+  "plane": {
+    "f": [
+      29,
+      11,
+      17,
+      28,
+      40,
+      46
+    ],
+    "fourier_coefficient": 3249,
+    "intersection": {
+      "I0": 0,
+      "I1": 1,
+      "I2": -55,
+      "I3": 3081
+    },
+    "plane_equations": [
+      "x0+x3=0",
+      "x1+x5=0",
+      "x2+x4=0"
+    ],
+    "projected_pairing": "1/57",
+    "rank_one_projector": "P_f = 57 * (z_f x z_bar_f)",
+    "source_motive": "(X_57^4,P_f) ~= Lambda(2)"
+  },
+  "prime571_sign_counterprobe": {
+    "dA_mod_p": 50,
+    "prime": 571,
+    "q_mod_p": 469,
+    "ratio_mod_p": 405,
+    "ratio_sqrt_mod_p": 216,
+    "three_q_mod_p": 265,
+    "zeta3_mod_p": 109,
+    "zeta57_mod_p": 236
+  },
+  "projective_transfers": [
+    {
+      "a": 7,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          7,
+          7
+        ],
+        "X_diagonal": 14,
+        "curve_u0": [
+          64
+        ],
+        "curve_u1": 7,
+        "quotient_kernel": [
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          7,
+          57
+        ]
+      ],
+      "d": 114,
+      "deg_C_to_T": 1,
+      "deg_Q": 57,
+      "deg_X_to_T": 114,
+      "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1",
+      "geometry": {
+        "C": "x^114+y^2=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^57) in each curve factor",
+        "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+        "X": "sum(t_i^114)=2; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/6498",
+      "n": 2,
+      "source": "Y(114;7;57)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        7,
+        7
+      ],
+      "symmetrizer_order": 1,
+      "target": "X(114;2;7;twist=2)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    },
+    {
+      "a": 22,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          22,
+          22
+        ],
+        "X_diagonal": 44,
+        "curve_u0": [
+          79
+        ],
+        "curve_u1": 22,
+        "quotient_kernel": [
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          22,
+          57
+        ]
+      ],
+      "d": 114,
+      "deg_C_to_T": 1,
+      "deg_Q": 57,
+      "deg_X_to_T": 114,
+      "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1",
+      "geometry": {
+        "C": "x^114+y^2=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^57) in each curve factor",
+        "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+        "X": "sum(t_i^114)=2; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/6498",
+      "n": 2,
+      "source": "Y(114;22;57)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        22,
+        22
+      ],
+      "symmetrizer_order": 1,
+      "target": "X(114;2;22;twist=2)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    },
+    {
+      "a": 23,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          23,
+          23
+        ],
+        "X_diagonal": 46,
+        "curve_u0": [
+          80
+        ],
+        "curve_u1": 23,
+        "quotient_kernel": [
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          23,
+          57
+        ]
+      ],
+      "d": 114,
+      "deg_C_to_T": 1,
+      "deg_Q": 57,
+      "deg_X_to_T": 114,
+      "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1",
+      "geometry": {
+        "C": "x^114+y^2=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^57) in each curve factor",
+        "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+        "X": "sum(t_i^114)=2; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/6498",
+      "n": 2,
+      "source": "Y(114;23;57)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        23,
+        23
+      ],
+      "symmetrizer_order": 1,
+      "target": "X(114;2;23;twist=2)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    },
+    {
+      "a": 56,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          56,
+          56
+        ],
+        "X_diagonal": 112,
+        "curve_u0": [
+          113
+        ],
+        "curve_u1": 56,
+        "quotient_kernel": [
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          56,
+          57
+        ]
+      ],
+      "d": 114,
+      "deg_C_to_T": 1,
+      "deg_Q": 57,
+      "deg_X_to_T": 114,
+      "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1",
+      "geometry": {
+        "C": "x^114+y^2=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^57) in each curve factor",
+        "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+        "X": "sum(t_i^114)=2; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/6498",
+      "n": 2,
+      "source": "Y(114;56;57)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        56,
+        56
+      ],
+      "symmetrizer_order": 1,
+      "target": "X(114;2;56;twist=2)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    },
+    {
+      "a": 4,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          4,
+          4,
+          4
+        ],
+        "X_diagonal": 12,
+        "curve_u0": [
+          23,
+          42
+        ],
+        "curve_u1": 4,
+        "quotient_kernel": [
+          0,
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          4,
+          19
+        ],
+        [
+          4,
+          38
+        ]
+      ],
+      "d": 57,
+      "deg_C_to_T": 114,
+      "deg_Q": 361,
+      "deg_X_to_T": 3249,
+      "forward_cycle": "1/3249 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1/3249",
+      "geometry": {
+        "C": "x^57+y^3=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^19) in each curve factor",
+        "T": "t^57=prod(s_i); sum(s_i)=3; prod(s_i)!=0",
+        "X": "sum(t_i^57)=3; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^57, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/20577 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/20577",
+      "n": 3,
+      "source": "Y(57;4;19,38)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        4,
+        4,
+        4
+      ],
+      "symmetrizer_order": 2,
+      "target": "X(57;3;4;twist=3)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    },
+    {
+      "a": 11,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          11,
+          11,
+          11
+        ],
+        "X_diagonal": 33,
+        "curve_u0": [
+          30,
+          49
+        ],
+        "curve_u1": 11,
+        "quotient_kernel": [
+          0,
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          11,
+          19
+        ],
+        [
+          11,
+          38
+        ]
+      ],
+      "d": 57,
+      "deg_C_to_T": 114,
+      "deg_Q": 361,
+      "deg_X_to_T": 3249,
+      "forward_cycle": "1/3249 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1/3249",
+      "geometry": {
+        "C": "x^57+y^3=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^19) in each curve factor",
+        "T": "t^57=prod(s_i); sum(s_i)=3; prod(s_i)!=0",
+        "X": "sum(t_i^57)=3; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^57, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/20577 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/20577",
+      "n": 3,
+      "source": "Y(57;11;19,38)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        11,
+        11,
+        11
+      ],
+      "symmetrizer_order": 2,
+      "target": "X(57;3;11;twist=3)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    },
+    {
+      "a": 16,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          16,
+          16,
+          16
+        ],
+        "X_diagonal": 48,
+        "curve_u0": [
+          35,
+          54
+        ],
+        "curve_u1": 16,
+        "quotient_kernel": [
+          0,
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          16,
+          19
+        ],
+        [
+          16,
+          38
+        ]
+      ],
+      "d": 57,
+      "deg_C_to_T": 114,
+      "deg_Q": 361,
+      "deg_X_to_T": 3249,
+      "forward_cycle": "1/3249 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1/3249",
+      "geometry": {
+        "C": "x^57+y^3=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^19) in each curve factor",
+        "T": "t^57=prod(s_i); sum(s_i)=3; prod(s_i)!=0",
+        "X": "sum(t_i^57)=3; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^57, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/20577 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/20577",
+      "n": 3,
+      "source": "Y(57;16;19,38)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        16,
+        16,
+        16
+      ],
+      "symmetrizer_order": 2,
+      "target": "X(57;3;16;twist=3)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    },
+    {
+      "a": 17,
+      "boundary": {
+        "X_coordinate_hyperplanes": [
+          17,
+          17,
+          17
+        ],
+        "X_diagonal": 51,
+        "curve_u0": [
+          36,
+          55
+        ],
+        "curve_u1": 17,
+        "quotient_kernel": [
+          0,
+          0
+        ]
+      },
+      "curve_characters": [
+        [
+          17,
+          19
+        ],
+        [
+          17,
+          38
+        ]
+      ],
+      "d": 57,
+      "deg_C_to_T": 114,
+      "deg_Q": 361,
+      "deg_X_to_T": 3249,
+      "forward_cycle": "1/3249 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+      "forward_scale": "1/3249",
+      "geometry": {
+        "C": "x^57+y^3=1, x!=0",
+        "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+        "Q": "(u,v)->(u,v^19) in each curve factor",
+        "T": "t^57=prod(s_i); sum(s_i)=3; prod(s_i)!=0",
+        "X": "sum(t_i^57)=3; prod(t_i)!=0",
+        "X_to_T": "s_i=t_i^57, t=prod_i t_i"
+      },
+      "inverse_cycle": "1/20577 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+      "inverse_scale": "1/20577",
+      "n": 3,
+      "source": "Y(57;17;19,38)",
+      "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+      "surface_character": [
+        17,
+        17,
+        17
+      ],
+      "symmetrizer_order": 2,
+      "target": "X(57;3;17;twist=3)",
+      "theorem_dependencies": [
+        "OY 3.5, 3.6, 4.11(iv), 7.2",
+        "Chow-to-DM full faithfulness (3.5)"
+      ]
+    }
+  ],
+  "realizations": [
+    {
+      "character_convention": "chi_d(g)=zeta_d; Kummer(n,k)=zeta_d^(k*log_g(n))",
+      "n2": [
+        {
+          "a": 7,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            1,
+            0,
+            -2,
+            -2,
+            2,
+            4,
+            -2,
+            -2,
+            0,
+            -2,
+            2,
+            0,
+            -6,
+            2,
+            0,
+            -2,
+            -2,
+            2,
+            4,
+            -4,
+            0,
+            2,
+            2,
+            2,
+            4,
+            6,
+            0,
+            2,
+            -4,
+            2,
+            -2,
+            2,
+            0,
+            0,
+            0,
+            4
+          ]
+        },
+        {
+          "a": 22,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            -1,
+            4,
+            0,
+            2,
+            -6,
+            0,
+            6,
+            4,
+            -2,
+            -2,
+            -2,
+            6,
+            0,
+            2,
+            0,
+            -2,
+            -2,
+            0,
+            4,
+            4,
+            0,
+            0,
+            2,
+            4,
+            2,
+            4,
+            -8,
+            -2,
+            -2,
+            0,
+            0,
+            4,
+            -2,
+            -6,
+            -2,
+            0
+          ]
+        },
+        {
+          "a": 23,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            1,
+            6,
+            -4,
+            -2,
+            -2,
+            -2,
+            4,
+            4,
+            -2,
+            -2,
+            0,
+            -2,
+            2,
+            6,
+            -2,
+            0,
+            -4,
+            8,
+            4,
+            2,
+            -6,
+            -2,
+            -2,
+            2,
+            4,
+            -2,
+            -4,
+            -2,
+            2,
+            2,
+            10,
+            0,
+            -8,
+            -4,
+            4,
+            10
+          ]
+        },
+        {
+          "a": 56,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            -1,
+            -6,
+            -2,
+            2,
+            -2,
+            4,
+            0,
+            -6,
+            -2,
+            4,
+            2,
+            2,
+            -4,
+            -2,
+            -4,
+            0,
+            4,
+            6,
+            -8,
+            -6,
+            2,
+            4,
+            4,
+            0,
+            -2,
+            -6,
+            4,
+            0,
+            -4,
+            -2,
+            -4,
+            -2,
+            0,
+            4,
+            6,
+            0
+          ]
+        }
+      ],
+      "n3": [
+        {
+          "a": 4,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            19,
+            15,
+            -105,
+            -9,
+            81,
+            -24,
+            -66,
+            36,
+            -90,
+            -15,
+            21,
+            -81,
+            -27,
+            78,
+            102,
+            -54,
+            99,
+            -69,
+            -75,
+            48,
+            -21,
+            -96,
+            30,
+            -36,
+            -60,
+            -6,
+            -12,
+            -63,
+            24,
+            -12,
+            -72,
+            -15,
+            48,
+            -9,
+            -9,
+            6
+          ]
+        },
+        {
+          "a": 11,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            -17,
+            36,
+            -33,
+            -51,
+            -48,
+            15,
+            -87,
+            87,
+            -42,
+            -48,
+            132,
+            84,
+            -66,
+            30,
+            -48,
+            -84,
+            12,
+            3,
+            -9,
+            -15,
+            27,
+            -96,
+            -57,
+            -12,
+            -9,
+            -60,
+            48,
+            -75,
+            9,
+            -3,
+            15,
+            3,
+            27,
+            -48,
+            -72,
+            60
+          ]
+        },
+        {
+          "a": 16,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            160,
+            21,
+            -135,
+            87,
+            -24,
+            -96,
+            150,
+            60,
+            -207,
+            153,
+            -27,
+            -171,
+            132,
+            24,
+            -132,
+            66,
+            42,
+            -126,
+            30,
+            150,
+            -105,
+            18,
+            93,
+            -162,
+            -21,
+            183,
+            -135,
+            -57,
+            150,
+            -114,
+            39,
+            132,
+            -168,
+            -39,
+            102,
+            -177
+          ]
+        },
+        {
+          "a": 17,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            40,
+            -33,
+            -114,
+            -9,
+            27,
+            -81,
+            33,
+            72,
+            -75,
+            54,
+            111,
+            -12,
+            60,
+            63,
+            -72,
+            6,
+            102,
+            12,
+            -27,
+            57,
+            -69,
+            -90,
+            75,
+            3,
+            -51,
+            57,
+            -9,
+            -45,
+            69,
+            6,
+            -42,
+            207,
+            -57,
+            -24,
+            15,
+            -9
+          ]
+        }
+      ],
+      "prime": 229,
+      "primitive_root": 6,
+      "scope": "two split-prime specializations; not a global realization proof",
+      "signed_block_match": true,
+      "signed_block_power_basis": [
+        35209,
+        21056,
+        12888,
+        -23828,
+        10220,
+        -6698,
+        11840,
+        15716,
+        -7542,
+        -22006,
+        -17866,
+        7470,
+        31108,
+        8712,
+        -8230,
+        -23864,
+        -504,
+        21344,
+        2928,
+        -16036,
+        -9152,
+        -21196,
+        6570,
+        9852,
+        10880,
+        5306,
+        -7092,
+        -1806,
+        12800,
+        13470,
+        4904,
+        -8300,
+        -11922,
+        -3502,
+        22712,
+        7310
+      ]
+    },
+    {
+      "character_convention": "chi_d(g)=zeta_d; Kummer(n,k)=zeta_d^(k*log_g(n))",
+      "n2": [
+        {
+          "a": 7,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            -13,
+            -8,
+            6,
+            12,
+            16,
+            -6,
+            -2,
+            -16,
+            2,
+            12,
+            6,
+            -10,
+            -6,
+            -4,
+            6,
+            18,
+            2,
+            -10,
+            -10,
+            8,
+            16,
+            4,
+            -10,
+            -14,
+            -6,
+            -4,
+            18,
+            12,
+            0,
+            -10,
+            -4,
+            6,
+            12,
+            10,
+            -6,
+            -4
+          ]
+        },
+        {
+          "a": 22,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            -3,
+            0,
+            -4,
+            8,
+            10,
+            -2,
+            -2,
+            -2,
+            2,
+            8,
+            4,
+            10,
+            -2,
+            2,
+            -6,
+            6,
+            -4,
+            -4,
+            4,
+            2,
+            -8,
+            0,
+            0,
+            -6,
+            2,
+            0,
+            -4,
+            2,
+            -4,
+            -4,
+            -12,
+            -2,
+            -2,
+            4,
+            -4,
+            8
+          ]
+        },
+        {
+          "a": 23,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            -13,
+            -2,
+            2,
+            14,
+            16,
+            -12,
+            -16,
+            -8,
+            4,
+            12,
+            12,
+            -4,
+            -12,
+            -8,
+            4,
+            8,
+            10,
+            -14,
+            -10,
+            2,
+            10,
+            10,
+            -6,
+            -24,
+            -12,
+            2,
+            8,
+            14,
+            0,
+            -20,
+            -10,
+            4,
+            18,
+            16,
+            -4,
+            -20
+          ]
+        },
+        {
+          "a": 56,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            1,
+            10,
+            0,
+            2,
+            -6,
+            -4,
+            2,
+            -2,
+            6,
+            10,
+            2,
+            2,
+            2,
+            6,
+            -4,
+            2,
+            6,
+            0,
+            -6,
+            -2,
+            -6,
+            -4,
+            0,
+            0,
+            -4,
+            8,
+            -2,
+            -4,
+            -10,
+            0,
+            2,
+            4,
+            -6,
+            4,
+            -2,
+            -2
+          ]
+        }
+      ],
+      "n3": [
+        {
+          "a": 4,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            -14,
+            0,
+            -27,
+            132,
+            108,
+            48,
+            -48,
+            303,
+            48,
+            192,
+            33,
+            120,
+            -132,
+            -261,
+            39,
+            132,
+            126,
+            -63,
+            -21,
+            -60,
+            18,
+            -30,
+            54,
+            33,
+            18,
+            90,
+            219,
+            -117,
+            279,
+            -57,
+            -18,
+            12,
+            -198,
+            -27,
+            93,
+            63
+          ]
+        },
+        {
+          "a": 11,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            154,
+            -210,
+            -90,
+            -9,
+            -81,
+            -6,
+            -18,
+            30,
+            3,
+            126,
+            48,
+            -15,
+            369,
+            -150,
+            -78,
+            78,
+            120,
+            -108,
+            75,
+            150,
+            -21,
+            -3,
+            138,
+            -108,
+            -201,
+            27,
+            30,
+            150,
+            138,
+            -81,
+            -15,
+            153,
+            -186,
+            -114,
+            63,
+            -90
+          ]
+        },
+        {
+          "a": 16,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            112,
+            -105,
+            -129,
+            258,
+            -87,
+            -129,
+            -12,
+            39,
+            -66,
+            -93,
+            57,
+            -102,
+            258,
+            30,
+            24,
+            105,
+            21,
+            -318,
+            60,
+            -21,
+            -96,
+            54,
+            132,
+            -108,
+            -51,
+            -81,
+            -63,
+            57,
+            123,
+            6,
+            87,
+            93,
+            39,
+            348,
+            39,
+            -93
+          ]
+        },
+        {
+          "a": 17,
+          "exact_match": true,
+          "nonzero": true,
+          "normalized_power_basis": [
+            106,
+            -96,
+            66,
+            321,
+            105,
+            252,
+            -243,
+            -3,
+            27,
+            60,
+            -12,
+            36,
+            33,
+            99,
+            63,
+            -57,
+            15,
+            48,
+            30,
+            87,
+            -60,
+            165,
+            90,
+            -42,
+            225,
+            -57,
+            -78,
+            165,
+            45,
+            -39,
+            -30,
+            66,
+            84,
+            90,
+            75,
+            78
+          ]
+        }
+      ],
+      "prime": 571,
+      "primitive_root": 3,
+      "scope": "two split-prime specializations; not a global realization proof",
+      "signed_block_match": true,
+      "signed_block_power_basis": [
+        62321,
+        64340,
+        78104,
+        -152248,
+        -169504,
+        70196,
+        75666,
+        113008,
+        -70486,
+        -100718,
+        -143956,
+        -77534,
+        194030,
+        71764,
+        -25544,
+        -83622,
+        -55150,
+        29308,
+        105322,
+        3594,
+        1140,
+        -91838,
+        49132,
+        -31568,
+        43056,
+        -18998,
+        -170528,
+        -101144,
+        -14810,
+        18718,
+        178168,
+        -44472,
+        -61590,
+        -62542,
+        -66332,
+        46186
+      ]
+    }
+  ],
+  "reflection_phase_and_fermat_convention": [
+    {
+      "all_plus_coefficient": "c=-1 in OY convention; omitted 91 has sum 23",
+      "coefficient_phase_exponent": 0,
+      "norm_ratio_exponent": 0,
+      "normalized_norm_phase_power_basis": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "prime": 229,
+      "warning": "opposite-psi duality alone does not evaluate the same-psi N1-N2 word",
+      "with_all_plus_coefficient_exponent": 0
+    },
+    {
+      "all_plus_coefficient": "c=-1 in OY convention; omitted 91 has sum 23",
+      "coefficient_phase_exponent": 57,
+      "norm_ratio_exponent": 57,
+      "normalized_norm_phase_power_basis": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "prime": 571,
+      "warning": "opposite-psi duality alone does not evaluate the same-psi N1-N2 word",
+      "with_all_plus_coefficient_exponent": 0
+    }
+  ],
+  "schema": "conscience64/w114-signed-composition/v1",
+  "signed_D2_projective_block": {
+    "composition": "B=B_4 o B_3 o B_2 o B_1 (rightmost first)",
+    "cycle_dimension_in_source_x_target": 8,
+    "dimension_each_product": 8,
+    "inverse": "B^-1=B_1^-1 o B_2^-1 o B_3^-1 o B_4^-1",
+    "motivic_weight": 8,
+    "nonzero_reason": "Each graph transfer has a theorem-dependent inverse; P_f is nonzero by pairing 1/57.",
+    "plane_action": "z_f tensor v -> z_f tensor B_curves(v); this is not B(z_f) alone",
+    "source": [
+      "P_f",
+      "X(114;2;7;twist=2)",
+      "X(114;2;22;twist=2)",
+      "Y(114;23;57)",
+      "Y(114;56;57)"
+    ],
+    "steps": [
+      {
+        "cycle": "id_P_f tensor spectator identities tensor (1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X)",
+        "direction": "inverse",
+        "generator": "D2_7",
+        "occurrence_id": "D2:7:signed-position:1",
+        "primitive": {
+          "a": 7,
+          "boundary": {
+            "X_coordinate_hyperplanes": [
+              7,
+              7
+            ],
+            "X_diagonal": 14,
+            "curve_u0": [
+              64
+            ],
+            "curve_u1": 7,
+            "quotient_kernel": [
+              0
+            ]
+          },
+          "curve_characters": [
+            [
+              7,
+              57
+            ]
+          ],
+          "d": 114,
+          "deg_C_to_T": 1,
+          "deg_Q": 57,
+          "deg_X_to_T": 114,
+          "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+          "forward_scale": "1",
+          "geometry": {
+            "C": "x^114+y^2=1, x!=0",
+            "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+            "Q": "(u,v)->(u,v^57) in each curve factor",
+            "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+            "X": "sum(t_i^114)=2; prod(t_i)!=0",
+            "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+          },
+          "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+          "inverse_scale": "1/6498",
+          "n": 2,
+          "source": "Y(114;7;57)",
+          "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+          "surface_character": [
+            7,
+            7
+          ],
+          "symmetrizer_order": 1,
+          "target": "X(114;2;7;twist=2)",
+          "theorem_dependencies": [
+            "OY 3.5, 3.6, 4.11(iv), 7.2",
+            "Chow-to-DM full faithfulness (3.5)"
+          ]
+        },
+        "sign": 1,
+        "source": [
+          "P_f",
+          "X(114;2;7;twist=2)",
+          "X(114;2;22;twist=2)",
+          "Y(114;23;57)",
+          "Y(114;56;57)"
+        ],
+        "target": [
+          "P_f",
+          "Y(114;7;57)",
+          "X(114;2;22;twist=2)",
+          "Y(114;23;57)",
+          "Y(114;56;57)"
+        ]
+      },
+      {
+        "cycle": "id_P_f tensor spectator identities tensor (1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X)",
+        "direction": "inverse",
+        "generator": "D2_22",
+        "occurrence_id": "D2:22:signed-position:2",
+        "primitive": {
+          "a": 22,
+          "boundary": {
+            "X_coordinate_hyperplanes": [
+              22,
+              22
+            ],
+            "X_diagonal": 44,
+            "curve_u0": [
+              79
+            ],
+            "curve_u1": 22,
+            "quotient_kernel": [
+              0
+            ]
+          },
+          "curve_characters": [
+            [
+              22,
+              57
+            ]
+          ],
+          "d": 114,
+          "deg_C_to_T": 1,
+          "deg_Q": 57,
+          "deg_X_to_T": 114,
+          "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+          "forward_scale": "1",
+          "geometry": {
+            "C": "x^114+y^2=1, x!=0",
+            "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+            "Q": "(u,v)->(u,v^57) in each curve factor",
+            "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+            "X": "sum(t_i^114)=2; prod(t_i)!=0",
+            "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+          },
+          "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+          "inverse_scale": "1/6498",
+          "n": 2,
+          "source": "Y(114;22;57)",
+          "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+          "surface_character": [
+            22,
+            22
+          ],
+          "symmetrizer_order": 1,
+          "target": "X(114;2;22;twist=2)",
+          "theorem_dependencies": [
+            "OY 3.5, 3.6, 4.11(iv), 7.2",
+            "Chow-to-DM full faithfulness (3.5)"
+          ]
+        },
+        "sign": 1,
+        "source": [
+          "P_f",
+          "Y(114;7;57)",
+          "X(114;2;22;twist=2)",
+          "Y(114;23;57)",
+          "Y(114;56;57)"
+        ],
+        "target": [
+          "P_f",
+          "Y(114;7;57)",
+          "Y(114;22;57)",
+          "Y(114;23;57)",
+          "Y(114;56;57)"
+        ]
+      },
+      {
+        "cycle": "id_P_f tensor spectator identities tensor (1 e_X [closure(Y_open x_T X_open)] e_sym e_Y)",
+        "direction": "forward",
+        "generator": "D2_23",
+        "occurrence_id": "D2:23:signed-position:3",
+        "primitive": {
+          "a": 23,
+          "boundary": {
+            "X_coordinate_hyperplanes": [
+              23,
+              23
+            ],
+            "X_diagonal": 46,
+            "curve_u0": [
+              80
+            ],
+            "curve_u1": 23,
+            "quotient_kernel": [
+              0
+            ]
+          },
+          "curve_characters": [
+            [
+              23,
+              57
+            ]
+          ],
+          "d": 114,
+          "deg_C_to_T": 1,
+          "deg_Q": 57,
+          "deg_X_to_T": 114,
+          "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+          "forward_scale": "1",
+          "geometry": {
+            "C": "x^114+y^2=1, x!=0",
+            "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+            "Q": "(u,v)->(u,v^57) in each curve factor",
+            "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+            "X": "sum(t_i^114)=2; prod(t_i)!=0",
+            "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+          },
+          "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+          "inverse_scale": "1/6498",
+          "n": 2,
+          "source": "Y(114;23;57)",
+          "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+          "surface_character": [
+            23,
+            23
+          ],
+          "symmetrizer_order": 1,
+          "target": "X(114;2;23;twist=2)",
+          "theorem_dependencies": [
+            "OY 3.5, 3.6, 4.11(iv), 7.2",
+            "Chow-to-DM full faithfulness (3.5)"
+          ]
+        },
+        "sign": -1,
+        "source": [
+          "P_f",
+          "Y(114;7;57)",
+          "Y(114;22;57)",
+          "Y(114;23;57)",
+          "Y(114;56;57)"
+        ],
+        "target": [
+          "P_f",
+          "Y(114;7;57)",
+          "Y(114;22;57)",
+          "X(114;2;23;twist=2)",
+          "Y(114;56;57)"
+        ]
+      },
+      {
+        "cycle": "id_P_f tensor spectator identities tensor (1 e_X [closure(Y_open x_T X_open)] e_sym e_Y)",
+        "direction": "forward",
+        "generator": "D2_56",
+        "occurrence_id": "D2:56:signed-position:4",
+        "primitive": {
+          "a": 56,
+          "boundary": {
+            "X_coordinate_hyperplanes": [
+              56,
+              56
+            ],
+            "X_diagonal": 112,
+            "curve_u0": [
+              113
+            ],
+            "curve_u1": 56,
+            "quotient_kernel": [
+              0
+            ]
+          },
+          "curve_characters": [
+            [
+              56,
+              57
+            ]
+          ],
+          "d": 114,
+          "deg_C_to_T": 1,
+          "deg_Q": 57,
+          "deg_X_to_T": 114,
+          "forward_cycle": "1 e_X [closure(Y_open x_T X_open)] e_sym e_Y",
+          "forward_scale": "1",
+          "geometry": {
+            "C": "x^114+y^2=1, x!=0",
+            "C_to_T": "s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j",
+            "Q": "(u,v)->(u,v^57) in each curve factor",
+            "T": "t^114=prod(s_i); sum(s_i)=2; prod(s_i)!=0",
+            "X": "sum(t_i^114)=2; prod(t_i)!=0",
+            "X_to_T": "s_i=t_i^114, t=prod_i t_i"
+          },
+          "inverse_cycle": "1/6498 e_Y e_sym [closure(Y_open x_T X_open)]^t e_X",
+          "inverse_scale": "1/6498",
+          "n": 2,
+          "source": "Y(114;56;57)",
+          "status": "THEOREM_DEPENDENT_PROJECTIVE_TRANSFER",
+          "surface_character": [
+            56,
+            56
+          ],
+          "symmetrizer_order": 1,
+          "target": "X(114;2;56;twist=2)",
+          "theorem_dependencies": [
+            "OY 3.5, 3.6, 4.11(iv), 7.2",
+            "Chow-to-DM full faithfulness (3.5)"
+          ]
+        },
+        "sign": -1,
+        "source": [
+          "P_f",
+          "Y(114;7;57)",
+          "Y(114;22;57)",
+          "X(114;2;23;twist=2)",
+          "Y(114;56;57)"
+        ],
+        "target": [
+          "P_f",
+          "Y(114;7;57)",
+          "Y(114;22;57)",
+          "X(114;2;23;twist=2)",
+          "X(114;2;56;twist=2)"
+        ]
+      }
+    ],
+    "target": [
+      "P_f",
+      "Y(114;7;57)",
+      "Y(114;22;57)",
+      "X(114;2;23;twist=2)",
+      "X(114;2;56;twist=2)"
+    ],
+    "w114_endpoint": false
+  },
+  "source_KS": {
+    "claim_ceiling": [
+      "HYPOTHESIS_VERIFIER != INDEPENDENT_PROOF_OF_CITED_THEOREMS",
+      "EXPLICIT_W114_RECURSION_CORRESPONDENCE != MOT_1_CLOSED",
+      "STANDARD_RELATION_WORD_COMPOSED_CYCLE_REMAINS_OPEN",
+      "HODGE_CONJECTURE_REMAINS_OPEN"
+    ],
+    "consequence": "Under cited blow-up/quotient identities, graph/projector cycles give mutually inverse Chow-motive correspondences between W114 eigenspace and four admitted Fermat-curve factors.",
+    "degree": 114,
+    "full_forward": "C1 o (C2 tensor id_(86,91)) o (C3 tensor id_(79,63) tensor id_(86,91))",
+    "full_inverse": "(D3 tensor id_(79,63) tensor id_(86,91)) o (D2 tensor id_(86,91)) o D1",
+    "schema": "conscience64/w114-explicit-ks-correspondence/v1",
+    "stages": [
+      {
+        "H_restriction_exponent": 0,
+        "curve": [
+          86,
+          91
+        ],
+        "finite_quotient_identity": "f_* f^*=114 id; f^* f_*=sum_H h_*=114 id on H-trivial source projector",
+        "forward_correspondence": "C=e_target o Gamma_beta o Gamma_f o tGamma_alpha o e_source",
+        "inverse_correspondence": "D=(1/114) e_source o Gamma_alpha o tGamma_f o tGamma_beta o e_target",
+        "lower": [
+          7,
+          78,
+          79,
+          63
+        ],
+        "merged_exponent": 63,
+        "quotient_degree": 114,
+        "source_exceptional_Z": "VANISHES: merged character nontrivial",
+        "target": [
+          7,
+          78,
+          79,
+          86,
+          91
+        ],
+        "target_exceptional_Z1": "VANISHES: merged character nontrivial",
+        "target_exceptional_Z2": "VANISHES: last two characters individually nontrivial"
+      },
+      {
+        "H_restriction_exponent": 0,
+        "curve": [
+          79,
+          63
+        ],
+        "finite_quotient_identity": "f_* f^*=114 id; f^* f_*=sum_H h_*=114 id on H-trivial source projector",
+        "forward_correspondence": "C=e_target o Gamma_beta o Gamma_f o tGamma_alpha o e_source",
+        "inverse_correspondence": "D=(1/114) e_source o Gamma_alpha o tGamma_f o tGamma_beta o e_target",
+        "lower": [
+          7,
+          78,
+          28
+        ],
+        "merged_exponent": 28,
+        "quotient_degree": 114,
+        "source_exceptional_Z": "VANISHES: merged character nontrivial",
+        "target": [
+          7,
+          78,
+          79,
+          63
+        ],
+        "target_exceptional_Z1": "VANISHES: merged character nontrivial",
+        "target_exceptional_Z2": "VANISHES: last two characters individually nontrivial"
+      },
+      {
+        "H_restriction_exponent": 0,
+        "curve": [
+          78,
+          28
+        ],
+        "finite_quotient_identity": "f_* f^*=114 id; f^* f_*=sum_H h_*=114 id on H-trivial source projector",
+        "forward_correspondence": "C=e_target o Gamma_beta o Gamma_f o tGamma_alpha o e_source",
+        "inverse_correspondence": "D=(1/114) e_source o Gamma_alpha o tGamma_f o tGamma_beta o e_target",
+        "lower": [
+          7,
+          106
+        ],
+        "merged_exponent": 106,
+        "quotient_degree": 114,
+        "source_exceptional_Z": "VANISHES: merged character nontrivial",
+        "target": [
+          7,
+          78,
+          28
+        ],
+        "target_exceptional_Z1": "VANISHES: merged character nontrivial",
+        "target_exceptional_Z2": "VANISHES: last two characters individually nontrivial"
+      }
+    ]
+  },
+  "unresolved": [
+    "N_1-N_2 Artin-Schreier reflection recipe has finite-field base; no characteristic-zero contraction supplied.",
+    "Free Gauss symbols and cancellations have no typed characteristic-zero object/coevaluation compiler here.",
+    "Residual alpha_Aoki -> standard/Tate tensor A(3*(7-zeta_3)) still needs an actual graph/cycle; field identification alone is not that arrow.",
+    "P_f is not the source of the D2 tensor block; B(z_f) in the W114 eigenspace is not constructed."
+  ],
+  "w114_plane_cycle_produced": false,
+  "word": {
+    "artin_2_exponent": 100,
+    "free_vector": {
+      "1": 1,
+      "14": -1,
+      "2": -1,
+      "22": 1,
+      "23": -1,
+      "44": -1,
+      "46": 1,
+      "56": -1,
+      "64": 1,
+      "7": 1,
+      "79": 1,
+      "80": -1
+    },
+    "galois_orbit": [
+      {
+        "artin_2_exponent": 100,
+        "u": 1
+      },
+      {
+        "artin_2_exponent": 44,
+        "u": 5
+      },
+      {
+        "artin_2_exponent": 16,
+        "u": 7
+      },
+      {
+        "artin_2_exponent": 74,
+        "u": 11
+      },
+      {
+        "artin_2_exponent": 46,
+        "u": 13
+      },
+      {
+        "artin_2_exponent": 104,
+        "u": 17
+      },
+      {
+        "artin_2_exponent": 20,
+        "u": 23
+      },
+      {
+        "artin_2_exponent": 106,
+        "u": 25
+      },
+      {
+        "artin_2_exponent": 50,
+        "u": 29
+      },
+      {
+        "artin_2_exponent": 22,
+        "u": 31
+      },
+      {
+        "artin_2_exponent": 80,
+        "u": 35
+      },
+      {
+        "artin_2_exponent": 52,
+        "u": 37
+      },
+      {
+        "artin_2_exponent": 110,
+        "u": 41
+      },
+      {
+        "artin_2_exponent": 82,
+        "u": 43
+      },
+      {
+        "artin_2_exponent": 26,
+        "u": 47
+      },
+      {
+        "artin_2_exponent": 112,
+        "u": 49
+      },
+      {
+        "artin_2_exponent": 56,
+        "u": 53
+      },
+      {
+        "artin_2_exponent": 28,
+        "u": 55
+      },
+      {
+        "artin_2_exponent": 86,
+        "u": 59
+      },
+      {
+        "artin_2_exponent": 58,
+        "u": 61
+      },
+      {
+        "artin_2_exponent": 2,
+        "u": 65
+      },
+      {
+        "artin_2_exponent": 88,
+        "u": 67
+      },
+      {
+        "artin_2_exponent": 32,
+        "u": 71
+      },
+      {
+        "artin_2_exponent": 4,
+        "u": 73
+      },
+      {
+        "artin_2_exponent": 62,
+        "u": 77
+      },
+      {
+        "artin_2_exponent": 34,
+        "u": 79
+      },
+      {
+        "artin_2_exponent": 92,
+        "u": 83
+      },
+      {
+        "artin_2_exponent": 64,
+        "u": 85
+      },
+      {
+        "artin_2_exponent": 8,
+        "u": 89
+      },
+      {
+        "artin_2_exponent": 94,
+        "u": 91
+      },
+      {
+        "artin_2_exponent": 10,
+        "u": 97
+      },
+      {
+        "artin_2_exponent": 68,
+        "u": 101
+      },
+      {
+        "artin_2_exponent": 40,
+        "u": 103
+      },
+      {
+        "artin_2_exponent": 98,
+        "u": 107
+      },
+      {
+        "artin_2_exponent": 70,
+        "u": 109
+      },
+      {
+        "artin_2_exponent": 14,
+        "u": 113
+      }
+    ],
+    "galois_units_checked": 36,
+    "net_norm_tate": 0,
+    "status": "EXACT_ARITHMETIC_ONLY",
+    "word": [
+      [
+        7,
+        1
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        23,
+        -1
+      ],
+      [
+        56,
+        -1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        -1
+      ]
+    ]
+  }
+}

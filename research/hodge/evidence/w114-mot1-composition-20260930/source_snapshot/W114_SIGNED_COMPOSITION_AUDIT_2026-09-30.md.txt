@@ -1,0 +1,208 @@
+# W114 MOT-1: signed projective transfer composition audit
+
+Date: 2026-09-30. Base: conscience64 main
+`3b213dfee92c8015ca3add613357c6819f9f24c7`.
+
+**Verdict: incomplete, with a typed residual-to-Artin correspondence still missing.**
+The result constructs a nonzero, theorem-dependent projective **D2 transfer block
+between the product motives specified below**. It does not construct the requested
+W114 residual-gap correspondence or a W114 plane cycle. `MOT-1 REMAINS OPEN`.
+
+## Current-source reconciliation before implementation
+
+Read issue [#99](https://github.com/redogit/conscience64/issues/99), all 19 accessible
+comments, the current correspondence, corrected Artin, compiler-endpoint,
+duplication/reflection, standard-word, sign-normalization, n=3 transfer and
+projective-closure files, their checkers, and the research loop.
+
+Also read the current connected proof graph:
+`redogit/Other-Projects-/Hodge Compass API/hodge_proof_graph_seed.json`, blob
+`db700bdaada82c58a169e9afacf9b7bb618592fb`. It keeps MOT-1 OPEN and routes separate.
+Its historical source bindings are preserved; this result is target-local and
+does not silently refresh those bindings or transfer evidence across a graph edge.
+
+The later [n=3 closure artifact](W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md)
+**already closes the boundary-character compactification seam under the cited
+localization and Chow-to-DM theorems** for a=4,11,16,17. The earlier open-transfer
+file's next-step prose is historical. The closure file itself still reserves the
+cycle composition and scalar audit. It is not an independent reproof.
+
+The source-side KS graph formulas and corrected twisted-curve Artin carrier remain
+available. Neither supplies the residual-gap-to-Artin arrow merely by existing.
+The quadratic sign is **A(3(7-zeta_3))**, while the separate complete finite twist is
+`A(2,100) A(3,60) A(19,38) A(3(7-zeta_3),57)`.
+
+## Primary-source audit
+
+Otsubo--Yamazaki, *Motivic Gauss and Jacobi sums*, AFST 35 (2026), no. 1,
+95--135, DOI [10.5802/afst.1842](https://doi.org/10.5802/afst.1842).
+Checked the [published PDF](https://afst.centre-mersenne.org/item/10.5802/afst.1842.pdf),
+not only an abstract or repository paraphrase. PDF SHA-256:
+`ea6b50a6238c119858c7ff8cb25a1008ecd78e5f72bbbedf300f73390f0f1093`.
+The PDF was inspected locally; its copyrighted full text is not bundled here.
+
+| Dependency | Source and range | This trial's use |
+|---|---|---|
+| Open/projective identification | Prop. 3.5, pp. 104--105; full faithfulness (3.5), p. 103 | Theorem use after boundary checks, not independent localization proof |
+| Finite graph transfers | Lemma 3.6, p. 105 | Degree and kernel-sum composition identities |
+| Multiplication transfer | Thm. 7.2 and proof, pp. 128--129 | Valid over K=Q(zeta_114); n divides d, alpha^n nontrivial |
+| Ordered/symmetric sectors | Proof of Thm. 7.2, p. 129 | e_nu e_sym e_nu = e_nu/(n-1)!; right inverse uses invertibility |
+| Fermat-to-C quotient | Same proof, p. 129 | Each quotient has degree d/n; must include its inverse normalization |
+| Twisted Fermat/Artin factor | Prop. 4.7 and Lemma 3.9 | Corrected carrier retained; no residual-gap arrow inferred |
+| Recorded N1,N2 primitive | Section 4.1, pp. 107--110; Prop. 4.5 | **Finite-field Artin--Schreier construction; invalid as a characteristic-zero leaf** |
+| Available characteristic-zero duality | Prop. 4.8, p. 112, and Prop. 4.11 | Fermat duality exists, but a Gauss N_a symbol is not thereby a typed Fermat factor |
+
+The last two rows identify an applicability seam in the earlier primitive packet.
+Its arithmetic identities remain valid. This audit does not refute a possible
+characteristic-zero construction; it rejects inserting that particular finite-field
+cycle without an explicit replacement and source-to-target dictionary.
+
+## Closed projective primitive with the quotient included
+
+Work in homological `Chow(K,Lambda)`, K=Lambda=Q(zeta_114), with the subgroup
+mu_57 and its character embedding H_a=G_(2a). A graph acts by pushforward and
+its transpose by pullback. Cycle composition is rightmost first.
+
+For (d,n)=(114,2) or (57,3), put k_i=i*d/n, i=1,...,n-1, and
+
+`Y_a = tensor_i h(F_d^(2))^(a,k_i)`,
+`X_a = h(F_d^(n)<n>)^(a,...,a)`.
+
+Use the actual varieties supporting these projectors. On each Fermat-curve affine
+chart, `Q:(u,v)->(x=u,y=v^(d/n))` maps to `C:x^d+y^n=1, x!=0`.
+Let `U` be the product of these open Fermat charts, and use the published maps
+
+`C^(n-1)->T: s_i=prod_j(1-zeta_n^i*y_j), t=prod_j x_j`,
+`X_open->T: s_i=t_i^d, t=prod_i t_i`.
+
+Define `Z_a=U x_T X_open`; **barZ_a is the closure of this finite
+fiber-product correspondence in the projective Y-support x X-support**.
+This specifies a cycle, rather than taking a graph of an abstract motivic map.
+Define e_Y, e_X by the stated characters; e_sym is the identity for n=2
+and `(1+swap)/2` for n=3.
+
+| n | deg Q | deg C^(n-1)->T | deg X->T | F:Y->X | G:X->Y |
+|---|---:|---:|---:|---|---|
+| 2 | 57 | 1 | 114 | e_X [barZ] e_Y | (1/6498) e_Y [barZ]^t e_X |
+| 3 | 361 | 114 | 3249 | (1/3249) e_X [barZ] e_sym e_Y | (1/20577) e_Y e_sym [barZ]^t e_X |
+
+These include Q_* in F and Q^*/deg(Q) in G, relative to the earlier transfers on
+C^(n-1). Thus GF has exact scalar
+
+`c_F*c_G*deg(Q)*deg(C->T)*deg(X->T)/(n-1)! = 1`.
+
+The reverse composition is identity on the target using the cited invertibility
+and the same nonzero maps; this is theorem use, not a proof from scalar arithmetic
+alone. Omitting Q's inverse factor gives scalar **57** or **361**. Omitting the
+inverse symmetrizer factor gives **1/2**. These failed proposals are retained.
+
+For target boundary t0=0 the diagonal exponent is n*a, and for each ti=0 the
+coordinate exponent is a. For the source curve boundaries the exponents are
+a and a+k_i. All are nonzero in the eight declared cases. The quotient characters
+are trivial on its kernel since n*k_i=0 mod d. Coordinate intersections inherit
+a projector-zero stabilizer. Projective closure uses the same projectors and
+the source's localization theorem; no arbitrary unprojected boundary correction
+is assumed to vanish.
+
+## Signed D2 composition and its actual endpoints
+
+Retain the historical ordered occurrences
+
+`+D2_7, +D2_22, -D2_23, -D2_56, +N_1, -N_2`.
+
+For a positive D2 use G_a:X_a->Y_a; for a negative D2 use F_a:Y_a->X_a.
+The four **valid** D2 edges, lifted with identities on every spectator, give
+
+`B = B_4 o B_3 o B_2 o B_1`,
+
+`P_f tensor X_7 tensor X_22 tensor Y_23 tensor Y_56`
+
+`-> P_f tensor Y_7 tensor Y_22 tensor X_23 tensor X_56`.
+
+Its inverse is the reverse sequence of inverse edges. These are products of a
+fourfold and four curves, so B is a dimension-8 cycle in the product of the two
+dimension-8 supports, acting in motivic weight 8. Every endpoint and spectator is
+checked; an arbitrary terminal relabeling as W114 is rejected.
+
+After removing the coefficient-2 twists, the **source/target** Gauss-symbol ratio
+is the four signed D2 terms, with exponent +100. The actual twisted endpoints
+contribute exponent -100. Thus B's actual realizations agree, as an isomorphism
+requires. Treating +100 as B's unexplained realized residual would reverse this
+normalization.
+
+The source plane z_f=e_f[L], L:x0+x3=x1+x5=x2+x4=0, retains pairing 1/57
+with z_bar_f and P_f=57(z_f x z_bar_f). Therefore P_f and the product block are
+nonzero under the recorded plane intersection formula and transfer theorems.
+Precisely, B acts as `z_f tensor v -> z_f tensor B_curves(v)`.
+**Bare z_f is not an input to B. No W114 plane push is claimed.**
+
+The N1-N2 occurrences remain in the exact arithmetic ledger and are rejected as
+characteristic-zero geometric leaves. They have not been silently canceled out
+of the requested full correspondence. The four n=3 closures are also recorded
+with the corrected normalizations, without claiming that tensoring the primitive
+list alone compiles the residual Aoki arrow.
+
+## Finite verification and failures
+
+The checker verifies the full free-vector word over all 36 units mod 114,
+transported boundary characters, quotient descent, ordered-factor permutations,
+and corrected sign covariance. This is covariance to conjugate sectors, not
+descent of one sector to Q. For u=2 mod 3 the sign radicand becomes
+`3(7-zeta_3^2)`; it is not treated as fixed.
+
+An independent arithmetic path directly sums two- and three-variable Jacobi
+sums over F_229 and F_571, with chi_d(g)=zeta_d. It verifies
+
+`chi_114(2)^(2a) J(a,a) = J(a,57)` for the four D2 cases,
+
+`chi_57(3)^(3a) J(a,a,a) = J(a,19) J(a,38)` for the four n=3 cases,
+
+and the nonzero signed product-block equality. Coefficients are reduced exactly
+in Z[x]/Phi_d(x); no floating recognition is used. The Jacobi identities check
+Frobenius scalars at two split primes, not a complete global realization map.
+The geometric isomorphism's global realization follows only under the cited
+theorem and the typed block construction. None is the unconstructed MOT-1 map.
+
+Counterprobes preserve exact candidates and rejection reasons: missing n=2 and
+n=3 quotient factors, missing symmetrizer factor, reversed D2_23 sign,
+finite-field norm inserted over K, bare-plane source, forged W114 endpoint,
+surviving n=3 boundary, and the obsolete q-only sign. At p=571, q is a square
+while 3q is a nonsquare. Failed interpretations do not refute the Hodge conjecture.
+
+## Proof-obligation update and smallest remaining construction
+
+| Node | Verified bounded result | Status |
+|---|---|---|
+| n=3 compactification | Later source artifact and published theorem support projected closure; cases rechecked | Theorem-dependent seam closed |
+| Primitive transfer normalizations | Q degrees 57 and 361 now included; adversarial omissions rejected | Exact finite arithmetic checked |
+| Signed D2 product block | Actual endpoints, graph closures and inverse sequence specified; split-prime realization checked | Nonzero under cited theorems |
+| Requested six-generator W114 composition | N leaves inapplicable over K; pure plane has wrong block source | Not constructed |
+| Residual Aoki/gap -> standard tensor corrected Artin sign | Exact field/sign data and generator relations are not the missing cycle | OPEN |
+| MOT-1 | No W114 cycle or global MOT-1 realization map produced | OPEN |
+
+The next construction must name the residual as an actual characteristic-zero
+Fermat tensor motive, replace the two finite-field norm leaves by typed
+Fermat evaluation/coevaluation maps (Prop. 4.8 supplies duality, not their
+application automatically), and give the residual-to-A(3q) cycle.
+Only then can the plane, standard, KS, and Artin endpoints be connected and the
+W114 nonzero realization checked. The checker now makes those crossings explicit.
+
+## Reproduce and provenance
+
+`python3 -m unittest discover -s research/hodge -p 'test*.py'`
+
+`python3 research/hodge/w114_signed_composition.py`
+
+The [bounded run](evidence/w114-mot1-composition-20260930/manifest.json) pins
+actual argv, runtime, declared inputs before/after, dirty state, output hashes,
+and caps. Its [result](evidence/w114-mot1-composition-20260930/result.json)
+retains the frozen source hashes, cycles, finite calculations, counterprobes,
+and unresolved obligations. The companion contract describes the tested range.
+The executable distinguishes `VERIFY_BOUNDED` from `ADMIT_W114_DENIED`.
+This is a self-audit, not an independent reviewer certification.
+
+`THEOREM_USE != INDEPENDENT_REPROOF`.
+`EXACT_ARITHMETIC != CHOW_MORPHISM`.
+`NONZERO_TRANSFER_BLOCK != NONZERO_W114_CORRESPONDENCE`.
+`MOT-1 REMAINS OPEN`.
+`HODGE_CONJECTURE_REMAINS_OPEN`.
