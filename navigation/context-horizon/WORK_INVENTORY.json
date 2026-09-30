@@ -2708,6 +2708,26 @@
       "notes": []
     },
     {
+      "id": "neon-veil",
+      "canonicalName": "NEON//VEIL",
+      "aliases": [],
+      "domain": "game",
+      "sourceLocations": [
+        "play/neon-veil/index.html",
+        "play/neon-veil/README.md"
+      ],
+      "provenanceStatus": "play-project-registry",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "play-project"
+      ],
+      "notes": []
+    },
+    {
       "id": "nested-learning",
       "canonicalName": "Nested Learning",
       "aliases": [],
