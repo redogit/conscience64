@@ -11,12 +11,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HOST = 'https://redogit.github.io/conscience64/'
 APP_COMMIT = '667e989dcad401829bb097726b3a14cc0aa90f2c'
-PROFILE_COMMIT = '67f7f98c46f6d1b85553d70f11b8268e79d0f884'
+PROFILE_COMMIT = 'e76004c44d4fc470f3d82a3c6ad795d92b4fecbc'
 APP_HASH = '231fdadb14093df1028abe015f3c4d583b1031da5ae03048abff5244c3eac807'
 ITEMS = {
     'dream-to-action/index.html': (f'https://raw.githubusercontent.com/redogit/Dream-To-Action/{APP_COMMIT}/index.html', 'sha256', APP_HASH),
-    'about.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/about.html', 'git-blob', '8f6ef0ff76813d02fba516ef4a5390dd0798a96c'),
-    'recent-work.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/recent-work.html', 'git-blob', 'bf9c47e7a435fb4ee16f46639490e945a0dcf942'),
+    'about.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/about.html', 'git-blob', '116abd77939fb46990f6673db7a51ef9ce1f591b'),
+    'recent-work.html': (f'https://raw.githubusercontent.com/redogit/redogit/{PROFILE_COMMIT}/docs/recent-work.html', 'git-blob', 'f0394335d7c9b11e340b79dbbde26ed6cb171092'),
 }
 ALLOWED = set(ITEMS) | {'dream-publication.json'}
 
@@ -86,7 +86,7 @@ def manifest(blobs: dict[str, bytes]) -> bytes:
         'boundary': 'This overlay is separately authorized. projection-manifest.json still describes only the original testbed/Musilanguage subprojection. Canonical source authority remains in the two source repositories. No participant or private-origin records are included.',
         'original_private_about_route': 'about/index.html remains excluded; this about.html is the explicitly selected public profile source.',
         'rights': 'No new license; source project policies still apply.',
-        'recorded_date': '2026-09-29'
+        'recorded_date': '2026-09-30'
     }
     return (json.dumps(data, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
 
