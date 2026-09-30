@@ -105,7 +105,7 @@ Compressed C verification of AAA8 on 160 held-out real examples produced:
 - stored-vs-DEFLATE prediction mismatches: **0**
 - worst probability difference: **2.08e-7**
 
-**Plateau:** affine width alone does not recover the nonlinear semantic advantage of the byte-CNN. The sentiment sweep peaks near k=8 and then slips.
+**Plateau (original sweep):** affine width alone did not recover the nonlinear semantic advantage of the byte-CNN. The original single-seed sweep happened to peak near k=8; a later same-day rerun showed that this width ordering is not stable and must not be promoted as a robust optimum.
 
 ## Experiment 5 — deployment and lineage
 
@@ -156,3 +156,72 @@ Candidate next probes:
 5. uncertainty-triggered selective expansion, measuring expanded-byte fraction against accuracy.
 
 Do not promote a gain that disappears under recompression counterprobes.
+
+
+## Same-day rerun / correction
+
+The five experiments were re-executed from the preserved artifacts rather than accepted from the prior JSON reports.
+
+### Reproduced exactly or structurally
+
+- Experiment 1: **361/361** recompressions passed again; max embedding drift **0.0**, max prediction-probability drift **0.0**.
+- Experiment 2: exact carrier drift remained **0.0**. Stored-entry RSS reproduced at **492,672 KiB whole** versus **38,824 KiB frontier**; DEFLATE reproduced at **25,984 KiB whole** versus **4,456 KiB frontier**.
+- Experiment 3: diagonal affine **57.03%**, n-gram **48.44%**, full 8-state affine **100%** held-out again. Across 181 recompressions, max score drift again measured **1.023e-12** with one unique prediction and zero probability drift.
+- Experiment 5: rebuilt dynamic and static binaries are bit-for-bit identical to the earlier tested binaries. Static runtime + AAA8 remains **905,760 bytes**.
+
+### Experiment 4 correction
+
+A fresh deterministic rerun of the preserved architectures produced these balanced accuracies:
+
+| model | sentiment rerun | POS rerun |
+|---|---:|---:|
+| exact n-gram + MLP | 60.51% | 79.20% |
+| tree composer h=12 | 54.11% | 79.84% |
+| tree composer h=24 | 54.69% | 81.44% |
+| associative AAA k=4 | 58.96% | 75.44% |
+| associative AAA k=8 | 57.86% | 77.92% |
+| associative AAA k=12 | 58.33% | 78.08% |
+| associative AAA k=16 | 59.76% | — |
+
+Therefore:
+
+```text
+AAA8_IS_BEST != ESTABLISHED
+AFFINE_FAMILY_REAL_DATA_PLATEAU = RETAINED
+SINGLE_SEED_WIDTH_ORDERING = UNSTABLE
+```
+
+The robust observation is a broad, shallow affine plateau on the real semantic task, not a stable optimum at k=8.
+
+### CNN provenance failure and independent reconstruction
+
+The original **18,292-byte** byte-CNN result JSON survived, but its exact source/training code was not preserved in the experiment package. Its exact numerical result is therefore **not independently rerunnable from the retained package**.
+
+A separately labeled reconstruction with exactly the same 4,573-float / 18,292-byte parameter budget:
+
+```text
+Embedding(256,8)
+ -> Conv1d(8,24,k=3)
+ -> ReLU
+ -> Conv1d(24,26,k=3)
+ -> ReLU
+ -> masked global max
+ -> Linear(26,1)
+```
+
+was trained from three fresh seeds. Balanced-accuracy ranges were:
+
+- sentiment: **63.32% – 69.46%**
+- POS morphology: **82.40% – 83.36%**
+
+This reconstruction does **not** recover the missing original CNN identity, but it independently preserves the direction of the earlier finding: a tiny nonlinear byte model still exceeds the current affine associative family on these real tasks.
+
+### New invariant admitted from rerun
+
+```text
+SINGLE_RUN_PEAK != WIDTH_OPTIMUM
+MODEL_FAMILY_PLATEAU != MEMBER_RANKING
+PRESERVED_RESULT != REPRODUCIBLE_EXPERIMENT
+```
+
+Future affine-width comparisons require multi-seed distributions before selecting a width.
