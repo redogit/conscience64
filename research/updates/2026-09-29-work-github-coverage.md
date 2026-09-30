@@ -32,3 +32,8 @@ The base `gh-pages` projection manifest names `public-testbed/**` plus curated `
 ## Smallest next reconciliation
 
 For each Work line, preserve the exact source carrier and user attribution privately; identify one target owner and one testable contract; run its native verifier and a counterprobe; record the bounded result and unresolved remainder. Update this pointer only after that evidence exists. Do not copy private files, identifiers, or raw Work history into a public repository merely to fill a coverage cell.
+
+
+## September 30 successor — bounded Atlas reconciliation
+
+The [repository-native manifest](../invariant-atlas/manifest.json) binds the exact recovered source snapshots and current crosswalk. Fresh checks retain 747 source-window occurrences over 684 unique bodies, all 1,203 recorded anchors and 1,416 excerpts, 299/312 Work byte retrievals, 167 current-main repository paths plus four draft PR #89 sources, and 161/173 image inspections. Source-reported research results stay separate from this pass's byte/lexical and carrier-integrity checks. The 895-ID acceptance artifact and later inherited labels remain distinguishable. Full private identities and attribution remain in the owner-held audit; this public carrier contains opaque references and hashes. The September 29 comparison above remains the predecessor, not an account-wide completeness claim.
