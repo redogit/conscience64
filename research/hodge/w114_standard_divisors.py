@@ -384,6 +384,8 @@ def run():
     return {"schema": "conscience64/w114-standard-divisors/v1",
             "base_checkpoint": BASE_CHECKPOINT,
             "coefficient_domain": "K=Lambda=Q(zeta_57); rho^19=-3",
+            "artin_character_order": 57,
+            "artin_dictionary": "A(3,k) here means A_57(3,k)=A_114(3,2k); the exceptional quadratic carrier uses order 114",
             "projector_convention": "e_chi=(1/|G|) sum chi(g)^-1 [Gamma_g], g_* e_chi=chi(g)e_chi",
             "equations": {"f1": "x0^19+x1^19+x2^19", "f2": "x3^3-rho*x0*x1*x2",
                           "g1": "sum_i<3 x_i^38 - sum_i<j<3 x_i^19*x_j^19",

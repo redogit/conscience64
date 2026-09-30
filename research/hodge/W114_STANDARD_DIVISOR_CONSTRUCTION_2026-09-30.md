@@ -5,6 +5,11 @@ divisor correspondences and one joined padding correspondence. It does not
 construct the exceptional residual-to-quadratic-Artin arrow, nor push the
 level-57 plane into the W114 sector.
 
+Forward continuation: [the primitive join composition](W114_STANDARD_JOIN_COMPOSITION_2026-09-30.md)
+now resolves the join-incidence step left open below. Standard A(3,k) in this
+packet means order 57, equivalently A_114(3,2k); its exceptional quadratic target
+uses order 114. The original bounded packet is preserved at commit 389c1b7.
+
 Ancestry: current default main `e97a0cdf615996aa3dd792b08d4bf37547b5080f`,
 reconciled with the bounded-composition checkpoint
 `5f72db12dece00960103112dfe79e931d8b391f9` from PR #224. Main's intervening

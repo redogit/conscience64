@@ -83,3 +83,19 @@ push and residual-to-Artin cycle. **MOT-1 REMAINS OPEN.**
 constructs the four required level-57 standard divisors and a nonzero joined
 padding cycle, with exact Kummer actions and inverse normalizations checked by
 two intersection calculations. The exceptional Aoki arrow remains open.
+
+[Primitive join composition](W114_STANDARD_JOIN_COMPOSITION_2026-09-30.md)
+then constructs the standard residual-to-Aoki correspondence through the common
+Fermat carrier, with source, target, variance, boundary vanishing and inverse
+scalars traced in Chow. **MOT-1 REMAINS OPEN** at the exceptional quadratic arrow.
+
+[Full level-114 standard reduction](W114_FULL_STANDARD_REDUCTION_2026-09-30.md)
+composes the signed duplication/reflection word via explicit duplication divisors,
+the degree-32 plane pullback, descended Artin paddings and their normalized joins.
+It produces the nonzero W114-to-Aoki standard reduction with both inverses.
+
+[Aoki tensor-square continuation](W114_AOKI_TENSOR_SQUARE_2026-09-30.md)
+constructs a separate nonzero square correspondence using the p=19 standard
+complete intersection. The remaining residual line has tensor order at most two;
+its identification with the corrected quadratic Artin carrier and the unsquared
+W114 plane push are still open. Theorem-use is not independent reproof.

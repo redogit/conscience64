@@ -72,7 +72,7 @@
   },
   "source_research_reruns_this_pass": 0,
   "limitations": [
-    "187 unlocated historical literal origins remain.",
+    "187 preserved historical locator grades remain; all have retained excerpts. See statistical follow-up for later literal reviews.",
     "13 unavailable originals comprise 12 images and one code file.",
     "Nine historical streaming anchors absent from current claim ledger; one current receipt differs.",
     "Acceptance artifact enumerates 895 IDs; later 193 records carry source-reported inherited labels.",
@@ -85,8 +85,8 @@
       "bytes": 263459
     },
     "README.md": {
-      "sha256": "5ad2c09ccb51f895f58e68d1015d466422f31db185501c5a749f41d111c3877d",
-      "bytes": 7139
+      "bytes": 7658,
+      "sha256": "8f645567ef1668ee448c399bbd83e2eb2f828ffaf060bf05eadcc0ecb879d338"
     },
     "verify.py": {
       "sha256": "dca7a8eb5a247cac4dff3ceeb7952a75dadf58eec149337b968675ea1d5ee5aa",
@@ -99,10 +99,27 @@
     "catalog.json.gz": {
       "sha256": "9eeeb58e3e8682b57f987536ccf2a1114cabcc27b6a68dccfa53cfe13a929fb8",
       "bytes": 349622
+    },
+    "STATISTICS.md": {
+      "bytes": 4295,
+      "sha256": "62e315fa20466e25d87d23ddc8cb6937ff4aaed2935e02a716b20db13142dc6c"
+    },
+    "statistics.json": {
+      "bytes": 79675,
+      "sha256": "e194c13b91d087a37f7cb3e9ad16e2caf7f3a5e51779d0c5a549431d68b14ca1"
     }
   },
   "catalog_uncompressed": {
     "bytes": 2304990,
     "sha256": "6931e4353387c7b2510dbf9d381fd80c4e581b93e8d7ae384bb47c0e90914cdf"
+  },
+  "statistical_followup": {
+    "file": "statistics.json",
+    "notes": "STATISTICS.md",
+    "historical_ledger_unchanged": true,
+    "main_anchor_records": 493,
+    "draft_only_records": 16,
+    "no_anchor_records": 579,
+    "source_research_experiment_reruns": 0
   }
 }
