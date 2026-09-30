@@ -57,7 +57,7 @@ for (const path of ['index.html', 'orbit/index.html', 'weave/index.html', 'garde
   }
 }
 const catalog = JSON.parse(await readFile(new URL('projects.json', import.meta.url), 'utf8'));
-assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare', 'computational-chorus', 'explorer-world', 'mmo']);
+assert.deepEqual(catalog.projects.map(p => p.id), ['orbit', 'weave', 'garden', 'steps', 'compare', 'computational-chorus', 'explorer-world', 'neon-veil', 'mmo']);
 assert.equal(catalog.version, '1.3.1');
 for (const p of catalog.projects) assert.ok(await stat(new URL(p.entry, import.meta.url)));
 const mmo = await readFile(new URL('mmo/index.html', import.meta.url), 'utf8');

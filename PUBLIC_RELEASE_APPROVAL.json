@@ -1,12 +1,37 @@
 {
   "schema": "redogit/public-release-approval/v1",
-  "approved": false,
-  "approved_sha": null,
-  "approved_by": "repository-owner",
+  "approved": true,
+  "approved_sha": "56fc41d87c35e21181005e93d75b5d735f3821e7",
+  "approved_by": "repository-owner-direction",
+  "approved_at": "2026-09-29",
+  "authorized_routes": [
+    "/play/",
+    "/play/neon-veil/"
+  ],
+  "public_backend_authorized": false,
   "review": {
-    "privacy_safe": false,
-    "link_surface_reviewed": false,
-    "dependent_surfaces_reviewed": false
+    "privacy_safe": true,
+    "link_surface_reviewed": true,
+    "dependent_surfaces_reviewed": true,
+    "package_hashes_verified": true,
+    "live_edge_verified": true
   },
-  "rule": "Publication is held unless the owner explicitly approves the exact commit after safety and dependency review."
+  "release_identity": {
+    "source_checkpoint": "NEON_VEIL_T05_RECEIPT_SAFETY_CHECKPOINT.zip",
+    "source_checkpoint_sha256": "8d26afb7e271398ee2f01586db034b39e8d4a9357bfc996246245eabb9335517",
+    "package_count": 5,
+    "packages": {
+      "windows": "36bee8ee441f461d19347a79dec552bd92c329ae0477ca1dd103ee9a17457678",
+      "linux": "0c994d75798225573a211614400a2d4e9602bceddbbee90389884dde5841595d",
+      "macos": "a0d5ec2e349bdcd15c5b32e4e1fea8b626dce8a0f3da3290d600f05cbe58d852",
+      "android": "49af08b5044fbd3dea85660c1e86919f55316e1dd8a52c5ba49314e0bafaeaaa",
+      "iphone-ipad": "efe84a5ef13e5ef4640f01a02b61c71c636bfab9561c018f8c7f3b898589ee69"
+    }
+  },
+  "evidence": {
+    "source_sync_run": 36580007971,
+    "public_testbed_run": 36580008002,
+    "live_edge_run": 36580038873
+  },
+  "rule": "This approval reconciles the already-live verified NEON//VEIL public distribution and curated /play/ hub. It authorizes no public authoritative backend, no additional Play routes, no private planning/evidence publication, and no unrelated gameplay admission."
 }

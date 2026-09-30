@@ -3,7 +3,7 @@ import hashlib, json, sys, zipfile
 from pathlib import Path
 ROOT=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else Path('.').resolve()
 NEON=ROOT/'play'/'neon-veil'; HUB=ROOT/'play'/'public-index.html'
-APPROVAL=ROOT/'PUBLIC_NEON_VEIL_APPROVAL.json'; HUB_APPROVAL=ROOT/'PUBLIC_PLAY_HUB_APPROVAL.json'
+APPROVAL=ROOT/'PUBLIC_NEON_VEIL_APPROVAL.json'; HUB_APPROVAL=ROOT/'PUBLIC_PLAY_HUB_APPROVAL.json'; RELEASE_APPROVAL=ROOT/'PUBLIC_RELEASE_APPROVAL.json'
 def main():
     a=json.loads(APPROVAL.read_text(encoding='utf-8'))
     assert a['schema']=='redogit/public-play-route-approval/v1' and a['approved'] is True
@@ -14,6 +14,13 @@ def main():
     assert h['schema']=='redogit/public-play-hub-approval/v1' and h['approved'] is True and h['route']=='/play/'
     assert h['authorized_source_families']==['play/public-index.html']
     assert h['authorized_child_routes']==['/play/neon-veil/','/play/musilanguage/']
+    g=json.loads(RELEASE_APPROVAL.read_text(encoding='utf-8'))
+    assert g['schema']=='redogit/public-release-approval/v1' and g['approved'] is True
+    assert g['approved_sha']=='56fc41d87c35e21181005e93d75b5d735f3821e7'
+    assert g['authorized_routes']==['/play/','/play/neon-veil/'] and g['public_backend_authorized'] is False
+    for key in ('privacy_safe','link_surface_reviewed','dependent_surfaces_reviewed','package_hashes_verified','live_edge_verified'): assert g['review'][key] is True,key
+    assert g['release_identity']['source_checkpoint_sha256']==a['source_checkpoint_sha256']
+    assert g['release_identity']['package_count']==5
     r=json.loads((NEON/'release.json').read_text(encoding='utf-8'))
     assert r['schema']=='neon-veil/public-release/v1' and r['release']=='2026-09-29-public-release-r11'
     assert r['channel']=='public-release' and r['public_backend'] is False and r['trusted_lan_only'] is True
@@ -21,6 +28,7 @@ def main():
     assert r['release_route']=='https://redogit.github.io/conscience64/play/neon-veil/'
     assert r['source_checkpoint_sha256']==a['source_checkpoint_sha256']
     assert [x['platform'] for x in r['packages']]==['windows','linux','macos','android','iphone-ipad']
+    assert {x['platform']:x['sha256'] for x in r['packages']}==g['release_identity']['packages']
     html=(NEON/'index.html').read_text(encoding='utf-8'); hub=HUB.read_text(encoding='utf-8')
     css=(NEON/'style.css').read_text(encoding='utf-8'); js=(NEON/'app.js').read_text(encoding='utf-8')
     assert 'Public Release' in html and 'NEON//VEIL · Public Release' in hub
