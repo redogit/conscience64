@@ -78,3 +78,8 @@ reconciles the later n=3 projective closure and constructs a typed D2 product
 transfer with full quotient normalizations. It preserves failed counterprobes
 and separates that nonzero transfer block from the unconstructed W114 plane
 push and residual-to-Artin cycle. **MOT-1 REMAINS OPEN.**
+
+[Explicit standard-divisor continuation](W114_STANDARD_DIVISOR_CONSTRUCTION_2026-09-30.md)
+constructs the four required level-57 standard divisors and a nonzero joined
+padding cycle, with exact Kummer actions and inverse normalizations checked by
+two intersection calculations. The exceptional Aoki arrow remains open.

@@ -1,0 +1,108 @@
+{
+  "schema": "invariant-atlas-reconciliation-manifest/v1",
+  "as_of": "2026-09-30",
+  "claim_ceiling": "CANDIDATE_RECORDS_AND_SOURCE_INTEGRITY_ONLY",
+  "status": "BOUNDED_RECONCILIATION_WITH_EXPLICIT_REMAINDER",
+  "counts": {
+    "records": 1088,
+    "historical_source_occurrences": 747,
+    "fresh_native_occurrences": 312,
+    "image_occurrences": 173,
+    "families": 55,
+    "separate_derived_entries": 9
+  },
+  "cohorts": {
+    "original_snapshot": 1016,
+    "later_audit_extension": 72,
+    "source_records_total": 1088,
+    "derived_separate": 9
+  },
+  "summary": {
+    "record_count": 1088,
+    "original_snapshot_count": 1016,
+    "audit_extension_count": 72,
+    "separate_derived_count": 9,
+    "acceptance_exact_id_coverage": 895,
+    "later_acceptance_labels_with_no_separate_occurrence": 193,
+    "retained_body_count": 684,
+    "historical_source_occurrence_count": 747,
+    "anchor_occurrences": 1203,
+    "retained_anchor_results": {
+      "NORMALIZED_LITERAL_PRESENT": 1203
+    },
+    "fresh_anchor_results": {
+      "FRESH_ORIGIN_UNAVAILABLE_OR_NON_TEXT": 134,
+      "NORMALIZED_LITERAL_PRESENT": 1060,
+      "LITERAL_NOT_FOUND_IN_CURRENT_ORIGIN": 9
+    },
+    "excerpt_occurrences": 1416,
+    "excerpt_results": {
+      "NORMALIZED_LITERAL_PRESENT": 1416
+    },
+    "fresh_native_attempts": 312,
+    "fresh_native_results": {
+      "ORIGIN_UNAVAILABLE": 13,
+      "FRESH_ORIGIN_BYTES_RETRIEVED": 299
+    },
+    "fresh_repository_paths": 175,
+    "repository_results": {
+      "FRESH_REPOSITORY_SOURCE": 171,
+      "PATH_ABSENT_AT_CURRENT_HEAD": 4
+    },
+    "images": 173,
+    "image_results": {
+      "EXACT_PRIOR_IMAGE_BYTE_MATCH": 156,
+      "ORIGIN_UNAVAILABLE": 12,
+      "RETRIEVED_NO_PRIOR_BYTE_HASH": 5
+    },
+    "unlocated_literal_origin_records": 187,
+    "combination_families": 33,
+    "permutation_families": 22,
+    "research_reruns_this_pass": 0,
+    "images_visually_screened_this_pass": 161,
+    "gif_frames_screened_this_pass": 68,
+    "exact_image_byte_matches_added_from_atlas_package": 13
+  },
+  "source_snapshots": {
+    "extended_ledger_sha256": "8828e466727ca5b0bd3bfea5ffcbfbef02056de7f3ca9f6f9e2db98632aca01e",
+    "original_1016_ledger_sha256": "48c2b18a50608347d678d9672dc723c40e66cb4b9a0c7e24a45acf2f765b6368",
+    "current_numbered_1016_catalog_sha256": "0cb0b16f023249f47cdc71ced2ef1dc519155749ae58598af92a8d404254ef5d",
+    "acceptance_artifact_sha256": "85fe718ec19cbaaf79363b2923e57e69c3f66681d2306a96a3dab98e7d47bf02",
+    "owner_held_origin_audit_sha256": "3bcc3f0d93781d511d9ce1c00c192ada5336edc2d90e2a6bac20826a62bd7cfd"
+  },
+  "source_research_reruns_this_pass": 0,
+  "limitations": [
+    "187 unlocated historical literal origins remain.",
+    "13 unavailable originals comprise 12 images and one code file.",
+    "Nine historical streaming anchors absent from current claim ledger; one current receipt differs.",
+    "Acceptance artifact enumerates 895 IDs; later 193 records carry source-reported inherited labels.",
+    "Raw-chat archive completeness, mathematical proof audits and native integration are not established.",
+    "Equal bytes, repeated source windows and repeated screenshots are not independent corroboration."
+  ],
+  "files": {
+    "crosswalk.json": {
+      "sha256": "ecde2b07c061df7ad4b569cf28cdfea829fef6cdb6ddcefa0e75eb721ee99348",
+      "bytes": 263459
+    },
+    "README.md": {
+      "sha256": "5ad2c09ccb51f895f58e68d1015d466422f31db185501c5a749f41d111c3877d",
+      "bytes": 7139
+    },
+    "verify.py": {
+      "sha256": "dca7a8eb5a247cac4dff3ceeb7952a75dadf58eec149337b968675ea1d5ee5aa",
+      "bytes": 3948
+    },
+    "test_verify.py": {
+      "sha256": "ee10a52d2459587fe5c8950d99d6f3bdf4d9b52b6000af7008b979a2e39109ca",
+      "bytes": 3298
+    },
+    "catalog.json.gz": {
+      "sha256": "9eeeb58e3e8682b57f987536ccf2a1114cabcc27b6a68dccfa53cfe13a929fb8",
+      "bytes": 349622
+    }
+  },
+  "catalog_uncompressed": {
+    "bytes": 2304990,
+    "sha256": "6931e4353387c7b2510dbf9d381fd80c4e581b93e8d7ae384bb47c0e90914cdf"
+  }
+}
