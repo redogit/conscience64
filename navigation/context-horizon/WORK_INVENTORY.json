@@ -417,17 +417,27 @@
       "canonicalName": "BGZF Compressed Text AI",
       "aliases": [],
       "domain": "model-research",
-      "sourceLocations": [],
-      "provenanceStatus": "known-from-library-history",
-      "publicationStatus": "unresolved",
-      "state": "unresolved",
-      "predecessors": [],
-      "successors": [],
-      "preservationStatus": "must-locate-or-retain-unresolved",
-      "sourceKinds": [
-        "historical-context-seed"
+      "sourceLocations": [
+        "research/projects/bgzf-compressed-text-ai.md",
+        "research/compressed-text-ai/2026-09-30/README.md"
       ],
-      "notes": []
+      "provenanceStatus": "current-repository",
+      "publicationStatus": "public",
+      "state": "current",
+      "predecessors": [
+        "bgzf"
+      ],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "historical-context-seed",
+        "research-project-record",
+        "bounded-experiment-record"
+      ],
+      "notes": [
+        "2026-09-30 five-experiment successor preserves BGZF bounded lineage, adds ZIP 32 KiB symbolic frontier and associative learned operator.",
+        "Claim ceiling remains bounded implementation/generalization evidence."
+      ]
     },
     {
       "id": "blank-page-lab",
