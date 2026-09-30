@@ -175,8 +175,13 @@ def stabilized_endpoints():
     ordered = []
     for name, a, sign in ORDERED_WORD:
         labels = ((a, 1), ((a+57) % D, 1), (2*a % D, -1), (57, -1)) if name == 'D2' else ((a, 1), (-a % D, 1))
+        # Arithmetic signs are not geometric directions. Positive D2 uses
+        # the inverse on the right padding; negative D2 uses the forward
+        # divisor on the left. N has no individual characteristic-zero leaf.
+        direction = ("inverse" if sign > 0 else "forward") if name == 'D2' else None
+        role = ("right_padding_reverse" if sign > 0 else "left_padding_forward") if name == 'D2' else "reflection_point_padding"
         ordered.append({"primitive": f"{name}_{a}", "sign": sign,
-                        "direction": "forward" if sign == 1 else "inverse",
+                        "direction": direction, "geometric_role": role,
                         "integer_word": [[x, c] for x, c in labels]})
         for x, c in labels:
             signed_word[x] += sign*c

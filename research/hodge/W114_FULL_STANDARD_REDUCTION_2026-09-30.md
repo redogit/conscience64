@@ -140,6 +140,18 @@ positive D2 terms are inverted when returning from the right common carrier.
 This is the tensor-stabilized composition of the word, rather than an assertion
 that six curve transfers act sequentially on the bare fourfold object.
 
+The [confounds audit](W114_CONFOUNDS_AND_NEXT_TARGET_2026-09-30.md) found that
+the producer's receipt at commit 0ffcdce incorrectly labeled positive D2 as
+forward and negative D2 as inverse. Its generic sign-to-direction mapping
+contradicted the convention and the incidence composition above. The receipt
+now records inverse for D2_7,D2_22 and forward for D2_23,D2_56. N_1,N_2 retain
+their arithmetic signs with null individual geometric directions and an
+explicit reflection-point-padding role. They are not characteristic-zero
+Artin-Schreier leaves. New tests first failed on those exact mismatches, then
+passed after correction. The encoded incidences, endpoints, permutations,
+Galois orbits and inverse scalars compare exactly unchanged. Earlier results
+remain preserved; their direction-receipt subclaim is superseded.
+
 Construct the left and right projected padding cycles by iterated joins of
 the indicated duplication divisors, plane, and point cycles. A point cycle for
 R_b is e_Rb[i:1], with pairing 1/114 and i-conjugation eigenvalue (-1)^b.

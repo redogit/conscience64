@@ -6,6 +6,23 @@ import w114_full_standard_composition as c
 
 
 class FullStandardChecks(unittest.TestCase):
+    def test_signed_receipt_uses_declared_d2_inverse_directions(self):
+        r = c.compose()
+        self.assertEqual([(x['primitive'], x['direction']) for x in r['signed_word'][:4]],
+                         [('D2_7', 'inverse'), ('D2_22', 'inverse'),
+                          ('D2_23', 'forward'), ('D2_56', 'forward')])
+        forged = deepcopy(r)
+        forged['signed_word'][0]['direction'] = 'forward'
+        with self.assertRaisesRegex(ValueError, 'certificate'):
+            c.check(forged)
+
+    def test_reflection_receipt_does_not_assert_individual_char_zero_n_leaf(self):
+        r = c.compose()
+        self.assertEqual([(x['primitive'], x['sign'], x['direction']) for x in r['signed_word'][4:]],
+                         [('N_1', 1, None), ('N_2', -1, None)])
+        for x in r['signed_word'][4:]:
+            self.assertEqual(x['geometric_role'], 'reflection_point_padding')
+
     def test_divisor_containment_and_nonzero_class(self):
         self.assertTrue(c.containment())
         self.assertEqual(len(c.determinant()), 112)
