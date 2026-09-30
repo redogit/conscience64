@@ -1,0 +1,2312 @@
+{
+  "schema": "invariant-atlas-statistical-followup/v1",
+  "as_of": "2026-09-30",
+  "predecessor_owner_audit_sha256": "3bcc3f0d93781d511d9ce1c00c192ada5336edc2d90e2a6bac20826a62bd7cfd",
+  "extended_ledger_sha256": "8828e466727ca5b0bd3bfea5ffcbfbef02056de7f3ca9f6f9e2db98632aca01e",
+  "claim_ceiling": "SOURCE_COVERAGE_AND_SAVED_NUMBER_CONSISTENCY_ONLY",
+  "coverage": {
+    "current_main_record_anchors": {
+      "covered": 493,
+      "denominator": 1088,
+      "left": 595,
+      "covered_percent": 45.3,
+      "left_percent": 54.7
+    },
+    "record_anchors_including_draft": {
+      "covered": 509,
+      "denominator": 1088,
+      "left": 579,
+      "covered_percent": 46.8,
+      "left_percent": 53.2
+    },
+    "prior_work_origin_retrieval": {
+      "covered": 299,
+      "denominator": 312,
+      "left": 13,
+      "covered_percent": 95.8,
+      "left_percent": 4.2
+    },
+    "prior_retained_body_hashes": {
+      "covered": 684,
+      "denominator": 684,
+      "left": 0,
+      "covered_percent": 100.0,
+      "left_percent": 0.0
+    },
+    "prior_retained_anchors": {
+      "covered": 1203,
+      "denominator": 1203,
+      "left": 0,
+      "covered_percent": 100.0,
+      "left_percent": 0.0
+    },
+    "prior_retained_excerpts": {
+      "covered": 1416,
+      "denominator": 1416,
+      "left": 0,
+      "covered_percent": 100.0,
+      "left_percent": 0.0
+    },
+    "explicit_acceptance_id_coverage": {
+      "covered": 895,
+      "denominator": 1088,
+      "left": 193,
+      "covered_percent": 82.3,
+      "left_percent": 17.7
+    }
+  },
+  "draft_only_records": [
+    "GH-e3820f3a9883",
+    "GH-bf9f7e827331",
+    "GH-b19854e01282",
+    "GH-72f75deae6aa",
+    "GH-87c866876c24",
+    "GH-e2658b391136",
+    "GH-8cb3cedcf335",
+    "GH-ac71aafae1c1",
+    "GH-5d5971917af5",
+    "GH-335d4e8090cc",
+    "GH-e2204af2135c",
+    "GH-4264a8bf0cc7",
+    "GH-8743d3109018",
+    "GH-db01ad452fd5",
+    "GH-9e4cfec56319",
+    "GH-34482ff13146"
+  ],
+  "historical_locator_grade_recheck": {
+    "historical_grade_preserved_records": 187,
+    "records_with_retained_excerpts": 187,
+    "excerpt_occurrences_present": 338,
+    "later_literal_review_records": 15,
+    "later_literal_review_passages_present": 38,
+    "whole_statement_literal_records": [
+      "EXTRA-DYN-07",
+      "OP-BOUND-013"
+    ],
+    "records": [
+      {
+        "record_id": "EARLY-015",
+        "catalog": "early_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EARLY-026",
+        "catalog": "early_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "b8404fc82ad56526797093cd328c8d1dd31cf023b6601a87e61a495a7a807f67",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "b8404fc82ad56526797093cd328c8d1dd31cf023b6601a87e61a495a7a807f67",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 3,
+            "body_sha256": "6b53ae901e44536d285ca30b830f248fff0ca5cab8159f3a67ca9e997b0ed3c3",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-015",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-016",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-018",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-019",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-020",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-021",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-023",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-024",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "AUG-025",
+        "catalog": "early_august_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "recent.recursive_kd",
+        "catalog": "recent_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "recent.trace_claim_limits",
+        "catalog": "recent_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "recent.link_contract",
+        "catalog": "recent_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "recent.archaeology",
+        "catalog": "recent_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "recent.transform_requirements",
+        "catalog": "recent_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "recent.anyfunctor_singular",
+        "catalog": "recent_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "recent.mirror_rmal_latest",
+        "catalog": "recent_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-a46f779f821a",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 3,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 4,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 5,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 6,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 7,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 8,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 9,
+            "body_sha256": "3983a085637e6ed96762fd079161f92572913bcd34b9e10213c4be910f90fbba",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-462a8da56349",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "84ed7ca951e56ea997c201d7c6d5f97460655f366567a630da992c0b0b5a64ec",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-e2a5ee0490d4",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "aa843de612e3e64917914497dba51733b26793c7177843903ea078d918caec0d",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-e508065d653f",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "6adc657b4ff58b496d38e5c69a0ba95049ef46f60aa2c06ab60ddf1218a167f0",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-395558a2b4aa",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "82d7fd1e105b5286c2c99b5f5c8363bad530ee90a3e92bfcfb1cb4801c810407",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-73ed142ec3bf",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "82d7fd1e105b5286c2c99b5f5c8363bad530ee90a3e92bfcfb1cb4801c810407",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "82d7fd1e105b5286c2c99b5f5c8363bad530ee90a3e92bfcfb1cb4801c810407",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 3,
+            "body_sha256": "82d7fd1e105b5286c2c99b5f5c8363bad530ee90a3e92bfcfb1cb4801c810407",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-1facd9658700",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "fcfdc4815a6285ce33a2b6474721e409f7e9c164201dc808ccf8347fffeea1b4",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-cffd13d34fc1",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "1eb1ad815a71e00a0f003a7da27f847671b92c2ce38be010954419becb5af614",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "1eb1ad815a71e00a0f003a7da27f847671b92c2ce38be010954419becb5af614",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-34482ff13146",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "73fc951a8858a37494c706dd39119f636ed953d92c00299edc4c5837f94ec5fd",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "73fc951a8858a37494c706dd39119f636ed953d92c00299edc4c5837f94ec5fd",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-be752b7332fc",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "777b9de98eea11b8dcb89e33d46c1aa386e718a68eeaeea20d273971d30e275e",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "777b9de98eea11b8dcb89e33d46c1aa386e718a68eeaeea20d273971d30e275e",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 3,
+            "body_sha256": "777b9de98eea11b8dcb89e33d46c1aa386e718a68eeaeea20d273971d30e275e",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 4,
+            "body_sha256": "777b9de98eea11b8dcb89e33d46c1aa386e718a68eeaeea20d273971d30e275e",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "GH-2f4af8e14cb7",
+        "catalog": "github_normalized_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "de228b4c23bfb8147046e7f9019a970a0689798638f18c38b20998ea8e3a2302",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "de228b4c23bfb8147046e7f9019a970a0689798638f18c38b20998ea8e3a2302",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 3,
+            "body_sha256": "de228b4c23bfb8147046e7f9019a970a0689798638f18c38b20998ea8e3a2302",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-03",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-04",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-05",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-06",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-07",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-08",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-09",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-10",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-11",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-12",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-13",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1-14",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-DIM-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-DIM-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-DIM-03",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-OBS-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-IMG-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-HOD-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-HOD-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-GSFL-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-GSFL-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-GSFL-03",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-DF-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-DF-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-DF-03",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-DF-04",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-CS-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-CS-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-CS-03",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-CS-04",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-OMEGA-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-OMEGA-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-REL-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-MULTI-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1024-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-S1024-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-CTX-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-BLANK-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-COOP-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-COOP-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-HC-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-HC-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-HEA-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-KG-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-GAME-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-MINIGX-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-03",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-04",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-05",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-06",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-07",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "PNP-08",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-01",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-02",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-03",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-04",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-05",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-06",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-07",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-08",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-09",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "SP-10",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "rmal-authority",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "rmal-binding",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "rmal-kd",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "rmal-four-ids",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "rmal-transform-contract",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-directions",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-complete-preservation",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-replay",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-surface",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-mirror",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-mirror-identity",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-mirror-admission",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-homeward",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "df-persistence",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "pnp-local-normalization",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "pnp-balance",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "w114-sign",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "w114-visual",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "dta-person-authority",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "dta-ready",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "dta-history",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "dta-import",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "orbit-provenance",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "orbit-scene",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "fnn-bounded-or",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "maui-game",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "shared-history-policy",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "ROOT-EYE-01",
+        "catalog": "root_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "811588ef7e5daf704c3402fc2ebff5671a6b042cf211f5e04ca2a03cffcc0087",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "811588ef7e5daf704c3402fc2ebff5671a6b042cf211f5e04ca2a03cffcc0087",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "ROOT-EYE-02",
+        "catalog": "root_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "811588ef7e5daf704c3402fc2ebff5671a6b042cf211f5e04ca2a03cffcc0087",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "811588ef7e5daf704c3402fc2ebff5671a6b042cf211f5e04ca2a03cffcc0087",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "ROOT-EYE-03",
+        "catalog": "root_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [
+          {
+            "ordinal": 1,
+            "body_sha256": "811588ef7e5daf704c3402fc2ebff5671a6b042cf211f5e04ca2a03cffcc0087",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 2,
+            "body_sha256": "811588ef7e5daf704c3402fc2ebff5671a6b042cf211f5e04ca2a03cffcc0087",
+            "hash_valid": true,
+            "present": true
+          },
+          {
+            "ordinal": 3,
+            "body_sha256": "811588ef7e5daf704c3402fc2ebff5671a6b042cf211f5e04ca2a03cffcc0087",
+            "hash_valid": true,
+            "present": true
+          }
+        ],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "ROOT-QUERY-02",
+        "catalog": "root_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "ROOT-ENCOUNTER-01",
+        "catalog": "root_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "ROOT-ENCOUNTER-04",
+        "catalog": "root_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "ROOT-OBJECT-02",
+        "catalog": "root_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-DYN-01",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-DYN-02",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-DYN-03",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-DYN-04",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-DYN-05",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-DYN-06",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-DYN-07",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": [
+          "39260bfef3deee3899a4839a46469e007f9ec1e2388176fa44bfa62d4a8791d5"
+        ]
+      },
+      {
+        "record_id": "EXTRA-COMB-01",
+        "catalog": "extra_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V01",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V02",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V03",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V04",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V05",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V06",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V07",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V08",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V09",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V10",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V11",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V12",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V13",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V14",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V15",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V16",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V17",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V18",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V19",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V20",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V21",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 3,
+        "excerpts_present": 3,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V22",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V23",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V24",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V25",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V26",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "V27",
+        "catalog": "visual_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 4,
+        "excerpts_present": 4,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "OP-BOUND-013",
+        "catalog": "repo_breadth_combined_catalog.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": [
+          "d9039c133465b4ab1f42000845b0f8003f2112e2e9f105e9d63de62516d5ee12"
+        ]
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-A01",
+        "catalog": "extra_archive_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-A02",
+        "catalog": "extra_archive_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-A03",
+        "catalog": "extra_archive_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-A04",
+        "catalog": "extra_archive_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-A05",
+        "catalog": "extra_archive_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-A06",
+        "catalog": "extra_archive_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-A07",
+        "catalog": "extra_archive_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-Q06",
+        "catalog": "extra_query_receipt_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-R02",
+        "catalog": "extra_registry_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-R07",
+        "catalog": "extra_registry_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-R08",
+        "catalog": "extra_registry_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-R10",
+        "catalog": "extra_registry_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-R11",
+        "catalog": "extra_registry_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 2,
+        "excerpts_present": 2,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-R13",
+        "catalog": "extra_registry_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S01",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S02",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S03",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S05",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S06",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S07",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S08",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      },
+      {
+        "record_id": "EXTRA-FOLLOW-S09",
+        "catalog": "extra_structural_followup.json",
+        "historical_grade": "SOURCE_TEXT_REOPENED_ANCHOR_NOT_LOCATED",
+        "excerpt_count": 1,
+        "excerpts_present": 1,
+        "review_passages": [],
+        "whole_statement_literal_bodies": []
+      }
+    ],
+    "interpretation": "187 counts preserved historical locator grades, not 187 missing files; passage containment does not establish semantic implication, authorship or original invention."
+  },
+  "separate_code_copy": {
+    "bytes": 125370,
+    "sha256": "005dcb239ee64d90e7ac1de7b55868efb03242a89db2582d66ca5ea1db9a27f5",
+    "identity_relation": "SEPARATE_UPLOAD_PARTIAL_WINDOW_AGREEMENT_NO_WHOLE_ORIGINAL_HASH_BINDING",
+    "original_still_unavailable": true,
+    "anchor_checks": [
+      {
+        "record_id": "EARLY-001",
+        "anchor_ordinal": 1,
+        "anchor_sha256": "9bfa2e5db1da79cf4163127a02b8895d8945440b5ea22841188849b4c764985e",
+        "normalized_literal_present": true
+      },
+      {
+        "record_id": "EARLY-002",
+        "anchor_ordinal": 1,
+        "anchor_sha256": "c723f3b83df4c6a8246b14cf258e1b1707130457d648ad8f00708df4096352cf",
+        "normalized_literal_present": true
+      },
+      {
+        "record_id": "EARLY-003",
+        "anchor_ordinal": 1,
+        "anchor_sha256": "1dc7f5a406b943c856c4361059428ea466f345061573235c49104a91047da195",
+        "normalized_literal_present": true
+      }
+    ],
+    "window_occurrences": [
+      {
+        "record_id": "EARLY-001",
+        "window_ordinal": 1,
+        "body_sha256": "1be6fc7496831e3c504a669be6db14ca4d7304f023deaf04b6202c88675a635d",
+        "normalized_window_present": true
+      },
+      {
+        "record_id": "EARLY-001",
+        "window_ordinal": 2,
+        "body_sha256": "c8fe86387e9178c5f2db121607ef9124504f409dab44bd75d62295932999c218",
+        "normalized_window_present": true
+      },
+      {
+        "record_id": "EARLY-002",
+        "window_ordinal": 1,
+        "body_sha256": "1be6fc7496831e3c504a669be6db14ca4d7304f023deaf04b6202c88675a635d",
+        "normalized_window_present": true
+      },
+      {
+        "record_id": "EARLY-002",
+        "window_ordinal": 2,
+        "body_sha256": "c8fe86387e9178c5f2db121607ef9124504f409dab44bd75d62295932999c218",
+        "normalized_window_present": true
+      },
+      {
+        "record_id": "EARLY-003",
+        "window_ordinal": 1,
+        "body_sha256": "1be6fc7496831e3c504a669be6db14ca4d7304f023deaf04b6202c88675a635d",
+        "normalized_window_present": true
+      },
+      {
+        "record_id": "EARLY-003",
+        "window_ordinal": 2,
+        "body_sha256": "c8fe86387e9178c5f2db121607ef9124504f409dab44bd75d62295932999c218",
+        "normalized_window_present": true
+      }
+    ],
+    "syntax_check": {
+      "status": "FAIL",
+      "type": "IndentationError",
+      "line": 349,
+      "message": "expected an indented block after 'if' statement on line 347",
+      "scope": "SEPARATE_COPY_ONLY_NOT_UNAVAILABLE_ORIGINAL"
+    },
+    "execution_performed": false
+  },
+  "streaming_source_successor_relations": [
+    {
+      "historical_record": "NEW-STREAM-01",
+      "later_record": "NEW-TSAL-PLI-001",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Byte interface/source inspection; no general language-quality claim.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-02",
+      "later_record": "NEW-TSAL-PLI-002",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Deterministic gated-delta/anchor fixture; max error 2e-5.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-03",
+      "later_record": "NEW-TSAL-PLI-004",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Gated-linear/bounded-anchor fixture; max logit error 1e-7, not mathematical exactness.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-04",
+      "later_record": "NEW-TSAL-PLI-007",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Selective-SSM/fixed-anchor fixture after 300 bytes; not every history/configuration.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-05",
+      "later_record": "NEW-TSAL-PLI-003",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Rejected mutation within 1e-6 in the tested oracle fixture.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-06",
+      "later_record": "NEW-TSAL-PLI-008",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Two banks, one-hot oracle routing in the declared fixture.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-07",
+      "later_record": "NEW-TSAL-PLI-005",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Configured capacity in a tested 100-step stream.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-08",
+      "later_record": "NEW-TSAL-PLI-009",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Priority 0.1 write receives under 20% of preceding priority-1 write in tested bank.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    },
+    {
+      "historical_record": "NEW-STREAM-09",
+      "later_record": "NEW-TSAL-RE-001",
+      "source_member": "docs/PROVEN_CLAIMS.md",
+      "source_sha256": "023d0c411b8b4197213e8b02f3edeffaa4e5438443f8959f8e0dc1ab50cd1b44",
+      "relation": "NARROWER_SOURCE_WITNESS_NAVIGATION_ONLY",
+      "limit": "Saved five-seed aggregate supports positive effects; original seed-9301 raw row remains unavailable.",
+      "research_rerun": false,
+      "independent_corroboration": false
+    }
+  ],
+  "receipt_stage_transition": {
+    "record_id": "NEW-BYTESLM-010",
+    "historical_stage": "S7_operator_compression",
+    "current_stage": "S8_structural_readback_compression",
+    "historical_statement_sha256": "b781804cac48f878ace0feea96e1c4bf847c17bc3c913fe16d4fef8a66a27ca9",
+    "current_native_sha256": "d0914a76eb90478a6fa2734405e03d4f71ebbf116e3ea934663f601839c47d22",
+    "reaudit_native_sha256": "3ac1df3c26de5dab882542854db5542d7b6b4235fdd80ae16735dbb9f7664187",
+    "reaudit_matches_saved_S7_and_S8_RMSE": true,
+    "interpretation": "Same receipt identity was revised from S7 to S8; retained S7 and current S8 are distinct chronological occurrences. Later reaudit is source-reported, not an independent experiment here."
+  },
+  "fresh_saved_number_recheck": {
+    "archive_sha256": "4b3c10d6b2d96a0decac3115141dc1e26b10303137d001526593257d66841543",
+    "member": "results/admission_probe_analysis.json",
+    "member_sha256": "7406629be0c0f1747b04ba4407e6a74fa3ae16e1bb054a32cefc2ff0de3d7de2",
+    "seeds": [
+      9301,
+      9302,
+      9303,
+      9304,
+      9305
+    ],
+    "uniform_accuracy": [
+      0.06640625,
+      0.046875,
+      0.046875,
+      0.08203125,
+      0.06640625
+    ],
+    "oracle_accuracy": [
+      0.13671875,
+      0.14453125,
+      0.09375,
+      0.1484375,
+      0.125
+    ],
+    "paired_effect_percentage_points": [
+      7.03125,
+      9.765625,
+      4.6875,
+      6.640625,
+      5.859375
+    ],
+    "mean_effect_percentage_points": 6.796875,
+    "positive_saved_seed_effects": 5,
+    "exact_bootstrap_draws": 3125,
+    "percentile95_percentage_points": [
+      5.46875,
+      8.4375
+    ],
+    "raw_row_checks": [
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication.json",
+        "seed": 9302,
+        "router": "uniform",
+        "accuracy_matches": true,
+        "nll_matches": true
+      },
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication.json",
+        "seed": 9303,
+        "router": "uniform",
+        "accuracy_matches": true,
+        "nll_matches": true
+      },
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication.json",
+        "seed": 9302,
+        "router": "oracle",
+        "accuracy_matches": true,
+        "nll_matches": true
+      },
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication.json",
+        "seed": 9303,
+        "router": "oracle",
+        "accuracy_matches": true,
+        "nll_matches": true
+      },
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication_more.json",
+        "seed": 9304,
+        "router": "uniform",
+        "accuracy_matches": true,
+        "nll_matches": true
+      },
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication_more.json",
+        "seed": 9305,
+        "router": "uniform",
+        "accuracy_matches": true,
+        "nll_matches": true
+      },
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication_more.json",
+        "seed": 9304,
+        "router": "oracle",
+        "accuracy_matches": true,
+        "nll_matches": true
+      },
+      {
+        "member": "tokenless_streaming_architecture_lab_v0_2/results/routing_probe_delta_replication_more.json",
+        "seed": 9305,
+        "router": "oracle",
+        "accuracy_matches": true,
+        "nll_matches": true
+      }
+    ],
+    "raw_paired_seed_coverage": {
+      "covered": 4,
+      "denominator": 5,
+      "left": 1,
+      "covered_percent": 80.0,
+      "left_percent": 20.0
+    },
+    "missing_original_raw_seed": 9301,
+    "aggregate_array_seed_coverage": {
+      "covered": 5,
+      "denominator": 5,
+      "left": 0,
+      "covered_percent": 100.0,
+      "left_percent": 0.0
+    },
+    "method": "Fresh arithmetic on frozen saved source numbers; exhaustive 5^5 paired bootstrap draws with linear percentiles. No new training, sampling experiment or independence claim."
+  },
+  "conversation_retrieval_this_followup": "SERVICE_UNAVAILABLE_NO_NEW_HISTORY_CLAIMS",
+  "source_research_experiment_reruns": 0,
+  "record_count_change": 0,
+  "unresolved_originals_count_unchanged": 13
+}

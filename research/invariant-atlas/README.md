@@ -15,7 +15,7 @@ The recovered acceptance artifact explicitly enumerates **895 source IDs** under
 | Surface | Fresh observation | Boundary |
 | --- | --- | --- |
 | Retained source bodies | 684/684 filename hashes match; 747 source-window occurrences retained | Repeated windows and equal bodies remain separate occurrences, not independent corroboration |
-| Retained lexical support | 1,203/1,203 anchors and 1,416/1,416 excerpts present under NFKC/whitespace normalization | Containment does not prove semantic implication or recover 187 unlocated historical origins |
+| Retained lexical support | 1,203/1,203 anchors and 1,416/1,416 excerpts present under NFKC/whitespace normalization | Containment does not prove semantic implication or resolve all 187 historical locator grades |
 | Exact Work origin references | 299/312 byte retrievals succeed; 13 unavailable | The unavailable set contains one code file and 12 images; retained excerpts remain historical evidence |
 | Fresh literal anchors | 1,060 present; nine absent from the current claim ledger; 134 have no fresh textual comparison | Nine older streaming anchors are preserved at their historical source windows; no current-source substitution |
 | Later exact source cards | 71/72 exact passages present; one receipt passage differs | Current and historical receipt identities remain distinct |
@@ -56,4 +56,6 @@ python3 research/invariant-atlas/verify.py --origin-ledger /path/to/INVARIANT_LE
 
 The checks reject byte changes, missing occurrences, ordinal changes, unresolved crosswalk targets and an attempted source-report-to-rerun promotion. They run in linear work in carrier bytes and references, with a finite input surface; no research search is hidden inside the verifier. The trusted baseline is the pinned source/commit and the retained origin ledger, not a manifest claiming authority over itself.
 
-The remaining queue is explicit: 187 unlocated literal origins; 12 missing images and one missing code original; nine changed-current-source anchors and one changed receipt passage; inherited acceptance attribution; complete raw-chat coverage; general proof audits; and target-specific integration. No missing passage, image or result has been synthesized to fill that queue.
+The remaining queue is explicit: 187 preserved historical locator grades; 12 missing images and one missing code original; nine changed-current-source anchors and one changed receipt passage; inherited acceptance attribution; complete raw-chat coverage; general proof audits; and target-specific integration. No missing passage, image or result has been synthesized to fill that queue.
+
+The [statistical follow-up](STATISTICS.md) separates **45.3% current-main anchor coverage / 54.7% left** from **46.8% including draft evidence / 53.2% left**. It also checks all 338 excerpts attached to the 187 historically unresolved locator grades, 38 later literal-review passages, the separate unavailable-code copy's static syntax failure, nine narrower streaming successor relations, the S7-to-S8 receipt revision, and saved-number arithmetic. Historical grades and candidate counts remain unchanged.
