@@ -112,7 +112,7 @@ function repoPathFromPlay(path) {
 }
 
 function workFromPlayProject(p) {
-  const gameIds = new Set(['mmo','explorer-world']);
+  const gameIds = new Set(['mmo','explorer-world','neon-veil']);
   const creativeTechnicalIds = new Set(['computational-chorus']);
   return {
     id:p.id, canonicalName:p.name, domain:gameIds.has(p.id) ? 'game' : creativeTechnicalIds.has(p.id) ? 'creative-technical' : 'tool', aliases:[],
