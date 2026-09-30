@@ -103,7 +103,6 @@ const olderProtocolTargets=[
   ['fermat-fourfold-hodge-reduction','research'],
   ['education-e1-e2-e3','education-research'],
   ['ift9-grm9-esa8-conditional-equality','research-result'],
-  ['bgzf-compressed-text-ai','model-research'],
   ['mfai','creative-research'],
   ['quiet-mode-protocol','methodology'],
   ['human-aims-cross-carrier-goals-draft-01','human-orientation']
@@ -114,6 +113,16 @@ for(const [id,domain] of olderProtocolTargets){
   assert.equal(work.domain,domain,`${id} domain changed`);
   assert.equal(work.preservationStatus,'must-locate-or-retain-unresolved',`${id} should not be promoted without admitted source`);
 }
+const bgzfCompressed=findInInventory(generated,'bgzf-compressed-text-ai');
+assert.ok(bgzfCompressed,'admitted compressed-text AI successor missing');
+assert.equal(bgzfCompressed.domain,'model-research');
+assert.equal(bgzfCompressed.preservationStatus,'located');
+assert.equal(bgzfCompressed.state,'successor');
+assert.ok(bgzfCompressed.predecessors.includes('bgzf'));
+assert.ok(bgzfCompressed.sourceLocations.includes('research/projects/bgzf-compressed-text-ai.md'));
+assert.ok(bgzfCompressed.sourceLocations.includes('research/compressed-text-ai/2026-09-30/README.md'));
+console.log('PASS compressed-text AI historical seed resolves only through its explicit forward successor');
+
 console.log('PASS older protocols, negative experiments, learned artifacts, and human-aim drafts remain individually preserved');
 
 const crossChatTargets=[
