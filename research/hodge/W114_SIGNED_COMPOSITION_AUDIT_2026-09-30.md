@@ -147,10 +147,22 @@ requires. Treating +100 as B's unexplained realized residual would reverse this
 normalization.
 
 The source plane z_f=e_f[L], L:x0+x3=x1+x5=x2+x4=0, retains pairing 1/57
-with z_bar_f and P_f=57(z_f x z_bar_f). Therefore P_f and the product block are
-nonzero under the recorded plane intersection formula and transfer theorems.
+with z_bar_f. Under the declared source x target convention the correct projector
+is **P_f=57(z_bar_f x z_f)**: `(first x second)_*(a)=<a,first> second`.
+Character invariance and 2f!=0 mod 57 force both self-pairings to vanish.
+In the ordered basis (z_f,z_bar_f), its exact action matrix is diag(1,0), and
+its cycle idempotence scalar is 57*(1/57)=1. Therefore P_f and the product block
+are nonzero under the recorded plane intersection formula and transfer theorems.
 Precisely, B acts as `z_f tensor v -> z_f tensor B_curves(v)`.
 **Bare z_f is not an input to B. No W114 plane push is claimed.**
+
+The historical endpoint checker returns 57(z_f x z_bar_f). Under this convention
+that cycle has matrix diag(0,1) and annihilates the named z_f. Its new use in
+commit `e23784529ecba031ac364697f2adbf54a27b8efd` was an orientation error,
+identified in code review. The new plane wrapper corrects it; the historical
+checker and earlier evidence remain unchanged, with the reversed cycle retained
+as a rejected counterprobe. This checks contraction and cycle normalization;
+it does not independently reprove the external intersection formula.
 
 The N1-N2 occurrences remain in the exact arithmetic ledger and are rejected as
 characteristic-zero geometric leaves. They have not been silently canceled out
@@ -183,7 +195,9 @@ Counterprobes preserve exact candidates and rejection reasons: missing n=2 and
 n=3 quotient factors, missing symmetrizer factor, reversed D2_23 sign,
 finite-field norm inserted over K, bare-plane source, forged W114 endpoint,
 surviving n=3 boundary, erased quotient geometry, a dropped same-psi -1 phase,
-and the obsolete q-only sign. At p=571, q is a square
+the obsolete q-only sign, the reversed plane projector, and forged aggregate
+target, inverse, W114-admission, weight, and cycle-dimension claims. Both the
+individual steps and the aggregate block are checked. At p=571, q is a square
 while 3q is a nonsquare. Failed interpretations do not refute the Hodge conjecture.
 
 ## Proof-obligation update and smallest remaining construction
@@ -210,20 +224,29 @@ W114 nonzero realization checked. The checker now makes those crossings explicit
 
 `python3 research/hodge/w114_signed_composition.py`
 
-The [final bounded replay](evidence/w114-mot1-composition-20260930-replay/manifest.json) pins
+The [review-corrected bounded replay](evidence/w114-mot1-composition-20260930-review-fix/manifest.json) pins
 actual argv, runtime, declared inputs before/after, dirty state, output hashes,
-and caps. Its [result](evidence/w114-mot1-composition-20260930-replay/result.json)
+and caps, with Python and g++ versions recorded. Its
+[result](evidence/w114-mot1-composition-20260930-review-fix/result.json)
 retains the frozen source hashes, cycles, finite calculations, counterprobes,
 and unresolved obligations. The companion contract describes the tested range.
 The earlier [run](evidence/w114-mot1-composition-20260930/manifest.json) is preserved
 with exact snapshots of its new source files in `source_snapshot/`; it preceded
 the additive-character phase check. Its listed input set did not include every
-dependency of the additional legacy test suite. The replay pins all top-level
+dependency of the additional legacy test suite. The second
+[replay](evidence/w114-mot1-composition-20260930-replay/manifest.json) and its
+source at immutable commit `e23784529ecba031ac364697f2adbf54a27b8efd` are preserved.
+Both prior runs inherited the reversed projector; their stated action on z_f
+is superseded by the review-corrected run. Their remaining finite computations
+are historical evidence, not current admission. The latest replay pins all top-level
 Hodge Python/C++ code and frozen JSON data as well as the named source documents.
-Its expanded input provenance supersedes that limitation without erasing the
-earlier computation.
+Two added regression tests first failed before the projector and aggregate
+checker existed, then passed after correction. The latest full suite runs 55
+tests, including 14 signed-composition tests. The expanded provenance and
+counterprobes preserve the failed interpretation without erasing either run.
 The executable distinguishes `VERIFY_BOUNDED` from `ADMIT_W114_DENIED`.
-This is a self-audit, not an independent reviewer certification.
+The focused code review checked variance, normalization, reproducibility and
+claim boundaries; it is not an independent mathematical proof certification.
 
 `THEOREM_USE != INDEPENDENT_REPROOF`.
 `EXACT_ARITHMETIC != CHOW_MORPHISM`.

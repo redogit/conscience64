@@ -7,6 +7,25 @@ import w114_signed_composition as m
 
 
 class SignedCompositionTests(unittest.TestCase):
+    def test_source_target_projector_fixes_the_named_plane(self):
+        out = m.plane_source_check()
+        self.assertEqual(out["projector_action_matrix"], [["1", "0"], ["0", "0"]])
+        self.assertEqual(out["historical_action_matrix"], [["0", "0"], ["0", "1"]])
+        self.assertEqual(out["rank_one_projector"], "P_f = 57 * (z_bar_f x z_f)")
+        with self.assertRaisesRegex(ValueError, "annihilates z_f"):
+            m.check_plane_projector("z_f", "z_bar_f")
+
+    def test_aggregate_block_claims_cannot_be_forged(self):
+        block = m.signed_block()
+        self.assertTrue(m.check_block(block))
+        for key, value in (("target", ["W114"]), ("inverse", "identity"),
+                           ("w114_endpoint", True), ("motivic_weight", 4),
+                           ("cycle_dimension_in_source_x_target", 4)):
+            forged = deepcopy(block)
+            forged[key] = value
+            with self.assertRaises(ValueError):
+                m.check_block(forged)
+
     def test_signed_word_and_its_galois_orbit(self):
         out = m.word_check()
         self.assertEqual(out["artin_2_exponent"], 100)

@@ -144,6 +144,58 @@ def check_transfer(edge):
     return True
 
 
+def plane_projector_action(first, second):
+    """Columns are images of (z_f,z_bar_f) for 57(first x second).
+
+    In source x target, the action is a -> 57 <a,first> second.
+    Character invariance kills the two self-pairings; the mixed pairing
+    uses the historical plane intersection formula, not a numerical guess.
+    """
+    plane = endpoints.plane_check()
+    f = plane["f"]
+    if not any(2*a % 57 for a in f):
+        raise ValueError("self-pairing vanishing requires 2f nontrivial")
+    pairing = Fraction(plane["projected_pairing"])
+    basis = {"z_f": 0, "z_bar_f": 1}
+    if first not in basis or second not in basis:
+        raise ValueError("unknown plane factor")
+    gram = ((Fraction(0), pairing), (pairing, Fraction(0)))
+    matrix = [[Fraction(0) for _ in range(2)] for _ in range(2)]
+    for column in range(2):
+        matrix[basis[second]][column] = 57*gram[column][basis[first]]
+    return matrix
+
+
+def check_plane_projector(first="z_bar_f", second="z_f"):
+    matrix = plane_projector_action(first, second)
+    if [row[0] for row in matrix] != [1, 0]:
+        raise ValueError("source x target projector annihilates z_f or selects the wrong sector")
+    square = [[sum(matrix[i][k]*matrix[k][j] for k in range(2))
+               for j in range(2)] for i in range(2)]
+    if square != matrix or [row[1] for row in matrix] != [0, 0]:
+        raise ValueError("plane projector is not the required rank-one idempotent")
+    return True
+
+
+def plane_source_check():
+    historical = endpoints.plane_check()
+    check_plane_projector()
+    return {**historical,
+            "rank_one_projector": "P_f = 57 * (z_bar_f x z_f)",
+            "convention": "homological correspondence in source x target",
+            "basis": ["z_f", "z_bar_f"],
+            "action_formula": "57(first x second)_*(a) = 57 <a,first> second",
+            "self_pairings": ["0", "0"],
+            "self_pairing_reason": "character invariance and 2f != 0 mod 57",
+            "projector_action_matrix": [[str(c) for c in row]
+                                         for row in plane_projector_action("z_bar_f", "z_f")],
+            "historical_rank_one_projector": historical["rank_one_projector"],
+            "historical_action_matrix": [[str(c) for c in row]
+                                          for row in plane_projector_action("z_f", "z_bar_f")],
+            "cycle_idempotence_scalar": str(57*Fraction(historical["projected_pairing"])),
+            "status": "ORIENTATION_CORRECTED; INTERSECTION_FORMULA_IS_EXTERNAL_INPUT"}
+
+
 def signed_block():
     """Six historical word occurrences retained; only four D2 leaves lift here.
 
@@ -172,6 +224,7 @@ def signed_block():
             "inverse": "B^-1=B_1^-1 o B_2^-1 o B_3^-1 o B_4^-1",
             "dimension_each_product": 8, "cycle_dimension_in_source_x_target": 8,
             "motivic_weight": 8,
+            "plane_projector": plane_source_check()["rank_one_projector"],
             "nonzero_reason": "Each graph transfer has a theorem-dependent inverse; P_f is nonzero by pairing 1/57.",
             "plane_action": "z_f tensor v -> z_f tensor B_curves(v); this is not B(z_f) alone",
             "w114_endpoint": False}
@@ -201,6 +254,20 @@ def check_chain(steps, source):
             raise ValueError("signed cycle or tensor target was changed")
         state = expected
     return state
+
+
+def check_block(block):
+    """Check aggregate claims as well as the signed step-by-step endpoints."""
+    if check_chain(block["steps"], block["source"]) != block["target"]:
+        raise ValueError("aggregate target does not equal the composed terminal target")
+    check_plane_projector()
+    reference = signed_block()
+    if set(block) != set(reference):
+        raise ValueError("aggregate block fields were changed")
+    for key in reference:
+        if block[key] != reference[key]:
+            raise ValueError(f"aggregate block claim mismatch: {key}")
+    return True
 
 
 def check_norm_category(base_field):
@@ -408,6 +475,20 @@ def counterprobes():
         if reflection_phase_check(571)["norm_ratio_exponent"]:
             raise ValueError("same-psi N1-N2 leaves chi_114(-1), equal to -1 at p=571")
     reject("drop-same-psi-minus-one-phase", {"word": "N_1-N_2", "claimed_scalar": 1, "prime": 571}, omit_phase)
+    reject("reversed-plane-projector", {
+        "cycle": "57 * (z_f x z_bar_f)",
+        "action_matrix": [[str(c) for c in row]
+                          for row in plane_projector_action("z_f", "z_bar_f")],
+        "claimed_image_of_z_f": ["1", "0"], "actual_image_of_z_f": ["0", "0"],
+        "historical_source": "verify_w114_compiler_endpoints.py:plane_check"},
+        lambda: check_plane_projector("z_f", "z_bar_f"))
+    for key, value in (("target", ["W114"]), ("inverse", "identity"),
+                       ("w114_endpoint", True), ("motivic_weight", 4),
+                       ("cycle_dimension_in_source_x_target", 4)):
+        bad_block = deepcopy(signed_block())
+        bad_block[key] = value
+        reject(f"forged-aggregate-{key}", {"field": key, "value": value},
+               lambda bad_block=bad_block: check_block(bad_block))
     return rows
 
 
@@ -416,7 +497,7 @@ def run():
     for e in edges:
         check_transfer(e)
     block = signed_block()
-    check_chain(block["steps"], block["source"])
+    check_block(block)
     sign.verify_relation_word()
     sign.verify_cyclotomic_square()
     prime571 = sign.verify_prime571_counterprobe()
@@ -431,7 +512,7 @@ def run():
         "word": word_check(), "projective_transfers": edges,
         "galois_covariance": galois_check(),
         "signed_D2_projective_block": block,
-        "plane": endpoints.plane_check(), "corrected_artin": endpoints.artin_target_check(),
+        "plane": plane_source_check(), "corrected_artin": endpoints.artin_target_check(),
         "artin_curve_carrier": artin.run(), "source_KS": ks.run(),
         "prime571_sign_counterprobe": prime571,
         "realizations": [realization_check(p) for p in (229, 571)],

@@ -1,9 +1,9 @@
 {
   "claim_id": "W114-MOT-1-SIGNED-COMPOSITION-BOUNDED-20260930",
   "mathematics": {
-    "assertion_tested": "Exact signed Gauss word, projective-transfer degree/projector normalizations, typed D2 tensor composition, covariance and direct split-prime Jacobi identities; W114 admission remains denied. Same-psi reflection phase and all-plus Fermat coefficient checked independently at both primes.",
+    "assertion_tested": "Exact signed Gauss word, projective-transfer degree/projector normalizations, typed D2 tensor composition, covariance and direct split-prime Jacobi identities; W114 admission remains denied. Same-psi reflection phase and all-plus Fermat coefficient checked independently at both primes. Source-times-target plane projector contraction and aggregate block claims checked; historical reversed projector rejected.",
     "coefficient_domain": "Q for scalars; Z[x]/Phi_57 and Z[x]/Phi_114 for Jacobi sums; theorem-dependent Chow(Q(zeta_114),Q(zeta_114)).",
-    "conventions": "Homological graphs; rightmost-first composition; chi_d(g)=zeta_d; D2 source/target untwisted ratio positive for inverse edge; no characteristic-zero Gauss motive assumed.",
+    "conventions": "Homological graphs; rightmost-first composition; chi_d(g)=zeta_d; D2 source/target untwisted ratio positive for inverse edge; no characteristic-zero Gauss motive assumed. P_f=57(z_bar_f x z_f), fixing z_f; historical opposite orientation preserved as failed input.",
     "inputs": [
       "research/hodge/DF_HODGE_01_RESULT.json",
       "research/hodge/DF_HODGE_02_RESULT.json",
@@ -164,6 +164,10 @@
     {
       "name": "Python",
       "version": "3.12.14"
+    },
+    {
+      "name": "g++",
+      "version": "13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04); legacy suite uses -O3 -std=c++17"
     }
   ],
   "randomness": {
