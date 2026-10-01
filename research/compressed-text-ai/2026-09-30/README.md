@@ -225,3 +225,20 @@ PRESERVED_RESULT != REPRODUCIBLE_EXPERIMENT
 ```
 
 Future affine-width comparisons require multi-seed distributions before selecting a width.
+
+
+## Original CNN identity audit — 2026-10-01
+
+See [the provenance ledger](provenance/CNN_PROVENANCE_LEDGER_2026-10-01.json) for exact report/archive/member hashes, chronology, searched scopes and unresolved fields.
+
+The original result JSON is **reported to have survived**, but its bytes and filename were not located in the fetched history or the two currently retained September 30 ZIPs. Its hash remains unknown. The original CNN source, command, seeds, exact dataset split identities and serialized weights were also not recovered. This does not establish that they never existed elsewhere.
+
+The [reconstruction result JSON](provenance/experiment4_cnn_reconstruction_rerun.json) is now retained verbatim as a separate identity. Its reported seeds are `20261331`, `20261332`, `20261333`. The reconstruction's executable training source, split manifests and weights are also absent from these packages; preserving its results does not by itself make it rerunnable. This audit checked bytes and metric arithmetic, and did not train either CNN.
+
+```text
+PRESERVED_RESULT != REPRODUCIBLE_EXPERIMENT
+RECONSTRUCTION != ORIGINAL_IDENTITY
+AAA8_IS_BEST != ESTABLISHED
+```
+
+The family-level affine plateau and bounded nonlinear-gap direction remain source-reported findings with the existing compressed-text-AI claim ceilings. No original-model identity is admitted.
