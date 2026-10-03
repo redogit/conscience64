@@ -242,3 +242,10 @@ AAA8_IS_BEST != ESTABLISHED
 ```
 
 The family-level affine plateau and bounded nonlinear-gap direction remain source-reported findings with the existing compressed-text-AI claim ceilings. No original-model identity is admitted.
+
+
+## Bounded live-node reclamation probe — 2026-10-03
+
+The [systems probe](systems/live-node-reclamation-2026-10-03/README.md) preserves the recovered copy implementation and both historical Experiment 2 reports, and adds one mark/sweep slot-reuse variant. On newly retained, matched 924,000-byte stored/DEFLATE workloads, seven-process median wall times improve from **3.5511 to 0.4462 seconds** and **0.05882 to 0.01200 seconds**, respectively. Peak RSS improves from **78,084 to 42,240 KiB** and **6,332 to 3,072 KiB**. Collection reconstruction and reclamation costs are charged separately in the retained results. Exact raw-carrier checks, 361 distinct recompression fixtures, four larger collection counterprobes and both inherited 8/8 selftests pass with zero embedding/classifier drift in the tested cases.
+
+**Identity limit:** original historical benchmark ZIPs and recompression generator/fixture identities were not recovered. These fresh measurements are not an exact historical workload rerun; the original measurements above remain intact. This is a bounded systems gain only. No semantic-model or affine-family change is included.

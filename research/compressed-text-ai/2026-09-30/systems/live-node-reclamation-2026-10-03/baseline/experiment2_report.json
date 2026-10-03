@@ -1,0 +1,47 @@
+{
+  "experiment": "32768_symbolic_frontier",
+  "window_bytes": 32768,
+  "compact_slack": 4096,
+  "cases": {
+    "stored": {
+      "logical_bytes": 924000,
+      "zip_bytes": 924116,
+      "deflate_bytes": 924000,
+      "embedding_max_abs_diff": 0.0,
+      "whole": {
+        "grammar_nodes": 924248,
+        "embedding_table_bytes": 488002944,
+        "elapsed_s": 0.22,
+        "peak_rss_kb": 492672
+      },
+      "frontier": {
+        "compactions": 217,
+        "peak_rules": 36965,
+        "final_rules": 34948,
+        "rules_created": 8056000,
+        "elapsed_s": 2.51,
+        "peak_rss_kb": 38820
+      }
+    },
+    "deflated": {
+      "logical_bytes": 924000,
+      "zip_bytes": 3499,
+      "deflate_bytes": 3383,
+      "embedding_max_abs_diff": 0.0,
+      "whole": {
+        "grammar_nodes": 47355,
+        "embedding_table_bytes": 25003440,
+        "elapsed_s": 0.01,
+        "peak_rss_kb": 25984
+      },
+      "frontier": {
+        "compactions": 214,
+        "peak_rules": 2047,
+        "final_rules": 1952,
+        "rules_created": 426634,
+        "elapsed_s": 0.05,
+        "peak_rss_kb": 4456
+      }
+    }
+  }
+}
