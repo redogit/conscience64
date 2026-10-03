@@ -30,7 +30,7 @@ Do not force-push, delete later commits, bypass failed gates, or use git reset -
 
 ## History scope
 
-The timeline begins with confirmed source/deployment records available in this task. The per-facet and per-repository GitHub history links expose the full accessible commit history. They are not a claim that every historical version was deployed or remains compatible with today's data. Seven public repositories are linked; the eighth remains an unnamed private placeholder. REDOGIT.md and redogit.json remain unchanged.
+The timeline begins with confirmed source/deployment records available in this task. The per-facet and per-repository GitHub history links expose the full accessible commit history. They are not a claim that every historical version was deployed or remains compatible with today's data. The current `versions.json` catalog links the 16 public repositories visible in the account as of 2026-10-02. Earlier About/release records that described smaller repository counts remain historical snapshots and are not rewritten. REDOGIT.md and redogit.json remain unchanged.
 
 ## Ideas, methods, and practical work
 
