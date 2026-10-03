@@ -1,6 +1,6 @@
 # MMO World Beta — Conscience64
 
-Canonical public launch surface: `play/mmo-world/`.
+Canonical repository launch path: `play/mmo-world/`. This predecessor remains runnable from repository/local source but is **not** in the current curated Conscience64 GitHub Pages projection.
 
 This page directly runs the already gated Explorer World client while exposing the larger MMO direction, slow-growth boundary, internal service protocols, optional Bluetooth/gamepad companion layer, a bounded world-variety system, and a local data-only Arcade Forge.
 
@@ -9,7 +9,7 @@ This page directly runs the already gated Explorer World client while exposing t
 - **Playable:** yes — the deterministic Explorer shard.
 - **Live networked MMORPG:** no.
 - **Accounts/shared authoritative state:** not yet.
-- **Advertising surface:** yes — this is the stable URL to advertise gradually.
+- **Current public Pages advertising surface:** no — the current curated Pages projection does not publish this predecessor route. Any future public route requires explicit admission and verification.
 - **World Variety Lab:** yes — each region has curated adjective pools across light, sound, flora, fauna, motion, mood, mystery, and danger. A player can advance a deterministic local variety generation without changing map/combat/progression/reward semantics.
 - **Arcade Forge:** yes — local data-only mini-game recipe builder/tester/import/export shelf. Plug-in rewards are preview metadata only and do not modify canonical Explorer state.
 - **Starter Arcade pack:** ten validated recipes: the duck-rescue sample plus four Monster Mood states, three exact Cipher Snap puzzles, one bounded Make Something seed, and Redline Classic.
