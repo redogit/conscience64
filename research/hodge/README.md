@@ -70,3 +70,32 @@ CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
 ## Claim ceiling
 
 The Hodge conjecture is not established by the current project. The directory is a research framework, evidence ledger, calibration suite, and targeted search program.
+
+## Current W114 bounded composition checkpoint
+
+[2026-09-30 signed composition audit](W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md)
+reconciles the later n=3 projective closure and constructs a typed D2 product
+transfer with full quotient normalizations. It preserves failed counterprobes
+and separates that nonzero transfer block from the unconstructed W114 plane
+push and residual-to-Artin cycle. **MOT-1 REMAINS OPEN.**
+
+[Explicit standard-divisor continuation](W114_STANDARD_DIVISOR_CONSTRUCTION_2026-09-30.md)
+constructs the four required level-57 standard divisors and a nonzero joined
+padding cycle, with exact Kummer actions and inverse normalizations checked by
+two intersection calculations. The exceptional Aoki arrow remains open.
+
+[Primitive join composition](W114_STANDARD_JOIN_COMPOSITION_2026-09-30.md)
+then constructs the standard residual-to-Aoki correspondence through the common
+Fermat carrier, with source, target, variance, boundary vanishing and inverse
+scalars traced in Chow. **MOT-1 REMAINS OPEN** at the exceptional quadratic arrow.
+
+[Full level-114 standard reduction](W114_FULL_STANDARD_REDUCTION_2026-09-30.md)
+composes the signed duplication/reflection word via explicit duplication divisors,
+the degree-32 plane pullback, descended Artin paddings and their normalized joins.
+It produces the nonzero W114-to-Aoki standard reduction with both inverses.
+
+[Aoki tensor-square continuation](W114_AOKI_TENSOR_SQUARE_2026-09-30.md)
+constructs a separate nonzero square correspondence using the p=19 standard
+complete intersection. The remaining residual line has tensor order at most two;
+its identification with the corrected quadratic Artin carrier and the unsquared
+W114 plane push are still open. Theorem-use is not independent reproof.
