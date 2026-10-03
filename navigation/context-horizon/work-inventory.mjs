@@ -123,10 +123,16 @@ function workFromPlayProject(p) {
 }
 
 function workFromCurrentSuccessor(p) {
+  const extraLocations = Array.isArray(p.sourceLocations) ? p.sourceLocations : [];
   return {
-    id:p.id, canonicalName:p.name, domain:'research', sourceLocations:p.path ? [p.path] : [], aliases:[],
-    provenanceStatus:'research-current-manifest', publicationStatus:'public', state:'successor', preservationStatus:p.path ? 'located':'must-locate-or-retain-unresolved',
-    sourceKinds:['research-successor-record'], notes:[]
+    id:p.id, canonicalName:p.name, domain:p.domain ?? 'research',
+    sourceLocations:[p.path, ...extraLocations].filter(Boolean), aliases:[],
+    provenanceStatus:'research-current-manifest', publicationStatus:'public', state:'successor',
+    preservationStatus:p.path || extraLocations.length ? 'located':'must-locate-or-retain-unresolved',
+    sourceKinds:['research-successor-record'],
+    predecessors:Array.isArray(p.predecessors) ? p.predecessors : [],
+    successors:Array.isArray(p.successors) ? p.successors : [],
+    notes:Array.isArray(p.notes) ? p.notes : []
   };
 }
 

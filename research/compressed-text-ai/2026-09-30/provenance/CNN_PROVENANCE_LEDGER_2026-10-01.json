@@ -1,0 +1,629 @@
+{
+  "schema": "compressed-text-ai-cnn-provenance/v1",
+  "audited_at_utc": "2026-10-01T20:52:15Z",
+  "starting_head": "422f6cbed8672bc64c1ebf09a6a512665214d9a8",
+  "authority": "artifact-provenance-only",
+  "claim_ceilings": [
+    "PRESERVED_RESULT != REPRODUCIBLE_EXPERIMENT",
+    "RECONSTRUCTION != ORIGINAL_IDENTITY",
+    "AAA8_IS_BEST != ESTABLISHED",
+    "SOFTWARE_INTEGRITY_CHECK != EXPERIMENT_RERUN"
+  ],
+  "conclusion": "ORIGINAL_IDENTITY_NOT_RECOVERED_WITHIN_DECLARED_SEARCH_SCOPE",
+  "chronology_policy": "Commit times and publication receipts are independent of semantic ancestry. ZIP DOS timestamps have no timezone and are retained as source metadata, not execution timestamps. No exact original training time is known.",
+  "chronology": [
+    {
+      "time": "2026-09-30T10:23:19-04:00",
+      "kind": "git-commit",
+      "object": "45733acb129b6c5b8e36529163510b013c4b8b5a",
+      "event": "Original numerical CNN report entered repository; this dates reporting, not training."
+    },
+    {
+      "time": "2026-09-30T14:30:30Z",
+      "kind": "pr-comment",
+      "object": "https://github.com/redogit/conscience64/pull/223#issuecomment-5913366007",
+      "event": "Repository gates reported green at 65b73d369d44b91cc82951c659a0d9d59a1efd61."
+    },
+    {
+      "time": "2026-09-30T14:32:53.569738Z",
+      "kind": "archive-publication-metadata",
+      "object": "libfile_1f6ac5cc4b248191a29c5fcf4349bacb",
+      "event": "Five-experiment archive occurrence created; current materialization is version 2, not proof of original version bytes."
+    },
+    {
+      "time": "2026-09-30T10:57:57-04:00",
+      "kind": "git-commit",
+      "object": "422f6cbed8672bc64c1ebf09a6a512665214d9a8",
+      "event": "Width-order correction and CNN provenance failure plus independent reconstruction recorded."
+    },
+    {
+      "time": "2026-09-30T14:58:52Z",
+      "kind": "pr-comment",
+      "object": "https://github.com/redogit/conscience64/pull/223#issuecomment-5913873317",
+      "event": "Rerun receipt explicitly distinguishes reconstruction from original."
+    },
+    {
+      "time": "2026-09-30T15:00:18.603734Z",
+      "kind": "archive-publication-metadata",
+      "object": "libfile_a1ca37a0ecc0819193a45e158e7c7410",
+      "event": "Rerun archive occurrence created; current materialization is version 2."
+    },
+    {
+      "time": "2026-10-01T20:52:15Z",
+      "kind": "provenance-audit",
+      "event": "Declared repository/history/package search did not recover original identity."
+    }
+  ],
+  "identities": [
+    {
+      "id": "historical-original-byte-cnn",
+      "status": "REPORTED_RESULT_WITH_UNRECOVERED_EXPERIMENT_IDENTITY",
+      "source_reports": [
+        {
+          "repository": "redogit/conscience64",
+          "commit": "45733acb129b6c5b8e36529163510b013c4b8b5a",
+          "path": "research/compressed-text-ai/2026-09-30/README.md",
+          "git_blob": "a36e07fe3971fa4876a3c162a66275cde8ba18d8",
+          "sha256": "4590f6faae39d46692fcb73c51c8c576eb831d5cb94ec0aa39778dd463d5e71e"
+        },
+        {
+          "repository": "redogit/conscience64",
+          "commit": "422f6cbed8672bc64c1ebf09a6a512665214d9a8",
+          "path": "research/compressed-text-ai/2026-09-30/README.md",
+          "git_blob": "d497eff8463f77885a7143c6e0e806c60071a238",
+          "sha256": "137d270e0a58428e09a8e3df183b01c3b7f95d3a642095d0c1680650c83cdcaf"
+        }
+      ],
+      "reported_parameter_bytes": 18292,
+      "parameter_budget_is_not_model_identity": true,
+      "reported_balanced_accuracy_percent": {
+        "sentiment": 69.54,
+        "pos": 82.48
+      },
+      "reported_dataset_description": {
+        "sentiment": "TextBlob English sentiment: polarity-labeled adjective forms and sense descriptions; 1059 usable form groups, 795 train / 264 test.",
+        "pos": "TextBlob/Brill English POS: common noun versus verb morphology; proper/ambiguous forms excluded and lowercased; 5000 balanced unique forms, 3750 train / 1250 test.",
+        "split_claim": "Deterministic identity-disjoint splits; no lexical form overlap. This is source-reported, not independently checked."
+      },
+      "historical_result_json": {
+        "status": "SURVIVAL_REPORTED_BUT_BYTES_NOT_LOCATED",
+        "source_assertion": {
+          "commit": "422f6cbed8672bc64c1ebf09a6a512665214d9a8",
+          "path": "research/compressed-text-ai/2026-09-30/README.md",
+          "section": "CNN provenance failure and independent reconstruction"
+        },
+        "filename": null,
+        "sha256": null,
+        "bytes": null,
+        "note": "Both user task and rerun report state that original result JSON survived. It is absent from both currently materialized September 30 ZIPs and fetched repository histories; no exact JSON identity is invented."
+      },
+      "unknowns": [
+        "exact_original_architecture_and_forward_semantics",
+        "original_source_bytes_and_hash",
+        "training_command_and_hyperparameters",
+        "training_and_split_rng_seeds",
+        "dataset_resource_versions_and_content_hashes",
+        "ordered_train_test_example_identities_and_labels",
+        "preprocessing_and_form_grouping_rules",
+        "checkpoint_selection_criterion",
+        "library_versions_hardware_and_determinism_settings",
+        "trained_weight_bytes_and_hashes",
+        "serialization_format_and_tensor_order",
+        "original_result_json_filename_bytes_hash_and_generation_trace"
+      ],
+      "reproducible_from_recovered_material": false
+    },
+    {
+      "id": "later-budget-matched-reconstruction",
+      "status": "RECONSTRUCTED_NOT_RECOVERED",
+      "relation_to_original": {
+        "type": "budget-matched-independent-reconstruction",
+        "identity_equivalence": false,
+        "authority_transfer": false
+      },
+      "result_artifact": {
+        "path": "provenance/experiment4_cnn_reconstruction_rerun.json",
+        "sha256": "4339431f0a6e4e0a424d3587e058ffa157c7883dacff21c30195fffe6fb59ad8",
+        "bytes": 5097,
+        "origin_archive": "libfile_a1ca37a0ecc0819193a45e158e7c7410",
+        "origin_member": "experiment4_cnn_reconstruction_rerun.json",
+        "preservation": "Verbatim recovered member bytes; not newly generated results."
+      },
+      "reported_architecture": "Embedding(256,8) -> Conv1d(8,24,3) -> ReLU -> Conv1d(24,26,3) -> ReLU -> masked global max -> Linear(26,1)",
+      "reported_float_parameters": 4573,
+      "reported_parameter_bytes": 18292,
+      "reported_seeds": [
+        20261331,
+        20261332,
+        20261333
+      ],
+      "reported_balanced_accuracy": {
+        "sentiment": [
+          0.6784562211981566,
+          0.6331797235023042,
+          0.6945852534562211
+        ],
+        "pos": [
+          0.8280000000000001,
+          0.824,
+          0.8336
+        ]
+      },
+      "verification_here": "Recovered JSON integrity and confusion-matrix arithmetic only; no training executed.",
+      "unknowns": [
+        "executable_source_and_training_command",
+        "resource_and_ordered_split_hashes",
+        "checkpoint_selection_criterion",
+        "weight_serialization_bytes_and_hashes",
+        "environment_and_determinism_settings"
+      ],
+      "reproducible_from_recovered_material": false
+    }
+  ],
+  "recovered_archives": [
+    {
+      "name": "compressed_text_ai_five_experiments_2026-09-30.zip",
+      "source_occurrence": "libfile_1f6ac5cc4b248191a29c5fcf4349bacb",
+      "sha256": "557981f7e5b1d530fe441ef2aa4b19f5d279fb421da25a0edb07ad7dd573c731",
+      "bytes": 539357,
+      "members": 12,
+      "original_cnn_identity_recovered": false,
+      "materialized_version": 2,
+      "entry_receipts": [
+        {
+          "name": "experiment3_recompression_report.json",
+          "sha256": "39c6e971bc91994357b8faa46487e74708cedc220b8f658803ec2b58b49e6112",
+          "bytes": 249,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "experiment3_fullaaa_report.json",
+          "sha256": "daad69fcda99ce8990c16e77788e60a0366b16a3585b427f3360770e384d47c3",
+          "bytes": 167,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "experiment3_initial_report.json",
+          "sha256": "dadcd9d9e086945ff1484aa8e837ef637cf5304bc9925cfa6d900191eb231ba2",
+          "bytes": 548,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "experiment4_compressed_verify.json",
+          "sha256": "d042ceef89be22f40f3805c850c99b399c2844a8a292cabe36fa79b7f952dfe0",
+          "bytes": 1006,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "compressed_text_ai_static",
+          "sha256": "09ab4f7a41dd2d5d9caedff3f0a6da340a34a42d4ba7712075bf3c944213a3a5",
+          "bytes": 831952,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "sha256": "2ad566caa093bd08b69eacb7fe08c316604707592357f526b2f55fb5b0aa71f1",
+          "bytes": 1023,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            29,
+            10
+          ]
+        },
+        {
+          "name": "pos_aaa8.bin",
+          "sha256": "fe585e6d3a879ff739d91c812b2dd325b2d3e8551625631d14699b854fc662e8",
+          "bytes": 73808,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "experiment1_report.json",
+          "sha256": "16746cb7732e13789897a5d472eb0ea8eea446b969e3a5c4d0ef10f1e2985510",
+          "bytes": 1716,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "experiment2_report.json",
+          "sha256": "d81928a652c1dbd1755e2a60ab27967ec99b3c8aca1b9231a7bef1724c3d07c7",
+          "bytes": 1131,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "EXPERIMENT_DESCENT_2026-09-30.md",
+          "sha256": "49bec72acb3080a77b25d387a7855e7ec63a9904ec1ed0abe4d8650e7603c87a",
+          "bytes": 11043,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            29,
+            10
+          ]
+        },
+        {
+          "name": "compressed_text_ai.c",
+          "sha256": "e10b069d908feef134978a8a17b2bc73da67034d9d43f5b9bdb7e35b0e0e96d4",
+          "bytes": 124988,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        },
+        {
+          "name": "sentiment_aaa8.bin",
+          "sha256": "d349116c2310570f8c3e9ee3aec55802881b3bc794a3ca32e0448250624f76d9",
+          "bytes": 73808,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            20,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compressed_text_ai_rerun_2026-09-30.zip",
+      "source_occurrence": "libfile_a1ca37a0ecc0819193a45e158e7c7410",
+      "sha256": "f9dcefcdc5d8e1ea852b91910d1435fddccd9ebe7e31b38b2dc4573cc5a1215a",
+      "bytes": 9152,
+      "members": 10,
+      "original_cnn_identity_recovered": false,
+      "materialized_version": 2,
+      "entry_receipts": [
+        {
+          "name": "RERUN_REPORT_2026-09-30.md",
+          "sha256": "877d4334bf14b77881d2f93123355dd520268118cb5c8604bfa5c26300a05ece",
+          "bytes": 1502,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            56,
+            22
+          ]
+        },
+        {
+          "name": "RERUN_REPORT_2026-09-30.json",
+          "sha256": "25969d914472a6d408aed04076e446d4d10454b6b12efa77e7bcd39e6abf7f77",
+          "bytes": 5018,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            56,
+            22
+          ]
+        },
+        {
+          "name": "experiment1_report_rerun.json",
+          "sha256": "16746cb7732e13789897a5d472eb0ea8eea446b969e3a5c4d0ef10f1e2985510",
+          "bytes": 1716,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            42,
+            4
+          ]
+        },
+        {
+          "name": "experiment2_report_rerun.json",
+          "sha256": "5538ab2798d631365d4c967e5737765a584fcb5bdc69b1bb939d0b6e4e365d68",
+          "bytes": 1112,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            42,
+            36
+          ]
+        },
+        {
+          "name": "experiment3_initial_report_rerun.json",
+          "sha256": "dadcd9d9e086945ff1484aa8e837ef637cf5304bc9925cfa6d900191eb231ba2",
+          "bytes": 548,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            42,
+            52
+          ]
+        },
+        {
+          "name": "experiment3_fullaaa_report_rerun.json",
+          "sha256": "daad69fcda99ce8990c16e77788e60a0366b16a3585b427f3360770e384d47c3",
+          "bytes": 167,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            43,
+            8
+          ]
+        },
+        {
+          "name": "report.json",
+          "sha256": "d794fdddde6d042ce51af419e7965ec6bc5300ee26d455cd1ea04d9d97f0a373",
+          "bytes": 249,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            43,
+            22
+          ]
+        },
+        {
+          "name": "experiment4_preserved_rerun.json",
+          "sha256": "0ff87819f7381f104d88fb1c4be41c069ccb9c86c48542c57728d8a6c10166a6",
+          "bytes": 9655,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            50,
+            38
+          ]
+        },
+        {
+          "name": "experiment4_compressed_verify_rerun.json",
+          "sha256": "97c40d94202726c31ef3a096ebf4bf9d3ffe8e348749ed81bfbe2f93a907e70e",
+          "bytes": 426,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            49,
+            52
+          ]
+        },
+        {
+          "name": "experiment4_cnn_reconstruction_rerun.json",
+          "sha256": "4339431f0a6e4e0a424d3587e058ffa157c7883dacff21c30195fffe6fb59ad8",
+          "bytes": 5097,
+          "zip_dos_time": [
+            2026,
+            9,
+            30,
+            14,
+            56,
+            38
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compressed_text_ai_c_source.zip",
+      "source_occurrence": "libfile_9e63cc726d808191afdec3b930054cdc",
+      "sha256": "f5a32433f9648324c73316b29e4ef0164eaab2edd90d5c321f362c6f1467b932",
+      "bytes": 348134,
+      "members": 11,
+      "original_cnn_identity_recovered": false
+    },
+    {
+      "name": "compressed_text_ai_prototype.zip",
+      "source_occurrence": "libfile_a317b3e552288191a5e6652282223d86",
+      "sha256": "10cecfb80cb2f9d8ac1e81bf72506316ace370007864cff025fdfd9ecccf082b",
+      "bytes": 12531,
+      "members": 11,
+      "original_cnn_identity_recovered": false
+    },
+    {
+      "name": "MOONSHOT_CROSS_CHAT_RECOVERY_PACKET_BGZF_COMPRESSED_TEXT_AI_2026-09-01_v2.0.zip",
+      "source_occurrence": "libfile_d44b4d5e37f4819198525a402bcc8919",
+      "sha256": "bfd2514cc9f2c0ea998d30ba90dc31ff0be1e35e75b94737245c00ece16bd597",
+      "bytes": 28173,
+      "members": 3,
+      "original_cnn_identity_recovered": false
+    },
+    {
+      "name": "orbit_lab_internal_alpha_0_8_bgzf_candidate.zip",
+      "source_occurrence": "libfile_613707a000148191a3343f69a9af5112",
+      "sha256": "7d9ed1649fb3a2ab3e7cc1c8ce014b383bc21e3437a6710fcfb05bd94fdf4ecb",
+      "bytes": 250367,
+      "members": 145,
+      "original_cnn_identity_recovered": false
+    }
+  ],
+  "search": {
+    "method": [
+      "Clone full advertised branch history; fetch refs/pull/*/head without shallow depth; traverse git rev-list --objects --all; read every unique blob via git cat-file --batch.",
+      "Search case-insensitive keywords in blobs without NUL in first 8192 bytes; inspect all blob sizes for 18292-byte candidates and all ZIP signatures for CNN/training member names.",
+      "Inspect six materialized related experiment/predecessor packages, including Python prototype, C source, BGZF recovery and Orbit integration.",
+      "Read PR #223 metadata/comments and both report commit versions; search owner-wide default-branch code for 18292, byte-CNN and Conv1d and PR lineage for compressed/BGZF.",
+      "Search file titles compressed/BGZF/CNN/experiment4 and prior conversation source pointers. Broad numeric search returned unrelated records, not exact original source."
+    ],
+    "terms": [
+      "byte-cnn",
+      "byte cnn",
+      "18292",
+      "18,292",
+      "4573",
+      "4,573",
+      "conv1d",
+      "textblob",
+      "experiment4",
+      "compressed_text_ai",
+      "bgzf"
+    ],
+    "repository_scopes": [
+      {
+        "repository": "redogit/conscience64",
+        "default_tip": "0bb90fe9a655715163711c1a8df7f06a78dfb495",
+        "ref_count": 342,
+        "remote_branch_refs": 140,
+        "pull_head_refs": 199,
+        "reachable_commits": 1644,
+        "unique_blobs_scanned": 1894,
+        "blob_bytes_scanned": 21696045,
+        "sorted_ref_lines_sha256": "86cb9c66e7ddf52c6b027c947457fa3dc187e3a732fefb1b4351985374a55efe",
+        "keyword_hit_blobs": 30,
+        "conclusion": "No original CNN source, result JSON, dataset split manifest, training command or identifiable CNN weights located."
+      },
+      {
+        "repository": "redogit/Other-Projects-",
+        "default_tip": "02a523bcc20e62b8d99de5f780b67fa2ea7bfdc0",
+        "ref_count": 196,
+        "remote_branch_refs": 97,
+        "pull_head_refs": 97,
+        "reachable_commits": 973,
+        "unique_blobs_scanned": 1268,
+        "blob_bytes_scanned": 8770835,
+        "sorted_ref_lines_sha256": "62cf32cad6e883634b17d7405fcf039adf6fbb0364fb0676adb2947f694bda55",
+        "keyword_hit_blobs": 12,
+        "conclusion": "No original CNN source, result JSON, dataset split manifest, training command or identifiable CNN weights located."
+      },
+      {
+        "repository": "redogit/redogit",
+        "default_tip": "afe1b0b99bd3cf3da7b27b3ed6ea15976356b0ad",
+        "ref_count": 110,
+        "remote_branch_refs": 56,
+        "pull_head_refs": 52,
+        "reachable_commits": 536,
+        "unique_blobs_scanned": 585,
+        "blob_bytes_scanned": 11218339,
+        "sorted_ref_lines_sha256": "32d8256851639b9941991e1b7af10113dee0efb7dc4c6d6006f2ead34afa25f6",
+        "keyword_hit_blobs": 23,
+        "conclusion": "No original CNN source, result JSON, dataset split manifest, training command or identifiable CNN weights located."
+      },
+      {
+        "repository": "redogit/DnD",
+        "default_tip": "2f9fbe3b1964194d8f7b525c6fc90a22b3ff7df9",
+        "ref_count": 14,
+        "remote_branch_refs": 3,
+        "pull_head_refs": 8,
+        "reachable_commits": 161,
+        "unique_blobs_scanned": 503,
+        "blob_bytes_scanned": 18022052,
+        "sorted_ref_lines_sha256": "58c40899760b2d8c696d3c5c07be02582f1cf57a318f9e4159fa153299357276",
+        "keyword_hit_blobs": 27,
+        "conclusion": "No original CNN source, result JSON, dataset split manifest, training command or identifiable CNN weights located."
+      }
+    ],
+    "binary_inspection": {
+      "exact_18292_byte_git_blob_candidates": 0,
+      "git_zip_blobs": 6,
+      "zip_member_name_cnn_training_candidates": 0,
+      "note": "Six git ZIPs were unrelated platform/research bundles. Parameter bytes alone cannot identify weights; binary keyword exclusions are a search limitation."
+    },
+    "workflow_artifacts": {
+      "runs": [
+        36729347632,
+        36729347630,
+        36729347504,
+        36733123250,
+        36733123375,
+        36733123340
+      ],
+      "artifacts_returned_per_run": 0,
+      "scope": "First-page API listings for three workflows at each of original evidence head 65b73d369d44b91cc82951c659a0d9d59a1efd61 and rerun head 422f6cbed8672bc64c1ebf09a6a512665214d9a8.",
+      "repository_wide_listing": "Generic fetch endpoint rejected repository-wide /actions/artifacts URL; not treated as an empty result."
+    },
+    "searched_but_unavailable": [
+      "Original CNN source/training script in fetched repository and package scope",
+      "Original CNN weights/checkpoints/serialization identity",
+      "Original CNN result JSON exact bytes and filename",
+      "Exact original and reconstruction dataset split manifests"
+    ],
+    "limits": [
+      "Reachable advertised branches and pull heads only; deleted/unreachable commits, other repositories and private storage are not proved absent.",
+      "Current materialized archive versions only; archive publication dates do not establish training time or earlier version identity.",
+      "No data or weights recovered that permit a new independent CNN rerun.",
+      "Reconstruction seeds cannot be projected backward onto the historical model.",
+      "Reported direction of nonlinear gap is retained; no statistical significance or universal model-family ordering is inferred."
+    ]
+  },
+  "smallest_recovery_requirement": "For original identity, retrieve an attributable original result file and source/command, resource and split identities, seeds, weights and serialization receipts. A future reconstruction must receive another identity; matching size or accuracy does not repair original provenance.",
+  "verification": {
+    "artifact_report_metric_checks": 36,
+    "result": "PASS",
+    "training_rerun": false,
+    "repository_checks": [
+      "git diff --check",
+      "node tools/check_project_current.mjs",
+      "node navigation/context-horizon/work-inventory.test.mjs",
+      "node navigation/context-horizon/work-inventory.mjs --check",
+      "python3 tools/redogit_selfcheck.py",
+      "node spatial-ui-test.mjs"
+    ],
+    "repository_check_result": "PASS",
+    "ceiling": "Integrity and preservation checks only; not original-model recovery or independent experimental replication."
+  }
+}

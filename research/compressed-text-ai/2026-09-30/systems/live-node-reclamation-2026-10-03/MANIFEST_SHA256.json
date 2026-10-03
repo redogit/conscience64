@@ -1,0 +1,20 @@
+{
+  "files": {
+    "Makefile": "8750b6227653108165b97f193d300fde87bc83bcd46966a5bb01e93e84b02582",
+    ".gitignore": "942f0e068d4d1d61e1cfa645105c412bfc355785e36665d8412cb4798a20bbc9",
+    "README.md": "aaeb7392cd33b1fb946ce5c47223198e6fc1d99a5dd6127577a121fa4d0a7494",
+    "reclamation.c": "98d5656d5538a6d213f94a7977ac2a509917480327fffdd5932e0591a1b04bda",
+    "test_reclamation.c": "908431f5cd8db1784c0365db5cde5497b9681946bfa367e807a6dba0196724f7",
+    "measure.c": "e8567c8502735af00e5c3a2389ae2a3d2f1451e15d07a9237d43933e5bb20f69",
+    "model_fixture.c": "61cb4e243e4dda16006d00c8b3930dbdc4f59db3007da41d07a6f6767f0054b2",
+    "run_probe.py": "830ac3881edcd8fbf9b65bf6f53647c73ba63e72c54da9f8ca09ff78bb49736f",
+    "instrument_baseline.py": "ae30da47c1d583b434594c18ce487aa5f40fbf33803da70bab169173528db39f",
+    "results.json": "93289f9114c259f87c3490edeeeb5ed586efdeab0eea9b062e5ab75bc7681bdb",
+    "baseline/compressed_text_ai.c": "e10b069d908feef134978a8a17b2bc73da67034d9d43f5b9bdb7e35b0e0e96d4",
+    "baseline/experiment2_report.json": "d81928a652c1dbd1755e2a60ab27967ec99b3c8aca1b9231a7bef1724c3d07c7",
+    "baseline/experiment2_report_rerun.json": "5538ab2798d631365d4c967e5737765a584fcb5bdc69b1bb939d0b6e4e365d68"
+  },
+  "baseline_retention": "verbatim",
+  "source_relation": "single storage variant of recovered integrated source",
+  "historical_fixtures": "not recovered"
+}
