@@ -1,10 +1,10 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "3b8d4a60a3178704d77d333a14ceb462320d5509",
+  "source_revision": "0c4e0359665331a24bb80c2b25616beb09be4fda",
   "source_root": "public-testbed/ + curated play hub + curated play/musilanguage/ + curated play/neon-veil/",
   "publication_scope": "public-testbed-plus-curated-play",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "6fb445547db186aa263fa2599f798d2e4abb86cfc7f7d7cbee340a1132e1580f",
+  "projection_sha256": "de167249f1fdf20d61030ea764970e4202dd04d4a02c4460413655ee21d4972d",
   "files": [
     {
       "path": "app.js",
@@ -38,8 +38,8 @@
     },
     {
       "path": "play/musilanguage/index.html",
-      "bytes": 16721,
-      "sha256": "40ce6cb09fe320b314dff92afe12359aa309b4269c9a11ab099446af89254082",
+      "bytes": 16934,
+      "sha256": "33894150ae72f25f19e36aa351356b401957adb3e185bc15a53ce44b650aef7b",
       "source": "play/musilanguage/index.html"
     },
     {
@@ -110,8 +110,8 @@
     },
     {
       "path": "play/neon-veil/index.html",
-      "bytes": 4605,
-      "sha256": "a50e8c21d49059d2fe8b5dca3409a925c2c92a304ffa95659f1efe35c96b5422",
+      "bytes": 4815,
+      "sha256": "f091969c47e9c94382a90d4ee18753686fc900b8f6ac591567ca5d7923215910",
       "source": "play/neon-veil/index.html"
     },
     {
