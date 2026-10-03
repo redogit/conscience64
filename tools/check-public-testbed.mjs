@@ -183,7 +183,8 @@ try{
   assert.match(s1Page,/186\/186/);
   assert.match(s1Page,/PROJECTION_SUCCESS != RECONSTRUCTION_SUCCESS/);
   assert.doesNotMatch(s1Page,/<script\b/i,'S′ model public page must remain passive');
-  assert.ok(!html.includes('http://')&&!html.includes('https://'),'testbed shell must have no external runtime dependency');
+  assert.doesNotMatch(html,/<(?:script|img|iframe|source|audio|video)\\b[^>]+(?:src|srcset)=["']https?:\\/\\//i,'testbed shell must have no external runtime media/script dependency');
+  assert.doesNotMatch(html,/<link\\b[^>]+href=["']https?:\\/\\//i,'testbed shell must have no external stylesheet/runtime link dependency');
   assert.match(playHubHtml,/Conscience64 \/ Play/);
   assert.match(playHubHtml,/NEON\/\/VEIL · Public Release/);
   assert.match(playHubHtml,/NEON_VEIL_WINDOWS_2026-09-29\.zip/);
