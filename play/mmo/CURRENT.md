@@ -1,5 +1,7 @@
 # Conscience64 MMO RPG — Current State
 
+> **Current publication boundary:** this successor/predecessor machinery remains repository/local source. The current curated Conscience64 GitHub Pages projection does **not** publish `play/mmo/`. Pages deployment records below are retained as historical evidence for the revisions that were published at that time; they do not establish current route availability.
+
 ## Successor replacement — RIPPING MANY ARMS OFF
 
 `RIPPING MANY ARMS OFF` (RMAO) is now the active successor target: a massive chunk-streamed 3D roguelike MMORPG whose combat entities may carry arbitrary limb graphs and detachable arm nodes. `RMAO_WORLD_CANON.md` and `rmao-world-contract.json` define that target.
