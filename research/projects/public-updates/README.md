@@ -17,7 +17,7 @@ Only records listed in `admissions.json` with `classification: "public"` are ser
 
 ## Freshness and publication
 
-Changes under `research/projects/**` are already inside the existing fully gated Pages source workflow. Therefore a merged admitted public update is automatically published through the same Pages gate as the rest of the research project surface.
+**Current publication boundary — 2026-10-02:** the curated Conscience64 GitHub Pages projection does **not** publish `research/**`, including this directory. The deterministic public-update artifacts remain repository source and are validated by their dedicated workflow; a future public route requires separate explicit admission into the curated projection.
 
 `.github/workflows/public-research-updates.yml` additionally runs every six hours to:
 
