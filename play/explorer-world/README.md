@@ -4,7 +4,9 @@ A directly playable, local-first browser vertical slice of the larger game direc
 
 ## Play
 
-Open `play/explorer-world/index.html` through the Conscience64 GitHub Pages site.
+This project remains current repository/local source but is **not** in the current curated Conscience64 GitHub Pages projection. Serve the repository locally and open `play/explorer-world/index.html`, or inspect the source directly.
+
+`SOURCE_RUNNABLE != CURRENT_PAGES_ROUTE`
 
 Controls:
 
