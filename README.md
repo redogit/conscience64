@@ -1,5 +1,7 @@
 # Conscience64
 
+> **Public page:** https://redogit.github.io/conscience64/ · **Main / About:** https://redogit.github.io/redogit/
+
 > **Public projection — updated 2026-09-29:** GitHub Pages uses an isolated generated base projection of `public-testbed/**`, a separately authorized curated Play hub at `/play/` sourced only from `play/public-index.html`, and two separately authorized child routes, `play/musilanguage/` and `play/neon-veil/`. A separate, exactly pinned and authorized [Dream to Action / public profile overlay](PUBLIC_DREAM_ROUTES.md) adds four selected paths. The repository trees, the rest of `play/`, private-origin carriers, and developer evidence remain outside Pages. NEON//VEIL Pages distributes downloads and prepares local or explicitly trusted-LAN connections; it is not a public game backend.
 
 
