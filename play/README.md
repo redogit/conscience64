@@ -21,18 +21,20 @@ The project is also allowed to become financially sustainable for the family, fr
 
 See the full [Grow-With-You Game Contract](GROW_WITH_YOU_GAME_CONTRACT.md).
 
+For source-only rows below, links open repository paths rather than implying a deployed Pages route.
+
 | Project | Use it for | Current boundary |
 | --- | --- | --- |
 | [NEON//VEIL](https://redogit.github.io/conscience64/play/neon-veil/) | Download the current cyber-fantasy public release for your system and play solo or join an explicitly trusted LAN host | GitHub Pages is the release/launcher hub, not a public simulation server; the current world remains local-first and feature breadth is still frozen |
-| [Conscience64 MMO RPG](https://redogit.github.io/conscience64/play/mmo/) | Live in a grounded world of neighborhoods, work, travel, games, people and real-sky observation before monsters, Fuzzball and impossible events intrude | Local-first MMO-world prototype today; networked MMO and real-world prize redemption are not yet active |
-| [MMO World Beta](https://redogit.github.io/conscience64/play/mmo-world/) | Explore the earlier founding shard while the grounded successor evolves | Preserved predecessor; shared networking remains gated |
-| [Explorer World](https://redogit.github.io/conscience64/play/explorer-world/) | Cross strange regions, fight monsters, collect Echo Shards, follow story signals, and find Fuzzball | Browser-game prototype; world and progression remain bounded to implemented behavior |
-| [Orbit Shelf](https://redogit.github.io/conscience64/play/orbit/) | Collect and search notes, source links, and writing-language metadata | Import/export a project file; optional browser storage |
-| [Word Weave](https://redogit.github.io/conscience64/play/weave/) | Arrange lines of writing while preserving the original | Download the remix or export the project |
-| [Pattern Garden](https://redogit.github.io/conscience64/play/garden/) | Explore a six-by-six pattern with shapes, rotation, mirroring, and undo | Download SVG/text or export the project |
-| [Small Steps](https://redogit.github.io/conscience64/play/steps/) | Plan one next step and record dated checkpoints | Export the current draft and prior checkpoints |
-| [Source Compare](https://redogit.github.io/conscience64/play/compare/) | Inspect exact line additions and removals between two texts | Open UTF-8 files; export both versions and comparison |
-| [Computational Chorus](https://redogit.github.io/conscience64/play/computational-chorus/) | Turn bounded research notation into exact, speakable, mnemonic, and musical forms | Mnemonics/sonification are memory aids, not proof |
+| [Conscience64 MMO RPG](mmo/) | Live in a grounded world of neighborhoods, work, travel, games, people and real-sky observation before monsters, Fuzzball and impossible events intrude | Local-first MMO-world prototype today; networked MMO and real-world prize redemption are not yet active |
+| [MMO World Beta](mmo-world/) | Explore the earlier founding shard while the grounded successor evolves | Preserved predecessor; shared networking remains gated |
+| [Explorer World](explorer-world/) | Cross strange regions, fight monsters, collect Echo Shards, follow story signals, and find Fuzzball | Browser-game prototype; world and progression remain bounded to implemented behavior |
+| [Orbit Shelf](orbit/) | Collect and search notes, source links, and writing-language metadata | Import/export a project file; optional browser storage |
+| [Word Weave](weave/) | Arrange lines of writing while preserving the original | Download the remix or export the project |
+| [Pattern Garden](garden/) | Explore a six-by-six pattern with shapes, rotation, mirroring, and undo | Download SVG/text or export the project |
+| [Small Steps](steps/) | Plan one next step and record dated checkpoints | Export the current draft and prior checkpoints |
+| [Source Compare](compare/) | Inspect exact line additions and removals between two texts | Open UTF-8 files; export both versions and comparison |
+| [Computational Chorus](computational-chorus/) | Turn bounded research notation into exact, speakable, mnemonic, and musical forms | Mnemonics/sonification are memory aids, not proof |
 | [Musilanguage Studio](https://redogit.github.io/conscience64/play/musilanguage/) | Turn language, symbols, emoji, or exact UTF-8 into multi-style instrumental music; shape six instrument buses; export MIDI/WAV; inspect the preserved lineage inside the app | Artistic/generative mapping; 64 style profiles and procedural instruments do not imply cultural authenticity or semantic truth |
 
 ## Musilanguage Studio — one public music application
