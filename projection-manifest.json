@@ -1,10 +1,10 @@
 {
   "schema": "conscience64.public-testbed-projection/v0",
-  "source_revision": "0c4e0359665331a24bb80c2b25616beb09be4fda",
+  "source_revision": "5b7e777d9ab7e9a8843c9a39f067ea8bd873c697",
   "source_root": "public-testbed/ + curated play hub + curated play/musilanguage/ + curated play/neon-veil/",
   "publication_scope": "public-testbed-plus-curated-play",
   "authority": "experimental-non-authoritative",
-  "projection_sha256": "de167249f1fdf20d61030ea764970e4202dd04d4a02c4460413655ee21d4972d",
+  "projection_sha256": "4e048e94714cde1cf9dda4d161016ce7e064ec78ffa284047218cd6ff5e77b6f",
   "files": [
     {
       "path": "app.js",
@@ -14,8 +14,8 @@
     },
     {
       "path": "carrier-surface/index.html",
-      "bytes": 4713,
-      "sha256": "bc665119f82c21895194aef0d7e674d5bb89ef53d5d36a426fc660b2ff5c12c8",
+      "bytes": 4944,
+      "sha256": "a4ddbb9b35b9a426003572a4afc7bfe15635966a31d7b494697b7b9a4a5e5869",
       "source": "public-testbed/site/carrier-surface/index.html"
     },
     {
@@ -128,8 +128,8 @@
     },
     {
       "path": "s1-models/index.html",
-      "bytes": 7088,
-      "sha256": "88a416ae549849369ee8ab280aacfe6e92878f99270d9f7648022c61e9b01e25",
+      "bytes": 7313,
+      "sha256": "b2bd48d4acdf2d728e7e3dad9e708c0fb029071503f827b466f141e37176ae5f",
       "source": "public-testbed/site/s1-models/index.html"
     },
     {
