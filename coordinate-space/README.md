@@ -1,6 +1,6 @@
 # Coordinate Space Workbench — public edition 1.2
 
-Open [the workbench](https://redogit.github.io/conscience64/coordinate-space/).
+Current publication note: Coordinate Space remains current repository/local software but is **not** in the current curated Conscience64 GitHub Pages projection. Run it locally from this directory or inspect the source here. Earlier Pages/public-release records remain historical evidence for the revisions that were published at that time.
 
 Encode, inspect, import and recover exact Unicode text through the existing `exact-utf8-f64/v1` carrier. Processing stays on the device: no input uploads, accounts, analytics or automatic saving.
 
