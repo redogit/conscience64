@@ -6,7 +6,7 @@ The dashboard is a **view over an event ledger**. It does not promote claims aut
 
 ## Static Pages versus live service
 
-The public GitHub Pages deployment is static. It can render the dashboard and its demo fixtures, but GitHub Pages is **not** a streaming backend and is **not** the authoritative event ledger.
+The current curated Conscience64 GitHub Pages projection does **not** include `analytics/`; Research Analytics is current repository/local software. A static Pages deployment can render the dashboard and demo fixtures when explicitly admitted, but GitHub Pages is **not** a streaming backend and is **not** the authoritative event ledger.
 
 Run `analytics/server.py` when an actual same-origin `/events` endpoint is required.
 
