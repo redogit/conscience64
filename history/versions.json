@@ -1,6 +1,6 @@
 {
   "schema": "redogit/history-catalog/1",
-  "updated": "2026-09-14",
+  "updated": "2026-10-02",
   "facets": [
     {
       "id": "index",
@@ -101,22 +101,6 @@
   ],
   "repositories": [
     {
-      "name": "redogit",
-      "branch": "main"
-    },
-    {
-      "name": "conscience64",
-      "branch": "main"
-    },
-    {
-      "name": "Other-Projects-",
-      "branch": "main"
-    },
-    {
-      "name": "Dream-To-Action",
-      "branch": "main"
-    },
-    {
       "name": "orbit",
       "branch": "main"
     },
@@ -125,8 +109,60 @@
       "branch": "master"
     },
     {
+      "name": "redogit",
+      "branch": "main"
+    },
+    {
+      "name": "DnD",
+      "branch": "master"
+    },
+    {
       "name": "FirstNeuralNetwork",
       "branch": "master"
+    },
+    {
+      "name": "conscience64",
+      "branch": "main"
+    },
+    {
+      "name": "Dream-To-Action",
+      "branch": "main"
+    },
+    {
+      "name": "Other-Projects-",
+      "branch": "main"
+    },
+    {
+      "name": "RMAL",
+      "branch": "main"
+    },
+    {
+      "name": "pnp-dean",
+      "branch": "main"
+    },
+    {
+      "name": "hodge",
+      "branch": "main"
+    },
+    {
+      "name": "conscience64-platform",
+      "branch": "main"
+    },
+    {
+      "name": "games",
+      "branch": "main"
+    },
+    {
+      "name": "language-carriers",
+      "branch": "main"
+    },
+    {
+      "name": "archives-knowledge",
+      "branch": "main"
+    },
+    {
+      "name": "portfolio",
+      "branch": "main"
     }
   ],
   "releases": [
@@ -160,5 +196,10 @@
     "path": "history/index.html#knowledge",
     "scope": "Open-scope, browser-local revision records; append-only restores; evidence is recorded, not automatically verified.",
     "schema": "redogit/knowledge-history/1"
+  },
+  "repositoryScope": {
+    "state": "CURRENT_PUBLIC_ACCOUNT_REPOSITORY_HISTORY_LINKS",
+    "historicalCountsRemainInHistoricalRecords": true,
+    "note": "Current public repository list updated forward-only on 2026-10-02; dated release records and historical About snapshots retain their original counts."
   }
 }
