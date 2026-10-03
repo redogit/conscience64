@@ -40,8 +40,9 @@
 - **Fuzzball: Question or Claim?** keeps the research boundary explicit: an open question is not promoted into evidence, fact, or proof.
 - Installing the Starter Pack uses the same validated plug-in contract as user-made recipes; the main MMO discovers all six installed recipes as local arcade cabinets without a rebuild.
 - The Starter Pack does not auto-install on page load. Installation is an explicit player action in Forge.
-- The current successor therefore has **10 explicit mini-game/activity slots**: 4 built-in plus 6 optional Starter Pack activities.
-- Against the November v1.0 activity mix, the remaining category gap is **two additional movement/reaction activities**, each of which should have an accessible non-timed alternative.
+- The advanced MMO surface retains **10 explicit mini-game/activity slots**: 4 built-in plus 6 optional Starter Pack activities.
+- The current primary **Simple Core** now carries the full **12-activity** bounded mix directly in `play/mmo/simple/core.mjs`, including the two additional movement activities `Sidewalk Slalom` and `Parcel Relay`. Those two close the earlier 10→12 activity-count gap without changing the advanced/predecessor surface into the current primary route.
+- All current Simple Core movement activities are choice-based and untimed; the prior requirement for non-timed alternatives is therefore satisfied for that 12-activity primary surface.
 - Player-local state includes role, level, XP, Joy, discoveries, world tokens, chronicle entries and shapeshifter form.
 - Joy is game state, not a claim about human wellbeing or worth.
 - World districts currently expose bounded local interactions and Conscience64-seeded context where available.
@@ -133,7 +134,6 @@ This does **not** establish WCAG conformance or completed assistive-technology c
 
 The following remain roadmap work, not current capabilities:
 
-- the two additional movement/reaction activities required to fill the current 12-activity v1.0 mix;
 - authoritative networked MMO server;
 - shared persistent multiplayer world;
 - production account/pseudonymous identity system;
@@ -177,7 +177,7 @@ They are **not**:
 
 ## Next high-value batches
 
-1. Add the remaining two movement/reaction activities with explicit non-timed alternatives, completing the current 12-activity v1.0 category mix.
+1. Keep the 12-activity Simple Core and the richer advanced/predecessor surface behaviorally reconciled without forcing the two interfaces to become identical.
 2. Continue adding equivalent non-timed/non-audio routes wherever an activity otherwise depends on speed or sensory modality.
 3. Extend portable player state only when a new field has a clear local-life purpose.
 4. Build the first authoritative multiplayer vertical slice only after local state/contracts are stable.
