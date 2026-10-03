@@ -1,5 +1,7 @@
 # About Me publication
 
+> **Historical snapshot status:** this Conscience64 About surface is a preserved September 13–14, 2026 profile projection. It is not the current account-level project inventory. The canonical current Main / About and project index is https://redogit.github.io/redogit/ .
+
 The canonical profile README and standalone homepage live in [redogit/redogit](https://github.com/redogit/redogit). This Conscience64 copy is a public projection served by the Conscience64 Pages site; the canonical profile should be updated first and this projection reconciled afterward.
 
 Scope: September 13 working day continuing through September 14, 2026.
@@ -18,6 +20,6 @@ The two-day source-of-truth synthesis remains [`research/updates/2026-09-13-14/I
 
 The canonical profile repository carries forward-only update records including `CURRENT_UPDATE_2026-09-14.md` and `CURRENT_UPDATE_2026-09-14_FUZZBALL_ALPHA.md`.
 
-The account-level count remains **eight repositories: seven public and one private placeholder**. Conscience64 surfaces and subprojects do not increase that count.
+At the time of this preserved September 13–14 snapshot, the account-level count was recorded as **eight repositories: seven public and one private placeholder**. That count is historical and must not be read as the current account inventory; use the canonical redogit Main / About project index for current repository Pages.
 
 Evidence boundaries remain active: implemented is not verified, observation is not interpretation, repetition is not independent verification, software verification is not scientific validation, and visual depth is presentation rather than evidence.
