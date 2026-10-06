@@ -1,0 +1,49 @@
+.....FF
+======================================================================
+FAIL: test_reflection_receipt_does_not_assert_individual_char_zero_n_leaf (test_w114_full_standard_composition.FullStandardChecks.test_reflection_receipt_does_not_assert_individual_char_zero_n_leaf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/cc3923412220/conscience64/research/hodge/test_w114_full_standard_composition.py", line 21, in test_reflection_receipt_does_not_assert_individual_char_zero_n_leaf
+    self.assertEqual([(x['primitive'], x['sign'], x['direction']) for x in r['signed_word'][4:]],
+AssertionError: Lists differ: [('N_1', 1, 'forward'), ('N_2', -1, 'inverse')] != [('N_1', 1, None), ('N_2', -1, None)]
+
+First differing element 0:
+('N_1', 1, 'forward')
+('N_1', 1, None)
+
+- [('N_1', 1, 'forward'), ('N_2', -1, 'inverse')]
+?             ^^ ^^^^^^               ^^ - ----
+
++ [('N_1', 1, None), ('N_2', -1, None)]
+?             ^ ^^               ^^
+
+
+======================================================================
+FAIL: test_signed_receipt_uses_declared_d2_inverse_directions (test_w114_full_standard_composition.FullStandardChecks.test_signed_receipt_uses_declared_d2_inverse_directions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/cc3923412220/conscience64/research/hodge/test_w114_full_standard_composition.py", line 11, in test_signed_receipt_uses_declared_d2_inverse_directions
+    self.assertEqual([(x['primitive'], x['direction']) for x in r['signed_word'][:4]],
+AssertionError: Lists differ: [('D2_7', 'forward'), ('D2_22', 'forward'), ('D2_23'[30 chars]se')] != [('D2_7', 'inverse'), ('D2_22', 'inverse'), ('D2_23'[30 chars]rd')]
+
+First differing element 0:
+('D2_7', 'forward')
+('D2_7', 'inverse')
+
++ [('D2_7', 'inverse'),
+- [('D2_7', 'forward'),
+-  ('D2_22', 'forward'),
+-  ('D2_23', 'inverse'),
+?        ^
+
++  ('D2_22', 'inverse'),
+?        ^
+
+-  ('D2_56', 'inverse')]
++  ('D2_23', 'forward'),
++  ('D2_56', 'forward')]
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.052s
+
+FAILED (failures=2)

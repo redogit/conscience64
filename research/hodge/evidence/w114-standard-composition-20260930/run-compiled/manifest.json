@@ -1,0 +1,172 @@
+{
+  "claim_id": "W114-FULL-STANDARD-AND-AOKI-SQUARE-BOUNDED-20260930",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-c",
+    "import json,pathlib,subprocess,sys\nsubprocess.run([sys.executable,'-m','unittest','discover','-s','research/hodge','-p','test*.py'],check=True)\nresults={}\nfor script in ('w114_signed_composition','w114_standard_divisors','w114_standard_composition','w114_full_standard_composition','w114_aoki_square'):\n out=subprocess.run([sys.executable,'research/hodge/'+script+'.py'],check=True,capture_output=True)\n results[script]=json.loads(out.stdout)\nfresh=json.loads(subprocess.run([sys.executable,'research/hodge/df_hodge_02.py'],check=True,capture_output=True).stdout)\ncommitted=json.loads(pathlib.Path('research/hodge/DF_HODGE_02_RESULT.json').read_text())\nassert fresh['minimum_sufficient_feature_count']==committed['new_minimum_sufficient_feature_count']==4\nassert fresh['minimum_sufficient_feature_sets']==[committed['unique_minimum_sufficient_feature_set']]\nresults['df_hodge_02_checkpoint_matches']=True\npathlib.Path('research/hodge/evidence/w114-standard-composition-20260930/run-compiled/result.json').write_text(json.dumps(results,indent=2,sort_keys=True)+'\\n')\n"
+  ],
+  "environment": {
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "external_sources": {
+    "Aoki 1987": {
+      "sha256": "b11299f26a52695a0871c25697769cf6146b7a2141b5ac07d3b8661e86209083",
+      "url": "https://www.jstage.jst.go.jp/article/jmath1948/39/3/39_3_385/_pdf"
+    },
+    "OY 2026": {
+      "sha256": "ea6b50a6238c119858c7ff8cb25a1008ecd78e5f72bbbedf300f73390f0f1093",
+      "url": "https://afst.centre-mersenne.org/item/10.5802/afst.1842.pdf"
+    },
+    "Stacks Cartier-divisor Gysin": {
+      "scope": "Definition 42.29.1 self-intersection for a cycle contained in the divisor; current page inspected 2026-09-30",
+      "url": "https://stacks.math.columbia.edu/tag/02T7"
+    },
+    "Stacks projective-bundle pushforward": {
+      "scope": "Lemma 42.36.1; rank-two q_*h q^*=id, q_*q^*=0; current page inspected 2026-09-30",
+      "url": "https://stacks.math.columbia.edu/tag/02TV"
+    },
+    "Villaflor 2022": {
+      "sha256": "2991527af2d2ef9667624bc210aa1327fd652bcb0bff6a71d56822be5e383cab",
+      "url": "https://arxiv.org/pdf/1812.03964v5"
+    },
+    "join period audit": {
+      "role": "hypothesis audit only, not an exceptional-input join certificate",
+      "sha256": "e2d3d3878de21d63ea357536451cc0747e129fbabdd593b9a96f2db569ada7ee",
+      "url": "https://arxiv.org/pdf/2312.17222v4"
+    }
+  },
+  "input_sha256": {
+    ".github/workflows/hodge-decision-field-check.yml": "804c727754a51614b7019d575b32b412ca7273de3bd160d9f71f233b523c6eb4",
+    "research/hodge/README.md": "0fcb3dfdd2b7a714885c52979e9feb8bced7cedec65ea96e2d7fe938b9695aa6",
+    "research/hodge/W114_AOKI_TENSOR_SQUARE_2026-09-30.md": "3eb544720aac411a0968c67ca42e49589dde06de15f2845fb5bc47cd668c107c",
+    "research/hodge/W114_COMPILER_ENDPOINTS_2026-09-25.md": "628ad5dbced7cf8fb2c49e07e4217d6cd845a7bc9d15d575a4532419814b1c6b",
+    "research/hodge/W114_DUPLICATION_REFLECTION_PRIMITIVES_2026-09-25.md": "2747c560421628932ed8f3f0cc0c8805c4a523b661ea0758c44c661104efef83",
+    "research/hodge/W114_EXPLICIT_ARTIN_CARRIER_2026-09-25.md": "f32681bbd429ee903296eba8cbe76a9cd6d8146e9e511e1cab4cd996869ab7e8",
+    "research/hodge/W114_EXPLICIT_KATSURA_SHIODA_CORRESPONDENCE_2026-09-25.md": "a1d809f357e20a7fd86a1f1d57ad52fed0ebaca5582aed9a8843ab2c3d999463",
+    "research/hodge/W114_FULL_STANDARD_REDUCTION_2026-09-30.md": "e82ae89d85f51de372ac51737a6361b9e25fcdd6661027abad305614b35d0518",
+    "research/hodge/W114_MATRIX_FACTORIZATION_TARGET_CONTRACT_2026-09-15.md": "b824ea4ade3f37c011d9a4de65820113f4b26c81c5d981b6f7c764e362a1349f",
+    "research/hodge/W114_MOTIVIC_STANDARD_WORD_2026-09-25.md": "d4a11a5c5b6ec1797c655b472268281cb4551f16d9ec8add9692b565735d9890",
+    "research/hodge/W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md": "17560686c0c348a57b8511e2c0c41c886110fa99737d82f7d30e9554e7b647a6",
+    "research/hodge/W114_N3_TRANSFER_CORRESPONDENCE_2026-09-25.md": "074c8ae6cb47f0ea69ec087dd268e66730430c9cf783fd4356a1c196acd03221",
+    "research/hodge/W114_OTSUBO_YAMAZAKI_FACTORIZATION_2026-09-25.md": "4d665653cd821c2135c3b3547a94eee006e9662b265c8d7aad1a04b1e72a764c",
+    "research/hodge/W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md": "ebae69be2be99089d00c6087f43cf10892eec0d7a7e860e580f48eb7ade85e5e",
+    "research/hodge/W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md": "efd343543f406fe148e2d8fcdfb16f92f9565c117364689aef36b6b57eea9472",
+    "research/hodge/W114_STANDARD_DIVISOR_CONSTRUCTION_2026-09-30.md": "2d4bf169a427248a648e918d9a67fbf6cc7175b78bed9b4b4f5c281ca66884f8",
+    "research/hodge/W114_STANDARD_JOIN_COMPOSITION_2026-09-30.md": "5242ee9fb059cd317ed28d47ac874a97ceb5907c7d49aa9e18505d1dc83bd9dd",
+    "research/hodge/coset_star_split_search.py": "853722109f156a010f2cd907a6189a0467b7d36ff95bd53a65aa6b2f266c053d",
+    "research/hodge/decision_field_v0_1.py": "3080d9ccdb779247ed6a1f1c188f227940ab6c09c2b173a9f72ca452a4be69c8",
+    "research/hodge/df_hodge_02.py": "47daaedfd1f71f5432df5743ef7e46c0c8094e390bacbfe413b14bf7defc9c77",
+    "research/hodge/even_wall_shioda_cubic_screen.cpp": "2e044bca11f586d409b570fef38afa59cb7bd72754cdcb501434aeb65fd58fea",
+    "research/hodge/even_wall_verify.py": "239c9e5d42345d06358ba671bf4f3fa7a7b09e6e48519709d9e4f7dd8bd060e7",
+    "research/hodge/evidence/w114-standard-composition-20260930/square-word-solver.json": "acc28e56b79c5aecd5248ba4ae1bb127394bb5f122e0b4494bd57f24445c981d",
+    "research/hodge/m39_star_split_verify.py": "f665f7b42914e68522d4dac54d4302a18da52edfd648b45f2dcc2ad7694d9bff",
+    "research/hodge/odd_divisor_inflation_coset_search.py": "eaef16cd7c0908c4108f0f8510160e2a168c09c8af868203be11f9f37285ccc2",
+    "research/hodge/test_even_wall_shioda_cubic_screen.py": "06aa16715db0386834f3cfd3fbf169c90e69a4092edde7c64b71b30d936bbb13",
+    "research/hodge/test_verify_w114_compiler_endpoints.py": "e36335d60468abeabc7aa46aef9dcb1306e858ba4f7e2fadf5fc03d02b5256c2",
+    "research/hodge/test_verify_w114_duplication_reflection_primitives.py": "b58e72b4b5ea993e7626f4bd3a0f8eb4f8edaaf6e376f8498b78c07e7ade6af4",
+    "research/hodge/test_verify_w114_explicit_artin_carrier.py": "548ffca6fd0484fb973e41f9a91b0274f5fb8cf2f2c6ff1063f41fb78bce25a9",
+    "research/hodge/test_verify_w114_explicit_ks_correspondence.py": "c0e5a42e4e2b92c3c0608153966299299f3059ce07aa26ece0d372f2dbf99f38",
+    "research/hodge/test_verify_w114_motivic_standard_word.py": "442622df4145d2ede0f0299bc23ab1459d766126ecb65f6d0604de0ccf1afa66",
+    "research/hodge/test_verify_w114_n3_projective_closure.py": "eae06bb99a78c300552364434ee3fbdcf556f47c8dc0f83e37ebd068dedc5660",
+    "research/hodge/test_verify_w114_n3_transfer_correspondence.py": "c55784bb5ea0346af2bc66bb3577113fd8c731fabde44644d1a20b410d8e4d4c",
+    "research/hodge/test_w114_aoki_square.py": "21cdb1f8c5f5a6f7a4d53c05b58cfdac589cb1e2e85a4f0eb8dec70c9b4b5db1",
+    "research/hodge/test_w114_factorization_controls.py": "2c3a59582e9ccf9d5ddc44cb51e387ca6e38f3a5052b04ee446b756d03579d52",
+    "research/hodge/test_w114_full_standard_composition.py": "b1a52563fe697b9b28c731d66b88d72cfe783fd47c72301daa3a3d9ce3ed6053",
+    "research/hodge/test_w114_otsubo_yamazaki_factorization.py": "dda352416858c27f79cd8bbaeb410823ebd60a89b4bfe0cd36332abe8c787246",
+    "research/hodge/test_w114_research_loop.py": "95dfba26c8c46cf30dc148744bae6d063344702d6644c2922231bd30f9f10bd8",
+    "research/hodge/test_w114_sign_normalization.py": "becefbadf73ea54cf0bb5312b7533cfd4536d4070b1f0b8350f99a3074056cf4",
+    "research/hodge/test_w114_signed_composition.py": "e32d655faabfc8f1b59f4faf971c167130934dc50ff6d75b52d57ac6abce392b",
+    "research/hodge/test_w114_standard_composition.py": "ba23d6933d30a4508376e4d7a685a90c4596429eeb38bee21cac0bcfd0db6c67",
+    "research/hodge/test_w114_standard_divisors.py": "3fd0d270654a91c41823e02980782651963e3fac83999dc65576b90427bff1a2",
+    "research/hodge/two_pair_coset_search.py": "9dc814f3a0dc1a4eaa8d7d82864b0d9088fd5ece22d86093aa16e282060d8ea7",
+    "research/hodge/verify_w114_compiler_endpoints.py": "0dddebfae507dd7c33695b96ac10fe33285c10c054bf3b1d2f05b4ad309a22e7",
+    "research/hodge/verify_w114_duplication_reflection_primitives.py": "4657029b972b64634e1aa3d726c2162648529898c6bfb40aa1c4acf12ff7f2f8",
+    "research/hodge/verify_w114_explicit_artin_carrier.py": "233b7a79b1f2ddaba5663ff25ec3551e16b02131586c1fe4ca3d987baa69221f",
+    "research/hodge/verify_w114_explicit_ks_correspondence.py": "8c415ae7450f86a4a00f12507fe94210c53b6cbd8582b9cdee6f8234c40a7780",
+    "research/hodge/verify_w114_motivic_standard_word.py": "89d45f335ee1f70520a359750ec1287afb0a1ed389beda919e666ef8e84b25e2",
+    "research/hodge/verify_w114_n3_projective_closure.py": "9e9d70b3d0b3e9984a918fa8fc7c794df3130b80d12ee82601bcd4ad752d22e6",
+    "research/hodge/verify_w114_n3_transfer_correspondence.py": "c8c8df5e8fbd2004f37854990626d4e0fef39f80765155d44ed724aba4442970",
+    "research/hodge/verify_w114_sign_normalization.py": "e4abfa95e57eb8a948cdf2e82c79b3200be2b34cc80d2d4cb5cc3c348377243c",
+    "research/hodge/w114_aoki_square.py": "e7302dac5492756b9a7c82cebd3340bf3f797c2c9eb10e5d8ed51e703a76d2ba",
+    "research/hodge/w114_factorization_controls.py": "a00a7c61592cd186bd1694b0d5064a693ed9c71dc4080816fe383e73eddce137",
+    "research/hodge/w114_full_standard_composition.py": "92090ccd560cc0064ceb66e7234540b4a69f8a0c4638db50f31b4ddb1d03e66a",
+    "research/hodge/w114_lift570_two_pair.py": "95d2384455a5b72f28c647f49f313034e8febe0f5cf164f89583933d8a97c677",
+    "research/hodge/w114_otsubo_yamazaki_factorization.py": "90a712e225af485e839536db39cccf5113adec349652f5d63f68f6d0d2c13096",
+    "research/hodge/w114_research_loop.py": "c69dd76aade86ff43be3369066b925a969b23357b39a69298b261b14d12de311",
+    "research/hodge/w114_signed_composition.py": "20530f1d9de8c50d8f4cf4c5e7e618288ffdb7b4bc4bc6bc2575680018009e6d",
+    "research/hodge/w114_standard_composition.py": "9fa3f9ac85ecee809edcd99b58a6eae0a7e197c5d4d3378b1d7b7461d8f7c11b",
+    "research/hodge/w114_standard_divisors.py": "fa82aa822675904a0e4de5dc7a5b417273dfc4bef5373b8926504767aadd57a7"
+  },
+  "mathematics": {
+    "assertions": [
+      "Chow primitive-join self-intersection -d and projected boundary vanishing",
+      "Four explicit duplication divisors: containment, nonzero dual-pullback coefficient, -57 pairing at all 36 units",
+      "Degree-32 plane pullback, degree-512 residual power transfer, explicit Artin padding descent",
+      "Full W114 standard reduction and the level57 residual-to-Aoki reduction: typed dimensions, inverse scalars and Galois covariance",
+      "Aoki p19 explicit complete intersection, exact Newton containment, external standard nonvanishing/pairing, tensor-square correspondence",
+      "Exact mod2 countercertificate over all 148 admitted reflection and standard words",
+      "Finite Artin diagonal normalizations 3,19,57 and all inverse contractions"
+    ],
+    "galois_units": 36,
+    "non_claims": [
+      "MOT-1 REMAINS OPEN",
+      "No unsquared exceptional quadratic Artin correspondence",
+      "Explicit plane in padding does not produce an algebraic W114 plane push",
+      "Theorem-use is not independent reproof",
+      "No general Hodge-conjecture proof",
+      "No independent p19 Jacobian computation",
+      "Parity obstruction is limited to the named free-word ansatz"
+    ],
+    "retained_split_prime_checks": [
+      229,
+      571
+    ]
+  },
+  "output_sha256": {
+    "result.json": "90a8042aedbaa9339d5f2e68c003d2b8883aed8bae6e928c01fbac5d97017d25",
+    "stderr.txt": "28fe3c2e514f944b8aef3d239f1697e8628717418e155605be8820a2d644443b",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "proof_graph": {
+    "MOT-1": "OPEN; no graph evidence transfer or closure promotion",
+    "fresh_read": "2026-09-30; hodge:w114:obligation:MOT-1 occurrence OPEN",
+    "last_verified_blob": "db700bdaada82c58a169e9afacf9b7bb618592fb",
+    "path": "Hodge Compass API/hodge_proof_graph_seed.json",
+    "repository": "redogit/Other-Projects-"
+  },
+  "repository": {
+    "continuation_parent": "389c1b705d1af91cdc0e6d3ffd6c14d0133597c0",
+    "default_main": "0bb90fe9a655715163711c1a8df7f06a78dfb495",
+    "merge_parents_retained": true,
+    "working_tree_dirty": true
+  },
+  "review": {
+    "critical_checks": [
+      "source-times-target projector variance",
+      "unprojected transpose followed by same named endpoint projectors",
+      "join normal sign and blow-up center character vanishing",
+      "carrier degrees separate from projected intersection pairings",
+      "shared-root padding descent via normalized trace",
+      "character-order dictionary A57(c,k)=A114(c,2k)",
+      "p19 field irreducibility from abelian cyclotomic extension, not ramified valuation",
+      "tensor-square does not select the corrected quadratic root"
+    ],
+    "fresh_agent_review": false,
+    "type": "self-review"
+  },
+  "run": {
+    "cores": 1,
+    "cpu_seconds_per_process": 20,
+    "exit_code": 0,
+    "memory_bytes": 536870912,
+    "random_sampling": false,
+    "runtime_seconds": 9.656393451994518,
+    "started_at": "2026-09-30T18:10:29.748292+00:00",
+    "status": "completed",
+    "threads": 1,
+    "timeout_seconds": 30
+  },
+  "schema": "conscience64/w114-standard-composition-run/v1"
+}

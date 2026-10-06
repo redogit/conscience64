@@ -1,0 +1,55 @@
+{
+  "admitted": [
+    {
+      "claim": "n=3 projective closure",
+      "status": "THEOREM_USE_ADMITTED_PREVIOUSLY"
+    },
+    {
+      "claim": "primitive join -d with boundary projector vanishing",
+      "status": "CHOW_CALCULATION_WITH_NAMED_EXTERNAL_INPUTS"
+    },
+    {
+      "claim": "full W114 standard reduction including explicit plane padding",
+      "status": "EXPLICIT_NONZERO_WITH_NORMALIZED_INVERSE"
+    },
+    {
+      "claim": "Aoki tensor-square and residual tensor-order-two bound",
+      "status": "EXPLICIT_NONZERO_WITH_NORMALIZED_INVERSE; P19_NONVANISHING_BY_AOKI_THEOREM"
+    },
+    {
+      "claim": "all 148 standard words fail unsquared parity test",
+      "status": "EXACT_COUNTERCERTIFICATE; FREE_WORD_ANSATZ_ONLY"
+    }
+  ],
+  "ceilings": [
+    "MOT-1 REMAINS OPEN",
+    "THEOREM_USE != INDEPENDENT_REPROOF",
+    "HODGE_CONJECTURE_REMAINS_OPEN"
+  ],
+  "independent_agent_audit": false,
+  "inverse_checks": [
+    "unprojected transpose then endpoint projectors",
+    "shared finite-carrier degrees 19,57,3",
+    "i-descent trace divided by 2",
+    "unit descent trace divided by 19",
+    "power transfer degrees 32 and 512",
+    "finite diagonal multiplication scales 19,57,3"
+  ],
+  "results_sha256": "90a8042aedbaa9339d5f2e68c003d2b8883aed8bae6e928c01fbac5d97017d25",
+  "schema": "conscience64/w114-standard-self-audit/v1",
+  "type": "self-review",
+  "unresolved": [
+    {
+      "claim": "unsquared exceptional map to A114(3*(7-zeta3),57)",
+      "status": "OPEN; NO EMITTED_CYCLE"
+    },
+    {
+      "claim": "actual W114 plane push",
+      "status": "OPEN; EXPLICIT_PLANE_IN_PADDING_ONLY"
+    },
+    {
+      "claim": "MOT-1 independent realization audit of the full requested map",
+      "status": "OPEN; REQUESTED_MAP_NOT_CONSTRUCTED"
+    }
+  ]
+}

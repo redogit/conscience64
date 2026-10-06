@@ -1,0 +1,98 @@
+{
+  "claim_id": "W114-MOT-1-SIGNED-COMPOSITION-BOUNDED-20260930",
+  "mathematics": {
+    "assertion_tested": "Exact signed Gauss word, projective-transfer degree/projector normalizations, typed D2 tensor composition, covariance and direct split-prime Jacobi identities; W114 admission remains denied.",
+    "coefficient_domain": "Q for scalars; Z[x]/Phi_57 and Z[x]/Phi_114 for Jacobi sums; theorem-dependent Chow(Q(zeta_114),Q(zeta_114)).",
+    "conventions": "Homological graphs; rightmost-first composition; chi_d(g)=zeta_d; D2 source/target untwisted ratio positive for inverse edge; no characteristic-zero Gauss motive assumed.",
+    "inputs": [
+      "research/hodge/W114_EXPLICIT_KATSURA_SHIODA_CORRESPONDENCE_2026-09-25.md",
+      "research/hodge/W114_EXPLICIT_ARTIN_CARRIER_2026-09-25.md",
+      "research/hodge/W114_COMPILER_ENDPOINTS_2026-09-25.md",
+      "research/hodge/W114_DUPLICATION_REFLECTION_PRIMITIVES_2026-09-25.md",
+      "research/hodge/W114_N3_TRANSFER_CORRESPONDENCE_2026-09-25.md",
+      "research/hodge/W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md",
+      "research/hodge/W114_MOTIVIC_STANDARD_WORD_2026-09-25.md",
+      "research/hodge/W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md",
+      "research/hodge/verify_w114_compiler_endpoints.py",
+      "research/hodge/verify_w114_sign_normalization.py",
+      "research/hodge/verify_w114_explicit_ks_correspondence.py",
+      "research/hodge/verify_w114_explicit_artin_carrier.py",
+      "research/hodge/verify_w114_duplication_reflection_primitives.py",
+      "research/hodge/verify_w114_n3_transfer_correspondence.py",
+      "research/hodge/verify_w114_n3_projective_closure.py",
+      "research/hodge/w114_research_loop.py",
+      "research/hodge/HODGE_COMPASS_API.md",
+      "research/hodge/w114_signed_composition.py",
+      "research/hodge/test_w114_signed_composition.py",
+      "research/hodge/W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md"
+    ],
+    "bounds": {
+      "d": [
+        57,
+        114
+      ],
+      "n": [
+        2,
+        3
+      ],
+      "n2_a": [
+        7,
+        22,
+        23,
+        56
+      ],
+      "n3_a": [
+        4,
+        11,
+        16,
+        17
+      ],
+      "split_primes": [
+        229,
+        571
+      ],
+      "units_mod114": 36,
+      "random_sampling": false
+    },
+    "non_claims": [
+      "MOT-1 REMAINS OPEN",
+      "HODGE_CONJECTURE_REMAINS_OPEN",
+      "Nonzero product transfer is not a W114 residual correspondence or plane push.",
+      "Theorems are used, not independently reproved.",
+      "Two finite-field realizations are not a global MOT-1 realization proof."
+    ]
+  },
+  "execution_artifacts": [
+    "research/hodge/W114_EXPLICIT_KATSURA_SHIODA_CORRESPONDENCE_2026-09-25.md",
+    "research/hodge/W114_EXPLICIT_ARTIN_CARRIER_2026-09-25.md",
+    "research/hodge/W114_COMPILER_ENDPOINTS_2026-09-25.md",
+    "research/hodge/W114_DUPLICATION_REFLECTION_PRIMITIVES_2026-09-25.md",
+    "research/hodge/W114_N3_TRANSFER_CORRESPONDENCE_2026-09-25.md",
+    "research/hodge/W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md",
+    "research/hodge/W114_MOTIVIC_STANDARD_WORD_2026-09-25.md",
+    "research/hodge/W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md",
+    "research/hodge/verify_w114_compiler_endpoints.py",
+    "research/hodge/verify_w114_sign_normalization.py",
+    "research/hodge/verify_w114_explicit_ks_correspondence.py",
+    "research/hodge/verify_w114_explicit_artin_carrier.py",
+    "research/hodge/verify_w114_duplication_reflection_primitives.py",
+    "research/hodge/verify_w114_n3_transfer_correspondence.py",
+    "research/hodge/verify_w114_n3_projective_closure.py",
+    "research/hodge/w114_research_loop.py",
+    "research/hodge/HODGE_COMPASS_API.md",
+    "research/hodge/w114_signed_composition.py",
+    "research/hodge/test_w114_signed_composition.py",
+    "research/hodge/W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md"
+  ],
+  "software": [
+    {
+      "name": "Python",
+      "version": "3.12.14"
+    }
+  ],
+  "randomness": {
+    "used": false,
+    "generator": "",
+    "seed": null
+  }
+}

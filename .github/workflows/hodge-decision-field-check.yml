@@ -43,6 +43,17 @@ jobs:
           python3 research/hodge/df_hodge_02.py > "$RUNNER_TEMP/df_hodge_02.json"
           python3 -m py_compile research/hodge/df_hodge_02.py
 
+      - name: Verify Hodge correspondence and bounded composition checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s research/hodge -p 'test*.py'
+          python3 research/hodge/w114_signed_composition.py > "$RUNNER_TEMP/w114-signed-composition.json"
+          python3 research/hodge/w114_standard_divisors.py > "$RUNNER_TEMP/w114-standard-divisors.json"
+          python3 research/hodge/w114_standard_composition.py > "$RUNNER_TEMP/w114-standard-composition.json"
+          python3 research/hodge/w114_full_standard_composition.py > "$RUNNER_TEMP/w114-full-standard-composition.json"
+          python3 research/hodge/w114_aoki_square.py > "$RUNNER_TEMP/w114-aoki-square.json"
+
       - name: Compare fresh result with committed checkpoint
         shell: bash
         run: |

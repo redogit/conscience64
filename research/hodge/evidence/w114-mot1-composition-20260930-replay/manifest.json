@@ -1,0 +1,541 @@
+{
+  "schema_version": 2,
+  "claim_id": "W114-MOT-1-SIGNED-COMPOSITION-BOUNDED-20260930",
+  "repository": {
+    "commit": "3b213dfee92c8015ca3add613357c6819f9f24c7",
+    "dirty": true
+  },
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-c",
+    "import subprocess,sys; subprocess.run([sys.executable,'-m','unittest','discover','-s','research/hodge','-p','test*.py'],check=True); subprocess.run([sys.executable,'research/hodge/w114_signed_composition.py','--output','research/hodge/evidence/w114-mot1-composition-20260930-replay/result.json'],check=True)"
+  ],
+  "environment": {
+    "software": [
+      {
+        "name": "runner-python",
+        "version": "3.12.14"
+      },
+      {
+        "name": "Python",
+        "version": "3.12.14"
+      }
+    ],
+    "hardware": "Linux-6.18.44-x86_64-with-glibc2.39"
+  },
+  "mathematics": {
+    "assertion_tested": "Exact signed Gauss word, projective-transfer degree/projector normalizations, typed D2 tensor composition, covariance and direct split-prime Jacobi identities; W114 admission remains denied. Same-psi reflection phase and all-plus Fermat coefficient checked independently at both primes.",
+    "coefficient_domain": "Q for scalars; Z[x]/Phi_57 and Z[x]/Phi_114 for Jacobi sums; theorem-dependent Chow(Q(zeta_114),Q(zeta_114)).",
+    "conventions": "Homological graphs; rightmost-first composition; chi_d(g)=zeta_d; D2 source/target untwisted ratio positive for inverse edge; no characteristic-zero Gauss motive assumed.",
+    "inputs": [
+      "research/hodge/DF_HODGE_01_RESULT.json",
+      "research/hodge/DF_HODGE_02_RESULT.json",
+      "research/hodge/DF_HODGE_03_RESULT.json",
+      "research/hodge/EVEN_WALL_SHIODA_CUBIC_SCREEN_RESULT.json",
+      "research/hodge/EVEN_WALL_STAR_SPLIT_COSET_SEARCH_RESULT.json",
+      "research/hodge/HODGE_COMPASS_API.md",
+      "research/hodge/LIFTED_TWO_PAIR_COSET_RESULT.json",
+      "research/hodge/M39_STAR_SPLIT_RESULT.json",
+      "research/hodge/ODD_DIVISOR_INFLATION_COSET_RESULT.json",
+      "research/hodge/TWO_PAIR_COSET_SEARCH_RESULT.json",
+      "research/hodge/W114_COMPILER_ENDPOINTS_2026-09-25.md",
+      "research/hodge/W114_DUPLICATION_REFLECTION_PRIMITIVES_2026-09-25.md",
+      "research/hodge/W114_EXPLICIT_ARTIN_CARRIER_2026-09-25.md",
+      "research/hodge/W114_EXPLICIT_KATSURA_SHIODA_CORRESPONDENCE_2026-09-25.md",
+      "research/hodge/W114_FACTORIZATION_CONTROLS_RESULT.json",
+      "research/hodge/W114_LIFT570_TWO_PAIR_RESULT.json",
+      "research/hodge/W114_MOTIVIC_STANDARD_WORD_2026-09-25.md",
+      "research/hodge/W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md",
+      "research/hodge/W114_N3_TRANSFER_CORRESPONDENCE_2026-09-25.md",
+      "research/hodge/W114_RESEARCH_LOOP_SNAPSHOT.json",
+      "research/hodge/W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md",
+      "research/hodge/W114_SIGNED_COMPOSITION_CONTRACT_2026-09-30.json",
+      "research/hodge/W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md",
+      "research/hodge/claim_matrix.json",
+      "research/hodge/coset_star_split_search.py",
+      "research/hodge/decision_field_v0_1.py",
+      "research/hodge/df_hodge_02.py",
+      "research/hodge/even_wall_shioda_cubic_screen.cpp",
+      "research/hodge/even_wall_verify.py",
+      "research/hodge/m39_star_split_verify.py",
+      "research/hodge/odd_divisor_inflation_coset_search.py",
+      "research/hodge/test_even_wall_shioda_cubic_screen.py",
+      "research/hodge/test_verify_w114_compiler_endpoints.py",
+      "research/hodge/test_verify_w114_duplication_reflection_primitives.py",
+      "research/hodge/test_verify_w114_explicit_artin_carrier.py",
+      "research/hodge/test_verify_w114_explicit_ks_correspondence.py",
+      "research/hodge/test_verify_w114_motivic_standard_word.py",
+      "research/hodge/test_verify_w114_n3_projective_closure.py",
+      "research/hodge/test_verify_w114_n3_transfer_correspondence.py",
+      "research/hodge/test_w114_factorization_controls.py",
+      "research/hodge/test_w114_otsubo_yamazaki_factorization.py",
+      "research/hodge/test_w114_research_loop.py",
+      "research/hodge/test_w114_sign_normalization.py",
+      "research/hodge/test_w114_signed_composition.py",
+      "research/hodge/two_pair_coset_search.py",
+      "research/hodge/verify_w114_compiler_endpoints.py",
+      "research/hodge/verify_w114_duplication_reflection_primitives.py",
+      "research/hodge/verify_w114_explicit_artin_carrier.py",
+      "research/hodge/verify_w114_explicit_ks_correspondence.py",
+      "research/hodge/verify_w114_motivic_standard_word.py",
+      "research/hodge/verify_w114_n3_projective_closure.py",
+      "research/hodge/verify_w114_n3_transfer_correspondence.py",
+      "research/hodge/verify_w114_sign_normalization.py",
+      "research/hodge/w114_factorization_controls.py",
+      "research/hodge/w114_lift570_two_pair.py",
+      "research/hodge/w114_otsubo_yamazaki_factorization.py",
+      "research/hodge/w114_research_loop.py",
+      "research/hodge/w114_signed_composition.py"
+    ],
+    "bounds": {
+      "d": [
+        57,
+        114
+      ],
+      "n": [
+        2,
+        3
+      ],
+      "n2_a": [
+        7,
+        22,
+        23,
+        56
+      ],
+      "n3_a": [
+        4,
+        11,
+        16,
+        17
+      ],
+      "split_primes": [
+        229,
+        571
+      ],
+      "units_mod114": 36,
+      "random_sampling": false
+    },
+    "non_claims": [
+      "MOT-1 REMAINS OPEN",
+      "HODGE_CONJECTURE_REMAINS_OPEN",
+      "Nonzero product transfer is not a W114 residual correspondence or plane push.",
+      "Theorems are used, not independently reproved.",
+      "Two finite-field realizations are not a global MOT-1 realization proof."
+    ]
+  },
+  "randomness": {
+    "used": false,
+    "generator": "",
+    "seed": null
+  },
+  "run": {
+    "started_at": "2026-09-30T15:45:38.510119+00:00",
+    "runtime_seconds": 7.545681,
+    "exit_status": 0,
+    "status": "completed",
+    "timeout_seconds": 30.0,
+    "max_output_bytes": 1048576,
+    "resource_limits": {
+      "memory_bytes": 536870912,
+      "cpu_seconds": 20,
+      "max_cores": 1,
+      "max_threads": 1
+    },
+    "missing_results": [],
+    "invalid_results": []
+  },
+  "execution_artifacts": [
+    "research/hodge/DF_HODGE_01_RESULT.json",
+    "research/hodge/DF_HODGE_02_RESULT.json",
+    "research/hodge/DF_HODGE_03_RESULT.json",
+    "research/hodge/EVEN_WALL_SHIODA_CUBIC_SCREEN_RESULT.json",
+    "research/hodge/EVEN_WALL_STAR_SPLIT_COSET_SEARCH_RESULT.json",
+    "research/hodge/HODGE_COMPASS_API.md",
+    "research/hodge/LIFTED_TWO_PAIR_COSET_RESULT.json",
+    "research/hodge/M39_STAR_SPLIT_RESULT.json",
+    "research/hodge/ODD_DIVISOR_INFLATION_COSET_RESULT.json",
+    "research/hodge/TWO_PAIR_COSET_SEARCH_RESULT.json",
+    "research/hodge/W114_COMPILER_ENDPOINTS_2026-09-25.md",
+    "research/hodge/W114_DUPLICATION_REFLECTION_PRIMITIVES_2026-09-25.md",
+    "research/hodge/W114_EXPLICIT_ARTIN_CARRIER_2026-09-25.md",
+    "research/hodge/W114_EXPLICIT_KATSURA_SHIODA_CORRESPONDENCE_2026-09-25.md",
+    "research/hodge/W114_FACTORIZATION_CONTROLS_RESULT.json",
+    "research/hodge/W114_LIFT570_TWO_PAIR_RESULT.json",
+    "research/hodge/W114_MOTIVIC_STANDARD_WORD_2026-09-25.md",
+    "research/hodge/W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md",
+    "research/hodge/W114_N3_TRANSFER_CORRESPONDENCE_2026-09-25.md",
+    "research/hodge/W114_RESEARCH_LOOP_SNAPSHOT.json",
+    "research/hodge/W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md",
+    "research/hodge/W114_SIGNED_COMPOSITION_CONTRACT_2026-09-30.json",
+    "research/hodge/W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md",
+    "research/hodge/claim_matrix.json",
+    "research/hodge/coset_star_split_search.py",
+    "research/hodge/decision_field_v0_1.py",
+    "research/hodge/df_hodge_02.py",
+    "research/hodge/even_wall_shioda_cubic_screen.cpp",
+    "research/hodge/even_wall_verify.py",
+    "research/hodge/m39_star_split_verify.py",
+    "research/hodge/odd_divisor_inflation_coset_search.py",
+    "research/hodge/test_even_wall_shioda_cubic_screen.py",
+    "research/hodge/test_verify_w114_compiler_endpoints.py",
+    "research/hodge/test_verify_w114_duplication_reflection_primitives.py",
+    "research/hodge/test_verify_w114_explicit_artin_carrier.py",
+    "research/hodge/test_verify_w114_explicit_ks_correspondence.py",
+    "research/hodge/test_verify_w114_motivic_standard_word.py",
+    "research/hodge/test_verify_w114_n3_projective_closure.py",
+    "research/hodge/test_verify_w114_n3_transfer_correspondence.py",
+    "research/hodge/test_w114_factorization_controls.py",
+    "research/hodge/test_w114_otsubo_yamazaki_factorization.py",
+    "research/hodge/test_w114_research_loop.py",
+    "research/hodge/test_w114_sign_normalization.py",
+    "research/hodge/test_w114_signed_composition.py",
+    "research/hodge/two_pair_coset_search.py",
+    "research/hodge/verify_w114_compiler_endpoints.py",
+    "research/hodge/verify_w114_duplication_reflection_primitives.py",
+    "research/hodge/verify_w114_explicit_artin_carrier.py",
+    "research/hodge/verify_w114_explicit_ks_correspondence.py",
+    "research/hodge/verify_w114_motivic_standard_word.py",
+    "research/hodge/verify_w114_n3_projective_closure.py",
+    "research/hodge/verify_w114_n3_transfer_correspondence.py",
+    "research/hodge/verify_w114_sign_normalization.py",
+    "research/hodge/w114_factorization_controls.py",
+    "research/hodge/w114_lift570_two_pair.py",
+    "research/hodge/w114_otsubo_yamazaki_factorization.py",
+    "research/hodge/w114_research_loop.py",
+    "research/hodge/w114_signed_composition.py"
+  ],
+  "input_artifacts": [
+    {
+      "path": "research/hodge/DF_HODGE_01_RESULT.json",
+      "sha256": "7c3a2af022067b64a95565c552ec656fb449b20ae199c6732a62967bcfd99129",
+      "sha256_after": "7c3a2af022067b64a95565c552ec656fb449b20ae199c6732a62967bcfd99129"
+    },
+    {
+      "path": "research/hodge/DF_HODGE_02_RESULT.json",
+      "sha256": "97059a888b058210cf248e532556e4d0a38b9c5893af621bedf3d0abb440f779",
+      "sha256_after": "97059a888b058210cf248e532556e4d0a38b9c5893af621bedf3d0abb440f779"
+    },
+    {
+      "path": "research/hodge/DF_HODGE_03_RESULT.json",
+      "sha256": "5daa04f7915fa33e238966b18d59c1208d7b09f01e7be58fc67cdd9e54de912a",
+      "sha256_after": "5daa04f7915fa33e238966b18d59c1208d7b09f01e7be58fc67cdd9e54de912a"
+    },
+    {
+      "path": "research/hodge/EVEN_WALL_SHIODA_CUBIC_SCREEN_RESULT.json",
+      "sha256": "8b9a46f4712fa02cce623517e036493a4b791498306a04979dfea09ed445d908",
+      "sha256_after": "8b9a46f4712fa02cce623517e036493a4b791498306a04979dfea09ed445d908"
+    },
+    {
+      "path": "research/hodge/EVEN_WALL_STAR_SPLIT_COSET_SEARCH_RESULT.json",
+      "sha256": "a3bb2ff5721ec8f106921c326f2d700946c616eb14c0afed01571f04f3e8b550",
+      "sha256_after": "a3bb2ff5721ec8f106921c326f2d700946c616eb14c0afed01571f04f3e8b550"
+    },
+    {
+      "path": "research/hodge/HODGE_COMPASS_API.md",
+      "sha256": "7a2032ac0a7a593bf77c85d4a9d9f6a70d57842abc1335f8f18b4e524fc1bb75",
+      "sha256_after": "7a2032ac0a7a593bf77c85d4a9d9f6a70d57842abc1335f8f18b4e524fc1bb75"
+    },
+    {
+      "path": "research/hodge/LIFTED_TWO_PAIR_COSET_RESULT.json",
+      "sha256": "e7268eb31ef7499628acbcb01b98cf1e5ac14ba46bb652ecf8cd0ca4f36abd2a",
+      "sha256_after": "e7268eb31ef7499628acbcb01b98cf1e5ac14ba46bb652ecf8cd0ca4f36abd2a"
+    },
+    {
+      "path": "research/hodge/M39_STAR_SPLIT_RESULT.json",
+      "sha256": "c42e8245a9cd70c2b6b3619c751eee8408b3c42e7cf9a1c1f44f7b31d9c9dd22",
+      "sha256_after": "c42e8245a9cd70c2b6b3619c751eee8408b3c42e7cf9a1c1f44f7b31d9c9dd22"
+    },
+    {
+      "path": "research/hodge/ODD_DIVISOR_INFLATION_COSET_RESULT.json",
+      "sha256": "9737f767388f79e1fa55ba615c49820be6181c4274f589ed707aa5a76602475a",
+      "sha256_after": "9737f767388f79e1fa55ba615c49820be6181c4274f589ed707aa5a76602475a"
+    },
+    {
+      "path": "research/hodge/TWO_PAIR_COSET_SEARCH_RESULT.json",
+      "sha256": "484295510c20d5ae7171beb6d86253c207873479ec0aaa4285e185a6e505a648",
+      "sha256_after": "484295510c20d5ae7171beb6d86253c207873479ec0aaa4285e185a6e505a648"
+    },
+    {
+      "path": "research/hodge/W114_COMPILER_ENDPOINTS_2026-09-25.md",
+      "sha256": "628ad5dbced7cf8fb2c49e07e4217d6cd845a7bc9d15d575a4532419814b1c6b",
+      "sha256_after": "628ad5dbced7cf8fb2c49e07e4217d6cd845a7bc9d15d575a4532419814b1c6b"
+    },
+    {
+      "path": "research/hodge/W114_DUPLICATION_REFLECTION_PRIMITIVES_2026-09-25.md",
+      "sha256": "2747c560421628932ed8f3f0cc0c8805c4a523b661ea0758c44c661104efef83",
+      "sha256_after": "2747c560421628932ed8f3f0cc0c8805c4a523b661ea0758c44c661104efef83"
+    },
+    {
+      "path": "research/hodge/W114_EXPLICIT_ARTIN_CARRIER_2026-09-25.md",
+      "sha256": "f32681bbd429ee903296eba8cbe76a9cd6d8146e9e511e1cab4cd996869ab7e8",
+      "sha256_after": "f32681bbd429ee903296eba8cbe76a9cd6d8146e9e511e1cab4cd996869ab7e8"
+    },
+    {
+      "path": "research/hodge/W114_EXPLICIT_KATSURA_SHIODA_CORRESPONDENCE_2026-09-25.md",
+      "sha256": "a1d809f357e20a7fd86a1f1d57ad52fed0ebaca5582aed9a8843ab2c3d999463",
+      "sha256_after": "a1d809f357e20a7fd86a1f1d57ad52fed0ebaca5582aed9a8843ab2c3d999463"
+    },
+    {
+      "path": "research/hodge/W114_FACTORIZATION_CONTROLS_RESULT.json",
+      "sha256": "f368961b7728c95798dc4ea3b73f261f6d0b2c5507dcf357db9403fd23fc58b9",
+      "sha256_after": "f368961b7728c95798dc4ea3b73f261f6d0b2c5507dcf357db9403fd23fc58b9"
+    },
+    {
+      "path": "research/hodge/W114_LIFT570_TWO_PAIR_RESULT.json",
+      "sha256": "930c39b6b076e9e39ed71a67d7b2cef8d1ceb15955242e6beb147355fbfc1e9b",
+      "sha256_after": "930c39b6b076e9e39ed71a67d7b2cef8d1ceb15955242e6beb147355fbfc1e9b"
+    },
+    {
+      "path": "research/hodge/W114_MOTIVIC_STANDARD_WORD_2026-09-25.md",
+      "sha256": "d4a11a5c5b6ec1797c655b472268281cb4551f16d9ec8add9692b565735d9890",
+      "sha256_after": "d4a11a5c5b6ec1797c655b472268281cb4551f16d9ec8add9692b565735d9890"
+    },
+    {
+      "path": "research/hodge/W114_N3_PROJECTIVE_CLOSURE_2026-09-25.md",
+      "sha256": "17560686c0c348a57b8511e2c0c41c886110fa99737d82f7d30e9554e7b647a6",
+      "sha256_after": "17560686c0c348a57b8511e2c0c41c886110fa99737d82f7d30e9554e7b647a6"
+    },
+    {
+      "path": "research/hodge/W114_N3_TRANSFER_CORRESPONDENCE_2026-09-25.md",
+      "sha256": "074c8ae6cb47f0ea69ec087dd268e66730430c9cf783fd4356a1c196acd03221",
+      "sha256_after": "074c8ae6cb47f0ea69ec087dd268e66730430c9cf783fd4356a1c196acd03221"
+    },
+    {
+      "path": "research/hodge/W114_RESEARCH_LOOP_SNAPSHOT.json",
+      "sha256": "af25699eba2b809e8b070cc2afa7a0539e7d69d2465063b5ea9870162c5efbea",
+      "sha256_after": "af25699eba2b809e8b070cc2afa7a0539e7d69d2465063b5ea9870162c5efbea"
+    },
+    {
+      "path": "research/hodge/W114_SIGNED_COMPOSITION_AUDIT_2026-09-30.md",
+      "sha256": "977c71586edcf94d61b626f25dbd73348ba7d14fbd8e8127eb7c1dd4ba8c1eda",
+      "sha256_after": "977c71586edcf94d61b626f25dbd73348ba7d14fbd8e8127eb7c1dd4ba8c1eda"
+    },
+    {
+      "path": "research/hodge/W114_SIGNED_COMPOSITION_CONTRACT_2026-09-30.json",
+      "sha256": "fddee62950c5df9ae835e9c68a20981215cccecfa940ea722c8eb4d41d020461",
+      "sha256_after": "fddee62950c5df9ae835e9c68a20981215cccecfa940ea722c8eb4d41d020461"
+    },
+    {
+      "path": "research/hodge/W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md",
+      "sha256": "efd343543f406fe148e2d8fcdfb16f92f9565c117364689aef36b6b57eea9472",
+      "sha256_after": "efd343543f406fe148e2d8fcdfb16f92f9565c117364689aef36b6b57eea9472"
+    },
+    {
+      "path": "research/hodge/claim_matrix.json",
+      "sha256": "ccae3ca16df127da8c3db40e76f1b5d27da9a3dd16a87af8cec56990a2d2924e",
+      "sha256_after": "ccae3ca16df127da8c3db40e76f1b5d27da9a3dd16a87af8cec56990a2d2924e"
+    },
+    {
+      "path": "research/hodge/coset_star_split_search.py",
+      "sha256": "853722109f156a010f2cd907a6189a0467b7d36ff95bd53a65aa6b2f266c053d",
+      "sha256_after": "853722109f156a010f2cd907a6189a0467b7d36ff95bd53a65aa6b2f266c053d"
+    },
+    {
+      "path": "research/hodge/decision_field_v0_1.py",
+      "sha256": "3080d9ccdb779247ed6a1f1c188f227940ab6c09c2b173a9f72ca452a4be69c8",
+      "sha256_after": "3080d9ccdb779247ed6a1f1c188f227940ab6c09c2b173a9f72ca452a4be69c8"
+    },
+    {
+      "path": "research/hodge/df_hodge_02.py",
+      "sha256": "47daaedfd1f71f5432df5743ef7e46c0c8094e390bacbfe413b14bf7defc9c77",
+      "sha256_after": "47daaedfd1f71f5432df5743ef7e46c0c8094e390bacbfe413b14bf7defc9c77"
+    },
+    {
+      "path": "research/hodge/even_wall_shioda_cubic_screen.cpp",
+      "sha256": "2e044bca11f586d409b570fef38afa59cb7bd72754cdcb501434aeb65fd58fea",
+      "sha256_after": "2e044bca11f586d409b570fef38afa59cb7bd72754cdcb501434aeb65fd58fea"
+    },
+    {
+      "path": "research/hodge/even_wall_verify.py",
+      "sha256": "239c9e5d42345d06358ba671bf4f3fa7a7b09e6e48519709d9e4f7dd8bd060e7",
+      "sha256_after": "239c9e5d42345d06358ba671bf4f3fa7a7b09e6e48519709d9e4f7dd8bd060e7"
+    },
+    {
+      "path": "research/hodge/m39_star_split_verify.py",
+      "sha256": "f665f7b42914e68522d4dac54d4302a18da52edfd648b45f2dcc2ad7694d9bff",
+      "sha256_after": "f665f7b42914e68522d4dac54d4302a18da52edfd648b45f2dcc2ad7694d9bff"
+    },
+    {
+      "path": "research/hodge/odd_divisor_inflation_coset_search.py",
+      "sha256": "eaef16cd7c0908c4108f0f8510160e2a168c09c8af868203be11f9f37285ccc2",
+      "sha256_after": "eaef16cd7c0908c4108f0f8510160e2a168c09c8af868203be11f9f37285ccc2"
+    },
+    {
+      "path": "research/hodge/test_even_wall_shioda_cubic_screen.py",
+      "sha256": "06aa16715db0386834f3cfd3fbf169c90e69a4092edde7c64b71b30d936bbb13",
+      "sha256_after": "06aa16715db0386834f3cfd3fbf169c90e69a4092edde7c64b71b30d936bbb13"
+    },
+    {
+      "path": "research/hodge/test_verify_w114_compiler_endpoints.py",
+      "sha256": "e36335d60468abeabc7aa46aef9dcb1306e858ba4f7e2fadf5fc03d02b5256c2",
+      "sha256_after": "e36335d60468abeabc7aa46aef9dcb1306e858ba4f7e2fadf5fc03d02b5256c2"
+    },
+    {
+      "path": "research/hodge/test_verify_w114_duplication_reflection_primitives.py",
+      "sha256": "b58e72b4b5ea993e7626f4bd3a0f8eb4f8edaaf6e376f8498b78c07e7ade6af4",
+      "sha256_after": "b58e72b4b5ea993e7626f4bd3a0f8eb4f8edaaf6e376f8498b78c07e7ade6af4"
+    },
+    {
+      "path": "research/hodge/test_verify_w114_explicit_artin_carrier.py",
+      "sha256": "548ffca6fd0484fb973e41f9a91b0274f5fb8cf2f2c6ff1063f41fb78bce25a9",
+      "sha256_after": "548ffca6fd0484fb973e41f9a91b0274f5fb8cf2f2c6ff1063f41fb78bce25a9"
+    },
+    {
+      "path": "research/hodge/test_verify_w114_explicit_ks_correspondence.py",
+      "sha256": "c0e5a42e4e2b92c3c0608153966299299f3059ce07aa26ece0d372f2dbf99f38",
+      "sha256_after": "c0e5a42e4e2b92c3c0608153966299299f3059ce07aa26ece0d372f2dbf99f38"
+    },
+    {
+      "path": "research/hodge/test_verify_w114_motivic_standard_word.py",
+      "sha256": "442622df4145d2ede0f0299bc23ab1459d766126ecb65f6d0604de0ccf1afa66",
+      "sha256_after": "442622df4145d2ede0f0299bc23ab1459d766126ecb65f6d0604de0ccf1afa66"
+    },
+    {
+      "path": "research/hodge/test_verify_w114_n3_projective_closure.py",
+      "sha256": "eae06bb99a78c300552364434ee3fbdcf556f47c8dc0f83e37ebd068dedc5660",
+      "sha256_after": "eae06bb99a78c300552364434ee3fbdcf556f47c8dc0f83e37ebd068dedc5660"
+    },
+    {
+      "path": "research/hodge/test_verify_w114_n3_transfer_correspondence.py",
+      "sha256": "c55784bb5ea0346af2bc66bb3577113fd8c731fabde44644d1a20b410d8e4d4c",
+      "sha256_after": "c55784bb5ea0346af2bc66bb3577113fd8c731fabde44644d1a20b410d8e4d4c"
+    },
+    {
+      "path": "research/hodge/test_w114_factorization_controls.py",
+      "sha256": "2c3a59582e9ccf9d5ddc44cb51e387ca6e38f3a5052b04ee446b756d03579d52",
+      "sha256_after": "2c3a59582e9ccf9d5ddc44cb51e387ca6e38f3a5052b04ee446b756d03579d52"
+    },
+    {
+      "path": "research/hodge/test_w114_otsubo_yamazaki_factorization.py",
+      "sha256": "dda352416858c27f79cd8bbaeb410823ebd60a89b4bfe0cd36332abe8c787246",
+      "sha256_after": "dda352416858c27f79cd8bbaeb410823ebd60a89b4bfe0cd36332abe8c787246"
+    },
+    {
+      "path": "research/hodge/test_w114_research_loop.py",
+      "sha256": "95dfba26c8c46cf30dc148744bae6d063344702d6644c2922231bd30f9f10bd8",
+      "sha256_after": "95dfba26c8c46cf30dc148744bae6d063344702d6644c2922231bd30f9f10bd8"
+    },
+    {
+      "path": "research/hodge/test_w114_sign_normalization.py",
+      "sha256": "becefbadf73ea54cf0bb5312b7533cfd4536d4070b1f0b8350f99a3074056cf4",
+      "sha256_after": "becefbadf73ea54cf0bb5312b7533cfd4536d4070b1f0b8350f99a3074056cf4"
+    },
+    {
+      "path": "research/hodge/test_w114_signed_composition.py",
+      "sha256": "f8daa7d53fc0c61dbb15b1e312946d6489f340cc3841d62022544ca8bb2461ce",
+      "sha256_after": "f8daa7d53fc0c61dbb15b1e312946d6489f340cc3841d62022544ca8bb2461ce"
+    },
+    {
+      "path": "research/hodge/two_pair_coset_search.py",
+      "sha256": "9dc814f3a0dc1a4eaa8d7d82864b0d9088fd5ece22d86093aa16e282060d8ea7",
+      "sha256_after": "9dc814f3a0dc1a4eaa8d7d82864b0d9088fd5ece22d86093aa16e282060d8ea7"
+    },
+    {
+      "path": "research/hodge/verify_w114_compiler_endpoints.py",
+      "sha256": "0dddebfae507dd7c33695b96ac10fe33285c10c054bf3b1d2f05b4ad309a22e7",
+      "sha256_after": "0dddebfae507dd7c33695b96ac10fe33285c10c054bf3b1d2f05b4ad309a22e7"
+    },
+    {
+      "path": "research/hodge/verify_w114_duplication_reflection_primitives.py",
+      "sha256": "4657029b972b64634e1aa3d726c2162648529898c6bfb40aa1c4acf12ff7f2f8",
+      "sha256_after": "4657029b972b64634e1aa3d726c2162648529898c6bfb40aa1c4acf12ff7f2f8"
+    },
+    {
+      "path": "research/hodge/verify_w114_explicit_artin_carrier.py",
+      "sha256": "233b7a79b1f2ddaba5663ff25ec3551e16b02131586c1fe4ca3d987baa69221f",
+      "sha256_after": "233b7a79b1f2ddaba5663ff25ec3551e16b02131586c1fe4ca3d987baa69221f"
+    },
+    {
+      "path": "research/hodge/verify_w114_explicit_ks_correspondence.py",
+      "sha256": "8c415ae7450f86a4a00f12507fe94210c53b6cbd8582b9cdee6f8234c40a7780",
+      "sha256_after": "8c415ae7450f86a4a00f12507fe94210c53b6cbd8582b9cdee6f8234c40a7780"
+    },
+    {
+      "path": "research/hodge/verify_w114_motivic_standard_word.py",
+      "sha256": "89d45f335ee1f70520a359750ec1287afb0a1ed389beda919e666ef8e84b25e2",
+      "sha256_after": "89d45f335ee1f70520a359750ec1287afb0a1ed389beda919e666ef8e84b25e2"
+    },
+    {
+      "path": "research/hodge/verify_w114_n3_projective_closure.py",
+      "sha256": "9e9d70b3d0b3e9984a918fa8fc7c794df3130b80d12ee82601bcd4ad752d22e6",
+      "sha256_after": "9e9d70b3d0b3e9984a918fa8fc7c794df3130b80d12ee82601bcd4ad752d22e6"
+    },
+    {
+      "path": "research/hodge/verify_w114_n3_transfer_correspondence.py",
+      "sha256": "c8c8df5e8fbd2004f37854990626d4e0fef39f80765155d44ed724aba4442970",
+      "sha256_after": "c8c8df5e8fbd2004f37854990626d4e0fef39f80765155d44ed724aba4442970"
+    },
+    {
+      "path": "research/hodge/verify_w114_sign_normalization.py",
+      "sha256": "e4abfa95e57eb8a948cdf2e82c79b3200be2b34cc80d2d4cb5cc3c348377243c",
+      "sha256_after": "e4abfa95e57eb8a948cdf2e82c79b3200be2b34cc80d2d4cb5cc3c348377243c"
+    },
+    {
+      "path": "research/hodge/w114_factorization_controls.py",
+      "sha256": "a00a7c61592cd186bd1694b0d5064a693ed9c71dc4080816fe383e73eddce137",
+      "sha256_after": "a00a7c61592cd186bd1694b0d5064a693ed9c71dc4080816fe383e73eddce137"
+    },
+    {
+      "path": "research/hodge/w114_lift570_two_pair.py",
+      "sha256": "95d2384455a5b72f28c647f49f313034e8febe0f5cf164f89583933d8a97c677",
+      "sha256_after": "95d2384455a5b72f28c647f49f313034e8febe0f5cf164f89583933d8a97c677"
+    },
+    {
+      "path": "research/hodge/w114_otsubo_yamazaki_factorization.py",
+      "sha256": "90a712e225af485e839536db39cccf5113adec349652f5d63f68f6d0d2c13096",
+      "sha256_after": "90a712e225af485e839536db39cccf5113adec349652f5d63f68f6d0d2c13096"
+    },
+    {
+      "path": "research/hodge/w114_research_loop.py",
+      "sha256": "c69dd76aade86ff43be3369066b925a969b23357b39a69298b261b14d12de311",
+      "sha256_after": "c69dd76aade86ff43be3369066b925a969b23357b39a69298b261b14d12de311"
+    },
+    {
+      "path": "research/hodge/w114_signed_composition.py",
+      "sha256": "2ae4e375c31537934c559707626e0ddbeebf9a784ace3873c26bfcd499667dca",
+      "sha256_after": "2ae4e375c31537934c559707626e0ddbeebf9a784ace3873c26bfcd499667dca"
+    }
+  ],
+  "output_directory": "research/hodge/evidence/w114-mot1-composition-20260930-replay",
+  "declared_results": [
+    "research/hodge/evidence/w114-mot1-composition-20260930-replay/result.json"
+  ],
+  "outputs": [
+    {
+      "path": "research/hodge/evidence/w114-mot1-composition-20260930-replay/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "log"
+    },
+    {
+      "path": "research/hodge/evidence/w114-mot1-composition-20260930-replay/stderr.txt",
+      "sha256": "f2b2ed5bd29887a0f84db65731ce395428090f7503a27253f3fde5e039561d2f",
+      "kind": "log"
+    },
+    {
+      "path": "research/hodge/evidence/w114-mot1-composition-20260930-replay/result.json",
+      "sha256": "ce8852718b0efb9f1a403e952b9d225b2d12527a8f74df9c60a1cfddf56b89ab",
+      "kind": "result"
+    }
+  ],
+  "checks": [
+    {
+      "check": "input hashes unchanged",
+      "passed": true
+    },
+    {
+      "check": "process exited successfully within enforced limits",
+      "passed": true
+    },
+    {
+      "check": "declared result files are present and regular",
+      "passed": true
+    }
+  ],
+  "result": "Run completed; mathematical assertion requires interpretation and review.",
+  "residual_risks": [
+    "Command success does not establish the mathematical interpretation.",
+    "Only listed input artifacts are pinned; external dependencies need recorded versions.",
+    "The thread cap uses conventional environment variables; a child program may ignore them.",
+    "The POSIX CPU-time limit is per process, not an aggregate descendant budget."
+  ]
+}
