@@ -1,0 +1,13 @@
+/baseline_cli
+/baseline_instrumented
+/baseline_instrumented.c
+/reclamation
+/test_reclamation
+/test_baseline
+/test_sanitized
+/measure
+/model_fixture
+/fixture.znn
+/inputs/
+/*.tmp
+/core*

@@ -415,19 +415,30 @@
     {
       "id": "bgzf-compressed-text-ai",
       "canonicalName": "BGZF Compressed Text AI",
-      "aliases": [],
-      "domain": "model-research",
-      "sourceLocations": [],
-      "provenanceStatus": "known-from-library-history",
-      "publicationStatus": "unresolved",
-      "state": "unresolved",
-      "predecessors": [],
-      "successors": [],
-      "preservationStatus": "must-locate-or-retain-unresolved",
-      "sourceKinds": [
-        "historical-context-seed"
+      "aliases": [
+        "BGZF / ZIP Compressed-Text AI"
       ],
-      "notes": []
+      "domain": "model-research",
+      "sourceLocations": [
+        "research/projects/bgzf-compressed-text-ai.md",
+        "research/compressed-text-ai/2026-09-30/README.md"
+      ],
+      "provenanceStatus": "known-from-library-history",
+      "publicationStatus": "public",
+      "state": "successor",
+      "predecessors": [
+        "bgzf"
+      ],
+      "successors": [],
+      "preservationStatus": "located",
+      "sourceKinds": [
+        "historical-context-seed",
+        "research-successor-record"
+      ],
+      "notes": [
+        "2026-09-30 five-experiment successor preserves BGZF bounded lineage and adds the ZIP 32 KiB symbolic frontier plus associative learned operator.",
+        "Real-corpus tests retain the semantic plateau; affine width alone is not promoted as the solution."
+      ]
     },
     {
       "id": "blank-page-lab",
