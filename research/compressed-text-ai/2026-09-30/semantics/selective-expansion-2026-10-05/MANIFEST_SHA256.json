@@ -1,0 +1,21 @@
+{
+  "schema": "selective-expansion-manifest/v2",
+  "files": {
+    "README.md": {
+      "sha256": "95571eb718b8465c8d205787af7b4fff16f0093efde8fca2828b93bd8bc46f1a",
+      "bytes": 5588
+    },
+    "run_probe.py.gz": {
+      "sha256": "693932c7d84bf69da828fe220e56101e21f147a659cb405865bd16bc5ddf7e78",
+      "bytes": 7227,
+      "uncompressed_sha256": "d8cf9e0b0795bde06d6631c17bc8860c829d413e55187ab17c5065e5af322783",
+      "uncompressed_bytes": 19510
+    },
+    "results.json.gz": {
+      "sha256": "fd88068c63a9fd1f78d60e76be01c5b1e4222ec7e37c634a744c3c523528584e",
+      "bytes": 3084,
+      "uncompressed_sha256": "b627b1a1a3cddfe807e042fc19cad3de103d085932b04dbc4bfad5af11353f76",
+      "uncompressed_bytes": 13496
+    }
+  }
+}

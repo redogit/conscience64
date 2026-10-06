@@ -249,3 +249,14 @@ The family-level affine plateau and bounded nonlinear-gap direction remain sourc
 The [systems probe](systems/live-node-reclamation-2026-10-03/README.md) preserves the recovered copy implementation and both historical Experiment 2 reports, and adds one mark/sweep slot-reuse variant. On newly retained, matched 924,000-byte stored/DEFLATE workloads, seven-process median wall times improve from **3.5511 to 0.4462 seconds** and **0.05882 to 0.01200 seconds**, respectively. Peak RSS improves from **78,084 to 42,240 KiB** and **6,332 to 3,072 KiB**. Collection reconstruction and reclamation costs are charged separately in the retained results. Exact raw-carrier checks, 361 distinct recompression fixtures, four larger collection counterprobes and both inherited 8/8 selftests pass with zero embedding/classifier drift in the tested cases.
 
 **Identity limit:** original historical benchmark ZIPs and recompression generator/fixture identities were not recovered. These fresh measurements are not an exact historical workload rerun; the original measurements above remain intact. This is a bounded systems gain only. No semantic-model or affine-family change is included.
+
+
+## Bounded uncertainty-triggered selective expansion probe — 2026-10-05
+
+The [single bounded semantic residual probe](semantics/selective-expansion-2026-10-05/README.md) uses only uncertainty from the closed exact 128-D associative carrier to decide whether to expose one 64-logical-byte local window to an 18,292-byte nonlinear reader.
+
+- deterministic task reconstruction, sentiment: **61.65% → 66.17% balanced accuracy at 25.59% expanded logical bytes**;
+- deterministic task reconstruction, POS: **76.80% → 82.24% at 50.49% expanded logical bytes**;
+- recompression counterprobe: **128 cases per task**, with **0 trigger mismatches**, **0 logical-window mismatches**, and **0 exact whole-vs-stream carrier drift**.
+
+**Claim ceiling:** the historical Experiment-4 generator/split identity remains unrecovered. These curves are internally comparable within the new reconstruction; retained affine and CNN results are reference bands rather than same-split head-to-head measurements. `RECONSTRUCTION != ORIGINAL_IDENTITY` remains in force. The requested nonlinear-residual probe stops here without a width/window/seed sweep.
