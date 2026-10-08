@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {createRuntime,KDKernel} from "./core.mjs";
 import {DOE_RUNS,experimentReceipt} from "./doe.mjs";
+import {loadCapabilityProbe} from "./wasm-probe.mjs";
 
 const kd=new KDKernel({activeLimit:3});
 const a=kd.observe("alpha obligation authority",{consequential:true});
@@ -37,4 +38,9 @@ for(const factor of ["retrievalHybrid","consequentialAnchor","deltaReport","oneD
 const receipt=experimentReceipt();
 assert.equal(receipt.claimCeiling,"SYNTHETIC_SCREENING_ONLY");
 assert.equal(receipt.runs.length,16);
-console.log("PASS human-intellect KD/obligation/controller/DOE vertical slice");
+
+const wasm=await loadCapabilityProbe();
+assert.equal(wasm.valid,true);
+assert.equal(Object.keys(wasm.instance.exports).length,0,"capability probe starts with no exports/imports");
+
+console.log("PASS human-intellect KD/obligation/controller/DOE/Wasm vertical slice");
