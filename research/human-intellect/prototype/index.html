@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Human-Level Intellect KD Testbed</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+<h1>Human-Level Intellect — KD Testbed</h1>
+<p class="lede">A local-first engineering prototype for bounded activation, recoverable lineage, explicit unknowns, authority gates, and one-degree repair. It is not a claim of human-level intelligence.</p>
+<div class="metrics" aria-label="Runtime status">
+<p>Budget remaining: <strong id="budget">—</strong></p>
+<p>Last controller decision: <strong id="decision">—</strong></p>
+</div>
+<div class="grid">
+<section>
+<h2>1. Original obligation</h2>
+<form id="obligation-form">
+<label>O0 — original obligation<textarea id="o0" required></textarea></label>
+<label>Reason<input id="reason" required></label>
+<label>Authority<input id="authority" required></label>
+<label>Authority state<select id="authority-status"><option value="authorized">authorized</option><option value="ambiguous">ambiguous</option><option value="unavailable">unavailable</option><option value="rejected">rejected</option></select></label>
+<label>Budget<input id="budget-input" type="number" min="0" value="10" required></label>
+<label>Cost if unresolved<input id="unresolved-cost" type="number" min="0" value="20" required></label>
+<label>Expected benefit<input id="benefit" value="reduce unresolved obligation" required></label>
+<label>Stop / return condition<input id="stop" value="budget exhausted or obligation satisfied" required></label>
+<button type="submit">Record obligation</button>
+</form>
+</section>
+<section>
+<h2>2. Observe</h2>
+<form id="observe-form">
+<label>Observation<textarea id="observation"></textarea></label>
+<label>Epistemic status<select id="epistemic"><option>observed</option><option>inferred</option><option>uncertain</option><option>unknown</option></select></label>
+<label><span><input id="consequential" type="checkbox"> consequential</span></label>
+<button type="submit">Observe</button>
+</form>
+<form id="unknown-form"><label>Explicit unknown<input id="unknown-input"></label><button type="submit">Preserve unknown</button></form>
+</section>
+<section>
+<h2>3. Working set</h2>
+<label>Relevance query<input id="query" placeholder="What matters now?"></label>
+<label>Retrieval mode<select id="retrieval-mode"><option value="hybrid">hybrid</option><option value="relation">relation-only</option></select></label>
+<div class="actions"><button id="activate" type="button">Activate neighborhood</button><button id="decay" type="button">Decay activation</button></div>
+<h3>Active</h3><ul id="active"></ul>
+</section>
+<section>
+<h2>4. Controller</h2>
+<p>Consequential work is checked against authority and budget before it proceeds.</p>
+<div class="actions"><button id="controller-check" type="button">Check consequential step</button><button id="repair" type="button">Propose 1° repair</button></div>
+<h3>Unknown remainder</h3><ul id="unknown"></ul>
+</section>
+<section><h2>5. Lineage</h2><ul id="lineage"></ul></section>
+<section><h2>6. Receipts</h2><p>Exports are local files. The DOE is synthetic screening only.</p><button id="doe" type="button">Run/export 16-run DOE</button></section>
+</div>
+<p id="status" class="status" role="status" aria-live="polite">Ready.</p>
+</main>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>
