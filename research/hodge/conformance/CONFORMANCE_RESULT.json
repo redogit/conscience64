@@ -1,0 +1,27 @@
+{
+  "schema": "conscience64/hodge-conformance/v0.2",
+  "protocol_kernel": "v0.1",
+  "suite": "E001-E010",
+  "hard_boundaries": [
+    "SOFTWARE_PASS != MATHEMATICAL_PROOF",
+    "METHOD_TRANSFER != EVIDENCE_TRANSFER",
+    "SIMILARITY != SOURCE_IDENTITY",
+    "VISUALIZATION != EVIDENCE_PROMOTION",
+    "FLOATING_POINT != EXACT",
+    "TIMEOUT != NEGATIVE_RESULT"
+  ],
+  "results": [
+    {"id":"E001","result":"PASS","observation":{"baseline_hash":"c3b8ae9299fe16ecfdffdb6621b52775e99b413d6d6d82eaf11a6c652b0478c6","final_hash":"c3b8ae9299fe16ecfdffdb6621b52775e99b413d6d6d82eaf11a6c652b0478c6"},"counterprobe":{"rollback_removed_mutant_killed":true},"claim_ceiling":"State conformance only; no mathematical claim."},
+    {"id":"E002","result":"PASS","observation":{"accepted":[false,false,false,false]},"counterprobe":{"unsafe_promoter_accepts_all":[true,true,true,true],"mutant_killed":true},"claim_ceiling":"Authority policy only."},
+    {"id":"E003","result":"PASS","observation":{"cases":25,"all_three_equal":true},"counterprobe":{"one_invariant_mutation_detected":true},"claim_ceiling":"Bounded 2x2 Smith cross-verification only."},
+    {"id":"E004","result":"PASS","observation":{"witness":[{"load_features_per_sector":64,"unique_top1_recovery":0.8703125,"true_pair_bit_jaccard_mean":0.8215553475526514},{"load_features_per_sector":72,"unique_top1_recovery":0.6265625,"true_pair_bit_jaccard_mean":0.8533631677348336}],"identity_inference_allowed":false},"counterprobe":{"unsafe_similarity_implies_identity_mutant":true,"mutant_killed":true},"claim_ceiling":"Preserved synthetic BRL counterexample only."},
+    {"id":"E005","result":"PASS","observation":{"constructed_lines":48,"intersection_matrix":[48,48],"rational_rank":20},"counterprobe":{"asymmetric_intersection_mutant_detected":true},"claim_ceiling":"Exact finite line-span calibration; not a general Hodge result."},
+    {"id":"E006","result":"PASS","observation":{"math_state_unchanged":true},"counterprobe":{"view_in_authoritative_hash_mutant_changes_identity":true},"claim_ceiling":"Visualization isolation only."},
+    {"id":"E007","result":"PASS","observation":{"obligations":9,"incomplete_refused":true,"complete_after_all_satisfied":true},"counterprobe":{"one_open_obligation_blocks_completion":true},"claim_ceiling":"Obligation-generation semantics only."},
+    {"id":"E008","result":"PASS","observation":{"recovered":{"A":1}},"counterprobe":{"unsafe_overlay_survives_without_crash_rule":true},"claim_ceiling":"Recovery semantics only."},
+    {"id":"E009","result":"PASS","observation":{"isolated":true,"merge_order_invariant":true},"counterprobe":{"conflicting_parallel_write_rejected":true},"claim_ceiling":"Parallel isolation semantics only."},
+    {"id":"E010","result":"PASS","observation":{"canonical":{"verb":"COMPUTE","op":"SmithNormalForm","target":"L","exactness":"EXACT"},"three_forms_equivalent":true},"counterprobe":{"three_object_compare_requires_resolution":true},"claim_ceiling":"Bounded parser conformance only."}
+  ],
+  "summary": {"pass":10,"fail":0,"partial":0,"inconclusive":0},
+  "suite_hash": "6b670f2702b6a9fb8694c40cfdb029340aad0081584e62d8e9b69e558a94f547"
+}
