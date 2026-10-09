@@ -54,6 +54,14 @@ jobs:
           python3 research/hodge/w114_full_standard_composition.py > "$RUNNER_TEMP/w114-full-standard-composition.json"
           python3 research/hodge/w114_aoki_square.py > "$RUNNER_TEMP/w114-aoki-square.json"
 
+      - name: Run Hodge command-event conformance suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --version
+          python3 -m py_compile research/hodge/conformance/hodge_conformance.py
+          python3 research/hodge/conformance/hodge_conformance.py
+
       - name: Compare fresh result with committed checkpoint
         shell: bash
         run: |
