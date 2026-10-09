@@ -1,0 +1,13 @@
+{
+  "schema": "brl/v2.2/identity-cliff-fixture",
+  "status": "PRESERVED_SYNTHETIC_EXPERIMENT",
+  "claim_ceiling": "Synthetic BRL load sweep only; not a universal occupancy threshold.",
+  "baseline": [
+    {"load_features_per_sector": 56, "unique_top1_recovery": 0.9640625, "true_pair_bit_jaccard_mean": 0.7821542865254564},
+    {"load_features_per_sector": 64, "unique_top1_recovery": 0.8703125, "true_pair_bit_jaccard_mean": 0.8215553475526514},
+    {"load_features_per_sector": 72, "unique_top1_recovery": 0.6265625, "true_pair_bit_jaccard_mean": 0.8533631677348336},
+    {"load_features_per_sector": 80, "unique_top1_recovery": 0.4578125, "true_pair_bit_jaccard_mean": 0.8810714312166233},
+    {"load_features_per_sector": 88, "unique_top1_recovery": 0.3234375, "true_pair_bit_jaccard_mean": 0.903},
+    {"load_features_per_sector": 96, "unique_top1_recovery": 0.1703125, "true_pair_bit_jaccard_mean": 0.921}
+  ]
+}
