@@ -11,6 +11,7 @@ This directory supports the active [Hodge Conjecture Research Spine](../projects
 5. [`claim_matrix.json`](claim_matrix.json) — machine-readable live claim and bridge ledger.
 6. [`HODGE_COMPASS_API.md`](HODGE_COMPASS_API.md) — fast provenance/query API connection; method-only with evidence transfer denied by default.
 7. [`W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md`](W114_SIGN_NORMALIZATION_CORRECTION_2026-09-25.md) — forward correction separating the full order-114 Kummer carrier from the Aoki/Yamamoto quadratic gap sign.
+8. [`conformance/README.md`](conformance/README.md) — v0.1 command/event kernel conformance harness with frozen E001–E010 authority, replay, exact-backend, BRL, Fermat, visualization, correspondence, recovery, parallelism, and parser tests.
 
 ## Core target
 
@@ -65,6 +66,18 @@ CYCLE_COUNT != CYCLE_CLASS_RANK
 SYMMETRY != USEFUL_QUOTIENT
 COMPLEX_(p,p) != RATIONAL_HODGE_CLASS
 CONSCIENCE64_RETRIEVAL != INDEPENDENT_EVIDENCE
+```
+
+## Conformance substrate
+
+The frozen `E001`–`E010` suite lives under [`conformance/`](conformance/). Its first recorded run passes all ten experiments, including deliberate authority-leak, BRL-identity, lattice-corruption, visualization-identity, incomplete-correspondence, crash-overlay, merge-conflict, and parser-ambiguity mutants.
+
+This is research-environment evidence only:
+
+```text
+SOFTWARE_PASS != MATHEMATICAL_PROOF
+VISUALIZATION != EVIDENCE_PROMOTION
+SIMILARITY != SOURCE_IDENTITY
 ```
 
 ## Claim ceiling
