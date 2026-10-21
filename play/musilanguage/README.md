@@ -75,9 +75,21 @@ The listener decides whether a result is musically useful.
 
 ## Public projection boundary
 
-The Pages projection uses a seven-file runtime allowlist. Documentation and predecessor pages remain repository/source history unless separately authorized.
+The Pages projection uses a eight-file runtime allowlist. Documentation and predecessor pages remain repository/source history unless separately authorized.
 
 ```text
 MUSILANGUAGE_PUBLIC != WHOLE_PLAY_PUBLIC
 PUBLIC_PROJECTION != REPOSITORY_AUTHORITY
 ```
+
+
+## Private vocal reference (pending singing renderer)
+
+The Studio accepts a local private descriptor through **Private vocal reference**.
+The selected profile becomes the default reference when vocals are explicitly
+requested in this tab. Instrumental is the initial state; importing a session
+resets that request. Forget or reload clears the private reference. No audio is
+fetched, decoded, uploaded, or synthesized by this feature.
+
+See [VOICE_REFERENCE.md](VOICE_REFERENCE.md) for the private descriptor contract,
+privacy boundary, tests, and remaining renderer work.

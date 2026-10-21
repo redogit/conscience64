@@ -62,6 +62,7 @@ try{
     'play/musilanguage/music64.js',
     'play/musilanguage/style-profiles.js',
     'play/musilanguage/utf8-space.js',
+    'play/musilanguage/voice-reference.js',
     'play/musilanguage/word-forge.js',
     'play/neon-veil/app.js',
     'play/neon-veil/downloads/NEON_VEIL_ANDROID_2026-09-29.zip',

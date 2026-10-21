@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'public-testbed/**'
+      - 'play/musilanguage/**'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
       - 'tools/private-origin-boundary.mjs'
@@ -12,6 +13,7 @@ on:
   pull_request:
     paths:
       - 'public-testbed/**'
+      - 'play/musilanguage/**'
       - 'tools/build-public-testbed.mjs'
       - 'tools/check-public-testbed.mjs'
       - 'tools/private-origin-boundary.mjs'
@@ -46,3 +48,9 @@ jobs:
 
       - name: Build and counterprobe isolated test bed
         run: node tools/check-public-testbed.mjs --revision "$VERIFY_SHA"
+
+      - name: Verify musical contracts and private voice policy
+        run: |
+          node play/musilanguage/music64-test.mjs
+          node play/musilanguage/style-test.mjs
+          node play/musilanguage/voice-reference-test.mjs

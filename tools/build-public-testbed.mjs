@@ -13,6 +13,7 @@ const MUSILANGUAGE_FILES=[
   'style-profiles.js',
   'music64.js',
   'listener-floats.js',
+  'voice-reference.js',
   'word-forge.js'
 ];
 const PLAY_HUB_SOURCE='public-index.html';
