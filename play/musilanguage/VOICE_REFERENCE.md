@@ -35,6 +35,13 @@ replay behavior are unchanged. Exports intentionally omit voice state, so a
 session cannot restore a private voice request. The browser is a trusted local
 execution boundary, not protection from malicious scripts/extensions.
 
+## Versioned specification and profile
+
+See [VOICE_SPEC.md](VOICE_SPEC.md), [Ryan’s music-only profile](ryan-voice-profile.json),
+and [the v1 schema](voice-profile.schema.json). These are public specifications,
+not a connected renderer or private audio binding. Validate with
+`python voice-profile-test.py` (requires `jsonschema`).
+
 ## Musical direction
 
 The requested creative direction is a voice somewhat similar to the user's own,

@@ -1,0 +1,433 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "enum": [
+        "musilanguage-musical-voice-profile/v1"
+      ]
+    },
+    "profileId": {
+      "enum": [
+        "ryan-own-voice"
+      ]
+    },
+    "displayName": {
+      "enum": [
+        "Ryan / own-voice musical reference"
+      ]
+    },
+    "status": {
+      "enum": [
+        "specification-only-renderer-unimplemented"
+      ]
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dimension": {
+            "enum": [
+              "similarity",
+              "pitch",
+              "rhythm",
+              "rap",
+              "singing"
+            ]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "evidence": {
+            "enum": [
+              "user-preference"
+            ]
+          },
+          "measuredAbility": {
+            "enum": [
+              false
+            ]
+          }
+        },
+        "required": [
+          "dimension",
+          "target",
+          "evidence",
+          "measuredAbility"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "recordings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "enum": [
+              "initial-own-voice-reference",
+              "exercise-with-mixed-conversation"
+            ]
+          },
+          "privacy": {
+            "enum": [
+              "private-only"
+            ]
+          },
+          "evidence": {
+            "enum": [
+              "user-preference",
+              "reported-decoded-audio-measurement",
+              "reported-transcript-verification",
+              "unverified",
+              "implementation-status"
+            ]
+          },
+          "facts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "metrics": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "duration": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "number"
+                      },
+                      "unit": {
+                        "enum": [
+                          "seconds",
+                          "Hz",
+                          "dBFS",
+                          "samples"
+                        ]
+                      },
+                      "evidence": {
+                        "enum": [
+                          "reported-decoded-audio-measurement"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit",
+                      "evidence"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "sampleRate": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "number"
+                      },
+                      "unit": {
+                        "enum": [
+                          "seconds",
+                          "Hz",
+                          "dBFS",
+                          "samples"
+                        ]
+                      },
+                      "evidence": {
+                        "enum": [
+                          "reported-decoded-audio-measurement"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit",
+                      "evidence"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "peak": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "number"
+                      },
+                      "unit": {
+                        "enum": [
+                          "seconds",
+                          "Hz",
+                          "dBFS",
+                          "samples"
+                        ]
+                      },
+                      "evidence": {
+                        "enum": [
+                          "reported-decoded-audio-measurement"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit",
+                      "evidence"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "rms": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "number"
+                      },
+                      "unit": {
+                        "enum": [
+                          "seconds",
+                          "Hz",
+                          "dBFS",
+                          "samples"
+                        ]
+                      },
+                      "evidence": {
+                        "enum": [
+                          "reported-decoded-audio-measurement"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit",
+                      "evidence"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "nearFullScaleSamples": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "type": "number"
+                      },
+                      "unit": {
+                        "enum": [
+                          "seconds",
+                          "Hz",
+                          "dBFS",
+                          "samples"
+                        ]
+                      },
+                      "evidence": {
+                        "enum": [
+                          "reported-decoded-audio-measurement"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "value",
+                      "unit",
+                      "evidence"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "duration",
+                  "sampleRate",
+                  "peak",
+                  "rms",
+                  "nearFullScaleSamples"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {},
+                "required": [],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "unverified": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "isolationStatus": {
+            "enum": [
+              "unverified"
+            ]
+          },
+          "useGate": {
+            "enum": [
+              "validated-speaker-and-segment-isolation-required"
+            ]
+          }
+        },
+        "required": [
+          "role",
+          "privacy",
+          "evidence",
+          "facts",
+          "metrics",
+          "unverified",
+          "isolationStatus",
+          "useGate"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "defaultReference": {
+          "enum": [
+            "selected-private-own-voice-reference"
+          ]
+        },
+        "appliesTo": {
+          "enum": [
+            "explicitly-vocal-enabled-takes-only"
+          ]
+        },
+        "instrumentalBehavior": {
+          "enum": [
+            "preserve-instrumental"
+          ]
+        },
+        "publicAudio": {
+          "enum": [
+            false
+          ]
+        },
+        "publicPrivateHandles": {
+          "enum": [
+            false
+          ]
+        },
+        "externalTransmission": {
+          "enum": [
+            "separate-explicit-approval-required"
+          ]
+        },
+        "thirdPartyTraining": {
+          "enum": [
+            false
+          ]
+        },
+        "paidServices": {
+          "enum": [
+            false
+          ]
+        }
+      },
+      "required": [
+        "defaultReference",
+        "appliesTo",
+        "instrumentalBehavior",
+        "publicAudio",
+        "publicPrivateHandles",
+        "externalTransmission",
+        "thirdPartyTraining",
+        "paidServices"
+      ],
+      "additionalProperties": false
+    },
+    "renderer": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "unimplemented"
+          ]
+        },
+        "ready": {
+          "enum": [
+            false
+          ]
+        },
+        "guideInstrumentsAreSinging": {
+          "enum": [
+            false
+          ]
+        },
+        "requiredGates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "researchedCandidate": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "enum": [
+                "Seed-VC"
+              ]
+            },
+            "status": {
+              "enum": [
+                "researched-only-not-installed"
+              ]
+            },
+            "requires": {
+              "enum": [
+                "existing-sung-or-rapped-source-stem"
+              ]
+            },
+            "lyricsAloneSupported": {
+              "enum": [
+                false
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "status",
+            "requires",
+            "lyricsAloneSupported"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "status",
+        "ready",
+        "guideInstrumentsAreSinging",
+        "requiredGates",
+        "researchedCandidate"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "profileId",
+    "displayName",
+    "status",
+    "targets",
+    "recordings",
+    "policy",
+    "renderer"
+  ],
+  "additionalProperties": false
+}

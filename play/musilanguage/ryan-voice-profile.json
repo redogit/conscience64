@@ -1,0 +1,135 @@
+{
+  "format": "musilanguage-musical-voice-profile/v1",
+  "profileId": "ryan-own-voice",
+  "displayName": "Ryan / own-voice musical reference",
+  "status": "specification-only-renderer-unimplemented",
+  "targets": [
+    {
+      "dimension": "similarity",
+      "target": "Somewhat similar to own voice; no celebrity imitation.",
+      "evidence": "user-preference",
+      "measuredAbility": false
+    },
+    {
+      "dimension": "pitch",
+      "target": "Restrained or near-monotonic pitch movement; comfortable range must be established privately, not guessed.",
+      "evidence": "user-preference",
+      "measuredAbility": false
+    },
+    {
+      "dimension": "rhythm",
+      "target": "Rhythmic complexity with clear timing and articulation.",
+      "evidence": "user-preference",
+      "measuredAbility": false
+    },
+    {
+      "dimension": "rap",
+      "target": "Clear rap including rapid passages; intelligibility takes priority over speed.",
+      "evidence": "user-preference",
+      "measuredAbility": false
+    },
+    {
+      "dimension": "singing",
+      "target": "Comfortable sung delivery; this is a desired outcome, not an observed ability.",
+      "evidence": "user-preference",
+      "measuredAbility": false
+    }
+  ],
+  "recordings": [
+    {
+      "role": "initial-own-voice-reference",
+      "privacy": "private-only",
+      "evidence": "reported-decoded-audio-measurement",
+      "facts": [
+        "AAC recording at 48 kHz; two identical stereo channels, effectively mono.",
+        "Metrics supplied by the parent inspection; not remeasured in this code task.",
+        "No near-full-scale samples reported in decoded data; inspection threshold was not supplied."
+      ],
+      "metrics": {
+        "duration": {
+          "value": 168.576,
+          "unit": "seconds",
+          "evidence": "reported-decoded-audio-measurement"
+        },
+        "sampleRate": {
+          "value": 48000,
+          "unit": "Hz",
+          "evidence": "reported-decoded-audio-measurement"
+        },
+        "peak": {
+          "value": -8.62,
+          "unit": "dBFS",
+          "evidence": "reported-decoded-audio-measurement"
+        },
+        "rms": {
+          "value": -30.16,
+          "unit": "dBFS",
+          "evidence": "reported-decoded-audio-measurement"
+        },
+        "nearFullScaleSamples": {
+          "value": 0,
+          "unit": "samples",
+          "evidence": "reported-decoded-audio-measurement"
+        }
+      },
+      "unverified": [
+        "Identity and timbre",
+        "Pitch and comfortable singing range",
+        "Perceptual similarity",
+        "Speaker and segment isolation",
+        "Noise and performance suitability"
+      ],
+      "isolationStatus": "unverified",
+      "useGate": "validated-speaker-and-segment-isolation-required"
+    },
+    {
+      "role": "exercise-with-mixed-conversation",
+      "privacy": "private-only",
+      "evidence": "reported-transcript-verification",
+      "facts": [
+        "Parent verified the intended four-line original exercise in the transcript.",
+        "Unrelated conversation precedes the exercise.",
+        "Transcript presence does not verify speaker identity or vocal performance."
+      ],
+      "metrics": {},
+      "unverified": [
+        "Duration",
+        "Speaker and segment isolation",
+        "Pitch",
+        "Singing versus speech",
+        "Noise",
+        "Perceptual similarity"
+      ],
+      "isolationStatus": "unverified",
+      "useGate": "validated-speaker-and-segment-isolation-required"
+    }
+  ],
+  "policy": {
+    "defaultReference": "selected-private-own-voice-reference",
+    "appliesTo": "explicitly-vocal-enabled-takes-only",
+    "instrumentalBehavior": "preserve-instrumental",
+    "publicAudio": false,
+    "publicPrivateHandles": false,
+    "externalTransmission": "separate-explicit-approval-required",
+    "thirdPartyTraining": false,
+    "paidServices": false
+  },
+  "renderer": {
+    "status": "unimplemented",
+    "ready": false,
+    "guideInstrumentsAreSinging": false,
+    "requiredGates": [
+      "Current scoped consent and explicit vocal request",
+      "Privately resolved audio with validated speaker and segment isolation",
+      "Actual singing renderer or existing sung/rap stem plus conversion",
+      "Finite nonempty aligned vocal output with successful renderer receipt",
+      "User listening acceptance for intelligibility, comfort and similarity"
+    ],
+    "researchedCandidate": {
+      "name": "Seed-VC",
+      "status": "researched-only-not-installed",
+      "requires": "existing-sung-or-rapped-source-stem",
+      "lyricsAloneSupported": false
+    }
+  }
+}

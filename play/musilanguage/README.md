@@ -93,3 +93,5 @@ fetched, decoded, uploaded, or synthesized by this feature.
 
 See [VOICE_REFERENCE.md](VOICE_REFERENCE.md) for the private descriptor contract,
 privacy boundary, tests, and remaining renderer work.
+
+The [v1 renderer specification](VOICE_SPEC.md) and [Ryan music-only voice profile](ryan-voice-profile.json) distinguish creative targets, reported recording measurements, and unverified properties. Singing remains unimplemented.
