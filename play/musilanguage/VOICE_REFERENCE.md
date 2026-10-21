@@ -1,6 +1,8 @@
 # Private vocal references
 
-This is a reference-selection policy, not a singing engine. The existing six
+This reference-selection policy is not a singing engine. The separate
+[recorded-performance path](RECORDED_PERFORMANCE.md) can play and mix a locally
+selected recording; it does not synthesize new singing. The existing six
 procedural buses, guide melodies and written lyric cues remain instrumental.
 Neither selecting a reference nor requesting vocals changes those buses or
 claims they sound like the reference speaker.

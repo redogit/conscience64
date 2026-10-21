@@ -33,6 +33,7 @@ assert.deepEqual(
     'play/musilanguage/index.html',
     'play/musilanguage/listener-floats.js',
     'play/musilanguage/music64.js',
+    'play/musilanguage/recorded-performance.js',
     'play/musilanguage/style-profiles.js',
     'play/musilanguage/utf8-space.js',
     'play/musilanguage/voice-reference.js',
@@ -104,6 +105,7 @@ assert.match(music,/History lives inside the instrument/);
 for(const rel of [
   'play/musilanguage/engine.js',
   'play/musilanguage/utf8-space.js',
+  'play/musilanguage/recorded-performance.js',
   'play/musilanguage/style-profiles.js',
   'play/musilanguage/music64.js',
   'play/musilanguage/listener-floats.js',

@@ -1,6 +1,8 @@
 # Own-voice rendering specification v1
 
-Status: **specified, not implemented**. This specification extends the planning
+Singing-renderer status: **specified, not implemented**.
+[Recorded-performance playback and mixing](RECORDED_PERFORMANCE.md) is implemented
+separately, with local file selection and user-confirmed segments. This specification extends the planning
 contract around the existing Studio; it does not add a renderer or change
 MUSIC64/v1 or musilanguage-studio-session/v2.
 
@@ -82,7 +84,8 @@ An imported session/v2 cannot opt a user into vocals or restore consent. Public
 profile loading must never mutate MUSIC64 cells, source text, style or listener
 receipts. Reference selection stays separate from exportable sessions. Future
 vocal exports require an explicit action and must exclude reference audio and
-private receipts; current MIDI/WAV exports remain instrumental only.
+private receipts; MIDI remains instrumental. WAV exports include the selected recorded performance
+only when explicitly enabled; they are labeled recorded playback, not new singing.
 
 ## Acceptance matrix
 
@@ -92,7 +95,7 @@ private receipts; current MIDI/WAV exports remain instrumental only.
 | Descriptor consent, default selection, opt-out, forget | Consent required; default only for explicit vocal request | Existing policy and browser tests |
 | MUSIC64/session compatibility | Unchanged recipes, scores and session/v2 exports | Existing contract/browser tests |
 | No reference disclosure | No reference in exports, network or web storage | Existing browser test with synthetic metadata |
-| Mixed-conversation source | Whole-file or uncertain-speaker requests rejected | Specified; resolver/isolation implementation missing |
+| Mixed-conversation source | Explicit segment plus user review required; reject unconfirmed mix/export | Recorded selector implemented; automatic speaker isolation and singing resolver missing |
 | Actual singing | Guide-only output cannot pass as vocal output | Current UI labels honest; adapter missing |
 | Converter inputs | Reject lyrics-only conversion; require sung/rap source | Specified; no converter installed |
 | Revocation during rendering | Cancel and discard result without leaking audio | Specified; vocal rendering missing |

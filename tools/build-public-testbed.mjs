@@ -10,6 +10,7 @@ const MUSILANGUAGE_FILES=[
   'index.html',
   'engine.js',
   'utf8-space.js',
+  'recorded-performance.js',
   'style-profiles.js',
   'music64.js',
   'listener-floats.js',

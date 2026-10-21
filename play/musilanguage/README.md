@@ -75,7 +75,7 @@ The listener decides whether a result is musically useful.
 
 ## Public projection boundary
 
-The Pages projection uses a eight-file runtime allowlist. Documentation and predecessor pages remain repository/source history unless separately authorized.
+The Pages projection uses a nine-file runtime allowlist. Documentation and predecessor pages remain repository/source history unless separately authorized.
 
 ```text
 MUSILANGUAGE_PUBLIC != WHOLE_PLAY_PUBLIC
@@ -95,3 +95,13 @@ See [VOICE_REFERENCE.md](VOICE_REFERENCE.md) for the private descriptor contract
 privacy boundary, tests, and remaining renderer work.
 
 The [v1 renderer specification](VOICE_SPEC.md) and [Ryan music-only voice profile](ryan-voice-profile.json) distinguish creative targets, reported recording measurements, and unverified properties. Singing remains unimplemented.
+
+
+## Local recorded-performance path
+
+Choose an audio file, set explicit start/end times, audition and confirm that the
+segment contains only your intended performance. Enable mixing to play it once
+with the procedural accompaniment. Export the selected recording separately or
+use Export WAV for the mix. Original files remain unchanged; nothing is uploaded.
+This is recorded-performance playback, not newly synthesized singing. See
+[RECORDED_PERFORMANCE.md](RECORDED_PERFORMANCE.md) for limits and validation.

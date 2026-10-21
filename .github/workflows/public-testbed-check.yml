@@ -54,3 +54,4 @@ jobs:
           node play/musilanguage/music64-test.mjs
           node play/musilanguage/style-test.mjs
           node play/musilanguage/voice-reference-test.mjs
+          node play/musilanguage/recorded-performance-test.mjs
