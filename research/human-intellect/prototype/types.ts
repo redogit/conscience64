@@ -1,4 +1,5 @@
 export type Id=string;
+// Internal classification supplied by the caller; not authenticated user permission.
 export type AuthorityStatus="authorized"|"ambiguous"|"unavailable"|"rejected";
 export type Decision="allow"|"wait"|"reject";
 export type EpistemicStatus="observed"|"inferred"|"uncertain"|"unknown";

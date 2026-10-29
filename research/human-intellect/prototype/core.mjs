@@ -7,6 +7,7 @@ const overlap = (a,b) => {
 };
 export const uid = prefix => prefix + "-" + crypto.randomUUID();
 export const nowIso = () => new Date().toISOString();
+const isAuthorityStatus = value => value === "authorized" || value === "ambiguous" || value === "unavailable" || value === "rejected";
 
 export class KDKernel {
   constructor({activeLimit=7}={}) {
@@ -75,7 +76,9 @@ export class ObligationKernel {
   authorize(input){
     for(const key of ["o0","reason","authority","authorityStatus","budget","unresolvedCost","expectedBenefit","stopCondition"])
       if(input[key]===undefined || input[key]==="") throw new Error("missing obligation field: "+key);
-    const o={id:uid("o"),o0:String(input.o0),o1:String(input.o1||input.o0),localObjective:String(input.localObjective||input.o1||input.o0),reason:String(input.reason),authority:String(input.authority),authorityStatus:input.authorityStatus,budget:Number(input.budget),spent:0,unresolvedCost:Number(input.unresolvedCost),limits:[...(input.limits||[])],expectedBenefit:String(input.expectedBenefit),stopCondition:String(input.stopCondition),createdAt:nowIso()};
+    const authorityStatus=input.authorityStatus;
+    if(!isAuthorityStatus(authorityStatus)) throw new Error("invalid obligation authorityStatus");
+    const o={id:uid("o"),o0:String(input.o0),o1:String(input.o1||input.o0),localObjective:String(input.localObjective||input.o1||input.o0),reason:String(input.reason),authority:String(input.authority),authorityStatus,budget:Number(input.budget),spent:0,unresolvedCost:Number(input.unresolvedCost),limits:[...(input.limits||[])],expectedBenefit:String(input.expectedBenefit),stopCondition:String(input.stopCondition),createdAt:nowIso()};
     if(!(o.budget>=0)) throw new Error("budget must be non-negative");
     this.current=o;
     this.kd.recordLineage({kind:"authorization",subject:o.id,reason:o.reason,authority:o.authority});
@@ -90,8 +93,11 @@ export class Controller {
   decide({cost=0,consequential=false,requestedAuthority=null}={}){
     const o=this.obligations.current;
     if(!o) return this._record("reject","no active obligation");
-    if(o.authorityStatus==="unavailable" || o.authorityStatus==="ambiguous") return this._record("wait","authority is not currently sufficient");
-    if(o.authorityStatus==="rejected") return this._record("reject","authority rejected the obligation");
+    const authorityStatus=o.authorityStatus;
+    if(authorityStatus==="unavailable" || authorityStatus==="ambiguous") return this._record("wait","authority is not currently sufficient");
+    if(authorityStatus==="rejected") return this._record("reject","authority rejected the obligation");
+    // Recheck mutable/restored records; only the explicit internal state may proceed.
+    if(authorityStatus!=="authorized") return this._record("reject","invalid obligation authorityStatus");
     if(requestedAuthority && requestedAuthority!==o.authority) return this._record("wait","requested authority exceeds current scope");
     if(cost>this.obligations.remaining()) return this._record("reject","budget exceeded");
     if(consequential && !o.authority) return this._record("wait","consequential action needs explicit authority");

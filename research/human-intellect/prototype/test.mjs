@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {createRuntime,KDKernel} from "./core.mjs";
 import {DOE_RUNS,experimentReceipt} from "./doe.mjs";
 import {loadCapabilityProbe} from "./wasm-probe.mjs";
+import "./authority.test.mjs";
 
 const kd=new KDKernel({activeLimit:3});
 const a=kd.observe("alpha obligation authority",{consequential:true});
