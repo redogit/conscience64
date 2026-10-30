@@ -1,0 +1,24 @@
+package conscience64:hli@0.1.0;
+
+interface lineage {
+  record: func(kind: string, subject: string, reason: string) -> result<string, string>;
+}
+
+interface authority {
+  enum decision { allow, wait, reject }
+  check: func(obligation-id: string, requested-scope: string) -> decision;
+}
+
+interface kd {
+  observe: func(text: string) -> string;
+  mark-unknown: func(text: string) -> string;
+  activate: func(query: string, limit: u32) -> list<string>;
+  decay-activation: func();
+}
+
+world explorer {
+  import lineage;
+  import authority;
+  import kd;
+  export evaluate: func(obligation-id: string, observation: string) -> result<string, string>;
+}

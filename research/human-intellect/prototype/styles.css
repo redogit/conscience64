@@ -1,0 +1,12 @@
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:light dark;--gap:1rem;--max:74rem}
+*{box-sizing:border-box}body{margin:0;line-height:1.5}main{max-width:var(--max);margin:auto;padding:1rem}
+h1{font-size:clamp(1.7rem,4vw,3rem);line-height:1.1}.lede{max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr));gap:var(--gap)}
+section{border:1px solid color-mix(in srgb,currentColor 22%,transparent);border-radius:.8rem;padding:1rem}
+label{display:grid;gap:.3rem;margin-block:.65rem}
+input,textarea,select,button{font:inherit;padding:.7rem;border-radius:.45rem;border:1px solid color-mix(in srgb,currentColor 35%,transparent)}
+textarea{min-height:5rem;resize:vertical}button{cursor:pointer;min-height:44px}.actions,.metrics{display:flex;flex-wrap:wrap;gap:.75rem}
+.status{position:sticky;bottom:.5rem;padding:.75rem 1rem;border-radius:.5rem;background:Canvas;border:2px solid currentColor}
+.status[data-error="true"]{font-weight:700}small{opacity:.72}ul{padding-left:1.2rem}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media (forced-colors:active){section,.status,input,textarea,select,button{border:1px solid CanvasText}}

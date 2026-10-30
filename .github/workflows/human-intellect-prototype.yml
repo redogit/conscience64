@@ -1,0 +1,47 @@
+name: Human intellect prototype verification
+
+on:
+  pull_request:
+    paths:
+      - 'research/human-intellect/**'
+      - '.github/workflows/human-intellect-prototype.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/human-intellect/**'
+      - '.github/workflows/human-intellect-prototype.yml'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      VERIFY_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Materialize exact commit without external Actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init "$GITHUB_WORKSPACE"
+          cd "$GITHUB_WORKSPACE"
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth=1 origin "$VERIFY_SHA"
+          git checkout --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$VERIFY_SHA"
+      - name: Check JavaScript syntax
+        run: |
+          node --check research/human-intellect/prototype/core.mjs
+          node --check research/human-intellect/prototype/doe.mjs
+          node --check research/human-intellect/prototype/app.mjs
+          node --check research/human-intellect/prototype/test.mjs
+      - name: Run bounded KD/controller/DOE regressions
+        run: node research/human-intellect/prototype/test.mjs
+      - name: Preserve component-boundary sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s research/human-intellect/prototype/wit/hli.wit
+          test -s research/human-intellect/prototype/capability-probe.wat
+          grep -F 'SYNTHETIC_SCREENING_ONLY' research/human-intellect/prototype/DESIGN_OF_EXPERIMENTS.md
