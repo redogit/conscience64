@@ -1,0 +1,142 @@
+diff -ruN /tmp/task3a/scdl/horizon/compile-ir.js /tmp/task3b/scdl/horizon/compile-ir.js
+--- /tmp/task3a/scdl/horizon/compile-ir.js	1970-01-01 00:00:00.000000000 +0000
++++ /tmp/task3b/scdl/horizon/compile-ir.js	2026-10-30 07:22:01.473762520 +0000
+@@ -0,0 +1,78 @@
++"use strict";
++import {createHash} from 'node:crypto';
++import {parse} from '../language/parser.js';
++import {compile} from '../language/compile.js';
++import {clone, invalid, deferred, valid, diag} from '../values.js';
++import {declarationSpec} from './declaration-specs.js';
++
++export const HORIZON_IR_SCHEMA='horizon-integral-ir/1';
++const sha=s=>createHash('sha256').update(s,'utf8').digest('hex');
++
++function valueToJson(v){
++  if(v==null||typeof v!=='object') return v;
++  if(typeof v.str==='string') return v.str;
++  if(typeof v.bool==='boolean') return v.bool;
++  if(typeof v.integer==='string') return {integer:v.integer};
++  if(Array.isArray(v.rational)) return {rational:v.rational.slice()};
++  if(typeof v.ref==='string') return {ref:v.ref};
++  if(Array.isArray(v.array)) return v.array.map(valueToJson);
++  if(Array.isArray(v.record)) return Object.fromEntries(v.record.map(([k,x])=>[k,valueToJson(x)]));
++  if(v.hole) return {hole:clone(v.hole)};
++  return clone(v);
++}
++function bodyObject(body){return valueToJson(body)||{};}
++function collectRefs(v,out=[]){
++  if(v&&typeof v==='object'){
++    if(typeof v.ref==='string') out.push(v.ref);
++    else if(Array.isArray(v)) for(const x of v) collectRefs(x,out);
++    else for(const x of Object.values(v)) collectRefs(x,out);
++  }
++  return out;
++}
++function bridges(records){const s=new Set();for(const r of records)if(r.keyword==='obligation'&&r.body?.kind==='bridge'&&r.body.fromDomain&&r.body.toDomain)s.add(`${r.body.fromDomain}->${r.body.toDomain}`);return s;}
++
++export function compileHorizon(sourceOrAst,registry,options={}){
++  const source=typeof sourceOrAst==='string'?sourceOrAst:String(options.source??'');
++  const parsed=typeof sourceOrAst==='string'?parse(source):{kind:'valid',value:sourceOrAst};
++  if(parsed.kind==='invalid')return parsed;
++  const base=compile(parsed.value,registry,options);
++  if(base.kind==='invalid')return base;
++  const sourceSha=sha(source),records=[];
++  for(let i=0;i<parsed.value.declarations.length;i++){
++    const d=parsed.value.declarations[i],spec=declarationSpec(d.keyword),body=bodyObject(d.body),domain=body.domain??options.defaultDomain??'unscoped';
++    const start=d.span?.start??0,end=d.span?.end??source.length;
++    records.push({keyword:d.keyword,ir_type:spec?.irType??`horizon.${d.keyword}`,name:d.name,occurrence_id:`occ:${sourceSha}:${start}:${end}`,semantic_object_id:body.semantic_object_id??null,domain,source_span:{start,end},declaration_revision:i+1,effect_class:spec?.effectClass??'declaration',body});
++  }
++  const byName=new Map(records.map(x=>[x.name,x])),bridge=bridges(records),diagnostics=[];
++  for(const r of records.filter(x=>x.keyword==='evidence')){
++    const subject=typeof r.body.subject==='object'?r.body.subject?.ref:r.body.subject,target=byName.get(subject);
++    if(target&&target.domain!==r.domain&&!bridge.has(`${r.domain}->${target.domain}`)) diagnostics.push(diag('error','CROSS_DOMAIN_EVIDENCE',`Evidence ${r.name} in ${r.domain} cannot attach to ${target.name} in ${target.domain} without a bridge obligation`,r.source_span));
++    r.verification_status='unverified';
++  }
++  if(diagnostics.some(d=>d.severity==='error'))return invalid(diagnostics);
++  const references=[];for(const r of records)for(const target of collectRefs(r.body))references.push({from_occurrence:r.occurrence_id,target});
++  const value={schema:HORIZON_IR_SCHEMA,source:{sha256:sourceSha,utf16Length:source.length,occurrences:records.map(r=>({occurrence_id:r.occurrence_id,span:r.source_span,keyword:r.keyword,name:r.name}))},records,references,obligations:records.filter(r=>r.keyword==='obligation'),diagnostics:[]};
++  return base.kind==='deferred'?deferred(value,base.obligations??[],base.diagnostics??[]):valid(value,base.diagnostics??[]);
++}
+
+diff -ruN /tmp/task3a/scdl/horizon/declaration-specs.js /tmp/task3b/scdl/horizon/declaration-specs.js
+--- /tmp/task3a/scdl/horizon/declaration-specs.js	1970-01-01 00:00:00.000000000 +0000
++++ /tmp/task3b/scdl/horizon/declaration-specs.js	2026-10-30 07:22:01.473681672 +0000
+@@ -0,0 +1,38 @@
++"use strict";
++const K=`person purpose question permission working_set pause_point lane identity revision occurrence semantic_object context_support clarity object surface carrier source location containment order component relation morphism observer lens blind_spot calibration independence intent goal obligation consequential_distinction invariant claim evidence counterexample assumption method result meaning provenance authority transformation one_degree_move signed_move inverse reconstruction homeward plan capability cost authorization execution observation residual third_plane progression acceptance migration conflict decay projection domain decompose compose world`.split(' ');
++const EFFECT={evidence:'evidence',counterexample:'evidence',claim:'claim',obligation:'obligation',authorization:'authorization',execution:'execution',observation:'observation',transformation:'transformation',inverse:'transformation',reconstruction:'transformation',homeward:'verification',acceptance:'acceptance'};
++export const DECLARATION_SPECS=Object.freeze(Object.fromEntries(K.map(keyword=>[keyword,Object.freeze({irType:`horizon.${keyword}`,requiredFields:Object.freeze([]),referenceFields:Object.freeze([]),domainScoped:true,effectClass:EFFECT[keyword]??'declaration'})])));
++export function declarationSpec(keyword){return DECLARATION_SPECS[keyword]??null;}
+
+diff -ruN /tmp/task3a/scdl/index.js /tmp/task3b/scdl/index.js
+--- /tmp/task3a/scdl/index.js	2026-10-24 00:50:56.402302186 +0000
++++ /tmp/task3b/scdl/index.js	2026-10-30 07:22:01.473865125 +0000
+@@ -14,3 +14,5 @@
+ export { SequenceAdapter } from "./adapters/sequence.js";
+ export { GraphAdapter } from "./adapters/graph.js";
+ export { LinearAlgebraAdapter } from "./adapters/linear-algebra.js";
++export {compileHorizon,HORIZON_IR_SCHEMA} from "./horizon/compile-ir.js";
++export {DECLARATION_SPECS,declarationSpec} from "./horizon/declaration-specs.js";
+diff -ruN /tmp/task3a/scdl/language/parser.js /tmp/task3b/scdl/language/parser.js
+--- /tmp/task3a/scdl/language/parser.js	2026-10-24 00:50:56.402302186 +0000
++++ /tmp/task3b/scdl/language/parser.js	2026-10-30 07:22:00.561004995 +0000
+@@ -12,8 +12,7 @@
+ "use strict";
+ import { LIMITS, diag, vStr, vBool, vInt, vRat, vArr, vRec, vRef, vHole, normalizeIntDigits } from "../values.js";
+
+-export const DECL_KEYWORDS = ["domain", "object", "component", "relation", "morphism",
+-  "decompose", "compose", "invariant", "obligation", "evidence", "world"];
++export const DECL_KEYWORDS = `person purpose question permission working_set pause_point lane identity revision occurrence semantic_object context_support clarity object surface carrier source location containment order component relation morphism observer lens blind_spot calibration independence intent goal obligation consequential_distinction invariant claim evidence counterexample assumption method result meaning provenance authority transformation one_degree_move signed_move inverse reconstruction homeward plan capability cost authorization execution observation residual third_plane progression acceptance migration conflict decay projection domain decompose compose world`.split(" ");
+
+ // This module lives at src/scdl/language/; the import above resolves to
+ // src/scdl/values.js. (Sibling-relative paths, so the package also works if
+diff -ruN /tmp/task3a/tests/scdl-horizon-ir.test.mjs /tmp/task3b/tests/scdl-horizon-ir.test.mjs
+--- /tmp/task3a/tests/scdl-horizon-ir.test.mjs	1970-01-01 00:00:00.000000000 +0000
++++ /tmp/task3b/tests/scdl-horizon-ir.test.mjs	2026-10-30 07:31:23.278874654 +0000
+@@ -0,0 +1,45 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import {parse,print,compileHorizon,makeDefaultRegistry,HORIZON_IR_SCHEMA} from '../src/scdl/index.js';
++
++const vocabulary=`person purpose question permission working_set pause_point lane identity revision occurrence semantic_object context_support clarity object surface carrier source location containment order component relation morphism observer lens blind_spot calibration independence intent goal obligation consequential_distinction invariant claim evidence counterexample assumption method result meaning provenance authority transformation one_degree_move signed_move inverse reconstruction homeward plan capability cost authorization execution observation residual third_plane progression acceptance migration conflict decay projection`;
++
++test('all D2 declaration families parse and lossless print',()=>{
++  const source=vocabulary.split(' ').map((k,i)=>`${k} d${i} { domain: "d2" }`).join('\n');
++  const p=parse(source); assert.equal(p.kind,'valid'); assert.equal(p.value.declarations.length,vocabulary.split(' ').length);
++  const out=print(p.value,{mode:'lossless'}); assert.equal(out.kind,'valid'); assert.equal(out.value,source);
++});
++
++test('Horizon IR preserves exact integers rationals and UTF-16 source spans',()=>{
++  const source='claim c { domain:"math", big:900719925474099312345, ratio:rational("7","13"), note:"😀" }';
++  const r=compileHorizon(source,makeDefaultRegistry().value); assert.equal(r.kind,'valid');
++  assert.equal(r.value.schema,'horizon-integral-ir/1');
++  const rec=r.value.records[0];
++  assert.deepEqual(rec.body.big,{integer:'900719925474099312345'});
++  assert.deepEqual(rec.body.ratio,{rational:['7','13']});
++  assert.equal(source.slice(rec.source_span.start,rec.source_span.end),source);
++  assert.equal(r.value.source.utf16Length,source.length);
++});
++
++test('Horizon IR output ordering and identities are deterministic',()=>{
++  const source='claim z {domain:"b"}\nclaim a {domain:"a"}';
++  const a=compileHorizon(source,makeDefaultRegistry().value); const b=compileHorizon(source,makeDefaultRegistry().value);
++  assert.deepEqual(a,b); assert.equal(a.value.records[0].name,'z'); assert.match(a.value.records[0].occurrence_id,/^occ:/);
++});
++
++test('evidence cannot jump domains without an explicit bridge obligation',()=>{
++  const bad='claim target {domain:"hodge"}\nevidence e {domain:"physics", subject:target}';
++  const r=compileHorizon(bad,makeDefaultRegistry().value); assert.equal(r.kind,'invalid'); assert(r.diagnostics.some(d=>d.code==='CROSS_DOMAIN_EVIDENCE'));
++  const good='claim target {domain:"hodge"}\nobligation bridge {domain:"horizon", kind:"bridge", fromDomain:"physics", toDomain:"hodge"}\nevidence e {domain:"physics", subject:target}';
++  const g=compileHorizon(good,makeDefaultRegistry().value); assert.notEqual(g.kind,'invalid');
++  const ev=g.value.records.find(x=>x.keyword==='evidence'); assert.equal(ev.effect_class,'evidence'); assert.equal(ev.verification_status,'unverified');
++});
++
++test('compiler retains explicit references and source occurrence table',()=>{
++  const source='semantic_object s {domain:"x"}\nrelation r {domain:"x", subject:s, object:s}';
++  const r=compileHorizon(source,makeDefaultRegistry().value); assert.equal(r.kind,'valid');
++  assert.equal(r.value.source.occurrences.length,2); assert.equal(r.value.references.length,2);
++  assert(r.value.references.every(x=>x.target==='s'));
++});
++
++test('canonical IR schema constant is stable',()=>assert.equal(HORIZON_IR_SCHEMA,'horizon-integral-ir/1'));

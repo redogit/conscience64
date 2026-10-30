@@ -1,0 +1,8 @@
+{
+  "$id":"horizon:1.2.0:meaning","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "obligations":{"items":{"type":"string"},"type":"array"},"purpose":{"type":"string"},
+    "subject_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"}
+  },
+  "required":["subject_ref","purpose","obligations"],"title":"meaning","type":"object"
+}

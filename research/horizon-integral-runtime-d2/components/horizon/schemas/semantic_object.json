@@ -1,0 +1,23 @@
+{
+  "$id": "horizon:1.2.0:semantic_object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "occurrence_refs": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "revision_uid": {"format": "uuid","type": "string"},
+          "uid": {"format": "uuid","type": "string"}
+        },
+        "required": ["uid","revision_uid"],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "semantic_object_id": {"type": "string"}
+  },
+  "required": ["semantic_object_id","occurrence_refs"],
+  "title": "semantic_object",
+  "type": "object"
+}

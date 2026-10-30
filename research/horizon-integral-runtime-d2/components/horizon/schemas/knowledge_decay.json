@@ -1,0 +1,10 @@
+{
+  "$id":"horizon:1.2.0:knowledge_decay","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "carrier_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"},
+    "first_loss_boundary":{"type":"string"},"required_distinctions":{"items":{"type":"string"},"type":"array"},
+    "source_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"},
+    "status":{"enum":["intact","loss_detected","unresolved"]}
+  },
+  "required":["source_ref","carrier_ref","required_distinctions","first_loss_boundary","status"],"title":"knowledge_decay","type":"object"
+}

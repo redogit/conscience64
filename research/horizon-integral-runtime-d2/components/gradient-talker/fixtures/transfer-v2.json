@@ -1,0 +1,12 @@
+{
+  "schema": "gradient-talker-v2",
+  "rule": "utf16-lossless-v2-code-identifiers",
+  "composition": "ordered-cumulative-v1",
+  "owner": "Mary",
+  "text": "alpha beta",
+  "entries": [
+    {"id":"lex-1","word":"alpha","color":"#102030"},
+    {"id":"lex-2","word":"beta","color":"#405060"}
+  ],
+  "source": {"source_id":"source:fixture","document_id":"document:fixture","title":"Fixture","excerpt":false}
+}

@@ -1,0 +1,7 @@
+{
+  "schema":"horizon-external-origin/1",
+  "name":"Gradient_Talker_Open.html",
+  "approved_origin":{"bytes":147718604,"sha256":"e594639a116dd5bd109bfee9904ef1b9685c2de13fde8868281a1aa294202a02"},
+  "later_recoverable_carrier":{"bytes":442239,"sha256":"386498201bd6dc518b0b01d7c7d2d1b55c84302f49781a6f16020c19b7372d53"},
+  "rule":"carrier lineage is preserved; byte identity between these carriers is not claimed"
+}

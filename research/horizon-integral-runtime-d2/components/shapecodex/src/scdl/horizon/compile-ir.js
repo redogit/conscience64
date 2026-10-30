@@ -1,0 +1,21 @@
+"use strict";
+import {createHash} from 'node:crypto';
+import {parse} from '../language/parser.js';
+import {compile} from '../language/compile.js';
+import {clone, invalid, deferred, valid, diag} from '../values.js';
+import {declarationSpec} from './declaration-specs.js';
+
+export const HORIZON_IR_SCHEMA='horizon-integral-ir/1';
+const sha=s=>createHash('sha256').update(s,'utf8').digest('hex');
+function valueToJson(v){if(v==null||typeof v!=='object')return v;if(typeof v.str==='string')return v.str;if(typeof v.bool==='boolean')return v.bool;if(typeof v.integer==='string')return {integer:v.integer};if(Array.isArray(v.rational))return {rational:v.rational.slice()};if(typeof v.ref==='string')return {ref:v.ref};if(Array.isArray(v.array))return v.array.map(valueToJson);if(Array.isArray(v.record))return Object.fromEntries(v.record.map(([k,x])=>[k,valueToJson(x)]));if(v.hole)return {hole:clone(v.hole)};return clone(v);}
+function bodyObject(body){return valueToJson(body)||{};}
+function collectRefs(v,out=[]){if(v&&typeof v==='object'){if(typeof v.ref==='string')out.push(v.ref);else if(Array.isArray(v))for(const x of v)collectRefs(x,out);else for(const x of Object.values(v))collectRefs(x,out);}return out;}
+function bodyDomain(d,b){if(typeof b.domain==='string')return b.domain;if(b.domain&&typeof b.domain.ref==='string')return b.domain.ref;if(d.type?.domain)return d.type.domain;return 'global';}
+function bridgeSet(records){const s=new Set();for(const r of records){const b=r.body;if(r.keyword==='obligation'&&b.kind==='bridge'&&typeof b.fromDomain==='string'&&typeof b.toDomain==='string')s.add(b.fromDomain+'\0'+b.toDomain);}return s;}
+export function compileHorizon(sourceOrAst,registry,options={}){
+ let ast,source;if(typeof sourceOrAst==='string'){source=sourceOrAst;const p=parse(sourceOrAst,options.limits);if(p.kind==='invalid')return p;ast=p.value;}else if(sourceOrAst&&sourceOrAst.kind==='document'){ast=sourceOrAst;source=typeof ast.raw==='string'?ast.raw:'';}else return invalid(diag('BAD_VALUE','compileHorizon expects SCDL source or document AST'));
+ if(!registry)return invalid(diag('BAD_VALUE','compileHorizon expects an SCDL registry'));const base=compile(ast,registry);if(base.kind==='invalid')return base;
+ const sourceSha=sha(source);const byName=new Map();const records=ast.declarations.map((d,i)=>{const spec=declarationSpec(d.keyword);if(!spec)throw new Error('missing declaration spec: '+d.keyword);const body=bodyObject(d.body);const domain=bodyDomain(d,body);const rec={keyword:d.keyword,ir_type:spec.irType,name:d.name,occurrence_id:`occ:${sourceSha}:${d.span.start}:${d.span.end}`,semantic_object_id:typeof body.semanticObjectId==='string'?body.semanticObjectId:null,domain,source_span:{start:d.span.start,end:d.span.end},declaration_revision:typeof body.revision==='string'?body.revision:'1',effect_class:spec.effectClass,body};if(d.keyword==='evidence')rec.verification_status='unverified';byName.set(d.name,rec);return rec;});
+ const bridges=bridgeSet(records),diagnostics=[];for(const r of records){if(r.keyword!=='evidence')continue;const subj=r.body.subject;const target=subj&&typeof subj.ref==='string'?byName.get(subj.ref):null;if(target&&target.domain!==r.domain&&!bridges.has(r.domain+'\0'+target.domain))diagnostics.push(diag('CROSS_DOMAIN_EVIDENCE',`evidence '${r.name}' in ${r.domain} cannot support '${target.name}' in ${target.domain} without an explicit bridge obligation`,{declSpan:r.source_span}));}if(diagnostics.length)return invalid(diagnostics);
+ const references=[];for(const r of records)for(const target of collectRefs(r.body))references.push({from_occurrence_id:r.occurrence_id,target});const occurrences=records.map(r=>({occurrence_id:r.occurrence_id,keyword:r.keyword,name:r.name,start_utf16:r.source_span.start,end_utf16:r.source_span.end}));const obligations=records.filter(r=>r.keyword==='obligation').map(r=>({occurrence_id:r.occurrence_id,name:r.name,domain:r.domain,body:clone(r.body)}));const ir={schema:HORIZON_IR_SCHEMA,source:{sha256:sourceSha,utf16Length:source.length,occurrences},records,references,obligations,diagnostics:[],native_compile:{status:base.kind,obligations:clone(base.obligations||[])}};return base.kind==='deferred'?deferred(ir,base.obligations||[]):valid(ir);
+}

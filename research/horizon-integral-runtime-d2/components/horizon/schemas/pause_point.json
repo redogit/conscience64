@@ -1,0 +1,9 @@
+{
+  "$id":"horizon:1.2.0:pause_point","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "continuation":{"type":"object"},
+    "status":{"enum":["open","resumed","superseded"]},
+    "work_item_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"}
+  },
+  "required":["work_item_ref","continuation","status"],"title":"pause_point","type":"object"
+}

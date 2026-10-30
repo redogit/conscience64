@@ -1,0 +1,10 @@
+{
+  "$id":"horizon:1.2.0:observer","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "blind_spots":{"items":{"type":"string"},"type":"array"},"calibration":{"items":{"type":"string"},"type":"array"},
+    "claim_ceiling":{"enum":["observation_only","projection_only","comparison_only","verification_bounded"]},
+    "degree_of_freedom":{"type":"string"},"independence_group":{"type":"string"},
+    "mode":{"enum":["LOOK","MOVE","SCREAM","LISTEN","DUAL","RECOVER"]},"name":{"type":"string"},"primary_task":{"type":"string"}
+  },
+  "required":["name","mode","primary_task","degree_of_freedom","blind_spots","calibration","independence_group","claim_ceiling"],"title":"observer","type":"object"
+}

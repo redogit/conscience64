@@ -1,0 +1,9 @@
+{
+  "schema": "horizon-external-origin/1",
+  "name": "chrono-fantasy-legend-export.md",
+  "bytes": 584131,
+  "sha256": "b134d1eed73268320dc1d41a92e8896e5a5f4c4a5af7c521b161ad515f4ddc31",
+  "role": "external_source_baseline",
+  "publication": "origin-record-only",
+  "reason": "Chrono Fantasy Legend is a separate project/source lineage; Horizon D2 Tasks 1-4 retain only its exact provenance."
+}

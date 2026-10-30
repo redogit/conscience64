@@ -1,0 +1,11 @@
+{
+  "$id":"horizon:1.2.0:third_plane","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "assumptions":{"items":{"type":"string"},"type":"array"},
+    "left_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"},
+    "relation":{"type":"string"},
+    "right_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"},
+    "status":{"enum":["proposed","tested","refuted","unresolved"]}
+  },
+  "required":["left_ref","right_ref","relation","assumptions","status"],"title":"third_plane","type":"object"
+}

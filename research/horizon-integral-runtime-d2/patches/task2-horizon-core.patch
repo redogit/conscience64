@@ -1,0 +1,70 @@
+--- a/components/horizon/horizon/core.py
++++ b/components/horizon/horizon/core.py
+@@ -575,9 +575,12 @@
+                     raise IntegrityError('Restore event requires administrator')
+             elif event['kind'] == 'migration':
+                 migration = event['data']
+-                if active_schema != '1.0.0' or actors[event['actor_uid']] != 'admin' or migration != {'from_schema_version': active_schema, 'to_schema_version': SCHEMA_VERSION, 'migrated_head_hash': event['previous_hash']}:
++                to_schema = migration.get('to_schema_version') if type(migration) is dict else None
++                if (actors[event['actor_uid']] != 'admin' or migration.get('from_schema_version') != active_schema or
++                    to_schema not in SUPPORTED_SCHEMA_VERSIONS or SUPPORTED_SCHEMA_VERSIONS.index(to_schema) <= SUPPORTED_SCHEMA_VERSIONS.index(active_schema) or
++                    migration.get('migrated_head_hash') != event['previous_hash'] or set(migration) != {'from_schema_version','to_schema_version','migrated_head_hash'}):
+                     raise IntegrityError('Invalid schema migration commitment')
+-                active_schema = SCHEMA_VERSION
++                active_schema = to_schema
+             else:
+                 raise IntegrityError('Unknown audit event')
+         if data['schema_version'] != active_schema:
+@@ -642,16 +645,16 @@
+         return cls._restore_snapshot(path, archive, migrate=False, **options)
+
+     @classmethod
+-    def migrate_snapshot(cls, path, archive, **options):
+-        """Validate and migrate an old archive into a new current-version store.
++    def migrate_snapshot(cls, path, archive, target_schema_version=SCHEMA_VERSION, **options):
++        """Validate and migrate an old archive into a newer supported-version store.
+
+         Original revisions, sources, actors and audit entries remain unchanged.
+         The transition is an appended migration audit commitment.
+         """
+-        return cls._restore_snapshot(path, archive, migrate=True, **options)
++        return cls._restore_snapshot(path, archive, migrate=True, target_schema_version=target_schema_version, **options)
+
+     @classmethod
+-    def _restore_snapshot(cls, path, archive, *, migrate, **options):
++    def _restore_snapshot(cls, path, archive, *, migrate, target_schema_version=SCHEMA_VERSION, **options):
+         if os.path.exists(os.fspath(path)):
+             raise ConflictError('Refusing to overwrite existing store')
+         max_archive_bytes = options.get('max_archive_bytes', 64 * 1024 * 1024)
+@@ -668,8 +671,11 @@
+             if canonical(data, max_depth=SNAPSHOT_JSON_DEPTH) != raw:
+                 raise IntegrityError('Snapshot is not canonical HJ1 JSON')
+             cls._validate_snapshot(data, max_input_bytes, max_records)
+-            if migrate and data['schema_version'] != '1.0.0':
+-                raise IntegrityError('Migration requires a historical 1.0.0 snapshot')
++            if migrate:
++                if target_schema_version not in SUPPORTED_SCHEMA_VERSIONS:
++                    raise IntegrityError('Unsupported migration target')
++                if SUPPORTED_SCHEMA_VERSIONS.index(target_schema_version) <= SUPPORTED_SCHEMA_VERSIONS.index(data['schema_version']):
++                    raise IntegrityError('Migration requires a historical snapshot older than target schema')
+         except IntegrityError:
+             raise
+         except (ValidationError, ValueError, TypeError, KeyError, RecursionError) as exc:
+@@ -680,7 +686,7 @@
+         os.unlink(temporary)
+         store = None
+         try:
+-            target_schema = SCHEMA_VERSION if migrate else data['schema_version']
++            target_schema = target_schema_version if migrate else data['schema_version']
+             store, credentials = cls._empty(temporary, data['store_uid'], data['actors'], options, schema_version=target_schema)
+             with store._transaction():
+                 for source in data['sources']:
+@@ -693,7 +699,7 @@
+                     store._db.execute('INSERT INTO audit VALUES (?,?,?)', (entry['event']['seq'], canonical(entry['event']).decode(), entry['event_hash']))
+                 admin = store._auth(credentials['admin'])['actor_uid']
+                 if migrate:
+-                    store._event('migration', admin, {'from_schema_version': data['schema_version'], 'to_schema_version': SCHEMA_VERSION, 'migrated_head_hash': data['events'][-1]['event_hash']})
++                    store._event('migration', admin, {'from_schema_version': data['schema_version'], 'to_schema_version': target_schema_version, 'migrated_head_hash': data['events'][-1]['event_hash']})
+                 else:
+                     store._event('restore', admin, {'restored_head_hash': data['events'][-1]['event_hash']})
+             store.verify_integrity(credentials['admin'])
