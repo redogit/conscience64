@@ -1,0 +1,15 @@
+{
+  "$id": "horizon:1.2.0:source_occurrence",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "end_utf16": {"minimum": 0,"type": "integer"},
+    "occurrence_id": {"type": "string"},
+    "source_path": {"type": "string"},
+    "start_utf16": {"minimum": 0,"type": "integer"},
+    "text_hash": {"pattern": "^[0-9a-f]{64}$","type": "string"}
+  },
+  "required": ["occurrence_id","source_path","start_utf16","end_utf16","text_hash"],
+  "title": "source_occurrence",
+  "type": "object"
+}

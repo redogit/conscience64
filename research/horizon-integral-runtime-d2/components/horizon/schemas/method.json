@@ -1,0 +1,5 @@
+{
+  "$id":"horizon:1.2.0:method","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{"invariants":{"items":{"type":"string"},"type":"array"},"name":{"type":"string"},"steps":{"items":{"type":"string"},"type":"array"}},
+  "required":["name","steps","invariants"],"title":"method","type":"object"
+}

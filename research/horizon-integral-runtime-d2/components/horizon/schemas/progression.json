@@ -1,0 +1,9 @@
+{
+  "$id":"horizon:1.2.0:progression","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "base":{"enum":["COMPLETED_BOUNDED","ADVANCED_UNFINISHED","DISCUSSED_NOT_EXECUTED","UNRESOLVED_PARKED"]},
+    "overlays":{"items":{"enum":["ACTIVE","BLOCKED","STALE","CONFLICTED","SUPERSEDED"]},"type":"array"},
+    "work_item_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"}
+  },
+  "required":["work_item_ref","base","overlays"],"title":"progression","type":"object"
+}

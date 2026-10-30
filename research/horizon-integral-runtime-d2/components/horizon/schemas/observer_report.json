@@ -1,0 +1,10 @@
+{
+  "$id":"horizon:1.2.0:observer_report","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "actual":{},"confounds":{"items":{"type":"string"},"type":"array"},"expected":{},"invariants":{"items":{"type":"string"},"type":"array"},"next_counterprobe":{"type":"string"},
+    "observer_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"},
+    "remainder":{"items":{"type":"string"},"type":"array"},
+    "subject_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"}
+  },
+  "required":["observer_ref","subject_ref","expected","actual","invariants","confounds","remainder","next_counterprobe"],"title":"observer_report","type":"object"
+}

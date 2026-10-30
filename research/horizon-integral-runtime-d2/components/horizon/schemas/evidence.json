@@ -1,0 +1,10 @@
+{
+  "$id":"horizon:1.2.0:evidence","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "domain":{"type":"string"},"evidence_type":{"type":"string"},
+    "source_refs":{"items":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"},"type":"array"},
+    "status":{"enum":["raw","interpreted","verified","refuted","unresolved"]},
+    "subject_ref":{"additionalProperties":false,"properties":{"revision_uid":{"format":"uuid","type":"string"},"uid":{"format":"uuid","type":"string"}},"required":["uid","revision_uid"],"type":"object"}
+  },
+  "required":["subject_ref","domain","evidence_type","status","source_refs"],"title":"evidence","type":"object"
+}

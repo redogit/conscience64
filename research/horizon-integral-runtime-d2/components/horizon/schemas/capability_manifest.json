@@ -1,0 +1,11 @@
+{
+  "$id":"horizon:1.2.0:capability_manifest","$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":true,
+  "properties":{
+    "capability_id":{"type":"string"},"homeward_contract":{"type":"string"},
+    "requirement_class":{"enum":["CORE_REQUIRED","GOAL_BLOCKING","GOAL_SUPPORTING","PROJECTION_ONLY","EXPERIMENTAL","UNAVAILABLE"]},
+    "semantic_role":{"type":"string"},
+    "supported_lanes":{"items":{"enum":["research","implementation","verification","history","design","play","human"]},"type":"array"},
+    "version":{"type":"string"}
+  },
+  "required":["capability_id","version","requirement_class","semantic_role","supported_lanes","homeward_contract"],"title":"capability_manifest","type":"object"
+}

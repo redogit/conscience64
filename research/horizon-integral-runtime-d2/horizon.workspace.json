@@ -1,0 +1,12 @@
+{
+  "schema": "horizon-integral-workspace/1",
+  "name": "Horizon Integral Runtime D2",
+  "components": {
+    "horizon": "components/horizon",
+    "shapecodex": "components/shapecodex",
+    "prmal": "components/prmal",
+    "gradient_talker": "components/gradient-talker"
+  },
+  "baseline_manifest": "baselines/manifest.json",
+  "publication_rule": "mixed-scope baseline archives remain external; publish reviewed implementation and provenance only"
+}

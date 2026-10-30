@@ -1,0 +1,37 @@
+{
+  "schema": "horizon-d2-baselines/1",
+  "artifacts": [
+    {
+      "name": "Horizon_Phase1.zip",
+      "bytes": 503399,
+      "sha256": "924b8c64b5c908916303920fe42c15b7fea4f808a9a64dbe8ffe2b92659532f8",
+      "component_root": "horizon"
+    },
+    {
+      "name": "shapecodex-export.zip",
+      "bytes": 62571121,
+      "sha256": "f0c72564599a315ef2241e3045f923c1b8c71afe7f993df9b6f9ec4684d13148",
+      "component_root": "shapecodex"
+    },
+    {
+      "name": "PRMAL_RMAL_Coordinate_Build_021.zip",
+      "bytes": 1880533,
+      "sha256": "07ebb13f9c787fc08d2cb567cea47502a607e26be5e4926aebf93f520bedbbdb",
+      "component_root": "prmal"
+    }
+  ],
+  "external_sources": [
+    {
+      "name": "Gradient_Talker_Open.html",
+      "bytes": 147718604,
+      "sha256": "e594639a116dd5bd109bfee9904ef1b9685c2de13fde8868281a1aa294202a02",
+      "publication": "origin-record-only"
+    },
+    {
+      "name": "chrono-fantasy-legend-export.md",
+      "bytes": 584131,
+      "sha256": "b134d1eed73268320dc1d41a92e8896e5a5f4c4a5af7c521b161ad515f4ddc31",
+      "publication": "origin-record-only"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$id": "horizon:1.2.0:working_set",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "lanes": {"items":{"enum":["research","implementation","verification","history","design","play","human"]},"type":"array"},
+    "name": {"type":"string"}
+  },
+  "required":["name","lanes"],
+  "title":"working_set","type":"object"
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "horizon-d2-tasks1-4-merge-verification/1",
+  "recorded_at_utc": "2026-10-30T07:23:55.298113+00:00",
+  "tests": {
+    "task1_baseline_manifest": {"passed":5,"failed":0},
+    "task2_horizon": {"passed":84,"failed":0},
+    "task3_scdl_legacy": {"passed":32,"failed":0},
+    "task3_scdl_integrity_plus_horizon_ir": {"passed":14,"failed":0},
+    "task4_gradient_talker": {"passed":9,"failed":0},
+    "prmal_external_baseline": {"passed":27,"failed":0}
+  },
+  "publication_exclusions":["baseline ZIP archives","fitted Gradient Talker corpus/carriers","unreviewed ShapeCodex non-SCDL research/evidence"],
+  "claim_ceiling":"software integration verification only; no mathematical proof promotion"
+}
