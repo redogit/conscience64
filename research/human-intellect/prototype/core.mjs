@@ -8,6 +8,15 @@ const overlap = (a,b) => {
 export const uid = prefix => prefix + "-" + crypto.randomUUID();
 export const nowIso = () => new Date().toISOString();
 const isAuthorityStatus = value => value === "authorized" || value === "ambiguous" || value === "unavailable" || value === "rejected";
+const requireNonNegativeFinite = (value,name) => {
+  if(typeof value!=="number" || !Number.isFinite(value) || value<0) throw new Error(name+" must be a finite non-negative number");
+};
+const validateObligationNumbers = o => {
+  requireNonNegativeFinite(o.budget,"budget");
+  requireNonNegativeFinite(o.spent,"spent");
+  requireNonNegativeFinite(o.unresolvedCost,"unresolvedCost");
+  if(o.spent>o.budget) throw new Error("spent exceeds budget");
+};
 
 export class KDKernel {
   constructor({activeLimit=7}={}) {
@@ -74,25 +83,35 @@ export class KDKernel {
 export class ObligationKernel {
   constructor(kd){this.kd=kd;this.current=null;}
   authorize(input){
-    for(const key of ["o0","reason","authority","authorityStatus","budget","unresolvedCost","expectedBenefit","stopCondition"])
+    const budget=input.budget, unresolvedCost=input.unresolvedCost;
+    for(const key of ["o0","reason","authority","authorityStatus","expectedBenefit","stopCondition"])
       if(input[key]===undefined || input[key]==="") throw new Error("missing obligation field: "+key);
     const authorityStatus=input.authorityStatus;
     if(!isAuthorityStatus(authorityStatus)) throw new Error("invalid obligation authorityStatus");
-    const o={id:uid("o"),o0:String(input.o0),o1:String(input.o1||input.o0),localObjective:String(input.localObjective||input.o1||input.o0),reason:String(input.reason),authority:String(input.authority),authorityStatus,budget:Number(input.budget),spent:0,unresolvedCost:Number(input.unresolvedCost),limits:[...(input.limits||[])],expectedBenefit:String(input.expectedBenefit),stopCondition:String(input.stopCondition),createdAt:nowIso()};
-    if(!(o.budget>=0)) throw new Error("budget must be non-negative");
+    requireNonNegativeFinite(budget,"budget");
+    requireNonNegativeFinite(unresolvedCost,"unresolvedCost");
+    const o={id:uid("o"),o0:String(input.o0),o1:String(input.o1||input.o0),localObjective:String(input.localObjective||input.o1||input.o0),reason:String(input.reason),authority:String(input.authority),authorityStatus,budget,spent:0,unresolvedCost,limits:[...(input.limits||[])],expectedBenefit:String(input.expectedBenefit),stopCondition:String(input.stopCondition),createdAt:nowIso()};
     this.current=o;
     this.kd.recordLineage({kind:"authorization",subject:o.id,reason:o.reason,authority:o.authority});
     return o;
   }
-  remaining(){return this.current?Math.max(0,this.current.budget-this.current.spent):0;}
-  spend(cost){if(!this.current) throw new Error("no active obligation"); const c=Number(cost); if(c<0) throw new Error("cost must be non-negative"); if(c>this.remaining()) return false; this.current.spent+=c; return true;}
+  remaining(){if(!this.current) return 0; validateObligationNumbers(this.current); return this.current.budget-this.current.spent;}
+  spend(cost){
+    requireNonNegativeFinite(cost,"cost");
+    if(!this.current) throw new Error("no active obligation");
+    const remaining=this.remaining(), next=this.current.spent+cost;
+    if(cost>remaining || !Number.isFinite(next) || next>this.current.budget || (cost>0 && next===this.current.spent)) return false;
+    this.current.spent=next; return true;
+  }
 }
 
 export class Controller {
   constructor(kd,obligations){this.kd=kd;this.obligations=obligations;this.decisions=[];}
   decide({cost=0,consequential=false,requestedAuthority=null}={}){
+    requireNonNegativeFinite(cost,"cost");
     const o=this.obligations.current;
     if(!o) return this._record("reject","no active obligation");
+    validateObligationNumbers(o);
     const authorityStatus=o.authorityStatus;
     if(authorityStatus==="unavailable" || authorityStatus==="ambiguous") return this._record("wait","authority is not currently sufficient");
     if(authorityStatus==="rejected") return this._record("reject","authority rejected the obligation");
@@ -101,7 +120,8 @@ export class Controller {
     if(requestedAuthority && requestedAuthority!==o.authority) return this._record("wait","requested authority exceeds current scope");
     if(cost>this.obligations.remaining()) return this._record("reject","budget exceeded");
     if(consequential && !o.authority) return this._record("wait","consequential action needs explicit authority");
-    this.obligations.spend(cost); return this._record("allow","authorized within current obligation and budget");
+    if(!this.obligations.spend(cost)) return this._record("reject","budget exceeded or cost cannot be represented");
+    return this._record("allow","authorized within current obligation and budget");
   }
   contradiction({beliefId,observationId,dimension,proposedValue,reason,cost=1}){
     const gate=this.decide({cost,consequential:true});

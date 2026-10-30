@@ -52,6 +52,21 @@ remain proposed integration contracts. The WIT description and empty WebAssembly
 probe do not implement those contracts. This prototype is not an established
 security boundary or autonomous-execution system.
 
+## Numerical validation boundary
+
+Budgets, unresolved costs, accumulated spending, and operation costs must be
+primitive finite non-negative numbers; strings are not coerced. Invalid creation
+inputs throw before replacing an obligation or adding authorization lineage.
+The runtime rechecks mutable numerical state before remaining-budget reads,
+spending, and decisions; an overspent record is invalid. Invalid values throw
+before recording a decision or repair. Zero remains valid. A spend is denied
+if it exceeds the remaining budget, would overflow or round above the budget,
+or a positive cost is too small to change accumulated spending.
+
+These checks use JavaScript floating-point arithmetic, not exact accounting.
+Obligation records are mutable and this prototype is not tamper-proof;
+a trusted executor must enforce independently authenticated external permission.
+
 ## WebAssembly / WASI
 
 The prototype uses a tiny core WebAssembly module as a capability probe. The WIT file defines the future component boundary. The current Component Model guide still names WASI 0.2.0 as stable; wasi.dev also documents the 0.3 milestone and its native async evolution. This slice does not pretend it has a 0.3 runtime dependency.
@@ -64,7 +79,7 @@ node test.mjs
 tsc --noEmit
 ```
 
-The regression command includes deterministic negative authority tests and valid-state
+The regression command includes deterministic negative authority and numerical tests and valid-state
 controls. The current TypeScript configuration checks `types.ts` only; JavaScript
 runtime validation is exercised by the regressions, not by that typecheck.
 
